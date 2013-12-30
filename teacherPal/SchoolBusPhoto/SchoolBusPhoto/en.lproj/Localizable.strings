@@ -1,0 +1,143 @@
+/* 
+  Localizable.strings
+  SchoolBusPhoto
+
+  Created by wen peifang on 13-11-13.
+  Copyright (c) 2013年 mactop. All rights reserved.
+*/
+"login"="Login";
+"UpPic" = "Upload";
+"who"="Who's in the photo";
+"message"="Message";
+"send"="Send";
+"credits"="My Credits";
+"balance"="Balance";
+"spent"="History";
+"total" = "Total";
+"order" = "Buy";
+"aboutus" = "About Us";
+"out"="Log out";
+"OK"="OK";
+"privacy"="Terms And Privacy";
+
+"privacyC"="Terms And Privacy";
+"ask"="I want to say...";
+"Daily"="Daily progress";
+"week"="This week";
+"Product"="Products";
+"Photo"="Photo";
+"Sharing"="Sharing";
+"year"="";
+
+"notice"="noticeNormalE.png";
+"count"="countNormalE.png";
+"about"="aboutNormalE.png";
+
+"noticeH"="noticeE.png";
+"countH"="countE.png";
+"aboutH"="aboutE.png";
+"story" = "Say something";
+"shengji"="Update";
+"Lang"="1";
+"versionUp"="New Version";
+"cancel" = "Cancel";
+"emailno"="Please setting email";
+
+"home"="homeNoticeEN.png";
+"homeH"="homeNoticeHEN.png";
+
+"homenoticetitle"="New Notice";
+
+
+"avatorM"="Change Avadar";
+
+"choose"="Choose Existing";
+"takePhoto"="Take Photo";
+
+"NickName"="Nickname";
+"alert"="Alert";
+
+"words"="Less than 12 words";
+"change"="No change";
+"success"="Succeed";
+"modification"="Modification failed,Please later";
+"network"="Network failed,Please later";
+"call"="Please call";
+"pic"="Please select picture";
+"maxpic"="Max 9 pictures";
+"buysucess"="Succeed";
+"buyfailed"="Failed";
+"buyConfirm"="Confirm to buy?";
+"confirmOut"="Confirm logout";
+"WIFI"="No network,please open wifi connection";
+"input"="Please input content";
+"mimainput"="Please fill in username and password";
+"mimaerr"="Account/Password incorret";
+"account"="Account not exist";
+"nosupport"="This function is not supported";
+"selectstuent"="Please select student";
+"sendsucess"="Succeed";
+"sendfailed"="Failed";
+"avatorsuccess"="Avator uploaded";
+"avatorfailed"="Avator upload Failed";
+"link"="Still have pictures without linked kid's names";
+
+"jiaoshiLogin"="helperE";
+
+"aboutLogo"="aboutlogo_EN1";
+
+
+"inprocess"="In processing";
+"comfirming"="comfirming";
+"savephoto"="Save photo";
+"savepic"="Save";
+"savesuccess"="succeed";
+
+"leftUpN"="leftUpNE.png";
+"leftUpH"="leftupHE.png";
+
+
+"msgcancel" = "Cancelled";
+"msgsavesucess" = "Save successfully";
+"msgsucess" = "succeed";
+"msgfail" = "Send failed";
+
+
+"alterPass" = "alterPasswordE.png";
+"alterPassS"="alterPasswordSE.png";
+
+"passwordalter"="Change Password";
+
+"input" = "Input can not be empty";
+"diff"= "Two password input is different";
+
+"OidErr" = "Old PassWord is error";
+"otherErr" = "Cannot contain special characters";
+
+"changePwdSuccess" = "Modify success, please login again.";
+
+
+
+"Enter"="Enter old passworld";
+"Set"="Set new passworld";
+"Confirm"="Confirm";
+
+"oldPass" = "Old";
+"newPass" ="New";
+"confromPass" = "Confirm";
+
+"limitChar" = "less than 20 words";
+
+"apply"="Apply All";
+
+"tophoto"="Take Photo";
+"uploadsuccess"="Congratulations, all photos have been uploaded successfully";
+"uplist"="UpLoad Q";
+
+"uptotle"="Pictures Uploaded:";
+"zhang"="";
+
+
+"processing"="In the processing";
+
+"processingafter"="Uploading is in progress, check the details by tapping the 'Upload Q' on the left side menu.";

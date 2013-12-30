@@ -1,0 +1,143 @@
+/* 
+  Localizable.strings
+  SchoolBusPhoto
+
+  Created by wen peifang on 13-11-13.
+  Copyright (c) 2013年 mactop. All rights reserved.
+*/
+
+
+
+"login"="登录";
+"UpPic"="上传图片";
+"who"="谁在照片里";
+"message"="系统消息";
+"send"="发送";
+"credits"="我的积分";
+"balance"="可兑换积分";
+"spent"="已兑换积分";
+"total" = "历史总积分";
+"out"="退出登录";
+"order" = "立即兑换";
+"aboutus" = "关于我们";
+"privacy"="软件许可及服务协议";
+
+"privacyC"="云中校车软件许可及服务协议";
+
+"OK"="确定";
+
+
+"ask"="我要提问";
+"Daily"="每日增长";
+"week"="本周积分";
+
+"Product"="商品积分";
+"Photo"="拍照积分";
+"Sharing"="推广积分";
+"year"="年";
+"notice"="noticeNormal.png";
+"count"="countNormal.png";
+"about"="aboutNormal.png";
+
+"noticeH"="notice.png";
+"countH"="count.png";
+"aboutH"="about.png";
+"story" = "说点什么";
+"shengji"="升级";
+"Lang"="2";
+"versionUp"="发现新版本";
+"cancel" = "取消";
+
+"home"="homeNotice.png";
+"homeH"="homeNoticeH.png";
+"homenoticetitle"="发布家长通知";
+
+
+
+"leftUpN"="leftUpN.png";
+"leftUpH"="leftupH.png";
+
+
+
+"avatorM"="修改头像";
+"choose"="从手机相册中选择";
+"takePhoto"="拍照";
+
+"alert"="提示";
+"NickName"="修改昵称";
+"words"="字符少于12个字";
+"change"="未修改信息";
+"success"="信息修改成功";
+"modification"="信息修改失败，请稍后重试";
+"network"="网络故障，请稍后重试";
+"call"="拨打电话";
+"pic"="请选择图片";
+"maxpic"="最多可选9张图片";
+"buysucess"="购买成功";
+"buyfailed"="购买失败";
+"buyConfirm"="确认购买吗?";
+"confirmOut"="确认退出登录";
+"WIFI"="没有网络连接，请打开wifi";
+"input"="不能发送空白信息";
+"mimainput"="用户名密码不能为空";
+"mimaerr"="账号密码错误";
+"account"="该账号不存在";
+"nosupport"="设备不支持该功能";
+"selectstuent"="请选择学生";
+"sendsucess"="发送成功";
+"sendfailed"="发送失败";
+"avatorsuccess"="头像上传成功";
+"avatorfailed"="头像上传失败";
+"link"="还有照片没有关联学生";
+
+
+"jiaoshiLogin"="helper";
+
+"aboutLogo"="guanyu-1";
+
+
+"inprocess"="处理中";
+"comfirming"="等待处理";
+"savephoto"="保存到相册";
+"savepic"="保存";
+
+"savesuccess"="保存成功";
+
+
+"msgcancel" = "邮件发送取消";
+"msgsavesucess" = "邮件保存成功";
+"msgsucess" = "邮件发送成功";
+"msgfail" = "邮件发送失败";
+
+"emailno"="尚未配置邮箱";
+
+"alterPass" = "alterPassword.png";
+"alterPassS"="alterPasswordS.png";
+"passwordalter"="修改密码";
+
+"input" = "输入不能为空";
+"diff"="两次密码输入不同";
+"OidErr" = "旧密码错误";
+"otherErr" = "不能包含特殊字符";
+"changePwdSuccess" = "密码修改成功，请重新登录";
+
+
+"Enter"="请输入旧密码";
+"Set"="6到24位数字与英文组合";
+"Confirm"="请再次输入新密码";
+
+"oldPass" = "旧密码";
+"newPass" ="新密码";
+
+"confromPass" = "确认密码";
+"limitChar" = "字符少于20个字";
+"apply"="应用全部";
+"tophoto"="立即拍照";
+"uploadsuccess"="恭喜你，所有照片已上传成功!";
+
+
+"uplist"="上传列表";
+"uptotle"="班级已成功上传照片总数：";
+"zhang"="张";
+"processing"="正在处理中";
+"processingafter"="图片已提交成功，正在上传，可点击左侧栏-上传列表查看具体进度";

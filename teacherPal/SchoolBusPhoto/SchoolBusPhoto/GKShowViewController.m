@@ -39,16 +39,24 @@
     }
     return self;
 }
--(void)viewDidAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
+    
+   //self.view.userInteractionEnabled=NO;
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
-
+    
+    // 禁用 向左滑动
+    UIPanGestureRecognizer*  recognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(paningGestureReceive:)];
+    [recognizer delaysTouchesBegan];
+    [self.view addGestureRecognizer:recognizer];
+    [recognizer release];
+    
     prePage=0;
     stuList = [[NSMutableArray alloc] init];
     picTextArr = [[NSMutableArray alloc] init];
@@ -215,7 +223,10 @@
     
     
 
+
 }
+
+
 -(void)applyAll:(UIButton *)btn
 {
     if([picTxtView.text isEqualToString:@""])
@@ -509,9 +520,23 @@
         UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(index*_scroller.frame.size.width, 0, _scroller.frame.size.width, _scroller.frame.size.height)];
         imageView.backgroundColor = [UIColor blackColor];
         imageView.tag=index+TAG;
-        [self performSelectorInBackground:@selector(setPhotoImage:) withObject:imageView];
+        //[self performSelectorInBackground:@selector(setPhotoImage:) withObject:imageView];
+        if(type==1)
+        {
+            ETPhoto *photo=[assetArr objectAtIndex:index];
+            NSData *data= UIImageJPEGRepresentation([UIImage imageWithCGImage:[[photo.asset defaultRepresentation] fullScreenImage]], 0.1);
+            imageView.image=[UIImage imageWithData:data];
+        }
+        else
+        {
+            NSData *data= UIImageJPEGRepresentation([UIImage imageWithData:[assetArr objectAtIndex:index]], 0.1)   ;
+            imageView.image= [UIImage imageWithData:data];
+        }
+   
+        
         imageView.userInteractionEnabled = YES;
-        imageView.contentMode=UIViewContentModeScaleAspectFit;
+       // imageView.contentMode=UIViewContentModeScaleAspectFit;
+        imageView.contentMode=UIViewContentModeScaleAspectFill;
         [_scroller addSubview:imageView];
         [imageView release];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showBigImage:)];
@@ -533,27 +558,27 @@
     [showBigVC release];
 }
 
--(void)setPhotoImage:(UIImageView*)img
-{
-    
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    if(type==1)
-    {
-        ETPhoto *photo=[assetArr objectAtIndex:img.tag - TAG];
-        NSData *data= UIImageJPEGRepresentation([UIImage imageWithCGImage:[[photo.asset defaultRepresentation] fullScreenImage]], 0.1);
-        img.image=[UIImage imageWithData:data];
-
-    }
-    else
-    {
-        NSData *data= UIImageJPEGRepresentation([UIImage imageWithData:[assetArr objectAtIndex:img.tag-TAG]], 0.1)   ;
-        img.image= [UIImage imageWithData:data];
-       
-    }
-    [pool release];
-    
-}
+//-(void)setPhotoImage:(UIImageView*)img
+//{
+//    
+//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+//    
+//    if(type==1)
+//    {
+//        ETPhoto *photo=[assetArr objectAtIndex:img.tag - TAG];
+//        NSData *data= UIImageJPEGRepresentation([UIImage imageWithCGImage:[[photo.asset defaultRepresentation] fullScreenImage]], 0.1);
+//        img.image=[UIImage imageWithData:data];
+//
+//    }
+//    else
+//    {
+//        NSData *data= UIImageJPEGRepresentation([UIImage imageWithData:[assetArr objectAtIndex:img.tag-TAG]], 0.1)   ;
+//        img.image= [UIImage imageWithData:data];
+//       
+//    }
+//    [pool release];
+//    
+//}
 -(NSString *)fileName:(int)index
 {
     int a=arc4random()%1000;
@@ -724,9 +749,6 @@
 -(void)toMainThread
 {
     
-    
-    
- 
     disappearView.textLabel.text=NSLocalizedString(@"processingafter", @"");
     [disappearView setactiveStop:YES];
     [self.navigationController popViewControllerAnimated:YES];
@@ -751,7 +773,7 @@
 
 }
 -(void)back:(UIButton *)btn
-    {
+{
         UIView *visibleView = [[changeView subviews] objectAtIndex:1];
         if (visibleView.tag == 1234) {
             [picTxtView resignFirstResponder];
@@ -764,9 +786,27 @@
             
             
         }else{
-            [self.navigationController popViewControllerAnimated:YES];
+            
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"Cancelphotos", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") otherButtonTitles:NSLocalizedString(@"OK", @""), nil];
+            [alert show];
+            [alert release];
+            
+           // [self.navigationController popViewControllerAnimated:YES];
         }
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex==1)
+    {
+        [delegate refreashPickViewController:nil];
+        [self.navigationController popViewControllerAnimated:YES];
+  
     }
+    else
+    {
+        
+    }
+}
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     
@@ -822,7 +862,10 @@
     
     
 }
-
+- (void)paningGestureReceive:(UIPanGestureRecognizer *)recoginzer
+{
+    return;
+}
 -(void)setAlreayStudent
 {
     

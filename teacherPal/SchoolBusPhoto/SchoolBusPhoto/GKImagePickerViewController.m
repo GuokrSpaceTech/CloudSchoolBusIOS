@@ -45,7 +45,7 @@
     else
         [imageArr removeAllObjects];
 
- 
+ // 存放选中的照片
     selectArr=[[NSMutableArray alloc]init];
 
     UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -158,14 +158,14 @@
     UIButton *instancebutton=[UIButton buttonWithType:UIButtonTypeCustom];
     instancebutton.frame=CGRectMake(25, 262/2,  100, 30);
     
-    UIImage *image=IMAGENAME(IMAGEWITHPATH(@"Tophoto"));
-    [instancebutton setBackgroundImage:image forState:UIControlStateNormal];
-
-    [instancebutton setTitleColor:[UIColor colorWithRed:93/255.0 green:177/255.0 blue:201/255.0 alpha:1] forState:UIControlStateNormal];
-    [instancebutton setTitle:NSLocalizedString(@"tophoto", @"") forState:UIControlStateNormal];
-    instancebutton.titleLabel.font=[UIFont systemFontOfSize:16];
-    [instancebutton addTarget:self action:@selector(takePhoto:) forControlEvents:UIControlEventTouchUpInside];
-    [noView addSubview:instancebutton];
+//    UIImage *image=IMAGENAME(IMAGEWITHPATH(@"Tophoto"));
+//    [instancebutton setBackgroundImage:image forState:UIControlStateNormal];
+//
+//    [instancebutton setTitleColor:[UIColor colorWithRed:93/255.0 green:177/255.0 blue:201/255.0 alpha:1] forState:UIControlStateNormal];
+//    [instancebutton setTitle:NSLocalizedString(@"tophoto", @"") forState:UIControlStateNormal];
+//    instancebutton.titleLabel.font=[UIFont systemFontOfSize:16];
+//    [instancebutton addTarget:self action:@selector(takePhoto:) forControlEvents:UIControlEventTouchUpInside];
+//    [noView addSubview:instancebutton];
     
     [self.view addSubview:noView];
     [noView release];
@@ -210,7 +210,13 @@
 -(void)refreashPickViewController:(NSArray *)arr
 {
     
-    
+    if(arr==nil)
+    {
+        [self setAllPhotoSelect:NO];
+            [selectArr removeAllObjects];
+        [_tableView reloadData];
+        return;
+    }
     [selectArr removeAllObjects];
       countLabel.text=[NSString stringWithFormat:@"%d/%d",0,[imageArr count]];
     if([arr count] >0)
@@ -256,16 +262,16 @@
     }
     
 }
--(void)takePhoto:(UIButton *)btn
-{
-    
-
-    AVCamViewController *avVC=[[AVCamViewController alloc]initWithNibName:@"AVCamViewController" bundle:nil];
-    [self.navigationController pushViewController:avVC animated:YES];
-    [avVC release];
-
-    
-}
+//-(void)takePhoto:(UIButton *)btn
+//{
+//    
+//
+//    AVCamViewController *avVC=[[AVCamViewController alloc]initWithNibName:@"AVCamViewController" bundle:nil];
+//    [self.navigationController pushViewController:avVC animated:YES];
+//    [avVC release];
+//
+//    
+//}
 //-(void)leftClick:(UIButton *)btn
 //{
 //    

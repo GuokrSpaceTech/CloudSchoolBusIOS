@@ -13,7 +13,7 @@
 #import "ETNicknameViewController.h"
 #import "GKDisapperView.h"
 @protocol showViewController;
-@interface GKShowViewController : GKBaseViewController<UIScrollViewDelegate,studentViewDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,EKProtocol,ETNicknameViewControllerDelegate,UITextViewDelegate>
+@interface GKShowViewController : GKBaseViewController<UIScrollViewDelegate,studentViewDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,EKProtocol,ETNicknameViewControllerDelegate,UITextViewDelegate,UIAlertViewDelegate>
 {
     UIScrollView *_scroller;
     

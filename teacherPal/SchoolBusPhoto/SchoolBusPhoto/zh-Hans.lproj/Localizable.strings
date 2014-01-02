@@ -142,3 +142,5 @@
 "zhang"="张";
 "processing"="正在处理中";
 "processingafter"="图片已提交成功，正在上传，可点击左侧栏-上传列表查看具体进度";
+
+"Cancelphotos"="取消发送照片";

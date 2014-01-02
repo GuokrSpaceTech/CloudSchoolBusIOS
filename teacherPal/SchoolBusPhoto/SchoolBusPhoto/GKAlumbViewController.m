@@ -112,7 +112,7 @@
 }
 -(void)loadAlum
 {
-
+// 加载相册
 
     if(isRefresh==NO)
     {

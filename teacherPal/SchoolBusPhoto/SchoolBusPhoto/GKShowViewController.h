@@ -42,6 +42,9 @@
     
     
     
+    UILabel *labelNum;
+    
+    
     
    // NSMutableArray *alreadyArr;
     
@@ -53,7 +56,7 @@
 //@property (nonatomic,retain)NSMutableArray *alreadyArr;
 @property (nonatomic,retain)NSMutableArray * stuList;
 @property (nonatomic, retain)NSMutableArray *picTextArr;
-
+@property (nonatomic,retain)NSString *preStr;
 @property (nonatomic,retain)Student * tempStu; // 修改头像时 的 临时变量
 @end
 

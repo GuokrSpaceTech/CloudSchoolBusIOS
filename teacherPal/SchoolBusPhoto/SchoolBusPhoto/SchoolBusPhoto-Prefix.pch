@@ -23,7 +23,7 @@
 #define REMEMBERPSAAWORDVALUE @"rememberValue" // 记住密码 value
 #define AUTOLOGINVALUE @"login"
 
-
+#define CURRENTVERSION @"1.2.0"
 #define IMAGEWITHPATH(a)  [[NSBundle mainBundle] pathForResource:a ofType:@"png"]
 #define IMAGENAME(b) [UIImage imageWithContentsOfFile:b]
 #endif

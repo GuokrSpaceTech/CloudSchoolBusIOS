@@ -161,8 +161,11 @@
 		119F0CB8181A2D9600A5910C /* backH.png in Resources */ = {isa = PBXBuildFile; fileRef = 119F0CB7181A2D9600A5910C /* backH.png */; };
 		119F0CBA181A2FA700A5910C /* guanyu-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 119F0CB9181A2FA700A5910C /* guanyu-1.png */; };
 		11A212A818697B8800A2D909 /* GKAlumbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A212A718697B8800A2D909 /* GKAlumbViewController.m */; };
+		11A2BF451876560D00E321F3 /* GKClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A2BF441876560D00E321F3 /* GKClassViewController.m */; };
 		11A30EF81862E73500DEB58B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A30EF71862E73500DEB58B /* CoreMotion.framework */; };
 		11A30EFB1862FB9500DEB58B /* GKDisapperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A30EFA1862FB9500DEB58B /* GKDisapperView.m */; };
+		11A3BF48187567E20032BA07 /* GKStudentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A3BF47187567E20032BA07 /* GKStudentListViewController.m */; };
+		11A3BF4B18756A3A0032BA07 /* GKStudentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A3BF4A18756A3A0032BA07 /* GKStudentInfoViewController.m */; };
 		11A5AE64186438FA008794C0 /* applyAll.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE63186438FA008794C0 /* applyAll.png */; };
 		11A5AE6618643C94008794C0 /* Tophoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE6518643C94008794C0 /* Tophoto.png */; };
 		11A5AE6818644125008794C0 /* smilik.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE6718644125008794C0 /* smilik.png */; };
@@ -535,9 +538,15 @@
 		119F0CB9181A2FA700A5910C /* guanyu-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanyu-1.png"; sourceTree = "<group>"; };
 		11A212A618697B8800A2D909 /* GKAlumbViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAlumbViewController.h; sourceTree = "<group>"; };
 		11A212A718697B8800A2D909 /* GKAlumbViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAlumbViewController.m; sourceTree = "<group>"; };
+		11A2BF431876560D00E321F3 /* GKClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GKClassViewController.h; path = Student/GKClassViewController.h; sourceTree = "<group>"; };
+		11A2BF441876560D00E321F3 /* GKClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GKClassViewController.m; path = Student/GKClassViewController.m; sourceTree = "<group>"; };
 		11A30EF71862E73500DEB58B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		11A30EF91862FB9500DEB58B /* GKDisapperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKDisapperView.h; sourceTree = "<group>"; };
 		11A30EFA1862FB9500DEB58B /* GKDisapperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKDisapperView.m; sourceTree = "<group>"; };
+		11A3BF46187567E20032BA07 /* GKStudentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GKStudentListViewController.h; path = Student/GKStudentListViewController.h; sourceTree = "<group>"; };
+		11A3BF47187567E20032BA07 /* GKStudentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GKStudentListViewController.m; path = Student/GKStudentListViewController.m; sourceTree = "<group>"; };
+		11A3BF4918756A3A0032BA07 /* GKStudentInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKStudentInfoViewController.h; sourceTree = "<group>"; };
+		11A3BF4A18756A3A0032BA07 /* GKStudentInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKStudentInfoViewController.m; sourceTree = "<group>"; };
 		11A5AE63186438FA008794C0 /* applyAll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applyAll.png; sourceTree = "<group>"; };
 		11A5AE6518643C94008794C0 /* Tophoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tophoto.png; sourceTree = "<group>"; };
 		11A5AE6718644125008794C0 /* smilik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smilik.png; sourceTree = "<group>"; };
@@ -1184,6 +1193,19 @@
 			name = resource;
 			sourceTree = "<group>";
 		};
+		11A3BF421875678A0032BA07 /* Student */ = {
+			isa = PBXGroup;
+			children = (
+				11A3BF46187567E20032BA07 /* GKStudentListViewController.h */,
+				11A3BF47187567E20032BA07 /* GKStudentListViewController.m */,
+				11A3BF4918756A3A0032BA07 /* GKStudentInfoViewController.h */,
+				11A3BF4A18756A3A0032BA07 /* GKStudentInfoViewController.m */,
+				11A2BF431876560D00E321F3 /* GKClassViewController.h */,
+				11A2BF441876560D00E321F3 /* GKClassViewController.m */,
+			);
+			name = Student;
+			sourceTree = "<group>";
+		};
 		11A5AE601863E00A008794C0 /* login */ = {
 			isa = PBXGroup;
 			children = (
@@ -1339,6 +1361,7 @@
 		2A32A56418122C01007CAA8E /* SchoolBusPhoto */ = {
 			isa = PBXGroup;
 			children = (
+				11A3BF421875678A0032BA07 /* Student */,
 				11A5AE621863E045008794C0 /* setting */,
 				11A5AE611863E02C008794C0 /* upload */,
 				11A5AE601863E00A008794C0 /* login */,
@@ -1626,6 +1649,7 @@
 				2AFFF376181233580045BFD0 /* GKUpLoaderViewController.m in Sources */,
 				11A212A818697B8800A2D909 /* GKAlumbViewController.m in Sources */,
 				119E962A1814C5A300866DE8 /* ASIS3Bucket.m in Sources */,
+				11A3BF4B18756A3A0032BA07 /* GKStudentInfoViewController.m in Sources */,
 				11A30EFB1862FB9500DEB58B /* GKDisapperView.m in Sources */,
 				119566B6181E09A000366B13 /* Letter.m in Sources */,
 				1193A6CE182C78E9004011BC /* ETScoreView.m in Sources */,
@@ -1644,6 +1668,7 @@
 				114B59021821220E00163A4A /* GKShowBigImageViewController.m in Sources */,
 				11B852AE1833243E005FA5B9 /* GKUpObject.m in Sources */,
 				119402421823619000F21FB8 /* GKMarketButton.m in Sources */,
+				11A2BF451876560D00E321F3 /* GKClassViewController.m in Sources */,
 				11EFE1DA1817C08C009CE69F /* GKStudentView.m in Sources */,
 				119E961E1814C5A300866DE8 /* ASIInputStream.m in Sources */,
 				11B218171835C624002825FA /* GKNoticeViewController.m in Sources */,
@@ -1699,6 +1724,7 @@
 				119E961B1814C5A300866DE8 /* ASIDownloadCache.m in Sources */,
 				2AFFF36F181232B60045BFD0 /* AVCamRecorder.m in Sources */,
 				119EA9BA18160F170070DBF1 /* GKLeftViewController.m in Sources */,
+				11A3BF48187567E20032BA07 /* GKStudentListViewController.m in Sources */,
 				2AFFF35318122D8B0045BFD0 /* GKMainViewController.m in Sources */,
 				2AFFF370181232B60045BFD0 /* AVCamViewController.m in Sources */,
 				119E96241814C5A300866DE8 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,

@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Student.h"
-@interface GKStudentInfoViewController : UIViewController
+#import "GKBaseViewController.h"
+@interface GKStudentInfoViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,retain)Student *st;
+@property (nonatomic,retain)UITableView *_tableView;
+@property (nonatomic,retain)NSArray *arr;
 @end

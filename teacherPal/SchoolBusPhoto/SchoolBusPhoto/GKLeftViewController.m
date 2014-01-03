@@ -7,9 +7,9 @@
 //
 
 #import "GKLeftViewController.h"
-#import "GKAboutViewController.h"
-#import "GKUpLoaderViewController.h"
-#import "GKInfoViewController.h"
+
+#import "GKSettingViewController.h"
+#import "GKClassViewController.h"
 #import "GKLetterViewController.h"
 #import "GKNoticeViewController.h"
 #import "KKNavigationController.h"
@@ -85,10 +85,14 @@
     
     self.navigationController.navigationBarHidden=YES;
 
+//    "classLeft"="classLeft.png";
+//    "classLeftH"="classLeftH.png";
+
     
-    
-    NSArray *defArr = [NSArray arrayWithObjects:NSLocalizedString(@"notice", @""),NSLocalizedString(@"count", @""), NSLocalizedString(@"home", @""),NSLocalizedString(@"leftUpN", @""),NSLocalizedString(@"alterPass", @""),NSLocalizedString(@"about", @""),nil];
-    NSArray *selArr = [NSArray arrayWithObjects:NSLocalizedString(@"noticeH", @""),NSLocalizedString(@"countH", @""),NSLocalizedString(@"homeH", @""), NSLocalizedString(@"leftUpH", @""),NSLocalizedString(@"alterPassS", @""),NSLocalizedString(@"aboutH", @""),  nil];
+//    "setleftE"="leftSettingE.png";
+//    "setLeftEH"="leftSettingHE.png";
+    NSArray *defArr = [NSArray arrayWithObjects:NSLocalizedString(@"notice", @""),NSLocalizedString(@"classLeft", @""), NSLocalizedString(@"home", @""),NSLocalizedString(@"setleft", @""),nil];
+    NSArray *selArr = [NSArray arrayWithObjects:NSLocalizedString(@"noticeH", @""),NSLocalizedString(@"classLeftH", @""),NSLocalizedString(@"homeH", @""), NSLocalizedString(@"setleftH", @""),  nil];
     totle=[defArr count];
     for (int i=0; i<[defArr count]; i++) {
         UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -265,9 +269,9 @@
     }
     if(index==2)
     {
-        GKInfoViewController *upVC=[[GKInfoViewController alloc]init];
-        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:upVC];
-        [upVC release];
+        GKClassViewController *classVC=[[GKClassViewController alloc]init];
+        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:classVC];
+        [classVC release];
         
         return [nav autorelease];
     }
@@ -291,35 +295,35 @@
 
 
         
-        GKUpLoaderViewController *aboutVC=[[GKUpLoaderViewController alloc]init];
-        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:aboutVC];
-        [aboutVC release];
+        GKSettingViewController *settingVC=[[GKSettingViewController alloc]init];
+        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:settingVC];
+        [settingVC release];
 
         return [nav autorelease];
         
     }
-    if(index==5)
-    {
-        
-        GKRePasswordViewController *repass=[[GKRePasswordViewController alloc]init];
-        repass.delegate=self;
-        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:repass];
-        [repass release];
-        
-        return [nav autorelease];
-        
-    
-        
-    }
-    if(index==6)
-    {
-        GKAboutViewController *aboutVC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];
-        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:aboutVC];
-        [aboutVC release];
-        
-        return [nav autorelease];
-
-    }
+//    if(index==5)
+//    {
+//        
+//        GKRePasswordViewController *repass=[[GKRePasswordViewController alloc]init];
+//        repass.delegate=self;
+//        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:repass];
+//        [repass release];
+//        
+//        return [nav autorelease];
+//        
+//    
+//        
+//    }
+//    if(index==6)
+//    {
+//        GKAboutViewController *aboutVC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];
+//        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:aboutVC];
+//        [aboutVC release];
+//        
+//        return [nav autorelease];
+//
+//    }
     return nil;
 
 

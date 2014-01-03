@@ -1,5 +1,5 @@
 //
-//  GKClassViewController.h
+//  GKSettingViewController.h
 //  SchoolBusPhoto
 //
 //  Created by wen peifang on 14-1-3.
@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "GKBaseViewController.h"
-@interface GKClassViewController : GKBaseViewController<UITableViewDelegate,UITableViewDataSource>
+@interface GKSettingViewController : GKBaseViewController
 @property (nonatomic,retain)UITableView *_tableView;
-@property (nonatomic,retain)NSArray *arr;
 @end

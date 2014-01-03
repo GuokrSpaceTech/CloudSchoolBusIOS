@@ -30,11 +30,14 @@
 "year"="";
 
 "notice"="noticeNormalE.png";
-"count"="countNormalE.png";
+//"count"="countNormalE.png";
 "about"="aboutNormalE.png";
 
+"classLeft"="classLeftE.png";
+"classLeftH"="classLeftEH.png";
+
 "noticeH"="noticeE.png";
-"countH"="countE.png";
+//"countH"="countE.png";
 "aboutH"="aboutE.png";
 "story" = "Say something";
 "shengji"="Update";
@@ -143,3 +146,7 @@
 "processingafter"="Uploading is in progress, check the details by tapping the 'Upload Q' on the left side menu.";
 
 "Cancelphotos"="Cancel sending this photos？";
+
+
+"setleft"="leftSetting.png";
+"setLeftH"="leftSettingH.png";

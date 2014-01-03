@@ -44,14 +44,14 @@
     //UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 34, 35)];
     
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"back" ofType:@"png"];
-    
-    NSString *path1 = [[NSBundle mainBundle] pathForResource:@"backH" ofType:@"png"];
-    [buttom setBackgroundImage:[UIImage imageWithContentsOfFile:path] forState:UIControlStateNormal];
-    [buttom setBackgroundImage:[UIImage imageWithContentsOfFile:path1] forState:UIControlStateHighlighted];
-    buttom.tag=0;
-    [buttom addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
-    [navigationView addSubview:buttom];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"back" ofType:@"png"];
+//    
+//    NSString *path1 = [[NSBundle mainBundle] pathForResource:@"backH" ofType:@"png"];
+//    [buttom setBackgroundImage:[UIImage imageWithContentsOfFile:path] forState:UIControlStateNormal];
+//    [buttom setBackgroundImage:[UIImage imageWithContentsOfFile:path1] forState:UIControlStateHighlighted];
+//    buttom.tag=0;
+//    [buttom addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
+//    [navigationView addSubview:buttom];
     titlelabel.text=NSLocalizedString(@"aboutus", @"");
     
     NSString *logostr= [[NSBundle mainBundle] pathForResource:NSLocalizedString(@"aboutLogo", @"") ofType:@"png"];
@@ -75,24 +75,24 @@
 {
     
 }
--(void)leftClick:(UIButton *)btn
-{
-    
-    GKMainViewController *main=[GKMainViewController share];
-    if(main.state==0)
-    {
-        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
-            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionLeft];
-        }
-    }
-    else
-    {
-        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
-            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionNone];
-        }
-    }
-    
-}
+//-(void)leftClick:(UIButton *)btn
+//{
+//    
+//    GKMainViewController *main=[GKMainViewController share];
+//    if(main.state==0)
+//    {
+//        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
+//            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionLeft];
+//        }
+//    }
+//    else
+//    {
+//        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
+//            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionNone];
+//        }
+//    }
+//    
+//}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

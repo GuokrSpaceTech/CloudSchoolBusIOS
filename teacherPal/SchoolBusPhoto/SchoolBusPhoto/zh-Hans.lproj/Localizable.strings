@@ -37,11 +37,14 @@
 "Sharing"="推广积分";
 "year"="年";
 "notice"="noticeNormal.png";
-"count"="countNormal.png";
+//"count"="countNormal.png";
 "about"="aboutNormal.png";
 
+"classLeft"="classLeft.png";
+"classLeftH"="classLeftH.png";
+
 "noticeH"="notice.png";
-"countH"="count.png";
+//"countH"="count.png";
 "aboutH"="about.png";
 "story" = "说点什么";
 "shengji"="升级";
@@ -144,3 +147,6 @@
 "processingafter"="图片已提交成功，正在上传，可点击左侧栏-上传列表查看具体进度";
 
 "Cancelphotos"="取消发送照片";
+
+"setleft"="leftSetting.png";
+"setLeftH"="leftSettingH.png";

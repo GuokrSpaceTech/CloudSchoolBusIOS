@@ -1,0 +1,29 @@
+dependencies: \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKInfoViewController.m \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKInfoViewController.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKBaseViewController.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKMainViewController.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKLeftViewController.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/SideBarSelectedDelegate.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKImagePickerViewController.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/ETPhotoCell.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKShowViewController.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKStudentView.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKButton.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/Student.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/SVHTTPRequest/EKRequest.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/ETNicknameViewController.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKDisapperView.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/KKNavigationController.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKBadgeView.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKUserLogin.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/ClassInfo.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKRePasswordViewController.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKMarketCell.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKMarket.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKBuyCountView.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKMarketButton.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKAlreadyCell.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKNODataView.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/ETScoreView.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKMarketGird.h

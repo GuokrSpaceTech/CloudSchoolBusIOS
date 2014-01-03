@@ -1,0 +1,24 @@
+dependencies: \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKAppDelegate.m \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKAppDelegate.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/ASIHTTP/External/Reachability/Reachability.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/BPush.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/SVHTTPRequest/EKRequest.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKLoginViewController.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKUserLogin.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/ClassInfo.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKUpQueue.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/ASIHTTP/ASINetworkQueue.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/ASIHTTP/ASIHTTPRequestDelegate.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/ASIHTTP/ASIProgressDelegate.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/ASIHTTP/ASIFormDataRequest.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/ASIHTTP/ASIHTTPRequest.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/ASIHTTP/ASIHTTPRequestConfig.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/ASIHTTP/ASICacheDelegate.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GTMBase64.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GTMDefines.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKLoaderManager.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/GKUpWraper.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/myProgressView.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/DACircularProgressView.h \
+  /Users/kai/Documents/workspace/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/SchoolBusPhoto/UpLoader.h

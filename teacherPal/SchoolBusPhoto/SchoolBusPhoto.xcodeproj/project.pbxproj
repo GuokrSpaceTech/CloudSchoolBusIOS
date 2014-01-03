@@ -1404,6 +1404,11 @@
 				CLASSPREFIX = GK;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = mactop;
+				TargetAttributes = {
+					2A32A55818122C01007CAA8E = {
+						DevelopmentTeam = 24QP873G9R;
+					};
+				};
 			};
 			buildConfigurationList = 2A32A55418122C01007CAA8E /* Build configuration list for PBXProject "SchoolBusPhoto" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1788,6 +1793,7 @@
 		2A32A57C18122C02007CAA8E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchoolBusPhoto/SchoolBusPhoto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1799,10 +1805,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/wpfcool2008/Documents/SchoolBusPhoto/SchoolBusPhoto,
+					"SchoolBusPhoto/**",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9EEAAC63-A04B-4B1A-90B3-2DA325B3B5AC";
+				PROVISIONING_PROFILE = "9B07A8BF-7357-462E-957D-85B35671D9F6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1810,6 +1816,7 @@
 		2A32A57D18122C02007CAA8E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchoolBusPhoto/SchoolBusPhoto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1821,10 +1828,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/wpfcool2008/Documents/SchoolBusPhoto/SchoolBusPhoto,
+					"SchoolBusPhoto/**",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9EEAAC63-A04B-4B1A-90B3-2DA325B3B5AC";
+				PROVISIONING_PROFILE = "9B07A8BF-7357-462E-957D-85B35671D9F6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

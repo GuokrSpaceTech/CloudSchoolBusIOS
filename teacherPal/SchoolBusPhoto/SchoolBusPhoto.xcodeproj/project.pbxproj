@@ -1793,7 +1793,8 @@
 		2A32A57C18122C02007CAA8E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchoolBusPhoto/SchoolBusPhoto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1808,7 +1809,8 @@
 					"SchoolBusPhoto/**",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9B07A8BF-7357-462E-957D-85B35671D9F6";
+				PROVISIONING_PROFILE = "98859BDF-B3C4-40A3-AAAB-932D2B4F14A9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "98859BDF-B3C4-40A3-AAAB-932D2B4F14A9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1816,7 +1818,8 @@
 		2A32A57D18122C02007CAA8E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchoolBusPhoto/SchoolBusPhoto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1831,7 +1834,8 @@
 					"SchoolBusPhoto/**",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9B07A8BF-7357-462E-957D-85B35671D9F6";
+				PROVISIONING_PROFILE = "98859BDF-B3C4-40A3-AAAB-932D2B4F14A9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "98859BDF-B3C4-40A3-AAAB-932D2B4F14A9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

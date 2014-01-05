@@ -291,6 +291,9 @@
 		2AFFF371181232B60045BFD0 /* AVCamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AFFF36D181232B60045BFD0 /* AVCamViewController.xib */; };
 		2AFFF373181232E70045BFD0 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AFFF372181232E60045BFD0 /* AssetsLibrary.framework */; };
 		2AFFF376181233580045BFD0 /* GKUpLoaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFFF375181233580045BFD0 /* GKUpLoaderViewController.m */; };
+		E797189A18798BAB00353BAF /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E797189418798BAB00353BAF /* libTestFlight.a */; };
+		E797189B18798BAB00353BAF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E797189518798BAB00353BAF /* README.md */; };
+		E797189C18798BAB00353BAF /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = E797189618798BAB00353BAF /* release_notes.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -702,6 +705,12 @@
 		2AFFF372181232E60045BFD0 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		2AFFF374181233580045BFD0 /* GKUpLoaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKUpLoaderViewController.h; sourceTree = "<group>"; };
 		2AFFF375181233580045BFD0 /* GKUpLoaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKUpLoaderViewController.m; sourceTree = "<group>"; };
+		E797189418798BAB00353BAF /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		E797189518798BAB00353BAF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		E797189618798BAB00353BAF /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		E797189718798BAB00353BAF /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		E797189818798BAB00353BAF /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
+		E797189918798BAB00353BAF /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -709,6 +718,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E797189A18798BAB00353BAF /* libTestFlight.a in Frameworks */,
 				11A30EF81862E73500DEB58B /* CoreMotion.framework in Frameworks */,
 				11EFE1D71817ACA3009CE69F /* QuartzCore.framework in Frameworks */,
 				11E27F92183C709700CAE0BB /* MessageUI.framework in Frameworks */,
@@ -1297,6 +1307,7 @@
 		2A32A55018122C01007CAA8E = {
 			isa = PBXGroup;
 			children = (
+				E797189318798BAB00353BAF /* TestFlightSDK2 */,
 				2A32A56418122C01007CAA8E /* SchoolBusPhoto */,
 				2A32A55B18122C01007CAA8E /* Frameworks */,
 				2A32A55A18122C01007CAA8E /* Products */,
@@ -1375,6 +1386,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E797189318798BAB00353BAF /* TestFlightSDK2 */ = {
+			isa = PBXGroup;
+			children = (
+				E797189418798BAB00353BAF /* libTestFlight.a */,
+				E797189518798BAB00353BAF /* README.md */,
+				E797189618798BAB00353BAF /* release_notes.md */,
+				E797189718798BAB00353BAF /* TestFlight+AsyncLogging.h */,
+				E797189818798BAB00353BAF /* TestFlight+ManualSessions.h */,
+				E797189918798BAB00353BAF /* TestFlight.h */,
+			);
+			path = TestFlightSDK2;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1445,6 +1469,7 @@
 				1193A6D2182C8653004011BC /* loginBG.png in Resources */,
 				11AF3B1118168D5C00B36176 /* aa.png in Resources */,
 				11AF3AF018166ECB00B36176 /* upHight.png in Resources */,
+				E797189B18798BAB00353BAF /* README.md in Resources */,
 				11BF896B18363221008E72F0 /* 114.png in Resources */,
 				111E8CF3181E6E9F00234014 /* input.png in Resources */,
 				11AF3AEB18166AB200B36176 /* navLeftBtn_default.png in Resources */,
@@ -1456,6 +1481,7 @@
 				1102A7DE181A48FB00E6295C /* guanyu-2.png in Resources */,
 				119F0CA4181A216100A5910C /* aboutNormal.png in Resources */,
 				1193B39E1827847C00660CB1 /* 积分.png in Resources */,
+				E797189C18798BAB00353BAF /* release_notes.md in Resources */,
 				1102A7FF181A715D00E6295C /* guanlian-B-2.png in Resources */,
 				11DB02DB18337552007981C6 /* count.png in Resources */,
 				11FC0F3A182C90D200442EF6 /* qipao-2@2x.png in Resources */,
@@ -1807,10 +1833,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"SchoolBusPhoto/**",
+					/Users/mactoptest/mobile_apps/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/TestFlightSDK2,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "98859BDF-B3C4-40A3-AAAB-932D2B4F14A9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "98859BDF-B3C4-40A3-AAAB-932D2B4F14A9";
+				PROVISIONING_PROFILE = "BC944BB8-3550-49E0-9637-FB6159605817";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1832,10 +1859,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"SchoolBusPhoto/**",
+					/Users/mactoptest/mobile_apps/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/TestFlightSDK2,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "98859BDF-B3C4-40A3-AAAB-932D2B4F14A9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "98859BDF-B3C4-40A3-AAAB-932D2B4F14A9";
+				PROVISIONING_PROFILE = "BC944BB8-3550-49E0-9637-FB6159605817";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -7,11 +7,10 @@
 //
 
 #import "GKAppDelegate.h"
-
 #import "GKUserLogin.h"
-
 #import "GKUpQueue.h"
 #import "GKLoaderManager.h"
+#import "TestFlight.h"
 
 @implementation GKAppDelegate
 
@@ -31,18 +30,19 @@
 @synthesize loginVC;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    [TestFlight takeOff:@"d4bc9035-d1e2-4759-b915-1bd09236dc63"];
+    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
-
     loginVC=[[GKLoginViewController alloc]initWithNibName:@"GKLoginViewController" bundle:nil];
     self.window.rootViewController=loginVC;
- 
-//
+
     [BPush setupChannel:launchOptions];
     [BPush setDelegate:self];
-//    
+   
     application.applicationIconBadgeNumber = 0;
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
      UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
@@ -52,15 +52,13 @@
                                              selector:@selector(reachabilityChanged:)
                                                  name: kReachabilityChangedNotification
                                                object: nil];
-////    _hostReach = [[Reachability reachabilityWithHostName:@"www.google.com"] retain];
-////    [_hostReach startNotifier];
-//
+//    _hostReach = [[Reachability reachabilityWithHostName:@"www.google.com"] retain];
+//    [_hostReach startNotifier];
+
     [self CheckVersion];
-//    
-//    //[UIApplication sharedApplication].statusBarStyle= UIStatusBarStyleLightContent;
+    //[UIApplication sharedApplication].statusBarStyle= UIStatusBarStyleLightContent;
     
     Reachability *reachability=[[Reachability reachabilityWithHostName:@"www.yunxiaoche.com"] retain];
-    
     
     [reachability startNotifier];
     

@@ -12,6 +12,7 @@
 #import "ETGestureCheckViewController.h"
 #import "ETLoginViewController.h"
 #import "ETCustomAlertView.h"
+#import "TestFlight.h"
 
 @implementation AppDelegate
 
@@ -81,7 +82,7 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor blackColor];
     
-    
+    [TestFlight takeOff:@"0dc70c2c-7827-4489-835b-2486c0601baa"];
 //    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
 //        self.window.frame =  CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
 //    }    

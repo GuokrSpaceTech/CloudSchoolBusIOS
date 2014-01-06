@@ -118,6 +118,10 @@
 		788BE6AE17F00B610076D920 /* ETCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 788BE6AC17F00B610076D920 /* ETCalendarViewController.m */; };
 		788BE6AF17F00B610076D920 /* ETCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788BE6AD17F00B610076D920 /* ETCalendarViewController.xib */; };
 		788F8CFA17F40C9B00342A5C /* ETSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 788F8CF917F40C9B00342A5C /* ETSettingView.m */; };
+		78930525187A4D4300628928 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7893051F187A4D4300628928 /* libTestFlight.a */; };
+		78930526187A4D4300628928 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 78930520187A4D4300628928 /* README.md */; };
+		78930527187A4D4300628928 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 78930521187A4D4300628928 /* release_notes.md */; };
+		78930529187A4D6E00628928 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 78930528187A4D6E00628928 /* libz.1.2.5.dylib */; };
 		78931AA717F66FD6007A3ACE /* tabbar_badge.png in Resources */ = {isa = PBXBuildFile; fileRef = 78931AA617F66FD6007A3ACE /* tabbar_badge.png */; };
 		78931AB017F67495007A3ACE /* 1登录_07.png in Resources */ = {isa = PBXBuildFile; fileRef = 78931AA817F67495007A3ACE /* 1登录_07.png */; };
 		78931AB117F67495007A3ACE /* login_pwd.png in Resources */ = {isa = PBXBuildFile; fileRef = 78931AA917F67495007A3ACE /* login_pwd.png */; };
@@ -731,6 +735,13 @@
 		788BE6AD17F00B610076D920 /* ETCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ETCalendarViewController.xib; sourceTree = "<group>"; };
 		788F8CF817F40C9B00342A5C /* ETSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETSettingView.h; sourceTree = "<group>"; };
 		788F8CF917F40C9B00342A5C /* ETSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSettingView.m; sourceTree = "<group>"; };
+		7893051F187A4D4300628928 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		78930520187A4D4300628928 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		78930521187A4D4300628928 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		78930522187A4D4300628928 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		78930523187A4D4300628928 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
+		78930524187A4D4300628928 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		78930528187A4D6E00628928 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		78931AA617F66FD6007A3ACE /* tabbar_badge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_badge.png; sourceTree = "<group>"; };
 		78931AA817F67495007A3ACE /* 1登录_07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1登录_07.png"; sourceTree = "<group>"; };
 		78931AA917F67495007A3ACE /* login_pwd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_pwd.png; sourceTree = "<group>"; };
@@ -1355,6 +1366,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78930529187A4D6E00628928 /* libz.1.2.5.dylib in Frameworks */,
 				F9E0FA6B16DF5E4E00206925 /* MessageUI.framework in Frameworks */,
 				73C1C63917B8F0DD001A3BCC /* CoreMotion.framework in Frameworks */,
 				11A054F51796835F005C062A /* MapKit.framework in Frameworks */,
@@ -1368,6 +1380,7 @@
 				F950225816DCB2120079A05E /* libz.dylib in Frameworks */,
 				F96332B816D62A4100BFE8E9 /* SystemConfiguration.framework in Frameworks */,
 				F925403A16D3823B008B4BD2 /* CoreData.framework in Frameworks */,
+				78930525187A4D4300628928 /* libTestFlight.a in Frameworks */,
 				F919DB3416C2406100CFEFD0 /* Security.framework in Frameworks */,
 				78F841FD181E1430007722AE /* libWeChatSDK.a in Frameworks */,
 				F91AE3D016BBA54800BF3E5C /* QuartzCore.framework in Frameworks */,
@@ -1496,6 +1509,19 @@
 				788BE6AD17F00B610076D920 /* ETCalendarViewController.xib */,
 			);
 			path = broadside;
+			sourceTree = "<group>";
+		};
+		7893051E187A4D4300628928 /* TestFlightSDK2 */ = {
+			isa = PBXGroup;
+			children = (
+				7893051F187A4D4300628928 /* libTestFlight.a */,
+				78930520187A4D4300628928 /* README.md */,
+				78930521187A4D4300628928 /* release_notes.md */,
+				78930522187A4D4300628928 /* TestFlight+AsyncLogging.h */,
+				78930523187A4D4300628928 /* TestFlight+ManualSessions.h */,
+				78930524187A4D4300628928 /* TestFlight.h */,
+			);
+			path = TestFlightSDK2;
 			sourceTree = "<group>";
 		};
 		78C2ADB617E06F2900E6A5CD /* V3.0 */ = {
@@ -1947,6 +1973,7 @@
 		E3EA3AE2169E9491000DF7EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				78930528187A4D6E00628928 /* libz.1.2.5.dylib */,
 				73C1C63817B8F0DC001A3BCC /* CoreMotion.framework */,
 				11A054F41796835F005C062A /* MapKit.framework */,
 				11A054F21796831D005C062A /* ImageIO.framework */,
@@ -2087,6 +2114,7 @@
 		E3F2AA5B16AD0959006936A5 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				7893051E187A4D4300628928 /* TestFlightSDK2 */,
 				78FA831D18064FDC009E9176 /* ETImageView.h */,
 				78FA831C18064FDC009E9176 /* ETImageView.m */,
 				78FA831418064CE7009E9176 /* ETLockView.h */,
@@ -2678,6 +2706,7 @@
 				785DE1BE180FB3E6001B0EB3 /* bottomSettingDef.png in Resources */,
 				785DE1C6180FC45C001B0EB3 /* showMain.png in Resources */,
 				78F841F7181A87C8007722AE /* 009.png in Resources */,
+				78930527187A4D4300628928 /* release_notes.md in Resources */,
 				F99196D516BD0F9B005FF6CA /* greenPoint.png in Resources */,
 				F9838F1916BF68B30088DEEB /* ETRePassWordViewController.xib in Resources */,
 				785DE1B4180FB3E6001B0EB3 /* bottomCommentDef.png in Resources */,
@@ -2957,6 +2986,7 @@
 				78230DC2180BC6D000EE49E4 /* attendent.png in Resources */,
 				78230DC3180BC6D000EE49E4 /* festival.png in Resources */,
 				7818DEB0180D209E005781DF /* todayButton.png in Resources */,
+				78930526187A4D4300628928 /* README.md in Resources */,
 				785DE1B7180FB3E6001B0EB3 /* bottomFeedbackSel.png in Resources */,
 				7818DEB3180D2152005781DF /* GO.png in Resources */,
 				78AD854418659F680082E082 /* aboutlogo_EN(1).png in Resources */,
@@ -3303,8 +3333,8 @@
 				INFOPLIST_FILE = "etonkids-iphone/etonkids-iphone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/weixin/\"/**",
 					"\"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/\"/**",
+					"\"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/weixin/\"/**",
 					"\"$(SRCROOT)/etonkids-iphone/Third/\"/**",
 				);
 				OTHER_LDFLAGS = (
@@ -3340,8 +3370,8 @@
 				INFOPLIST_FILE = "etonkids-iphone/etonkids-iphone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/weixin/\"/**",
 					"\"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/\"/**",
+					"\"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/weixin/\"/**",
 					"\"$(SRCROOT)/etonkids-iphone/Third/\"/**",
 				);
 				OTHER_LDFLAGS = (

@@ -1,0 +1,489 @@
+/* 
+  Localizable.strings
+  etonkids-iphone
+
+  Created by WenPeiFang on 2/26/13.
+  Copyright (c) 2013 wpf. All rights reserved.
+*/
+//设置页面
+
+"home" = "Home";
+
+"send" = "Send";
+"noChangeInfo" = "Unmodified information";
+"limitChar" = "less than 20 words";
+
+"pushMsg"="Push Notifcation";
+"rePassWord"="Change Password";  //修改密码
+"changeAccount"="Switch account";
+"feedback"="FeedBack";
+"about" = "About";
+"photo" = "Modify Information";
+"ok" = "OK";
+"cancel" ="Cancel";
+"done"="done";
+"save" ="Save";
+"picture" = "Picture";
+"success"="success";
+
+"version" = "Version:V1.0";
+"copyright" = "Copyright©Guokr Space. All Rights Reserved";
+"webset" = "WebSet:www.mac-top.com.cn";
+"tel" ="Tel:010-65980507";
+"more" = "More";
+"up" = "Collapse";
+"Remember" = "Remember PassWord";
+"autoLogin" = "Automatic Login";
+"Account"="Account";
+"PassWord"="Password";
+"takePhoto" ="Take Photo";
+"choosePhoto"="Choose Existing";
+"upload"="Uploading";
+"load" = "Loading";
+"time" = "Time";
+// 修改密码界面
+
+"okButton" = "ENOK.png";
+"okButtonSelect" = "ENOKSelect.png";
+
+"cancelButton"="ENCancel.png";
+"cancelButtonSelect"="ENCancelSelect.png";
+"oldPass" = "Old";
+"newPass" ="New";
+"confrom" = "Confirm";
+"confromPass" = "Confirm";
+
+"AlterPass" ="Password";
+
+
+//分享
+"share" = "Share";
+"sina" = "Sina Weibo";
+"tencent" = "Tencent weibo";
+"wechat" = "WeChat Friends";
+"friend"="WeChat Moments";
+"savePhoto"="Save Photo";
+//main
+"schedule" = "ENchild_schedule.png";
+"food"="ENchild_food.png";
+"duty" ="ENchild_duty.png";
+"today" ="ENchild_today.png";
+
+//tabbar
+"tb_classshare" = "班级分享-EN.png";
+"tb_notice" = "通知消息-EN.png";
+"tb_activity" = "活动报名-EN.png";
+"tb_education" = "tbBtn_education_en.png";
+"tb_setting" = "tbBtn_setting_en.png";
+
+"myChild"="ENtab_child.png";
+"myChildSelect"="ENtab_child_select.png";
+"class" ="ENtab_class.png";
+"classSelect"="ENtab_class_select.png";
+"notice" ="ENtab_notice.png";
+"noticeSelect"="ENtab_notice_select.png";
+"set" = "select.png";
+"setSelect"="selectagin.png";
+
+"checkin" ="Check In";
+"checkout" ="Check Out";
+"allDay" = " School days this month:";
+"day" = "day";
+"normalDuty" ="Check in on time";
+"queqin"="Leave";
+"sick"="Sick";
+"affair"="Affair";
+
+"bendiLogin" = "ENbendidenglu.png";
+"bendiLonginH" = "ENbendidenglu1.png";
+
+
+"LoginN"="ENdenglu.png";
+"LoginH"="ENdenglu1.png";
+
+
+
+"food5"="ENchild_food5.png";
+"duty5"="ENchild_duty5.png";
+"schedule5"="ENchild_schedule5.png";
+
+"foodB"="ENscheduleImage.png";
+"sechdeuleB"="ENscheduleImage.png";
+"default"="No Data";
+"defaultcourse"="No Data";
+"defaultdata" = "No Data";
+
+
+"InputEmail" = "Please Input Email";
+
+"one"="Monday";
+"two"="Tuesday";
+"three"="Wednesday";
+"four"="Thursday";
+"five"="Friday";
+"six"="Saturday";
+"seven"="Sunday";
+
+
+"Avatar" ="Change Avatar";
+"NickName"="Nickname";
+"Birthday"="Birthday";
+"studentInfo" = "Modify Kid's Information";
+
+"refresh" = "Refresh";
+"sendN"="ENSetingSend.png";
+"sendH"="ENSetingSend1.png";
+
+"Lanague"="1";
+
+
+
+
+
+"active5"="ENactive5.png";
+"information5"="ENinformation5.png";
+"active" = "ENactive.png";
+
+"information" = "ENinformation.png";
+"fanhui" = "ENfanhui.png";
+"fanhuiH"="ENfanhuiH.png";
+
+"myApply" = "ENMyapply.png";
+"myApplyH"= "ENMyapplyH.png";
+"myCollect" = "ENmyCollect.png";
+"myCollectH"="ENmyCollectH.png";
+
+"collect" = "ENcollect.png";
+"collectH"="ENcollectH.png";
+
+"baoming" = "ENApply.png";
+"baomingH" = "ENApplyH.png";
+"huizhi"="sure1.png";
+
+"defaultactivity"="No Data";
+"defaulteducation"="No Data";
+
+
+"alert" ="Notice";
+"busy" = "Network unavailable ,please check your network";
+"fail" = "Operation failed";
+"success" = "Success";
+
+"collectText" = "Favor";
+"confomCollect" = "Confirm";
+"CollectFailedResult" = "Repeat";
+"baomingFailedResult11" = "Repeat";
+"baomingFailedResult" = "Event Not Exist";
+"baomingFailedResult55"="Event Not Exist";
+"firstLogin" = "For your account security, please change initial password";
+"NOLogin"="You have not logged in, can't use the local login";
+"LoginErr"= "Please enter the correct account and password";
+"input" = "Input can not be empty";
+"logininput" = "Please enter the account or password";
+"diff"= "Two password input is different";
+"formatBirth"="Please enter the correct birthday format, such as the 2005-12-02";
+"nosupport" = "Device does not support";
+"baomingAct"="Events";
+"baomingCon"="Confirm？";
+"EducationInfo"="Education";
+"content11" = "Content";
+"content12" ="Content";
+
+//"active5"="ENactive.png";
+//"information5"="ENinformation.png";
+
+
+"yisouchang"="ENyishoucang.png";
+"yibaoming"="ENyibaoming.png";
+
+"confirm1"="Event Register";
+"myFavor" = "Favorites";
+"register"="Registration";
+
+
+"activeStatus1"="No start";
+"activeStatus2"="End";
+"activeStatus3"="Full";
+"activeStatus4"="In progress";
+
+"localResult" ="Local land can't operate";
+"loginResult" = "Account or password error";
+
+"baomingFailedResult22"="Event is over";
+
+"baomingFailedResult33"="Event is not start";
+"baomingFailedResult44"="Event is Full";
+"OidErr" = "Old PassWord is error";
+"otherErr" = "Cannot contain special characters";
+
+"shengji"="Update";
+"gongsi"="Cloud School Bus For Parents V2.3";
+
+"eventTime" = "Event Time:";
+"RegisterTime"="Register Time:";
+"eventContent" = "Content:";
+
+"back"="Back";
+"Favor"="Favor";
+"Favorites"="Favorites";
+"Favorited"="Favorited";
+"Registation"="Registation";
+"Registered"="Registered";
+"Register"="Register";
+"hk"="cancel registration";
+
+"CancleCollect"="CancleCollect";
+"Image"="Iamge";
+
+
+
+"Name"="Name";
+"Class"="Class";
+"School"="School";
+"Avatar"="Avatar";
+"Nickname"="Nickname";
+"Gender"="Gender";
+"Birthday"="Birthday";
+"Background"="Background";
+"Password"="Password";
+"Feedback"="Feedback";
+"About Us"="About Us";
+"Log Out"="Log Out";
+"Settings"="Settings";
+"Choose a Wallpaper"="Choose a Wallpaper";
+"take"="Take Photo";
+"Save"="Save";
+"Princess"="Princess";
+"prince"="Prince";
+"Server hotline"="Service Hotline:";
+"Company Web"="Company Web:";
+"Product Web"="Product Web:";
+"Check New Version"="Check New Version";
+"Send"="Send";
+"Please enter"="Please enter your precious opinion";
+"Enter"="Enter old passworld";
+"Set"="Set new passworld";
+"Confirm"="Confirm";
+"empty"="Content is empty";
+"follow"="Follow Us:";
+"com"="[Confirm]";
+
+"please wait"="Waiting for the opening";
+"comment"="Comment";
+"body"="Detail";
+"please"="limit 70 words";
+"Can not"="Beyond the limit,can't enter";
+
+"replyComment" = "Reply";
+
+"SecureSetting" = "Multiple Devices Login";
+"teleNum" = "Telephone";
+"stuNum" = "Student ID";
+
+"forgotpwd" = "If not binding mobile phone, please contact customer service 400-000-000";
+"forgotpwdtitle?" = "Forgot Password？";
+"forgotpwdtitle" = "Forgot Password";
+"rememberpassword" = "Remember Password";
+"tishi" = "If check the information is correct, automatic reset password for 111111.";
+
+"delete" = "Delete";
+
+
+"New_Year_Day" = "New Year";
+"Spring_Festival" = "Spring";
+"Tomb_Sweeping_Day" = "Tomb Sweeping Day";
+"May_Holiday" = "May Day";
+"Dragon_Boat_Festival" = "Dragon Boat Festival";
+"Professional_Devlopment_Day" = "Professional Devlopment";
+"Moon_Festival" = "Moon Festival";
+"National_Day" = "National Day";
+"Summer_Holiday" = "Summer Holiday";
+"prodevtime" = "Professional Development Day";
+
+"praise" = "Like";
+"cellComment" = "Comment";
+
+"mutilDevice" = "Your account is off-line now，because it sign in another equipment now， if you allow your account online outnumber one at the same time，do it in setting
+";
+"offline" = "Notice";
+
+"forgotsuccess" = "The password has been reset to 111111, please login again.";
+
+
+"checkversion"="http://itunes.apple.com/lookup?id=600478283";
+
+"mail" = "e-mail";
+"nosetmail" = "Please Setting E-mail";
+
+
+"CommentPlaceholder" = "Comment";
+
+
+
+
+"checkversion"="http://itunes.apple.com/lookup?id=600478283";
+
+"loginButton" = "Login";
+
+
+"checkAndCalendar" = "Attendance";
+
+"changePWD" = "Change the password";
+"gesturePWD" = "Gestures Password";
+"changeGesturePWD" = "Change the gestures password";
+
+"currentVersion" = "Great, you are using the latest version";
+"SetGesturePassword" = "Set gestures password";
+"forgetGesMsg" = "Forgot guesture password, need to login again.";
+"reLogin" = "ReLogin";
+"forgetGesture" = "Forgot guesture password?";
+"drawlock" = "Set your guesture";
+"drawAlert" = "Please connect at least 4 dots";
+"reDraw" = "Set your guesture again";
+"settingSuccess" = "Guesture password set";
+"differentDraw" = "Unmatached guestures";
+"errorGesPwd" = "Wrong password,you can try %d times.";
+"errorPwdMsg" = "Please login again since you have input incorrect password 5 times in a row.";
+
+"today" = "Today";
+
+"logout" = "This will not delete any data.You can still log in with this account.";
+"changeavadar" = "Change Avadar";
+
+"praiseSuccess" = "Success";
+"alreadypraise" = "您已经赞过了";
+"cancelPraiseSuccess" = "Like cancelled";
+
+"ageformat" = "years old";
+"call" = "Call";
+
+"btm_food" = "Menu";
+"btm_schedule" = "Schedule";
+"btm_setting" = "Settings";
+"btm_feedback" = "Feedback";
+"btm_score" = "Rate Us";
+"btm_newversion" = "Check Update";
+"btm_about" = "About us";
+"btm_logout" = "Log Out";
+
+"usernameplaceholder" = "Account";
+"passwordplaceholder" = "Password";
+
+
+"minutesago" = "m before";
+"hoursago" = "h before";
+
+"feedbackPlaceholder" = "Please enter your precious opinion";
+
+"wodebaoming" = "Mine";
+"quanbu" = "All";
+"kebaoming" = "Open";
+
+"quanbutongzhi" = "All";
+"zhongyaotongzhi" = "Important";
+
+"aboutlogo" = "aboutlogo_EN(1).png";
+"private" = "Terms and Privacy";
+"private_title" = "Terms and Privacy";
+
+"noMsgAtt" = "Waiting for data";
+"noMsgFes" = "Normal day";
+
+"tishishoushi" = "For your account security, please set gestures password.";
+"open" = "Set";
+"skip" = "Skip";
+
+"selectchild" = "Please select a kid";
+"guidebutton" = "GO";
+
+"childmanager" = "The kids";
+
+"registerSuccess" = "Success";
+"registerQuit" = "Quit ?";
+
+"btm_myaccount" = "My account";
+"basemessage" = "Kid information";
+"usertype" = "类型";
+
+"vip" = "Growth autograph album";
+"daijinquan" = "代金券";
+"chengzhangdangan" = "Growth record";
+"kewaikeyouhui" = "Curriculum";
+"chengzhangjinian" = "成长纪念册季刊";
+"zhaopianjinian" = "照片纪念品";
+"forgettishi" = "The mobile account can retrieve password by self-service, the number would not open to others.";
+"telephoneplaceholder" = "Please enter the phone number";
+"mssageverify" = "Please enter the verification code";
+"tishiverify" = "Have sent the verification message to %@";
+"countdown" = "%ds";
+"alreadySend" = "Send Successfully";
+
+"bindtishi" = "After binding mobile phone , you can use the mobile phone as the account to login directly; And retrieve password by self-service.";
+"bindmobile" = "Binding Phone";
+
+"bindsuccess" = "Binding successfully";
+"pidnull" = "pid is null";
+"telenull" = "Please enter the phone number";
+"verifynull" = "Please enter the phone number";
+"verifyerror" = "Please enter the correct verification code";
+"bindfail" = "Binding failed, please try again";
+
+"mobileformaterror" = "Please enter the correct phone number";
+"sidnull" = "sid不存在";
+"oldmobilenull" = "原始手机号码不存在";
+"insertdataerror" = "插入数据失败";
+"sendfail" = "发送短信失败";
+
+"tb_mychild" = "我的孩子-EN.png";
+"comingsoon" = "Under construction，please waiting";
+
+"next" = "Next";
+"sendTitle" = "Not received? Send again";
+
+"newpassword" = "Verification successful, please set new password";
+
+"versionImage" = "1登录_02 (2)_EN.png";
+"myaccount_account" = "Account：";
+"myaccount_unbind" = "Unbinding";
+"myaccount_bind" = "Binding";
+"myaccount_binded" = "Have binding：";
+"myaccount_change" = "Replace";
+"myaccount_link" = "Have %d children";
+
+"change1" = "Please enter the binding phone number";
+"change2" = "After rebinding, the  phone number will not allow to login .";
+"change3" = "Please enter new phone number";
+
+
+"phoneNumberError" = "Old phone number error";
+
+"getverify" = "Get code";
+"qingshuruyanzhengma" = "Please enter the verification code";
+
+"upText" = "Like";
+"comText" = "Comment";
+
+"placeholder1" = "The binding phone number";
+"placeholder2" = "New phone number";
+"placeholder3" = "The verification code";
+"likenumber0" = "no Likes yet";
+"commentnumber0" = "no comments yet";
+"deleteSuccess" = "Delete Success";
+"replySuccess" = "Reply Success";
+"confirmSuccess" = "Confirm Success";
+"rightdate" = "Please set the correct birthday";
+"changePwdSuccess" = "Modify success, please login again.";
+
+"shoujihaomaweibangding" = "The mobile phone has not been bound";
+
+"nofunction" = "The feature is disabled";
+"setgessuccess" = "Guesture password set successfully";
+"qingshurushoushi" = "Please enter gestures password";
+"messagealert" = "Due to the policy change of the mobile phone operators, SMS suffers huge delays. If you still not receives the SMS, you can request the verification code again and wait patiently. ";
+
+"nosendmsg" = "Due to government policy requirement, from 8pm till 8am next day, SMS gateway service will be unavailable.";
+"importantalert" = "Notice";
+
+"fufei" = "Your account has expired, please payment timely";
+"setting_help" = "FAQ";
+

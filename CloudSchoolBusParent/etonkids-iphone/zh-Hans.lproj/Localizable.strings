@@ -1,0 +1,461 @@
+/* 
+  Localizable.strings
+  etonkids-iphone
+
+  Created by WenPeiFang on 2/26/13.
+  Copyright (c) 2013 wpf. All rights reserved.
+*/
+"home" = "主页";
+
+"send" = "发送";
+
+"noChangeInfo" = "未修改信息";
+"limitChar" = "字符少于20个字";
+
+"pushMsg"="消息推送";
+"rePassWord"="修改密码";  //修改密码
+"changeAccount"="注销";
+"feedback"="意见反馈";
+"about" = "关于我们";
+"photo" = "修改孩子信息";
+"ok" = "确定";
+"cancel" ="取消";
+"picture" = "图片";
+"save" ="保存";
+"version" = "版本:V1.0";
+"copyright" = "版权所有:北京果壳空间科技有限公司";
+"webset" = "网址:www.mac-top.com.cn";
+"tel" ="服务电话:010-65980507";
+"more" = "更多";
+"up" = "收起";
+"Remember" = "记住密码";
+"autoLogin" = "自动登录";
+"Account"="用户名";
+"PassWord"="密码";
+"upload"="正在上传头像";
+"takePhoto" ="拍照";
+"choosePhoto"="从手机相册中选择";
+//修改密码页面
+"okButton" = "OK.png";
+"okButtonSelect" = "OKSelect.png";
+"cancelButton"="Cancel.png";
+"cancelButtonSelect"="CancelSelect.png";
+
+"AlterPass" ="修改登录密码";
+"oldPass" = "旧密码";
+"newPass" ="新密码";
+"confrom" = "确认回执";
+"confromPass" = "确认密码";
+"savePhoto"="保存到相册";
+//分享
+"share" = "分享";
+"sina" = "新浪微博";
+"tencent" = "腾讯微博";
+"wechat" = "微信朋友";
+"friend"="微信朋友圈";
+//main
+"schedule" = "child_schedule.png";
+"food"="child_food.png";
+"duty" ="child_duty.png";
+"today" ="child_today.png";
+
+//tabbar
+"tb_classshare" = "班级分享.png";
+"tb_notice" = "通知消息.png";
+"tb_activity" = "活动报名.png";
+"tb_education" = "tbBtn_education.png";
+"tb_setting" = "tbBtn_setting.png";
+
+"myChild"="tab_child.png";
+"myChildSelect"="tab_child_select.png";
+"class" ="tab_class.png";
+"classSelect"="tab_class_select.png";
+"notice" ="tab_notice.png";
+"noticeSelect"="tab_notice_select.png";
+"set" = "tab_Seting.png";
+"setSelect"="tab_Seting_Select.png";
+
+"checkin" ="入园时间";
+"checkout" ="离园时间";
+"allDay" = " 本月出勤总数:";
+"day" = "天";
+"normalDuty" ="正常出勤";
+"queqin"="缺勤";
+
+"sick"="病假";
+"affair"="事假";
+
+"bendiLogin" = "bendidenglu.png";
+"bendiLonginH" = "bendidenglu1.png";
+
+"LoginN"="denglu.png";
+"LoginH"="denglu1.png";
+
+"food5"="child_food5.png";
+"duty5"="child_duty5.png";
+"schedule5"="child_schedule5.png";
+
+"foodB"="heitiao.png";
+"sechdeuleB"="heitiao.png";
+"time" = "更新时间";
+"InputEmail" = "请输入邮箱地址";
+"load" = "加载中...";
+"default"="暂无食谱安排";
+"defaultcourse"="暂无课程安排";
+"defaultdata" = "暂无数据";
+
+"one"="星期一";        
+"two"="星期二";
+"three"="星期三";
+"four"="星期四";
+"five"="星期五";
+"six"="星期六";
+"seven"="星期日";
+
+"defaultactivity"="暂无活动报名";
+"defaulteducation"="暂无教育咨询";
+
+"Avatar" ="点击图片更换头像";
+"NickName"="修改昵称";
+"Birthday"="修改生日";
+"studentInfo" = "修改孩子信息";
+"refresh" = "刷新";
+"sendN"="SetingSend.png";
+"sendH"="SetingSend1.png";
+"Lanague"="2";
+
+
+
+
+
+"active5"="active5.png";
+"information5"="information5.png";
+
+"active" = "active.png";
+"information" = "information.png";
+"fanhui" = "fanhui.png";
+"fanhuiH"="fanhuiH.png";
+"myApply" = "myApply.png";
+"myApplyH"= "myApplyH.png";
+
+"myCollect" = "myCollect.png";
+"myCollectH"="myCollectH.png";
+
+
+"collect" = "collect.png";
+"collectH"="collectH.png";
+"baoming" = "baoming.png";
+"baomingH" = "baomingH.png";
+"huizhi"="sure.png";
+
+"success" = "操作成功";
+
+
+"alert" ="提示";
+"busy" ="网络不可用，请检查网络连接";
+"fail" = "操作失败";
+"collectText" = "收藏";
+"confomCollect" = "确定收藏";
+"CollectFailedResult" = "不能重复收藏";
+"baomingFailedResult" = "活动不存在";
+"baomingFailedResult11" = "您已报名，不要重复报名";
+"firstLogin" = "为了您的账户安全，请修改初始密码";
+"NOLogin"="您没有登录过,不能使用本地登录";
+"LoginErr"= "请输入正确的账号和密码";
+"logininput" = "账号密码不能为空";
+"input" = "输入不能为空";
+"diff"="两次密码输入不同";
+"formatBirth"="请输入正确的生日格式,如2005-12-02";
+"nosupport" = "设备不支持该功能";
+"baomingAct"="活动报名";
+"baomingCon"="确认报名？";
+"EducationInfo"="教育资讯";
+"content11" = "资讯内容";
+"content12" ="活动内容";
+
+
+"yisouchang"="yishoucang.png";
+"yibaoming"="yibaoming.png";
+
+"confirm1"="活动报名";
+"register"="我的活动";
+"myFavor" = "我的收藏";
+
+"back"="返回";
+"Favor"="收藏";
+"Favorites"="我的收藏";
+"Favorited"="已收藏";
+"Registation"="我的报名";
+"Registered"="已报名";
+"Register"="报名";
+"CancleCollect"="取消收藏";
+
+"activeStatus1"="未开始";
+"activeStatus2"="已结束";
+"activeStatus3"="满员";
+"activeStatus4"="进行中";
+
+
+"localResult" ="本地登陆，不能操作";
+
+"loginResult" = "账号或密码错误";
+
+"baomingFailedResult22"="活动已结束";
+
+"baomingFailedResult33"="活动尚未开始";
+"baomingFailedResult44"="活动已满员";
+"baomingFailedResult55"="活动不存在或者不是本小区的活动";
+"baomingFailedResult11"="已报名但是取消报名失败";
+"OidErr" = "旧密码错误";
+"otherErr" = "不能包含特殊字符";
+"shengji"="升级";
+"gongsi"="云中校车 家长版 V2.3";
+
+"eventTime" = "活动时间:";
+"RegisterTime"="报名时间:";
+"eventContent" = "内容:";
+"hk"="取消活动";
+
+"Image"="图片";
+
+"Name"="姓名";
+"Class"="班级";
+"School"="学校";
+"Avatar"="头像";
+"Nickname"="昵称";
+"Gender"="性别";
+"Birthday"="生日";
+"Background"="更换背景";
+"Password"="密码管理";
+"Feedback"="意见反馈";
+"About Us"="关于我们";
+"Log Out"="退出登录";
+"Settings"="设置";
+"Choose a Wallpaper"="选择背景图片";
+"take"="拍一张";
+"Save"="保存";
+"Princess"="女孩";
+"prince"="男孩";
+"Server hotline"="客服专线:";
+"Company Web"="公司官网:";
+"Product Web"="产品官网:";
+"Check New Version"="发现新版本";
+"Send"="提交";
+"Please enter"="请输入您的宝贵意见";
+"Enter"="请输入旧密码";
+"Set"="6到24位数字与英文组合";
+"Confirm"="请再次输入新密码";
+"empty"="输入内容为空";
+"follow"="关注我们:";
+"com"="[需回执]";
+"please wait"="暂未开通请等待";
+"comment"="写评论";
+"please"="写评论...70字以内";
+"body"="正文";
+"Can not"="超过最大字数不能输入了,您所编辑的内容总长度长度不能超过70个字符";
+
+
+"SecureSetting" = "多设备同时在线";
+"replyComment" = "回复评论";
+"teleNum" = "手机号";
+"stuNum" = "学号";
+"forgotpwd" = "未绑定手机账号请联系客服人员400-000-000";
+"forgotpwdtitle?" = "忘记密码？";
+"forgotpwdtitle" = "忘记密码";
+"rememberpassword" = "记住密码";
+"tishi" = "若我们核对正确，自动重置密码为：111111";
+
+"delete" = "删除";
+
+
+"New_Year_Day" = "元旦";
+"Spring_Festival" = "春节";
+"Tomb_Sweeping_Day" = "清明节";
+"May_Holiday" = "劳动节";
+"Dragon_Boat_Festival" = "端午节";
+"Professional_Devlopment_Day" = "教师职业发展日";
+"Moon_Festival" = "中秋节";
+"National_Day" = "国庆节";
+"Summer_Holiday" = "暑假";
+"prodevtime" = "教师专业培训日";
+
+"praise" = "赞";
+"cellComment" = "评论";
+
+"mutilDevice" = "你的账号在另一台设备上登录，你被迫下线了。若允许多设备同时在线，请在设备中开启";
+"offline" = "下线通知";
+
+"checkversion"="http://itunes.apple.com/lookup?id=600478283&country=cn";
+"forgotsuccess" = "密码已重置为111111，请登录后及时修改";
+
+"mail" = "分享到邮箱";
+"nosetmail" = "未设置邮箱";
+
+
+"CommentPlaceholder" = "评论";
+
+
+"checkAndCalendar" = "考勤与校历";
+
+"checkversion"="http://itunes.apple.com/lookup?id=600478283&country=cn";
+
+"loginButton" = "登录";
+
+
+
+"changePWD" = "修改登录密码";
+"gesturePWD" = "手势密码";
+"changeGesturePWD" = "修改手势密码";
+
+"currentVersion" = "太棒了，您使用的已是最新版本";
+"SetGesturePassword" = "设置手势密码";
+"forgetGesMsg" = "忘记手势密码，需重新登录";
+"reLogin" = "重新登录";
+"forgetGesture" = "忘记手势密码？";
+"drawlock" = "请绘制解锁图案";
+"drawAlert" = "至少连接4个点，请重新输入";
+"reDraw" = "再次绘制解锁图案";
+"settingSuccess" = "设置成功";
+"differentDraw" = "与上一次绘制不一致，请重新绘制";
+"errorGesPwd" = "密码错误，还可以再输入%d次";
+"errorPwdMsg" = "你已连续5次输错手势，手势解锁已关闭，请重新登录";
+"today" = "回今天";
+
+"logout" = "退出后不会删除历史数据，下次登录依然可以使用本账号。";
+
+"praiseSuccess" = "赞成功";
+"alreadypraise" = "您已经赞过了";
+"cancelPraiseSuccess" = "取消赞成功";
+"changeavadar" = "修改头像";
+"ageformat" = "岁";
+"call" = "呼叫";
+
+"btm_food" = "食谱";
+"btm_schedule" = "课程表";
+"btm_setting" = "设置";
+"btm_feedback" = "意见反馈";
+"btm_score" = "给我评分";
+"btm_newversion" = "发现新版本";
+"btm_about" = "关于我们";
+"btm_logout" = "退出登录";
+
+"usernameplaceholder" = "手机号/学号";
+"passwordplaceholder" = "密码";
+
+"minutesago" = "分钟前";
+"hoursago" = "小时前";
+
+"feedbackPlaceholder" = "请输入您的宝贵意见";
+
+"wodebaoming" = "我的报名";
+"quanbu" = "全部";
+"kebaoming" = "可报名";
+
+"quanbutongzhi" = "全部通知";
+"zhongyaotongzhi" = "重要通知";
+
+"aboutlogo" = "aboutlogo.png";
+"private" = "云中校车软件许可及服务协议";
+"private_title" = "软件许可及服务协议";
+
+"noMsgAtt" = "等待考勤数据";
+"noMsgFes" = "正常日";
+
+"tishishoushi" = "提醒：为保证您的账户安全，请开启手势密码保护。";
+"open" = "开启";
+"skip" = "忽略";
+
+"selectchild" = "请选择孩子";
+"guidebutton" = "立即开启";
+"childmanager" = "孩子管理";
+
+"registerSuccess" = "报名成功";
+"registerQuit" = "取消报名?";
+"btm_myaccount" = "我的账户";
+"basemessage" = "孩子信息";
+"usertype" = "类型";
+
+"vip" = "成长纪念册";
+"daijinquan" = "代金券";
+"chengzhangdangan" = "成长档案";
+"kewaikeyouhui" = "同步课程";
+"chengzhangjinian" = "成长纪念册季刊";
+"zhaopianjinian" = "照片纪念品";
+"forgettishi" = "手机号账号可自主找回密码，该号码不会对其他人公开。";
+"telephoneplaceholder" = "请输入手机号";
+"mssageverify" = "请输入短信验证码";
+"tishiverify" = "已经向手机号%@发送了验证短信";
+//"countdown" = "%d秒后可重新发送";
+"countdown" = "%d秒";
+
+"alreadySend" = "已发送";
+
+"bindtishi" = "账号绑定手机号码后，手机号码可直接作为账号登录，并可自主找回密码。";
+"bindmobile" = "绑定手机";
+"bindsuccess" = "绑定成功";
+"pidnull" = "pid为空";
+"telenull" = "手机号码为空";
+"verifynull" = "手机验证码为空";
+"verifyerror" = "短信验证码错误，请重试";
+"bindfail" = "绑定失败，请重试";
+
+"mobileformaterror" = "手机号码错误，请输入11位手机号";
+"sidnull" = "sid不存在";
+"oldmobilenull" = "原始手机号码不存在";
+"insertdataerror" = "插入数据失败";
+"sendfail" = "发送短信失败";
+
+"tb_mychild" = "我的孩子.png";
+"comingsoon" = "正在全力建设中...";
+
+"next" = "下一步";
+"sendTitle" = "没收到？重新发送";
+
+"newpassword" = "短信验证成功，请设置新密码";
+
+"versionImage" = "1登录_02 (2).png";
+
+"myaccount_account" = "账户名：";
+"myaccount_unbind" = "未绑定手机号";
+"myaccount_bind" = "绑定";
+"myaccount_binded" = "已绑定手机号：";
+"myaccount_change" = "更改";
+"myaccount_link" = "已关联%d个孩子";
+
+"change1" = "请输入之前绑定的手机号码";
+"change2" = "重新绑定之后，原手机号将不能作为登录凭证";
+"change3" = "请输入新的手机号码";
+
+"phoneNumberError" = "旧手机号不正确";
+
+"getverify" = "获取验证码";
+"qingshuruyanzhengma" = "请输入验证码";
+
+"upText" = "赞";
+"comText" = "评论";
+
+
+"placeholder1" = "请输入之前绑定的手机号码";
+"placeholder2" = "请输入新的手机号码";
+"placeholder3" = "点击“获取验证码”按钮获取验证码";
+"likenumber0" = "还没有人赞过";
+"commentnumber0" = "还没有人评论过";
+"deleteSuccess" = "删除成功";
+"replySuccess" = "回复成功";
+"confirmSuccess" = "回执成功";
+"rightdate" = "请设置正确的生日日期";
+
+"changePwdSuccess" = "密码修改成功，请重新登录";
+"shoujihaomaweibangding" = "该手机号码尚未绑定";
+"nofunction" = "该校园尚未开通此功能";
+"setgessuccess" = "手势密码设置成功";
+"qingshurushoushi" = "请输入手势密码";
+
+"messagealert" = "近期由于运营商短信网关调整，导致无法及时接收到认证短信。如果您在180秒内仍未收到短信，可以点击“获取验证码”按钮重新获取验证码。";
+"nosendmsg" = "根据信息产业部部要求，晚上18:00---早上8:00之间短信网关服务关闭，暂不可使用。";
+"importantalert" = "重要通知";
+
+"fufei" = "您的账户服务已过期，请及时缴费";
+"setting_help" = "帮助与支持";
+
+

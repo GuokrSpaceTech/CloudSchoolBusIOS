@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F37" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="ETActicalPicture" representedClassName="ETActicalPicture" syncable="YES">
+        <attribute name="articalid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="num" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pictureurl" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pictures" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ETClassShare" inverseName="pictures" inverseEntity="ETClassShare" syncable="YES"/>
+    </entity>
+    <entity name="ETActivity" representedClassName="ETActivity" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addtime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endtime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eventsid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="htmlurl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isonline" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="issignup" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="picurl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="schoolid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signup" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signupendtime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signupstarttime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signupstatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="starttime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ETAttendance" representedClassName="ETAttendance" syncable="YES">
+        <attribute name="attendanceday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="attendancetypeid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reason" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="yearmonth" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ETAttendanceType" representedClassName="ETAttendanceType" syncable="YES">
+        <attribute name="typekey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="typevalue" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ETCalendar" representedClassName="ETCalendar" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="festival" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="yearmonth" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ETClass" representedClassName="ETClass" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="classid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="classname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="province" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="schoolname" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ETClassShare" representedClassName="ETClassShare" syncable="YES">
+        <attribute name="articleid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="articlekey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="commentnum" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="havezan" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publishtime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="upnum" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ETActicalPicture" inverseName="pictures" inverseEntity="ETActicalPicture" syncable="YES"/>
+    </entity>
+    <entity name="ETFood" representedClassName="ETFood" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ETImportantNotice" representedClassName="ETImportantNotice" syncable="YES">
+        <attribute name="addtime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="haveisconfirm" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isconfirm" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isteacher" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="noticecontent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="noticeid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="noticekey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="noticetitle" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="importantpic" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ETNoticPicture" inverseName="importantpic" inverseEntity="ETNoticPicture" syncable="YES"/>
+    </entity>
+    <entity name="ETNoStartActivity" representedClassName="ETNoStartActivity" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addtime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endtime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eventsid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="htmlurl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isonline" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="issignup" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="picurl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="schoolid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signup" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signupendtime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signupstarttime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signupstatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="starttime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ETNotice" representedClassName="ETNotice" syncable="YES">
+        <attribute name="addtime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="haveisconfirm" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isconfirm" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isteacher" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="noticecontent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="noticeid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="noticekey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="noticetitle" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ETNoticPicture" inverseName="pictures" inverseEntity="ETNoticPicture" syncable="YES"/>
+    </entity>
+    <entity name="ETNoticPicture" representedClassName="ETNoticPicture" syncable="YES">
+        <attribute name="noticeid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="num" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pictureurl" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="importantpic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ETImportantNotice" inverseName="importantpic" inverseEntity="ETImportantNotice" syncable="YES"/>
+        <relationship name="pictures" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ETNotice" inverseName="pictures" inverseEntity="ETNotice" syncable="YES"/>
+    </entity>
+    <entity name="ETSchedule" representedClassName="ETSchedule" syncable="YES">
+        <attribute name="course" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="scheduletime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="snum" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="ETUser" representedClassName="ETUser" syncable="YES">
+        <attribute name="account" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="age" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="allowmutionline" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avatar" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="birthday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="can_comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="can_comment_action" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="classname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cnname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="enname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ischeck_mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nikename" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="schoolname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sex" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="skinid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="studentid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uid_class" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uid_student" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="MyActivity" representedClassName="MyActivity" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addtime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endtime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eventsid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="htmlurl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isonline" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="issignup" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="picurl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="schoolid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signup" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signupendtime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signupstarttime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signupstatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="starttime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ETActicalPicture" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ETActivity" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ETAttendance" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ETAttendanceType" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ETCalendar" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ETClass" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ETClassShare" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ETFood" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ETImportantNotice" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ETNoStartActivity" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ETNotice" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ETNoticPicture" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ETSchedule" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ETUser" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="MyActivity" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>

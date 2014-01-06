@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <deployment defaultVersion="1280" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutOursViewController">
+            <connections>
+                <outlet property="aboutBack" destination="B0a-PN-eYx" id="xhk-rz-tvM"/>
+                <outlet property="aboutLogo" destination="aXP-uB-oIe" id="1Dk-xN-Jx2"/>
+                <outlet property="copyrightLab" destination="y6j-6k-R6H" id="0ak-Qq-HRg"/>
+                <outlet property="emailBtn" destination="Be2-GZ-Aeh" id="2fS-tV-GGW"/>
+                <outlet property="engLab" destination="GCt-gg-pdU" id="LK0-iE-5i4"/>
+                <outlet property="privateBtn" destination="86R-nm-hQF" id="nyz-PH-X0h"/>
+                <outlet property="teleButton" destination="ybw-VU-wlk" id="159-qK-X1F"/>
+                <outlet property="view" destination="1" id="820"/>
+                <outlet property="webBtn" destination="EGw-xd-ePU" id="Gkp-eS-BNH"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="8hh-rH-meb" customClass="ETAboutView">
+                    <rect key="frame" x="0.0" y="16" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="aboutlogo.png" id="aXP-uB-oIe">
+                            <rect key="frame" x="54" y="55" width="212" height="107"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="aboutBack2.png" id="B0a-PN-eYx">
+                            <rect key="frame" x="36" y="163" width="248" height="178"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EGw-xd-ePU">
+                            <rect key="frame" x="84" y="237" width="184" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="www.yunxiaoche.com">
+                                <color key="titleColor" red="0.20000001789999999" green="0.55686277149999996" blue="0.63921570780000003" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" title="www.yunxiaoche.com">
+                                <color key="titleColor" red="0.20000001789999999" green="0.55686277149999996" blue="0.63921570780000003" alpha="1" colorSpace="deviceRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="doClickURL:" destination="-1" eventType="touchUpInside" id="Bd9-7M-JQA"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Be2-GZ-Aeh">
+                            <rect key="frame" x="83" y="294" width="209" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="service@yunxiaoche.com">
+                                <color key="titleColor" red="0.20000001789999999" green="0.55686277149999996" blue="0.63921570780000003" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" title="service@yunxiaoche.com">
+                                <color key="titleColor" red="0.20000001789999999" green="0.55686277149999996" blue="0.63921570780000003" alpha="1" colorSpace="deviceRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="doClickGuoKr:" destination="-1" eventType="touchUpInside" id="Mel-QB-PvZ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ybw-VU-wlk">
+                            <rect key="frame" x="97" y="182" width="178" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="186-1235-3984">
+                                <color key="titleColor" red="0.38823533059999998" green="0.38823533059999998" blue="0.38823533059999998" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" title="186-1235-3984">
+                                <color key="titleColor" red="0.270588249" green="0.34509804840000002" blue="0.46274513010000001" alpha="1" colorSpace="deviceRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="doCall:" destination="-1" eventType="touchUpInside" id="jZa-wt-Z2L"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="果壳空间版权所有" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y6j-6k-R6H">
+                            <rect key="frame" x="85" y="394" width="151" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.41960787770000002" green="0.41960787770000002" blue="0.40784317260000003" alpha="1" colorSpace="deviceRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="86R-nm-hQF">
+                            <rect key="frame" x="75" y="356" width="171" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="使用条款和隐私政策">
+                                <color key="titleColor" red="0.22745099660000001" green="0.46666669849999998" blue="0.52549022440000004" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" title="使用条款和隐私政策">
+                                <color key="titleColor" red="0.22745099660000001" green="0.46666669849999998" blue="0.52549022440000004" alpha="1" colorSpace="deviceRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="doClickPrivate:" destination="-1" eventType="touchUpInside" id="Yrf-8g-drK"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright©Guokr Space.All Rights Reserved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GCt-gg-pdU">
+                            <rect key="frame" x="27" y="413" width="266" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="aboutBack2.png" width="496" height="356"/>
+        <image name="aboutlogo.png" width="424" height="214"/>
+    </resources>
+</document>

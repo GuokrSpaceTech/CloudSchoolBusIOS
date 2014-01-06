@@ -118,6 +118,14 @@
     picTxtView.layer.cornerRadius=5;
     picTxtView.delegate = self;
     [txtView addSubview:picTxtView];
+    //增加字数限制
+    labelNum=[[UILabel alloc]initWithFrame:CGRectMake(10, picTxtView.frame.size.height+picTxtView.frame.origin.y+5, 50, 20)];
+    labelNum.backgroundColor=[UIColor clearColor];
+    labelNum.text=@"0/140";
+    labelNum.font=[UIFont systemFontOfSize:12];
+    [txtView addSubview:labelNum];
+  
+    
     [picTxtView release];
     
     
@@ -225,12 +233,43 @@
 
 
 }
+// 计算字体长度
+- (int)textLength:(NSString *)text//计算字符串长度
+{
+    float number = 0.0;
+    for (int index = 0; index < [text length]; index++)
+    {
+        
+        NSString *character = [text substringWithRange:NSMakeRange(index, 1)];
+        
+        //        NSLog(@"%d",[character lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
+        
+        if ([character lengthOfBytesUsingEncoding:NSUTF8StringEncoding] == 3)
+        {
+            number+=2;
+        }
+        else
+        {
+            number++;
+        }
+    }
+    return number;
+}
 
 
 -(void)applyAll:(UIButton *)btn
 {
+    
     if([picTxtView.text isEqualToString:@""])
     {
+        return;
+    }
+    
+    if([self textLength:picTxtView.text] > 140)
+    {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"字数过长" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
         return;
     }
     [picTextArr removeAllObjects];
@@ -242,30 +281,64 @@
 
 
 }
+
 - (void)textViewDidChange:(UITextView *)textView
 {
-    NSString *key=[NSString stringWithFormat:@"%d",currentpage];
-    for (int i=0; i<[self.picTextArr count]; i++) {
-        NSMutableDictionary *dic=[self.picTextArr objectAtIndex:i];
-        NSString *keytemp = [[dic allKeys] objectAtIndex:0];
-        if([key isEqualToString:keytemp])
-        {
-            [dic setObject:picTxtView.text forKey:key];
-            break;
-        }
-        if (i == self.picTextArr.count - 1)
-        {
-            [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:picTxtView.text,key, nil]];
-            break;
-        }
-    }
-    if (self.picTextArr.count == 0) {
-
-        [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:picTxtView.text,key, nil]];
-    }
+//    NSString *key=[NSString stringWithFormat:@"%d",currentpage];
+//    for (int i=0; i<[self.picTextArr count]; i++) {
+//        NSMutableDictionary *dic=[self.picTextArr objectAtIndex:i];
+//        NSString *keytemp = [[dic allKeys] objectAtIndex:0];
+//        if([key isEqualToString:keytemp])
+//        {
+//            if([self textLength:picTxtView.text] > 140)
+//            {
+//                return;
+//            }
+//            
+//            [dic setObject:picTxtView.text forKey:key];
+//            break;
+//        }
+//        if (i == self.picTextArr.count - 1)
+//        {
+//            if([self textLength:picTxtView.text] > 140)
+//            {
+//                return;
+//            }
+//            [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:picTxtView.text,key, nil]];
+//            break;
+//        }
+//    }
+//    if (self.picTextArr.count == 0) {
+//
+//        if([self textLength:picTxtView.text] > 140)
+//        {
+//            return;
+//        }
+//        [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:picTxtView.text,key, nil]];
+//    }
     
     NSLog(@"%@",self.picTextArr);
     
+    
+    int a= [self textLength:picTxtView.text];
+  
+    NSLog(@"%d",a);
+
+   
+    labelNum.text=[NSString stringWithFormat:@"%d/140",a];
+    
+    if(a>140)
+    {
+        
+        labelNum.textColor=[UIColor redColor];;
+        
+    }
+    else
+    {
+        labelNum.textColor=[UIColor blackColor];
+        self.preStr=picTxtView.text;
+      
+    }
 }
 
 - (void)doEditText:(UIButton *)sender
@@ -280,6 +353,9 @@
             if([key isEqualToString:keytemp])
             {
                 picTxtView.text = [NSString stringWithFormat:@"%@",[dic objectForKey:key]];
+                
+                labelNum.text=[NSString stringWithFormat:@"%d/140",[self textLength:picTxtView.text]];
+                
                 UILabel *label=(UILabel *)[textView viewWithTag:9632];
                 label.text=[NSString stringWithFormat:@"%@",[dic objectForKey:key]];
                 if([label.text isEqualToString:@""])
@@ -776,6 +852,57 @@
 {
         UIView *visibleView = [[changeView subviews] objectAtIndex:1];
         if (visibleView.tag == 1234) {
+            
+        
+            
+            NSString *key=[NSString stringWithFormat:@"%d",currentpage];
+            for (int i=0; i<[self.picTextArr count]; i++) {
+                NSMutableDictionary *dic=[self.picTextArr objectAtIndex:i];
+                NSString *keytemp = [[dic allKeys] objectAtIndex:0];
+                if([key isEqualToString:keytemp])
+                {
+                    if([self textLength:picTxtView.text] > 140)
+                    {
+                        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"字数过长" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+                        [alert show];
+                        [alert release];
+                        return;
+                        //return;
+                       // picTxtView.text=self.preStr;
+                    }
+                    
+                    [dic setObject:picTxtView.text forKey:key];
+                    break;
+                }
+                if (i == self.picTextArr.count - 1)
+                {
+                    if([self textLength:picTxtView.text] > 140)
+                    {
+                        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"字数过长" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+                        [alert show];
+                        [alert release];
+                        return;
+                            //picTxtView.text=self.preStr;
+                    }
+                    [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:picTxtView.text,key, nil]];
+                    break;
+                }
+            }
+            if (self.picTextArr.count == 0) {
+                
+                if([self textLength:picTxtView.text] > 140)
+                {
+                    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"字数过长" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+                    [alert show];
+                    [alert release];
+                    return;
+                    // picTxtView.text=self.preStr;
+                }
+                [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:picTxtView.text,key, nil]];
+            }
+
+            
+            
             [picTxtView resignFirstResponder];
             photobutton.hidden = NO;
             titlelabel.text=NSLocalizedString(@"who", @"");

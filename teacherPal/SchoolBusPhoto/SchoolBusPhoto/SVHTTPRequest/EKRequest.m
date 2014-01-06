@@ -9,7 +9,7 @@
 //#import "SBJSON.h"
 
 //#define SERVERURL @"http://192.168.1.67:8004/"
-#define SERVERURL @"http://v32.service.yunxiaoche.com/"
+#define SERVERURL @"http://v33.service.yunxiaoche.com/"
 //#define SERVERURL @"http://rest.rayeu.com/"
 
 

@@ -45,6 +45,7 @@
     
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, navigationView.frame.size.height+navigationView.frame.origin.y, 320, self.view.frame.size.height-( navigationView.frame.size.height+navigationView.frame.origin.y)) style:UITableViewStyleGrouped];
     _tableView.backgroundColor=[UIColor clearColor];
+    _tableView.backgroundView=nil;
     _tableView.backgroundColor=[UIColor colorWithRed:232/255.0 green:229/255.0 blue:220/255.0 alpha:1];
     _tableView.delegate=self;
     _tableView.dataSource=self;

@@ -275,6 +275,7 @@
 //            [self.view setNeedsLayout];
             
             if (delegate && [delegate respondsToSelector:@selector(changeNicknameSuccess)]) {
+                cstudent.enname=[NSString stringWithFormat:@"%@",[parm objectForKey:@"enname"]];
                 [delegate changeNicknameSuccess];
             }
             

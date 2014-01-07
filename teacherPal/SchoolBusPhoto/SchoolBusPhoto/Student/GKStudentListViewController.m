@@ -32,6 +32,8 @@
 {
     [super viewWillAppear:animated];
     [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
+    
+    [_tableView reloadData];
 }
 - (void)viewDidLoad
 {

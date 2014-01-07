@@ -85,14 +85,18 @@
     
     self.navigationController.navigationBarHidden=YES;
 
-//    "classLeft"="classLeft.png";
-//    "classLeftH"="classLeftH.png";
-
     
-//    "setleftE"="leftSettingE.png";
-//    "setLeftEH"="leftSettingHE.png";
-    NSArray *defArr = [NSArray arrayWithObjects:NSLocalizedString(@"notice", @""),NSLocalizedString(@"classLeft", @""), NSLocalizedString(@"home", @""),NSLocalizedString(@"setleft", @""),nil];
-    NSArray *selArr = [NSArray arrayWithObjects:NSLocalizedString(@"noticeH", @""),NSLocalizedString(@"classLeftH", @""),NSLocalizedString(@"homeH", @""), NSLocalizedString(@"setleftH", @""),  nil];
+//    "grade"="grade.png";
+//    "gradeH"="gradeH.png";
+//    "setting"="setting.png";
+//    "settingH"="settingH.png";
+    
+//    classLeft.png
+    NSLog(@"????? %@",NSLocalizedString(@"classLeft", @""));
+     NSLog(@"????? %@",  NSLocalizedString(@"classLeftH", @""));
+  
+    NSArray *defArr = [NSArray arrayWithObjects:NSLocalizedString(@"notice", @""),NSLocalizedString(@"grade", @""), NSLocalizedString(@"home", @""),NSLocalizedString(@"setting", @""),nil];
+    NSArray *selArr = [NSArray arrayWithObjects:NSLocalizedString(@"noticeH", @""),NSLocalizedString(@"gradeH", @""),NSLocalizedString(@"homeH", @""), NSLocalizedString(@"settingH", @""),  nil];
     totle=[defArr count];
     for (int i=0; i<[defArr count]; i++) {
         UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -104,6 +108,7 @@
         else
             button.frame=CGRectMake(0, 46 + 52*i, 320, 52);
         button.tag=i+1;
+        button.selected=NO;
         [button addTarget:self action:@selector(doClickBottomBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:button];
     }
@@ -189,6 +194,7 @@
     for (id obj in self.view.subviews) {
         if ([obj isKindOfClass:[UIButton class]]) {
             UIButton *btn = (UIButton *)obj;
+            NSLog(@"%d",btn.tag);
             if (btn.tag >= 1 && btn.tag <= totle) {
                 btn.selected = NO;
                 //                btn.userInteractionEnabled = YES;

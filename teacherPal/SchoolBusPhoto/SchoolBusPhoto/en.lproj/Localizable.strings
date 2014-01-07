@@ -33,9 +33,6 @@
 //"count"="countNormalE.png";
 "about"="aboutNormalE.png";
 
-"classLeft"="classLeftE.png";
-"classLeftH"="classLeftEH.png";
-
 "noticeH"="noticeE.png";
 //"countH"="countE.png";
 "aboutH"="aboutE.png";
@@ -148,5 +145,14 @@
 "Cancelphotos"="Cancel sending this photos？";
 
 
-"setleft"="leftSetting.png";
-"setLeftH"="leftSettingH.png";
+"grade"="gradeE.png";
+"gradeH"="gradeEH.png";
+"setting"="settingE.png";
+"settingH"="settingEH.png";
+
+
+
+"Princess"="Princess";
+"prince"="Prince";
+"Gender"="Gender";
+"rightdate" = "Please set the correct birthday";

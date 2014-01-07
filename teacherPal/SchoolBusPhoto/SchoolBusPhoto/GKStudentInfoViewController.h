@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "Student.h"
 #import "GKBaseViewController.h"
-@interface GKStudentInfoViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate>
+#import "ETNicknameViewController.h"
+#import "EKRequest.h"
+#import "MTCustomActionSheet.h"
+@interface GKStudentInfoViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate,ETNicknameViewControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EKProtocol,MTCustomActionSheetDelegate>
 
 @property (nonatomic,retain)Student *st;
 @property (nonatomic,retain)UITableView *_tableView;

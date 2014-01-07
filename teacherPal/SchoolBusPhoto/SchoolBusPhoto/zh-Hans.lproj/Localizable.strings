@@ -37,14 +37,13 @@
 "Sharing"="推广积分";
 "year"="年";
 "notice"="noticeNormal.png";
-//"count"="countNormal.png";
+
 "about"="aboutNormal.png";
 
-"classLeft"="classLeft.png";
-"classLeftH"="classLeftH.png";
+
 
 "noticeH"="notice.png";
-//"countH"="count.png";
+
 "aboutH"="about.png";
 "story" = "说点什么";
 "shengji"="升级";
@@ -148,5 +147,13 @@
 
 "Cancelphotos"="取消发送照片";
 
-"setleft"="leftSetting.png";
-"setLeftH"="leftSettingH.png";
+"grade"="grade.png";
+"gradeH"="gradeH.png";
+"setting"="setting.png";
+"settingH"="settingH.png";
+
+
+"Princess"="女孩";
+"prince"="男孩";
+"Gender"="性别";
+"rightdate" = "请设置正确的生日日期";

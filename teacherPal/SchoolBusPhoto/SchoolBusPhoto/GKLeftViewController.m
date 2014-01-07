@@ -11,9 +11,9 @@
 #import "GKUpLoaderViewController.h"
 #import "GKInfoViewController.h"
 #import "GKLetterViewController.h"
-#import "GKNoticeViewController.h"
 #import "KKNavigationController.h"
 #import "GKAlumbViewController.h"
+#import "GKNoticeListViewController.h"
 @interface GKLeftViewController ()
 
 @end
@@ -274,7 +274,7 @@
     if(index==3)
     {
         
-        GKNoticeViewController *noticeVC=[[GKNoticeViewController alloc]init];
+        GKNoticeListViewController *noticeVC=[[GKNoticeListViewController alloc]init];
         KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:noticeVC];
         [noticeVC release];
         

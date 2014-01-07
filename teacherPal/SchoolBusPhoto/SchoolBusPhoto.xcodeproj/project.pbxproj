@@ -163,6 +163,7 @@
 		11A212A818697B8800A2D909 /* GKAlumbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A212A718697B8800A2D909 /* GKAlumbViewController.m */; };
 		11A30EF81862E73500DEB58B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A30EF71862E73500DEB58B /* CoreMotion.framework */; };
 		11A30EFB1862FB9500DEB58B /* GKDisapperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A30EFA1862FB9500DEB58B /* GKDisapperView.m */; };
+		11A5A89B187BF2FE00EA22CD /* GKNoticeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A5A89A187BF2FE00EA22CD /* GKNoticeListViewController.m */; };
 		11A5AE64186438FA008794C0 /* applyAll.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE63186438FA008794C0 /* applyAll.png */; };
 		11A5AE6618643C94008794C0 /* Tophoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE6518643C94008794C0 /* Tophoto.png */; };
 		11A5AE6818644125008794C0 /* smilik.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE6718644125008794C0 /* smilik.png */; };
@@ -541,6 +542,8 @@
 		11A30EF71862E73500DEB58B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		11A30EF91862FB9500DEB58B /* GKDisapperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKDisapperView.h; sourceTree = "<group>"; };
 		11A30EFA1862FB9500DEB58B /* GKDisapperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKDisapperView.m; sourceTree = "<group>"; };
+		11A5A899187BF2FE00EA22CD /* GKNoticeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKNoticeListViewController.h; sourceTree = "<group>"; };
+		11A5A89A187BF2FE00EA22CD /* GKNoticeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNoticeListViewController.m; sourceTree = "<group>"; };
 		11A5AE63186438FA008794C0 /* applyAll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applyAll.png; sourceTree = "<group>"; };
 		11A5AE6518643C94008794C0 /* Tophoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tophoto.png; sourceTree = "<group>"; };
 		11A5AE6718644125008794C0 /* smilik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smilik.png; sourceTree = "<group>"; };
@@ -1243,6 +1246,8 @@
 				11BF89701836329C008E72F0 /* tiao.png */,
 				11B218151835C624002825FA /* GKNoticeViewController.h */,
 				11B218161835C624002825FA /* GKNoticeViewController.m */,
+				11A5A899187BF2FE00EA22CD /* GKNoticeListViewController.h */,
+				11A5A89A187BF2FE00EA22CD /* GKNoticeListViewController.m */,
 			);
 			name = notice;
 			sourceTree = "<group>";
@@ -1719,6 +1724,7 @@
 				111E8CE9181E532400234014 /* UIImage+MultiFormat.m in Sources */,
 				1192B7771829EB8D0082D37B /* JSONKit.m in Sources */,
 				11B852A1183221CF005FA5B9 /* ETNicknameViewController.m in Sources */,
+				11A5A89B187BF2FE00EA22CD /* GKNoticeListViewController.m in Sources */,
 				119E5FD21818EE8D00726761 /* GKBaseViewController.m in Sources */,
 				119E5FF21819470400726761 /* Student.m in Sources */,
 				119E5FD91818FD5300726761 /* GKFindWraper.m in Sources */,
@@ -1833,7 +1839,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"SchoolBusPhoto/**",
-					/Users/mactoptest/mobile_apps/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/TestFlightSDK2,
+					"${SRCROOT}/TestFlightSDK2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "BC944BB8-3550-49E0-9637-FB6159605817";
@@ -1859,7 +1865,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"SchoolBusPhoto/**",
-					/Users/mactoptest/mobile_apps/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/TestFlightSDK2,
+					"${SRCROOT}/TestFlightSDK2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "BC944BB8-3550-49E0-9637-FB6159605817";

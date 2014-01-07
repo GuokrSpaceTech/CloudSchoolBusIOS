@@ -280,10 +280,12 @@
         {
             //男
             
+            //    NSDictionary *dic=[[NSDictionary alloc]initWithObjectsAndKeys:[NSNumber numberWithInt:sex],@"sex",birthdayField.text,@"birthday",nickField.text,@"enname",_student.studentid,@"studentid"  ,nil];
+            
             if([st.sex integerValue]==2)//如果学生是女
             {
                 //修改为男
-                NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"sex",nil];
+                NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"sex",st.studentid,@"studentid", nil];
                 [[EKRequest Instance] EKHTTPRequest:student parameters:param requestMethod:POST forDelegate:self];
             }
            
@@ -294,7 +296,7 @@
             //女
             if([st.sex integerValue]==1)
             {
-                NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"sex",nil];
+                NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"sex",st.studentid,@"studentid",nil];
                 [[EKRequest Instance] EKHTTPRequest:student parameters:param requestMethod:POST forDelegate:self];
             }
      
@@ -328,7 +330,7 @@
             return;
         }
         
-            NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:birStr,@"birthday",nil];
+            NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:birStr,@"birthday",st.studentid,@"studentid",nil];
             [[EKRequest Instance] EKHTTPRequest:student parameters:param requestMethod:POST forDelegate:self];
     }
     
@@ -346,6 +348,9 @@
 }
 - (void)saveImage:(UIImage *)image
 {
+//     param = [NSDictionary dictionaryWithObjectsAndKeys:base64,@"fbody",[NSString stringWithFormat:@"%d",CurrentStudentID],@"id",@"1",@"isstudent", nil];
+    
+    
     NSData *mydata=UIImageJPEGRepresentation(image, 0.5);
     
     NSString * base64 = [[NSString alloc] initWithData:[GTMBase64 encodeData:mydata] encoding:NSUTF8StringEncoding];
@@ -369,7 +374,7 @@
             [alert show];
             [alert release];
             
-            st.avatar=result;
+            st.avatar=result; // 把修改后的头像url 赋给 学生 之后刷新界面
             [_tableView reloadData];
         }
         else

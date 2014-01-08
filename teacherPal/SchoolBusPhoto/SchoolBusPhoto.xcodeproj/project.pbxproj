@@ -167,6 +167,7 @@
 		11A5AE64186438FA008794C0 /* applyAll.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE63186438FA008794C0 /* applyAll.png */; };
 		11A5AE6618643C94008794C0 /* Tophoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE6518643C94008794C0 /* Tophoto.png */; };
 		11A5AE6818644125008794C0 /* smilik.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE6718644125008794C0 /* smilik.png */; };
+		11AA3388187CEDC6002FE2D4 /* GKNotice.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AA3387187CEDC6002FE2D4 /* GKNotice.m */; };
 		11AF3AE91816655B00B36176 /* navBarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AE81816655B00B36176 /* navBarImage.png */; };
 		11AF3AEB18166AB200B36176 /* navLeftBtn_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AEA18166AB200B36176 /* navLeftBtn_default.png */; };
 		11AF3AED18166D9A00B36176 /* bottomView.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AEC18166D9A00B36176 /* bottomView.png */; };
@@ -547,6 +548,8 @@
 		11A5AE63186438FA008794C0 /* applyAll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applyAll.png; sourceTree = "<group>"; };
 		11A5AE6518643C94008794C0 /* Tophoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tophoto.png; sourceTree = "<group>"; };
 		11A5AE6718644125008794C0 /* smilik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smilik.png; sourceTree = "<group>"; };
+		11AA3386187CEDC6002FE2D4 /* GKNotice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKNotice.h; sourceTree = "<group>"; };
+		11AA3387187CEDC6002FE2D4 /* GKNotice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNotice.m; sourceTree = "<group>"; };
 		11AC07F4186A8BD70080FCC4 /* SchoolBusPhoto 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 3.xcdatamodel"; sourceTree = "<group>"; };
 		11AF3AE81816655B00B36176 /* navBarImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBarImage.png; sourceTree = "<group>"; };
 		11AF3AEA18166AB200B36176 /* navLeftBtn_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navLeftBtn_default.png; sourceTree = "<group>"; };
@@ -940,6 +943,8 @@
 				11B852AD1833243E005FA5B9 /* GKUpObject.m */,
 				119AC26E1839C30000ED19D3 /* UpLoader.h */,
 				119AC26F1839C30000ED19D3 /* UpLoader.m */,
+				11AA3386187CEDC6002FE2D4 /* GKNotice.h */,
+				11AA3387187CEDC6002FE2D4 /* GKNotice.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1705,6 +1710,7 @@
 				119566B3181E098300366B13 /* GKLetterCell.m in Sources */,
 				1193B3921827843800660CB1 /* GKScoreCell.m in Sources */,
 				111E8CE1181E532400234014 /* SDWebImageCompat.m in Sources */,
+				11AA3388187CEDC6002FE2D4 /* GKNotice.m in Sources */,
 				2A32A58118122C25007CAA8E /* GKLoginViewController.m in Sources */,
 				119EA9CF181649C20070DBF1 /* GKInfoViewController.m in Sources */,
 				119E963D1814E2C800866DE8 /* GKUpWraper.m in Sources */,

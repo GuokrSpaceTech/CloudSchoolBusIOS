@@ -41,7 +41,7 @@
     _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
 
-    NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",nil];
+    NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
 
     
      [[EKRequest Instance]EKHTTPRequest:tnotice parameters:param requestMethod:GET forDelegate:self];
@@ -72,6 +72,9 @@
         NSArray *arr=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
         
         NSLog(@"%@",arr);
+        
+        
+        
     }
 }
 -(void)dealloc

@@ -431,15 +431,15 @@
         NSString * addDateStr = [format stringFromDate:addDate];
         [format release];
         
-        notice.noticeTime=addDateStr;
-        notice.noticeTitle=[dic objectForKey:@"noticetitle"];
-        notice.noticeContent=[dic objectForKey:@"noticecontent"];
-        notice.noticeId = [dic objectForKey:@"noticeid"];
-        notice.shortContent=[dic objectForKey:@"noticecontent"];
-        notice.isconfirm=[dic objectForKey:@"isconfirm"];
-        notice.noticekey=[dic objectForKey:@"noticekey"];
-        notice.haveisconfirm=[dic objectForKey:@"haveisconfirm"];
-        notice.addtime = [dic objectForKey:@"addtime"];
+        notice.noticeTime = addDateStr;
+        notice.noticeTitle = [NSString stringWithFormat:@"%@",[dic objectForKey:@"noticetitle"]];
+        notice.noticeContent = [NSString stringWithFormat:@"%@",[dic objectForKey:@"noticecontent"]];
+        notice.noticeId = [NSString stringWithFormat:@"%@",[dic objectForKey:@"noticeid"]];
+        notice.shortContent = [NSString stringWithFormat:@"%@",[dic objectForKey:@"noticecontent"]];
+        notice.isconfirm = [NSString stringWithFormat:@"%@",[dic objectForKey:@"isconfirm"]];
+        notice.noticekey = [NSString stringWithFormat:@"%@",[dic objectForKey:@"noticekey"]];
+        notice.haveisconfirm = [NSString stringWithFormat:@"%@",[dic objectForKey:@"haveisconfirm"]];
+        notice.addtime = [NSString stringWithFormat:@"%@",[dic objectForKey:@"addtime"]];
         notice.isMore=NO;
         NSArray * plists = [dic objectForKey:@"plist"];
         if(plists.count >0)

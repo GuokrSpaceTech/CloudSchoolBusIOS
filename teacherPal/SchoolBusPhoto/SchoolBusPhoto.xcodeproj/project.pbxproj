@@ -168,6 +168,7 @@
 		11A5AE6618643C94008794C0 /* Tophoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE6518643C94008794C0 /* Tophoto.png */; };
 		11A5AE6818644125008794C0 /* smilik.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE6718644125008794C0 /* smilik.png */; };
 		11AA3388187CEDC6002FE2D4 /* GKNotice.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AA3387187CEDC6002FE2D4 /* GKNotice.m */; };
+		11AA338B187CFE9A002FE2D4 /* GKNoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AA338A187CFE9A002FE2D4 /* GKNoticeCell.m */; };
 		11AF3AE91816655B00B36176 /* navBarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AE81816655B00B36176 /* navBarImage.png */; };
 		11AF3AEB18166AB200B36176 /* navLeftBtn_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AEA18166AB200B36176 /* navLeftBtn_default.png */; };
 		11AF3AED18166D9A00B36176 /* bottomView.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AEC18166D9A00B36176 /* bottomView.png */; };
@@ -550,6 +551,8 @@
 		11A5AE6718644125008794C0 /* smilik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smilik.png; sourceTree = "<group>"; };
 		11AA3386187CEDC6002FE2D4 /* GKNotice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKNotice.h; sourceTree = "<group>"; };
 		11AA3387187CEDC6002FE2D4 /* GKNotice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNotice.m; sourceTree = "<group>"; };
+		11AA3389187CFE9A002FE2D4 /* GKNoticeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKNoticeCell.h; sourceTree = "<group>"; };
+		11AA338A187CFE9A002FE2D4 /* GKNoticeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNoticeCell.m; sourceTree = "<group>"; };
 		11AC07F4186A8BD70080FCC4 /* SchoolBusPhoto 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 3.xcdatamodel"; sourceTree = "<group>"; };
 		11AF3AE81816655B00B36176 /* navBarImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBarImage.png; sourceTree = "<group>"; };
 		11AF3AEA18166AB200B36176 /* navLeftBtn_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navLeftBtn_default.png; sourceTree = "<group>"; };
@@ -1253,6 +1256,8 @@
 				11B218161835C624002825FA /* GKNoticeViewController.m */,
 				11A5A899187BF2FE00EA22CD /* GKNoticeListViewController.h */,
 				11A5A89A187BF2FE00EA22CD /* GKNoticeListViewController.m */,
+				11AA3389187CFE9A002FE2D4 /* GKNoticeCell.h */,
+				11AA338A187CFE9A002FE2D4 /* GKNoticeCell.m */,
 			);
 			name = notice;
 			sourceTree = "<group>";
@@ -1699,6 +1704,7 @@
 				119E962C1814C5A300866DE8 /* ASIS3BucketRequest.m in Sources */,
 				119566B0181E038600366B13 /* GKLetterViewController.m in Sources */,
 				119AC2991839FB3B00ED19D3 /* DACircularProgressView.m in Sources */,
+				11AA338B187CFE9A002FE2D4 /* GKNoticeCell.m in Sources */,
 				119EA9C418162D340070DBF1 /* ETPhotoCell.m in Sources */,
 				11C75DB9181273E600A3AA89 /* MTAuthCode.m in Sources */,
 				1193A6CF182C78E9004011BC /* KLineScrollView.m in Sources */,

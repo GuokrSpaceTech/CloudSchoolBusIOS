@@ -42,7 +42,8 @@
     _tableView.backgroundColor=[UIColor clearColor];
     _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
-
+    
+    titlelabel.text=@"通知";
     NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
 
     
@@ -70,7 +71,12 @@
     
     return cell;
 }
-
+-(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
+{
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"sendfailed", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+    [alert show];
+    [alert release];
+}
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
 {
     if(code==1&&method==tnotice)

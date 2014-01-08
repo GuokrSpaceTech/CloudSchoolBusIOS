@@ -10,7 +10,7 @@
 #define CELLCOLOR [UIColor colorWithRed:240/255.0f green:238/255.0f blue:227/255.0f alpha:1.0f]
 
 @implementation MTCustomActionSheet
-@synthesize delegate,buttons;
+@synthesize _delegate,buttons;
 
 - (id)initWithFrame:(CGRect)frame andImageArr:(NSArray *)imgArr nameArray:(NSArray *)nameArr orientation:(UIInterfaceOrientation)orientation
 {
@@ -95,7 +95,7 @@
     }
     return self;
 }
-- (id)initWithTitle:(NSString *)title delegate:(id<UIActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION
+- (id)initWithTitle:(NSString *)title delegate:(id<MTCustomActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION
 {
     self = [super init];
     if (self) {
@@ -128,8 +128,8 @@
             [arrays addObject:cancelButtonTitle];
         }
         
-        self.delegate = delegate;
-        
+        self._delegate = delegate;
+        //[self set_delegate:delegate];
         self.buttons = arrays;
         
         mainView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -202,6 +202,7 @@
         
         datepicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 40, 320, 216)];
         datepicker.datePickerMode = UIDatePickerModeDate;
+        if(date!=nil)
         datepicker.date = date;
         [mainView addSubview:datepicker];
         [datepicker release];
@@ -261,8 +262,8 @@
 - (void)doClick:(UIButton *)sender
 {
     
-    if (delegate && [delegate respondsToSelector:@selector(actionSheet:didClickButtonByIndex:)]) {
-        [delegate actionSheet:self didClickButtonByIndex:sender.tag%777];
+    if (_delegate && [_delegate respondsToSelector:@selector(actionSheet:didClickButtonByIndex:)]) {
+        [_delegate actionSheet:self didClickButtonByIndex:sender.tag%777];
     }
     
     [self doCancel:nil];
@@ -270,8 +271,8 @@
 
 - (void)doClickByDatePicker:(UIButton *)sender
 {
-    if (delegate && [delegate respondsToSelector:@selector(actionSheet:didClickButtonByIndex:selectDate:)]) {
-        [delegate actionSheet:self didClickButtonByIndex:sender.tag%777 selectDate:datepicker.date];
+    if (_delegate && [_delegate respondsToSelector:@selector(actionSheet:didClickButtonByIndex:selectDate:)]) {
+        [_delegate actionSheet:self didClickButtonByIndex:sender.tag%777 selectDate:datepicker.date];
     }
     [self doCancel:nil];
 }

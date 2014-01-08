@@ -33,7 +33,7 @@
     UIDatePicker *datepicker;
 }
 
-@property (nonatomic, assign) id<MTCustomActionSheetDelegate> delegate;
+@property (nonatomic, assign) id<MTCustomActionSheetDelegate> _delegate;
 
 @property (nonatomic, retain) NSMutableArray *buttons;
 
@@ -51,7 +51,7 @@
 - (id)initWithFrame:(CGRect)frame andImageArr:(NSArray *)imgArr nameArray:(NSArray *)nameArr orientation:(UIInterfaceOrientation)orientation;
 
 
-- (id)initWithTitle:(NSString *)title delegate:(id<UIActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
+- (id)initWithTitle:(NSString *)title delegate:(id<MTCustomActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
 
 - (id)initWithDatePicker:(NSDate *)date;
 

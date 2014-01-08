@@ -23,6 +23,7 @@
 @synthesize st;
 @synthesize _tableView;
 @synthesize arr;
+@synthesize tempSexOrBirthday;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -215,7 +216,7 @@
            [formate setDateFormat:@"yyyy-MM-dd"];
            NSDate *date=[formate dateFromString:st.birthday];
            MTCustomActionSheet* sheet = [[MTCustomActionSheet alloc] initWithDatePicker:date];
-           sheet.delegate = self;
+           sheet._delegate = self;
            
            [sheet showInView:self.view.window];
            [sheet release];
@@ -285,7 +286,8 @@
             if([st.sex integerValue]==2)//如果学生是女
             {
                 //修改为男
-                NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"sex",st.studentid,@"studentid", nil];
+                NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"sex",st.studentid,@"studentid",st.uid,@"uid" , nil];
+             
                 [[EKRequest Instance] EKHTTPRequest:student parameters:param requestMethod:POST forDelegate:self];
             }
            
@@ -296,7 +298,7 @@
             //女
             if([st.sex integerValue]==1)
             {
-                NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"sex",st.studentid,@"studentid",nil];
+                NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"sex",st.studentid,@"studentid",st.uid,@"uid" ,nil];
                 [[EKRequest Instance] EKHTTPRequest:student parameters:param requestMethod:POST forDelegate:self];
             }
      
@@ -307,7 +309,10 @@
         }
     }
 }
-
+- (void)actionSheet:(MTCustomActionSheet *)actionSheet didClickButtonByIndex:(int)index
+{
+    
+}
 - (void)actionSheet:(MTCustomActionSheet *)actionSheet didClickButtonByIndex:(int)index selectDate:(NSDate *)date
 {
     if (index == 1) {
@@ -330,7 +335,7 @@
             return;
         }
         
-            NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:birStr,@"birthday",st.studentid,@"studentid",nil];
+            NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:birStr,@"birthday",st.studentid,@"studentid",st.uid,@"uid" ,nil];
             [[EKRequest Instance] EKHTTPRequest:student parameters:param requestMethod:POST forDelegate:self];
     }
     
@@ -386,7 +391,48 @@
     }
     if(method==student)
     {
+       // sex
+        //@"birthday"
         
+        if(code==1)
+        {
+            if([[parm allKeys] containsObject:@"sex"])
+            {
+                //修改性别成功
+                NSString *sex=[parm objectForKey:@"sex"];
+                st.sex=[NSNumber numberWithInt:[sex integerValue]];
+                
+            }
+            if([[parm allKeys] containsObject:@"birthday"])
+            {
+                //修改生日成功
+                
+                NSString *birthday=[parm objectForKey:@"birthday"];
+                st.birthday=birthday;;
+                
+                NSDateFormatter  *formatter=[[[NSDateFormatter alloc]init] autorelease];
+                [formatter setDateFormat:@"yyyy-MM-dd"];
+                NSDate *birDate = [formatter dateFromString:birthday];
+                int second = [[NSDate date] timeIntervalSinceDate:birDate];
+              //  st.age =[NSString stringWithFormat:@"%d", second / (3600 * 24 * 365) + 1];
+                st.age=[NSNumber numberWithInt:second / (3600 * 24 * 365) + 1];
+                
+            }
+            
+            [_tableView reloadData];
+        }
+        if(code==-2)
+        {
+            UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"alert", @"无uid 没有付费") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+            [alertView show];
+            [alertView release];
+        }
+        if(code==-41)
+        {
+            UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"alert", @"没有修改内容") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+            [alertView show];
+            [alertView release];
+        }
     }
 }
 - (void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
@@ -417,6 +463,7 @@
     self.st=nil;
     self._tableView=nil;
     self.arr=nil;
+    self.tempSexOrBirthday=nil;
     [super dealloc];
 }
 - (void)didReceiveMemoryWarning

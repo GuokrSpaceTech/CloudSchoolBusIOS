@@ -233,7 +233,7 @@
         
     }
     
-        NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:nicknametextfield.text,@"enname",self.cstudent.studentid,@"studentid",nil];
+        NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:nicknametextfield.text,@"enname",self.cstudent.studentid,@"studentid",cstudent.uid,@"uid" ,nil];
         [[EKRequest Instance] EKHTTPRequest:student parameters:param requestMethod:POST forDelegate:self];
     
     

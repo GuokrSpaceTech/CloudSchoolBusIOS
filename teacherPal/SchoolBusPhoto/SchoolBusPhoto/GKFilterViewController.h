@@ -1,0 +1,40 @@
+//
+//  GKFilterViewController.h
+//  Camera
+//
+//  Created by CaiJingPeng on 13-12-16.
+//  Copyright (c) 2013年 caijingpeng. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+//#import <GPUImage/GPUImage.h>
+#import <MediaPlayer/MediaPlayer.h>
+
+@interface GKFilterViewController : UIViewController
+{
+    /*
+    GPUImagePicture *sourcePicture;
+    GPUImageOutput<GPUImageInput> *filter;
+    
+    GPUImageMovie *movieFile;
+    GPUImageMovieWriter *movieWriter;
+     
+    GPUImageView *primaryView;
+    */
+    UIImageView *primaryView;
+    
+    MPMoviePlayerController *player;
+    
+    NSURL *movieURL; // 滤镜 缓存路径
+    UIScrollView *filterSV;
+    
+    UIImageView *controlImgV;
+    
+}
+
+@property (nonatomic) UIImage *sourceImage;
+@property (nonatomic) NSString *moviePath;
+@property (nonatomic) BOOL isEnableFilter;  // enable filter   default is no
+@property (nonatomic) UIImage *movieThumbnail;
+
+@end

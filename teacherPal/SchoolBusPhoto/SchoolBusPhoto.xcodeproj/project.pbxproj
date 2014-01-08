@@ -291,6 +291,58 @@
 		2AFFF371181232B60045BFD0 /* AVCamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AFFF36D181232B60045BFD0 /* AVCamViewController.xib */; };
 		2AFFF373181232E70045BFD0 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AFFF372181232E60045BFD0 /* AssetsLibrary.framework */; };
 		2AFFF376181233580045BFD0 /* GKUpLoaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFFF375181233580045BFD0 /* GKUpLoaderViewController.m */; };
+		78709BC9187D16CA009250FB /* GKFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BBA187D16CA009250FB /* GKFilterViewController.m */; };
+		78709BCA187D16CA009250FB /* GKSendMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BBC187D16CA009250FB /* GKSendMediaViewController.m */; };
+		78709BCB187D16CA009250FB /* GKImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BBD187D16CA009250FB /* GKImagePickerController.m */; };
+		78709BCC187D16CA009250FB /* GKSendMediaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78709BBF187D16CA009250FB /* GKSendMediaViewController.xib */; };
+		78709BCD187D16CA009250FB /* GKCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC1187D16CA009250FB /* GKCameraManager.m */; };
+		78709BCE187D16CA009250FB /* GKRecordProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC4187D16CA009250FB /* GKRecordProgressView.m */; };
+		78709BCF187D16CA009250FB /* UIImage+GKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC6187D16CA009250FB /* UIImage+GKImage.m */; };
+		78709BD0187D16CA009250FB /* VideoEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC8187D16CA009250FB /* VideoEncoder.m */; };
+		78709BFC187D1733009250FB /* camera-backspace-confirm-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD2187D1732009250FB /* camera-backspace-confirm-default@2x.png */; };
+		78709BFD187D1733009250FB /* camera-backspace-default-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD3187D1732009250FB /* camera-backspace-default-default@2x.png */; };
+		78709BFE187D1733009250FB /* camera-blind-bottom-simple.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD4187D1732009250FB /* camera-blind-bottom-simple.png */; };
+		78709BFF187D1733009250FB /* camera-blind-bottom-simple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD5187D1732009250FB /* camera-blind-bottom-simple@2x.png */; };
+		78709C00187D1733009250FB /* camera-blind-top-simple.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD6187D1732009250FB /* camera-blind-top-simple.png */; };
+		78709C01187D1733009250FB /* camera-blind-top-simple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD7187D1732009250FB /* camera-blind-top-simple@2x.png */; };
+		78709C02187D1733009250FB /* camera-glyph-cameratoggle.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD8187D1732009250FB /* camera-glyph-cameratoggle.png */; };
+		78709C03187D1733009250FB /* camera-glyph-flash-auto.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD9187D1733009250FB /* camera-glyph-flash-auto.png */; };
+		78709C04187D1733009250FB /* camera-glyph-flash-off.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BDA187D1733009250FB /* camera-glyph-flash-off.png */; };
+		78709C05187D1733009250FB /* camera-glyph-flash-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BDB187D1733009250FB /* camera-glyph-flash-on.png */; };
+		78709C06187D1733009250FB /* camera-handle-photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BDC187D1733009250FB /* camera-handle-photo.png */; };
+		78709C07187D1733009250FB /* camera-handle-video.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BDD187D1733009250FB /* camera-handle-video.png */; };
+		78709C08187D1733009250FB /* camera-library-overlay-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BDE187D1733009250FB /* camera-library-overlay-active.png */; };
+		78709C09187D1733009250FB /* camera-library-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BDF187D1733009250FB /* camera-library-overlay.png */; };
+		78709C0A187D1733009250FB /* camera-progress-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE0187D1733009250FB /* camera-progress-background.png */; };
+		78709C0B187D1733009250FB /* camera-progress-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE1187D1733009250FB /* camera-progress-background@2x.png */; };
+		78709C0C187D1733009250FB /* camera-progress-min.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE2187D1733009250FB /* camera-progress-min.png */; };
+		78709C0D187D1733009250FB /* camera-shutter-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE3187D1733009250FB /* camera-shutter-active.png */; };
+		78709C0E187D1733009250FB /* camera-shutter-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE4187D1733009250FB /* camera-shutter-default.png */; };
+		78709C0F187D1733009250FB /* camera-shutter-video-default-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE5187D1733009250FB /* camera-shutter-video-default-active.png */; };
+		78709C10187D1733009250FB /* camera-shutter-video-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE6187D1733009250FB /* camera-shutter-video-default.png */; };
+		78709C11187D1733009250FB /* camera-tray-cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE7187D1733009250FB /* camera-tray-cover.png */; };
+		78709C12187D1733009250FB /* edit-filters-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE8187D1733009250FB /* edit-filters-normal.png */; };
+		78709C13187D1733009250FB /* edit-filters-overlay-default-short.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE9187D1733009250FB /* edit-filters-overlay-default-short.png */; };
+		78709C14187D1733009250FB /* edit-filters-overlay-selected-short.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BEA187D1733009250FB /* edit-filters-overlay-selected-short.png */; };
+		78709C15187D1733009250FB /* edit-tray-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BEB187D1733009250FB /* edit-tray-background.png */; };
+		78709C16187D1733009250FB /* logo-flat-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BEC187D1733009250FB /* logo-flat-dark.png */; };
+		78709C17187D1733009250FB /* navbar-button-back-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BED187D1733009250FB /* navbar-button-back-active.png */; };
+		78709C18187D1733009250FB /* navbar-button-back-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BEE187D1733009250FB /* navbar-button-back-active@2x.png */; };
+		78709C19187D1733009250FB /* navbar-button-back-black-alt-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BEF187D1733009250FB /* navbar-button-back-black-alt-active.png */; };
+		78709C1A187D1733009250FB /* navbar-button-back-black-alt-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BF0187D1733009250FB /* navbar-button-back-black-alt-active@2x.png */; };
+		78709C1B187D1733009250FB /* navbar-button-back-black-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BF1187D1733009250FB /* navbar-button-back-black-alt.png */; };
+		78709C1C187D1733009250FB /* navbar-button-back-black-alt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BF2187D1733009250FB /* navbar-button-back-black-alt@2x.png */; };
+		78709C1D187D1733009250FB /* navbar-button-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BF3187D1733009250FB /* navbar-button-back.png */; };
+		78709C1E187D1733009250FB /* navbar-button-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BF4187D1733009250FB /* navbar-button-back@2x.png */; };
+		78709C1F187D1733009250FB /* navbar-button-green-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BF5187D1733009250FB /* navbar-button-green-active.png */; };
+		78709C20187D1733009250FB /* navbar-button-green-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BF6187D1733009250FB /* navbar-button-green-active@2x.png */; };
+		78709C21187D1733009250FB /* navbar-button-green-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BF7187D1733009250FB /* navbar-button-green-disabled.png */; };
+		78709C22187D1733009250FB /* navbar-button-green-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BF8187D1733009250FB /* navbar-button-green-disabled@2x.png */; };
+		78709C23187D1733009250FB /* navbar-button-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BF9187D1733009250FB /* navbar-button-green.png */; };
+		78709C24187D1733009250FB /* navbar-button-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BFA187D1733009250FB /* navbar-button-green@2x.png */; };
+		78709C25187D1733009250FB /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BFB187D1733009250FB /* play.png */; };
+		78709C27187D174E009250FB /* 视频框(1).png in Resources */ = {isa = PBXBuildFile; fileRef = 78709C26187D174E009250FB /* 视频框(1).png */; };
+		78709C29187D1779009250FB /* camera-backspace-confirm-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709C28187D1779009250FB /* camera-backspace-confirm-active@2x.png */; };
 		E797189A18798BAB00353BAF /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E797189418798BAB00353BAF /* libTestFlight.a */; };
 		E797189B18798BAB00353BAF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E797189518798BAB00353BAF /* README.md */; };
 		E797189C18798BAB00353BAF /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = E797189618798BAB00353BAF /* release_notes.md */; };
@@ -705,6 +757,65 @@
 		2AFFF372181232E60045BFD0 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		2AFFF374181233580045BFD0 /* GKUpLoaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKUpLoaderViewController.h; sourceTree = "<group>"; };
 		2AFFF375181233580045BFD0 /* GKUpLoaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKUpLoaderViewController.m; sourceTree = "<group>"; };
+		78709BBA187D16CA009250FB /* GKFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKFilterViewController.m; sourceTree = "<group>"; };
+		78709BBB187D16CA009250FB /* GKSendMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSendMediaViewController.h; sourceTree = "<group>"; };
+		78709BBC187D16CA009250FB /* GKSendMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSendMediaViewController.m; sourceTree = "<group>"; };
+		78709BBD187D16CA009250FB /* GKImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKImagePickerController.m; sourceTree = "<group>"; };
+		78709BBE187D16CA009250FB /* GKFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKFilterViewController.h; sourceTree = "<group>"; };
+		78709BBF187D16CA009250FB /* GKSendMediaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKSendMediaViewController.xib; sourceTree = "<group>"; };
+		78709BC0187D16CA009250FB /* GKCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCameraManager.h; sourceTree = "<group>"; };
+		78709BC1187D16CA009250FB /* GKCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCameraManager.m; sourceTree = "<group>"; };
+		78709BC2187D16CA009250FB /* GKImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKImagePickerController.h; sourceTree = "<group>"; };
+		78709BC3187D16CA009250FB /* GKRecordProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKRecordProgressView.h; sourceTree = "<group>"; };
+		78709BC4187D16CA009250FB /* GKRecordProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKRecordProgressView.m; sourceTree = "<group>"; };
+		78709BC5187D16CA009250FB /* UIImage+GKImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GKImage.h"; sourceTree = "<group>"; };
+		78709BC6187D16CA009250FB /* UIImage+GKImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GKImage.m"; sourceTree = "<group>"; };
+		78709BC7187D16CA009250FB /* VideoEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoEncoder.h; sourceTree = "<group>"; };
+		78709BC8187D16CA009250FB /* VideoEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoEncoder.m; sourceTree = "<group>"; };
+		78709BD2187D1732009250FB /* camera-backspace-confirm-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-backspace-confirm-default@2x.png"; sourceTree = "<group>"; };
+		78709BD3187D1732009250FB /* camera-backspace-default-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-backspace-default-default@2x.png"; sourceTree = "<group>"; };
+		78709BD4187D1732009250FB /* camera-blind-bottom-simple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-blind-bottom-simple.png"; sourceTree = "<group>"; };
+		78709BD5187D1732009250FB /* camera-blind-bottom-simple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-blind-bottom-simple@2x.png"; sourceTree = "<group>"; };
+		78709BD6187D1732009250FB /* camera-blind-top-simple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-blind-top-simple.png"; sourceTree = "<group>"; };
+		78709BD7187D1732009250FB /* camera-blind-top-simple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-blind-top-simple@2x.png"; sourceTree = "<group>"; };
+		78709BD8187D1732009250FB /* camera-glyph-cameratoggle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-glyph-cameratoggle.png"; sourceTree = "<group>"; };
+		78709BD9187D1733009250FB /* camera-glyph-flash-auto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-glyph-flash-auto.png"; sourceTree = "<group>"; };
+		78709BDA187D1733009250FB /* camera-glyph-flash-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-glyph-flash-off.png"; sourceTree = "<group>"; };
+		78709BDB187D1733009250FB /* camera-glyph-flash-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-glyph-flash-on.png"; sourceTree = "<group>"; };
+		78709BDC187D1733009250FB /* camera-handle-photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-handle-photo.png"; sourceTree = "<group>"; };
+		78709BDD187D1733009250FB /* camera-handle-video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-handle-video.png"; sourceTree = "<group>"; };
+		78709BDE187D1733009250FB /* camera-library-overlay-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-library-overlay-active.png"; sourceTree = "<group>"; };
+		78709BDF187D1733009250FB /* camera-library-overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-library-overlay.png"; sourceTree = "<group>"; };
+		78709BE0187D1733009250FB /* camera-progress-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-progress-background.png"; sourceTree = "<group>"; };
+		78709BE1187D1733009250FB /* camera-progress-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-progress-background@2x.png"; sourceTree = "<group>"; };
+		78709BE2187D1733009250FB /* camera-progress-min.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-progress-min.png"; sourceTree = "<group>"; };
+		78709BE3187D1733009250FB /* camera-shutter-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-shutter-active.png"; sourceTree = "<group>"; };
+		78709BE4187D1733009250FB /* camera-shutter-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-shutter-default.png"; sourceTree = "<group>"; };
+		78709BE5187D1733009250FB /* camera-shutter-video-default-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-shutter-video-default-active.png"; sourceTree = "<group>"; };
+		78709BE6187D1733009250FB /* camera-shutter-video-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-shutter-video-default.png"; sourceTree = "<group>"; };
+		78709BE7187D1733009250FB /* camera-tray-cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-tray-cover.png"; sourceTree = "<group>"; };
+		78709BE8187D1733009250FB /* edit-filters-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-filters-normal.png"; sourceTree = "<group>"; };
+		78709BE9187D1733009250FB /* edit-filters-overlay-default-short.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-filters-overlay-default-short.png"; sourceTree = "<group>"; };
+		78709BEA187D1733009250FB /* edit-filters-overlay-selected-short.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-filters-overlay-selected-short.png"; sourceTree = "<group>"; };
+		78709BEB187D1733009250FB /* edit-tray-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-tray-background.png"; sourceTree = "<group>"; };
+		78709BEC187D1733009250FB /* logo-flat-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-flat-dark.png"; sourceTree = "<group>"; };
+		78709BED187D1733009250FB /* navbar-button-back-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-back-active.png"; sourceTree = "<group>"; };
+		78709BEE187D1733009250FB /* navbar-button-back-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-back-active@2x.png"; sourceTree = "<group>"; };
+		78709BEF187D1733009250FB /* navbar-button-back-black-alt-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-back-black-alt-active.png"; sourceTree = "<group>"; };
+		78709BF0187D1733009250FB /* navbar-button-back-black-alt-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-back-black-alt-active@2x.png"; sourceTree = "<group>"; };
+		78709BF1187D1733009250FB /* navbar-button-back-black-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-back-black-alt.png"; sourceTree = "<group>"; };
+		78709BF2187D1733009250FB /* navbar-button-back-black-alt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-back-black-alt@2x.png"; sourceTree = "<group>"; };
+		78709BF3187D1733009250FB /* navbar-button-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-back.png"; sourceTree = "<group>"; };
+		78709BF4187D1733009250FB /* navbar-button-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-back@2x.png"; sourceTree = "<group>"; };
+		78709BF5187D1733009250FB /* navbar-button-green-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-green-active.png"; sourceTree = "<group>"; };
+		78709BF6187D1733009250FB /* navbar-button-green-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-green-active@2x.png"; sourceTree = "<group>"; };
+		78709BF7187D1733009250FB /* navbar-button-green-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-green-disabled.png"; sourceTree = "<group>"; };
+		78709BF8187D1733009250FB /* navbar-button-green-disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-green-disabled@2x.png"; sourceTree = "<group>"; };
+		78709BF9187D1733009250FB /* navbar-button-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-green.png"; sourceTree = "<group>"; };
+		78709BFA187D1733009250FB /* navbar-button-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-green@2x.png"; sourceTree = "<group>"; };
+		78709BFB187D1733009250FB /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		78709C26187D174E009250FB /* 视频框(1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "视频框(1).png"; sourceTree = "<group>"; };
+		78709C28187D1779009250FB /* camera-backspace-confirm-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-backspace-confirm-active@2x.png"; sourceTree = "<group>"; };
 		E797189418798BAB00353BAF /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		E797189518798BAB00353BAF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E797189618798BAB00353BAF /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
@@ -813,6 +924,21 @@
 		119973391821F5ED0017E99A /* PhotoVC */ = {
 			isa = PBXGroup;
 			children = (
+				78709BBE187D16CA009250FB /* GKFilterViewController.h */,
+				78709BBA187D16CA009250FB /* GKFilterViewController.m */,
+				78709BBB187D16CA009250FB /* GKSendMediaViewController.h */,
+				78709BBC187D16CA009250FB /* GKSendMediaViewController.m */,
+				78709BBF187D16CA009250FB /* GKSendMediaViewController.xib */,
+				78709BC2187D16CA009250FB /* GKImagePickerController.h */,
+				78709BBD187D16CA009250FB /* GKImagePickerController.m */,
+				78709BC0187D16CA009250FB /* GKCameraManager.h */,
+				78709BC1187D16CA009250FB /* GKCameraManager.m */,
+				78709BC3187D16CA009250FB /* GKRecordProgressView.h */,
+				78709BC4187D16CA009250FB /* GKRecordProgressView.m */,
+				78709BC5187D16CA009250FB /* UIImage+GKImage.h */,
+				78709BC6187D16CA009250FB /* UIImage+GKImage.m */,
+				78709BC7187D16CA009250FB /* VideoEncoder.h */,
+				78709BC8187D16CA009250FB /* VideoEncoder.m */,
 				114B59001821220E00163A4A /* GKShowBigImageViewController.h */,
 				114B59011821220E00163A4A /* GKShowBigImageViewController.m */,
 				11B852C118335275005FA5B9 /* ETZoomScrollView.h */,
@@ -1350,6 +1476,7 @@
 		2A32A56418122C01007CAA8E /* SchoolBusPhoto */ = {
 			isa = PBXGroup;
 			children = (
+				78709BD1187D1715009250FB /* tempResource */,
 				11A5AE621863E045008794C0 /* setting */,
 				11A5AE611863E02C008794C0 /* upload */,
 				11A5AE601863E00A008794C0 /* login */,
@@ -1384,6 +1511,57 @@
 				11DB02D418337240007981C6 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		78709BD1187D1715009250FB /* tempResource */ = {
+			isa = PBXGroup;
+			children = (
+				78709C28187D1779009250FB /* camera-backspace-confirm-active@2x.png */,
+				78709C26187D174E009250FB /* 视频框(1).png */,
+				78709BD2187D1732009250FB /* camera-backspace-confirm-default@2x.png */,
+				78709BD3187D1732009250FB /* camera-backspace-default-default@2x.png */,
+				78709BD4187D1732009250FB /* camera-blind-bottom-simple.png */,
+				78709BD5187D1732009250FB /* camera-blind-bottom-simple@2x.png */,
+				78709BD6187D1732009250FB /* camera-blind-top-simple.png */,
+				78709BD7187D1732009250FB /* camera-blind-top-simple@2x.png */,
+				78709BD8187D1732009250FB /* camera-glyph-cameratoggle.png */,
+				78709BD9187D1733009250FB /* camera-glyph-flash-auto.png */,
+				78709BDA187D1733009250FB /* camera-glyph-flash-off.png */,
+				78709BDB187D1733009250FB /* camera-glyph-flash-on.png */,
+				78709BDC187D1733009250FB /* camera-handle-photo.png */,
+				78709BDD187D1733009250FB /* camera-handle-video.png */,
+				78709BDE187D1733009250FB /* camera-library-overlay-active.png */,
+				78709BDF187D1733009250FB /* camera-library-overlay.png */,
+				78709BE0187D1733009250FB /* camera-progress-background.png */,
+				78709BE1187D1733009250FB /* camera-progress-background@2x.png */,
+				78709BE2187D1733009250FB /* camera-progress-min.png */,
+				78709BE3187D1733009250FB /* camera-shutter-active.png */,
+				78709BE4187D1733009250FB /* camera-shutter-default.png */,
+				78709BE5187D1733009250FB /* camera-shutter-video-default-active.png */,
+				78709BE6187D1733009250FB /* camera-shutter-video-default.png */,
+				78709BE7187D1733009250FB /* camera-tray-cover.png */,
+				78709BE8187D1733009250FB /* edit-filters-normal.png */,
+				78709BE9187D1733009250FB /* edit-filters-overlay-default-short.png */,
+				78709BEA187D1733009250FB /* edit-filters-overlay-selected-short.png */,
+				78709BEB187D1733009250FB /* edit-tray-background.png */,
+				78709BEC187D1733009250FB /* logo-flat-dark.png */,
+				78709BED187D1733009250FB /* navbar-button-back-active.png */,
+				78709BEE187D1733009250FB /* navbar-button-back-active@2x.png */,
+				78709BEF187D1733009250FB /* navbar-button-back-black-alt-active.png */,
+				78709BF0187D1733009250FB /* navbar-button-back-black-alt-active@2x.png */,
+				78709BF1187D1733009250FB /* navbar-button-back-black-alt.png */,
+				78709BF2187D1733009250FB /* navbar-button-back-black-alt@2x.png */,
+				78709BF3187D1733009250FB /* navbar-button-back.png */,
+				78709BF4187D1733009250FB /* navbar-button-back@2x.png */,
+				78709BF5187D1733009250FB /* navbar-button-green-active.png */,
+				78709BF6187D1733009250FB /* navbar-button-green-active@2x.png */,
+				78709BF7187D1733009250FB /* navbar-button-green-disabled.png */,
+				78709BF8187D1733009250FB /* navbar-button-green-disabled@2x.png */,
+				78709BF9187D1733009250FB /* navbar-button-green.png */,
+				78709BFA187D1733009250FB /* navbar-button-green@2x.png */,
+				78709BFB187D1733009250FB /* play.png */,
+			);
+			name = tempResource;
 			sourceTree = "<group>";
 		};
 		E797189318798BAB00353BAF /* TestFlightSDK2 */ = {
@@ -1464,11 +1642,14 @@
 				1193A6C7182C785B004011BC /* 谁在照片里_03.png in Resources */,
 				11AF3AE91816655B00B36176 /* navBarImage.png in Resources */,
 				113BCAC6182B5F8E0079E9AD /* line.png in Resources */,
+				78709C05187D1733009250FB /* camera-glyph-flash-on.png in Resources */,
 				11AF3B0B18168C0200B36176 /* loginback3.0.png in Resources */,
+				78709C1A187D1733009250FB /* navbar-button-back-black-alt-active@2x.png in Resources */,
 				119F0CA3181A216100A5910C /* about.png in Resources */,
 				1193A6D2182C8653004011BC /* loginBG.png in Resources */,
 				11AF3B1118168D5C00B36176 /* aa.png in Resources */,
 				11AF3AF018166ECB00B36176 /* upHight.png in Resources */,
+				78709C25187D1733009250FB /* play.png in Resources */,
 				E797189B18798BAB00353BAF /* README.md in Resources */,
 				11BF896B18363221008E72F0 /* 114.png in Resources */,
 				111E8CF3181E6E9F00234014 /* input.png in Resources */,
@@ -1478,30 +1659,41 @@
 				2A32A57118122C02007CAA8E /* Default.png in Resources */,
 				11A5AE64186438FA008794C0 /* applyAll.png in Resources */,
 				11DB02ED18337F40007981C6 /* buyButtonEnable.png in Resources */,
+				78709C14187D1733009250FB /* edit-filters-overlay-selected-short.png in Resources */,
 				1102A7DE181A48FB00E6295C /* guanyu-2.png in Resources */,
 				119F0CA4181A216100A5910C /* aboutNormal.png in Resources */,
 				1193B39E1827847C00660CB1 /* 积分.png in Resources */,
 				E797189C18798BAB00353BAF /* release_notes.md in Resources */,
 				1102A7FF181A715D00E6295C /* guanlian-B-2.png in Resources */,
+				78709C11187D1733009250FB /* camera-tray-cover.png in Resources */,
+				78709C12187D1733009250FB /* edit-filters-normal.png in Resources */,
 				11DB02DB18337552007981C6 /* count.png in Resources */,
 				11FC0F3A182C90D200442EF6 /* qipao-2@2x.png in Resources */,
 				11FC0F41182C9ECC00442EF6 /* scoreBtn_default.png in Resources */,
 				11DB02E2183379AF007981C6 /* send_24.png in Resources */,
+				78709C07187D1733009250FB /* camera-handle-video.png in Resources */,
 				1102A7EE181A4FF500E6295C /* guanyu-4.png in Resources */,
 				11DB02D218337240007981C6 /* Localizable.strings in Resources */,
+				78709C22187D1733009250FB /* navbar-button-green-disabled@2x.png in Resources */,
 				1193A6AB182B6BA0004011BC /* countInput.png in Resources */,
 				2A32A57318122C02007CAA8E /* Default@2x.png in Resources */,
+				78709C0B187D1733009250FB /* camera-progress-background@2x.png in Resources */,
 				11DB02F91833A0AA007981C6 /* countNormalE.png in Resources */,
 				119571A0183B464700CE9F1B /* NOData.png in Resources */,
 				11BF898B18364594008E72F0 /* tishi.png in Resources */,
 				11DB02E3183379AF007981C6 /* send_23.png in Resources */,
 				119AC29B183A0C1F00ED19D3 /* zhushi1.png in Resources */,
+				78709C15187D1733009250FB /* edit-tray-background.png in Resources */,
 				11E27F8F183C6AAC00CAE0BB /* shareBtn3.0.png in Resources */,
 				11BF89711836329C008E72F0 /* tiao.png in Resources */,
 				11B852A2183221CF005FA5B9 /* ETNicknameViewController.xib in Resources */,
+				78709C17187D1733009250FB /* navbar-button-back-active.png in Resources */,
 				1193A6D8182C87CC004011BC /* loginIcon.png in Resources */,
 				113BCAC2182B5BDF0079E9AD /* goodsImage.png in Resources */,
 				119F0C98181A20C600A5910C /* tou.png in Resources */,
+				78709C0C187D1733009250FB /* camera-progress-min.png in Resources */,
+				78709C1C187D1733009250FB /* navbar-button-back-black-alt@2x.png in Resources */,
+				78709C0F187D1733009250FB /* camera-shutter-video-default-active.png in Resources */,
 				11B852BE18334D52005FA5B9 /* upbutton.png in Resources */,
 				11BF898118363E58008E72F0 /* addPer.png in Resources */,
 				11BF898518363F5C008E72F0 /* sendNoticeH.png in Resources */,
@@ -1512,8 +1704,13 @@
 				1193A6A5182B68CC004011BC /* buyBG.png in Resources */,
 				11BF898418363F5C008E72F0 /* sendNotice.png in Resources */,
 				1193A6B8182B9225004011BC /* photoBtn.png in Resources */,
+				78709BFD187D1733009250FB /* camera-backspace-default-default@2x.png in Resources */,
+				78709BCC187D16CA009250FB /* GKSendMediaViewController.xib in Resources */,
 				11DB02DA18337552007981C6 /* countNormal.png in Resources */,
+				78709C06187D1733009250FB /* camera-handle-photo.png in Resources */,
 				1193A6C5182C785B004011BC /* 谁在照片里_05.png in Resources */,
+				78709C29187D1779009250FB /* camera-backspace-confirm-active@2x.png in Resources */,
+				78709C09187D1733009250FB /* camera-library-overlay.png in Resources */,
 				2AFFF371181232B60045BFD0 /* AVCamViewController.xib in Resources */,
 				11BF8988183641E2008E72F0 /* notice.png in Resources */,
 				11AF3B051816832D00B36176 /* showMain.png in Resources */,
@@ -1521,15 +1718,20 @@
 				1195719B183B0DFB00CE9F1B /* photocount.png in Resources */,
 				1193A6C4182C785B004011BC /* 谁在照片里_10_01.png in Resources */,
 				1193A6A8182B69A9004011BC /* minus.png in Resources */,
+				78709C03187D1733009250FB /* camera-glyph-flash-auto.png in Resources */,
 				1194023C182360EB00F21FB8 /* M-3.png in Resources */,
 				11AF3B1318168DCC00B36176 /* we.png in Resources */,
 				119402481823962E00F21FB8 /* box-3.png in Resources */,
 				11E27F94183C72FC00CAE0BB /* clean.png in Resources */,
+				78709C10187D1733009250FB /* camera-shutter-video-default.png in Resources */,
 				1102A7ED181A4FF500E6295C /* guanyu-3.png in Resources */,
 				1102A7F9181A5D9500E6295C /* guanlian-2-1@2x.png in Resources */,
+				78709C18187D1733009250FB /* navbar-button-back-active@2x.png in Resources */,
 				11AF3AF118166ECB00B36176 /* upNormal.png in Resources */,
 				11AF3AED18166D9A00B36176 /* bottomView.png in Resources */,
+				78709C13187D1733009250FB /* edit-filters-overlay-default-short.png in Resources */,
 				1193B39D1827847C00660CB1 /* markScore.png in Resources */,
+				78709BFC187D1733009250FB /* camera-backspace-confirm-default@2x.png in Resources */,
 				11E27F8C183C64E100CAE0BB /* aboutlogo_EN1.png in Resources */,
 				11B852BF18334D52005FA5B9 /* upbuttonH.png in Resources */,
 				119F0CA6181A216600A5910C /* bottom_logout_default.png in Resources */,
@@ -1538,11 +1740,16 @@
 				11BF897E18363E58008E72F0 /* addPic.png in Resources */,
 				11BF8989183641E2008E72F0 /* noticeNormal.png in Resources */,
 				2AFFF35418122D8B0045BFD0 /* GKMainViewController.xib in Resources */,
+				78709C1B187D1733009250FB /* navbar-button-back-black-alt.png in Resources */,
 				11AF3B0F18168CB200B36176 /* login_txtBack.png in Resources */,
 				1194023A182360EB00F21FB8 /* M-1.png in Resources */,
 				119366D5184C34AB008D2FA2 /* leftUpHE.png in Resources */,
+				78709C1D187D1733009250FB /* navbar-button-back.png in Resources */,
+				78709C1E187D1733009250FB /* navbar-button-back@2x.png in Resources */,
 				11BF897718363CF7008E72F0 /* homeNoticeHEN.png in Resources */,
 				1194023B182360EB00F21FB8 /* M-2.png in Resources */,
+				78709BFE187D1733009250FB /* camera-blind-bottom-simple.png in Resources */,
+				78709C02187D1733009250FB /* camera-glyph-cameratoggle.png in Resources */,
 				1194023D182360EB00F21FB8 /* M-4.png in Resources */,
 				11B852D4183368A0005FA5B9 /* mail.png in Resources */,
 				11B852A8183221CF005FA5B9 /* OKBtn.png in Resources */,
@@ -1568,6 +1775,7 @@
 				11E27F90183C6AAC00CAE0BB /* shareBtnSel3.0.png in Resources */,
 				1102A7FE181A715D00E6295C /* guanlian-B-1.png in Resources */,
 				1193A6B4182B9150004011BC /* duihao.png in Resources */,
+				78709C0A187D1733009250FB /* camera-progress-background.png in Resources */,
 				11BF896D18363221008E72F0 /* ICON.png in Resources */,
 				1165E27E182CFCE000B60A81 /* pic-1.png in Resources */,
 				11AF3B1918168FC400B36176 /* loginBtn@2x.png in Resources */,
@@ -1581,14 +1789,19 @@
 				1193A6BF182BAF0C004011BC /* letterLine.png in Resources */,
 				119F0CBA181A2FA700A5910C /* guanyu-1.png in Resources */,
 				11B852A5183221CF005FA5B9 /* navBar.png in Resources */,
+				78709C04187D1733009250FB /* camera-glyph-flash-off.png in Resources */,
 				11DB02E718337EB3007981C6 /* OK.png in Resources */,
+				78709C21187D1733009250FB /* navbar-button-green-disabled.png in Resources */,
 				1192B7741829E8A70082D37B /* BPushConfig.plist in Resources */,
 				11DB02FA1833A0AA007981C6 /* countE.png in Resources */,
 				1193A6DA182C87CC004011BC /* login_pwd.png in Resources */,
 				119E96281814C5A300866DE8 /* README-GHUnit in Resources */,
+				78709C27187D174E009250FB /* 视频框(1).png in Resources */,
 				11DB02F71833A0AA007981C6 /* noticeNormalE.png in Resources */,
 				11FC0F40182C9ECC00442EF6 /* scoreBack_new.png in Resources */,
 				11FC0F42182C9ECC00442EF6 /* scoreBtn_selected.png in Resources */,
+				78709C24187D1733009250FB /* navbar-button-green@2x.png in Resources */,
+				78709C16187D1733009250FB /* logo-flat-dark.png in Resources */,
 				11DB02FC1833A0AA007981C6 /* aboutE.png in Resources */,
 				11DB02EB18337F40007981C6 /* buyButtonN.png in Resources */,
 				11A5AE6818644125008794C0 /* smilik.png in Resources */,
@@ -1596,27 +1809,37 @@
 				11B852A7183221CF005FA5B9 /* OKBtn_sel.png in Resources */,
 				11AF3B0D18168C4900B36176 /* loginIcon11.png in Resources */,
 				11940246182391C100F21FB8 /* back-2.png in Resources */,
+				78709C20187D1733009250FB /* navbar-button-green-active@2x.png in Resources */,
 				113BCAC4182B5E900079E9AD /* jifen.png in Resources */,
 				1102A7F1181A537B00E6295C /* guanlian.png in Resources */,
+				78709BFF187D1733009250FB /* camera-blind-bottom-simple@2x.png in Resources */,
 				11EFE1EF1817EEF7009CE69F /* sr_refresh.png in Resources */,
+				78709C01187D1733009250FB /* camera-blind-top-simple@2x.png in Resources */,
 				11AF3B091816851900B36176 /* navLeftBtn_selected.png in Resources */,
 				1194023318235F6100F21FB8 /* box-2.png in Resources */,
 				119F0CAE181A297300A5910C /* leftN.png in Resources */,
 				11B852BC18334D52005FA5B9 /* textFileBG.png in Resources */,
+				78709C23187D1733009250FB /* navbar-button-green.png in Resources */,
 				1193A6D9182C87CC004011BC /* login_user.png in Resources */,
 				1194024418238D4B00F21FB8 /* back-1.png in Resources */,
 				119F0CAD181A297300A5910C /* left.png in Resources */,
+				78709C1F187D1733009250FB /* navbar-button-green-active.png in Resources */,
 				11DB02EC18337F40007981C6 /* buyButtonS.png in Resources */,
 				1194023E182360EB00F21FB8 /* M-5.png in Resources */,
 				11BF897618363CF7008E72F0 /* homeNoticeEN.png in Resources */,
 				11D40E3318618700003009D0 /* alterPasswordSE.png in Resources */,
 				11E27F96183C731F00CAE0BB /* textfieldback.png in Resources */,
 				1102A7EF181A4FF500E6295C /* guanyu-5.png in Resources */,
+				78709C00187D1733009250FB /* camera-blind-top-simple.png in Resources */,
+				78709C0E187D1733009250FB /* camera-shutter-default.png in Resources */,
 				11FC0F44182C9F4C00442EF6 /* FZZYJW.TTF in Resources */,
+				78709C08187D1733009250FB /* camera-library-overlay-active.png in Resources */,
+				78709C19187D1733009250FB /* navbar-button-back-black-alt-active.png in Resources */,
 				1102A7E9181A4E2000E6295C /* GKAboutViewController.xib in Resources */,
 				119366D3184C3283008D2FA2 /* leftUpN.png in Resources */,
 				1193A6D7182C87CC004011BC /* helper.png in Resources */,
 				11DB02FB1833A0AA007981C6 /* aboutNormalE.png in Resources */,
+				78709C0D187D1733009250FB /* camera-shutter-active.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1638,6 +1861,7 @@
 				119E962F1814C5A300866DE8 /* ASIS3ServiceRequest.m in Sources */,
 				2A32A56F18122C02007CAA8E /* GKAppDelegate.m in Sources */,
 				11C75DAB1812728500A3AA89 /* GKUserLogin.m in Sources */,
+				78709BCE187D16CA009250FB /* GKRecordProgressView.m in Sources */,
 				119E96231814C5A300866DE8 /* ASICloudFilesContainerRequest.m in Sources */,
 				119EA9C118161D800070DBF1 /* ETPhoto.m in Sources */,
 				119973461822456D0017E99A /* GKMarketDetailView.m in Sources */,
@@ -1660,6 +1884,7 @@
 				11A30EFB1862FB9500DEB58B /* GKDisapperView.m in Sources */,
 				119566B6181E09A000366B13 /* Letter.m in Sources */,
 				1193A6CE182C78E9004011BC /* ETScoreView.m in Sources */,
+				78709BCB187D16CA009250FB /* GKImagePickerController.m in Sources */,
 				1193A6B2182B857D004011BC /* GKAlreadyCell.m in Sources */,
 				119E963A1814C8BE00866DE8 /* GKLoaderManager.m in Sources */,
 				119E961F1814C5A300866DE8 /* ASINetworkQueue.m in Sources */,
@@ -1677,6 +1902,7 @@
 				119402421823619000F21FB8 /* GKMarketButton.m in Sources */,
 				11EFE1DA1817C08C009CE69F /* GKStudentView.m in Sources */,
 				119E961E1814C5A300866DE8 /* ASIInputStream.m in Sources */,
+				78709BC9187D16CA009250FB /* GKFilterViewController.m in Sources */,
 				11B218171835C624002825FA /* GKNoticeViewController.m in Sources */,
 				111E8CEA181E532400234014 /* UIImage+WebP.m in Sources */,
 				1199733D1821FA700017E99A /* GKMarketGird.m in Sources */,
@@ -1691,6 +1917,8 @@
 				119AC2991839FB3B00ED19D3 /* DACircularProgressView.m in Sources */,
 				119EA9C418162D340070DBF1 /* ETPhotoCell.m in Sources */,
 				11C75DB9181273E600A3AA89 /* MTAuthCode.m in Sources */,
+				78709BCD187D16CA009250FB /* GKCameraManager.m in Sources */,
+				78709BD0187D16CA009250FB /* VideoEncoder.m in Sources */,
 				1193A6CF182C78E9004011BC /* KLineScrollView.m in Sources */,
 				11C75DA61812725600A3AA89 /* EKRequest.m in Sources */,
 				119E96211814C5A300866DE8 /* ASICloudFilesCDNRequest.m in Sources */,
@@ -1712,6 +1940,7 @@
 				111E8CE3181E532400234014 /* SDWebImageDownloader.m in Sources */,
 				111E8CE0181E532400234014 /* SDImageCache.m in Sources */,
 				11D40E3818618D1B003009D0 /* GKRePasswordViewController.m in Sources */,
+				78709BCF187D16CA009250FB /* UIImage+GKImage.m in Sources */,
 				1195719E183B461800CE9F1B /* GKNODataView.m in Sources */,
 				11B852C818335275005FA5B9 /* ETShowBigImageView.m in Sources */,
 				119E964518151F0300866DE8 /* GTMBase64.m in Sources */,
@@ -1723,6 +1952,7 @@
 				119E5FF21819470400726761 /* Student.m in Sources */,
 				119E5FD91818FD5300726761 /* GKFindWraper.m in Sources */,
 				111E8CE8181E532400234014 /* UIImage+GIF.m in Sources */,
+				78709BCA187D16CA009250FB /* GKSendMediaViewController.m in Sources */,
 				1193A6D0182C78E9004011BC /* kLineView.m in Sources */,
 				11C75DAF1812729500A3AA89 /* SFHFKeychainUtils.m in Sources */,
 				119E96181814C5A300866DE8 /* ASIAuthenticationDialog.m in Sources */,

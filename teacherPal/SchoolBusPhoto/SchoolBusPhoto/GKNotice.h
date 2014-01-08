@@ -18,11 +18,10 @@
 @property (nonatomic,retain)NSString *isconfirm;
 @property (nonatomic,retain)NSString *noticecontent;
 @property (nonatomic,retain)NSString *noticeid;
-@property (nonatomic,retain)NSString *noticekey;
 @property (nonatomic,retain)NSString *noticetitle;
 @property (nonatomic,retain)NSMutableArray *plist;
-@property (nonatomic,retain)NSMutableArray *sisconfirm;
-@property (nonatomic,retain)NSMutableArray *slist;
+
+
 @property (nonatomic,retain)NSMutableArray *slistname;
 
 @end

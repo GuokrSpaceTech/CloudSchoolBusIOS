@@ -8,6 +8,8 @@
 
 #import "GKNoticeListViewController.h"
 #import "KKNavigationController.h"
+
+#import "GKNotice.h"
 @interface GKNoticeListViewController ()
 
 @end
@@ -62,6 +64,10 @@
     {
         cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
     }
+    
+    GKNotice *notice=[noticeList objectAtIndex:indexPath.row];
+    cell.textLabel.text=notice.addtime;
+    
     return cell;
 }
 
@@ -73,8 +79,24 @@
         
         NSLog(@"%@",arr);
         
+        for (int i=0; i<[arr count]; i++) {
+            NSDictionary *dic=[arr objectAtIndex:i];
+            GKNotice *notice=[[GKNotice alloc]init];
+            
+            notice.addtime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"addtime"]];
+            notice.adduserid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"adduserid"]];
+            notice.isconfirm=[NSString stringWithFormat:@"%@",[dic objectForKey:@"isconfirm"]];
+            notice.noticecontent=[NSString stringWithFormat:@"%@",[dic objectForKey:@"noticecontent"]];
+            notice.noticeid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"noticeid"]];
+            
+            notice.noticetitle=[NSString stringWithFormat:@"%@",[dic objectForKey:@"noticetitle"]];
+            notice.plist=[dic objectForKey:@"plist"];
+            notice.slistname=[dic objectForKey:@"slistname"];
+            [noticeList addObject:notice];
+            [notice release];
+        }
         
-        
+        [_tableView reloadData];
     }
 }
 -(void)dealloc

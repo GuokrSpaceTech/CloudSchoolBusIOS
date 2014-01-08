@@ -9,15 +9,19 @@
 #import "GKNotice.h"
 
 @implementation GKNotice
-@synthesize addtime,adduserid,isconfirm,noticecontent,noticeid,noticekey,noticetitle,plist,sisconfirm,slist,slistname;
+@synthesize addtime,adduserid,isconfirm,noticecontent,noticeid,noticetitle,plist,slistname;
 
 -(id)init
 {
     if(self=[super init])
     {
         NSMutableArray *tempPlist=[[NSMutableArray alloc]init];
-        [self setSisconfirm:tempPlist];
+        [self setPlist:tempPlist];
         [tempPlist release];
+        
+        NSMutableArray *tempSlistName=[[NSMutableArray alloc]init];
+        [self setSlistname:tempSlistName];
+        [tempSlistName release];
         
         
         
@@ -32,11 +36,10 @@
     self.isconfirm=nil;
     self.noticetitle=nil;
     self.noticeid=nil;
-    self.noticekey=nil;
+   
     self.noticecontent=nil;
     self.slistname=nil;
-    self.slist=nil;
-    self.sisconfirm=nil;
+
     self.plist=nil;
     [super dealloc];
 }

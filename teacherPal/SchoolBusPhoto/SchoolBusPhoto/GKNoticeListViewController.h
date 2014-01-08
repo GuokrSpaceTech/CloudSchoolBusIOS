@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "GKBaseViewController.h"
 
-@class GKBaseViewController;
-@interface GKNoticeListViewController : UIViewController
-
+#import "GKBaseViewController.h"
+#import "EKRequest.h"
+@interface GKNoticeListViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate,EKProtocol>
+@property (nonatomic,retain)NSMutableArray *noticeList;
+@property (nonatomic,retain)UITableView *_tableView;
 @end

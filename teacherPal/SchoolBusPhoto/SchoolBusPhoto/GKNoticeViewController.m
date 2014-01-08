@@ -32,7 +32,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [(KKNavigationController *)self.navigationController setNavigationTouch:NO];
+    [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
 }
 - (void)viewDidLoad
 {

@@ -24,17 +24,14 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.isEnableFilter = NO;
+//        self.isEnableFilter = NO;
+        self.isPreview = YES;
     }
     return self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    if (self.sourceImage == nil)
-    {
-        [[NSFileManager defaultManager] removeItemAtPath:self.moviePath error:nil];
-    }
     
 }
 
@@ -100,7 +97,9 @@
                                                  selector:@selector(myMovieViewFinishedCallback:)
                                                      name:MPMoviePlayerPlaybackDidFinishNotification
                                                    object:player];
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestFinishedThumbnailImage:) name:MPMoviePlayerThumbnailImageRequestDidFinishNotification object:nil];
+        
         
         
         controlImgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 128, 128)];
@@ -151,37 +150,61 @@
     }
     */
     
-     
-     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 65)];
-    view.backgroundColor = [UIColor grayColor];
-    [self.view addSubview:view];
-    
-    UIImageView *tBack = [[UIImageView alloc] initWithFrame:view.bounds];
-    tBack.image = [UIImage imageNamed:@"edit-tray-background.png"];
-    [view addSubview:tBack];
-    
-    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backBtn setTitle:@"  重拍" forState:UIControlStateNormal];
-    [backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    backBtn.titleLabel.font = [UIFont boldSystemFontOfSize:12];
-    [backBtn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-back-black-alt"] stretchableImageWithLeftCapWidth:13 topCapHeight:0] forState:UIControlStateNormal];
-    [backBtn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-back-black-alt-active"] stretchableImageWithLeftCapWidth:13 topCapHeight:0] forState:UIControlStateHighlighted];
-    [backBtn setFrame:CGRectMake(0, 0, 45, 30)];
-    [backBtn setCenter:CGPointMake(30, 40)];
-    [backBtn addTarget:self action:@selector(doBack:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:backBtn];
-    
-    UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [nextBtn setTitle:@"下一步" forState:UIControlStateNormal];
-    [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    nextBtn.titleLabel.font = [UIFont boldSystemFontOfSize:12];
-    [nextBtn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-green"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];
-    [nextBtn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-green-active"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateHighlighted];
-    [nextBtn setFrame:CGRectMake(0, 0, 60, 30)];
-    [nextBtn setCenter:CGPointMake(280, 40)];
-    [nextBtn addTarget:self action:@selector(pushNext:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:nextBtn];
+    if (self.isPreview) {
+        
+        // 预览页面
+        
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 65)];
+        view.backgroundColor = [UIColor grayColor];
+        [self.view addSubview:view];
+        
+        UIImageView *tBack = [[UIImageView alloc] initWithFrame:view.bounds];
+        tBack.image = [UIImage imageNamed:@"edit-tray-background.png"];
+        [view addSubview:tBack];
+        
+        UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [backBtn setTitle:@"  重拍" forState:UIControlStateNormal];
+        [backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        backBtn.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+        [backBtn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-back-black-alt"] stretchableImageWithLeftCapWidth:13 topCapHeight:0] forState:UIControlStateNormal];
+        [backBtn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-back-black-alt-active"] stretchableImageWithLeftCapWidth:13 topCapHeight:0] forState:UIControlStateHighlighted];
+        [backBtn setFrame:CGRectMake(0, 0, 45, 30)];
+        [backBtn setCenter:CGPointMake(30, 40)];
+        [backBtn addTarget:self action:@selector(doBack:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:backBtn];
+        
+        UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [nextBtn setTitle:@"下一步" forState:UIControlStateNormal];
+        [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        nextBtn.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+        [nextBtn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-green"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];
+        [nextBtn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-green-active"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateHighlighted];
+        [nextBtn setFrame:CGRectMake(0, 0, 60, 30)];
+        [nextBtn setCenter:CGPointMake(280, 40)];
+        [nextBtn addTarget:self action:@selector(pushNext:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:nextBtn];
+    }
+    else
+    {
+        // 显示大图
+        
+        UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [backBtn setImage:[UIImage imageNamed:@"box-3.png"] forState:UIControlStateNormal];
+        [backBtn setFrame:CGRectMake(0, 0, 45, 45)];
+        [backBtn setCenter:CGPointMake(45, 50)];
+        [backBtn addTarget:self action:@selector(dismissViewController:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:backBtn];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissViewController:)];
+        if (self.sourceImage != nil)
+        {
+            
+            primaryView.userInteractionEnabled = YES;
+            [primaryView addGestureRecognizer:tap];
+        }
+        [self.view addGestureRecognizer:tap];
+        
+    }
     
     
     /*
@@ -414,6 +437,12 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void)dismissViewController:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

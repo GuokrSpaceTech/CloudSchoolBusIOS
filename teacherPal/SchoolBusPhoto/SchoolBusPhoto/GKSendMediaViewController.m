@@ -8,6 +8,8 @@
 
 #import "GKSendMediaViewController.h"
 #import "GKUserLogin.h"
+#import "GKFilterViewController.h"
+#import "GKPhotoTagScrollView.h"
 
 @interface GKSendMediaViewController ()
 
@@ -63,14 +65,14 @@
     
     // 缩略图
     UIImageView *thumbImgV = [[UIImageView alloc] initWithFrame:CGRectMake(boardImageView.frame.origin.x + 15, boardImageView.frame.origin.y + 15, 60, 60)];
-    if (self.sourcePicture != nil) {
+    if (self.sourcePicture != nil)
+    {
         thumbImgV.image = self.sourcePicture;
     }
     else
     {
         thumbImgV.image = self.thumbnail;
     }
-    thumbImgV.image = self.sourcePicture;
     [self.view addSubview:thumbImgV];
     [thumbImgV release];
     
@@ -103,12 +105,21 @@
     [self.view addSubview:calWordsLab];
     
     
+    GKPhotoTagScrollView *tagView = [[GKPhotoTagScrollView alloc] initWithFrame:CGRectMake(boardImageView.frame.origin.x, boardImageView.frame.origin.y + boardImageView.frame.size.height + 5, boardImageView.frame.size.width, iphone5 ? boardImageView.frame.size.height : 40)];
+    tagView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:tagView];
+    [tagView release];
+    
+    
     GKUserLogin *user=[GKUserLogin currentLogin];
+    
+    [tagView setPhotoTags:user.photoTagArray];
+    
     int col=([user.studentArr count] )/4; //行
     //int row=([user.studentArr count] )%4;
     int y = MIN(col+1, 4);
     
-    GKStudentView *studentView=[[GKStudentView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-(y*50), 320,( y*50))];
+    GKStudentView *studentView=[[GKStudentView alloc]initWithFrame:CGRectMake(0, (iphone5 ? 548 : 460) + (ios7 ? 20 : 0) - (y*50), 320,( y*50))];
     studentView.backgroundColor=[UIColor whiteColor];
     studentView.delegate=self;
     studentView.studentArr=user.studentArr;
@@ -181,36 +192,23 @@
 
 - (void)presetMedia:(id)sender
 {
+    [self.view endEditing:YES];
+    
+    GKFilterViewController *fvc = [[GKFilterViewController alloc] init];
+    fvc.isPreview = NO; // 不是预览页面.
     if (self.sourcePicture != nil)
     {
         //显示图片
-        UIImageView *bigImgV = [[UIImageView alloc] initWithFrame:self.view.window.bounds];
-        bigImgV.image = self.sourcePicture;
-        bigImgV.backgroundColor = [UIColor blackColor];
-        bigImgV.contentMode = UIViewContentModeScaleAspectFit;
-        bigImgV.userInteractionEnabled = YES;
-        [self.view.window addSubview:bigImgV];
-        [bigImgV release];
-        
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showBigImage:)];
-        [bigImgV addGestureRecognizer:tap];
-        [tap release];
-        
+        fvc.sourceImage = self.sourcePicture;
     }
     else
     {
         //播放视频
-        
-        MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:self.moviePath]];
-        player.controlStyle = MPMovieControlStyleNone;
-        player.movieSourceType = MPMovieSourceTypeFile;
-        //        [player prepareToPlay];
-        
-        [player.view setFrame:self.view.window.bounds];
-        [player requestThumbnailImagesAtTimes:[NSArray arrayWithObject:[NSNumber numberWithDouble:1.0]] timeOption:MPMovieTimeOptionExact];
-        [self.view.window addSubview:player.view];
-        
+        fvc.moviePath = self.moviePath;
     }
+    [self presentModalViewController:fvc animated:YES];
+    [fvc release];
+    
 }
 
 -(void)whitchSelected:(BOOL)selected uid:(NSString *)uid isAll:(int)an
@@ -259,7 +257,7 @@
 
 - (void)uploadMedia:(id)sender
 {
-    
+    [self.view endEditing:YES];
 }
 
 - (void)doBack:(id)sender

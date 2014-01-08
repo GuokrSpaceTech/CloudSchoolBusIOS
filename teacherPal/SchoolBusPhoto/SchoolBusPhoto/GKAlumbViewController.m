@@ -9,6 +9,7 @@
 #import "GKAlumbViewController.h"
 #import "AVCamViewController.h"
 #import "GKMainViewController.h"
+#import "GKImagePickerController.h"
 
 #import "GKImagePickerViewController.h"
 @interface GKAlumbViewController ()
@@ -155,11 +156,13 @@
 }
 -(void)takePhoto:(UIButton *)btn
 {
-
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[GKImagePickerController alloc] init]];
+    [self presentViewController:nav animated:YES completion:nil];
+    /*
     AVCamViewController *avVC=[[AVCamViewController alloc]initWithNibName:@"AVCamViewController" bundle:nil];
     [self.navigationController pushViewController:avVC animated:YES];
     [avVC release];
-    
+    */
     
     //[self setAllPhotoSelect:YES];
 }

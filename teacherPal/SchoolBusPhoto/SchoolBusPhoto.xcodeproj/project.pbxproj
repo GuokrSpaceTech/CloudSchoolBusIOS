@@ -291,14 +291,14 @@
 		2AFFF371181232B60045BFD0 /* AVCamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AFFF36D181232B60045BFD0 /* AVCamViewController.xib */; };
 		2AFFF373181232E70045BFD0 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AFFF372181232E60045BFD0 /* AssetsLibrary.framework */; };
 		2AFFF376181233580045BFD0 /* GKUpLoaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFFF375181233580045BFD0 /* GKUpLoaderViewController.m */; };
-		78709BC9187D16CA009250FB /* GKFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BBA187D16CA009250FB /* GKFilterViewController.m */; };
+		78709BC9187D16CA009250FB /* GKFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BBA187D16CA009250FB /* GKFilterViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		78709BCA187D16CA009250FB /* GKSendMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BBC187D16CA009250FB /* GKSendMediaViewController.m */; };
-		78709BCB187D16CA009250FB /* GKImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BBD187D16CA009250FB /* GKImagePickerController.m */; };
+		78709BCB187D16CA009250FB /* GKImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BBD187D16CA009250FB /* GKImagePickerController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		78709BCC187D16CA009250FB /* GKSendMediaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78709BBF187D16CA009250FB /* GKSendMediaViewController.xib */; };
-		78709BCD187D16CA009250FB /* GKCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC1187D16CA009250FB /* GKCameraManager.m */; };
-		78709BCE187D16CA009250FB /* GKRecordProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC4187D16CA009250FB /* GKRecordProgressView.m */; };
+		78709BCD187D16CA009250FB /* GKCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC1187D16CA009250FB /* GKCameraManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		78709BCE187D16CA009250FB /* GKRecordProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC4187D16CA009250FB /* GKRecordProgressView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		78709BCF187D16CA009250FB /* UIImage+GKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC6187D16CA009250FB /* UIImage+GKImage.m */; };
-		78709BD0187D16CA009250FB /* VideoEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC8187D16CA009250FB /* VideoEncoder.m */; };
+		78709BD0187D16CA009250FB /* VideoEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC8187D16CA009250FB /* VideoEncoder.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		78709BFC187D1733009250FB /* camera-backspace-confirm-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD2187D1732009250FB /* camera-backspace-confirm-default@2x.png */; };
 		78709BFD187D1733009250FB /* camera-backspace-default-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD3187D1732009250FB /* camera-backspace-default-default@2x.png */; };
 		78709BFE187D1733009250FB /* camera-blind-bottom-simple.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD4187D1732009250FB /* camera-blind-bottom-simple.png */; };
@@ -343,6 +343,10 @@
 		78709C25187D1733009250FB /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BFB187D1733009250FB /* play.png */; };
 		78709C27187D174E009250FB /* 视频框(1).png in Resources */ = {isa = PBXBuildFile; fileRef = 78709C26187D174E009250FB /* 视频框(1).png */; };
 		78709C29187D1779009250FB /* camera-backspace-confirm-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709C28187D1779009250FB /* camera-backspace-confirm-active@2x.png */; };
+		78709C2B187D1A30009250FB /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78709C2A187D1A30009250FB /* CoreVideo.framework */; };
+		78709C2D187D1A3B009250FB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78709C2C187D1A3B009250FB /* CoreMedia.framework */; };
+		78709C2F187D1A43009250FB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78709C2E187D1A43009250FB /* MediaPlayer.framework */; };
+		78709C32187D2F4A009250FB /* GKPhotoTagScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709C31187D2F4A009250FB /* GKPhotoTagScrollView.m */; };
 		E797189A18798BAB00353BAF /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E797189418798BAB00353BAF /* libTestFlight.a */; };
 		E797189B18798BAB00353BAF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E797189518798BAB00353BAF /* README.md */; };
 		E797189C18798BAB00353BAF /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = E797189618798BAB00353BAF /* release_notes.md */; };
@@ -816,6 +820,11 @@
 		78709BFB187D1733009250FB /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		78709C26187D174E009250FB /* 视频框(1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "视频框(1).png"; sourceTree = "<group>"; };
 		78709C28187D1779009250FB /* camera-backspace-confirm-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-backspace-confirm-active@2x.png"; sourceTree = "<group>"; };
+		78709C2A187D1A30009250FB /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		78709C2C187D1A3B009250FB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		78709C2E187D1A43009250FB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		78709C30187D2F4A009250FB /* GKPhotoTagScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKPhotoTagScrollView.h; sourceTree = "<group>"; };
+		78709C31187D2F4A009250FB /* GKPhotoTagScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKPhotoTagScrollView.m; sourceTree = "<group>"; };
 		E797189418798BAB00353BAF /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		E797189518798BAB00353BAF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E797189618798BAB00353BAF /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
@@ -829,6 +838,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78709C2F187D1A43009250FB /* MediaPlayer.framework in Frameworks */,
+				78709C2D187D1A3B009250FB /* CoreMedia.framework in Frameworks */,
+				78709C2B187D1A30009250FB /* CoreVideo.framework in Frameworks */,
 				E797189A18798BAB00353BAF /* libTestFlight.a in Frameworks */,
 				11A30EF81862E73500DEB58B /* CoreMotion.framework in Frameworks */,
 				11EFE1D71817ACA3009CE69F /* QuartzCore.framework in Frameworks */,
@@ -972,6 +984,8 @@
 				11A30EFA1862FB9500DEB58B /* GKDisapperView.m */,
 				11A212A618697B8800A2D909 /* GKAlumbViewController.h */,
 				11A212A718697B8800A2D909 /* GKAlumbViewController.m */,
+				78709C30187D2F4A009250FB /* GKPhotoTagScrollView.h */,
+				78709C31187D2F4A009250FB /* GKPhotoTagScrollView.m */,
 			);
 			name = PhotoVC;
 			sourceTree = "<group>";
@@ -1451,6 +1465,9 @@
 		2A32A55B18122C01007CAA8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				78709C2E187D1A43009250FB /* MediaPlayer.framework */,
+				78709C2C187D1A3B009250FB /* CoreMedia.framework */,
+				78709C2A187D1A30009250FB /* CoreVideo.framework */,
 				11A30EF71862E73500DEB58B /* CoreMotion.framework */,
 				11E27F91183C709700CAE0BB /* MessageUI.framework */,
 				114B58FE1820AD5500163A4A /* ImageIO.framework */,
@@ -1929,6 +1946,7 @@
 				1193B3921827843800660CB1 /* GKScoreCell.m in Sources */,
 				111E8CE1181E532400234014 /* SDWebImageCompat.m in Sources */,
 				2A32A58118122C25007CAA8E /* GKLoginViewController.m in Sources */,
+				78709C32187D2F4A009250FB /* GKPhotoTagScrollView.m in Sources */,
 				119EA9CF181649C20070DBF1 /* GKInfoViewController.m in Sources */,
 				119E963D1814E2C800866DE8 /* GKUpWraper.m in Sources */,
 				119E96291814C5A300866DE8 /* Reachability.m in Sources */,
@@ -2063,7 +2081,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"SchoolBusPhoto/**",
-					/Users/mactoptest/mobile_apps/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/TestFlightSDK2,
+					"$(SRCROOT)/TestFlightSDK2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "BC944BB8-3550-49E0-9637-FB6159605817";
@@ -2089,7 +2107,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"SchoolBusPhoto/**",
-					/Users/mactoptest/mobile_apps/CloudSchoolBusIOS/teacherPal/SchoolBusPhoto/TestFlightSDK2,
+					"$(SRCROOT)/TestFlightSDK2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "BC944BB8-3550-49E0-9637-FB6159605817";

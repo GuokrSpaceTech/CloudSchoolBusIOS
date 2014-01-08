@@ -536,6 +536,7 @@
 {
     GKFilterViewController *filterVC = [[GKFilterViewController alloc] init];
     filterVC.sourceImage = stillImage;
+    filterVC.isPreview = YES; // 预览页面.
 //    filterVC.isEnableFilter = YES;
     [self.navigationController pushViewController:filterVC animated:YES];
 }

@@ -74,9 +74,10 @@
     camManager = [GKCameraManager manager];
     camManager.delegate = self;
     [camManager setup];
-    [camManager startRuning];
+//    [camManager startRuning];
     
     UIView *cameraPreview = [[UIView alloc] initWithFrame:CGRectMake(0, 50 + (iphone5 ? 20 : 0), 320, 320)];
+    cameraPreview.backgroundColor = [UIColor redColor];
     [camManager embedPreviewInView:cameraPreview];
     [self.view addSubview:cameraPreview];
     
@@ -251,6 +252,7 @@
 - (void)doBack:(id)sender
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self closeCameraAnimate];
 }
 
 // 重置 录像模式.
@@ -275,7 +277,7 @@
     
     [motionManager stopAccelerometerUpdates];
     
-//    [self closeCameraAnimate];
+    [self closeCameraAnimate];
 }
 
 #pragma mark UI

@@ -274,9 +274,9 @@ static GKCameraManager *cameraManager;
         return;
     }
     
-    if (_preview) {
-        [_preview removeFromSuperlayer];
-    }
+//    if (_preview) {
+//        [_preview removeFromSuperlayer];
+//    }
     
     _preview = [AVCaptureVideoPreviewLayer layerWithSession:_session];
     _preview.frame = aView.bounds;

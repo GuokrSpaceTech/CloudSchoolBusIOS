@@ -19,7 +19,7 @@
 @synthesize tid,time,fize,classid;
 @synthesize _progressView;
 @synthesize intro;
-@synthesize imageData;
+@synthesize imageData,tag;
 -(void)dealloc
 {
     self.path=nil;
@@ -34,6 +34,7 @@
     [_progressView release];
     self.intro=nil;
     self.imageData=nil;
+    self.tag = nil;
     [super dealloc];
 }
 -(id)init

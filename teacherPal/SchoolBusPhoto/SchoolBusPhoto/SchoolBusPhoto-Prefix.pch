@@ -26,4 +26,6 @@
 
 #define IMAGEWITHPATH(a)  [[NSBundle mainBundle] pathForResource:a ofType:@"png"]
 #define IMAGENAME(b) [UIImage imageWithContentsOfFile:b]
+#define SHARED_APP_DELEGATE ((GKAppDelegate *)[[UIApplication sharedApplication] delegate])
+
 #endif

@@ -8,7 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol GKPhotoTagScrollViewDelegate <NSObject>
+
+- (void)didSelectPhotoTag:(NSString *)tag;
+
+@end
+
 @interface GKPhotoTagScrollView : UIScrollView
+{
+    int selectedTag;
+}
+
+@property (nonatomic, assign)id<GKPhotoTagScrollViewDelegate> tagDelegate;
+@property (nonatomic, retain) NSArray *photoTags;
 
 - (void)setPhotoTags:(NSArray *)tags;
 

@@ -10,17 +10,20 @@
 #import "GKBaseViewController.h"
 #import "GKStudentView.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "GKPhotoTagScrollView.h"
 
-@interface GKSendMediaViewController : GKBaseViewController<UIActionSheetDelegate,studentViewDelegate,UITextViewDelegate>
+@interface GKSendMediaViewController : GKBaseViewController<UIActionSheetDelegate,studentViewDelegate,UITextViewDelegate,GKPhotoTagScrollViewDelegate>
 {
     
     UITextView *contentTV;
     UILabel *calWordsLab;
+    UIImageView *thumbImgV;
 }
 
-@property (nonatomic, retain)UIImage *sourcePicture;
-@property (nonatomic, retain)NSString *moviePath;
-@property (nonatomic, retain)UIImage *thumbnail;
-@property (nonatomic, retain)NSMutableArray *stuList;
+@property (nonatomic, retain) UIImage *sourcePicture;
+@property (nonatomic, retain) NSString *moviePath;
+@property (nonatomic, retain) UIImage *thumbnail;
+@property (nonatomic, retain) NSMutableArray *stuList;
+@property (nonatomic, retain) NSString *photoTag;
 
 @end

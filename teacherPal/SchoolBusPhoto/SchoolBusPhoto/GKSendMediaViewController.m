@@ -9,14 +9,14 @@
 #import "GKSendMediaViewController.h"
 #import "GKUserLogin.h"
 #import "GKFilterViewController.h"
-#import "GKPhotoTagScrollView.h"
+#import "GKLoaderManager.h"
 
 @interface GKSendMediaViewController ()
 
 @end
 
 @implementation GKSendMediaViewController
-@synthesize stuList;
+@synthesize stuList,sourcePicture,photoTag,thumbnail,moviePath;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -64,7 +64,7 @@
     [boardImageView release];
     
     // 缩略图
-    UIImageView *thumbImgV = [[UIImageView alloc] initWithFrame:CGRectMake(boardImageView.frame.origin.x + 15, boardImageView.frame.origin.y + 15, 60, 60)];
+    thumbImgV = [[UIImageView alloc] initWithFrame:CGRectMake(boardImageView.frame.origin.x + 15, boardImageView.frame.origin.y + 15, 60, 60)];
     if (self.sourcePicture != nil)
     {
         thumbImgV.image = self.sourcePicture;
@@ -74,7 +74,6 @@
         thumbImgV.image = self.thumbnail;
     }
     [self.view addSubview:thumbImgV];
-    [thumbImgV release];
     
     UIButton *presetBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [presetBtn setFrame:thumbImgV.frame];
@@ -106,7 +105,8 @@
     
     
     GKPhotoTagScrollView *tagView = [[GKPhotoTagScrollView alloc] initWithFrame:CGRectMake(boardImageView.frame.origin.x, boardImageView.frame.origin.y + boardImageView.frame.size.height + 5, boardImageView.frame.size.width, iphone5 ? boardImageView.frame.size.height : 40)];
-    tagView.backgroundColor = [UIColor redColor];
+    tagView.backgroundColor = [UIColor clearColor];
+    tagView.tagDelegate = self;
     [self.view addSubview:tagView];
     [tagView release];
     
@@ -257,7 +257,72 @@
 
 - (void)uploadMedia:(id)sender
 {
+    
     [self.view endEditing:YES];
+    
+    if (![self checkContentLength])
+    {
+        return;
+    }
+    
+    if (self.stuList.count == 0)
+    {
+        UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"" message:@"" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil] autorelease];
+        [alert show];
+        return;
+    }
+    
+    
+    GKLoaderManager *manager = [GKLoaderManager createLoaderManager];
+    
+    GKUserLogin *user=[GKUserLogin currentLogin];
+    
+    NSString *timestamp = [NSString stringWithFormat:@"%d", (int)[[NSDate date] timeIntervalSince1970]];
+    
+    NSString *filePath;
+    
+    if (self.sourcePicture != nil)
+    { //上传图片.
+        
+        NSData *imageData = UIImageJPEGRepresentation(self.sourcePicture, 1.0);
+        
+        NSArray *arr= NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentpath=[arr objectAtIndex:0];
+        NSString *filename=[NSString stringWithFormat:@"tempimage%@",timestamp];
+        filePath=[NSString stringWithFormat:@"%@/%@",documentpath,filename];
+        NSFileManager *fileManage=[NSFileManager defaultManager];
+        if(![fileManage fileExistsAtPath:filePath])
+        {
+            [fileManage createFileAtPath:filePath contents:nil attributes:nil];
+        }
+        else
+        {
+            NSLog(@"image write path has been exist");
+            return;
+        }
+        BOOL success = [imageData writeToFile:filePath atomically:YES];
+        
+        if (!success) {
+            NSLog(@"image write path error ");
+            return;
+        }
+    }
+    else
+    {
+        //上传视频.
+        filePath = [NSString stringWithFormat:@"%@",self.moviePath];
+    }
+    
+    NSString *students = [self.stuList componentsJoinedByString:@","];
+    
+    NSLog(@"students %@ , photo tag : %@",students,(photoTag == nil ? @"" : photoTag));
+    
+    [manager addNewPicToCoreData:filePath name:@"" iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:0] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:contentTV.text data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"" : photoTag)] ;
+    
+    [manager addWraperToArr:filePath name:@"" iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:0] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:contentTV.text data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"":photoTag)];
+    
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+    
 }
 
 - (void)doBack:(id)sender
@@ -277,6 +342,22 @@
         //不保存
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }
+}
+
+- (void)didSelectPhotoTag:(NSString *)tag
+{
+    self.photoTag = [NSString stringWithFormat:@"%@",tag];
+}
+
+- (BOOL)checkContentLength
+{
+    int a = [self textLength:contentTV.text];
+    if (a > 140) {
+        UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"" message:@"" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil] autorelease];
+        [alert show];
+        return NO;
+    }
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning

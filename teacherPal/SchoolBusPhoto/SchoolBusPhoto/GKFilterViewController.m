@@ -8,6 +8,8 @@
 
 #import "GKFilterViewController.h"
 #import "GKSendMediaViewController.h"
+#import "GKCoreDataManager.h"
+#import "GKUserLogin.h"
 
 #define FILTER_BUTTON_TAG 999
 #define SELECT_OVERLAY_TAG 888
@@ -206,6 +208,20 @@
         
     }
     
+    //保存草稿按钮.
+    
+    if (self.sourceImage == nil && self.isPreview) {
+        // 判断 是 播放视频、预览页面
+        
+        UIButton *saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [saveBtn setImage:[UIImage imageNamed:@"save_default.png"] forState:UIControlStateNormal];
+        [saveBtn setImage:[UIImage imageNamed:@"save_active.png"] forState:UIControlStateHighlighted];
+        [saveBtn addTarget:self action:@selector(saveDraft:) forControlEvents:UIControlEventTouchUpInside];
+        saveBtn.frame = CGRectMake(0, 0, 80, 80);
+        saveBtn.center = CGPointMake(220, ((iphone5 ? 548 : 460) - 420)/2 + 420 + 8);
+        [self.view addSubview:saveBtn];
+    }
+    
     
     /*
     if (self.sourceImage != nil && self.isEnableFilter) {
@@ -367,6 +383,17 @@
     
 }
  */
+
+- (void)saveDraft:(id)sender
+{
+    NSString *stamp = [NSString stringWithFormat:@"%d", (int)[[NSDate date] timeIntervalSince1970]];
+    
+    GKUserLogin *user=[GKUserLogin currentLogin];
+    BOOL success = [GKCoreDataManager addMovieDraftWithUserid:[NSString stringWithFormat:@"%@", user.classInfo.classid] moviePath:self.moviePath dateStamp:stamp];
+    NSLog(@"save draft : %d",success);
+    
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+}
 
 - (void)doTap:(UIGestureRecognizer *)gesture
 {

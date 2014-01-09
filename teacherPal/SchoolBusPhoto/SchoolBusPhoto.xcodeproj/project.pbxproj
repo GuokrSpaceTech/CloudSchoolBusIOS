@@ -102,7 +102,6 @@
 		119973401821FAB40017E99A /* GKMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1199733F1821FAB40017E99A /* GKMarket.m */; };
 		119973431822094F0017E99A /* GKMarketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 119973421822094F0017E99A /* GKMarketCell.m */; };
 		119973461822456D0017E99A /* GKMarketDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 119973451822456D0017E99A /* GKMarketDetailView.m */; };
-		119AC2701839C30000ED19D3 /* UpLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 119AC26F1839C30000ED19D3 /* UpLoader.m */; };
 		119AC2731839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 119AC2711839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodeld */; };
 		119AC2771839C63500ED19D3 /* GKUploaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 119AC2761839C63500ED19D3 /* GKUploaderCell.m */; };
 		119AC2991839FB3B00ED19D3 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 119AC2981839FB3B00ED19D3 /* DACircularProgressView.m */; };
@@ -347,6 +346,13 @@
 		78709C2D187D1A3B009250FB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78709C2C187D1A3B009250FB /* CoreMedia.framework */; };
 		78709C2F187D1A43009250FB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78709C2E187D1A43009250FB /* MediaPlayer.framework */; };
 		78709C32187D2F4A009250FB /* GKPhotoTagScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709C31187D2F4A009250FB /* GKPhotoTagScrollView.m */; };
+		7870A0F1187D4637009250FB /* navbar-button-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A0EF187D4636009250FB /* navbar-button-blue@2x.png */; };
+		7870A0F2187D4637009250FB /* navbar-button-blue-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A0F0187D4636009250FB /* navbar-button-blue-active@2x.png */; };
+		7870A0F5187D54C1009250FB /* UpLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7870A0F4187D54C1009250FB /* UpLoader.m */; };
+		7870A0FC187E44A2009250FB /* save_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A0FA187E44A2009250FB /* save_default.png */; };
+		7870A0FD187E44A2009250FB /* save_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A0FB187E44A2009250FB /* save_active.png */; };
+		7870A101187E4945009250FB /* MovieDraft.m in Sources */ = {isa = PBXBuildFile; fileRef = 7870A100187E4945009250FB /* MovieDraft.m */; };
+		7870A104187E4A48009250FB /* GKCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7870A103187E4A48009250FB /* GKCoreDataManager.m */; };
 		E797189A18798BAB00353BAF /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E797189418798BAB00353BAF /* libTestFlight.a */; };
 		E797189B18798BAB00353BAF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E797189518798BAB00353BAF /* README.md */; };
 		E797189C18798BAB00353BAF /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = E797189618798BAB00353BAF /* release_notes.md */; };
@@ -486,8 +492,6 @@
 		119973421822094F0017E99A /* GKMarketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMarketCell.m; sourceTree = "<group>"; };
 		119973441822456D0017E99A /* GKMarketDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMarketDetailView.h; sourceTree = "<group>"; };
 		119973451822456D0017E99A /* GKMarketDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMarketDetailView.m; sourceTree = "<group>"; };
-		119AC26E1839C30000ED19D3 /* UpLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpLoader.h; sourceTree = "<group>"; };
-		119AC26F1839C30000ED19D3 /* UpLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpLoader.m; sourceTree = "<group>"; };
 		119AC2721839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SchoolBusPhoto.xcdatamodel; sourceTree = "<group>"; };
 		119AC2741839C39300ED19D3 /* SchoolBusPhoto 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 2.xcdatamodel"; sourceTree = "<group>"; };
 		119AC2751839C63500ED19D3 /* GKUploaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKUploaderCell.h; sourceTree = "<group>"; };
@@ -825,6 +829,17 @@
 		78709C2E187D1A43009250FB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		78709C30187D2F4A009250FB /* GKPhotoTagScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKPhotoTagScrollView.h; sourceTree = "<group>"; };
 		78709C31187D2F4A009250FB /* GKPhotoTagScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKPhotoTagScrollView.m; sourceTree = "<group>"; };
+		7870A0EF187D4636009250FB /* navbar-button-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-blue@2x.png"; sourceTree = "<group>"; };
+		7870A0F0187D4636009250FB /* navbar-button-blue-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-blue-active@2x.png"; sourceTree = "<group>"; };
+		7870A0F3187D54C1009250FB /* UpLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpLoader.h; sourceTree = "<group>"; };
+		7870A0F4187D54C1009250FB /* UpLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpLoader.m; sourceTree = "<group>"; };
+		7870A0FA187E44A2009250FB /* save_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_default.png; sourceTree = "<group>"; };
+		7870A0FB187E44A2009250FB /* save_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_active.png; sourceTree = "<group>"; };
+		7870A0FE187E454F009250FB /* SchoolBusPhoto 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SchoolBusPhoto 4.xcdatamodel"; sourceTree = "<group>"; };
+		7870A0FF187E4945009250FB /* MovieDraft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDraft.h; sourceTree = "<group>"; };
+		7870A100187E4945009250FB /* MovieDraft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDraft.m; sourceTree = "<group>"; };
+		7870A102187E4A48009250FB /* GKCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCoreDataManager.h; sourceTree = "<group>"; };
+		7870A103187E4A48009250FB /* GKCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCoreDataManager.m; sourceTree = "<group>"; };
 		E797189418798BAB00353BAF /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		E797189518798BAB00353BAF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E797189618798BAB00353BAF /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
@@ -1075,8 +1090,12 @@
 				1199733F1821FAB40017E99A /* GKMarket.m */,
 				11B852AC1833243E005FA5B9 /* GKUpObject.h */,
 				11B852AD1833243E005FA5B9 /* GKUpObject.m */,
-				119AC26E1839C30000ED19D3 /* UpLoader.h */,
-				119AC26F1839C30000ED19D3 /* UpLoader.m */,
+				7870A0F3187D54C1009250FB /* UpLoader.h */,
+				7870A0F4187D54C1009250FB /* UpLoader.m */,
+				7870A0FF187E4945009250FB /* MovieDraft.h */,
+				7870A100187E4945009250FB /* MovieDraft.m */,
+				7870A102187E4A48009250FB /* GKCoreDataManager.h */,
+				7870A103187E4A48009250FB /* GKCoreDataManager.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1199,6 +1218,10 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				7870A0FA187E44A2009250FB /* save_default.png */,
+				7870A0FB187E44A2009250FB /* save_active.png */,
+				7870A0EF187D4636009250FB /* navbar-button-blue@2x.png */,
+				7870A0F0187D4636009250FB /* navbar-button-blue-active@2x.png */,
 				11A5AE6518643C94008794C0 /* Tophoto.png */,
 				11A5AE63186438FA008794C0 /* applyAll.png */,
 				11D40E2E18618700003009D0 /* alterPasswordE.png */,
@@ -1684,6 +1707,7 @@
 				1102A7FF181A715D00E6295C /* guanlian-B-2.png in Resources */,
 				78709C11187D1733009250FB /* camera-tray-cover.png in Resources */,
 				78709C12187D1733009250FB /* edit-filters-normal.png in Resources */,
+				7870A0FD187E44A2009250FB /* save_active.png in Resources */,
 				11DB02DB18337552007981C6 /* count.png in Resources */,
 				11FC0F3A182C90D200442EF6 /* qipao-2@2x.png in Resources */,
 				11FC0F41182C9ECC00442EF6 /* scoreBtn_default.png in Resources */,
@@ -1704,6 +1728,7 @@
 				11E27F8F183C6AAC00CAE0BB /* shareBtn3.0.png in Resources */,
 				11BF89711836329C008E72F0 /* tiao.png in Resources */,
 				11B852A2183221CF005FA5B9 /* ETNicknameViewController.xib in Resources */,
+				7870A0F2187D4637009250FB /* navbar-button-blue-active@2x.png in Resources */,
 				78709C17187D1733009250FB /* navbar-button-back-active.png in Resources */,
 				1193A6D8182C87CC004011BC /* loginIcon.png in Resources */,
 				113BCAC2182B5BDF0079E9AD /* goodsImage.png in Resources */,
@@ -1758,6 +1783,7 @@
 				11BF8989183641E2008E72F0 /* noticeNormal.png in Resources */,
 				2AFFF35418122D8B0045BFD0 /* GKMainViewController.xib in Resources */,
 				78709C1B187D1733009250FB /* navbar-button-back-black-alt.png in Resources */,
+				7870A0F1187D4637009250FB /* navbar-button-blue@2x.png in Resources */,
 				11AF3B0F18168CB200B36176 /* login_txtBack.png in Resources */,
 				1194023A182360EB00F21FB8 /* M-1.png in Resources */,
 				119366D5184C34AB008D2FA2 /* leftUpHE.png in Resources */,
@@ -1784,6 +1810,7 @@
 				11B852A6183221CF005FA5B9 /* navigationNoText@2x.png in Resources */,
 				11AF3B1718168F3400B36176 /* login_selBtn.png in Resources */,
 				11BF897918363CF7008E72F0 /* homeNotice.png in Resources */,
+				7870A0FC187E44A2009250FB /* save_default.png in Resources */,
 				1194023F182360EB00F21FB8 /* M-6.png in Resources */,
 				119F0CB6181A2D5B00A5910C /* back.png in Resources */,
 				1165E27C182CFCE000B60A81 /* pic-2.png in Resources */,
@@ -1873,6 +1900,7 @@
 				1192E401181B6CE200C5F33B /* GKWebViewController.m in Sources */,
 				119E961C1814C5A300866DE8 /* ASIFormDataRequest.m in Sources */,
 				11B852C918335275005FA5B9 /* ETShowBigImageViewController.m in Sources */,
+				7870A104187E4A48009250FB /* GKCoreDataManager.m in Sources */,
 				1155E92B1856BC75005D09C1 /* KKNavigationController.m in Sources */,
 				2AFFF36E181232B60045BFD0 /* AVCamCaptureManager.m in Sources */,
 				119E962F1814C5A300866DE8 /* ASIS3ServiceRequest.m in Sources */,
@@ -1912,6 +1940,7 @@
 				119E962D1814C5A300866DE8 /* ASIS3ObjectRequest.m in Sources */,
 				11EFE1F11817EEF7009CE69F /* SRRefreshView.m in Sources */,
 				119E96251814C5A300866DE8 /* ASICloudFilesObject.m in Sources */,
+				7870A0F5187D54C1009250FB /* UpLoader.m in Sources */,
 				111E8CE2181E532400234014 /* SDWebImageDecoder.m in Sources */,
 				11B852CA18335275005FA5B9 /* GKShowViewController.m in Sources */,
 				114B59021821220E00163A4A /* GKShowBigImageViewController.m in Sources */,
@@ -1954,7 +1983,6 @@
 				119EA9BE181616990070DBF1 /* GKImagePickerViewController.m in Sources */,
 				119E96261814C5A300866DE8 /* ASICloudFilesObjectRequest.m in Sources */,
 				119973431822094F0017E99A /* GKMarketCell.m in Sources */,
-				119AC2701839C30000ED19D3 /* UpLoader.m in Sources */,
 				111E8CE3181E532400234014 /* SDWebImageDownloader.m in Sources */,
 				111E8CE0181E532400234014 /* SDImageCache.m in Sources */,
 				11D40E3818618D1B003009D0 /* GKRePasswordViewController.m in Sources */,
@@ -1981,6 +2009,7 @@
 				2AFFF35318122D8B0045BFD0 /* GKMainViewController.m in Sources */,
 				2AFFF370181232B60045BFD0 /* AVCamViewController.m in Sources */,
 				119E96241814C5A300866DE8 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
+				7870A101187E4945009250FB /* MovieDraft.m in Sources */,
 				111E8CE4181E532400234014 /* SDWebImageDownloaderOperation.m in Sources */,
 				119F0C96181A0AFC00A5910C /* GKButton.m in Sources */,
 			);
@@ -2143,11 +2172,12 @@
 		119AC2711839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				7870A0FE187E454F009250FB /* SchoolBusPhoto 4.xcdatamodel */,
 				11AC07F4186A8BD70080FCC4 /* SchoolBusPhoto 3.xcdatamodel */,
 				119AC2741839C39300ED19D3 /* SchoolBusPhoto 2.xcdatamodel */,
 				119AC2721839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodel */,
 			);
-			currentVersion = 11AC07F4186A8BD70080FCC4 /* SchoolBusPhoto 3.xcdatamodel */;
+			currentVersion = 7870A0FE187E454F009250FB /* SchoolBusPhoto 4.xcdatamodel */;
 			path = SchoolBusPhoto.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

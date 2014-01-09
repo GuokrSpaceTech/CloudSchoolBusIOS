@@ -156,6 +156,9 @@
 }
 -(void)takePhoto:(UIButton *)btn
 {
+//    UIImagePickerController *p = [[UIImagePickerController alloc] init];
+//    p.sourceType = UIImagePickerControllerSourceTypeCamera;
+//    [self presentModalViewController:p animated:YES];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[GKImagePickerController alloc] init]];
     [self presentViewController:nav animated:YES completion:nil];
     /*

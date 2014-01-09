@@ -9,7 +9,7 @@
 #import "GKNoticeCell.h"
 
 @implementation GKNoticeCell
-
+@synthesize titleLable,timeLabel,contentlabel;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -25,5 +25,11 @@
 
     // Configure the view for the selected state
 }
-
+-(void)dealloc
+{
+    self.titleLable=nil;
+    self.timeLabel=nil;
+    self.contentlabel=nil;
+    [super dealloc];
+}
 @end

@@ -11,5 +11,10 @@
 @interface GKNoticeCell : UITableViewCell
 {
     UILabel *titleLable;
+    UILabel *contentlabel;
+    UILabel *timeLabel;
 }
+@property (nonatomic,retain)  UILabel *titleLable;
+@property (nonatomic,retain)  UILabel *contentlabel;
+@property (nonatomic,retain)  UILabel *timeLabel;
 @end

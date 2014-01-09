@@ -16,7 +16,7 @@
 
 @property (nonatomic,retain)Student *st;
 @property (nonatomic,retain)UITableView *_tableView;
-@property (nonatomic,retain)NSArray *arr;
+//@property (nonatomic,retain)NSArray *arr;
 
 @property (nonatomic,retain)NSString *tempSexOrBirthday;// 要修改为的生日或性别
 @end

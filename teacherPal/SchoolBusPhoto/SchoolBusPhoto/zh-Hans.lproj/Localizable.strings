@@ -60,7 +60,7 @@
 "leftUpN"="leftUpN.png";
 "leftUpH"="leftupH.png";
 
-
+"avator"="头像";
 
 "avatorM"="修改头像";
 "choose"="从手机相册中选择";
@@ -157,3 +157,16 @@
 "prince"="男孩";
 "Gender"="性别";
 "rightdate" = "请设置正确的生日日期";
+"birthday"="生日";
+
+"nickName1"="昵称";
+"realName"="姓名";
+"wrong"="学生信息错误，请联系客服";
+"student"="学生列表";
+"detail"="详细资料";
+"class"="班级";
+
+"classFen"="班级积分";
+"uploadQ"="上传列表";
+"studentQ"="班级学生";
+

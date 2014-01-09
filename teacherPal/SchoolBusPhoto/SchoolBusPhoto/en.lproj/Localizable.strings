@@ -48,7 +48,7 @@
 
 "homenoticetitle"="New Notice";
 
-
+"avator"="Avator";
 "avatorM"="Change Avadar";
 
 "choose"="Choose Existing";
@@ -156,3 +156,17 @@
 "prince"="Prince";
 "Gender"="Gender";
 "rightdate" = "Please set the correct birthday";
+"birthday"="Birthday";
+
+"nickName1"="NickName";
+"realName"="Name";
+"wrong"="Student information is wrong, please contact customer service";
+
+"student"="Student";
+"detail"="Detail";
+"class"="Class";
+
+
+"classFen"="Points";
+"uploadQ"="Uploading";
+"studentQ"="Student";

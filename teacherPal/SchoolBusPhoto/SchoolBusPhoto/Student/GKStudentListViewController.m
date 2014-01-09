@@ -47,7 +47,7 @@
     [buttonBack addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     
 
-    titlelabel.text=@"班级学生";
+    titlelabel.text=NSLocalizedString(@"student", @"");
     GKUserLogin *user=[GKUserLogin currentLogin];
     
     self.studentArr= user.studentArr;
@@ -136,7 +136,15 @@
     nameLabel.text=st.cnname;;
    
     UILabel *ageLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+2];
-    ageLabel.text=[NSString stringWithFormat:@"%@岁",st.age];
+    if([st.uid integerValue]==0)
+    {
+        ageLabel.text=[NSString stringWithFormat:@"%@",@"未激活"];
+    }
+    else
+    {
+        ageLabel.text=[NSString stringWithFormat:@"%@岁",st.age];
+    }
+    
     return cell;
     
 }

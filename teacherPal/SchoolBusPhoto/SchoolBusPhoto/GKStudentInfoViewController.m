@@ -22,7 +22,7 @@
 @implementation GKStudentInfoViewController
 @synthesize st;
 @synthesize _tableView;
-@synthesize arr;
+//@synthesize arr;
 @synthesize tempSexOrBirthday;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,7 +37,9 @@
 {
     [super viewDidLoad];
     
-    titlelabel.text=@"详细资料";
+    titlelabel.text=NSLocalizedString(@"detail", @"");
+
+    
     UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeRoundedRect];
     buttonBack.frame=CGRectMake(10, 5, 34, 35);
     [buttonBack setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
@@ -55,7 +57,7 @@
     [self.view addSubview:_tableView];
     
     
-    self.arr=[NSArray arrayWithObjects:@"头像",@"昵称",@"性别",@"生日", nil];
+  //  self.arr=[NSArray arrayWithObjects:@"头像",@"昵称",@"性别",@"生日", nil];
     
 	// Do any additional setup after loading the view.
 }
@@ -74,9 +76,9 @@
     if(section==0)
         return 1;
     else
-        return [arr count];
+        return 3;
 }
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+ -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
     static NSString *cellIdentifier=@"cell";
@@ -129,40 +131,48 @@
     {
         cell.accessoryType=UITableViewCellAccessoryNone;
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        nameLabel.text=@"姓名";
+        nameLabel.text=NSLocalizedString(@"realName", @"");
         realLabel.text=st.cnname;
     }
     else
     {
+        
+//        "Princess"="女孩";
+//        "prince"="男孩";
+//        "Gender"="性别";
+        
           cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         switch (indexPath.row) {
             case 0:
-                nameLabel.text=@"头像";
+                nameLabel.text=NSLocalizedString(@"avator", @"");
                 //(10, 11, 100, 20)];
                 [imageView setImageWithURL:[NSURL URLWithString:st.avatar]];
                 nameLabel.frame=CGRectMake(10, 20, 100, 20);
                 
                 break;
             case 1:
-                nameLabel.text=@"昵称";
+               
+                nameLabel.text=NSLocalizedString(@"nickName1", @"");
                 realLabel.text=st.enname;
                 break;
             case 2:
-                nameLabel.text=@"性别";
+                nameLabel.text=NSLocalizedString(@"Gender", @"");
                 
                 switch ([st.sex intValue]) {
                     case 2:
-                      realLabel.text=@"小公主";
+                      realLabel.text=NSLocalizedString(@"Princess", @"");
                         break;
                     case 1:
-                      realLabel.text=@"小王子";
+                      realLabel.text=NSLocalizedString(@"prince", @"");
                         break;
+                        
                     default:
                         break;
                 }
                 break;
             case 3:
-                nameLabel.text=@"生日";
+                
+                nameLabel.text=NSLocalizedString(@"birthday", @"");
                 realLabel.text=st.birthday;
                 break;
             default:
@@ -283,7 +293,7 @@
             
             //    NSDictionary *dic=[[NSDictionary alloc]initWithObjectsAndKeys:[NSNumber numberWithInt:sex],@"sex",birthdayField.text,@"birthday",nickField.text,@"enname",_student.studentid,@"studentid"  ,nil];
             
-            if([st.sex integerValue]==2)//如果学生是女
+            if([st.sex integerValue]==2 || [st.sex integerValue]==0)//如果学生是女
             {
                 //修改为男
                 NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"sex",st.studentid,@"studentid",st.uid,@"uid" , nil];
@@ -296,7 +306,7 @@
         else if(buttonIndex==1)
         {
             //女
-            if([st.sex integerValue]==1)
+            if([st.sex integerValue]==1|| [st.sex integerValue]==0)
             {
                 NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"sex",st.studentid,@"studentid",st.uid,@"uid" ,nil];
                 [[EKRequest Instance] EKHTTPRequest:student parameters:param requestMethod:POST forDelegate:self];
@@ -423,13 +433,15 @@
         }
         if(code==-2)
         {
-            UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"alert", @"无uid 没有付费") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+            //
+            
+            UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"wrong", @"无uid 没有付费") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
             [alertView show];
             [alertView release];
         }
         if(code==-41)
         {
-            UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"alert", @"没有修改内容") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+            UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"change", @"没有修改内容") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
             [alertView show];
             [alertView release];
         }
@@ -462,7 +474,7 @@
 {
     self.st=nil;
     self._tableView=nil;
-    self.arr=nil;
+    //self.arr=nil;
     self.tempSexOrBirthday=nil;
     [super dealloc];
 }

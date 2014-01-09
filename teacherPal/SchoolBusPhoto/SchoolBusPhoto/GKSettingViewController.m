@@ -9,7 +9,7 @@
 #import "GKSettingViewController.h"
 #import "GKMainViewController.h"
 #import "KKNavigationController.h"
-
+#import "GKHelpSupportViewController.h"
 #import "GKRePasswordViewController.h"
 #import "GKAboutViewController.h"
 @interface GKSettingViewController ()
@@ -58,7 +58,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 3;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -73,11 +73,10 @@
     if(indexPath.row==0)
         cell.textLabel.text=NSLocalizedString(@"passwordalter", @"");
     else if(indexPath.row==1)
-        cell.textLabel.text=NSLocalizedString(@"feedBack", @"");
-    else if(indexPath.row==2)
         cell.textLabel.text=NSLocalizedString(@"aboutus", @"");
-    else
+    else if(indexPath.row==2)
         cell.textLabel.text=NSLocalizedString(@"helpSupport", @"");
+
 
     return cell;
     
@@ -91,16 +90,13 @@
             VC=[[GKRePasswordViewController alloc]init];
             break;
         case 1:
-             VC=[[GKRePasswordViewController alloc]init];
+             VC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];
             break;
         case 2:
-            //VC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];
-            VC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];
+            VC=[[GKHelpSupportViewController alloc]init];
+            
             break;
-        case 3:
-            VC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];
-            break;
-        default:
+              default:
             break;
     }
     

@@ -7,7 +7,7 @@
 //
 
 #import "GKWebViewController.h"
-
+#import "KKNavigationController.h"
 @interface GKWebViewController ()
 
 @end
@@ -49,6 +49,11 @@
     [webController loadRequest:request];
     [self.view addSubview:webController];
 	// Do any additional setup after loading the view.
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
 }
 -(void)leftClick:(UIButton *)btn
 {

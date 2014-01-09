@@ -166,7 +166,7 @@
             }
             else if(code==-4)
             {
-                [self Failedresult:NSLocalizedString(@"otherErr", @"新旧密码不能相同")];
+                [self Failedresult:NSLocalizedString(@"diff", @"新旧密码不能相同")];
             }
             else
             {

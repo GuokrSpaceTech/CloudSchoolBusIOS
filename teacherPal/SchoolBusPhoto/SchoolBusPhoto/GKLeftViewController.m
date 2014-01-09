@@ -14,6 +14,7 @@
 #import "GKNoticeViewController.h"
 #import "KKNavigationController.h"
 #import "GKAlumbViewController.h"
+#import "GKAboutViewController.h"
 @interface GKLeftViewController ()
 
 @end
@@ -300,7 +301,6 @@
     {
 
 
-        
         GKSettingViewController *settingVC=[[GKSettingViewController alloc]init];
         KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:settingVC];
         [settingVC release];

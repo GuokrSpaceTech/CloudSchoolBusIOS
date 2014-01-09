@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GKBaseViewController.h"
-@interface GKSettingViewController : GKBaseViewController
+@interface GKSettingViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,retain)UITableView *_tableView;
+
 @end

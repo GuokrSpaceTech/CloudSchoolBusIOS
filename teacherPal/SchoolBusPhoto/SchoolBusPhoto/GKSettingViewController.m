@@ -9,6 +9,9 @@
 #import "GKSettingViewController.h"
 #import "GKMainViewController.h"
 #import "KKNavigationController.h"
+
+#import "GKRePasswordViewController.h"
+#import "GKAboutViewController.h"
 @interface GKSettingViewController ()
 
 @end
@@ -27,7 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    titlelabel.text=@"设置";
+    titlelabel.text=NSLocalizedString(@"leftSetting", @"");
     
     UIButton *buttom=[UIButton buttonWithType:UIButtonTypeRoundedRect];
     buttom.frame=CGRectMake(10, 5, 34, 35);
@@ -38,7 +41,13 @@
     [buttom addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
     [navigationView addSubview:buttom];
 
-    
+    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, navigationView.frame.size.height+navigationView.frame.origin.y, 320, self.view.frame.size.height-( navigationView.frame.size.height+navigationView.frame.origin.y)) style:UITableViewStyleGrouped];
+    _tableView.backgroundColor=[UIColor clearColor];
+    _tableView.backgroundView=nil;
+    _tableView.backgroundColor=[UIColor colorWithRed:232/255.0 green:229/255.0 blue:220/255.0 alpha:1];
+    _tableView.delegate=self;
+    _tableView.dataSource=self;
+    [self.view addSubview:_tableView];
     
 	// Do any additional setup after loading the view.
 }
@@ -47,6 +56,59 @@
     [super viewWillAppear:animated];
     [(KKNavigationController *)self.navigationController setNavigationTouch:NO];
 }
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 4;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier=@"cell";
+    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if(cell==nil)
+    {
+        cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+        
+    }
+    if(indexPath.row==0)
+        cell.textLabel.text=NSLocalizedString(@"passwordalter", @"");
+    else if(indexPath.row==1)
+        cell.textLabel.text=NSLocalizedString(@"feedBack", @"");
+    else if(indexPath.row==2)
+        cell.textLabel.text=NSLocalizedString(@"aboutus", @"");
+    else
+        cell.textLabel.text=NSLocalizedString(@"helpSupport", @"");
+
+    return cell;
+    
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UIViewController *VC=nil;
+    switch (indexPath.row) {
+        case 0:
+            VC=[[GKRePasswordViewController alloc]init];
+            break;
+        case 1:
+             VC=[[GKRePasswordViewController alloc]init];
+            break;
+        case 2:
+            //VC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];
+            VC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];
+            break;
+        case 3:
+            VC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];
+            break;
+        default:
+            break;
+    }
+    
+    [self.navigationController pushViewController:VC animated:YES];
+    [VC release];
+    
+}
+
 -(void)leftClick:(UIButton *)btn
 {
     

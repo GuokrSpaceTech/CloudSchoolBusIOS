@@ -39,6 +39,8 @@
 "story" = "Say something";
 "shengji"="Update";
 "Lang"="1";
+
+
 "versionUp"="New Version";
 "cancel" = "Cancel";
 "emailno"="Please setting email";
@@ -158,6 +160,7 @@
 "rightdate" = "Please set the correct birthday";
 "birthday"="Birthday";
 
+
 "nickName1"="NickName";
 "realName"="Name";
 "wrong"="Student information is wrong, please contact customer service";
@@ -170,3 +173,7 @@
 "classFen"="Points";
 "uploadQ"="Uploading";
 "studentQ"="Student";
+"leftSetting"="Settings";
+
+"feedBack"="FeedBack";
+"helpSupport"="Support";

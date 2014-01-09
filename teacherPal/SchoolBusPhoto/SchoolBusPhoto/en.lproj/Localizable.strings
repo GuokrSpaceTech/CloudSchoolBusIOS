@@ -30,15 +30,17 @@
 "year"="";
 
 "notice"="noticeNormalE.png";
-"count"="countNormalE.png";
+//"count"="countNormalE.png";
 "about"="aboutNormalE.png";
 
 "noticeH"="noticeE.png";
-"countH"="countE.png";
+//"countH"="countE.png";
 "aboutH"="aboutE.png";
 "story" = "Say something";
 "shengji"="Update";
 "Lang"="1";
+
+
 "versionUp"="New Version";
 "cancel" = "Cancel";
 "emailno"="Please setting email";
@@ -48,7 +50,7 @@
 
 "homenoticetitle"="New Notice";
 
-
+"avator"="Avator";
 "avatorM"="Change Avadar";
 
 "choose"="Choose Existing";
@@ -143,3 +145,35 @@
 "processingafter"="Uploading is in progress, check the details by tapping the 'Upload Q' on the left side menu.";
 
 "Cancelphotos"="Cancel sending this photos？";
+
+
+"grade"="gradeE.png";
+"gradeH"="gradeEH.png";
+"setting"="settingE.png";
+"settingH"="settingEH.png";
+
+
+
+"Princess"="Princess";
+"prince"="Prince";
+"Gender"="Gender";
+"rightdate" = "Please set the correct birthday";
+"birthday"="Birthday";
+
+
+"nickName1"="NickName";
+"realName"="Name";
+"wrong"="Student information is wrong, please contact customer service";
+
+"student"="Student";
+"detail"="Detail";
+"class"="Class";
+
+
+"classFen"="Points";
+"uploadQ"="Uploading";
+"studentQ"="Student";
+"leftSetting"="Settings";
+
+"feedBack"="FeedBack";
+"helpSupport"="Support";

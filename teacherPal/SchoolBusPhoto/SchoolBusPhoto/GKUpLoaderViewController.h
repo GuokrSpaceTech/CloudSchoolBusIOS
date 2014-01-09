@@ -14,7 +14,7 @@
 #import "GKFindWraper.h"
 #import "GKUpWraper.h"
 #import "GKBaseViewController.h"
-#import "GKMainViewController.h"
+
 #import "EKRequest.h"
 @interface GKUpLoaderViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate,EKProtocol>
 {

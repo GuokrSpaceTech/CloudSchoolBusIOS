@@ -167,7 +167,6 @@
 		11A3BF48187567E20032BA07 /* GKStudentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A3BF47187567E20032BA07 /* GKStudentListViewController.m */; };
 		11A3BF4B18756A3A0032BA07 /* GKStudentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A3BF4A18756A3A0032BA07 /* GKStudentInfoViewController.m */; };
 		11A5A888187B986600EA22CD /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A886187B986600EA22CD /* setting.png */; };
-		11A5A889187B986600EA22CD /* settingH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A887187B986600EA22CD /* settingH.png */; };
 		11A5A88C187B988B00EA22CD /* grade.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A88A187B988B00EA22CD /* grade.png */; };
 		11A5A88D187B988B00EA22CD /* gradeH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A88B187B988B00EA22CD /* gradeH.png */; };
 		11A5A890187B9E2500EA22CD /* gradeEH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A88E187B9E2500EA22CD /* gradeEH.png */; };
@@ -176,7 +175,6 @@
 		11A5A895187B9E5100EA22CD /* settingE.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A893187B9E5100EA22CD /* settingE.png */; };
 		11A5A898187BBC9F00EA22CD /* MTCustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A5A896187BBC9F00EA22CD /* MTCustomActionSheet.m */; };
 		11A5AE64186438FA008794C0 /* applyAll.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE63186438FA008794C0 /* applyAll.png */; };
-		11A5AE6618643C94008794C0 /* Tophoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE6518643C94008794C0 /* Tophoto.png */; };
 		11A5AE6818644125008794C0 /* smilik.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE6718644125008794C0 /* smilik.png */; };
 		11AF3AE91816655B00B36176 /* navBarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AE81816655B00B36176 /* navBarImage.png */; };
 		11AF3AEB18166AB200B36176 /* navLeftBtn_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AEA18166AB200B36176 /* navLeftBtn_default.png */; };
@@ -275,7 +273,6 @@
 		11EFE1F01817EEF7009CE69F /* sr_refresh@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 11EFE1E91817EEF7009CE69F /* sr_refresh@2X.png */; };
 		11EFE1F11817EEF7009CE69F /* SRRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFE1EC1817EEF7009CE69F /* SRRefreshView.m */; };
 		11EFE1F21817EEF7009CE69F /* SRSlimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFE1EE1817EEF7009CE69F /* SRSlimeView.m */; };
-		11FC0F3A182C90D200442EF6 /* qipao-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11FC0F39182C90D200442EF6 /* qipao-2@2x.png */; };
 		11FC0F3C182C90DE00442EF6 /* qipao1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11FC0F3B182C90DE00442EF6 /* qipao1@2x.png */; };
 		11FC0F40182C9ECC00442EF6 /* scoreBack_new.png in Resources */ = {isa = PBXBuildFile; fileRef = 11FC0F3D182C9ECC00442EF6 /* scoreBack_new.png */; };
 		11FC0F41182C9ECC00442EF6 /* scoreBtn_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 11FC0F3E182C9ECC00442EF6 /* scoreBtn_default.png */; };
@@ -365,6 +362,8 @@
 		7870A0FD187E44A2009250FB /* save_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A0FB187E44A2009250FB /* save_active.png */; };
 		7870A101187E4945009250FB /* MovieDraft.m in Sources */ = {isa = PBXBuildFile; fileRef = 7870A100187E4945009250FB /* MovieDraft.m */; };
 		7870A104187E4A48009250FB /* GKCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7870A103187E4A48009250FB /* GKCoreDataManager.m */; };
+		7870A106187E97EE009250FB /* settingH.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A105187E97EE009250FB /* settingH.png */; };
+		7870A108187E9852009250FB /* Tophoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A107187E9852009250FB /* Tophoto.png */; };
 		E797189A18798BAB00353BAF /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E797189418798BAB00353BAF /* libTestFlight.a */; };
 		E797189B18798BAB00353BAF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E797189518798BAB00353BAF /* README.md */; };
 		E797189C18798BAB00353BAF /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = E797189618798BAB00353BAF /* release_notes.md */; };
@@ -622,7 +621,6 @@
 		11A3BF4918756A3A0032BA07 /* GKStudentInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKStudentInfoViewController.h; sourceTree = "<group>"; };
 		11A3BF4A18756A3A0032BA07 /* GKStudentInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKStudentInfoViewController.m; sourceTree = "<group>"; };
 		11A5A886187B986600EA22CD /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
-		11A5A887187B986600EA22CD /* settingH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingH.png; sourceTree = "<group>"; };
 		11A5A88A187B988B00EA22CD /* grade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grade.png; sourceTree = "<group>"; };
 		11A5A88B187B988B00EA22CD /* gradeH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradeH.png; sourceTree = "<group>"; };
 		11A5A88E187B9E2500EA22CD /* gradeEH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradeEH.png; sourceTree = "<group>"; };
@@ -632,7 +630,6 @@
 		11A5A896187BBC9F00EA22CD /* MTCustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCustomActionSheet.m; sourceTree = "<group>"; };
 		11A5A897187BBC9F00EA22CD /* MTCustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCustomActionSheet.h; sourceTree = "<group>"; };
 		11A5AE63186438FA008794C0 /* applyAll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applyAll.png; sourceTree = "<group>"; };
-		11A5AE6518643C94008794C0 /* Tophoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tophoto.png; sourceTree = "<group>"; };
 		11A5AE6718644125008794C0 /* smilik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smilik.png; sourceTree = "<group>"; };
 		11AC07F4186A8BD70080FCC4 /* SchoolBusPhoto 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 3.xcdatamodel"; sourceTree = "<group>"; };
 		11AF3AE81816655B00B36176 /* navBarImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBarImage.png; sourceTree = "<group>"; };
@@ -864,11 +861,13 @@
 		7870A0F4187D54C1009250FB /* UpLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpLoader.m; sourceTree = "<group>"; };
 		7870A0FA187E44A2009250FB /* save_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_default.png; sourceTree = "<group>"; };
 		7870A0FB187E44A2009250FB /* save_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_active.png; sourceTree = "<group>"; };
-		7870A0FE187E454F009250FB /* SchoolBusPhoto 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SchoolBusPhoto 4.xcdatamodel"; sourceTree = "<group>"; };
+		7870A0FE187E454F009250FB /* SchoolBusPhoto 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 4.xcdatamodel"; sourceTree = "<group>"; };
 		7870A0FF187E4945009250FB /* MovieDraft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDraft.h; sourceTree = "<group>"; };
 		7870A100187E4945009250FB /* MovieDraft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDraft.m; sourceTree = "<group>"; };
 		7870A102187E4A48009250FB /* GKCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCoreDataManager.h; sourceTree = "<group>"; };
 		7870A103187E4A48009250FB /* GKCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCoreDataManager.m; sourceTree = "<group>"; };
+		7870A105187E97EE009250FB /* settingH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingH.png; sourceTree = "<group>"; };
+		7870A107187E9852009250FB /* Tophoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tophoto.png; sourceTree = "<group>"; };
 		E797189418798BAB00353BAF /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		E797189518798BAB00353BAF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E797189618798BAB00353BAF /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
@@ -1247,6 +1246,8 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				7870A107187E9852009250FB /* Tophoto.png */,
+				7870A105187E97EE009250FB /* settingH.png */,
 				7870A0FA187E44A2009250FB /* save_default.png */,
 				7870A0FB187E44A2009250FB /* save_active.png */,
 				7870A0EF187D4636009250FB /* navbar-button-blue@2x.png */,
@@ -1765,7 +1766,6 @@
 				78709C11187D1733009250FB /* camera-tray-cover.png in Resources */,
 				78709C12187D1733009250FB /* edit-filters-normal.png in Resources */,
 				7870A0FD187E44A2009250FB /* save_active.png in Resources */,
-				11DB02DB18337552007981C6 /* count.png in Resources */,
 				11FC0F41182C9ECC00442EF6 /* scoreBtn_default.png in Resources */,
 				11DB02E2183379AF007981C6 /* send_24.png in Resources */,
 				78709C07187D1733009250FB /* camera-handle-video.png in Resources */,
@@ -1775,7 +1775,6 @@
 				1193A6AB182B6BA0004011BC /* countInput.png in Resources */,
 				2A32A57318122C02007CAA8E /* Default@2x.png in Resources */,
 				78709C0B187D1733009250FB /* camera-progress-background@2x.png in Resources */,
-				11DB02F91833A0AA007981C6 /* countNormalE.png in Resources */,
 				119571A0183B464700CE9F1B /* NOData.png in Resources */,
 				11BF898B18364594008E72F0 /* tishi.png in Resources */,
 				11DB02E3183379AF007981C6 /* send_23.png in Resources */,
@@ -1797,7 +1796,7 @@
 				11BF898518363F5C008E72F0 /* sendNoticeH.png in Resources */,
 				1194023218235F6100F21FB8 /* box-1.png in Resources */,
 				11A5A88C187B988B00EA22CD /* grade.png in Resources */,
-				11A5A889187B986600EA22CD /* settingH.png in Resources */,
+				7870A106187E97EE009250FB /* settingH.png in Resources */,
 				2A32A57518122C02007CAA8E /* Default-568h@2x.png in Resources */,
 				2A32A58218122C25007CAA8E /* GKLoginViewController.xib in Resources */,
 				11FC0F3C182C90DE00442EF6 /* qipao1@2x.png in Resources */,
@@ -1806,7 +1805,6 @@
 				1193A6B8182B9225004011BC /* photoBtn.png in Resources */,
 				78709BFD187D1733009250FB /* camera-backspace-default-default@2x.png in Resources */,
 				78709BCC187D16CA009250FB /* GKSendMediaViewController.xib in Resources */,
-				11DB02DA18337552007981C6 /* countNormal.png in Resources */,
 				78709C06187D1733009250FB /* camera-handle-photo.png in Resources */,
 				1193A6C5182C785B004011BC /* 谁在照片里_05.png in Resources */,
 				78709C29187D1779009250FB /* camera-backspace-confirm-active@2x.png in Resources */,
@@ -1854,7 +1852,6 @@
 				1194023D182360EB00F21FB8 /* M-4.png in Resources */,
 				11B852D4183368A0005FA5B9 /* mail.png in Resources */,
 				11B852A8183221CF005FA5B9 /* OKBtn.png in Resources */,
-				11A5AE6618643C94008794C0 /* Tophoto.png in Resources */,
 				11DB02E518337ACF007981C6 /* loginOUt.png in Resources */,
 				1102A7FB181A5E1200E6295C /* guanlianbottom.png in Resources */,
 				11E27F8A183C643600CAE0BB /* helperE.png in Resources */,
@@ -1893,6 +1890,7 @@
 				1193A6BF182BAF0C004011BC /* letterLine.png in Resources */,
 				119F0CBA181A2FA700A5910C /* guanyu-1.png in Resources */,
 				11B852A5183221CF005FA5B9 /* navBar.png in Resources */,
+				7870A108187E9852009250FB /* Tophoto.png in Resources */,
 				78709C04187D1733009250FB /* camera-glyph-flash-off.png in Resources */,
 				11DB02E718337EB3007981C6 /* OK.png in Resources */,
 				78709C21187D1733009250FB /* navbar-button-green-disabled.png in Resources */,

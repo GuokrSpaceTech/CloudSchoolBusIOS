@@ -31,24 +31,20 @@
     return self;
 }
 
--(void)viewDidAppear:(BOOL)animated
+-(void)back:(UIButton *)btn
 {
-    [super viewDidAppear:animated];
-    [(KKNavigationController *)self.navigationController setNavigationTouch:NO];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIButton *buttom=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    buttom.frame=CGRectMake(10, 5, 34, 35);
-    //UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 34, 35)];
-    [buttom setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"back")) forState:UIControlStateNormal];
-    [buttom setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"backH")) forState:UIControlStateHighlighted];
-    buttom.tag=0;
-    [buttom addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
-    [navigationView addSubview:buttom];
-
- //    [user addObserver:self forKeyPath:@"credit_orders" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+    //    [user addObserver:self forKeyPath:@"credit_orders" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
 //    [user addObserver:self forKeyPath:@"credit" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     titlelabel.text=NSLocalizedString(@"credits", @"");
     
@@ -56,7 +52,14 @@
 //    girdView.backgroundColor=[UIColor redColor];
 //    [self.view addSubview:girdView];
     
-  
+    UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    buttonBack.frame=CGRectMake(10, 5, 34, 35);
+    [buttonBack setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    [buttonBack setBackgroundImage:[UIImage imageNamed:@"backH.png"] forState:UIControlStateHighlighted];
+    [navigationView addSubview:buttonBack];
+    [buttonBack addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    
+
     
     UIView *BGView=[[UIView alloc]initWithFrame:CGRectMake(0, navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
     BGView.backgroundColor=[UIColor colorWithRed:237/255.0 green:234/255.0 blue:225/255.0 alpha:1];
@@ -384,24 +387,7 @@
     }
     
 }
--(void)leftClick:(UIButton *)btn
-{
-    
-    GKMainViewController *main=[GKMainViewController share];
-    if(main.state==0)
-    {
-        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
-            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionLeft];
-        }
-    }
-    else
-    {
-        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
-            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionNone];
-        }
-    }
-    
-}
+
 
 -(void)statisticsClick:(UIButton *)btn
 {

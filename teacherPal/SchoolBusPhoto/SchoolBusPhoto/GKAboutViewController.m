@@ -30,12 +30,20 @@
     
     self.navigationController.navigationBarHidden=YES;
     //self.view.backgroundColor=[UIColor colorWithRed:103/255.0 green:183/255.0 blue:204/255.0 alpha:1];
-    self.view.backgroundColor=[UIColor clearColor];
+   // self.view.backgroundColor=[UIColor clearColor];
     
 //    UIView *BGView=[[UIView alloc]initWithFrame:CGRectMake(0, navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
 //    BGView.backgroundColor=[UIColor colorWithRed:237/255.0 green:234/255.0 blue:225/255.0 alpha:1];
 //    [self.view addSubview:BGView];
 //    [BGView release];
+    UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    buttonBack.frame=CGRectMake(10, 5, 34, 35);
+    [buttonBack setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    [buttonBack setBackgroundImage:[UIImage imageNamed:@"backH.png"] forState:UIControlStateHighlighted];
+    [navigationView addSubview:buttonBack];
+    [buttonBack addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     
     _BGView.frame=CGRectMake(0, (iOS7?(20+46):46), 320, self.view.frame.size.height-(iOS7?(20+46):46));
     [_privaty setTitle:NSLocalizedString(@"privacyC", @"") forState:UIControlStateNormal];
@@ -44,14 +52,14 @@
     //UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 34, 35)];
     
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"back" ofType:@"png"];
-    
-    NSString *path1 = [[NSBundle mainBundle] pathForResource:@"backH" ofType:@"png"];
-    [buttom setBackgroundImage:[UIImage imageWithContentsOfFile:path] forState:UIControlStateNormal];
-    [buttom setBackgroundImage:[UIImage imageWithContentsOfFile:path1] forState:UIControlStateHighlighted];
-    buttom.tag=0;
-    [buttom addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
-    [navigationView addSubview:buttom];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"back" ofType:@"png"];
+//    
+//    NSString *path1 = [[NSBundle mainBundle] pathForResource:@"backH" ofType:@"png"];
+//    [buttom setBackgroundImage:[UIImage imageWithContentsOfFile:path] forState:UIControlStateNormal];
+//    [buttom setBackgroundImage:[UIImage imageWithContentsOfFile:path1] forState:UIControlStateHighlighted];
+//    buttom.tag=0;
+//    [buttom addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
+//    [navigationView addSubview:buttom];
     titlelabel.text=NSLocalizedString(@"aboutus", @"");
     
     NSString *logostr= [[NSBundle mainBundle] pathForResource:NSLocalizedString(@"aboutLogo", @"") ofType:@"png"];
@@ -69,29 +77,18 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [(KKNavigationController *)self.navigationController setNavigationTouch:NO];
+    [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
 }
 -(void)secretClick:(UIButton *)btn
 {
     
 }
--(void)leftClick:(UIButton *)btn
+
+
+-(void)back:(UIButton *)btn
 {
     
-    GKMainViewController *main=[GKMainViewController share];
-    if(main.state==0)
-    {
-        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
-            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionLeft];
-        }
-    }
-    else
-    {
-        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
-            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionNone];
-        }
-    }
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -100,7 +97,16 @@
 }
 
 - (IBAction)photoClick:(id)sender {
-    
+   
+    //NSLog(@"%@",[UIDevice currentDevice].model);
+    // 如果ipod touch 不支持打电话
+    if([[UIDevice currentDevice].model isEqualToString:@"iPod touch"] || [[UIDevice currentDevice].model isEqualToString:@"iPhone Simulator"] )
+    {
+        UIAlertView *alertsupport=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"nosupport", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+        [alertsupport show];
+        [alertsupport release];
+        return;
+    }
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"call", @"") message:@"18612653984" delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") otherButtonTitles:NSLocalizedString(@"OK", @""), nil];
     [alert show];
     [alert release];

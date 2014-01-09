@@ -57,7 +57,7 @@ static GKUpQueue *gkqueue=nil;
     ASIFormDataRequest * request=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:url]];
     [request addRequestHeader:@"sid" value:user._sid];
     [request addRequestHeader:@"apikey" value:@"mactoprest"];
-    [request addRequestHeader:@"Version" value:@"2.5"];
+    [request addRequestHeader:@"Version" value:CURRENTVERSION];
     [request setShouldContinueWhenAppEntersBackground:YES];
     [request setDelegate:self];
     request.uploadProgressDelegate=wrapper._progressView;

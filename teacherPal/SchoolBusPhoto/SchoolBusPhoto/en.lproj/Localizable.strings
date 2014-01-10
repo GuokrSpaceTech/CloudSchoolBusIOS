@@ -177,3 +177,11 @@
 
 "feedBack"="FeedBack";
 "helpSupport"="Support";
+
+"moviedraft" = "Draft";
+"nodata" = "No Data";
+"savedraft" = "Save";
+"dontsavedraft" = "Don't Save";
+
+"delete" = "Delete";
+"draftedit" = "Edit";

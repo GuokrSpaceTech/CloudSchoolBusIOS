@@ -384,15 +384,25 @@
 }
  */
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        NSString *stamp = [NSString stringWithFormat:@"%d", (int)[[NSDate date] timeIntervalSince1970]];
+        
+        GKUserLogin *user=[GKUserLogin currentLogin];
+        BOOL success = [GKCoreDataManager addMovieDraftWithUserid:[NSString stringWithFormat:@"%@", user.classInfo.classid] moviePath:self.moviePath dateStamp:stamp thumbnail:UIImageJPEGRepresentation(self.movieThumbnail, 0.1)];
+        NSLog(@"save draft : %d",success);
+        
+        [self.navigationController dismissModalViewControllerAnimated:YES];
+    }
+    
+}
+
 - (void)saveDraft:(id)sender
 {
-    NSString *stamp = [NSString stringWithFormat:@"%d", (int)[[NSDate date] timeIntervalSince1970]];
-    
-    GKUserLogin *user=[GKUserLogin currentLogin];
-    BOOL success = [GKCoreDataManager addMovieDraftWithUserid:[NSString stringWithFormat:@"%@", user.classInfo.classid] moviePath:self.moviePath dateStamp:stamp];
-    NSLog(@"save draft : %d",success);
-    
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert", @"") message:@"是否保存到草稿箱 ？" delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") otherButtonTitles:NSLocalizedString(@"OK", @""), nil];
+    [alert show];
 }
 
 - (void)doTap:(UIGestureRecognizer *)gesture
@@ -421,7 +431,6 @@
         default:
             break;
     }
-    
     
 }
 

@@ -360,10 +360,13 @@
 		7870A0F5187D54C1009250FB /* UpLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7870A0F4187D54C1009250FB /* UpLoader.m */; };
 		7870A0FC187E44A2009250FB /* save_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A0FA187E44A2009250FB /* save_default.png */; };
 		7870A0FD187E44A2009250FB /* save_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A0FB187E44A2009250FB /* save_active.png */; };
-		7870A101187E4945009250FB /* MovieDraft.m in Sources */ = {isa = PBXBuildFile; fileRef = 7870A100187E4945009250FB /* MovieDraft.m */; };
 		7870A104187E4A48009250FB /* GKCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7870A103187E4A48009250FB /* GKCoreDataManager.m */; };
 		7870A106187E97EE009250FB /* settingH.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A105187E97EE009250FB /* settingH.png */; };
 		7870A108187E9852009250FB /* Tophoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A107187E9852009250FB /* Tophoto.png */; };
+		7888190E187F996500D0A851 /* 草稿箱@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7888190D187F996500D0A851 /* 草稿箱@2x.png */; };
+		78881912187F9A2600D0A851 /* GKDraftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78881910187F9A2600D0A851 /* GKDraftViewController.m */; };
+		78881913187F9A2600D0A851 /* GKDraftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78881911187F9A2600D0A851 /* GKDraftViewController.xib */; };
+		78881916187F9E0B00D0A851 /* MovieDraft.m in Sources */ = {isa = PBXBuildFile; fileRef = 78881915187F9E0B00D0A851 /* MovieDraft.m */; };
 		E797189A18798BAB00353BAF /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E797189418798BAB00353BAF /* libTestFlight.a */; };
 		E797189B18798BAB00353BAF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E797189518798BAB00353BAF /* README.md */; };
 		E797189C18798BAB00353BAF /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = E797189618798BAB00353BAF /* release_notes.md */; };
@@ -862,12 +865,16 @@
 		7870A0FA187E44A2009250FB /* save_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_default.png; sourceTree = "<group>"; };
 		7870A0FB187E44A2009250FB /* save_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_active.png; sourceTree = "<group>"; };
 		7870A0FE187E454F009250FB /* SchoolBusPhoto 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 4.xcdatamodel"; sourceTree = "<group>"; };
-		7870A0FF187E4945009250FB /* MovieDraft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDraft.h; sourceTree = "<group>"; };
-		7870A100187E4945009250FB /* MovieDraft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDraft.m; sourceTree = "<group>"; };
 		7870A102187E4A48009250FB /* GKCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCoreDataManager.h; sourceTree = "<group>"; };
 		7870A103187E4A48009250FB /* GKCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCoreDataManager.m; sourceTree = "<group>"; };
 		7870A105187E97EE009250FB /* settingH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingH.png; sourceTree = "<group>"; };
 		7870A107187E9852009250FB /* Tophoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tophoto.png; sourceTree = "<group>"; };
+		7888190D187F996500D0A851 /* 草稿箱@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "草稿箱@2x.png"; sourceTree = "<group>"; };
+		7888190F187F9A2600D0A851 /* GKDraftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKDraftViewController.h; sourceTree = "<group>"; };
+		78881910187F9A2600D0A851 /* GKDraftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKDraftViewController.m; sourceTree = "<group>"; };
+		78881911187F9A2600D0A851 /* GKDraftViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKDraftViewController.xib; sourceTree = "<group>"; };
+		78881914187F9E0B00D0A851 /* MovieDraft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDraft.h; sourceTree = "<group>"; };
+		78881915187F9E0B00D0A851 /* MovieDraft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDraft.m; sourceTree = "<group>"; };
 		E797189418798BAB00353BAF /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		E797189518798BAB00353BAF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E797189618798BAB00353BAF /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
@@ -1120,10 +1127,10 @@
 				11B852AD1833243E005FA5B9 /* GKUpObject.m */,
 				7870A0F3187D54C1009250FB /* UpLoader.h */,
 				7870A0F4187D54C1009250FB /* UpLoader.m */,
-				7870A0FF187E4945009250FB /* MovieDraft.h */,
-				7870A100187E4945009250FB /* MovieDraft.m */,
 				7870A102187E4A48009250FB /* GKCoreDataManager.h */,
 				7870A103187E4A48009250FB /* GKCoreDataManager.m */,
+				78881914187F9E0B00D0A851 /* MovieDraft.h */,
+				78881915187F9E0B00D0A851 /* MovieDraft.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1246,6 +1253,7 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				7888190D187F996500D0A851 /* 草稿箱@2x.png */,
 				7870A107187E9852009250FB /* Tophoto.png */,
 				7870A105187E97EE009250FB /* settingH.png */,
 				7870A0FA187E44A2009250FB /* save_default.png */,
@@ -1403,6 +1411,9 @@
 				11A3BF4A18756A3A0032BA07 /* GKStudentInfoViewController.m */,
 				11A2BF431876560D00E321F3 /* GKClassViewController.h */,
 				11A2BF441876560D00E321F3 /* GKClassViewController.m */,
+				7888190F187F9A2600D0A851 /* GKDraftViewController.h */,
+				78881910187F9A2600D0A851 /* GKDraftViewController.m */,
+				78881911187F9A2600D0A851 /* GKDraftViewController.xib */,
 			);
 			name = Student;
 			sourceTree = "<group>";
@@ -1788,6 +1799,7 @@
 				1193A6D8182C87CC004011BC /* loginIcon.png in Resources */,
 				113BCAC2182B5BDF0079E9AD /* goodsImage.png in Resources */,
 				119F0C98181A20C600A5910C /* tou.png in Resources */,
+				78881913187F9A2600D0A851 /* GKDraftViewController.xib in Resources */,
 				78709C0C187D1733009250FB /* camera-progress-min.png in Resources */,
 				78709C1C187D1733009250FB /* navbar-button-back-black-alt@2x.png in Resources */,
 				78709C0F187D1733009250FB /* camera-shutter-video-default-active.png in Resources */,
@@ -1899,6 +1911,7 @@
 				119E96281814C5A300866DE8 /* README-GHUnit in Resources */,
 				78709C27187D174E009250FB /* 视频框(1).png in Resources */,
 				11DB02F71833A0AA007981C6 /* noticeNormalE.png in Resources */,
+				7888190E187F996500D0A851 /* 草稿箱@2x.png in Resources */,
 				11FC0F40182C9ECC00442EF6 /* scoreBack_new.png in Resources */,
 				11FC0F42182C9ECC00442EF6 /* scoreBtn_selected.png in Resources */,
 				78709C24187D1733009250FB /* navbar-button-green@2x.png in Resources */,
@@ -2013,6 +2026,7 @@
 				78709BC9187D16CA009250FB /* GKFilterViewController.m in Sources */,
 				11B218171835C624002825FA /* GKNoticeViewController.m in Sources */,
 				111E8CEA181E532400234014 /* UIImage+WebP.m in Sources */,
+				78881912187F9A2600D0A851 /* GKDraftViewController.m in Sources */,
 				1199733D1821FA700017E99A /* GKMarketGird.m in Sources */,
 				111E8CDF181E532400234014 /* NSData+GIF.m in Sources */,
 				111E8CE6181E532400234014 /* SDWebImagePrefetcher.m in Sources */,
@@ -2020,6 +2034,7 @@
 				11EFE1F21817EEF7009CE69F /* SRSlimeView.m in Sources */,
 				119E962E1814C5A300866DE8 /* ASIS3Request.m in Sources */,
 				119E961A1814C5A300866DE8 /* ASIDataDecompressor.m in Sources */,
+				78881916187F9E0B00D0A851 /* MovieDraft.m in Sources */,
 				119E962C1814C5A300866DE8 /* ASIS3BucketRequest.m in Sources */,
 				119566B0181E038600366B13 /* GKLetterViewController.m in Sources */,
 				119AC2991839FB3B00ED19D3 /* DACircularProgressView.m in Sources */,
@@ -2073,7 +2088,6 @@
 				2AFFF35318122D8B0045BFD0 /* GKMainViewController.m in Sources */,
 				2AFFF370181232B60045BFD0 /* AVCamViewController.m in Sources */,
 				119E96241814C5A300866DE8 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
-				7870A101187E4945009250FB /* MovieDraft.m in Sources */,
 				111E8CE4181E532400234014 /* SDWebImageDownloaderOperation.m in Sources */,
 				119F0C96181A0AFC00A5910C /* GKButton.m in Sources */,
 			);

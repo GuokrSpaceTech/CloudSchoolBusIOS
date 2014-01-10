@@ -25,5 +25,6 @@
 @property (nonatomic, retain) UIImage *thumbnail;
 @property (nonatomic, retain) NSMutableArray *stuList;
 @property (nonatomic, retain) NSString *photoTag;
+@property (nonatomic, assign) BOOL isPresent;
 
 @end

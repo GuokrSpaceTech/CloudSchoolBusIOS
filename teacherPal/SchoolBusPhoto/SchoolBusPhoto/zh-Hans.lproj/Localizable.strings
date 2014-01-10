@@ -173,3 +173,11 @@
 "leftSetting"="设置";
 "feedBack"="意见反馈";
 "helpSupport"="帮助与支持";
+"moviedraft" = "草稿箱";
+
+"nodata" = "暂无数据";
+"savedraft" = "保存草稿";
+"dontsavedraft" = "不保存";
+
+"delete" = "删除";
+"draftedit" = "编辑";

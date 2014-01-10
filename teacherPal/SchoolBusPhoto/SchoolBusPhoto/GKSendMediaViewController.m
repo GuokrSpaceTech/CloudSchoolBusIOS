@@ -10,19 +10,20 @@
 #import "GKUserLogin.h"
 #import "GKFilterViewController.h"
 #import "GKLoaderManager.h"
-
+#import "GKCoreDataManager.h"
 @interface GKSendMediaViewController ()
 
 @end
 
 @implementation GKSendMediaViewController
-@synthesize stuList,sourcePicture,photoTag,thumbnail,moviePath;
+@synthesize stuList,sourcePicture,photoTag,thumbnail,moviePath,isPresent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.isPresent = NO;
     }
     return self;
 }
@@ -267,7 +268,7 @@
     
     if (self.stuList.count == 0)
     {
-        UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"" message:@"" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil] autorelease];
+        UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"selectstuent", @"") delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] autorelease];
         [alert show];
         return;
     }
@@ -327,19 +328,38 @@
 
 - (void)doBack:(id)sender
 {
-    UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"您是否要保存到草稿箱" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"保存草稿",@"不保存", nil];
-    [as showInView:self.view];
-    [as release];
+    
+    if (self.isPresent) {
+        [self dismissModalViewControllerAnimated:YES];
+        return;
+    }
+    
+    if (self.moviePath != nil)
+    {
+        UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"您是否要保存到草稿箱" delegate:self cancelButtonTitle:NSLocalizedString(@"cancel",@"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"savedraft",@""),NSLocalizedString(@"dontsavedraft",@""), nil];
+        [as showInView:self.view];
+        [as release];
+    }
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0)
     {
         // save draft
+        NSString *stamp = [NSString stringWithFormat:@"%d", (int)[[NSDate date] timeIntervalSince1970]];
+        
+        GKUserLogin *user=[GKUserLogin currentLogin];
+        BOOL success = [GKCoreDataManager addMovieDraftWithUserid:[NSString stringWithFormat:@"%@", user.classInfo.classid] moviePath:self.moviePath dateStamp:stamp thumbnail:UIImageJPEGRepresentation(self.thumbnail, 0.1)];
+        NSLog(@"save draft : %d",success);
+        
+        [self.navigationController dismissModalViewControllerAnimated:YES];
     }
     else if (buttonIndex == 1)
     {
         //不保存
+//        NSString* path = [NSTemporaryDirectory() stringByAppendingPathComponent:filename];
+        [[NSFileManager defaultManager] removeItemAtPath:self.moviePath error:nil];
+        
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }
 }

@@ -11,7 +11,7 @@
 @interface GKCoreDataManager : NSObject
 
 + (NSArray *)searchMovieDraftByUserid:(NSString *)userid;
-+ (BOOL)addMovieDraftWithUserid:(NSString *)userid moviePath:(NSString *)path dateStamp:(NSString *)date;
++ (BOOL)addMovieDraftWithUserid:(NSString *)userid moviePath:(NSString *)path dateStamp:(NSString *)date thumbnail:(NSData *)imageData;
 + (BOOL)removeMovieDraftByUserid:(NSString *)userid moviePath:(NSString *)path;
 
 @end

@@ -61,10 +61,10 @@
 
     // 显示一共多少学生的View
     UIView *bottomView=[[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-20, 320, 20)];
-    bottomView.backgroundColor=[UIColor clearColor];
+    bottomView.backgroundColor=[UIColor blackColor];
     UILabel *numLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
-    numLabel.backgroundColor=[UIColor clearColor];
-    numLabel.textColor=[UIColor grayColor];
+ //   numLabel.backgroundColor=[UIColor clearColor];
+    numLabel.textColor=[UIColor whiteColor];
     if(IOSVERSION>=6.0)
         numLabel.textAlignment=NSTextAlignmentCenter;
     else
@@ -72,8 +72,9 @@
     numLabel.font=[UIFont systemFontOfSize:14];
     numLabel.text=[NSString stringWithFormat:@"%d位学生",self.studentArr.count];
     [bottomView addSubview:numLabel];
-    [numLabel release];
+    
     [self.view addSubview:bottomView];
+    [numLabel release];
     [bottomView release];
     
 	// Do any additional setup after loading the view.

@@ -110,13 +110,14 @@ static GKCameraManager *cameraManager;
         if ([_session canAddOutput:stillImageOutput])
         {
             NSDictionary *outputSettings = @{
-                                             AVVideoWidthKey : @(480),
-                                             AVVideoHeightKey: @(480),
+                                             //AVVideoWidthKey : @(480),
+                                             //AVVideoHeightKey: @(480),
                                              AVVideoCodecKey : AVVideoCodecJPEG};
             [stillImageOutput setOutputSettings:outputSettings];
             [_session addOutput:stillImageOutput];
             _stillImageOutput = stillImageOutput;
         }
+        
         
         _captureQueue = dispatch_queue_create("uk.co.gdcl.cameraengine.capture", DISPATCH_QUEUE_SERIAL);
         AVCaptureVideoDataOutput* videoout = [[AVCaptureVideoDataOutput alloc] init];
@@ -234,11 +235,13 @@ static GKCameraManager *cameraManager;
 - (void)snapStillImage:(void (^)(UIImage *stillImage, NSError *error))mBlock
 {
     
-    [[_stillImageOutput connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:currentVideoOrientation];
+//    [[_stillImageOutput connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:currentVideoOrientation];
 		// Capture a still image.
         
     [_stillImageOutput captureStillImageAsynchronouslyFromConnection:[_stillImageOutput connectionWithMediaType:AVMediaTypeVideo] completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
-			
+        
+        NSLog(@"%@",error.description);
+        
         if (imageDataSampleBuffer)
         {
             NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
@@ -331,13 +334,31 @@ static GKCameraManager *cameraManager;
 //	});
 }
 
+- (AVCaptureDevice *) backFacingCamera
+{
+    return [self cameraWithPosition:AVCaptureDevicePositionBack];
+}
+
+- (AVCaptureDevice *) cameraWithPosition:(AVCaptureDevicePosition) position
+{
+    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    for (AVCaptureDevice *device in devices) {
+        if ([device position] == position) {
+            return device;
+        }
+    }
+    return nil;
+}
+
 - (void)setFlashMode:(AVCaptureFlashMode)flashMode
 {
-    AVCaptureDevice *device = [_videoDeviceInput device];
+    
+    AVCaptureDevice *device = [self backFacingCamera];
     
 	if ([device hasFlash] && [device isFlashModeSupported:flashMode])
 	{
 		NSError *error = nil;
+        
 		if ([device lockForConfiguration:&error])
 		{
 			[device setFlashMode:flashMode];

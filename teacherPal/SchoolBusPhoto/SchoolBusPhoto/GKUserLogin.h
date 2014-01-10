@@ -40,7 +40,7 @@ typedef enum {LOGINSERVER,LOGINOFF} LoginState;
 @property (nonatomic,retain) NSString * vipCredit;
 @property (nonatomic,retain) NSString * photoCredit;
 @property (nonatomic,retain) NSString * predCredit;
-
+@property (nonatomic, retain) NSArray *photoTagArray;
 
 
 @property (nonatomic,retain)NSNumber *badgeNumber;

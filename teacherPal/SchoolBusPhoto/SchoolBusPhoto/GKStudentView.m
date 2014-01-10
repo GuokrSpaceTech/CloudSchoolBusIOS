@@ -135,7 +135,7 @@
             UILongPressGestureRecognizer *l = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(doLongPress:)];
 //            l.minimumPressDuration = 1;
 //            l.delegate = self;
-            NSLog(@"add ges %d",i);
+//            NSLog(@"add ges %d",i);
             [button addGestureRecognizer:l];
             [l release];
         }

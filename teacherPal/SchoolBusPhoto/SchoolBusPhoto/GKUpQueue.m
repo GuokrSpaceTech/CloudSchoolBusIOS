@@ -43,7 +43,7 @@ static GKUpQueue *gkqueue=nil;
     
     return gkqueue;
 }
--(void)addRequestToQueue:(NSString *)path name:(NSString *)name nameid:(NSString *)nameId studentid:(NSString *)std time:(NSNumber *)time fize:(NSNumber *)fsize classID:(NSNumber *)classid intro:(NSString *)intro
+-(void)addRequestToQueue:(NSString *)path name:(NSString *)name nameid:(NSString *)nameId studentid:(NSString *)std time:(NSNumber *)time fize:(NSNumber *)fsize classID:(NSNumber *)classid intro:(NSString *)intro tag:(NSString *)tag
 {
     
     NSAutoreleasePool *pool=[[NSAutoreleasePool alloc]init];
@@ -75,6 +75,7 @@ static GKUpQueue *gkqueue=nil;
     [request addPostValue:time forKey:@"ftime"];
     [request addPostValue:classid forKey:@"uid"];
     [request addPostValue:intro forKey:@"intro"];
+    [request addPostValue:tag forKey:@"tag"];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:nameId,@"nameid",path,@"path", name,@"filename",@"",@"",nil]];
     [request addPostValue:[self fileName] forKey:@"pickey"];
     

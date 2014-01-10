@@ -25,7 +25,7 @@ static GKUserLogin *currentUser=nil;
 @synthesize upIP;
 @synthesize credit,credit_last,credit_orders;
 @synthesize photoCredit,vipCredit,predCredit;
-@synthesize badgeNumber;
+@synthesize badgeNumber,photoTagArray;
 -(id)init
 {
     if(self=[super init])

@@ -401,6 +401,24 @@
         
         user.upIP=[dic objectForKey:@"clientip"];
         
+        if ([[dic objectForKey:@"photo_tag"] isKindOfClass:[NSDictionary class]])
+        {
+            NSMutableArray *arr = [NSMutableArray array];
+            NSDictionary *tagDic = [dic objectForKey:@"photo_tag"];
+            for (id key in tagDic.allKeys)
+            {
+                [arr addObject:[NSString stringWithFormat:@"%@",[tagDic objectForKey:key]]];
+            }
+            user.photoTagArray = arr;
+            NSLog(@"photo_tag : %@",user.photoTagArray);
+        }
+        else
+        {
+            NSLog(@"photo_tag type error");
+        }
+        
+        
+        
         [self loginSucess];
     }
     else if(method==setting)

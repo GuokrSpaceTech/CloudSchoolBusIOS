@@ -10,7 +10,14 @@
 
 #import "GKBaseViewController.h"
 #import "EKRequest.h"
-@interface GKNoticeListViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate,EKProtocol>
+#import "SRRefreshView.h"
+#import "LoadMoreTableFooterView.h"
+@interface GKNoticeListViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate,EKProtocol,SRRefreshDelegate,EGORefreshTableDelegate>
 @property (nonatomic,retain)NSMutableArray *noticeList;
 @property (nonatomic,retain)UITableView *_tableView;
+@property (nonatomic,assign)BOOL isLoading;
+@property (nonatomic, retain)SRRefreshView   *_slimeView;
+@property (nonatomic, retain) LoadMoreTableFooterView *_refreshFooterView;
+
+@property (nonatomic,assign)BOOL isMore;
 @end

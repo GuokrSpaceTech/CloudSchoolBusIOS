@@ -232,6 +232,13 @@
 		11C75DBD181276BA00A3AA89 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C75DBC181276BA00A3AA89 /* SystemConfiguration.framework */; };
 		11CE2A85187FA18400742001 /* NSDate+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2A84187FA18400742001 /* NSDate+convenience.m */; };
 		11CE2A88187FAF8E00742001 /* GKNoticeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2A87187FAF8E00742001 /* GKNoticeInfoViewController.m */; };
+		11CE2A8A187FEADF00742001 /* noticeInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CE2A89187FEADF00742001 /* noticeInfo.png */; };
+		11CE2A8D187FEE3500742001 /* writeRizhiH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CE2A8B187FEE3500742001 /* writeRizhiH.png */; };
+		11CE2A8E187FEE3500742001 /* writeRizhi.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CE2A8C187FEE3500742001 /* writeRizhi.png */; };
+		11CE2A90187FF5AD00742001 /* imageerror.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CE2A8F187FF5AD00742001 /* imageerror.png */; };
+		11CE2A96187FF8EA00742001 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2A92187FF8EA00742001 /* EGORefreshTableHeaderView.m */; };
+		11CE2A97187FF8EA00742001 /* LoadMoreTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2A95187FF8EA00742001 /* LoadMoreTableFooterView.m */; };
+		11CE2A9B1880091E00742001 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2A9A1880091E00742001 /* MBProgressHUD.m */; };
 		11D40E3218618700003009D0 /* alterPasswordE.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D40E2E18618700003009D0 /* alterPasswordE.png */; };
 		11D40E3318618700003009D0 /* alterPasswordSE.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D40E2F18618700003009D0 /* alterPasswordSE.png */; };
 		11D40E3418618700003009D0 /* alterPasswordS.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D40E3018618700003009D0 /* alterPasswordS.png */; };
@@ -638,6 +645,17 @@
 		11CE2A84187FA18400742001 /* NSDate+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+convenience.m"; sourceTree = "<group>"; };
 		11CE2A86187FAF8E00742001 /* GKNoticeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKNoticeInfoViewController.h; sourceTree = "<group>"; };
 		11CE2A87187FAF8E00742001 /* GKNoticeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNoticeInfoViewController.m; sourceTree = "<group>"; };
+		11CE2A89187FEADF00742001 /* noticeInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noticeInfo.png; sourceTree = "<group>"; };
+		11CE2A8B187FEE3500742001 /* writeRizhiH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = writeRizhiH.png; sourceTree = "<group>"; };
+		11CE2A8C187FEE3500742001 /* writeRizhi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = writeRizhi.png; sourceTree = "<group>"; };
+		11CE2A8F187FF5AD00742001 /* imageerror.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageerror.png; sourceTree = "<group>"; };
+		11CE2A91187FF8EA00742001 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		11CE2A92187FF8EA00742001 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		11CE2A93187FF8EA00742001 /* EGOViewCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOViewCommon.h; sourceTree = "<group>"; };
+		11CE2A94187FF8EA00742001 /* LoadMoreTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreTableFooterView.h; sourceTree = "<group>"; };
+		11CE2A95187FF8EA00742001 /* LoadMoreTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreTableFooterView.m; sourceTree = "<group>"; };
+		11CE2A991880091E00742001 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		11CE2A9A1880091E00742001 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		11D40E2E18618700003009D0 /* alterPasswordE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alterPasswordE.png; sourceTree = "<group>"; };
 		11D40E2F18618700003009D0 /* alterPasswordSE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alterPasswordSE.png; sourceTree = "<group>"; };
 		11D40E3018618700003009D0 /* alterPasswordS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alterPasswordS.png; sourceTree = "<group>"; };
@@ -899,6 +917,12 @@
 		119E5FD31818FB4D00726761 /* third */ = {
 			isa = PBXGroup;
 			children = (
+				11CE2A981880091E00742001 /* MBProgressHUD */,
+				11CE2A91187FF8EA00742001 /* EGORefreshTableHeaderView.h */,
+				11CE2A92187FF8EA00742001 /* EGORefreshTableHeaderView.m */,
+				11CE2A93187FF8EA00742001 /* EGOViewCommon.h */,
+				11CE2A94187FF8EA00742001 /* LoadMoreTableFooterView.h */,
+				11CE2A95187FF8EA00742001 /* LoadMoreTableFooterView.m */,
 				1155E9291856BC74005D09C1 /* KKNavigationController.m */,
 				1155E92A1856BC74005D09C1 /* KKNavigationController.h */,
 				119AC2971839FB3B00ED19D3 /* DACircularProgressView.h */,
@@ -1078,6 +1102,10 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				11CE2A8F187FF5AD00742001 /* imageerror.png */,
+				11CE2A8B187FEE3500742001 /* writeRizhiH.png */,
+				11CE2A8C187FEE3500742001 /* writeRizhi.png */,
+				11CE2A89187FEADF00742001 /* noticeInfo.png */,
 				11A5AE6518643C94008794C0 /* Tophoto.png */,
 				11A5AE63186438FA008794C0 /* applyAll.png */,
 				11D40E2E18618700003009D0 /* alterPasswordE.png */,
@@ -1315,6 +1343,15 @@
 			path = AuthCode;
 			sourceTree = "<group>";
 		};
+		11CE2A981880091E00742001 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				11CE2A991880091E00742001 /* MBProgressHUD.h */,
+				11CE2A9A1880091E00742001 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		11EFE1E71817EEF7009CE69F /* SlimeRefresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -1482,6 +1519,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11CE2A8E187FEE3500742001 /* writeRizhi.png in Resources */,
 				1193A6A9182B69A9004011BC /* plus.png in Resources */,
 				11D40E3418618700003009D0 /* alterPasswordS.png in Resources */,
 				11BF897818363CF7008E72F0 /* homeNoticeH.png in Resources */,
@@ -1557,6 +1595,7 @@
 				1193B39D1827847C00660CB1 /* markScore.png in Resources */,
 				11E27F8C183C64E100CAE0BB /* aboutlogo_EN1.png in Resources */,
 				11B852BF18334D52005FA5B9 /* upbuttonH.png in Resources */,
+				11CE2A8D187FEE3500742001 /* writeRizhiH.png in Resources */,
 				119F0CA6181A216600A5910C /* bottom_logout_default.png in Resources */,
 				119F0CA9181A242200A5910C /* home-1.png in Resources */,
 				11DB02DF18337725007981C6 /* zhushi.png in Resources */,
@@ -1615,6 +1654,7 @@
 				11FC0F40182C9ECC00442EF6 /* scoreBack_new.png in Resources */,
 				11FC0F42182C9ECC00442EF6 /* scoreBtn_selected.png in Resources */,
 				11DB02FC1833A0AA007981C6 /* aboutE.png in Resources */,
+				11CE2A8A187FEADF00742001 /* noticeInfo.png in Resources */,
 				11DB02EB18337F40007981C6 /* buyButtonN.png in Resources */,
 				11A5AE6818644125008794C0 /* smilik.png in Resources */,
 				11DB02FD1833A0AA007981C6 /* leftUpNE.png in Resources */,
@@ -1637,6 +1677,7 @@
 				11D40E3318618700003009D0 /* alterPasswordSE.png in Resources */,
 				11E27F96183C731F00CAE0BB /* textfieldback.png in Resources */,
 				1102A7EF181A4FF500E6295C /* guanyu-5.png in Resources */,
+				11CE2A90187FF5AD00742001 /* imageerror.png in Resources */,
 				11FC0F44182C9F4C00442EF6 /* FZZYJW.TTF in Resources */,
 				1102A7E9181A4E2000E6295C /* GKAboutViewController.xib in Resources */,
 				119366D3184C3283008D2FA2 /* leftUpN.png in Resources */,
@@ -1718,7 +1759,9 @@
 				11AA338B187CFE9A002FE2D4 /* GKNoticeCell.m in Sources */,
 				119EA9C418162D340070DBF1 /* ETPhotoCell.m in Sources */,
 				11C75DB9181273E600A3AA89 /* MTAuthCode.m in Sources */,
+				11CE2A96187FF8EA00742001 /* EGORefreshTableHeaderView.m in Sources */,
 				1193A6CF182C78E9004011BC /* KLineScrollView.m in Sources */,
+				11CE2A97187FF8EA00742001 /* LoadMoreTableFooterView.m in Sources */,
 				11C75DA61812725600A3AA89 /* EKRequest.m in Sources */,
 				119E96211814C5A300866DE8 /* ASICloudFilesCDNRequest.m in Sources */,
 				11B852C718335275005FA5B9 /* ETZoomScrollView.m in Sources */,
@@ -1745,6 +1788,7 @@
 				11B852C818335275005FA5B9 /* ETShowBigImageView.m in Sources */,
 				119E964518151F0300866DE8 /* GTMBase64.m in Sources */,
 				111E8CE5181E532400234014 /* SDWebImageManager.m in Sources */,
+				11CE2A9B1880091E00742001 /* MBProgressHUD.m in Sources */,
 				111E8CE9181E532400234014 /* UIImage+MultiFormat.m in Sources */,
 				1192B7771829EB8D0082D37B /* JSONKit.m in Sources */,
 				11B852A1183221CF005FA5B9 /* ETNicknameViewController.m in Sources */,

@@ -9,7 +9,7 @@
 #import "GKNoticeCell.h"
 #import "NSDate+convenience.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "UIImageView+WebCache.h"
 #define IMAGETAG 100
 @implementation GKNoticeCell
 @synthesize titleLable,timeLabel,contentlabel;
@@ -26,13 +26,13 @@
         bottomView.backgroundColor=[UIColor whiteColor];
        
         [self.contentView addSubview:bottomView];
-           bottomView.layer.cornerRadius=10;
+        bottomView.layer.cornerRadius=5;
         [bottomView release];
         
-        IconImageView=[[UIImageView alloc]initWithFrame:CGRectMake(15, 15, 25, 25)];
-        IconImageView.backgroundColor=[UIColor redColor];
+        IconImageView=[[UIImageView alloc]initWithFrame:CGRectMake(15, 10, 25, 25)];
+        IconImageView.backgroundColor=[UIColor clearColor];
         [self.contentView addSubview:IconImageView];
-        
+        IconImageView.image=[UIImage imageNamed:@"noticeInfo.png"];
         
         lineImageView=[[UIImageView alloc]initWithFrame:CGRectZero];
         lineImageView.backgroundColor=[UIColor clearColor];
@@ -52,19 +52,23 @@
         timeLabel=[[UILabel alloc]initWithFrame:CGRectZero];
         timeLabel.backgroundColor=[UIColor clearColor];
         timeLabel.font=[UIFont systemFontOfSize:10];
-
+        timeLabel.textColor=[UIColor colorWithRed:123/255.0 green:123/255.0 blue:123/255.0 alpha:1];
         [self.contentView addSubview:timeLabel];
 
         
         huizhiLabel=[[UILabel alloc]initWithFrame:CGRectZero];
         huizhiLabel.backgroundColor=[UIColor clearColor];
         huizhiLabel.font=[UIFont systemFontOfSize:10];;
-  
+        if(IOSVERSION>=6.0)
+            huizhiLabel.textAlignment=NSTextAlignmentRight;
+        else
+            huizhiLabel.textAlignment=UITextAlignmentRight;
         [self.contentView addSubview:huizhiLabel];
         
         contentlabel=[[UILabel alloc]initWithFrame:CGRectZero];
         contentlabel.backgroundColor=[UIColor clearColor];
         contentlabel.font=FONTSIZE;
+        contentlabel.textColor=[UIColor colorWithRed:123/255.0 green:123/255.0 blue:123/255.0 alpha:1];
         contentlabel.numberOfLines=0;
         contentlabel.lineBreakMode=NSLineBreakByTruncatingTail;
         
@@ -93,13 +97,7 @@
         }
     }
     
-    if([_notice.isconfirm isEqualToString:@"1"])
-    {
-    }
-    else
-    {
-        
-    }
+
     int height=0;
     CGSize size=[_notice.noticetitle sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:NSLineBreakByWordWrapping];
     titleLable.text=_notice.noticetitle;
@@ -181,10 +179,35 @@
     if([notice.plist count]==1)
     {
         UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(110,10+height,100,100)];
-        imageView.backgroundColor=[UIColor redColor];
+        imageView.backgroundColor=[UIColor clearColor];
         imageView.tag=IMAGETAG;
         [self.contentView addSubview:imageView];
         [imageView release];
+        
+        NSString *urlStr=[[[notice.plist objectAtIndex:0] objectForKey:@"source"] stringByAppendingString:@".tiny.jpg"];
+        [imageView setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            if (error) {
+                
+                NSLog(@"Error : load image fail.");
+                imageView.image = [UIImage imageNamed:@"imageerror.png"];
+                
+            }
+            else
+            {
+                
+                
+                if (cacheType == 0) { // request url
+                    CATransition *transition = [CATransition animation];
+                    transition.duration = 1.0f;
+                    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+                    transition.type = kCATransitionFade;
+                    
+                    [imageView.layer addAnimation:transition forKey:nil];
+                }
+            }
+            
+        }];
+
         
         height+=(100+5);
         
@@ -198,10 +221,35 @@
             int col=i%3;
             UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(50+col*(65+12), (10+height)+row*(65+10) , 65, 65)];
               imageView.tag=IMAGETAG+i;
-            imageView.backgroundColor=[UIColor redColor];
+            imageView.backgroundColor=[UIColor clearColor];
             [self.contentView addSubview:imageView];
             [imageView release];
             
+             NSString *urlStr=[[[notice.plist objectAtIndex:i] objectForKey:@"source"] stringByAppendingString:@".tiny.jpg"];
+            
+            [imageView setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                if (error) {
+                    
+                    NSLog(@"Error : load image fail.");
+                    imageView.image = [UIImage imageNamed:@"imageerror.png"];
+                    
+                }
+                else
+                {
+                    
+                    
+                    if (cacheType == 0) { // request url
+                        CATransition *transition = [CATransition animation];
+                        transition.duration = 1.0f;
+                        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+                        transition.type = kCATransitionFade;
+                        
+                        [imageView.layer addAnimation:transition forKey:nil];
+                    }
+                }
+                
+            }];
+
         }
         
         int row=(ceil(3/3.0));

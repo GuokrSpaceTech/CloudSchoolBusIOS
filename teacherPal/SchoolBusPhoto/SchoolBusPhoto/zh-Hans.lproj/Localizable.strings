@@ -144,3 +144,11 @@
 "processingafter"="图片已提交成功，正在上传，可点击左侧栏-上传列表查看具体进度";
 
 "Cancelphotos"="取消发送照片";
+"minutesago" = "分钟前";
+"hoursago" = "小时前";
+
+"noticeQ"="通知";
+"noticeDetail"="通知详情";
+
+"sendWho"="发给了谁";
+"huizhi"="谁回执了你";

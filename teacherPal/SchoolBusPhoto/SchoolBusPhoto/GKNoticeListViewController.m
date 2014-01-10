@@ -12,6 +12,8 @@
 #import "GKNotice.h"
 #import "GKMainViewController.h"
 #import "GKNoticeInfoViewController.h"
+#import "GKNoticeViewController.h"
+
 @interface GKNoticeListViewController ()
 
 @end
@@ -19,6 +21,10 @@
 @implementation GKNoticeListViewController
 @synthesize noticeList;
 @synthesize _tableView;
+@synthesize _slimeView;;
+@synthesize _refreshFooterView;
+@synthesize isLoading;
+@synthesize isMore;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -45,6 +51,16 @@
     buttom.tag=0;
     [buttom addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
     [navigationView addSubview:buttom];
+    
+    UIButton *photobutton=[UIButton buttonWithType:UIButtonTypeCustom];
+    photobutton.frame=CGRectMake(280, 5, 35, 35);
+    [photobutton setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"writeRizhi")) forState:UIControlStateNormal];
+    [photobutton setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"writeRizhiH")) forState:UIControlStateHighlighted];
+    [photobutton addTarget:self action:@selector(writeRizhi:) forControlEvents:UIControlEventTouchUpInside];
+    [navigationView addSubview:photobutton];
+
+    
+    
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height -navigationView.frame.size.height-navigationView.frame.origin.y ) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
@@ -52,14 +68,46 @@
     _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
 
     [self.view addSubview:_tableView];
+    _slimeView = [[SRRefreshView alloc] init];
+    _slimeView.delegate = self;
+    _slimeView.upInset = 0;
+    _slimeView.slimeMissWhenGoingBack = YES;
+    _slimeView.slime.bodyColor = [UIColor blackColor];
+    _slimeView.slime.skinColor = [UIColor blackColor];
+    _slimeView.slime.lineWith = 1;
+    _slimeView.slime.shadowBlur = 4;
+    _slimeView.slime.shadowColor = [UIColor blackColor];
     
-    titlelabel.text=@"通知";
+    [_tableView addSubview:self._slimeView];
+
+    titlelabel.text=NSLocalizedString(@"noticeQ", @"");
+    
+
     NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
 
-    
-     [[EKRequest Instance]EKHTTPRequest:tnotice parameters:param requestMethod:GET forDelegate:self];
+    [self loadNotice:param];
+     //[[EKRequest Instance]EKHTTPRequest:tnotice parameters:param requestMethod:GET forDelegate:self];
   
 	// Do any additional setup after loading the view.
+}
+
+-(void)loadNotice:(NSDictionary *)pram
+{
+    NSLog(@"%@",pram);
+     [[EKRequest Instance]EKHTTPRequest:tnotice parameters:pram requestMethod:GET forDelegate:self];
+}
+-(void)writeRizhi:(UIButton *)btn
+{
+    GKNoticeViewController *noticeVC=[[GKNoticeViewController alloc]init];
+    
+    [self.navigationController pushViewController:noticeVC animated:YES];
+    [noticeVC release];
+//    AVCamViewController *avVC=[[AVCamViewController alloc]initWithNibName:@"AVCamViewController" bundle:nil];
+//    [self.navigationController pushViewController:avVC animated:YES];
+//    [avVC release];
+    
+    
+    //[self setAllPhotoSelect:YES];
 }
 -(void)leftClick:(UIButton *)btn
 {
@@ -98,6 +146,13 @@
     GKNotice *notice=[noticeList objectAtIndex:indexPath.row];
     cell.notice=notice;
     
+    if(indexPath.row==[self.noticeList count]-1)
+    {
+        if(isMore)
+            [self setFooterView];
+    }
+    
+
     return cell;
 }
 -(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
@@ -113,23 +168,70 @@
         NSArray *arr=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
         
         NSLog(@"%@",arr);
-        
-        for (int i=0; i<[arr count]; i++) {
-            NSDictionary *dic=[arr objectAtIndex:i];
-            GKNotice *notice=[[GKNotice alloc]init];
-            
-            notice.addtime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"addtime"]];
-            notice.adduserid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"adduserid"]];
-            notice.isconfirm=[NSString stringWithFormat:@"%@",[dic objectForKey:@"isconfirm"]];
-            notice.noticecontent=[NSString stringWithFormat:@"%@",[dic objectForKey:@"noticecontent"]];
-            notice.noticeid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"noticeid"]];
-            notice.sisconfirm=[dic objectForKey:@"sisconfirm"];
-            notice.noticetitle=[NSString stringWithFormat:@"%@",[dic objectForKey:@"noticetitle"]];
-            notice.plist=[dic objectForKey:@"plist"];
-            notice.slistname=[dic objectForKey:@"slistname"];
-            [noticeList addObject:notice];
-            [notice release];
+        if([[parm objectForKey:@"starttime"] isEqualToString:@"0"] && [[parm objectForKey:@"endtime"] isEqualToString:@"0"])
+        {
+            // 下拉刷新
+            [noticeList removeAllObjects];
+            if([arr count]<15)
+            {
+                isMore=NO;
+            }
+            else
+                isMore=YES;
+            for (int i=0; i<[arr count]; i++) {
+                NSDictionary *dic=[arr objectAtIndex:i];
+                GKNotice *notice=[[GKNotice alloc]init];
+                
+                notice.addtime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"addtime"]];
+                notice.adduserid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"adduserid"]];
+                notice.isconfirm=[NSString stringWithFormat:@"%@",[dic objectForKey:@"isconfirm"]];
+                notice.noticecontent=[NSString stringWithFormat:@"%@",[dic objectForKey:@"noticecontent"]];
+                notice.noticeid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"noticeid"]];
+                notice.sisconfirm=[dic objectForKey:@"sisconfirm"];
+                notice.noticetitle=[NSString stringWithFormat:@"%@",[dic objectForKey:@"noticetitle"]];
+                notice.plist=[dic objectForKey:@"plist"];
+                notice.slistname=[dic objectForKey:@"slistname"];
+                [noticeList addObject:notice];
+                [notice release];
+                
+            }
+
+            [_slimeView endRefresh];
         }
+        else
+        {
+            // 下拉刷新
+            if([arr count]<15)
+            {
+                isMore=NO;
+            }
+            else
+                isMore=YES;
+            isLoading=NO;
+            for (int i=0; i<[arr count]; i++) {
+                NSDictionary *dic=[arr objectAtIndex:i];
+                GKNotice *notice=[[GKNotice alloc]init];
+                
+                notice.addtime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"addtime"]];
+                notice.adduserid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"adduserid"]];
+                notice.isconfirm=[NSString stringWithFormat:@"%@",[dic objectForKey:@"isconfirm"]];
+                notice.noticecontent=[NSString stringWithFormat:@"%@",[dic objectForKey:@"noticecontent"]];
+                notice.noticeid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"noticeid"]];
+                notice.sisconfirm=[dic objectForKey:@"sisconfirm"];
+                notice.noticetitle=[NSString stringWithFormat:@"%@",[dic objectForKey:@"noticetitle"]];
+                notice.plist=[dic objectForKey:@"plist"];
+                notice.slistname=[dic objectForKey:@"slistname"];
+                [noticeList addObject:notice];
+                [notice release];
+            }
+
+            if(self._refreshFooterView)
+            {
+                [self._refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
+                [self removeFooterView];
+            }
+        }
+        //dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
         
         [_tableView reloadData];
     }
@@ -230,10 +332,134 @@
 //    _notice.open=!_notice.open;
 //    [_tableView reloadData];
 }
+
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    
+//    if (self._slimeView) {
+//        [self._slimeView scrollViewDidScroll];
+//    }
+//    
+//}
+//
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+//{
+//    if (self._slimeView) {
+//        [self._slimeView scrollViewDidEndDraging];
+//    }
+//    
+//    
+//}
+- (void)slimeRefreshStartRefresh:(SRRefreshView *)refreshView
+{
+    NSLog(@"start refresh");
+    //    [self showHUD:YES];
+    NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
+    
+    [self loadNotice:param];
+    //theRefreshPos = EGORefreshHeader;
+    //[self requestNoticeData:nil];
+}
+-(void)setFooterView
+{
+    
+    CGFloat height = MAX(_tableView.contentSize.height, _tableView.frame.size.height);
+    if(_refreshFooterView && [_refreshFooterView superview])
+    {
+        _refreshFooterView.hidden = NO;
+        _refreshFooterView.frame = CGRectMake(0.0f, height, _tableView.frame.size.width, _tableView.bounds.size.height);
+    }
+    else
+    {
+        LoadMoreTableFooterView *refreshFooterView = [[LoadMoreTableFooterView alloc] initWithFrame:CGRectMake(0.0f, height, _tableView.frame.size.width, _tableView.bounds.size.height)];
+        refreshFooterView.delegate = self;
+        [_tableView addSubview:refreshFooterView];
+        [refreshFooterView release];
+        
+        self._refreshFooterView = refreshFooterView;
+        self._refreshFooterView.backgroundColor=[UIColor clearColor];
+    }
+    
+}
+-(void)removeFooterView
+{
+    //_refreshFooterView.hidden = YES;
+    
+    if(_refreshFooterView && [_refreshFooterView superview])
+    {
+        [_refreshFooterView removeFromSuperview];
+    }
+    _refreshFooterView = nil;
+}
+
+
+
+- (void)reloadTableViewDataSource:(EGORefreshPos)aRefreshPos
+{
+    //获取信息
+
+    GKNotice *sc = [self.noticeList lastObject];
+    NSString *lastTime = sc.addtime;
+
+    NSDictionary* param = [NSDictionary dictionaryWithObjectsAndKeys:lastTime,@"starttime",@"0",@"endtime",nil];
+    [self loadNotice:param];
+    isLoading=YES;
+ 
+}
+
+- (void)egoRefreshTableDidTriggerRefresh:(EGORefreshPos)aRefreshPos
+{
+	[self reloadTableViewDataSource:aRefreshPos];
+}
+
+
+- (BOOL)egoRefreshTableDataSourceIsLoading:(UIView*)view
+{
+	return isLoading; // should return if data source model is reloading
+    
+}
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+
+    
+    if (self._slimeView) {
+        [self._slimeView scrollViewDidScroll];
+    }
+    
+    
+    if(_refreshFooterView)
+    {
+        [_refreshFooterView egoRefreshScrollViewDidScroll:scrollView];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (self._slimeView) {
+        [self._slimeView scrollViewDidEndDraging];
+    }
+    
+    if(_refreshFooterView)
+    {
+        [_refreshFooterView egoRefreshScrollViewDidEndDragging:scrollView];
+    }
+}
+
+
+//返回刷新时间的回调方法
+- (NSDate*)egoRefreshTableDataSourceLastUpdated:(UIView*)view
+{
+	return [NSDate date]; // should return date data source was last changed
+}
+
+
 -(void)dealloc
 {
     self.noticeList=nil;
     self._tableView=nil;
+    self._slimeView=nil;
+    self._refreshFooterView=nil;
     [super dealloc];
 }
 - (void)didReceiveMemoryWarning

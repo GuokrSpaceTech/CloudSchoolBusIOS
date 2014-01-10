@@ -9,6 +9,9 @@
 #import "GKNoticeInfoViewController.h"
 #import "GKNotice.h"
 #import "KKNavigationController.h"
+#import "NSDate+convenience.h"
+#import <QuartzCore/QuartzCore.h>
+#import "UIImageView+WebCache.h"
 @interface GKNoticeInfoViewController ()
 
 @end
@@ -33,7 +36,16 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    titlelabel.text=NSLocalizedString(@"noticeDetail", @"");
+
+    UIButton *buttom=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    buttom.frame=CGRectMake(10, 5, 34, 35);
+    //UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 34, 35)];
+    [buttom setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"back")) forState:UIControlStateNormal];
+    [buttom setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"backH")) forState:UIControlStateHighlighted];
+    buttom.tag=0;
+    [buttom addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
+    [navigationView addSubview:buttom];
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height -navigationView.frame.size.height-navigationView.frame.origin.y ) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
@@ -45,7 +57,7 @@
     
     int height=0;
     UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
-    
+    headView.backgroundColor=[UIColor whiteColor];
     UILabel *titleLabel=[[UILabel alloc]initWithFrame:CGRectZero];
     titleLabel.text=notice.noticetitle;
     titleLabel.backgroundColor=[UIColor clearColor];
@@ -66,6 +78,7 @@
     contentLabel.backgroundColor=[UIColor clearColor];
     contentLabel.numberOfLines=0;
     contentLabel.font=[UIFont systemFontOfSize:14];
+    contentLabel.textColor=[UIColor colorWithRed:123/255.0 green:123/255.0 blue:123/255.0 alpha:1];
     contentLabel.lineBreakMode=NSLineBreakByWordWrapping;
     [headView addSubview:contentLabel];
     [contentLabel release];
@@ -75,15 +88,7 @@
     contentLabel.frame=CGRectMake(20, 10+height, 280, size.height);
     height+=size.height+5;
 
-//    plist =         (
-//                     {
-//                         filename = 13889686805313660;
-//                         iscloud = 0;
-//                         source = "http://v3.service.yunxiaoche.com/files/notice/2/57/360/201401/13889686805313660.jpg";
-//                     }
-//                     );
 
-    // pic
     
     if([notice.plist count]==1)
     {
@@ -91,7 +96,30 @@
         imageView.backgroundColor=[UIColor redColor];
         [headView addSubview:imageView];
         [imageView release];
+        NSString *urlStr=[[[notice.plist objectAtIndex:0] objectForKey:@"source"] stringByAppendingString:@".tiny.jpg"];
         
+        [imageView setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            if (error) {
+                
+                NSLog(@"Error : load image fail.");
+                imageView.image = [UIImage imageNamed:@"imageerror.png"];
+                
+            }
+            else
+            {
+               
+                
+                if (cacheType == 0) { // request url
+                    CATransition *transition = [CATransition animation];
+                    transition.duration = 1.0f;
+                    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+                    transition.type = kCATransitionFade;
+                    
+                    [imageView.layer addAnimation:transition forKey:nil];
+                }
+            }
+
+        }];
         height+=(100+5);
         
 
@@ -106,7 +134,31 @@
             imageView.backgroundColor=[UIColor redColor];
             [headView addSubview:imageView];
             [imageView release];
+            NSString *urlStr=[[[notice.plist objectAtIndex:i] objectForKey:@"source"] stringByAppendingString:@".tiny.jpg"];
             
+            [imageView setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                if (error) {
+                    
+                    NSLog(@"Error : load image fail.");
+                    imageView.image = [UIImage imageNamed:@"imageerror.png"];
+                    
+                }
+                else
+                {
+                    
+                    
+                    if (cacheType == 0) { // request url
+                        CATransition *transition = [CATransition animation];
+                        transition.duration = 1.0f;
+                        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+                        transition.type = kCATransitionFade;
+                        
+                        [imageView.layer addAnimation:transition forKey:nil];
+                    }
+                }
+                
+            }];
+
         }
         
         int row=(ceil([notice.plist count]/4.0));
@@ -115,7 +167,24 @@
         
     }
     
-
+//    UILabel *timelagel=[[UILabel alloc]initWithFrame:CGRectMake(10, height+10, 100, 20)];
+//    titlelabel.backgroundColor=[UIColor clearColor];
+    
+    
+    
+    UILabel *timelagelabel=[[UILabel alloc]initWithFrame:CGRectMake(200, height+10, 100, 20)];
+    timelagelabel.backgroundColor=[UIColor clearColor];
+    timelagelabel.font=[UIFont systemFontOfSize:10];
+    timelagelabel.text=[self timeStr:notice.addtime];
+    
+    if(IOSVERSION>=6.0)
+        timelagelabel.textAlignment=NSTextAlignmentRight;
+    else
+        timelagelabel.textAlignment=UITextAlignmentRight;
+    timelagelabel.textColor=[UIColor colorWithRed:123/255.0 green:123/255.0 blue:123/255.0 alpha:1];
+    [headView addSubview:timelagelabel];
+    [titlelabel release];
+    height+=20+5;
     
     headView.frame=CGRectMake(0, 0, 320,10+height);
     _tableView.tableHeaderView=headView;
@@ -125,25 +194,64 @@
     
 
 }
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+-(NSString *)timeStr:(NSString *)_time
 {
-    if([notice.isconfirm integerValue]==1)
+    NSString *time = _time;
+    
+    int cDate = [[NSDate date] timeIntervalSince1970]; //current time
+    NSDate *pDate = [NSDate dateWithTimeIntervalSince1970:time.intValue]; // _time 对应的data
+    int sub = cDate - time.intValue; // 时间差
+    
+    NSString *dateStr;
+    
+    if (sub < 60*60)//小于一小时
     {
-        return 2;
+        dateStr = [NSString stringWithFormat:@"%d %@",sub/60 == 0 ? 1 : sub/60,NSLocalizedString(@"minutesago", @"")];
+    }
+    else if (sub < 12*60*60 && sub >= 60*60) //大于一小时 小于12小时
+    {
+        dateStr = [NSString stringWithFormat:@"%d %@",sub/(60*60),NSLocalizedString(@"hoursago", @"")];
+    }
+    else if (pDate.year == [NSDate date].year)
+    {
+        NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
+        format.dateFormat = @"MM-dd HH:mm";
+        dateStr = [NSString stringWithFormat:@"%@",[format stringFromDate:pDate]];
+        
+    }
+    else if (pDate.year < [NSDate date].year)
+    {
+        NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
+        format.dateFormat = @"yyyy-MM-dd HH:mm";
+        dateStr = [NSString stringWithFormat:@"%@",[format stringFromDate:pDate]];
     }
     else
-        return 1;
+    {
+        dateStr = [NSString stringWithFormat:@"error time"];
+    }
+    
+    
+    if (time !=nil) {
+        return dateStr;
+    }
+    
+    
+    return nil;
+}
+
+-(void)leftClick:(UIButton *)btn
+{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    if([notice.isconfirm integerValue]==1)
-    {
-        return [notice.sisconfirm count]==0?1:[notice.sisconfirm count];
-    }
-    else
-        return [notice.slistname count];
+    return [notice.slistname count];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -154,32 +262,42 @@
     {
         cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
         cell.backgroundColor=[UIColor clearColor];
+        
+        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(210, 5, 20, 20)];
+        imageView.backgroundColor=[UIColor clearColor];
+        [cell.contentView addSubview:imageView];
+        imageView.tag=1006;
+        [imageView release];
+        
         //cell.selectionStyle=UITableViewCellSelectionStyleNone;
     }
-    if(indexPath.section==0)
+  
+    cell.textLabel.text=[notice.slistname objectAtIndex:indexPath.row];
+    cell.textLabel.font=[UIFont systemFontOfSize:12];
+    
+    UIImageView *iamgeView=(UIImageView *)[cell.contentView viewWithTag:1006];
+    
+    
+    if([notice.isconfirm integerValue]==1)
     {
-        if([notice.isconfirm integerValue]==1)
-        {
-            if([notice.sisconfirm count]==0)
+        for (int i=0; i<[notice.sisconfirm count]; i++) {
+            NSString *str=[notice.slistname objectAtIndex:indexPath.row];
+            if([notice.sisconfirm containsObject:str])
             {
-                cell.textLabel.text=@"暂无回执";
+                iamgeView.image=[UIImage imageNamed:@"duihao.png"];
             }
             else
             {
-                 cell.textLabel.text=[notice.sisconfirm objectAtIndex:indexPath.row];
+                iamgeView.image=nil;
             }
         }
-        else
-        {
-              cell.textLabel.text=[notice.slistname objectAtIndex:indexPath.row];
-        }
-
     }
     else
     {
-         cell.textLabel.text=[notice.slistname objectAtIndex:indexPath.row];
+         iamgeView.image=nil;
     }
-    cell.textLabel.font=[UIFont systemFontOfSize:12];
+
+    
    // cell.textLabel.text=[notice.slistname objectAtIndex:indexPath.row];
     
     return cell;
@@ -198,26 +316,24 @@
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
     view.backgroundColor=[UIColor grayColor];
     
-    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 300, 20)];
+    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 100, 20)];
     label.backgroundColor=[UIColor clearColor];
     label.font=[UIFont systemFontOfSize:14];
     [view addSubview:label];
     [label release];
     
-     if([notice.isconfirm integerValue]==1)
-     {
-        if(section==0)
-        {
-            label.text=@"谁回执给了你";
-        }
-        if(section==1)
-        {
-            label.text=@"你发给了谁";
-        }
-     }
-    else
+    label.text=NSLocalizedString(@"sendWho",@"");
+    
+
+    
+    if([notice.isconfirm integerValue]==1)
     {
-        label.text=@"你发给了谁";
+        UILabel *huizlabel=[[UILabel alloc]initWithFrame:CGRectMake(200, 0, 100, 20)];
+        huizlabel.backgroundColor=[UIColor clearColor];
+        huizlabel.font=[UIFont systemFontOfSize:14];
+        [view addSubview:huizlabel];
+        [huizlabel release];
+        huizlabel.text=NSLocalizedString(@"huizhi",@"");
     }
     return [view autorelease];
 }

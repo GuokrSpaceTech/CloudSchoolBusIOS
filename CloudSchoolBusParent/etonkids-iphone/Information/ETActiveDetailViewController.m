@@ -369,8 +369,12 @@
     if (index == 3) {
 //        WXMediaMessage *message = [WXMediaMessage message];
         
-        WXImageObject *ext = [WXImageObject object];
-        ext.imageData= UIImageJPEGRepresentation([UIImage imageNamed:@"icon.png"], 0.5f);
+//        WXImageObject *ext = [WXImageObject object];
+//        ext.imageData= UIImageJPEGRepresentation([UIImage imageNamed:@"icon.png"], 0.5f);
+        
+        WXWebpageObject *web = [WXWebpageObject object];
+        web.webpageUrl = self.etevent.htmlurl;
+        
 //
 //        message.mediaObject = ext;
         
@@ -385,14 +389,14 @@
         
         
         WXMediaMessage *message = [WXMediaMessage message];
-        message.title = self.etevent.htmlurl;
-        message.description = @"";
-//        [message setThumbImage:[UIImage imageNamed:@"res2.jpg"]];
+        message.title = self.etevent.title;
+        message.description = self.etevent.htmlurl;
+        [message setThumbData:UIImageJPEGRepresentation([UIImage imageNamed:@"icon.png"], 0.5f)];
         
 //        WXWebpageObject *ext = [WXWebpageObject object];
 //        ext.webpageUrl = self.etevent.htmlurl;
         
-        message.mediaObject = ext;
+        message.mediaObject = web;
         
         SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
         req.message = message;

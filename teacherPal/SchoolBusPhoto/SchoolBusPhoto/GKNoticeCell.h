@@ -7,14 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "GKNotice.h"
 @interface GKNoticeCell : UITableViewCell
 {
     UILabel *titleLable;
     UILabel *contentlabel;
     UILabel *timeLabel;
+    
+    UIView *bottomView;
+    
+    UIImageView *IconImageView;
+
+    UIImageView *lineImageView;
 }
 @property (nonatomic,retain)  UILabel *titleLable;
 @property (nonatomic,retain)  UILabel *contentlabel;
 @property (nonatomic,retain)  UILabel *timeLabel;
+
+@property (nonatomic,retain)  UILabel *huizhiLabel;
+@property (nonatomic,retain)  GKNotice *notice;
+
+@property (nonatomic,retain)  UIImageView *IconImageView;
+
 @end

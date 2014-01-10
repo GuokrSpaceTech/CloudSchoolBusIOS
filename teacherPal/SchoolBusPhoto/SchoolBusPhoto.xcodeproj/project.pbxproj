@@ -230,6 +230,8 @@
 		11C75DBA181273E600A3AA89 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DB6181273E600A3AA89 /* NSDataAdditions.m */; };
 		11C75DBB181273E600A3AA89 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DB8181273E600A3AA89 /* NSStringAdditions.m */; };
 		11C75DBD181276BA00A3AA89 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C75DBC181276BA00A3AA89 /* SystemConfiguration.framework */; };
+		11CE2A85187FA18400742001 /* NSDate+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2A84187FA18400742001 /* NSDate+convenience.m */; };
+		11CE2A88187FAF8E00742001 /* GKNoticeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2A87187FAF8E00742001 /* GKNoticeInfoViewController.m */; };
 		11D40E3218618700003009D0 /* alterPasswordE.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D40E2E18618700003009D0 /* alterPasswordE.png */; };
 		11D40E3318618700003009D0 /* alterPasswordSE.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D40E2F18618700003009D0 /* alterPasswordSE.png */; };
 		11D40E3418618700003009D0 /* alterPasswordS.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D40E3018618700003009D0 /* alterPasswordS.png */; };
@@ -632,6 +634,10 @@
 		11C75DB7181273E600A3AA89 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		11C75DB8181273E600A3AA89 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
 		11C75DBC181276BA00A3AA89 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		11CE2A83187FA18400742001 /* NSDate+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+convenience.h"; sourceTree = "<group>"; };
+		11CE2A84187FA18400742001 /* NSDate+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+convenience.m"; sourceTree = "<group>"; };
+		11CE2A86187FAF8E00742001 /* GKNoticeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKNoticeInfoViewController.h; sourceTree = "<group>"; };
+		11CE2A87187FAF8E00742001 /* GKNoticeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNoticeInfoViewController.m; sourceTree = "<group>"; };
 		11D40E2E18618700003009D0 /* alterPasswordE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alterPasswordE.png; sourceTree = "<group>"; };
 		11D40E2F18618700003009D0 /* alterPasswordSE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alterPasswordSE.png; sourceTree = "<group>"; };
 		11D40E3018618700003009D0 /* alterPasswordS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alterPasswordS.png; sourceTree = "<group>"; };
@@ -917,6 +923,8 @@
 		119E5FD41818FB6700726761 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				11CE2A83187FA18400742001 /* NSDate+convenience.h */,
+				11CE2A84187FA18400742001 /* NSDate+convenience.m */,
 				119AC2711839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodeld */,
 				11B852B118332A33005FA5B9 /* myProgressView.m */,
 				11B852B218332A33005FA5B9 /* myProgressView.h */,
@@ -1258,6 +1266,8 @@
 				11A5A89A187BF2FE00EA22CD /* GKNoticeListViewController.m */,
 				11AA3389187CFE9A002FE2D4 /* GKNoticeCell.h */,
 				11AA338A187CFE9A002FE2D4 /* GKNoticeCell.m */,
+				11CE2A86187FAF8E00742001 /* GKNoticeInfoViewController.h */,
+				11CE2A87187FAF8E00742001 /* GKNoticeInfoViewController.m */,
 			);
 			name = notice;
 			sourceTree = "<group>";
@@ -1684,6 +1694,7 @@
 				11C75DBB181273E600A3AA89 /* NSStringAdditions.m in Sources */,
 				119E962D1814C5A300866DE8 /* ASIS3ObjectRequest.m in Sources */,
 				11EFE1F11817EEF7009CE69F /* SRRefreshView.m in Sources */,
+				11CE2A88187FAF8E00742001 /* GKNoticeInfoViewController.m in Sources */,
 				119E96251814C5A300866DE8 /* ASICloudFilesObject.m in Sources */,
 				111E8CE2181E532400234014 /* SDWebImageDecoder.m in Sources */,
 				11B852CA18335275005FA5B9 /* GKShowViewController.m in Sources */,
@@ -1712,6 +1723,7 @@
 				119E96211814C5A300866DE8 /* ASICloudFilesCDNRequest.m in Sources */,
 				11B852C718335275005FA5B9 /* ETZoomScrollView.m in Sources */,
 				1102A7E8181A4E2000E6295C /* GKAboutViewController.m in Sources */,
+				11CE2A85187FA18400742001 /* NSDate+convenience.m in Sources */,
 				1193A6BD182B9A64004011BC /* GKLetterData.m in Sources */,
 				119566B3181E098300366B13 /* GKLetterCell.m in Sources */,
 				1193B3921827843800660CB1 /* GKScoreCell.m in Sources */,

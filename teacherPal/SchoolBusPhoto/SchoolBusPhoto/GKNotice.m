@@ -10,7 +10,8 @@
 
 @implementation GKNotice
 @synthesize addtime,adduserid,isconfirm,noticecontent,noticeid,noticetitle,plist,slistname;
-
+@synthesize open;
+@synthesize sisconfirm;
 -(id)init
 {
     if(self=[super init])
@@ -23,6 +24,11 @@
         [self setSlistname:tempSlistName];
         [tempSlistName release];
         
+        NSMutableArray *tempsisconfirm=[[NSMutableArray alloc]init];
+        [self setSisconfirm:tempsisconfirm];
+        [tempsisconfirm release];
+        
+        open=NO;
         
         
     }
@@ -36,7 +42,7 @@
     self.isconfirm=nil;
     self.noticetitle=nil;
     self.noticeid=nil;
-   
+    self.sisconfirm=nil;
     self.noticecontent=nil;
     self.slistname=nil;
 

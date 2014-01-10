@@ -8,8 +8,10 @@
 
 #import "GKNoticeListViewController.h"
 #import "KKNavigationController.h"
-
+#import "GKNoticeCell.h"
 #import "GKNotice.h"
+#import "GKMainViewController.h"
+#import "GKNoticeInfoViewController.h"
 @interface GKNoticeListViewController ()
 
 @end
@@ -35,12 +37,20 @@
     [super viewDidLoad];
    
     noticeList=[[NSMutableArray alloc]init];
-    
+    UIButton *buttom=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    buttom.frame=CGRectMake(10, 5, 34, 35);
+    //UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 34, 35)];
+    [buttom setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"back")) forState:UIControlStateNormal];
+    [buttom setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"backH")) forState:UIControlStateHighlighted];
+    buttom.tag=0;
+    [buttom addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
+    [navigationView addSubview:buttom];
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height -navigationView.frame.size.height-navigationView.frame.origin.y ) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
-    _tableView.backgroundColor=[UIColor clearColor];
+    _tableView.backgroundColor=[UIColor colorWithRed:237/255.0 green:234/255.0 blue:225/255.0 alpha:1];
     _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+
     [self.view addSubview:_tableView];
     
     titlelabel.text=@"通知";
@@ -51,7 +61,24 @@
   
 	// Do any additional setup after loading the view.
 }
-
+-(void)leftClick:(UIButton *)btn
+{
+    
+    GKMainViewController *main=[GKMainViewController share];
+    if(main.state==0)
+    {
+        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
+            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionLeft];
+        }
+    }
+    else
+    {
+        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
+            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionNone];
+        }
+    }
+    
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [noticeList count];
@@ -60,14 +87,16 @@
 {
     static NSString *cellIdentifier=@"cell";
     
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    GKNoticeCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(cell==nil)
     {
-        cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+        cell=[[[GKNoticeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+        cell.backgroundColor=[UIColor clearColor];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
     }
     
     GKNotice *notice=[noticeList objectAtIndex:indexPath.row];
-    cell.textLabel.text=notice.addtime;
+    cell.notice=notice;
     
     return cell;
 }
@@ -94,7 +123,7 @@
             notice.isconfirm=[NSString stringWithFormat:@"%@",[dic objectForKey:@"isconfirm"]];
             notice.noticecontent=[NSString stringWithFormat:@"%@",[dic objectForKey:@"noticecontent"]];
             notice.noticeid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"noticeid"]];
-            
+            notice.sisconfirm=[dic objectForKey:@"sisconfirm"];
             notice.noticetitle=[NSString stringWithFormat:@"%@",[dic objectForKey:@"noticetitle"]];
             notice.plist=[dic objectForKey:@"plist"];
             notice.slistname=[dic objectForKey:@"slistname"];
@@ -104,6 +133,102 @@
         
         [_tableView reloadData];
     }
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   
+    
+    GKNotice *_notice=[noticeList objectAtIndex:indexPath.row];
+    int height=0;
+    CGSize size=[_notice.noticetitle sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:NSLineBreakByWordWrapping];
+
+    height+=size.height;
+    
+    
+    //titleLable.backgroundColor=[UIColor redColor];
+    
+    height+=5;
+    CGSize contentSize=[_notice.noticecontent sizeWithFont:FONTSIZE constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:NSLineBreakByTruncatingTail];
+    //height+=contentSize.height;
+//
+//    if(_notice.open==YES)
+//    {
+//        //如果是展开状态  显示全部内容
+//      
+//        
+//       // NSLog(@"~~~~~~~~~~%@",_notice.noticecontent);
+//        height+=contentSize.height;
+//        
+//    }
+//    else
+//    {
+        //如果是闭合状态
+        if(contentSize.height > [FONTSIZE lineHeight] *3)
+        {
+            //当内容大于3行时 显示三行
+            height+=[FONTSIZE lineHeight] *3;
+        }
+        else
+        {
+            //当内容小于3行时 显示全部
+            height+=contentSize.height;
+        }
+        
+        
+   // }
+    height+=5;
+   
+ 
+    //回执
+    
+//    NSMutableString *selectobectStr =[NSMutableString stringWithString:@""];
+//    NSLog(@"~~~~~~~~%@",_notice.slistname);
+//    for (int i=0; i<[_notice.slistname count]; i++) {
+//        [selectobectStr appendFormat:@"%@    " ,[_notice.slistname objectAtIndex:i]];
+//    }
+//    if(![selectobectStr isEqualToString:@""])
+//    {
+//        NSString *huizhiText=[NSString stringWithFormat:@"%@:%@",@"回执",selectobectStr];
+//        
+//        CGSize huizSize=[huizhiText sizeWithFont:FONTSIZE constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:NSLineBreakByWordWrapping];
+//        height+=huizSize.height;
+//        height+=5;
+//        
+//    }
+//    else
+//    {
+//        height+=0;
+//    }
+    
+    
+//pic
+    
+    if([_notice.plist count]==1)
+    {
+        height+=(100+5);
+    }
+    else if([_notice.plist count]>1)
+    {
+        int row=(ceil([_notice.plist count]/3.0));
+        height+=(row*65) +(row-1)*10 +5;
+    }
+    
+    height+=20;
+    return height+10 + 20;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+     GKNotice *_notice=[noticeList objectAtIndex:indexPath.row];
+    
+    GKNoticeInfoViewController *infoVC=[[GKNoticeInfoViewController alloc]init];
+    infoVC.notice=_notice;
+    [self.navigationController pushViewController:infoVC animated:YES];
+    [infoVC release];
+//    _notice.open=!_notice.open;
+//    [_tableView reloadData];
 }
 -(void)dealloc
 {

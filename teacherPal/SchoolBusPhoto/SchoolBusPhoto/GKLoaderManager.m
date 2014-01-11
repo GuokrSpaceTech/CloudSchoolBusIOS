@@ -8,9 +8,13 @@
 
 #import "GKLoaderManager.h"
 #import "GKAppDelegate.h"
-
 #import "GKUserLogin.h"
 #import "GKFindWraper.h"
+#import "TestFlight.h"
+
+#define NSLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+
+
 static GKLoaderManager *manager=nil;
 @implementation GKLoaderManager
 @synthesize upArr;

@@ -8,13 +8,14 @@
 
 #import "GKLeftViewController.h"
 
-#import "GKSettingViewController.h"
+#import "GKAppDelegate.h"
 #import "GKClassViewController.h"
 #import "GKLetterViewController.h"
 #import "GKNoticeViewController.h"
 #import "KKNavigationController.h"
 #import "GKAlumbViewController.h"
 #import "GKAboutViewController.h"
+#import "GKLoaderManager.h"
 @interface GKLeftViewController ()
 
 @end
@@ -302,6 +303,7 @@
 
 
         GKSettingViewController *settingVC=[[GKSettingViewController alloc]init];
+        settingVC.delegate=self;
         KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:settingVC];
         [settingVC release];
 
@@ -335,9 +337,24 @@
 
 }
 
--(void)loginout
+-(void)settingLoginOut
 {
-    [delegate loginOut];
+    //[delegate loginOut];
+    
+    
+    GKAppDelegate *_delegate= APPDELEGATE;
+    
+    _delegate.loginVC.passWord.text=@"";
+    
+    
+    [GKUserLogin clearpassword];
+    
+    [[GKLoaderManager createLoaderManager]setQueueStop];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    
+   // [self dismissModalViewControllerAnimated:YES];
 }
 
 

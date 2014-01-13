@@ -18,6 +18,7 @@
 
 @implementation GKSettingViewController
 @synthesize _tableView;
+@synthesize delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -84,6 +85,17 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if(indexPath.row==0)
+    {
+        GKRePasswordViewController *passVC= [[GKRePasswordViewController alloc]init];
+        passVC.delegate=self;
+        [self.navigationController pushViewController:passVC animated:YES];
+        [passVC release];
+        
+        return;
+    }
+    
     UIViewController *VC=nil;
     switch (indexPath.row) {
         case 0:
@@ -91,6 +103,7 @@
             break;
         case 1:
              VC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];
+            
             break;
         case 2:
             VC=[[GKHelpSupportViewController alloc]init];
@@ -104,7 +117,10 @@
     [VC release];
     
 }
-
+-(void)loginout
+{
+    [delegate settingLoginOut];
+}
 -(void)leftClick:(UIButton *)btn
 {
     

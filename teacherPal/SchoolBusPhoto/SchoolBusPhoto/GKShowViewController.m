@@ -152,6 +152,10 @@
     else
         _scroller=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-(5 + y*STUDENTCELLHEIGHT)-IOS7OFFSET-46)];
     _scroller.backgroundColor=[UIColor whiteColor];
+    
+    
+    NSLog(@"%f-------------%f",self.view.frame.size.width,self.view.frame.size.height-(5 + y*STUDENTCELLHEIGHT)-IOS7OFFSET-46);
+    
     [picView addSubview:_scroller];
     _scroller.contentSize=CGSizeMake([assetArr count] *320, _scroller.frame.size.height);
     _scroller.showsHorizontalScrollIndicator=NO;
@@ -594,6 +598,7 @@
     if(iamgeView==nil)
     {
         UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(index*_scroller.frame.size.width, 0, _scroller.frame.size.width, _scroller.frame.size.height)];
+        imageView.image=nil;
         imageView.backgroundColor = [UIColor blackColor];
         imageView.tag=index+TAG;
         //[self performSelectorInBackground:@selector(setPhotoImage:) withObject:imageView];
@@ -613,6 +618,9 @@
         imageView.userInteractionEnabled = YES;
        // imageView.contentMode=UIViewContentModeScaleAspectFit;
         imageView.contentMode=UIViewContentModeScaleAspectFill;
+        [imageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
+        imageView.clipsToBounds=YES;// 防止图片超过iamgeView 的区域
+        // 1clipsToBounds
         [_scroller addSubview:imageView];
         [imageView release];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showBigImage:)];

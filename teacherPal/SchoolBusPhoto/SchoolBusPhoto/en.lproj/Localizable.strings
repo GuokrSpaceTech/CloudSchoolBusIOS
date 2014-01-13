@@ -112,6 +112,7 @@
 
 "input" = "Input can not be empty";
 "diff"= "Two password input is different";
+"diffoldNew"="The new password and old password cannot be the same";
 
 "OidErr" = "Old PassWord is error";
 "otherErr" = "Cannot contain special characters";

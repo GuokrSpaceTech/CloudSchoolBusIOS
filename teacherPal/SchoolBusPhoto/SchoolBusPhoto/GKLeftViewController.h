@@ -11,8 +11,8 @@
 #import "GKImagePickerViewController.h"
 #import "GKBadgeView.h"
 #import "GKUserLogin.h"
-#import "GKRePasswordViewController.h"
-@interface GKLeftViewController : UIViewController<UIAlertViewDelegate,GKRePasswordViewControllerDelegate>
+#import "GKSettingViewController.h"
+@interface GKLeftViewController : UIViewController<UIAlertViewDelegate,settingViewDelegate>
 {
 
         GKBadgeView *badgeView;

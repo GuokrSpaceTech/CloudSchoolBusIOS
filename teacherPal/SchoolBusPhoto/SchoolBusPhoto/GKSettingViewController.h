@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "GKBaseViewController.h"
-@interface GKSettingViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate>
+#import "GKRePasswordViewController.h"
+@protocol settingViewDelegate;
+@interface GKSettingViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate,GKRePasswordViewControllerDelegate>
 @property (nonatomic,retain)UITableView *_tableView;
+@property (nonatomic,assign)id<settingViewDelegate>delegate;
+@end
+
+@protocol settingViewDelegate <NSObject>
+-(void)settingLoginOut;
 
 @end

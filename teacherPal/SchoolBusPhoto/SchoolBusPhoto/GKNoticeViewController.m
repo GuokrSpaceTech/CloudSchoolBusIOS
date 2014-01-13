@@ -378,6 +378,11 @@
         _textView.text=@"";
         [studentView setAllButtonSelect:NO];
         [stuArr removeAllObjects];
+        
+        numberWord.text=@"";
+        
+      
+        
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"sendsucess", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
         [alert show];
         [alert release];

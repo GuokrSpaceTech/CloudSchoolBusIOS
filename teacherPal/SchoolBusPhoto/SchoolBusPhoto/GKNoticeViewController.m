@@ -356,6 +356,8 @@
             {
                 NSString * base64 = [[NSString alloc] initWithData:[GTMBase64 encodeData:self.upData] encoding:NSUTF8StringEncoding];
                 NSDictionary *picdic=[NSDictionary dictionaryWithObjectsAndKeys:key,@"pickey",[self getFileName:0],@"fname",[self numberSize:self.upData],@"fsize",base64,@"fbody",@"jpg",@"fext",@"notice",@"pictype", nil];
+                NSLog(@"%@",picdic);
+                
                 [[EKRequest Instance]EKHTTPRequest:pic parameters:picdic requestMethod:POST forDelegate:self];
                 [base64 release];
 

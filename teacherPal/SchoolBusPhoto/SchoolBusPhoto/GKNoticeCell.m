@@ -16,6 +16,7 @@
 @synthesize notice;
 @synthesize IconImageView;
 @synthesize huizhiLabel;
+@synthesize delegate;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -183,19 +184,24 @@
         imageView.tag=IMAGETAG;
         [self.contentView addSubview:imageView];
         [imageView release];
-        
+        imageView.userInteractionEnabled=YES;
+        UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick:)];
+        tap.numberOfTapsRequired=1;
+        [imageView addGestureRecognizer:tap];
+        [tap release];
         NSString *urlStr=[[[notice.plist objectAtIndex:0] objectForKey:@"source"] stringByAppendingString:@".tiny.jpg"];
         [imageView setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
             if (error) {
                 
                 NSLog(@"Error : load image fail.");
                 imageView.image = [UIImage imageNamed:@"imageerror.png"];
+                imageView.userInteractionEnabled=NO;
                 
             }
             else
             {
                 
-                
+                 imageView.userInteractionEnabled=YES;
                 if (cacheType == 0) { // request url
                     CATransition *transition = [CATransition animation];
                     transition.duration = 1.0f;
@@ -224,12 +230,16 @@
             imageView.backgroundColor=[UIColor clearColor];
             [self.contentView addSubview:imageView];
             [imageView release];
-            
+            UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick:)];
+            tap.numberOfTapsRequired=1;
+            [imageView addGestureRecognizer:tap];
+            [tap release];
+
              NSString *urlStr=[[[notice.plist objectAtIndex:i] objectForKey:@"source"] stringByAppendingString:@".tiny.jpg"];
             
             [imageView setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 if (error) {
-                    
+                    imageView.userInteractionEnabled=NO;
                     NSLog(@"Error : load image fail.");
                     imageView.image = [UIImage imageNamed:@"imageerror.png"];
                     
@@ -237,7 +247,7 @@
                 else
                 {
                     
-                    
+                    imageView.userInteractionEnabled=YES;
                     if (cacheType == 0) { // request url
                         CATransition *transition = [CATransition animation];
                         transition.duration = 1.0f;
@@ -280,6 +290,18 @@
     bottomView.frame=CGRectMake(10,5 , 300, 10+height+10);
  
 }
+-(void)tapClick:(UITapGestureRecognizer *)tap
+{
+    
+   int a=  tap.view.tag-IMAGETAG;
+    
+    NSString *urlStr=[[notice.plist objectAtIndex:a] objectForKey:@"source"];
+    
+    
+    
+    [delegate clickImageViewLookImage:urlStr];
+}
+
 //计算时间
 -(NSString *)timeStr:(NSString *)_time
 {

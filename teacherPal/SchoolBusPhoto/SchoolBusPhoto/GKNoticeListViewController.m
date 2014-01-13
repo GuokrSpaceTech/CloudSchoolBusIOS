@@ -8,7 +8,7 @@
 
 #import "GKNoticeListViewController.h"
 #import "KKNavigationController.h"
-#import "GKNoticeCell.h"
+#import "GKShowBigImageViewController.h"
 #import "GKNotice.h"
 #import "GKMainViewController.h"
 #import "GKNoticeInfoViewController.h"
@@ -127,6 +127,17 @@
     }
     
 }
+-(void)clickImageViewLookImage:(NSString *)path
+{
+    GKShowBigImageViewController *show=[[GKShowBigImageViewController alloc]init];
+    show.path=path;
+    [self.navigationController presentViewController:show animated:YES completion:^{
+        
+    }];
+    [show release];
+}
+
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [noticeList count];
@@ -139,6 +150,7 @@
     if(cell==nil)
     {
         cell=[[[GKNoticeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+        cell.delegate=self;
         cell.backgroundColor=[UIColor clearColor];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
     }
@@ -150,6 +162,8 @@
     {
         if(isMore)
             [self setFooterView];
+        else
+            [self removeFooterView];
     }
     
 

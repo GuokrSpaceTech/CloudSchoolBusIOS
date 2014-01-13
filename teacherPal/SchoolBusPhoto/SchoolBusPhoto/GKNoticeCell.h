@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GKNotice.h"
+@protocol noticeCelldelegate;
 @interface GKNoticeCell : UITableViewCell
 {
     UILabel *titleLable;
@@ -26,7 +27,14 @@
 
 @property (nonatomic,retain)  UILabel *huizhiLabel;
 @property (nonatomic,retain)  GKNotice *notice;
-
+@property (nonatomic,assign) id<noticeCelldelegate>delegate;
 @property (nonatomic,retain)  UIImageView *IconImageView;
+
+@end
+
+
+@protocol noticeCelldelegate <NSObject>
+
+-(void)clickImageViewLookImage:(NSString *)path;
 
 @end

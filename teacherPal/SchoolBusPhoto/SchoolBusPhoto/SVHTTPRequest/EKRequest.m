@@ -139,14 +139,14 @@ static EKRequest * instance = nil;
     //登录方法不加入Sid
     if(function == tsignin && param != nil)
     {
-        header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactoprest",@"apikey",@"1.1",@"Version", nil], nil];
+        header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactoprest",@"apikey",CURRENTVERSION,@"Version", nil], nil];
     }
     else
     {
         GKUserLogin *user=[GKUserLogin currentLogin];
         NSString *sid = user._sid;
        // NSString * sid = [userDefault objectForKey:@"sid"];
-        header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactoprest",@"apikey",sid,@"sid",@"1.1",@"Version",nil], nil];
+        header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactoprest",@"apikey",sid,@"sid",CURRENTVERSION,@"Version",nil], nil];
     }
     
      NSString * address = [SERVERURL stringByAppendingFormat:@"%@",[self getFunction:function]];

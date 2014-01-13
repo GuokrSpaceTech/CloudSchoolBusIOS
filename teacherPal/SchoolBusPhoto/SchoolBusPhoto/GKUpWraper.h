@@ -21,6 +21,7 @@
 @property (nonatomic,retain)NSString *intro;
 @property (nonatomic,retain)myProgressView *_progressView;
 @property (nonatomic,retain)NSData *imageData;
+@property (nonatomic, retain) NSString *tag;
 
 //path name  nameId tid time fize classid
 

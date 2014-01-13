@@ -7,9 +7,9 @@
 //
 
 #import "GKLeftViewController.h"
-#import "GKAboutViewController.h"
-#import "GKUpLoaderViewController.h"
-#import "GKInfoViewController.h"
+
+#import "GKSettingViewController.h"
+#import "GKClassViewController.h"
 #import "GKLetterViewController.h"
 #import "KKNavigationController.h"
 #import "GKAlumbViewController.h"
@@ -86,9 +86,17 @@
     self.navigationController.navigationBarHidden=YES;
 
     
+//    "grade"="grade.png";
+//    "gradeH"="gradeH.png";
+//    "setting"="setting.png";
+//    "settingH"="settingH.png";
     
-    NSArray *defArr = [NSArray arrayWithObjects:NSLocalizedString(@"notice", @""),NSLocalizedString(@"count", @""), NSLocalizedString(@"home", @""),NSLocalizedString(@"leftUpN", @""),NSLocalizedString(@"alterPass", @""),NSLocalizedString(@"about", @""),nil];
-    NSArray *selArr = [NSArray arrayWithObjects:NSLocalizedString(@"noticeH", @""),NSLocalizedString(@"countH", @""),NSLocalizedString(@"homeH", @""), NSLocalizedString(@"leftUpH", @""),NSLocalizedString(@"alterPassS", @""),NSLocalizedString(@"aboutH", @""),  nil];
+//    classLeft.png
+    NSLog(@"????? %@",NSLocalizedString(@"classLeft", @""));
+     NSLog(@"????? %@",  NSLocalizedString(@"classLeftH", @""));
+  
+    NSArray *defArr = [NSArray arrayWithObjects:NSLocalizedString(@"notice", @""),NSLocalizedString(@"grade", @""), NSLocalizedString(@"home", @""),NSLocalizedString(@"setting", @""),nil];
+    NSArray *selArr = [NSArray arrayWithObjects:NSLocalizedString(@"noticeH", @""),NSLocalizedString(@"gradeH", @""),NSLocalizedString(@"homeH", @""), NSLocalizedString(@"settingH", @""),  nil];
     totle=[defArr count];
     for (int i=0; i<[defArr count]; i++) {
         UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -100,6 +108,7 @@
         else
             button.frame=CGRectMake(0, 46 + 52*i, 320, 52);
         button.tag=i+1;
+        button.selected=NO;
         [button addTarget:self action:@selector(doClickBottomBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:button];
     }
@@ -185,6 +194,7 @@
     for (id obj in self.view.subviews) {
         if ([obj isKindOfClass:[UIButton class]]) {
             UIButton *btn = (UIButton *)obj;
+            NSLog(@"%d",btn.tag);
             if (btn.tag >= 1 && btn.tag <= totle) {
                 btn.selected = NO;
                 //                btn.userInteractionEnabled = YES;
@@ -265,9 +275,9 @@
     }
     if(index==2)
     {
-        GKInfoViewController *upVC=[[GKInfoViewController alloc]init];
-        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:upVC];
-        [upVC release];
+        GKClassViewController *classVC=[[GKClassViewController alloc]init];
+        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:classVC];
+        [classVC release];
         
         return [nav autorelease];
     }
@@ -290,36 +300,35 @@
     {
 
 
-        
-        GKUpLoaderViewController *aboutVC=[[GKUpLoaderViewController alloc]init];
-        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:aboutVC];
-        [aboutVC release];
+        GKSettingViewController *settingVC=[[GKSettingViewController alloc]init];
+        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:settingVC];
+        [settingVC release];
 
         return [nav autorelease];
         
     }
-    if(index==5)
-    {
-        
-        GKRePasswordViewController *repass=[[GKRePasswordViewController alloc]init];
-        repass.delegate=self;
-        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:repass];
-        [repass release];
-        
-        return [nav autorelease];
-        
-    
-        
-    }
-    if(index==6)
-    {
-        GKAboutViewController *aboutVC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];
-        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:aboutVC];
-        [aboutVC release];
-        
-        return [nav autorelease];
-
-    }
+//    if(index==5)
+//    {
+//        
+//        GKRePasswordViewController *repass=[[GKRePasswordViewController alloc]init];
+//        repass.delegate=self;
+//        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:repass];
+//        [repass release];
+//        
+//        return [nav autorelease];
+//        
+//    
+//        
+//    }
+//    if(index==6)
+//    {
+//        GKAboutViewController *aboutVC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];
+//        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:aboutVC];
+//        [aboutVC release];
+//        
+//        return [nav autorelease];
+//
+//    }
     return nil;
 
 

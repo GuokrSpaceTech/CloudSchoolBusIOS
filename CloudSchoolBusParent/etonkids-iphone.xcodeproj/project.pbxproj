@@ -111,6 +111,10 @@
 		785DE1C1180FBC31001B0EB3 /* bottomLogoutDef.png in Resources */ = {isa = PBXBuildFile; fileRef = 785DE1C0180FBC31001B0EB3 /* bottomLogoutDef.png */; };
 		785DE1C4180FBF7C001B0EB3 /* ETBoardSideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 785DE1C3180FBF7C001B0EB3 /* ETBoardSideView.m */; };
 		785DE1C6180FC45C001B0EB3 /* showMain.png in Resources */ = {isa = PBXBuildFile; fileRef = 785DE1C5180FC45C001B0EB3 /* showMain.png */; };
+		78709BB6187CFE51009250FB /* aboutlogo_EN(1).png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BB2187CFE51009250FB /* aboutlogo_EN(1).png */; };
+		78709BB7187CFE51009250FB /* aboutlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BB3187CFE51009250FB /* aboutlogo.png */; };
+		78709BB8187CFE51009250FB /* guide3dot0.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BB4187CFE51009250FB /* guide3dot0.png */; };
+		78709BB9187CFE51009250FB /* 引导页-EN.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BB5187CFE51009250FB /* 引导页-EN.png */; };
 		788BE69F17EFD9400076D920 /* bottomBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 788BE69E17EFD9400076D920 /* bottomBack.png */; };
 		788BE6A117EFDBE70076D920 /* textBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 788BE6A017EFDBE70076D920 /* textBack.png */; };
 		788BE6A417EFDC860076D920 /* upBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 788BE6A217EFDC860076D920 /* upBtn.png */; };
@@ -216,8 +220,6 @@
 		78A4201018223A5200D0DE50 /* fesimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A4200E18223A5200D0DE50 /* fesimg.png */; };
 		78A4201118223A5200D0DE50 /* attimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A4200F18223A5200D0DE50 /* attimg.png */; };
 		78AD8541186593540082E082 /* ETHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AD8540186593540082E082 /* ETHelpViewController.m */; };
-		78AD854418659F680082E082 /* aboutlogo_EN(1).png in Resources */ = {isa = PBXBuildFile; fileRef = 78AD854218659F680082E082 /* aboutlogo_EN(1).png */; };
-		78AD854518659F680082E082 /* aboutlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AD854318659F680082E082 /* aboutlogo.png */; };
 		78BC611B17E85E0C0063B68A /* ETZoomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BC611A17E85E0C0063B68A /* ETZoomScrollView.m */; };
 		78C2ADB817E06F4E00E6A5CD /* tabbarBackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C2ADB717E06F4E00E6A5CD /* tabbarBackGround.png */; };
 		78C2ADBA17E06FEC00E6A5CD /* tabbarSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C2ADB917E06FEC00E6A5CD /* tabbarSelected.png */; };
@@ -314,7 +316,6 @@
 		78F841C8181945F9007722AE /* tbBtn_notic_en.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F841C3181945F9007722AE /* tbBtn_notic_en.png */; };
 		78F841C9181945F9007722AE /* tbBtn_setting_en.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F841C4181945F9007722AE /* tbBtn_setting_en.png */; };
 		78F841CD181947A0007722AE /* ETSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F841CC181947A0007722AE /* ETSettingsViewController.m */; };
-		78F841D0181A12E0007722AE /* guide3dot0.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F841CE181A12E0007722AE /* guide3dot0.png */; };
 		78F841D1181A12E0007722AE /* guidebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F841CF181A12E0007722AE /* guidebtn.png */; };
 		78F841D3181A1398007722AE /* tbBtn_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F841D2181A1398007722AE /* tbBtn_setting.png */; };
 		78F841D7181A234F007722AE /* noticeTabBtnBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F841D5181A234F007722AE /* noticeTabBtnBack.png */; };
@@ -726,6 +727,10 @@
 		785DE1C2180FBF7C001B0EB3 /* ETBoardSideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETBoardSideView.h; sourceTree = "<group>"; };
 		785DE1C3180FBF7C001B0EB3 /* ETBoardSideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETBoardSideView.m; sourceTree = "<group>"; };
 		785DE1C5180FC45C001B0EB3 /* showMain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = showMain.png; sourceTree = "<group>"; };
+		78709BB2187CFE51009250FB /* aboutlogo_EN(1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutlogo_EN(1).png"; sourceTree = "<group>"; };
+		78709BB3187CFE51009250FB /* aboutlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aboutlogo.png; sourceTree = "<group>"; };
+		78709BB4187CFE51009250FB /* guide3dot0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide3dot0.png; sourceTree = "<group>"; };
+		78709BB5187CFE51009250FB /* 引导页-EN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "引导页-EN.png"; sourceTree = "<group>"; };
 		788BE69E17EFD9400076D920 /* bottomBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomBack.png; sourceTree = "<group>"; };
 		788BE6A017EFDBE70076D920 /* textBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textBack.png; sourceTree = "<group>"; };
 		788BE6A217EFDC860076D920 /* upBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upBtn.png; sourceTree = "<group>"; };
@@ -848,8 +853,6 @@
 		78A4200F18223A5200D0DE50 /* attimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attimg.png; sourceTree = "<group>"; };
 		78AD853F186593540082E082 /* ETHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETHelpViewController.h; sourceTree = "<group>"; };
 		78AD8540186593540082E082 /* ETHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETHelpViewController.m; sourceTree = "<group>"; };
-		78AD854218659F680082E082 /* aboutlogo_EN(1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutlogo_EN(1).png"; sourceTree = "<group>"; };
-		78AD854318659F680082E082 /* aboutlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aboutlogo.png; sourceTree = "<group>"; };
 		78BC611917E85E0C0063B68A /* ETZoomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETZoomScrollView.h; sourceTree = "<group>"; };
 		78BC611A17E85E0C0063B68A /* ETZoomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETZoomScrollView.m; sourceTree = "<group>"; };
 		78C2ADB717E06F4E00E6A5CD /* tabbarBackGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbarBackGround.png; sourceTree = "<group>"; };
@@ -970,7 +973,6 @@
 		78F841C4181945F9007722AE /* tbBtn_setting_en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tbBtn_setting_en.png; sourceTree = "<group>"; };
 		78F841CB181947A0007722AE /* ETSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETSettingsViewController.h; sourceTree = "<group>"; };
 		78F841CC181947A0007722AE /* ETSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSettingsViewController.m; sourceTree = "<group>"; };
-		78F841CE181A12E0007722AE /* guide3dot0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide3dot0.png; sourceTree = "<group>"; };
 		78F841CF181A12E0007722AE /* guidebtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guidebtn.png; sourceTree = "<group>"; };
 		78F841D2181A1398007722AE /* tbBtn_setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tbBtn_setting.png; sourceTree = "<group>"; };
 		78F841D5181A234F007722AE /* noticeTabBtnBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noticeTabBtnBack.png; sourceTree = "<group>"; };
@@ -1527,8 +1529,10 @@
 		78C2ADB617E06F2900E6A5CD /* V3.0 */ = {
 			isa = PBXGroup;
 			children = (
-				78AD854218659F680082E082 /* aboutlogo_EN(1).png */,
-				78AD854318659F680082E082 /* aboutlogo.png */,
+				78709BB2187CFE51009250FB /* aboutlogo_EN(1).png */,
+				78709BB3187CFE51009250FB /* aboutlogo.png */,
+				78709BB4187CFE51009250FB /* guide3dot0.png */,
+				78709BB5187CFE51009250FB /* 引导页-EN.png */,
 				78A2D250184DB5D80064D40C /* cellPraise_disable.png */,
 				78A2D251184DB5D80064D40C /* upBtn_disable.png */,
 				78A2D252184DB5D80064D40C /* cellComment_disable.png */,
@@ -1607,7 +1611,6 @@
 				78F841DB181A70EA007722AE /* guidebtnBack.png */,
 				78F841D5181A234F007722AE /* noticeTabBtnBack.png */,
 				78F841D2181A1398007722AE /* tbBtn_setting.png */,
-				78F841CE181A12E0007722AE /* guide3dot0.png */,
 				78F841CF181A12E0007722AE /* guidebtn.png */,
 				78F841C1181945F9007722AE /* tbBtn_activity_en.png */,
 				78F841C2181945F9007722AE /* tbBtn_classshare_en.png */,
@@ -2735,6 +2738,7 @@
 				78A41FE51820E10100D0DE50 /* ETBaseMessageViewController.xib in Resources */,
 				785DE1B3180FB3E6001B0EB3 /* bottomAboutSel.png in Resources */,
 				78F073C0183CA56700C3FC70 /* icon.png in Resources */,
+				78709BB7187CFE51009250FB /* aboutlogo.png in Resources */,
 				F95023DF16DCB61B0079A05E /* composedingwei@2x.png in Resources */,
 				78F841F6181A87C8007722AE /* 008.png in Resources */,
 				789EAA5C183A1B4C0029D4B0 /* 已报名.png in Resources */,
@@ -2773,7 +2777,6 @@
 				F95023F916DCB61B0079A05E /* composeupbg@2x.png in Resources */,
 				F95023FA16DCB61B0079A05E /* composevideo_pic.png in Resources */,
 				F95023FB16DCB61B0079A05E /* composevideo_pic@2x.png in Resources */,
-				78AD854518659F680082E082 /* aboutlogo.png in Resources */,
 				F95023FC16DCB61B0079A05E /* composeWords.png in Resources */,
 				F95023FD16DCB61B0079A05E /* composeWords@2x.png in Resources */,
 				F95023FE16DCB61B0079A05E /* friendPortrait.png in Resources */,
@@ -2790,7 +2793,6 @@
 				F950240716DCB61B0079A05E /* test@2x.png in Resources */,
 				F9DB03F116E46F930094A679 /* ETShareViewController.xib in Resources */,
 				78952FF7184C718C001C30D2 /* navRightBtn_selected.png in Resources */,
-				78F841D0181A12E0007722AE /* guide3dot0.png in Resources */,
 				78F841F9181A87C8007722AE /* 011.png in Resources */,
 				78952FF4184C718C001C30D2 /* navLeftBtn_default.png in Resources */,
 				789EAA3F1834BE1C0029D4B0 /* 1登录_02 (2).png in Resources */,
@@ -2902,6 +2904,7 @@
 				78C2ADE517E0830500E6A5CD /* bottom_newversion_default.png in Resources */,
 				78C2ADE617E0830500E6A5CD /* bottom_newversion_selected.png in Resources */,
 				78C2ADE717E0830500E6A5CD /* bottom_schedule_default.png in Resources */,
+				78709BB9187CFE51009250FB /* 引导页-EN.png in Resources */,
 				78A4200318211A7100D0DE50 /* bindTextBack.png in Resources */,
 				78C2ADE817E0830500E6A5CD /* bottom_schedule_selected.png in Resources */,
 				78C2ADE917E0830500E6A5CD /* bottom_score_default.png in Resources */,
@@ -2916,6 +2919,7 @@
 				78C2AE1017E2B1D200E6A5CD /* cellPraise.png in Resources */,
 				78DBF51017E2CBC800D44108 /* cellline.png in Resources */,
 				78A41FF9182102F000D0DE50 /* 通知消息.png in Resources */,
+				78709BB8187CFE51009250FB /* guide3dot0.png in Resources */,
 				78F841B8181943FB007722AE /* Default@2x.png in Resources */,
 				78DBF51217E2E7B400D44108 /* touxiang_back.png in Resources */,
 				78DFFBBC1848301C000BF443 /* 午餐.png in Resources */,
@@ -2962,6 +2966,7 @@
 				78931AB117F67495007A3ACE /* login_pwd.png in Resources */,
 				78931AB217F67495007A3ACE /* login_sel.png in Resources */,
 				78931AB317F67495007A3ACE /* login_selBtn.png in Resources */,
+				78709BB6187CFE51009250FB /* aboutlogo_EN(1).png in Resources */,
 				785DE1A2180FB0E5001B0EB3 /* bottomDef.png in Resources */,
 				78931AB417F67495007A3ACE /* login_txtBack.png in Resources */,
 				78931AB517F67495007A3ACE /* login_user.png in Resources */,
@@ -2989,7 +2994,6 @@
 				78930526187A4D4300628928 /* README.md in Resources */,
 				785DE1B7180FB3E6001B0EB3 /* bottomFeedbackSel.png in Resources */,
 				7818DEB3180D2152005781DF /* GO.png in Resources */,
-				78AD854418659F680082E082 /* aboutlogo_EN(1).png in Resources */,
 				7818DEB4180D2152005781DF /* GO1.png in Resources */,
 				78A4200018210AAA00D0DE50 /* myaccount2.png in Resources */,
 				7818DEB6180E355A005781DF /* blackbt.png in Resources */,

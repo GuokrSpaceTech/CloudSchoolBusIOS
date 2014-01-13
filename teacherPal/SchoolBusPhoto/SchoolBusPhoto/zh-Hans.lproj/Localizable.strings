@@ -37,11 +37,13 @@
 "Sharing"="推广积分";
 "year"="年";
 "notice"="noticeNormal.png";
-"count"="countNormal.png";
+
 "about"="aboutNormal.png";
 
+
+
 "noticeH"="notice.png";
-"countH"="count.png";
+
 "aboutH"="about.png";
 "story" = "说点什么";
 "shengji"="升级";
@@ -58,7 +60,7 @@
 "leftUpN"="leftUpN.png";
 "leftUpH"="leftupH.png";
 
-
+"avator"="头像";
 
 "avatorM"="修改头像";
 "choose"="从手机相册中选择";
@@ -153,3 +155,38 @@
 "sendWho"="发给了谁";
 "huizhi"="谁回执了你";
 "load"="加载中";
+
+"grade"="grade.png";
+"gradeH"="gradeH.png";
+"setting"="setting.png";
+"settingH"="settingH.png";
+
+
+"Princess"="女孩";
+"prince"="男孩";
+"Gender"="性别";
+"rightdate" = "请设置正确的生日日期";
+"birthday"="生日";
+
+"nickName1"="昵称";
+"realName"="姓名";
+"wrong"="学生信息错误，请联系客服";
+"student"="学生列表";
+"detail"="详细资料";
+"class"="班级";
+
+"classFen"="班级积分";
+"uploadQ"="上传列表";
+"studentQ"="班级学生";
+
+"leftSetting"="设置";
+"feedBack"="意见反馈";
+"helpSupport"="帮助与支持";
+"moviedraft" = "草稿箱";
+
+"nodata" = "暂无数据";
+"savedraft" = "保存草稿";
+"dontsavedraft" = "不保存";
+
+"delete" = "删除";
+"draftedit" = "编辑";

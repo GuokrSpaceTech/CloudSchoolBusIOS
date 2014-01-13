@@ -32,7 +32,7 @@
 {
     
     [TestFlight takeOff:@"d4bc9035-d1e2-4759-b915-1bd09236dc63"];
-    
+
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];

@@ -10,6 +10,10 @@
 #import "KKNavigationController.h"
 #import "GKLoaderManager.h"
 #import "GKUpQueue.h"
+#import "TestFlight.h"
+
+#define NSLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+
 @interface GKUpLoaderViewController ()
 
 @end
@@ -25,10 +29,10 @@
     }
     return self;
 }
--(void)viewDidAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
-    [(KKNavigationController *)self.navigationController setNavigationTouch:NO];
+    [super viewWillAppear:animated];
+    [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
 }
 -(void)removieFinished:(NSNotification *)no
 {
@@ -51,6 +55,12 @@
     [_tableView reloadData];
 
 }
+
+-(void)back:(UIButton *)btn
+{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -64,14 +74,15 @@
     
   //  self.navigationItem.title=@"上传队列";
     
-    UIButton *buttom=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    buttom.frame=CGRectMake(10, 5, 34, 35);
-    //UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 34, 35)];
-    [buttom setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [buttom setBackgroundImage:[UIImage imageNamed:@"backH.png"] forState:UIControlStateHighlighted];
-    buttom.tag=0;
-    [buttom addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
-    [navigationView addSubview:buttom];
+  
+    UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    buttonBack.frame=CGRectMake(10, 5, 34, 35);
+    [buttonBack setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    [buttonBack setBackgroundImage:[UIImage imageNamed:@"backH.png"] forState:UIControlStateHighlighted];
+    [navigationView addSubview:buttonBack];
+    [buttonBack addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
 
     
     if(ios7)
@@ -185,26 +196,7 @@
 //    [alert show];
 //    [alert release];
 }
--(void)leftClick:(UIButton *)btn
-{
-    
-    GKMainViewController *main=[GKMainViewController share];
-    if(main.state==0)
-    {
-        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
-            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionLeft];
-        }
-    }
-    else
-    {
-        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
-            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionNone];
-        }
-    }
-    
-    
-    
-}
+
 -(void)loadUploading
 {
     

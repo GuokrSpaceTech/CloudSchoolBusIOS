@@ -2,8 +2,8 @@
 //  UpLoader.m
 //  SchoolBusPhoto
 //
-//  Created by wen peifang on 13-11-18.
-//  Copyright (c) 2013年 mactop. All rights reserved.
+//  Created by CaiJingPeng on 14-1-8.
+//  Copyright (c) 2014年 mactop. All rights reserved.
 //
 
 #import "UpLoader.h"
@@ -19,7 +19,8 @@
 @dynamic isUploading;
 @dynamic name;
 @dynamic nameID;
-@dynamic studentId;
 @dynamic smallImage;
+@dynamic studentId;
+@dynamic tag;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GKBaseViewController.h"
-#import "GKMainViewController.h"
+
 #import "GKUserLogin.h"
 #import "GKStudentView.h"
 #import "EKRequest.h"

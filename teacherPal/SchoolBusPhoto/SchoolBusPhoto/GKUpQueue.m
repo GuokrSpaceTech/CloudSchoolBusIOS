@@ -10,6 +10,10 @@
 #import "GKUserLogin.h"
 #import "GKLoaderManager.h"
 #import "GKFindWraper.h"
+#import "TestFlight.h"
+
+#define NSLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+
 static GKUpQueue *gkqueue=nil;
 @implementation GKUpQueue
 @synthesize queue;
@@ -43,7 +47,7 @@ static GKUpQueue *gkqueue=nil;
     
     return gkqueue;
 }
--(void)addRequestToQueue:(NSString *)path name:(NSString *)name nameid:(NSString *)nameId studentid:(NSString *)std time:(NSNumber *)time fize:(NSNumber *)fsize classID:(NSNumber *)classid intro:(NSString *)intro
+-(void)addRequestToQueue:(NSString *)path name:(NSString *)name nameid:(NSString *)nameId studentid:(NSString *)std time:(NSNumber *)time fize:(NSNumber *)fsize classID:(NSNumber *)classid intro:(NSString *)intro tag:(NSString *)tag
 {
     
     NSAutoreleasePool *pool=[[NSAutoreleasePool alloc]init];
@@ -75,6 +79,7 @@ static GKUpQueue *gkqueue=nil;
     [request addPostValue:time forKey:@"ftime"];
     [request addPostValue:classid forKey:@"uid"];
     [request addPostValue:intro forKey:@"intro"];
+    [request addPostValue:tag forKey:@"tag"];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:nameId,@"nameid",path,@"path", name,@"filename",@"",@"",nil]];
     [request addPostValue:[self fileName] forKey:@"pickey"];
     

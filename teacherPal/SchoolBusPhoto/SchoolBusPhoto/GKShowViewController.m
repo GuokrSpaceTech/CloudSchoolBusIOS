@@ -780,9 +780,9 @@
             
             
            // NSString *pid=[];
-            [manager addNewPicToCoreData:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5)];
+            [manager addNewPicToCoreData:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];// 图片tag
             
-            [manager addWraperToArr:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5)];
+            [manager addWraperToArr:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];
             
             
             
@@ -814,8 +814,8 @@
                 introduce = [iDic objectForKey:[[iDic allKeys] objectAtIndex:0]];
             }
             
-            [manager addNewPicToCoreData:path name:filename iSloading:[NSNumber numberWithInt:1] nameId:filename studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:[data length]] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation([UIImage imageWithData:data], 0.1)] ;
-            [manager addWraperToArr:path name:filename iSloading:[NSNumber numberWithInt:1] nameId:filename studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:[data length]] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation([UIImage imageWithData:data], 0.1)];
+            [manager addNewPicToCoreData:path name:filename iSloading:[NSNumber numberWithInt:1] nameId:filename studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:[data length]] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation([UIImage imageWithData:data], 0.1) tag:@""] ;
+            [manager addWraperToArr:path name:filename iSloading:[NSNumber numberWithInt:1] nameId:filename studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:[data length]] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation([UIImage imageWithData:data], 0.1) tag:@""];
         }
     }
     

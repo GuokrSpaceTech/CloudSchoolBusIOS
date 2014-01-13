@@ -32,7 +32,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [(KKNavigationController *)self.navigationController setNavigationTouch:NO];
+    [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
 }
 - (void)viewDidLoad
 {
@@ -232,24 +232,7 @@
 -(void)leftClick:(UIButton *)btn
 {
     
-    GKMainViewController *main=[GKMainViewController share];
-    if(main.state==0)
-    {
-        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
-            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionLeft];
-            [_textView resignFirstResponder];
-//            _textView.editable=NO;
-        }
-    }
-    else
-    {
-        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
-            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionNone];
-//            _textView.editable=YES;
-//            [_textView becomeFirstResponder];
-        }
-    }
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 //-(void)textViewDidBeginEditing:(UITextView *)textView

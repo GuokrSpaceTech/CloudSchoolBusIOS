@@ -11,6 +11,7 @@
 #import "GKUpLoaderViewController.h"
 #import "GKStudentListViewController.h"
 #import "GKMainViewController.h"
+#import "GKDraftViewController.h"
 @interface GKClassViewController ()
 
 @end
@@ -51,7 +52,7 @@
     _tableView.dataSource=self;
     [self.view addSubview:_tableView];
     
-    self.arr=[NSArray arrayWithObjects:NSLocalizedString(@"classFen", @""),NSLocalizedString(@"uploadQ", @""),NSLocalizedString(@"studentQ", @""), nil];
+    self.arr=[NSArray arrayWithObjects:NSLocalizedString(@"classFen", @""),NSLocalizedString(@"uploadQ", @""),NSLocalizedString(@"studentQ", @""),NSLocalizedString(@"moviedraft", @""), nil];
     
 
      //self.arr=[NSArray arrayWithObjects:@"班级积分",@"上传列表",@"班级学生", nil];
@@ -81,9 +82,12 @@
         cell.imageView.image=[UIImage imageNamed:@"gradeFen.png"];
     else if(indexPath.row==1)
         cell.imageView.image=[UIImage imageNamed:@"uploadIcon.png"];
-    else
+    else if(indexPath.row == 2)
         cell.imageView.image=[UIImage imageNamed:@"studentIcon.png"];
+    else
+        cell.imageView.image=[UIImage imageNamed:@"草稿箱.png"];
     cell.textLabel.text=[arr objectAtIndex:indexPath.row];
+    
     return cell;
 
 }
@@ -100,6 +104,9 @@
             break;
         case 2:
             VC=[[GKStudentListViewController alloc]init];
+            break;
+        case 3:
+            VC=[[GKDraftViewController alloc]init];
             break;
             
         default:

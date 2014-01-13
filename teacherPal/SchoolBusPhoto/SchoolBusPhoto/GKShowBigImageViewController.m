@@ -8,6 +8,7 @@
 
 #import "GKShowBigImageViewController.h"
 #import "UIImageView+WebCache.h"
+#import "MBProgressHUD.h"
 @interface GKShowBigImageViewController ()
 
 @end
@@ -97,9 +98,27 @@
 //    tap.numberOfTapsRequired=1;
 //    [imageView addGestureRecognizer:tap];
 //    [tap release];
+    
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:scroller];
+    hud.center = CGPointMake(scroller.frame.size.width/2, scroller.frame.size.height/2.0f);
+    hud.mode = MBProgressHUDModeAnnularDeterminate;
+    //hud.tag = HUDTAG + i;
+    [scroller addSubview:hud];
+    [hud release];
+    [hud show:YES];
+    
+    
     [imageView setImageWithURL:[NSURL URLWithString:path] placeholderImage:nil options:0 progress:^(NSUInteger receivedSize, long long expectedSize) {
         imageView.userInteractionEnabled=YES;
+        
+        hud.progress = receivedSize/(float)expectedSize;
+ 
+       // hud.progress=receivedSize/expectedSize;
+        
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+        
+
+        [hud removeFromSuperview];
         
     }];
     

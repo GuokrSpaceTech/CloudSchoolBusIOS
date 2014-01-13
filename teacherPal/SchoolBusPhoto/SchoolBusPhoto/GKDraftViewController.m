@@ -11,7 +11,7 @@
 #import "GKUserLogin.h"
 #import "MovieDraft.h"
 #import "GKSendMediaViewController.h"
-
+#import "KKNavigationController.h"
 @interface GKDraftViewController ()
 
 @end
@@ -27,7 +27,11 @@
     }
     return self;
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

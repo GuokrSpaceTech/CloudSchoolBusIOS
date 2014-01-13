@@ -164,7 +164,6 @@
 		11A2BF521876B5AD00E321F3 /* GKSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A2BF511876B5AD00E321F3 /* GKSettingViewController.m */; };
 		11A30EF81862E73500DEB58B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A30EF71862E73500DEB58B /* CoreMotion.framework */; };
 		11A30EFB1862FB9500DEB58B /* GKDisapperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A30EFA1862FB9500DEB58B /* GKDisapperView.m */; };
-		11A5A89B187BF2FE00EA22CD /* GKNoticeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A5A89A187BF2FE00EA22CD /* GKNoticeListViewController.m */; };
 		11A3BF48187567E20032BA07 /* GKStudentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A3BF47187567E20032BA07 /* GKStudentListViewController.m */; };
 		11A3BF4B18756A3A0032BA07 /* GKStudentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A3BF4A18756A3A0032BA07 /* GKStudentInfoViewController.m */; };
 		11A5A888187B986600EA22CD /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A886187B986600EA22CD /* setting.png */; };
@@ -172,9 +171,10 @@
 		11A5A88D187B988B00EA22CD /* gradeH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A88B187B988B00EA22CD /* gradeH.png */; };
 		11A5A890187B9E2500EA22CD /* gradeEH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A88E187B9E2500EA22CD /* gradeEH.png */; };
 		11A5A891187B9E2500EA22CD /* gradeE.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A88F187B9E2500EA22CD /* gradeE.png */; };
-		11A5A894187B9E5100EA22CD /* settingsEH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A892187B9E5100EA22CD /* settingsEH.png */; };
+		11A5A894187B9E5100EA22CD /* settingEH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A892187B9E5100EA22CD /* settingEH.png */; };
 		11A5A895187B9E5100EA22CD /* settingE.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A893187B9E5100EA22CD /* settingE.png */; };
 		11A5A898187BBC9F00EA22CD /* MTCustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A5A896187BBC9F00EA22CD /* MTCustomActionSheet.m */; };
+		11A5A89B187BF2FE00EA22CD /* GKNoticeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A5A89A187BF2FE00EA22CD /* GKNoticeListViewController.m */; };
 		11A5AE64186438FA008794C0 /* applyAll.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE63186438FA008794C0 /* applyAll.png */; };
 		11A5AE6818644125008794C0 /* smilik.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE6718644125008794C0 /* smilik.png */; };
 		11AA3388187CEDC6002FE2D4 /* GKNotice.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AA3387187CEDC6002FE2D4 /* GKNotice.m */; };
@@ -631,8 +631,6 @@
 		11A30EF71862E73500DEB58B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		11A30EF91862FB9500DEB58B /* GKDisapperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKDisapperView.h; sourceTree = "<group>"; };
 		11A30EFA1862FB9500DEB58B /* GKDisapperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKDisapperView.m; sourceTree = "<group>"; };
-		11A5A899187BF2FE00EA22CD /* GKNoticeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKNoticeListViewController.h; sourceTree = "<group>"; };
-		11A5A89A187BF2FE00EA22CD /* GKNoticeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNoticeListViewController.m; sourceTree = "<group>"; };
 		11A3BF46187567E20032BA07 /* GKStudentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GKStudentListViewController.h; path = Student/GKStudentListViewController.h; sourceTree = "<group>"; };
 		11A3BF47187567E20032BA07 /* GKStudentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GKStudentListViewController.m; path = Student/GKStudentListViewController.m; sourceTree = "<group>"; };
 		11A3BF4918756A3A0032BA07 /* GKStudentInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKStudentInfoViewController.h; sourceTree = "<group>"; };
@@ -642,10 +640,12 @@
 		11A5A88B187B988B00EA22CD /* gradeH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradeH.png; sourceTree = "<group>"; };
 		11A5A88E187B9E2500EA22CD /* gradeEH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradeEH.png; sourceTree = "<group>"; };
 		11A5A88F187B9E2500EA22CD /* gradeE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradeE.png; sourceTree = "<group>"; };
-		11A5A892187B9E5100EA22CD /* settingsEH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsEH.png; sourceTree = "<group>"; };
+		11A5A892187B9E5100EA22CD /* settingEH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingEH.png; sourceTree = "<group>"; };
 		11A5A893187B9E5100EA22CD /* settingE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingE.png; sourceTree = "<group>"; };
 		11A5A896187BBC9F00EA22CD /* MTCustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCustomActionSheet.m; sourceTree = "<group>"; };
 		11A5A897187BBC9F00EA22CD /* MTCustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCustomActionSheet.h; sourceTree = "<group>"; };
+		11A5A899187BF2FE00EA22CD /* GKNoticeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKNoticeListViewController.h; sourceTree = "<group>"; };
+		11A5A89A187BF2FE00EA22CD /* GKNoticeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNoticeListViewController.m; sourceTree = "<group>"; };
 		11A5AE63186438FA008794C0 /* applyAll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applyAll.png; sourceTree = "<group>"; };
 		11A5AE6718644125008794C0 /* smilik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smilik.png; sourceTree = "<group>"; };
 		11AA3386187CEDC6002FE2D4 /* GKNotice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKNotice.h; sourceTree = "<group>"; };
@@ -1166,8 +1166,6 @@
 				1199733F1821FAB40017E99A /* GKMarket.m */,
 				11B852AC1833243E005FA5B9 /* GKUpObject.h */,
 				11B852AD1833243E005FA5B9 /* GKUpObject.m */,
-				119AC26E1839C30000ED19D3 /* UpLoader.h */,
-				119AC26F1839C30000ED19D3 /* UpLoader.m */,
 				11AA3386187CEDC6002FE2D4 /* GKNotice.h */,
 				11AA3387187CEDC6002FE2D4 /* GKNotice.m */,
 				7870A0F3187D54C1009250FB /* UpLoader.h */,
@@ -1302,7 +1300,6 @@
 				11CE2A8B187FEE3500742001 /* writeRizhiH.png */,
 				11CE2A8C187FEE3500742001 /* writeRizhi.png */,
 				11CE2A89187FEADF00742001 /* noticeInfo.png */,
-				11A5AE6518643C94008794C0 /* Tophoto.png */,
 				7888190D187F996500D0A851 /* 草稿箱@2x.png */,
 				7870A107187E9852009250FB /* Tophoto.png */,
 				7870A105187E97EE009250FB /* settingH.png */,
@@ -1313,7 +1310,7 @@
 				11D4294E187E4BE60002810E /* gradeFen@2x.png */,
 				11D4294F187E4BE60002810E /* uploadIcon@2x.png */,
 				11D42950187E4BE60002810E /* studentIcon@2x.png */,
-				11A5A892187B9E5100EA22CD /* settingsEH.png */,
+				11A5A892187B9E5100EA22CD /* settingEH.png */,
 				11A5A893187B9E5100EA22CD /* settingE.png */,
 				11A5A88E187B9E2500EA22CD /* gradeEH.png */,
 				11A5A88F187B9E2500EA22CD /* gradeE.png */,
@@ -2004,7 +2001,7 @@
 				11B852BC18334D52005FA5B9 /* textFileBG.png in Resources */,
 				78709C23187D1733009250FB /* navbar-button-green.png in Resources */,
 				1193A6D9182C87CC004011BC /* login_user.png in Resources */,
-				11A5A894187B9E5100EA22CD /* settingsEH.png in Resources */,
+				11A5A894187B9E5100EA22CD /* settingEH.png in Resources */,
 				1194024418238D4B00F21FB8 /* back-1.png in Resources */,
 				119F0CAD181A297300A5910C /* left.png in Resources */,
 				78709C1F187D1733009250FB /* navbar-button-green-active.png in Resources */,

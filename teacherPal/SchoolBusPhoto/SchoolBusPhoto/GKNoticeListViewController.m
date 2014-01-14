@@ -171,7 +171,7 @@
 }
 -(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
 {
-    // 修改提示错误
+    // 修改提示错误 网络错误
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"network", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
     [alert show];
     [alert release];

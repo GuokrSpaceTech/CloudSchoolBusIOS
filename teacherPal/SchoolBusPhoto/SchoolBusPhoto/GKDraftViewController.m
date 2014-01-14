@@ -166,20 +166,22 @@
     
     if (self.dataArray.count == 0) {
         editButton.hidden = YES;
+        
+        tableView.hidden = YES;
+        
+        UILabel *noDataLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
+        noDataLab.center = CGPointMake(160, 160);
+        noDataLab.text = NSLocalizedString(@"nodata", @"");
+        noDataLab.textAlignment = UITextAlignmentCenter;
+        noDataLab.backgroundColor = [UIColor clearColor];
+        [self.view addSubview:noDataLab];
+        [noDataLab release];
     }
 
     [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                      withRowAnimation:UITableViewRowAnimationFade];
     
-    tableView.hidden = YES;
     
-    UILabel *noDataLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
-    noDataLab.center = CGPointMake(160, 160);
-    noDataLab.text = NSLocalizedString(@"nodata", @"");
-    noDataLab.textAlignment = UITextAlignmentCenter;
-    noDataLab.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:noDataLab];
-    [noDataLab release];
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -655,8 +655,10 @@ static GKCameraManager *cameraManager;
         {
             bVideo = NO;
         }
+        BOOL isFirstFrame = NO;
         if ((_encoder == nil) && !bVideo)
         {
+            isFirstFrame = YES;
             CMFormatDescriptionRef fmt = CMSampleBufferGetFormatDescription(sampleBuffer);
             [self setAudioFormat:fmt];
 //            NSString* filename = [NSString stringWithFormat:@"capture%d.mp4", _currentFile];
@@ -733,8 +735,11 @@ static GKCameraManager *cameraManager;
         
         
         // pass frame to encoder
-        [_encoder encodeFrame:sampleBuffer isVideo:bVideo];
-        CFRelease(sampleBuffer);
+        if (!isFirstFrame) {
+            [_encoder encodeFrame:sampleBuffer isVideo:bVideo];
+            CFRelease(sampleBuffer);
+        }
+        
         
     }
     

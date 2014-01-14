@@ -141,6 +141,15 @@
         } failureBlock:^(NSError *error) {
             [_slimeView endRefresh];
             NSLog(@"------%@",error.description);
+            
+            NSLog(@"%d",error.code);
+         
+            if(error.code==-3311)
+            {
+                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"请在\"设置\"-\"隐私\"-\"照片\"中, 允许\"教师助手\"使用！" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+                [alert show];
+                [alert release];
+            }
             isRefresh=NO;
             
         }];

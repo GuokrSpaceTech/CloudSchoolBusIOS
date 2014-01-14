@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 mactop. All rights reserved.
 //
 ///// 测试android merage
+// 测试android
 #import "GKAppDelegate.h"
 #import "GKUserLogin.h"
 #import "GKUpQueue.h"

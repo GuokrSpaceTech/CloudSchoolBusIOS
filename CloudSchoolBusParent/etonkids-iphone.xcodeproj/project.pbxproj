@@ -59,6 +59,7 @@
 		73B9CDBD17ABAE2E00E8AD36 /* ETdefaultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73B9CDBB17ABAE2E00E8AD36 /* ETdefaultViewController.xib */; };
 		73C1C63917B8F0DD001A3BCC /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C1C63817B8F0DC001A3BCC /* CoreMotion.framework */; };
 		73F3B90B178166C5004A7C23 /* CustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F3B90A178166C4004A7C23 /* CustomActionSheet.m */; };
+		7805E6141884E33100AB34EC /* GKMovieDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7805E6131884E33100AB34EC /* GKMovieDownloader.m */; };
 		7814B5A917EEE173008826C2 /* ContentUpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7814B5A817EEE173008826C2 /* ContentUpCell.m */; };
 		7818DEAB180CE1E0005781DF /* ETAttendance.m in Sources */ = {isa = PBXBuildFile; fileRef = 7818DEAA180CE1E0005781DF /* ETAttendance.m */; };
 		7818DEAE180CEB05005781DF /* ETCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7818DEAD180CEB05005781DF /* ETCalendar.m */; };
@@ -661,6 +662,8 @@
 		73C1C63817B8F0DC001A3BCC /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		73F3B909178166C3004A7C23 /* CustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActionSheet.h; sourceTree = "<group>"; };
 		73F3B90A178166C4004A7C23 /* CustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomActionSheet.m; sourceTree = "<group>"; };
+		7805E6121884E33100AB34EC /* GKMovieDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMovieDownloader.h; sourceTree = "<group>"; };
+		7805E6131884E33100AB34EC /* GKMovieDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMovieDownloader.m; sourceTree = "<group>"; };
 		7814B5A717EEE172008826C2 /* ContentUpCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentUpCell.h; sourceTree = "<group>"; };
 		7814B5A817EEE173008826C2 /* ContentUpCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentUpCell.m; sourceTree = "<group>"; };
 		7818DEA9180CE1E0005781DF /* ETAttendance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETAttendance.h; sourceTree = "<group>"; };
@@ -2173,6 +2176,8 @@
 				78C78F2117C2225A008AE873 /* DetailContentCell.m */,
 				7814B5A717EEE172008826C2 /* ContentUpCell.h */,
 				7814B5A817EEE173008826C2 /* ContentUpCell.m */,
+				7805E6121884E33100AB34EC /* GKMovieDownloader.h */,
+				7805E6131884E33100AB34EC /* GKMovieDownloader.m */,
 			);
 			path = ChildClass;
 			sourceTree = "<group>";
@@ -3039,6 +3044,7 @@
 				E3F4F3F416B910C600CB8E31 /* ETCalendarView.m in Sources */,
 				F9EFD7D616BA309A0030A5C1 /* StudentDuty.m in Sources */,
 				F9EFD7E616BA4BFB0030A5C1 /* StudentDutySameYearMonth.m in Sources */,
+				7805E6141884E33100AB34EC /* GKMovieDownloader.m in Sources */,
 				F9EFD80316BA779C0030A5C1 /* ImageCache.m in Sources */,
 				781E53AD181E57520052851A /* ETActicalPicture.m in Sources */,
 				F91AE3B516BB610000BF3E5C /* DutyDayView.m in Sources */,

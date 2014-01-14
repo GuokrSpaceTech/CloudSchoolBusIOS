@@ -367,32 +367,17 @@
 {
     
     if (index == 3) {
-//        WXMediaMessage *message = [WXMediaMessage message];
         
-        WXImageObject *ext = [WXImageObject object];
-        ext.imageData= UIImageJPEGRepresentation([UIImage imageNamed:@"icon.png"], 0.5f);
-//
-//        message.mediaObject = ext;
+        WXWebpageObject *web = [WXWebpageObject object];
+        web.webpageUrl = self.etevent.htmlurl;
         
-//        SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
-//        req.bText = YES;
-//
-//        req.text = self.etevent.htmlurl;
-//
-//        req.scene = WXSceneTimeline;
-////        }
-//        [WXApi sendReq:req];
         
         
         WXMediaMessage *message = [WXMediaMessage message];
-        message.title = self.etevent.htmlurl;
-        message.description = @"";
-//        [message setThumbImage:[UIImage imageNamed:@"res2.jpg"]];
-        
-//        WXWebpageObject *ext = [WXWebpageObject object];
-//        ext.webpageUrl = self.etevent.htmlurl;
-        
-        message.mediaObject = ext;
+        message.title = self.etevent.title;
+        message.description = self.etevent.htmlurl;
+        message.mediaObject = web;
+        message.thumbData = UIImageJPEGRepresentation([UIImage imageNamed:@"icon.png"], 0.5f);
         
         SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
         req.message = message;
@@ -401,13 +386,7 @@
         req.scene = WXSceneTimeline;
         
         [WXApi sendReq:req];
-        
-//        SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
-//        req.bText = YES;
-//        req.text = self.etevent.htmlurl;
-//        req.scene = WXSceneTimeline;
-//        
-//        [WXApi sendReq:req];
+
         
         
     }

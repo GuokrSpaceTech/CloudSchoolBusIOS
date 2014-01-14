@@ -11,30 +11,34 @@
 
 @implementation GKMovieDownloader
 
-@synthesize diskCachePath;
+@synthesize diskCachePath,movieURL;
 
-static GKMovieDownloader *downloader;
 
-+ (GKMovieDownloader *)shareMovieDownloader
+- (id)initWithMovieURL:(NSString *)url
 {
-    @synchronized(self)
-    {
-        if (downloader == nil) {
-            downloader = [[GKMovieDownloader alloc] init];
-            
-            
-        }
-        return downloader;
+    if (self = [super init]) {
+        
+        self = [[GKMovieDownloader alloc] init];
+        self.movieURL = url;
+        NSArray *paths = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        self.diskCachePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:url];
+        
     }
-
+    return self;
+    
 }
-- (void)downloadMovieByURL:(NSString *)url completion:(void (^)())complete
+
+- (void)startDownload
 {
-    NSArray *paths = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:url];
+    [self downloadMovieByURL:self.movieURL];
+}
+
+- (void)downloadMovieByURL:(NSString *)url
+{
+    
     
     NSFileManager *fm = [NSFileManager defaultManager];
-    if ([fm fileExistsAtPath:url])
+    if ([fm fileExistsAtPath:self.diskCachePath])
     {
         //直接读取
     }
@@ -43,7 +47,7 @@ static GKMovieDownloader *downloader;
         //xiazai
         
         ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-        [request setDownloadDestinationPath:path];
+        [request setDownloadDestinationPath:self.diskCachePath];
 //        [request setDownloadProgressDelegate:];
         [request setCompletionBlock:^{
             

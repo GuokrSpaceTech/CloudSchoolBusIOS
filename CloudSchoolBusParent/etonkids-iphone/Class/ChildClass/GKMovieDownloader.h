@@ -13,10 +13,10 @@
     
 }
 @property (nonatomic, retain)NSString *diskCachePath;
+@property (nonatomic, retain) NSString *movieURL;
 
 
-+ (GKMovieDownloader *)shareMovieDownloader;
-- (void)downloadMovieByURL:(NSString *)url;
+- (id)initWithMovieURL:(NSString *)url;
 
 
 @end

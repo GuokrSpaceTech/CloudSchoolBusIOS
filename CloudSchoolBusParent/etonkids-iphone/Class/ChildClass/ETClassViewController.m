@@ -14,6 +14,7 @@
 #import "ETCommonClass.h"
 #import "ETCoreDataManager.h"
 #import "NSDate+convenience.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 
 @interface ETClassViewController ()
@@ -669,6 +670,7 @@
     {
         
         ClassShareCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier1];
+        
         if(cell == nil)
         {
             cell= [[[ClassShareCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier1 cellMode:Normal] autorelease];
@@ -753,6 +755,19 @@
             cell.contentLabel.text = sContent.shareContent;
             
             
+            /*
+            if (sContent.sharePicArr.count == 1) {  // 判断是否是视频
+                
+                MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:@""]];//写入url
+                player.controlStyle = MPMovieControlStyleNone;
+                player.movieSourceType = MPMovieSourceTypeFile;
+                //        [player prepareToPlay];
+                
+                [player.view setFrame:CGRectMake(0, 100, 320, 320)];
+                [player requestThumbnailImagesAtTimes:[NSArray arrayWithObject:[NSNumber numberWithDouble:1.0]] timeOption:MPMovieTimeOptionExact];
+                [self.view addSubview:player.view];
+            }
+            */
             
             for (int i = 0; i < cell.photoImgVArr.count; i++) {
                 

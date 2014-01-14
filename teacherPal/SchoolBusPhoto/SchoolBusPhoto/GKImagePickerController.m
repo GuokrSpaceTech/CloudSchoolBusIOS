@@ -45,7 +45,7 @@
 }
 - (void)enterBackground:(NSNotification *)notification
 {
-    [self closeCameraAnimate];
+    [self closeCameraAnimateCompletion:YES];
 }
 - (void)becomeActive:(NSNotification *)notification
 {
@@ -252,7 +252,7 @@
 - (void)doBack:(id)sender
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    [self closeCameraAnimate];
+    [self closeCameraAnimateCompletion:YES];
 }
 
 // 重置 录像模式.
@@ -277,7 +277,7 @@
     
     [motionManager stopAccelerometerUpdates];
     
-    [self closeCameraAnimate];
+    [self closeCameraAnimateCompletion:YES];
 }
 
 #pragma mark UI
@@ -300,7 +300,7 @@
     }];
 }
 
-- (void)closeCameraAnimate
+- (void)closeCameraAnimateCompletion:(BOOL)stopSession
 {
     
     [self disableButton];
@@ -314,7 +314,9 @@
                                        downOverlay.frame.size.width,
                                        downOverlay.frame.size.height);
     }completion:^(BOOL finished) {
-        [camManager stopRuning];
+        if (stopSession) {
+            [camManager stopRuning];
+        }
     }];
 }
 
@@ -508,7 +510,7 @@
     {
         // 切换 拍照模式
         // 动画  2 秒
-        [self closeCameraAnimate];
+        [self closeCameraAnimateCompletion:YES];
         [self performSelector:@selector(openCameraAnimate) withObject:nil afterDelay:2.0f];
 //        [self disableButton];
         
@@ -522,7 +524,7 @@
     }
     else
     {
-        [self closeCameraAnimate];
+        [self closeCameraAnimateCompletion:NO];
         [camManager snapStillImage:^(UIImage *stillImage, NSError *error) {
             UIImageWriteToSavedPhotosAlbum(stillImage, nil, NULL, nil);
             NSLog(@"save image");
@@ -569,7 +571,7 @@
         // 切换 录像模式
         // 动画  2 秒   动画期间 禁用所有按钮.
         
-        [self closeCameraAnimate];
+        [self closeCameraAnimateCompletion:YES];
         [self performSelector:@selector(openCameraAnimate) withObject:nil afterDelay:2.0f];
 //        [self disableButton];
         
@@ -624,8 +626,9 @@
 
 - (void)recordNext:(id)sender
 {
-    [self closeCameraAnimate];
+    
     [camManager stopCapture];
+    [self closeCameraAnimateCompletion:YES];
     
     [nextBtn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-green-disabled"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];
     nextBtn.userInteractionEnabled = NO;
@@ -678,7 +681,7 @@
 
 - (void)notifyStopRecord:(NSNotification *)notifi
 {
-    [self closeCameraAnimate];
+    [self closeCameraAnimateCompletion:YES];
     [camManager stopCapture];
 }
 

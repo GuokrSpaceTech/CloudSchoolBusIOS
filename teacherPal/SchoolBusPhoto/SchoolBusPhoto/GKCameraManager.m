@@ -456,25 +456,6 @@ static GKCameraManager *cameraManager;
     }
 }
 
-- (void)resetRecordPara
-{
-//    [_encoder cancelWrite:^{
-//        NSLog(@"22222");
-    
-//    dispatch_async(dispatch_get_main_queue(), ^{
-        NSString* filename = [NSString stringWithFormat:@"capture1.mp4"];
-        NSString* path = [NSTemporaryDirectory() stringByAppendingPathComponent:filename];
-        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
-        
-        self.isCapturing = NO;
-//    });
-    
-    
-//    }];
-    
-//    [_encoder cancelWrite];
-//    _encoder = nil;
-}
 
 - (void) stopCapture
 {
@@ -751,25 +732,25 @@ static GKCameraManager *cameraManager;
         }
         
         
-        
+        // pass frame to encoder
+        [_encoder encodeFrame:sampleBuffer isVideo:bVideo];
+        CFRelease(sampleBuffer);
         
     }
-    // pass frame to encoder
-    [_encoder encodeFrame:sampleBuffer isVideo:bVideo];
-    CFRelease(sampleBuffer);
+    
 }
 
 
 
 - (void)clearMovieCache
 {
-    
-//    [self performSelectorOnMainThread:@selector(resetRecordPara) withObject:nil waitUntilDone:NO];
-    [self resetRecordPara];
-    
-//    self.isCapturing = NO;
-//    _encoder = nil;
-//    NSString* filename = [NSString stringWithFormat:@"capture.mp4"];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSString* filename = [NSString stringWithFormat:@"capture1.mp4"];
+        NSString* path = [NSTemporaryDirectory() stringByAppendingPathComponent:filename];
+        [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+        
+        self.isCapturing = NO;
+    });
 }
 
 

@@ -186,6 +186,7 @@
     
     self.upData=data;
     selectImageView.image=[UIImage imageWithData:data];
+    [_textView becomeFirstResponder];
 }
 
 -(void)whitchSelected:(BOOL)selected uid:(NSString *)uid isAll:(int)an

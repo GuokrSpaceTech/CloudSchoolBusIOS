@@ -378,7 +378,7 @@
 
     GKShowViewController *showVC=[[GKShowViewController alloc]init];
     showVC.assetArr=self.selectArr;
-    showVC.type=1;
+   // showVC.type=1;
     showVC.delegate=self;
     
 //    [self.navigationController presentViewController:showVC animated:NO completion:^{

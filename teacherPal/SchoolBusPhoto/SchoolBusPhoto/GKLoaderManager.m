@@ -28,15 +28,15 @@ static GKLoaderManager *manager=nil;
     
     return manager;
 }
--(void)addNewPicToCoreData:(NSString *)path name:(NSString *)name iSloading:(NSNumber *)isUploading nameId:(NSString *)nameId studentId:(NSString *)std time:(NSNumber *)time fsize:(NSNumber *)fize classID:(NSNumber *)classid intro:(NSString *)intro data:(NSData *)imageData tag:(NSString *)tag
+-(BOOL)addNewPicToCoreData:(NSString *)path name:(NSString *)name iSloading:(NSNumber *)isUploading nameId:(NSString *)nameId studentId:(NSString *)std time:(NSNumber *)time fsize:(NSNumber *)fize classID:(NSNumber *)classid intro:(NSString *)intro data:(NSData *)imageData tag:(NSString *)tag
 {
     GKUserLogin *user=[GKUserLogin currentLogin];
-    NSLog(@"?????????????????%@",nameId);
+   // NSLog(@"?????????????????%@",nameId);
     UpLoader *aa=[self getOneData:nameId];
     
     if(aa!=nil && [aa.nameID isEqualToString:nameId])
     {
-        return;
+        return NO;
     }
     NSString *imageName=[NSString stringWithFormat:@"%@_%@_%@",user.classInfo.uid,time,fize];
     GKAppDelegate *delegate=APPDELEGATE;
@@ -53,9 +53,13 @@ static GKLoaderManager *manager=nil;
     upLoader.isUploading=[NSNumber numberWithInt:UPLOADING];
     
     upLoader.smallImage=imageData;
-    NSError *err;
-    [delegate.managedObjectContext save:&err];
-    
+    NSError *err=nil;
+   BOOL success= [delegate.managedObjectContext save:&err];
+    if(!success)
+    {
+        NSLog(@"coredata 写入失败： %@",err.description);
+    }
+    return success;
    // NSLog(@"%@",[err description]);
     
     

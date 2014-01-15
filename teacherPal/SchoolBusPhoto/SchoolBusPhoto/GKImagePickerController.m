@@ -526,8 +526,8 @@
     {
         [self closeCameraAnimateCompletion:NO];
         [camManager snapStillImage:^(UIImage *stillImage, NSError *error) {
-            UIImageWriteToSavedPhotosAlbum(stillImage, nil, NULL, nil);
-            NSLog(@"save image");
+           // UIImageWriteToSavedPhotosAlbum(stillImage, nil, NULL, nil);
+           // NSLog(@"save image");
             [self push:stillImage];
         }];
         

@@ -294,7 +294,7 @@ static void *AVCamFocusModeObserverContext = &AVCamFocusModeObserverContext;
                                 NSMutableArray *arr11=[NSMutableArray arrayWithObjects:image,nil];
                                 GKShowViewController *showVC=[[GKShowViewController alloc]init];
                                 showVC.assetArr=arr11;
-                                showVC.type=2;
+                              //  showVC.type=2;
                                  
                                  
                                  [self.navigationController pushViewController:showVC animated:YES];

@@ -281,12 +281,12 @@
     NSString *timestamp = [NSString stringWithFormat:@"%d", (int)[[NSDate date] timeIntervalSince1970]];
     
     NSString *filePath;
-    
+    int fise=0;
     if (self.sourcePicture != nil)
     { //上传图片.
         
         NSData *imageData = UIImageJPEGRepresentation(self.sourcePicture, 1.0);
-        
+        fise=[imageData length];
         NSArray *arr= NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentpath=[arr objectAtIndex:0];
         NSString *filename=[NSString stringWithFormat:@"tempimage%@",timestamp];
@@ -311,16 +311,29 @@
     else
     {
         //上传视频.
+        // 计算文件大小
+        NSFileManager *fileManage=[NSFileManager defaultManager];
         filePath = [NSString stringWithFormat:@"%@",self.moviePath];
+        
+        NSDictionary *fileAttributeDic=[fileManage attributesOfItemAtPath:filePath error:nil];
+        
+        fise= fileAttributeDic.fileSize;
+        
+
+        
     }
     
     NSString *students = [self.stuList componentsJoinedByString:@","];
     
     NSLog(@"students %@ , photo tag : %@",students,(photoTag == nil ? @"" : photoTag));
     
-    [manager addNewPicToCoreData:filePath name:@"" iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:0] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:contentTV.text data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"" : photoTag)] ;
+   BOOL success=  [manager addNewPicToCoreData:filePath name:@"" iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:contentTV.text data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"" : photoTag)] ;
     
-    [manager addWraperToArr:filePath name:@"" iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:0] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:contentTV.text data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"":photoTag)];
+    if(success)
+    {
+         [manager addWraperToArr:filePath name:@"" iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:contentTV.text data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"":photoTag)];
+    }
+   
     
     [self.navigationController dismissModalViewControllerAnimated:YES];
     

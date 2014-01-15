@@ -27,7 +27,7 @@
 
 @implementation GKShowViewController
 @synthesize assetArr;
-@synthesize type;
+//@synthesize type;
 //alreadyArr@synthesize alreadyArr;
 @synthesize stuList;
 @synthesize delegate,tempStu,picTextArr;
@@ -46,11 +46,17 @@
     
    //self.view.userInteractionEnabled=NO;
 }
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
     
+
+    
+
     // 禁用 向左滑动
     UIPanGestureRecognizer*  recognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(paningGestureReceive:)];
     [recognizer delaysTouchesBegan];
@@ -288,42 +294,7 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-//    NSString *key=[NSString stringWithFormat:@"%d",currentpage];
-//    for (int i=0; i<[self.picTextArr count]; i++) {
-//        NSMutableDictionary *dic=[self.picTextArr objectAtIndex:i];
-//        NSString *keytemp = [[dic allKeys] objectAtIndex:0];
-//        if([key isEqualToString:keytemp])
-//        {
-//            if([self textLength:picTxtView.text] > 140)
-//            {
-//                return;
-//            }
-//            
-//            [dic setObject:picTxtView.text forKey:key];
-//            break;
-//        }
-//        if (i == self.picTextArr.count - 1)
-//        {
-//            if([self textLength:picTxtView.text] > 140)
-//            {
-//                return;
-//            }
-//            [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:picTxtView.text,key, nil]];
-//            break;
-//        }
-//    }
-//    if (self.picTextArr.count == 0) {
-//
-//        if([self textLength:picTxtView.text] > 140)
-//        {
-//            return;
-//        }
-//        [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:picTxtView.text,key, nil]];
-//    }
-    
-    NSLog(@"%@",self.picTextArr);
-    
-    
+
     int a= [self textLength:picTxtView.text];
   
     NSLog(@"%d",a);
@@ -602,17 +573,17 @@
         imageView.backgroundColor = [UIColor blackColor];
         imageView.tag=index+TAG;
         //[self performSelectorInBackground:@selector(setPhotoImage:) withObject:imageView];
-        if(type==1)
-        {
+       // if(type==1)
+        //{
             ETPhoto *photo=[assetArr objectAtIndex:index];
             NSData *data= UIImageJPEGRepresentation([UIImage imageWithCGImage:[[photo.asset defaultRepresentation] fullScreenImage]], 0.1);
             imageView.image=[UIImage imageWithData:data];
-        }
-        else
-        {
-            NSData *data= UIImageJPEGRepresentation([UIImage imageWithData:[assetArr objectAtIndex:index]], 0.1)   ;
-            imageView.image= [UIImage imageWithData:data];
-        }
+       // }
+//        else
+//        {
+//            NSData *data= UIImageJPEGRepresentation([UIImage imageWithData:[assetArr objectAtIndex:index]], 0.1)   ;
+//            imageView.image= [UIImage imageWithData:data];
+//        }
    
         
         imageView.userInteractionEnabled = YES;
@@ -707,7 +678,9 @@
         disappearView.backgroundColor=[UIColor clearColor];
         disappearView.textLabel.text=NSLocalizedString(@"processing", @"");
         
-        [[[[UIApplication sharedApplication] windows] lastObject]  addSubview:disappearView];
+       // [[[[UIApplication sharedApplication] windows] lastObject]  addSubview:disappearView];
+         [[[UIApplication sharedApplication] keyWindow]  addSubview:disappearView];
+    
         [disappearView release];
     }
     [disappearView setactiveStop:NO];
@@ -716,6 +689,7 @@
 
  
 }
+
 -(void)startUpLoaderInBackground
 {
     
@@ -726,10 +700,10 @@
     for (int i=0; i<[assetArr count]; i++)
     {
 
-        if(type==1)
-        {
-            //相册
-            
+//        if(type==1)
+//        {
+//            //相册
+        
             ETPhoto *photo=[assetArr objectAtIndex:i];
             ALAssetRepresentation *representation = [photo.asset defaultRepresentation];
             NSString* filename = [documentpath stringByAppendingPathComponent:[representation filename]];
@@ -740,21 +714,43 @@
             long long offset = 0;
             long long bytesRead = 0;
             NSLog(@"%lld",representation.size);
-            NSError *error;
+            NSError *error=nil;
+            
+        // 增加写文件错误处理
             uint8_t * buffer = malloc(131072);
             while (offset<[representation size] && [outPutStream hasSpaceAvailable]) {
                 bytesRead = [representation getBytes:buffer fromOffset:offset length:131072 error:&error];
+                if(error) // 如果写文件出错 跳出改讯黄
+                    break;
                 [outPutStream write:buffer maxLength:bytesRead];
                 offset = offset+bytesRead;  
             }  
             [outPutStream close];  
             free(buffer);
+            
+            
+        
+            NSLog(@"%@",error);
+            if(error || offset==0)
+            {
+                // 如果写文件失败 跳过上传该文件
+                NSLog(@"？？？？？？？？？？？？？？？？？？？？写文件失败");
+                continue;
+               // return;
+            }
+        
+     
            // NSLog(@"%@",photo.date);
             
-                NSDate *date= [photo.asset valueForProperty:ALAssetPropertyDate];
+            NSDate *date= [photo.asset valueForProperty:ALAssetPropertyDate];
 //                photo.date=date;
             
             int ftime=[date timeIntervalSince1970];
+            if(ftime==0)
+            {
+                 ftime=[[NSDate date]timeIntervalSince1970];
+            }
+            
             NSString *studentId=nil;
             NSString *key=[NSString stringWithFormat:@"%d",i];
             NSString *introduce = @"";
@@ -780,51 +776,14 @@
                     break;
                 }
             }
-            
-//            NSArray *keydd=[photo.asset valueForProperty:ALAssetPropertyRepresentations];
-//            NSDictionary *dic=[photo.asset valueForProperty:ALAssetPropertyURLs];
-//            NSString *pid= [NSString stringWithFormat:@"%@",[dic objectForKey:[keydd objectAtIndex:0]]];
-            //               // NSLog(@"_____________%@",photo.nameId);
-            
-            
-           // NSString *pid=[];
-            [manager addNewPicToCoreData:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];// 图片tag
-            
-            [manager addWraperToArr:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];
-            
-            
-            
-   
-            
-            
-        }
-        else
-        {
-                NSData *data=[assetArr objectAtIndex:i];
-                NSString *filename=[self fileName:i];
-                NSString *path=[NSString stringWithFormat:@"%@/%@",documentpath,filename];
-                NSFileManager *fileManage=[NSFileManager defaultManager];
-                    if(![fileManage fileExistsAtPath:path])
-                    {
-                        [fileManage createFileAtPath:path contents:nil attributes:nil];
-                    }
-                [data writeToFile:path atomically:YES];
-                int ftime=[[NSDate date]timeIntervalSince1970];
-                NSLog(@"%d",ftime);
-                
-                NSDictionary *dic=[stuList objectAtIndex:0];
-                NSString *studentId=[self selectStudentID:[dic objectForKey:[[dic allKeys] objectAtIndex:0]]];
-            
-                NSString *introduce = @"";
-            
-            if (picTextArr.count != 0) {
-                NSDictionary *iDic = [picTextArr objectAtIndex:0];
-                introduce = [iDic objectForKey:[[iDic allKeys] objectAtIndex:0]];
+
+            BOOL success= [manager addNewPicToCoreData:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];// 图片tag
+            if(success)
+            {
+                [manager addWraperToArr:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];
             }
-            
-            [manager addNewPicToCoreData:path name:filename iSloading:[NSNumber numberWithInt:1] nameId:filename studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:[data length]] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation([UIImage imageWithData:data], 0.1) tag:@""] ;
-            [manager addWraperToArr:path name:filename iSloading:[NSNumber numberWithInt:1] nameId:filename studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:[data length]] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation([UIImage imageWithData:data], 0.1) tag:@""];
-        }
+     
+
     }
     
     [self performSelectorOnMainThread:@selector(toMainThread) withObject:nil waitUntilDone:YES];

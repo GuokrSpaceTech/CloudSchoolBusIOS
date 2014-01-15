@@ -306,9 +306,9 @@
 //                photo.nameId= [NSString stringWithFormat:@"%@",[dic objectForKey:[key objectAtIndex:0]]];
                 //NSLog(@"_____________%@",photo.nameId);
                 
-                  photo.nameId= [NSString stringWithFormat:@"%@",[result defaultRepresentation].url];
-                
-                [imageArr insertObject:photo atIndex:0];
+                photo.nameId= [NSString stringWithFormat:@"%@",[result defaultRepresentation].url];
+                if(photo.nameId)  // 如果图片删除，判断该照片是否为空 ，如果为空就不加入到数组
+                    [imageArr insertObject:photo atIndex:0];
                 [photo release];
                 
             }

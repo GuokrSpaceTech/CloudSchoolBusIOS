@@ -10,19 +10,20 @@
 #import "GKUserLogin.h"
 #import "GKFilterViewController.h"
 #import "GKLoaderManager.h"
-
+#import "GKCoreDataManager.h"
 @interface GKSendMediaViewController ()
 
 @end
 
 @implementation GKSendMediaViewController
-@synthesize stuList,sourcePicture,photoTag,thumbnail,moviePath;
+@synthesize stuList,sourcePicture,photoTag,thumbnail,moviePath,isPresent;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.isPresent = NO;
     }
     return self;
 }
@@ -267,7 +268,7 @@
     
     if (self.stuList.count == 0)
     {
-        UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"" message:@"" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil] autorelease];
+        UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"selectstuent", @"") delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] autorelease];
         [alert show];
         return;
     }
@@ -280,12 +281,12 @@
     NSString *timestamp = [NSString stringWithFormat:@"%d", (int)[[NSDate date] timeIntervalSince1970]];
     
     NSString *filePath;
-    
+    int fise=0;
     if (self.sourcePicture != nil)
     { //上传图片.
         
         NSData *imageData = UIImageJPEGRepresentation(self.sourcePicture, 1.0);
-        
+        fise=[imageData length];
         NSArray *arr= NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentpath=[arr objectAtIndex:0];
         NSString *filename=[NSString stringWithFormat:@"tempimage%@",timestamp];
@@ -310,16 +311,29 @@
     else
     {
         //上传视频.
+        // 计算文件大小
+        NSFileManager *fileManage=[NSFileManager defaultManager];
         filePath = [NSString stringWithFormat:@"%@",self.moviePath];
+        
+        NSDictionary *fileAttributeDic=[fileManage attributesOfItemAtPath:filePath error:nil];
+        
+        fise= fileAttributeDic.fileSize;
+        
+
+        
     }
     
     NSString *students = [self.stuList componentsJoinedByString:@","];
     
     NSLog(@"students %@ , photo tag : %@",students,(photoTag == nil ? @"" : photoTag));
     
-    [manager addNewPicToCoreData:filePath name:@"" iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:0] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:contentTV.text data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"" : photoTag)] ;
+   BOOL success=  [manager addNewPicToCoreData:filePath name:@"" iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:contentTV.text data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"" : photoTag)] ;
     
-    [manager addWraperToArr:filePath name:@"" iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:0] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:contentTV.text data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"":photoTag)];
+    if(success)
+    {
+         [manager addWraperToArr:filePath name:@"" iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:contentTV.text data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"":photoTag)];
+    }
+   
     
     [self.navigationController dismissModalViewControllerAnimated:YES];
     
@@ -327,19 +341,38 @@
 
 - (void)doBack:(id)sender
 {
-    UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"您是否要保存到草稿箱" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"保存草稿",@"不保存", nil];
-    [as showInView:self.view];
-    [as release];
+    
+    if (self.isPresent) {
+        [self dismissModalViewControllerAnimated:YES];
+        return;
+    }
+    
+    if (self.moviePath != nil)
+    {
+        UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"您是否要保存到草稿箱" delegate:self cancelButtonTitle:NSLocalizedString(@"cancel",@"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"savedraft",@""),NSLocalizedString(@"dontsavedraft",@""), nil];
+        [as showInView:self.view];
+        [as release];
+    }
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0)
     {
         // save draft
+        NSString *stamp = [NSString stringWithFormat:@"%d", (int)[[NSDate date] timeIntervalSince1970]];
+        
+        GKUserLogin *user=[GKUserLogin currentLogin];
+        BOOL success = [GKCoreDataManager addMovieDraftWithUserid:[NSString stringWithFormat:@"%@", user.classInfo.classid] moviePath:self.moviePath dateStamp:stamp thumbnail:UIImageJPEGRepresentation(self.thumbnail, 0.1)];
+        NSLog(@"save draft : %d",success);
+        
+        [self.navigationController dismissModalViewControllerAnimated:YES];
     }
     else if (buttonIndex == 1)
     {
         //不保存
+//        NSString* path = [NSTemporaryDirectory() stringByAppendingPathComponent:filename];
+        [[NSFileManager defaultManager] removeItemAtPath:self.moviePath error:nil];
+        
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }
 }

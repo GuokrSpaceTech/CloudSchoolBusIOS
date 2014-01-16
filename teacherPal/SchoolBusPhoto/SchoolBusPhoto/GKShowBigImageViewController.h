@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GKBaseViewController.h"
+@class MBProgressHUD;
 @interface GKShowBigImageViewController : GKBaseViewController<UIScrollViewDelegate,UIActionSheetDelegate>
 {
     UIScrollView *scroller;

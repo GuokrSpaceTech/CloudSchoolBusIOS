@@ -10,7 +10,7 @@
 //#import <GPUImage/GPUImage.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface GKFilterViewController : UIViewController
+@interface GKFilterViewController : UIViewController<UIAlertViewDelegate>
 {
     /*
     GPUImagePicture *sourcePicture;

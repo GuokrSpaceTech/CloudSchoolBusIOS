@@ -10,6 +10,10 @@
 #import "GKUserLogin.h"
 #import "GKLoaderManager.h"
 #import "GKFindWraper.h"
+#import "TestFlight.h"
+
+#define NSLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+
 static GKUpQueue *gkqueue=nil;
 @implementation GKUpQueue
 @synthesize queue;
@@ -118,7 +122,7 @@ static GKUpQueue *gkqueue=nil;
 }
 - (void)request:(ASIHTTPRequest *)request didReceiveResponseHeaders:(NSDictionary *)responseHeaders
 {
-    NSLog(@"hahahahahahahahahhahhahahahah");
+   
 }
 
 - (void)requestDidSuccess:(ASIHTTPRequest *)request
@@ -126,9 +130,6 @@ static GKUpQueue *gkqueue=nil;
     NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
      GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
     NSLog(@"%@",request.responseHeaders);
-    
-    
-
     if([[request.responseHeaders objectForKey:@"Code"] integerValue]==1)
     {
         NSString *picId=[[request userInfo] objectForKey:@"nameid"];
@@ -146,16 +147,51 @@ static GKUpQueue *gkqueue=nil;
         
         
         //从document中删除临时文件
-        
+        NSError *error=nil;
         NSFileManager *fileManage=[NSFileManager defaultManager];
         if([fileManage fileExistsAtPath:picPath])
         {
-            [fileManage removeItemAtPath:picPath error:nil];
+            BOOL success= [fileManage removeItemAtPath:picPath error:&error];
+            if(!success)
+            {
+                NSLog(@"删除文件失败 %@",error.description);
+            }
         }
     }
  
-
-    // 从findwraper 中删除
+    else if([[request.responseHeaders objectForKey:@"Code"] integerValue]==-37) //时间戳错误
+    {
+        NSLog(@"时间戳错误");
+    }
+    else if([[request.responseHeaders objectForKey:@"Code"] integerValue]==-40) // 图片内容空
+    {
+        NSLog(@"图片内容空");
+    }
+    else if([[request.responseHeaders objectForKey:@"Code"] integerValue]==-41) // base64 错误
+    {
+        NSLog(@"base64 错误");
+    }
+    else if([[request.responseHeaders objectForKey:@"Code"] integerValue]==-38) //fsize空
+    {
+        NSLog(@"fsize空");
+    }
+    else if([[request.responseHeaders objectForKey:@"Code"] integerValue]==-42) //收到的文件流与 fsize 的大小不一致
+    {
+        NSLog(@"收到的文件流与 fsize 的大小不一致");
+    }
+    else if([[request.responseHeaders objectForKey:@"Code"] integerValue]==-43) //生成的文件不是图片
+    {
+        NSLog(@"生成的文件不是图片");
+    }
+    else if([[request.responseHeaders objectForKey:@"Code"] integerValue]==-44) //ffmpeg没有载入
+    {
+        NSLog(@"ffmpeg没有载入");
+    }
+    else
+    {
+        NSLog(@"未知错误 没有code 值");
+    }
+        // 从findwraper 中删除
     
     // manager 继续下载
     
@@ -165,7 +201,7 @@ static GKUpQueue *gkqueue=nil;
 
 - (void)requestDidFailed:(ASIFormDataRequest *)_request{
     
-
+    NSLog(@"%@",_request.error.description);
 //    NSString *picId=[[_request userInfo] objectForKey:@"nameid"];
 //    
 //    //UpLoader *up= [[GKLoaderManager createLoaderManager] getOneData:picId];

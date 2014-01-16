@@ -47,13 +47,14 @@
     
     
 }
-+ (BOOL)addMovieDraftWithUserid:(NSString *)userid moviePath:(NSString *)path dateStamp:(NSString *)date
++ (BOOL)addMovieDraftWithUserid:(NSString *)userid moviePath:(NSString *)path dateStamp:(NSString *)date thumbnail:(NSData *)imageData
 {
     GKAppDelegate* delegate = SHARED_APP_DELEGATE;
     MovieDraft *movie = [NSEntityDescription insertNewObjectForEntityForName:@"MovieDraft" inManagedObjectContext:delegate.managedObjectContext];
     movie.createdate = date;
     movie.moviepath = path;
     movie.userid = userid;
+    movie.thumbnail = imageData;
     BOOL successful = [self saveContext];
     
     return successful;

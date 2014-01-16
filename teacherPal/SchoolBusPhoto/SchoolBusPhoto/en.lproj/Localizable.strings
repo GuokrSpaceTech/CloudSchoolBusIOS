@@ -112,6 +112,7 @@
 
 "input" = "Input can not be empty";
 "diff"= "Two password input is different";
+"diffoldNew"="The new password and old password cannot be the same";
 
 "OidErr" = "Old PassWord is error";
 "otherErr" = "Cannot contain special characters";
@@ -145,6 +146,15 @@
 "processingafter"="Uploading is in progress, check the details by tapping the 'Upload Q' on the left side menu.";
 
 "Cancelphotos"="Cancel sending this photos？";
+"minutesago" = "m before";
+"hoursago" = "h before";
+
+"noticeQ"="Notice";
+"noticeDetail"="Detail";
+
+"sendWho"="发给了谁";
+"huizhi"="谁回执了你";
+"load"="loading...";
 
 
 "grade"="gradeE.png";
@@ -177,3 +187,11 @@
 
 "feedBack"="FeedBack";
 "helpSupport"="Support";
+
+"moviedraft" = "Draft";
+"nodata" = "No Data";
+"savedraft" = "Save";
+"dontsavedraft" = "Don't Save";
+
+"delete" = "Delete";
+"draftedit" = "Edit";

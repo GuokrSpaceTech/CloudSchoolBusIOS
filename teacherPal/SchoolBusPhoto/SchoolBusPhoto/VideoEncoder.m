@@ -62,56 +62,60 @@
 
 - (BOOL)encodeFrame:(CMSampleBufferRef)sampleBuffer isVideo:(BOOL)bVideo
 {
-    if (CMSampleBufferDataIsReady(sampleBuffer))
+    @synchronized(self)
     {
-        if (_writer.status == AVAssetWriterStatusUnknown)
+        if (CMSampleBufferDataIsReady(sampleBuffer))
         {
-            CMTime startTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
-            [_writer startWriting];
-            [_writer startSessionAtSourceTime:startTime];
-            time = ((double)startTime.value)/startTime.timescale;
-            NSLog(@"~~~~~~~~~  start : %f,write status : %d    path : %@",time,_writer.status,self.path);
+            if (_writer.status == AVAssetWriterStatusUnknown)
+            {
+                CMTime startTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
+                [_writer startWriting];
+                [_writer startSessionAtSourceTime:startTime];
+                time = ((double)startTime.value)/startTime.timescale;
+                NSLog(@"~~~~~~~~~  start : %f,write status : %d    path : %@",time,_writer.status,self.path);
+                
+            }
+            if (_writer.status == AVAssetWriterStatusFailed)
+            {
+                NSLog(@"writer error %@", _writer.error.localizedDescription);
+                return NO;
+            }
+            if (bVideo)
+            {
+                if (_videoInput.readyForMoreMediaData == YES)
+                {
+                    [_videoInput appendSampleBuffer:sampleBuffer];
+                    
+                    CMTime startTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
+                    
+                    float s = ((double)startTime.value)/startTime.timescale;
+                    
+                    float value = (s - time) / MAX_RECORD_TIMING;
+                    //                NSLog(@"progress : %f",value);
+                    if (self.slider) {
+                        [self performSelectorOnMainThread:@selector(setProgress:) withObject:[NSString stringWithFormat:@"%f",value] waitUntilDone:NO];
+                        if (self.slider.progress >= 1) {
+                            [[NSNotificationCenter defaultCenter] postNotificationName:@"stopRecord" object:nil];
+                        }
+                    }
+                    
+                    return YES;
+                }
+            }
+            else
+            {
+                if (_audioInput.readyForMoreMediaData)
+                {
+                    [_audioInput appendSampleBuffer:sampleBuffer];
+                    return YES;
+                }
+            }
+            
+            
             
         }
-        if (_writer.status == AVAssetWriterStatusFailed)
-        {
-            NSLog(@"writer error %@", _writer.error.localizedDescription);
-            return NO;
-        }
-        if (bVideo)
-        {
-            if (_videoInput.readyForMoreMediaData == YES)
-            {
-                [_videoInput appendSampleBuffer:sampleBuffer];
-                
-                CMTime startTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
-                
-                float s = ((double)startTime.value)/startTime.timescale;
-                
-                float value = (s - time) / MAX_RECORD_TIMING;
-//                NSLog(@"progress : %f",value);
-                if (self.slider) {
-                    [self performSelectorOnMainThread:@selector(setProgress:) withObject:[NSString stringWithFormat:@"%f",value] waitUntilDone:NO];
-                    if (self.slider.progress >= 1) {
-                        [[NSNotificationCenter defaultCenter] postNotificationName:@"stopRecord" object:nil];
-                    }
-                }
-                
-                return YES;
-            }
-        }
-        else
-        {
-            if (_audioInput.readyForMoreMediaData)
-            {
-                [_audioInput appendSampleBuffer:sampleBuffer];
-                return YES;
-            }
-        }
-        
-        
-        
     }
+    
     return NO;
 }
 - (void)setProgress:(NSString *)sender

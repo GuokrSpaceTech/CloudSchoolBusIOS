@@ -1,4 +1,4 @@
-//
+				//
 //  ETActiveDetailViewController.m
 //  etonkids-iphone
 //
@@ -368,8 +368,14 @@
     
     if (index == 3) {
         
+//        WXImageObject *ext = [WXImageObject object];
+//        ext.imageData= UIImageJPEGRepresentation([UIImage imageNamed:@"icon.png"], 0.5f);
+        
         WXWebpageObject *web = [WXWebpageObject object];
         web.webpageUrl = self.etevent.htmlurl;
+        
+//
+//        message.mediaObject = ext;
         
         
         
@@ -378,6 +384,8 @@
         message.description = self.etevent.htmlurl;
         message.mediaObject = web;
         message.thumbData = UIImageJPEGRepresentation([UIImage imageNamed:@"icon.png"], 0.5f);
+        
+        
         
         SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
         req.message = message;

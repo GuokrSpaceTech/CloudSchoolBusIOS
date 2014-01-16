@@ -40,6 +40,9 @@
 {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(LoadPhotoIfDeviceActive) name:@"ACTIVEPHOTO" object:nil];
+    
+    
     if(imageArr==nil)
         imageArr=[[NSMutableArray alloc]init];
     else
@@ -132,21 +135,6 @@
     [bottomview addSubview:button];
     
 
-
-   
-    
-    
-   // [self loadImageFromPick];
-    
-
-    
-//    badgeView=[[GKBadgeView alloc]initWithFrame:CGRectMake(38, 2, 16, 16)];
-//    badgeView.backgroundColor=[UIColor clearColor];
-//
-//    [navigationView addSubview:badgeView];
-//    [badgeView release];
-//  //NOData
-//    badgeView.bagde=[usr.badgeNumber integerValue];
     
     UIView *noView=[[UIView alloc]initWithFrame:CGRectMake(320/2.0-303/4,self.view.frame.size.height/2.0-262/4-30, 303/2, 262/2+30) ];
     noView.tag=232;
@@ -157,16 +145,6 @@
     
     UIButton *instancebutton=[UIButton buttonWithType:UIButtonTypeCustom];
     instancebutton.frame=CGRectMake(25, 262/2,  100, 30);
-    
-//    UIImage *image=IMAGENAME(IMAGEWITHPATH(@"Tophoto"));
-//    [instancebutton setBackgroundImage:image forState:UIControlStateNormal];
-//
-//    [instancebutton setTitleColor:[UIColor colorWithRed:93/255.0 green:177/255.0 blue:201/255.0 alpha:1] forState:UIControlStateNormal];
-//    [instancebutton setTitle:NSLocalizedString(@"tophoto", @"") forState:UIControlStateNormal];
-//    instancebutton.titleLabel.font=[UIFont systemFontOfSize:16];
-//    [instancebutton addTarget:self action:@selector(takePhoto:) forControlEvents:UIControlEventTouchUpInside];
-//    [noView addSubview:instancebutton];
-    
     [self.view addSubview:noView];
     [noView release];
     
@@ -207,6 +185,11 @@
 //        //myLabel.text = [stockForKVO valueForKey:@"price"];
 //   // }
 //}
+
+-(void)LoadPhotoIfDeviceActive
+{
+    [self loadPhoto];
+}
 -(void)refreashPickViewController:(NSArray *)arr
 {
     
@@ -323,9 +306,9 @@
 //                photo.nameId= [NSString stringWithFormat:@"%@",[dic objectForKey:[key objectAtIndex:0]]];
                 //NSLog(@"_____________%@",photo.nameId);
                 
-                  photo.nameId= [NSString stringWithFormat:@"%@",[result defaultRepresentation].url];
-                
-                [imageArr insertObject:photo atIndex:0];
+                photo.nameId= [NSString stringWithFormat:@"%@",[result defaultRepresentation].url];
+                if(photo.nameId)  // 如果图片删除，判断该照片是否为空 ，如果为空就不加入到数组
+                    [imageArr insertObject:photo atIndex:0];
                 [photo release];
                 
             }
@@ -360,43 +343,17 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
                     [_tableView reloadData];
-                      NSLog(@"----------%@",[NSDate date]);
+                 
                     if([imageArr count]>0)
                     {
                         [self setNOView:YES];
+                         countLabel.text=[NSString stringWithFormat:@"%d/%d",0,[imageArr count]];
                     }
                     else
                     {
                         [self setNOView:NO];
                     }
                 });
-
-//                GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
-//                NSArray *arr= [manager getAllUploaderPhotoFromCoreData];
-
-//                for (int i=0; i<[arr count]; i++) {
-////                    UpLoader *loader=[arr objectAtIndex:i];
-////                    //NSLog(@"??????%@",loader.nameID);
-////                    for (int j=0; j<[imageArr count]; j++) {
-////                        ETPhoto *photo=[imageArr objectAtIndex:j];
-////                        //NSLog(@"~~~~~~~~~~~%@",photo.nameId);
-////                        if([loader.nameID isEqualToString:photo.nameId])
-////                        {
-////                            [imageArr removeObject:photo];
-////                        }
-//                    }
-// }
-
-
-
-//                    if([imageArr count]>0)
-//                    {
-//                        [self setNOView:YES];
-//                    }
-//                    else
-//                    {
-//                        [self setNOView:NO];
-//                    }
                 
             }
             
@@ -407,119 +364,7 @@
     
     
 }
-//-(void)loadImageFromPick
-//{
-// 
-//    
-//    [imageArr removeAllObjects];
-//    [selectArr removeAllObjects];
-//    [_tableView reloadData];
-//    
-//
-//  
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        
-//    [libery enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-//            if(group)
-//            {
-//               
-//         
-//              
-//                [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
-//                    if(result)
-//                    {
-//                        NSAutoreleasePool *pool=[[NSAutoreleasePool alloc]init];
-//                        ETPhoto *photo=[[ETPhoto alloc]init];
-//                        photo.isSelected=NO;
-//                        photo.asset=result;
-//                        
-//                        //NSLog(@"%@",[result valueForKey:ALAssetPropertyDate]);
-//                        NSArray *key=[result valueForProperty:ALAssetPropertyRepresentations];
-//                        
-//                        NSDictionary *dic=[result valueForProperty:ALAssetPropertyURLs];
-//                        
-//                        photo.nameId= [NSString stringWithFormat:@"%@",[dic objectForKey:[key objectAtIndex:0]]];
-//                        
-//                       // NSLog(@"_____________%@",photo.nameId);
-//                        
-//                        NSDate *date= [result valueForProperty:ALAssetPropertyDate];
-//                        photo.date=date;
-//                        
-//                        [imageArr addObject:photo];
-//                        [photo release];
-//                        [pool drain];
-//                        
-//                    }
-//                }];
-//
-//            }
-//            else
-//            {
-//               
-//                
-//                NSAutoreleasePool *pool=[[NSAutoreleasePool alloc]init];
-//                
-//                
-//                GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
-//                NSArray *arr= [manager getAllUploaderPhotoFromCoreData];
-//                
-//                for (int i=0; i<[arr count]; i++) {
-//                    UpLoader *loader=[arr objectAtIndex:i];
-//                    //NSLog(@"??????%@",loader.nameID);
-//                    for (int j=0; j<[imageArr count]; j++) {
-//                        ETPhoto *photo=[imageArr objectAtIndex:j];
-//                        //NSLog(@"~~~~~~~~~~~%@",photo.nameId);
-//                        if([loader.nameID isEqualToString:photo.nameId])
-//                        {
-//                            [imageArr removeObject:photo];
-//                        }
-//                    }
-//                }
-//                
-//                
-//                
-//                //给数组按拍照时间排序
-//                
-//                
-//                NSSortDescriptor *des=[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
-//                
-//                NSArray *sortarr=[NSArray arrayWithObjects:des, nil];
-//                
-//                [imageArr sortUsingDescriptors:sortarr];
-//                [pool drain];
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    [_tableView reloadData];
-//                      countLabel.text=[NSString stringWithFormat:@"%d/%d",0,[imageArr count]];
-//               
-//                    
-//                    if([imageArr count]>0)
-//                    {
-//                        [self setNOView:YES];
-//                    }
-//                    else
-//                    {
-//                        [self setNOView:NO];
-//                    }
-//                    
-//                    [_slimeView endRefresh];
-//                });
-//                
-//                
-//            }
-//            // 去掉 coreData 中的 已上传的 图片
-//            
-//
-//            
-//            
-//        } failureBlock:^(NSError *error) {
-//            
-//        }];
-//
-//        
-//    });
-//
-//    
-//}
+
 
 -(void)upLoaderClilck:(UIButton *)btn
 {
@@ -533,7 +378,7 @@
 
     GKShowViewController *showVC=[[GKShowViewController alloc]init];
     showVC.assetArr=self.selectArr;
-    showVC.type=1;
+   // showVC.type=1;
     showVC.delegate=self;
     
 //    [self.navigationController presentViewController:showVC animated:NO completion:^{
@@ -544,18 +389,6 @@
    // [self.navigationController pushViewController:showVC animated:YES];
     
     [showVC release];
-//    
-//    CATransition *animation = [CATransition animation];
-//    //动画时间
-//    animation.duration = 0.3f;
-//    //先慢后快
-//    animation.timingFunction = UIViewAnimationCurveEaseInOut;
-//    animation.type = kCATransitionPush;
-//    animation.subtype = kCATransitionFromRight;
-//    
-//    [showVC.view.layer addAnimation:animation forKey:@"animation"];
-
-
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -789,8 +622,8 @@
 -(void)dealloc
 {
 
-   // [usr removeObserver:self forKeyPath:@"badgeNumber" context:nil];
-//     [usr addObserver:self forKeyPath:@"badgeNumber" options:NSKeyValueObservingOptionNew context:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"ACTIVEPHOTO" object:nil];
+    
     [imageArr removeAllObjects];
     [selectArr removeAllObjects];
     self.imageArr=nil;

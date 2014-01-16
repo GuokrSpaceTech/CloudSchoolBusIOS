@@ -32,7 +32,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [(KKNavigationController *)self.navigationController setNavigationTouch:NO];
+    [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
 }
 - (void)viewDidLoad
 {
@@ -186,6 +186,7 @@
     
     self.upData=data;
     selectImageView.image=[UIImage imageWithData:data];
+    [_textView becomeFirstResponder];
 }
 
 -(void)whitchSelected:(BOOL)selected uid:(NSString *)uid isAll:(int)an
@@ -232,24 +233,7 @@
 -(void)leftClick:(UIButton *)btn
 {
     
-    GKMainViewController *main=[GKMainViewController share];
-    if(main.state==0)
-    {
-        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
-            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionLeft];
-            [_textView resignFirstResponder];
-//            _textView.editable=NO;
-        }
-    }
-    else
-    {
-        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
-            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionNone];
-//            _textView.editable=YES;
-//            [_textView becomeFirstResponder];
-        }
-    }
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 //-(void)textViewDidBeginEditing:(UITextView *)textView
@@ -373,6 +357,8 @@
             {
                 NSString * base64 = [[NSString alloc] initWithData:[GTMBase64 encodeData:self.upData] encoding:NSUTF8StringEncoding];
                 NSDictionary *picdic=[NSDictionary dictionaryWithObjectsAndKeys:key,@"pickey",[self getFileName:0],@"fname",[self numberSize:self.upData],@"fsize",base64,@"fbody",@"jpg",@"fext",@"notice",@"pictype", nil];
+                NSLog(@"%@",picdic);
+                
                 [[EKRequest Instance]EKHTTPRequest:pic parameters:picdic requestMethod:POST forDelegate:self];
                 [base64 release];
 
@@ -395,6 +381,11 @@
         _textView.text=@"";
         [studentView setAllButtonSelect:NO];
         [stuArr removeAllObjects];
+        
+        numberWord.text=@"";
+        
+      
+        
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"sendsucess", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
         [alert show];
         [alert release];

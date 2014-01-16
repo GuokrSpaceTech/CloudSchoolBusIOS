@@ -109,11 +109,7 @@ static GKCameraManager *cameraManager;
         AVCaptureStillImageOutput *stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
         if ([_session canAddOutput:stillImageOutput])
         {
-            NSDictionary *outputSettings = @{
-                                             //AVVideoWidthKey : @(480),
-                                             //AVVideoHeightKey: @(480),
-                                             AVVideoCodecKey : AVVideoCodecJPEG};
-            [stillImageOutput setOutputSettings:outputSettings];
+            [stillImageOutput setOutputSettings:@{AVVideoCodecKey : AVVideoCodecJPEG}];
             [_session addOutput:stillImageOutput];
             _stillImageOutput = stillImageOutput;
         }
@@ -125,7 +121,7 @@ static GKCameraManager *cameraManager;
         
         
         NSDictionary* setcapSettings = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        [NSNumber numberWithInt:kCVPixelFormatType_32BGRA], kCVPixelBufferPixelFormatTypeKey,
+                                        [NSNumber numberWithInt:kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange], kCVPixelBufferPixelFormatTypeKey,
                                         nil];
         videoout.videoSettings = setcapSettings;
         [_session addOutput:videoout];
@@ -146,9 +142,6 @@ static GKCameraManager *cameraManager;
         [audioout setSampleBufferDelegate:self queue:_captureQueue];
         [_session addOutput:audioout];
         _audioConnection = [audioout connectionWithMediaType:AVMediaTypeAudio];
-        
-        
-        
         
         
         //        });
@@ -662,8 +655,10 @@ static GKCameraManager *cameraManager;
         {
             bVideo = NO;
         }
+        BOOL isFirstFrame = NO;
         if ((_encoder == nil) && !bVideo)
         {
+            isFirstFrame = YES;
             CMFormatDescriptionRef fmt = CMSampleBufferGetFormatDescription(sampleBuffer);
             [self setAudioFormat:fmt];
 //            NSString* filename = [NSString stringWithFormat:@"capture%d.mp4", _currentFile];
@@ -740,8 +735,11 @@ static GKCameraManager *cameraManager;
         
         
         // pass frame to encoder
-        [_encoder encodeFrame:sampleBuffer isVideo:bVideo];
-        CFRelease(sampleBuffer);
+        if (!isFirstFrame) {
+            [_encoder encodeFrame:sampleBuffer isVideo:bVideo];
+            CFRelease(sampleBuffer);
+        }
+        
         
     }
     

@@ -50,7 +50,7 @@
     
   //  NSDictionary * stuList;
 }
-@property int type;
+//@property int type;
 @property (nonatomic,assign)id<showViewController>delegate;
 @property (nonatomic,copy)NSMutableArray *assetArr;
 //@property (nonatomic,retain)NSMutableArray *alreadyArr;

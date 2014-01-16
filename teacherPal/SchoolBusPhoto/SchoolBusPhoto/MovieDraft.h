@@ -2,7 +2,7 @@
 //  MovieDraft.h
 //  SchoolBusPhoto
 //
-//  Created by CaiJingPeng on 14-1-9.
+//  Created by CaiJingPeng on 14-1-10.
 //  Copyright (c) 2014年 mactop. All rights reserved.
 //
 
@@ -15,5 +15,6 @@
 @property (nonatomic, retain) NSString * createdate;
 @property (nonatomic, retain) NSString * moviepath;
 @property (nonatomic, retain) NSString * userid;
+@property (nonatomic, retain) NSData * thumbnail;
 
 @end

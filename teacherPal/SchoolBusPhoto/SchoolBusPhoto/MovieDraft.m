@@ -2,7 +2,7 @@
 //  MovieDraft.m
 //  SchoolBusPhoto
 //
-//  Created by CaiJingPeng on 14-1-9.
+//  Created by CaiJingPeng on 14-1-10.
 //  Copyright (c) 2014年 mactop. All rights reserved.
 //
 
@@ -14,5 +14,6 @@
 @dynamic createdate;
 @dynamic moviepath;
 @dynamic userid;
+@dynamic thumbnail;
 
 @end

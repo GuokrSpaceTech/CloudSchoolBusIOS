@@ -5,7 +5,7 @@
 //  Created by mactop on 10/19/13.
 //  Copyright (c) 2013 mactop. All rights reserved.
 //
-
+// 测试android
 #import "GKAppDelegate.h"
 #import "GKUserLogin.h"
 #import "GKUpQueue.h"
@@ -32,7 +32,7 @@
 {
     
     [TestFlight takeOff:@"d4bc9035-d1e2-4759-b915-1bd09236dc63"];
-    
+
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -297,6 +297,9 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    //@"ACTIVEPHOTO"
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"ACTIVEPHOTO" object:nil];
+    
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

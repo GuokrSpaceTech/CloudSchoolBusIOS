@@ -7,7 +7,7 @@
 //
 
 #import "GKAlumbViewController.h"
-#import "AVCamViewController.h"
+
 #import "GKMainViewController.h"
 #import "GKImagePickerController.h"
 

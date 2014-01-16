@@ -11,14 +11,50 @@
 @implementation GKButton
 @synthesize student;
 @synthesize isSelect;
+@synthesize photoImageView;
+@synthesize backgroundView;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        
+        //147 × 78
+        //73  39  129130
+//        photoImageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 30, 39)];
+//        photoImageView.backgroundColor=[UIColor redColor];
+//        [self addSubview:photoImageView];
+//        [self.imageView sendSubviewToBack:photoImageView];
+        
+        
+        
+        
+        backgroundView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 74, 40)];
+        backgroundView.image=[UIImage imageNamed:@"谁在照片里_05.png"];
+        [self addSubview:backgroundView];
+        
+        photoImageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 65, 40)];
+        photoImageView.backgroundColor=[UIColor orangeColor];
+        [self addSubview:photoImageView];
+        
+
+        
       
     }
     return self;
+}
+-(id)init
+{
+    self = [super init];
+    if (self) {
+        // Initialization code
+        
+    }
+    return self;
+}
+-(void)layoutSubviews
+{
+    
 }
 -(void)setIsSelect:(BOOL)_isSelect
 {
@@ -54,6 +90,8 @@
 -(void)dealloc
 {
     self.student=nil;
+    self.photoImageView=nil;
+    self.backgroundView=nil;
     [super dealloc];
 }
 

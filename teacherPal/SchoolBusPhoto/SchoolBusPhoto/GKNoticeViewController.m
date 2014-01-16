@@ -17,6 +17,7 @@
 @synthesize _textView;
 @synthesize stuArr;
 @synthesize upData;
+@synthesize isConform;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -34,9 +35,27 @@
     [super viewDidAppear:animated];
     [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
 }
+//-(void)clickConformClick:(UIButton *)btn
+//{
+//    if(!isConform)
+//    {
+//        isConform=YES;
+//        
+//        //打钩
+//        
+//        [btn setImage:[UIImage imageNamed:@"duihaohuizhi.png"] forState:UIControlStateNormal];
+//        
+//    }
+//    else
+//    {
+//        [btn setImage:nil forState:UIControlStateNormal];
+//        isConform=NO;
+//    }
+//}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    isConform=NO;
     stuArr=[[NSMutableArray alloc]init];
     UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(0, navigationView.frame.size.height+navigationView.frame.origin.y, 320, self.view.frame.size.height)];
     bgView.backgroundColor=[UIColor colorWithRed:237/255.0 green:234/255.0 blue:225/255.0 alpha:1];
@@ -57,6 +76,24 @@
     numberWord.font=[UIFont systemFontOfSize:14];
     [self.view addSubview:numberWord];
     [numberWord release];
+    //"check"="如需家长确认，请勾选。";
+//    UILabel *  huizhiLabel =[[UILabel alloc]initWithFrame:CGRectMake(180 , _textView.frame.size.height+_textView.frame.origin.y+5, 120, 40)];
+//    huizhiLabel.numberOfLines=2;
+//    //huizhiLabel.text="该通知需要家长确认吗？"";
+//    huizhiLabel.text=NSLocalizedString(@"check", @"");
+//    huizhiLabel.backgroundColor=[UIColor clearColor];
+//    huizhiLabel.textColor=[UIColor redColor];
+//    huizhiLabel.font=[UIFont systemFontOfSize:14];
+//    [self.view addSubview:huizhiLabel];
+//    [huizhiLabel release];
+//    
+//    
+//    UIButton * confromButton=[UIButton buttonWithType:UIButtonTypeCustom];
+//    [confromButton setBackgroundImage:[UIImage imageNamed:@"kuang.png"] forState:UIControlStateNormal];
+//    confromButton.frame=CGRectMake(150,  _textView.frame.size.height+_textView.frame.origin.y+15, 20, 20);
+//    [confromButton addTarget:self action:@selector(clickConformClick:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:confromButton];
+    
     
     inputView=[[UIView alloc]initWithFrame:CGRectMake(0,_textView.frame.size.height+_textView.frame.origin.y, 320, 40)];
     
@@ -293,7 +330,55 @@
         }
     }
 }
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    
+    NSString *studentID=[self selectStudentID];
+    
+    NSString *key=[self createKey];
+    NSString *createT=[self creattime];
+    
+    NSString *title=nil;
+    if([_textView.text length]>10)
+    {
+        title=[_textView.text substringToIndex:10];
+    }
+    else
+    {
+        title=_textView.text;
+    }
+    
+  
+    if(self.upData)
+    {
+        NSString * base64 = [[NSString alloc] initWithData:[GTMBase64 encodeData:self.upData] encoding:NSUTF8StringEncoding];
+        NSDictionary *picdic=[NSDictionary dictionaryWithObjectsAndKeys:key,@"pickey",[self getFileName:0],@"fname",[self numberSize:self.upData],@"fsize",base64,@"fbody",@"jpg",@"fext",@"notice",@"pictype", nil];
+        NSLog(@"%@",picdic);
+        
+        [[EKRequest Instance]EKHTTPRequest:pic parameters:picdic requestMethod:POST forDelegate:self];
+        [base64 release];
+        
+    }
+    
+    
+    if(buttonIndex==0)
+    {
+        // 不确认
+        
+        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:title,@"title",_textView.text,@"content",@"",@"createrid",studentID,@"slist",key,@"noticekey",createT,@"createtime",@"0",@"isconfirm", nil];
+        [[EKRequest Instance]EKHTTPRequest:tnotice parameters:dic requestMethod:POST forDelegate:self];
 
+    }
+    if(buttonIndex==1)
+    {
+        // 确认
+        
+        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:title,@"title",_textView.text,@"content",@"",@"createrid",studentID,@"slist",key,@"noticekey",createT,@"createtime",@"1",@"isconfirm", nil];
+        [[EKRequest Instance]EKHTTPRequest:tnotice parameters:dic requestMethod:POST forDelegate:self];
+
+    }
+}
 -(void)buttonClick:(UIButton *)btn
 {
     if(btn.tag==100)
@@ -332,43 +417,16 @@
             [alert release];
             return;
         }
-        NSString *studentID=[self selectStudentID];
         
-        NSString *key=[self createKey];
-        NSString *createT=[self creattime];
-        
-        NSString *title=nil;
-        if([_textView.text length]>10)
-        {
-            title=[_textView.text substringToIndex:10];
-        }
-        else
-        {
-            title=_textView.text;
-        }
-        
-        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:title,@"title",_textView.text,@"content",@"",@"createrid",studentID,@"slist",key,@"noticekey",createT,@"createtime",@"0",@"isconfirm", nil];
-//        
-//        NSLog(@"%@",dic);
-        [[EKRequest Instance]EKHTTPRequest:tnotice parameters:dic requestMethod:POST forDelegate:self];
-//
-//        
-            if(self.upData)
-            {
-                NSString * base64 = [[NSString alloc] initWithData:[GTMBase64 encodeData:self.upData] encoding:NSUTF8StringEncoding];
-                NSDictionary *picdic=[NSDictionary dictionaryWithObjectsAndKeys:key,@"pickey",[self getFileName:0],@"fname",[self numberSize:self.upData],@"fsize",base64,@"fbody",@"jpg",@"fext",@"notice",@"pictype", nil];
-                NSLog(@"%@",picdic);
-                
-                [[EKRequest Instance]EKHTTPRequest:pic parameters:picdic requestMethod:POST forDelegate:self];
-                [base64 release];
 
-            }
-           //
-//        }
 
         
-       // [[EKRequest Instance]EKHTTPRequest:<#(RequestFunction)#> parameters:<#(NSDictionary *)#> requestMethod:<#(HTTPMethod)#> forDelegate:<#(id<EKProtocol>)#>]
+        UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"该通知需要家长确认吗？" delegate:self cancelButtonTitle:NSLocalizedString(@"no", @"") otherButtonTitles:NSLocalizedString(@"yes", @""), nil];
+        [alertView show];
+        [alertView release];
         
+
+
     }
 }
 
@@ -383,9 +441,6 @@
         [stuArr removeAllObjects];
         
         numberWord.text=@"";
-        
-      
-        
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"sendsucess", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
         [alert show];
         [alert release];

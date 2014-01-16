@@ -9,7 +9,7 @@
 #import "GKImagePickerViewController.h"
 #import "ETPhoto.h"
 #import "GKLoaderManager.h"
-#import "AVCamViewController.h"
+
 
 #import <QuartzCore/QuartzCore.h>
 #import "UpLoader.h"

@@ -10,7 +10,7 @@
 
 #import "GTMBase64.h"
 #import "GKUserLogin.h"
-#define LIMIT_NICKNAME 14
+#define LIMIT_NICKNAME 12
 @interface ETNicknameViewController ()
 
 @end
@@ -127,7 +127,7 @@
         calculateLabel.textColor = [UIColor blackColor];
     }
     
-    calculateLabel.text = [NSString stringWithFormat:@"%d/20",length];
+    calculateLabel.text = [NSString stringWithFormat:@"%d/%d",length,LIMIT_NICKNAME];
 }
 
 //- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

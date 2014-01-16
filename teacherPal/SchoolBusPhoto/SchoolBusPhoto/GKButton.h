@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Student.h"
-@interface GKButton : UIButton
+@interface GKButton : UIView
 @property (nonatomic,retain)Student *student;
 @property (nonatomic,assign)BOOL isSelect;
+@property (nonatomic,retain)UIImageView *backgroundView;
+@property (nonatomic,retain)UIImageView *photoImageView;
 @end

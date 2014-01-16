@@ -28,7 +28,7 @@
 
 @property (atomic, readwrite) BOOL isCapturing;
 @property (atomic, readwrite) BOOL isPaused;
-@property (nonatomic) id<GKCameraManagerDelegate> delegate;
+@property (nonatomic,weak) id<GKCameraManagerDelegate> delegate;
 
 + (id)manager;
 

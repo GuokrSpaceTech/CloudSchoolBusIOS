@@ -188,10 +188,17 @@
 "feedBack"="FeedBack";
 "helpSupport"="Support";
 
-"moviedraft" = "Draft";
+"moviedraft" = "Video Draft";
 "nodata" = "No Data";
 "savedraft" = "Save";
 "dontsavedraft" = "Don't Save";
 
 "delete" = "Delete";
 "draftedit" = "Edit";
+"check"="If need parents to confirm, check it.";
+"yes"="Yes";
+"no"="No";
+
+
+
+

@@ -20,10 +20,13 @@
 #import "ClassShareCell.h"
 #import "DetailContentCell.h"
 #import "WriteCommentsViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import "GKMovieDownloader.h"
+#import "MDRadialProgressView.h"
+#import "MDRadialProgressTheme.h"
 
 
-
-@interface CommentDetailViewController : UIViewController<EKProtocol,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,DetailContentCellDelegate,UIActionSheetDelegate,UITextViewDelegate,WriteCommentsViewControllerDelegate,MTCustomActionSheetDelegate>
+@interface CommentDetailViewController : UIViewController<EKProtocol,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,DetailContentCellDelegate,UIActionSheetDelegate,UITextViewDelegate,WriteCommentsViewControllerDelegate,MTCustomActionSheetDelegate,GKMovieDownloaderDelegate>
 {
     UIImageView *navigationBackView;
     UIButton *leftButton;
@@ -76,6 +79,11 @@
 
 @property (nonatomic, retain) UIActivityIndicatorView *upAI;
 @property (nonatomic, retain) UIActivityIndicatorView *cmtAI;
+
+@property (nonatomic, retain) UIView *movieBackView;
+@property (nonatomic, retain) MDRadialProgressView *radial;
+@property (nonatomic, retain) GKMovieDownloader *downloader;
+@property (nonatomic, retain) MPMoviePlayerController *mPlayer;
 
 
 @end

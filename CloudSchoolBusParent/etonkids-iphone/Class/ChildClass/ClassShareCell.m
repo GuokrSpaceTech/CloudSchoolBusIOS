@@ -183,13 +183,9 @@
 
 
 /// 点击赞事件.
+/// 点击赞事件.
 -(void)praise:(UIButton*)sender
 {
-
-//    NSLog(@"cell  praise");
-    
-    
-
     
     CABasicAnimation *an=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
     
@@ -201,13 +197,31 @@
     an.toValue = [NSNumber numberWithFloat:1.2];
     [praiseImgV.layer addAnimation:an forKey:@"dfdf"];
     
-
+    
     if (delegate && [delegate respondsToSelector:@selector(clickPraise:)]) {
         [delegate clickPraise:self];
     }
-    
+
 }
 
+- (void)addPraiseNumber
+{
+    
+    self.praiseLab.text = [NSString stringWithFormat:@"%d",self.praiseLab.text.intValue + 1];
+    
+    self.praiseImgV.image = [UIImage imageNamed:@"myzan.png"];
+}
+- (void)subPraiseNumber
+{
+    self.praiseLab.text = [NSString stringWithFormat:@"%d",self.praiseLab.text.intValue - 1];
+    
+    if (self.praiseLab.text.intValue == 0)
+    {
+        self.praiseLab.text = LOCAL(@"upText", @"");
+    }
+    
+    self.praiseImgV.image = [UIImage imageNamed:@"cellPraise.png"];
+}
 
 /// 点击评论.
 -(void)comments:(UIButton*)sender

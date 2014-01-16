@@ -1,0 +1,368 @@
+//
+//  GKMovieCell.m
+//  etonkids-iphone
+//
+//  Created by CaiJingPeng on 14-1-15.
+//  Copyright (c) 2014年 wpf. All rights reserved.
+//
+
+#import "GKMovieCell.h"
+
+#import "MDRadialProgressView.h"
+#import "MDRadialProgressTheme.h"
+#import "MDRadialProgressLabel.h"
+#import "GKMovieCache.h"
+#import "ETKids.h"
+#import "ETCommonClass.h"
+
+#define BUTTONTAG 888
+
+
+@implementation GKMovieCell
+@synthesize titleLabel,contentLabel,timeLabel,backImgV;
+@synthesize praiseButton;
+@synthesize commentsButton,contentView;
+@synthesize praiseLab,commentLab,praiseImgV,commentImgV,triangle,mPlayer,radial,delegate,theShareCtnt;
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        
+        
+        
+        // Initialization code
+        self.contentView.backgroundColor = CELLCOLOR;
+        self.backgroundColor = CELLCOLOR;
+        
+        UIImageView *carImgV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 25, 23)];
+        carImgV.image = [UIImage imageNamed:@"car.png"];
+        [self addSubview:carImgV];
+        [carImgV release];
+        
+        
+        UILabel *tLabel=[[UILabel alloc]initWithFrame:CGRectMake(40, 10, 250, 23)];
+        tLabel.backgroundColor=[UIColor clearColor];
+        tLabel.lineBreakMode = UILineBreakModeWordWrap|NSLineBreakByTruncatingTail;
+        tLabel.numberOfLines = 0;
+        tLabel.font=[UIFont systemFontOfSize:TITLEFONTSIZE];
+        [self addSubview:tLabel];
+        [tLabel release];
+        
+        self.titleLabel = tLabel;
+        
+        
+        UILabel *timeLab =[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 16)];
+        timeLab.backgroundColor=[UIColor clearColor];
+        timeLab.font=[UIFont systemFontOfSize:TIMEFONTSIZE];
+        timeLab.textColor = TIMETEXTCOLOR;
+        //        self.timeLabel.textAlignment=UITextAlignmentRight;
+        [self addSubview:timeLab];
+        [timeLab release];
+        
+        self.timeLabel = timeLab;
+        
+        UIImageView *tImgV = [[UIImageView alloc] initWithFrame:CGRectZero];
+        tImgV.image = [UIImage imageNamed:@"triangle.png"];
+        [self addSubview:tImgV];
+        [tImgV release];
+        
+        self.triangle = tImgV;
+        
+        UIImageView *bImgV = [[UIImageView alloc] initWithFrame:CGRectMake(40, 0, 270, 0)];
+        //        UIImage *img = [UIImage imageNamed:@"popback"];
+        //        backImgV.image = [img resizableImageWithCapInsets:UIEdgeInsetsMake(50, 30, 30, 15)];
+        bImgV.backgroundColor = [UIColor whiteColor];
+        bImgV.layer.cornerRadius = 10;
+        [self addSubview:bImgV];
+        [bImgV release];
+        
+        self.backImgV = bImgV;
+        
+        
+        UILabel *ctntLabel=[[UILabel alloc]initWithFrame:CGRectZero];
+        ctntLabel.backgroundColor=[UIColor clearColor];
+        ctntLabel.font=[UIFont systemFontOfSize:CONTENTFONTSIZE];
+        ctntLabel.textColor = CONTENTTEXTCOLOR;
+        ctntLabel.numberOfLines = 0;
+        ctntLabel.lineBreakMode=UILineBreakModeWordWrap|NSLineBreakByTruncatingTail;
+        [self addSubview:ctntLabel];
+        [ctntLabel release];
+        
+        self.contentLabel = ctntLabel;
+        
+        
+        UIImageView *pImgV = [[UIImageView alloc] initWithFrame:CGRectZero];
+        pImgV.image = [UIImage imageNamed:@"cellPraise.png"];
+        [self addSubview:pImgV];
+        [pImgV release];
+        
+        self.praiseImgV = pImgV;
+        
+        UILabel *pLab = [[UILabel alloc] initWithFrame:CGRectZero];
+        pLab.backgroundColor=[UIColor clearColor];
+        pLab.textAlignment = NSTextAlignmentCenter;
+        //        praiseLab.adjustsFontSizeToFitWidth = YES;
+        pLab.font=[UIFont systemFontOfSize:CONTENTFONTSIZE];
+        pLab.textColor = CONTENTTEXTCOLOR;
+        [self addSubview:pLab];
+        [pLab release];
+        
+        self.praiseLab = pLab;
+        
+        UIImageView *cmtImgV = [[UIImageView alloc] initWithFrame:CGRectZero];
+        cmtImgV.image = [UIImage imageNamed:@"cellComment.png"];
+        [self addSubview:cmtImgV];
+        [cmtImgV release];
+        
+        self.commentImgV = cmtImgV;
+        
+        UILabel *cmtLab = [[UILabel alloc] initWithFrame:CGRectZero];
+        cmtLab.backgroundColor=[UIColor clearColor];
+        cmtLab.textAlignment = NSTextAlignmentCenter;
+        //        commentLab.adjustsFontSizeToFitWidth = YES;
+        cmtLab.font=[UIFont systemFontOfSize:CONTENTFONTSIZE];
+        cmtLab.textColor = CONTENTTEXTCOLOR;
+        [self addSubview:cmtLab];
+        [cmtLab release];
+        
+        self.commentLab = cmtLab;
+        
+        
+        UIButton *pButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [pButton setFrame:CGRectMake(185, 0, 70, 30)];
+        //        praiseButton.backgroundColor = [UIColor redColor];
+        [pButton addTarget:self action:@selector(praise:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:pButton];
+        
+        self.praiseButton = pButton;
+        
+        UIButton *cmtButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        //        commentsButton.backgroundColor = [UIColor blueColor];
+        [cmtButton setFrame:CGRectMake(255, 0, 70, 30)];
+        //        commentsButton.alpha = 0.2f;
+        //        commentsButton.hidden = NO;
+        [cmtButton addTarget:self action:@selector(comments:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:cmtButton];
+        
+        self.commentsButton = cmtButton;
+        
+        UIView *ctntView = [[UIView alloc] initWithFrame:CGRectMake(10, 0, MOVIESIZE, MOVIESIZE)];
+        ctntView.backgroundColor = [UIColor clearColor];
+        [self addSubview:ctntView];
+        [ctntView release];
+        
+        self.contentBackView = ctntView;
+        
+        UIImageView *mthumbImgV = [[UIImageView alloc] initWithFrame:ctntView.bounds];
+        mthumbImgV.backgroundColor = [UIColor whiteColor];
+        [ctntView addSubview:mthumbImgV];
+        [mthumbImgV release];
+        
+        self.movieThumbnailImgV = mthumbImgV;
+        
+        
+        
+        UIImageView *l = [[UIImageView alloc] initWithFrame:CGRectZero];
+        l.image = [UIImage imageNamed:@"cellline.png"];
+        [self addSubview:l];
+        [l release];
+        
+        self.line = l;
+    }
+    return self;
+}
+
+- (void)setMovieURL:(NSString *)url
+{
+    if (self.mPlayer)
+    {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackStateDidChangeNotification object:self.mPlayer];
+        
+        [self.mPlayer.view removeFromSuperview];
+        self.mPlayer = nil;
+        [[self.contentBackView viewWithTag:BUTTONTAG] removeFromSuperview];
+        self.downloader.delegate = nil;
+        self.downloader = nil;
+        
+        [self.radial removeFromSuperview];
+        
+        
+    }
+    
+    // 延时下载
+    
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(downloadMovie:) object:url];
+    [self performSelector:@selector(downloadMovie:) withObject:url afterDelay:0.5f];
+    
+    
+}
+- (void)downloadMovie:(NSString *)url
+{
+    
+    MDRadialProgressTheme *newTheme = [[MDRadialProgressTheme alloc] init];
+	newTheme.completedColor = [UIColor colorWithRed:90/255.0 green:212/255.0 blue:39/255.0 alpha:1.0];
+	newTheme.incompletedColor = [UIColor colorWithRed:164/255.0 green:231/255.0 blue:134/255.0 alpha:1.0];
+	newTheme.centerColor = [UIColor clearColor];
+	newTheme.centerColor = [UIColor colorWithRed:224/255.0 green:248/255.0 blue:216/255.0 alpha:1.0];
+	newTheme.sliceDividerHidden = YES;
+	newTheme.labelColor = [UIColor blackColor];
+	newTheme.labelShadowColor = [UIColor whiteColor];
+	
+	
+	CGRect frame = CGRectMake(self.contentBackView.frame.size.width/2.0f - 30, self.contentBackView.frame.size.height/2.0f - 30, 60, 60);
+    MDRadialProgressView *radialView7 = [[MDRadialProgressView alloc] initWithFrame:frame andTheme:newTheme];
+	[self.contentBackView addSubview:radialView7];
+    [radialView7 release];
+    
+    self.radial = radialView7;
+    
+    
+    GKMovieDownloader *d = [[GKMovieDownloader alloc] initWithMovieURL:[NSURL URLWithString:url]];
+    d.delegate = self;
+    d.radiaProgress = radialView7;
+    [d startDownload];
+    
+    self.downloader = d;
+}
+
+- (void)didFinishedDownloadMovieWithPath:(NSString *)path
+{
+    
+    [self.radial removeFromSuperview];
+    
+    MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:path]];//写入url
+    player.controlStyle = MPMovieControlStyleNone;
+    player.movieSourceType = MPMovieSourceTypeFile;
+    [player.view setFrame:self.contentBackView.bounds];
+//    [player requestThumbnailImagesAtTimes:[NSArray arrayWithObject:[NSNumber numberWithDouble:1.0]] timeOption:MPMovieTimeOptionExact];
+    [self.contentBackView addSubview:player.view];
+//    [player prepareToPlay];
+    self.mPlayer = player;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackChangeState:) name:MPMoviePlayerPlaybackStateDidChangeNotification object:self.mPlayer];
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
+    btn.tag = BUTTONTAG;
+    [btn addTarget:self action:@selector(controlMovie:) forControlEvents:UIControlEventTouchUpInside];
+    [btn setFrame:self.contentBackView.bounds];
+    [self.contentBackView addSubview:btn];
+    
+    
+}
+
+
+
+- (void)playbackChangeState:(MPMediaPickerController *)player
+{
+    UIButton *b = (UIButton *)[self.contentBackView viewWithTag:BUTTONTAG];
+    
+    if (self.mPlayer.playbackState == MPMoviePlaybackStatePaused || self.mPlayer.playbackState == MPMoviePlaybackStateStopped)
+    {
+        [b setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [b setImage:nil forState:UIControlStateNormal];
+    }
+}
+
+- (void)controlMovie:(UIButton *)sender
+{
+    if (self.mPlayer.playbackState == MPMoviePlaybackStatePlaying)
+    {
+        [self.mPlayer pause];
+        [sender setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.mPlayer play];
+        [sender setImage:nil forState:UIControlStateNormal];
+    }
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+
+/// 点击赞事件.
+-(void)praise:(UIButton*)sender
+{
+    
+    CABasicAnimation *an=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    
+    an.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    an.duration =0.15;
+    an.repeatCount = 1;
+    an.autoreverses = YES;
+    an.fromValue = [NSNumber numberWithFloat:0.8];
+    an.toValue = [NSNumber numberWithFloat:1.2];
+    [praiseImgV.layer addAnimation:an forKey:@"dfdf"];
+    
+    
+    if (delegate && [delegate respondsToSelector:@selector(clickPraise:)]) {
+        [delegate clickPraise:self];
+    }
+
+}
+
+
+
+- (void)addPraiseNumber
+{
+    
+    self.praiseLab.text = [NSString stringWithFormat:@"%d",self.praiseLab.text.intValue + 1];
+    
+    self.praiseImgV.image = [UIImage imageNamed:@"myzan.png"];
+}
+- (void)subPraiseNumber
+{
+    self.praiseLab.text = [NSString stringWithFormat:@"%d",self.praiseLab.text.intValue - 1];
+    
+    if (self.praiseLab.text.intValue == 0)
+    {
+        self.praiseLab.text = LOCAL(@"upText", @"");
+    }
+    
+    self.praiseImgV.image = [UIImage imageNamed:@"cellPraise.png"];
+}
+
+/// 点击评论.
+-(void)comments:(UIButton*)sender
+{
+    if (delegate && [delegate respondsToSelector:@selector(clickComment:)]) {
+        [delegate clickComment:self.theShareCtnt];
+    }
+    
+}
+
+
+
+- (void)dealloc
+{
+    self.titleLabel = nil;
+    self.contentLabel = nil;
+    self.timeLabel = nil;
+    self.praiseButton = nil;
+    self.commentsButton = nil;
+    self.praiseLab = nil;
+    self.commentLab = nil;
+    self.commentImgV = nil;
+    self.praiseImgV = nil;
+    self.backImgV = nil;
+    self.line = nil;
+    self.triangle = nil;
+    self.mPlayer = nil;
+    self.downloader = nil;
+    self.contentBackView = nil;
+    self.movieThumbnailImgV = nil;
+    self.radial = nil;
+    [super dealloc];
+}
+
+@end

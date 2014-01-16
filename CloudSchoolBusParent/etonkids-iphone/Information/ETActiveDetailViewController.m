@@ -1,4 +1,4 @@
-//
+				//
 //  ETActiveDetailViewController.m
 //  etonkids-iphone
 //
@@ -367,7 +367,6 @@
 {
     
     if (index == 3) {
-//        WXMediaMessage *message = [WXMediaMessage message];
         
 //        WXImageObject *ext = [WXImageObject object];
 //        ext.imageData= UIImageJPEGRepresentation([UIImage imageNamed:@"icon.png"], 0.5f);
@@ -378,25 +377,15 @@
 //
 //        message.mediaObject = ext;
         
-//        SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
-//        req.bText = YES;
-//
-//        req.text = self.etevent.htmlurl;
-//
-//        req.scene = WXSceneTimeline;
-////        }
-//        [WXApi sendReq:req];
         
         
         WXMediaMessage *message = [WXMediaMessage message];
         message.title = self.etevent.title;
         message.description = self.etevent.htmlurl;
-        [message setThumbData:UIImageJPEGRepresentation([UIImage imageNamed:@"icon.png"], 0.5f)];
-        
-//        WXWebpageObject *ext = [WXWebpageObject object];
-//        ext.webpageUrl = self.etevent.htmlurl;
-        
         message.mediaObject = web;
+        message.thumbData = UIImageJPEGRepresentation([UIImage imageNamed:@"icon.png"], 0.5f);
+        
+        
         
         SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
         req.message = message;
@@ -405,13 +394,7 @@
         req.scene = WXSceneTimeline;
         
         [WXApi sendReq:req];
-        
-//        SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
-//        req.bText = YES;
-//        req.text = self.etevent.htmlurl;
-//        req.scene = WXSceneTimeline;
-//        
-//        [WXApi sendReq:req];
+
         
         
     }

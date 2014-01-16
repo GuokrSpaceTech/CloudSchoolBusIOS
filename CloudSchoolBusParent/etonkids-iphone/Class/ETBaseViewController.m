@@ -187,20 +187,18 @@
 #pragma mark UIScrollViewDelegate Methods
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    
     int y = scrollView.contentOffset.y;
-    if (y <= 0) {
-        
-        if (ABS(y) >= 30) {
+    if (y <= 0)
+    {
+        if (ABS(y) >= 30)
+        {
             topBackImgView.transform = CGAffineTransformMakeScale(1 + (ABS(y)-30) * 0.2f/30.0f, 1 + (ABS(y)-30) * 0.2f/30.0f);
         }
-        else{
-            
+        else
+        {
 //            topBackImgView.transform = CGAffineTransformMakeTranslation(0, ABS(y)*0.2);
             topBackImgView.frame = CGRectMake(topBackImgView.frame.origin.x, -10 + ABS(y)*0.3f, topBackImgView.frame.size.width, topBackImgView.frame.size.height);
         }
-        
-       // NSLog(@"%d", y);
     }
     else
     {

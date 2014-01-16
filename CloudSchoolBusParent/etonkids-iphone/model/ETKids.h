@@ -46,6 +46,8 @@
 #define LIMIT_NICKNAME 20
 #define LIMIT_COMMENT 70
 
+#define MOVIESIZE 300
+
 
 #define GESTUREPASSWORD @"GesturePassword"
 #define SWITHGESTURE @"isOnGesPwd"

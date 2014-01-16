@@ -215,12 +215,17 @@ static GKLoaderManager *manager=nil;
     if (!arr) {
         NSLog(@"!!!! search articals error : %@",err);
     }
+    if([arr count]>0)
+    {
+        UpLoader *loader = [arr objectAtIndex:0];
+        [delegate.managedObjectContext deleteObject:loader];
+        BOOL successful = [delegate.managedObjectContext save:nil];
+        
+        return successful;
+    }
     
-    UpLoader *loader = [arr objectAtIndex:0];
-    [delegate.managedObjectContext deleteObject:loader];
-    BOOL successful = [delegate.managedObjectContext save:nil];
+    return NO;
     
-    return successful;
 }
 
 -(void)changeCoreDataLoadingState:(NSString *)nameid

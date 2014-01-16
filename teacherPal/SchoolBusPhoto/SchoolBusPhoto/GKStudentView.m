@@ -9,7 +9,7 @@
 #import "GKStudentView.h"
 #import "Student.h"
 
-#import "UIButton+WebCache.h"
+#import "UIImageView+WebCache.h"
 #define BTNTAG 50
 #define BUTONHEIGHT 40
 @implementation GKStudentView
@@ -30,7 +30,7 @@
         scroller=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         scroller.showsHorizontalScrollIndicator=NO;
         scroller.showsVerticalScrollIndicator=NO;
-        scroller.pagingEnabled = YES;
+        //scroller.pagingEnabled = YES;
         scroller.backgroundColor=[UIColor clearColor];
         [self addSubview:scroller];
         [scroller release];
@@ -47,7 +47,7 @@
     
     // 一行四个
     
-    int col=([studentArr count] )/4; //行
+   // int col=([studentArr count] )/4; //行
     //int row=([studentArr count] )%4;
     
     //int y = MIN(col+1, 4);
@@ -81,46 +81,32 @@
         Student *st=[studentArr objectAtIndex:i-1];
         
         if (![scroller viewWithTag:(i + BTNTAG - 1)]) {
-            GKButton *button=[GKButton buttonWithType:UIButtonTypeCustom];
-           // button.titleLabel.font=[UIFont boldSystemFontOfSize:10];
+            GKButton *button=[[GKButton alloc]initWithFrame:CGRectMake(3 +row*(74+6), col *(40 +15), 74, 40)];
             button.layer.cornerRadius = 7;
             button.layer.masksToBounds = YES;
-            
-            //button.frame=CGRectMake(3 +row*(74+6), 5 + col/4*185 + col%4*(45+5), 74, 40);
-            button.frame=CGRectMake(3 +row*(74+6), col *(50), 74, 40);
-            
-           
-            
-            
-            
-            [button setBackgroundImageWithURL:[NSURL URLWithString:st.avatar] forState:UIControlStateNormal placeholderImage:nil options:SDWebImageRetryFailed|SDWebImageRefreshCached completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                
-                [button setBackgroundImage:image forState:UIControlStateNormal];
-                
-            }];
-            
-            [button setImage:[UIImage imageNamed:@"谁在照片里_05.png"] forState:UIControlStateNormal];
-            
-//            
-//            if(IOSVERSION>=6.0)
-//                button.titleLabel.textAlignment=NSTextAlignmentRight;
-//            else
-//                button.titleLabel.textAlignment=NSTextAlignmentRight;
-            
-            //[button setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-            //[button setTitle:[NSString stringWithFormat:@"%@",st.enname] forState:UIControlStateNormal];
+            [button.photoImageView setImageWithURL:[NSURL URLWithString:st.avatar] placeholderImage:nil];
+
             button.student=st;
             
             
             button.tag = i + BTNTAG - 1;
             
             button.isSelect=NO;
-            [button addTarget:self action:@selector(clickStudent:) forControlEvents:UIControlEventTouchUpInside];
+          //  [button addTarget:self action:@selector(clickStudent:) forControlEvents:UIControlEventTouchUpInside];
             [scroller addSubview:button];
+            [button release];
             
             
-            UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(button.frame.origin.x, button.frame.origin.y+40, 74, 10)];
-            label.font=[UIFont systemFontOfSize:10];
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doTapPress:)];
+            //            l.minimumPressDuration = 1;
+            //            l.delegate = self;
+            //            NSLog(@"add ges %d",i);
+            tap.numberOfTapsRequired=1;
+            [button addGestureRecognizer:tap];
+            [tap release];
+            
+            UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(button.frame.origin.x, button.frame.origin.y+40, 74, 15)];
+            label.font=[UIFont systemFontOfSize:12];
             label.tag= i + BTNTAG - 1 + 10000;
             if(IOSVERSION>=6.0)
                 label.textAlignment=NSTextAlignmentCenter;
@@ -129,7 +115,7 @@
             label.text=st.enname;
             [scroller addSubview:label];
             [label release];
-            label.textColor=[UIColor orangeColor];
+            label.textColor=[UIColor blackColor];
 
             
             UILongPressGestureRecognizer *l = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(doLongPress:)];
@@ -143,28 +129,28 @@
         {
             UILabel *label=(UILabel *)[self viewWithTag: i + BTNTAG - 1 + 10000];
             GKButton *button = (GKButton *)[scroller viewWithTag:(i + BTNTAG - 1)];
-            [button setBackgroundImageWithURL:[NSURL URLWithString:st.avatar] forState:UIControlStateNormal placeholderImage:nil options:SDWebImageRetryFailed|SDWebImageRefreshCached completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                
-                [button setBackgroundImage:image forState:UIControlStateNormal];
-                
-            }];
+
+            [button.photoImageView setImageWithURL:[NSURL URLWithString:st.avatar] placeholderImage:nil];
             label.text=[NSString stringWithFormat:@"%@",st.enname];
-            [button setTitle:[NSString stringWithFormat:@"%@",st.enname] forState:UIControlStateNormal];
+            //[button setTitle:[NSString stringWithFormat:@"%@",st.enname] forState:UIControlStateNormal];
         }
         
         
         
         
     }
+    int col1 =ceilf(([studentArr count]+1)/4.0);
     
-    if (col < 4)
-    {
-        scroller.contentSize=scroller.frame.size;
-    }
-    else
-    {
-        scroller.contentSize=CGSizeMake(scroller.frame.size.width, (col/4+1)*scroller.frame.size.height);
-    }
+    scroller.contentSize= CGSizeMake(scroller.frame.size.width ,col1 *(40 +15));
+    
+//    if (col < 4)
+//    {
+//        scroller.contentSize= col *()  ; //scroller.frame.size;
+//    }
+//    else
+//    {
+//        scroller.contentSize=CGSizeMake(scroller.frame.size.width, (col/4+1)*scroller.frame.size.height);
+//    }
     
 }
 -(void)setAlreadyStudent:(NSMutableArray *)arr
@@ -239,7 +225,14 @@
     //}
    
 }
-
+-(void)doTapPress:(UITapGestureRecognizer *)sender
+{
+    GKButton *btn=(GKButton *)sender.view;
+    
+    Student *st=btn.student;
+    btn.isSelect=!btn.isSelect;
+    [delegate whitchSelected:btn.isSelect uid:[NSString stringWithFormat:@"%@",st.studentid] isAll:0];
+}
 
 - (void)doLongPress:(UIGestureRecognizer *)sender
 {

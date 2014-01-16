@@ -20,6 +20,8 @@
 #import "ETCommonClass.h"
 #import "NSDate+convenience.h"
 
+#define BUTTONTAG  777
+
 #define TAPIMAGETAG 111
 @interface CommentDetailViewController ()
 
@@ -35,7 +37,7 @@ commentnumnumber,
 Picstring,
 tableview,
 sImgArr,
-PicArr,shareContent,comList,upList,upAI,cmtAI;
+PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mPlayer;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -193,52 +195,90 @@ PicArr,shareContent,comList,upList,upAI,cmtAI;
     [contentView addSubview:contentLabel];
     [contentLabel release];
     
-    if([shareContent.sharePicArr count]>0)
+    
+    NSDictionary *fDic = [shareContent.sharePicArr objectAtIndex:0];
+    NSString *source = [NSString stringWithFormat:@"%@",[fDic objectForKey:@"source"]];
+    //        NSString *source = @"http://yunxiaoche.blob.core.windows.net/article-source/39958_1389601724_644558.mp4";
+    NSString *ext = [[source componentsSeparatedByString:@"."] lastObject]; // 获取后缀名
+    
+    
+    if ([ext isEqualToString:@"mp4"])
     {
+        UIView *ctntView = [[UIView alloc] initWithFrame:CGRectMake(10, contentLabel.frame.origin.y+contentLabel.frame.size.height+5, MOVIESIZE, MOVIESIZE)];
+        ctntView.backgroundColor = [UIColor clearColor];
+        [contentView addSubview:ctntView];
+        [ctntView release];
         
-        for (int i=0; i<[shareContent.sharePicArr count]; i++) {
-            int row= i/3;
-            int colom=i%3;
-            NSDictionary * dic = [shareContent.sharePicArr objectAtIndex:i];
-            NSString *path=[NSString stringWithFormat:@"%@.tiny.jpg",[dic objectForKey:@"source"]];
-            UIImageView *imageViewPic=[[UIImageView alloc]initWithFrame:CGRectMake(40 + colom*(75+5), contentLabel.frame.origin.y+contentLabel.frame.size.height+5 + row *(75+5), 75, 75)];
-            
-            [imageViewPic setImageWithURL:[NSURL URLWithString:path] placeholderImage:[UIImage imageNamed:@"imageplaceholder.png"] options:0 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                
-                if (error) {
-                    imageViewPic.image = [UIImage imageNamed:@"imageerror.png"];
-                }else{
-                    imageViewPic.image = image;
-                }
-                
-            }];
-            imageViewPic.tag = 5555+i;
-            imageViewPic.backgroundColor=[UIColor clearColor];
-            imageViewPic.userInteractionEnabled = YES;
-            [contentView addSubview:imageViewPic];
-            
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doTap:)];
-            [imageViewPic addGestureRecognizer:tap];
-            [tap release];
-            
-        }
-        int height=0;
-        if([shareContent.sharePicArr count]<=3)
-            height=75;
-        else if([shareContent.sharePicArr count]<=6)
-            height=75+5+75;
-        else if([shareContent.sharePicArr count]<=9)
-            height=75+5+75 + 5 + 75;
-       
-        timeLabel.frame = CGRectMake(30, contentLabel.frame.origin.y + contentLabel.frame.size.height + 10 + height + 5, 100, 16);
+        self.movieBackView = ctntView;
         
-        contentView.frame=CGRectMake(0, 0, 320, contentLabel.frame.origin.y+contentLabel.frame.size.height+10 +height+5 + 16 );
+        UIImageView *mthumbImgV = [[UIImageView alloc] initWithFrame:ctntView.bounds];
+        mthumbImgV.backgroundColor = [UIColor whiteColor];
+        [ctntView addSubview:mthumbImgV];
+        [mthumbImgV release];
+        [mthumbImgV setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@.jpg",source]] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType)
+         {
+             mthumbImgV.image = image;
+         }];
+        
+//        self.movieThumbnailImgV = mthumbImgV;
+        
+        [self performSelector:@selector(downloadMovie:) withObject:source afterDelay:0.5f];
+        
+        timeLabel.frame = CGRectMake(30, contentLabel.frame.origin.y + contentLabel.frame.size.height + 10 + MOVIESIZE + 5, 100, 16);
+        contentView.frame=CGRectMake(0, 0, 320, contentLabel.frame.origin.y+contentLabel.frame.size.height+10 +MOVIESIZE+5 + 16 );
+        
     }
     else
     {
-        timeLabel.frame = CGRectMake(30, contentLabel.frame.origin.y + contentLabel.frame.size.height + 10, 100, 16);
-        contentView.frame=CGRectMake(0, 0, 320, contentLabel.frame.origin.y+contentLabel.frame.size.height+10 + 16);
+        if([shareContent.sharePicArr count]>0)
+        {
+            
+            for (int i=0; i<[shareContent.sharePicArr count]; i++) {
+                int row= i/3;
+                int colom=i%3;
+                NSDictionary * dic = [shareContent.sharePicArr objectAtIndex:i];
+                NSString *path=[NSString stringWithFormat:@"%@.tiny.jpg",[dic objectForKey:@"source"]];
+                UIImageView *imageViewPic=[[UIImageView alloc]initWithFrame:CGRectMake(40 + colom*(75+5), contentLabel.frame.origin.y+contentLabel.frame.size.height+5 + row *(75+5), 75, 75)];
+                
+                [imageViewPic setImageWithURL:[NSURL URLWithString:path] placeholderImage:[UIImage imageNamed:@"imageplaceholder.png"] options:0 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                    
+                    if (error) {
+                        imageViewPic.image = [UIImage imageNamed:@"imageerror.png"];
+                    }else{
+                        imageViewPic.image = image;
+                    }
+                    
+                }];
+                imageViewPic.tag = 5555+i;
+                imageViewPic.backgroundColor=[UIColor clearColor];
+                imageViewPic.userInteractionEnabled = YES;
+                [contentView addSubview:imageViewPic];
+                
+                UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doTap:)];
+                [imageViewPic addGestureRecognizer:tap];
+                [tap release];
+                
+            }
+            int height=0;
+            if([shareContent.sharePicArr count]<=3)
+                height=75;
+            else if([shareContent.sharePicArr count]<=6)
+                height=75+5+75;
+            else if([shareContent.sharePicArr count]<=9)
+                height=75+5+75 + 5 + 75;
+            
+            timeLabel.frame = CGRectMake(30, contentLabel.frame.origin.y + contentLabel.frame.size.height + 10 + height + 5, 100, 16);
+            
+            contentView.frame=CGRectMake(0, 0, 320, contentLabel.frame.origin.y+contentLabel.frame.size.height+10 +height+5 + 16 );
+        }
+        else
+        {
+            timeLabel.frame = CGRectMake(30, contentLabel.frame.origin.y + contentLabel.frame.size.height + 10, 100, 16);
+            contentView.frame=CGRectMake(0, 0, 320, contentLabel.frame.origin.y+contentLabel.frame.size.height+10 + 16);
+        }
     }
+    
+    
     
     tableview.tableHeaderView=contentView;
     [contentView release];
@@ -1361,7 +1401,90 @@ PicArr,shareContent,comList,upList,upAI,cmtAI;
 
 
 
+- (void)downloadMovie:(NSString *)url
+{
+    
+    MDRadialProgressTheme *newTheme = [[MDRadialProgressTheme alloc] init];
+	newTheme.completedColor = [UIColor colorWithRed:90/255.0 green:212/255.0 blue:39/255.0 alpha:1.0];
+	newTheme.incompletedColor = [UIColor colorWithRed:164/255.0 green:231/255.0 blue:134/255.0 alpha:1.0];
+	newTheme.centerColor = [UIColor clearColor];
+	newTheme.centerColor = [UIColor colorWithRed:224/255.0 green:248/255.0 blue:216/255.0 alpha:1.0];
+	newTheme.sliceDividerHidden = YES;
+	newTheme.labelColor = [UIColor blackColor];
+	newTheme.labelShadowColor = [UIColor whiteColor];
+	
+	
+	CGRect frame = CGRectMake(self.movieBackView.frame.size.width/2.0f - 30, self.movieBackView.frame.size.height/2.0f - 30, 60, 60);
+    MDRadialProgressView *radialView7 = [[MDRadialProgressView alloc] initWithFrame:frame andTheme:newTheme];
+	[self.movieBackView addSubview:radialView7];
+    [radialView7 release];
+    
+    self.radial = radialView7;
+    
+    
+    GKMovieDownloader *d = [[GKMovieDownloader alloc] initWithMovieURL:[NSURL URLWithString:url]];
+    d.delegate = self;
+    d.radiaProgress = radialView7;
+    [d startDownload];
+    
+    self.downloader = d;
+}
 
+- (void)didFinishedDownloadMovieWithPath:(NSString *)path
+{
+    
+    [self.radial removeFromSuperview];
+    
+    MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:path]];//写入url
+    player.controlStyle = MPMovieControlStyleNone;
+    player.movieSourceType = MPMovieSourceTypeFile;
+    [player.view setFrame:self.movieBackView.bounds];
+    //    [player requestThumbnailImagesAtTimes:[NSArray arrayWithObject:[NSNumber numberWithDouble:1.0]] timeOption:MPMovieTimeOptionExact];
+    [self.movieBackView addSubview:player.view];
+    [player prepareToPlay];
+    self.mPlayer = player;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackChangeState:) name:MPMoviePlayerPlaybackStateDidChangeNotification object:self.mPlayer];
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
+    btn.tag = BUTTONTAG;
+    [btn addTarget:self action:@selector(controlMovie:) forControlEvents:UIControlEventTouchUpInside];
+    [btn setFrame:self.movieBackView.bounds];
+    [self.movieBackView addSubview:btn];
+    
+    
+}
+
+
+
+- (void)playbackChangeState:(MPMediaPickerController *)player
+{
+    UIButton *b = (UIButton *)[self.movieBackView viewWithTag:BUTTONTAG];
+    
+    if (self.mPlayer.playbackState == MPMoviePlaybackStatePaused || self.mPlayer.playbackState == MPMoviePlaybackStateStopped)
+    {
+        [b setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [b setImage:nil forState:UIControlStateNormal];
+    }
+}
+
+- (void)controlMovie:(UIButton *)sender
+{
+    if (self.mPlayer.playbackState == MPMoviePlaybackStatePlaying)
+    {
+        [self.mPlayer pause];
+        [sender setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.mPlayer play];
+        [sender setImage:nil forState:UIControlStateNormal];
+    }
+}
 
 
 
@@ -1372,6 +1495,16 @@ PicArr,shareContent,comList,upList,upAI,cmtAI;
 }
 -(void)dealloc
 {
+    self.shareContent = nil;
+    self.comList = nil;
+    self.upList = nil;
+    self.cmtAI = nil;
+    self.upAI = nil;
+    self.movieBackView = nil;
+    self.radial = nil;
+    self.downloader = nil;
+    self.mPlayer = nil;
+    
     self.titilestring=nil;
     self.timestring=nil;
     self.connetstring=nil;
@@ -1384,20 +1517,11 @@ PicArr,shareContent,comList,upList,upAI,cmtAI;
 }
 
 
+
 - (BOOL)shouldAutorotate
 {
     return NO;
 }
 
-//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-//{
-//
-//    return NO;
-//    
-//}
-//- (NSUInteger)supportedInterfaceOrientations
-//{
-//    return UIInterfaceOrientationLandscapeLeft | UIInterfaceOrientationLandscapeRight | UIInterfaceOrientationPortrait;
-//}
 
 @end

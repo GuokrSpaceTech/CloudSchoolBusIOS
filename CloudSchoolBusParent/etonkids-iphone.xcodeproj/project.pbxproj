@@ -112,6 +112,13 @@
 		785DE1C1180FBC31001B0EB3 /* bottomLogoutDef.png in Resources */ = {isa = PBXBuildFile; fileRef = 785DE1C0180FBC31001B0EB3 /* bottomLogoutDef.png */; };
 		785DE1C4180FBF7C001B0EB3 /* ETBoardSideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 785DE1C3180FBF7C001B0EB3 /* ETBoardSideView.m */; };
 		785DE1C6180FC45C001B0EB3 /* showMain.png in Resources */ = {isa = PBXBuildFile; fileRef = 785DE1C5180FC45C001B0EB3 /* showMain.png */; };
+		7860CB2018862A5200DD0E80 /* GKMovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7860CB1F18862A5200DD0E80 /* GKMovieCell.m */; };
+		7860CB2218865A6800DD0E80 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7860CB2118865A6800DD0E80 /* MediaPlayer.framework */; };
+		7860CB2A188686EC00DD0E80 /* MDRadialProgressLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7860CB25188686EC00DD0E80 /* MDRadialProgressLabel.m */; };
+		7860CB2B188686EC00DD0E80 /* MDRadialProgressTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 7860CB27188686EC00DD0E80 /* MDRadialProgressTheme.m */; };
+		7860CB2C188686EC00DD0E80 /* MDRadialProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7860CB29188686EC00DD0E80 /* MDRadialProgressView.m */; };
+		7860CB2E1886907F00DD0E80 /* movieplay.png in Resources */ = {isa = PBXBuildFile; fileRef = 7860CB2D1886907F00DD0E80 /* movieplay.png */; };
+		7860CB3118877B7F00DD0E80 /* GKMovieCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7860CB3018877B7F00DD0E80 /* GKMovieCache.m */; };
 		78709BB6187CFE51009250FB /* aboutlogo_EN(1).png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BB2187CFE51009250FB /* aboutlogo_EN(1).png */; };
 		78709BB7187CFE51009250FB /* aboutlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BB3187CFE51009250FB /* aboutlogo.png */; };
 		78709BB8187CFE51009250FB /* guide3dot0.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BB4187CFE51009250FB /* guide3dot0.png */; };
@@ -730,6 +737,18 @@
 		785DE1C2180FBF7C001B0EB3 /* ETBoardSideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETBoardSideView.h; sourceTree = "<group>"; };
 		785DE1C3180FBF7C001B0EB3 /* ETBoardSideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETBoardSideView.m; sourceTree = "<group>"; };
 		785DE1C5180FC45C001B0EB3 /* showMain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = showMain.png; sourceTree = "<group>"; };
+		7860CB1E18862A5200DD0E80 /* GKMovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMovieCell.h; sourceTree = "<group>"; };
+		7860CB1F18862A5200DD0E80 /* GKMovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMovieCell.m; sourceTree = "<group>"; };
+		7860CB2118865A6800DD0E80 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		7860CB24188686EC00DD0E80 /* MDRadialProgressLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRadialProgressLabel.h; sourceTree = "<group>"; };
+		7860CB25188686EC00DD0E80 /* MDRadialProgressLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRadialProgressLabel.m; sourceTree = "<group>"; };
+		7860CB26188686EC00DD0E80 /* MDRadialProgressTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRadialProgressTheme.h; sourceTree = "<group>"; };
+		7860CB27188686EC00DD0E80 /* MDRadialProgressTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRadialProgressTheme.m; sourceTree = "<group>"; };
+		7860CB28188686EC00DD0E80 /* MDRadialProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRadialProgressView.h; sourceTree = "<group>"; };
+		7860CB29188686EC00DD0E80 /* MDRadialProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRadialProgressView.m; sourceTree = "<group>"; };
+		7860CB2D1886907F00DD0E80 /* movieplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movieplay.png; sourceTree = "<group>"; };
+		7860CB2F18877B7F00DD0E80 /* GKMovieCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMovieCache.h; sourceTree = "<group>"; };
+		7860CB3018877B7F00DD0E80 /* GKMovieCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMovieCache.m; sourceTree = "<group>"; };
 		78709BB2187CFE51009250FB /* aboutlogo_EN(1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutlogo_EN(1).png"; sourceTree = "<group>"; };
 		78709BB3187CFE51009250FB /* aboutlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aboutlogo.png; sourceTree = "<group>"; };
 		78709BB4187CFE51009250FB /* guide3dot0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide3dot0.png; sourceTree = "<group>"; };
@@ -1371,6 +1390,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7860CB2218865A6800DD0E80 /* MediaPlayer.framework in Frameworks */,
 				78930529187A4D6E00628928 /* libz.1.2.5.dylib in Frameworks */,
 				F9E0FA6B16DF5E4E00206925 /* MessageUI.framework in Frameworks */,
 				73C1C63917B8F0DD001A3BCC /* CoreMotion.framework in Frameworks */,
@@ -1506,6 +1526,19 @@
 			path = activity;
 			sourceTree = "<group>";
 		};
+		7860CB23188686C000DD0E80 /* MDRadialProgress */ = {
+			isa = PBXGroup;
+			children = (
+				7860CB24188686EC00DD0E80 /* MDRadialProgressLabel.h */,
+				7860CB25188686EC00DD0E80 /* MDRadialProgressLabel.m */,
+				7860CB26188686EC00DD0E80 /* MDRadialProgressTheme.h */,
+				7860CB27188686EC00DD0E80 /* MDRadialProgressTheme.m */,
+				7860CB28188686EC00DD0E80 /* MDRadialProgressView.h */,
+				7860CB29188686EC00DD0E80 /* MDRadialProgressView.m */,
+			);
+			path = MDRadialProgress;
+			sourceTree = "<group>";
+		};
 		788BE6AA17F00B1C0076D920 /* broadside */ = {
 			isa = PBXGroup;
 			children = (
@@ -1532,6 +1565,7 @@
 		78C2ADB617E06F2900E6A5CD /* V3.0 */ = {
 			isa = PBXGroup;
 			children = (
+				7860CB2D1886907F00DD0E80 /* movieplay.png */,
 				78709BB2187CFE51009250FB /* aboutlogo_EN(1).png */,
 				78709BB3187CFE51009250FB /* aboutlogo.png */,
 				78709BB4187CFE51009250FB /* guide3dot0.png */,
@@ -1979,6 +2013,7 @@
 		E3EA3AE2169E9491000DF7EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7860CB2118865A6800DD0E80 /* MediaPlayer.framework */,
 				78930528187A4D6E00628928 /* libz.1.2.5.dylib */,
 				73C1C63817B8F0DC001A3BCC /* CoreMotion.framework */,
 				11A054F41796835F005C062A /* MapKit.framework */,
@@ -2120,6 +2155,7 @@
 		E3F2AA5B16AD0959006936A5 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				7860CB23188686C000DD0E80 /* MDRadialProgress */,
 				7893051E187A4D4300628928 /* TestFlightSDK2 */,
 				78FA831D18064FDC009E9176 /* ETImageView.h */,
 				78FA831C18064FDC009E9176 /* ETImageView.m */,
@@ -2178,6 +2214,10 @@
 				7814B5A817EEE173008826C2 /* ContentUpCell.m */,
 				7805E6121884E33100AB34EC /* GKMovieDownloader.h */,
 				7805E6131884E33100AB34EC /* GKMovieDownloader.m */,
+				7860CB1E18862A5200DD0E80 /* GKMovieCell.h */,
+				7860CB1F18862A5200DD0E80 /* GKMovieCell.m */,
+				7860CB2F18877B7F00DD0E80 /* GKMovieCache.h */,
+				7860CB3018877B7F00DD0E80 /* GKMovieCache.m */,
 			);
 			path = ChildClass;
 			sourceTree = "<group>";
@@ -2868,6 +2908,7 @@
 				78E892F41828F39500025EB5 /* noticeTabBack.png in Resources */,
 				78DFD29117B0B4F40069B8CC /* 保存.png in Resources */,
 				78DFD29217B0B4F40069B8CC /* 腾讯微博.png in Resources */,
+				7860CB2E1886907F00DD0E80 /* movieplay.png in Resources */,
 				78F841E3181A8160007722AE /* currentKids.png in Resources */,
 				78F841BF18194420007722AE /* imageerror.png in Resources */,
 				78DFD29317B0B4F40069B8CC /* logo_wechat.png in Resources */,
@@ -3032,6 +3073,7 @@
 				E3478BE216AFB7CD00AE1E4D /* ETLoginViewController.m in Sources */,
 				E3E8955716B66CD600D2F5AC /* UserLogin.m in Sources */,
 				E3FFBC5016B7B148001F0C3E /* Student.m in Sources */,
+				7860CB2C188686EC00DD0E80 /* MDRadialProgressView.m in Sources */,
 				E3F4F39516B8D14200CB8E31 /* ETFoodView.m in Sources */,
 				78A41FE41820E10100D0DE50 /* ETBaseMessageViewController.m in Sources */,
 				E3F4F3BB16B8FC7B00CB8E31 /* ETScheduleView.m in Sources */,
@@ -3151,6 +3193,7 @@
 				B5CE26D7173D1ABB00F76ACD /* UIActivityImageView.m in Sources */,
 				7365F6AD177AF4C9007EAF57 /* Modify.m in Sources */,
 				73F3B90B178166C5004A7C23 /* CustomActionSheet.m in Sources */,
+				7860CB2018862A5200DD0E80 /* GKMovieCell.m in Sources */,
 				735282B41783F6D700A62EF5 /* ScheduleCell.m in Sources */,
 				735282B71784067700A62EF5 /* FoodCell.m in Sources */,
 				118CBBF5178D5851006AA633 /* ETInformationViewController.m in Sources */,
@@ -3184,6 +3227,7 @@
 				1112BB471797C43900337CB4 /* MTAuthCode.m in Sources */,
 				1112BB4C1797C4E500337CB4 /* NSDataAdditions.m in Sources */,
 				781E53B1181FC5E70052851A /* ETVerifyViewController.m in Sources */,
+				7860CB2B188686EC00DD0E80 /* MDRadialProgressTheme.m in Sources */,
 				1112BB4D1797C4E500337CB4 /* NSStringAdditions.m in Sources */,
 				73740F7A179FAFF000DC7BF3 /* ETInformation.m in Sources */,
 				73545DD817A79B9C000E39FC /* ETNicknameViewController.m in Sources */,
@@ -3217,6 +3261,7 @@
 				7897DF7917F2AB4000DB8B21 /* ETEducationViewController.m in Sources */,
 				78F841A718190E87007722AE /* ETImportantNotice.m in Sources */,
 				7897DF7D17F2BDFA00DB8B21 /* OrderBlock.m in Sources */,
+				7860CB3118877B7F00DD0E80 /* GKMovieCache.m in Sources */,
 				788F8CFA17F40C9B00342A5C /* ETSettingView.m in Sources */,
 				78378EEF17F5624100AAAE5A /* ETFeedbackView.m in Sources */,
 				78378EF217F56C2D00AAAE5A /* ETAboutView.m in Sources */,
@@ -3224,6 +3269,7 @@
 				784086AC17F7FBC100BCDAFD /* ETNotice.m in Sources */,
 				78FA83121803E65D009E9176 /* ETPasswordManagerViewController.m in Sources */,
 				78FA831618064CE7009E9176 /* ETLockView.m in Sources */,
+				7860CB2A188686EC00DD0E80 /* MDRadialProgressLabel.m in Sources */,
 				78FA831A18064E10009E9176 /* ETChangeGestureViewController.m in Sources */,
 				781E53B6181FD37E0052851A /* ETVerifyPasswordViewController.m in Sources */,
 				78FA831E18064FDC009E9176 /* ETImageView.m in Sources */,

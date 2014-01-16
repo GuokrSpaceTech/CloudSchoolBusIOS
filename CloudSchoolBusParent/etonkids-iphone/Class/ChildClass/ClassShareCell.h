@@ -30,7 +30,7 @@
 - (void) shareCell:(ClassShareCell *)_notice share:(ShareContent *)info;
 - (void) shareWeibo:(ShareContent *)info withTag:(int) tag;
 - (void) clickComment:(ShareContent *)content;
-- (void) clickPraise:(ClassShareCell *)cell;
+- (void) clickPraise:(UITableViewCell *)cell;
 - (void) didTapImageWithImageArray:(NSArray *)imgArr showNumber:(int)num content:(ShareContent *)content;
 
 @optional
@@ -88,7 +88,7 @@ typedef enum{
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellMode:(CellMode)mode;
 
-
-
+- (void)addPraiseNumber;
+- (void)subPraiseNumber;
 
 @end

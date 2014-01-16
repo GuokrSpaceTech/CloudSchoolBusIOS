@@ -15,7 +15,7 @@
 #import "ETCoreDataManager.h"
 #import "NSDate+convenience.h"
 #import <MediaPlayer/MediaPlayer.h>
-
+#import "GKMovieCell.h"
 
 @interface ETClassViewController ()
 
@@ -408,15 +408,29 @@
                     
                     [ETCoreDataManager updateArticalData:share ById:share.shareId];
                     
+                    
+                    NSIndexPath *index = [NSIndexPath indexPathForRow:i inSection:0];
+                    
+                    NSDictionary *fDic = [share.sharePicArr objectAtIndex:0];
+                    NSString *source = [NSString stringWithFormat:@"%@",[fDic objectForKey:@"source"]];
+                    //        NSString *source = @"http://yunxiaoche.blob.core.windows.net/article-source/39958_1389601724_644558.mp4";
+                    NSString *ext = [[source componentsSeparatedByString:@"."] lastObject];
+                    
+                    if ([ext isEqualToString:@"mp4"]) {
+                        GKMovieCell *cell = (GKMovieCell *)[self._tableView cellForRowAtIndexPath:index];
+                        [cell addPraiseNumber];
+                    }
+                    else
+                    {
+                        ClassShareCell *cell = (ClassShareCell *)[self._tableView cellForRowAtIndexPath:index];
+                        [cell addPraiseNumber];
+                    }
+                    
+                    
+                    
                     break;
                 }
             }
-            
-            
-            
-            [_tableView reloadData];
-            
-            
 
         }
         else if(code==-6)
@@ -430,7 +444,7 @@
         {
             [self performSelectorOnMainThread:@selector(LoginFailedresult:) withObject:LOCAL(@"busy", @"网络故障，请稍后重试") waitUntilDone:NO];
         }
-        [_tableView reloadData];
+        
     }
     else if(method==delete)
     {
@@ -450,12 +464,29 @@
                     
                     [ETCoreDataManager updateArticalData:share ById:share.shareId];
                     
+                    NSIndexPath *index = [NSIndexPath indexPathForRow:i inSection:0];
+                    
+                    NSDictionary *fDic = [share.sharePicArr objectAtIndex:0];
+                    NSString *source = [NSString stringWithFormat:@"%@",[fDic objectForKey:@"source"]];
+                    //        NSString *source = @"http://yunxiaoche.blob.core.windows.net/article-source/39958_1389601724_644558.mp4";
+                    NSString *ext = [[source componentsSeparatedByString:@"."] lastObject];
+                    
+                    if ([ext isEqualToString:@"mp4"]) {
+                        GKMovieCell *cell = (GKMovieCell *)[self._tableView cellForRowAtIndexPath:index];
+                        [cell subPraiseNumber];
+                    }
+                    else
+                    {
+                        ClassShareCell *cell = (ClassShareCell *)[self._tableView cellForRowAtIndexPath:index];
+                        [cell subPraiseNumber];
+                    }
+                    
+                    
+                    
                     break;
                 }
             }
             
-            
-            [self._tableView reloadData];
             
         }
         else
@@ -644,6 +675,7 @@
     static NSString *CellIdentifier = @"NoDataCell";
     static NSString *CellIdentifier1 = @"classCell";
     
+    
     if (self.list.count == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
@@ -668,332 +700,592 @@
     }
     else
     {
+        ShareContent *sContent=[self.list objectAtIndex:indexPath.row];
+        NSDictionary *fDic = [sContent.sharePicArr objectAtIndex:0];
+        NSString *source = [NSString stringWithFormat:@"%@",[fDic objectForKey:@"source"]];
+//        NSString *source = @"http://yunxiaoche.blob.core.windows.net/article-source/39958_1389601724_644558.mp4";
+        NSString *ext = [[source componentsSeparatedByString:@"."] lastObject]; // 获取后缀名
         
-        ClassShareCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier1];
         
-        if(cell == nil)
+        if ([ext isEqualToString:@"mp4"])
         {
-            cell= [[[ClassShareCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier1 cellMode:Normal] autorelease];
-            cell.delegate=self;
-            cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        }
-//        for(UIView * obj in cell.contentView.subviews)
-//        {
-//            if(obj.tag == 99)
-//            {
-//                UIImageView * photoView = (UIImageView *) obj;
-//                photoView.image = nil;
-//                for(UIImageView * subView in obj.subviews)
-//                {
-//                    [subView removeFromSuperview];
-//                }
-//            }
-//        }
-        
-        if(indexPath.row==[self.list count]-1)
-        {
-            if(isMore)
-                [self setFooterView];
-        }
-        if(self.list.count >0)
-        {
-            cell.tag = indexPath.row;
-            ShareContent *sContent=[self.list objectAtIndex:indexPath.row];
-            
-            
-            int calculateHeight = 0; // add up height.
-            
-            // calculate title size.
-            CGSize titleSize = [sContent.shareTitle sizeWithFont:[UIFont systemFontOfSize:TITLEFONTSIZE] constrainedToSize:CGSizeMake(230, 1000) lineBreakMode:UILineBreakModeWordWrap];
-            
-            if (titleSize.height > cell.titleLabel.font.lineHeight * 1)
+            CellIdentifier1 = @"movieCell";
+            GKMovieCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier1];
+            if(cell == nil)
             {
-                cell.titleLabel.frame = CGRectMake(cell.titleLabel.frame.origin.x,
-                                                   cell.titleLabel.frame.origin.y,
-                                                   titleSize.width,
-                                                   cell.titleLabel.font.lineHeight * 1);
-                calculateHeight = cell.titleLabel.frame.origin.y + cell.titleLabel.font.lineHeight * 1;
+                cell= [[[GKMovieCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier1] autorelease];
+                cell.delegate = self;
+                cell.selectionStyle=UITableViewCellSelectionStyleNone;
             }
-            else
+            
+            
+            if(indexPath.row==[self.list count]-1)
             {
-                cell.titleLabel.frame = CGRectMake(cell.titleLabel.frame.origin.x,
-                                                   cell.titleLabel.frame.origin.y,
-                                                   titleSize.width,
-                                                   titleSize.height);
-                calculateHeight = cell.titleLabel.frame.origin.y + titleSize.height;
+                if(isMore)
+                    [self setFooterView];
             }
-            
-            
-            cell.titleLabel.text = sContent.shareTitle;
-            
-            
-            // calculate content size.
-            CGSize contentSize = [sContent.shareContent sizeWithFont:[UIFont systemFontOfSize:CONTENTFONTSIZE] constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:UILineBreakModeWordWrap];
-            
-            
-            
-            if (contentSize.height > cell.contentLabel.font.lineHeight * 3)
+            if(self.list.count > 0)
             {
-                [cell.contentLabel setFrame:CGRectMake(50,
-                                                       calculateHeight + 25/*the distance is between title and content*/,
-                                                       contentSize.width,
-                                                       cell.contentLabel.font.lineHeight * 3)];
-                calculateHeight = calculateHeight + 25 + cell.contentLabel.font.lineHeight * 3;
-            }
-            else
-            {
+                cell.tag = indexPath.row;
+                ShareContent *sContent=[self.list objectAtIndex:indexPath.row];
                 
-                [cell.contentLabel setFrame:CGRectMake(50,
-                                                       calculateHeight + 25/*the distance is between title and content*/,
-                                                       contentSize.width,
-                                                       contentSize.height)];
-                NSLog(@"ssssss : %f , %d,%f",contentSize.height,indexPath.row,cell.contentLabel.font.lineHeight);
-                calculateHeight = calculateHeight + (ABS(contentSize.height) <= 14 ? 14 : (contentSize.height + 25));
-            }
-            
-            
-            cell.contentLabel.text = sContent.shareContent;
-            
-            
-            /*
-            if (sContent.sharePicArr.count == 1) {  // 判断是否是视频
                 
-                MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:@""]];//写入url
-                player.controlStyle = MPMovieControlStyleNone;
-                player.movieSourceType = MPMovieSourceTypeFile;
-                //        [player prepareToPlay];
+                int calculateHeight = 0; // add up height.
                 
-                [player.view setFrame:CGRectMake(0, 100, 320, 320)];
-                [player requestThumbnailImagesAtTimes:[NSArray arrayWithObject:[NSNumber numberWithDouble:1.0]] timeOption:MPMovieTimeOptionExact];
-                [self.view addSubview:player.view];
-            }
-            */
-            
-            for (int i = 0; i < cell.photoImgVArr.count; i++) {
+                // calculate title size.
+                CGSize titleSize = [sContent.shareTitle sizeWithFont:[UIFont systemFontOfSize:TITLEFONTSIZE] constrainedToSize:CGSizeMake(230, 1000) lineBreakMode:UILineBreakModeWordWrap];
                 
-                UIImageView *imgV = [cell.photoImgVArr objectAtIndex:i];
-                int picCount = sContent.sharePicArr.count;
-                if (i < picCount)
+                if (titleSize.height > cell.titleLabel.font.lineHeight * 1)
                 {
-                    NSDictionary *dic = [sContent.sharePicArr objectAtIndex:i];
-                    if ([dic objectForKey:@"source"]) {
-                        NSString *picURL=[NSString stringWithFormat:@"%@",[dic objectForKey:@"source"]];
-                        picURL = [picURL stringByAppendingString:@".tiny.jpg"];
-                        
-                        [imgV setImageWithURL:[NSURL URLWithString:picURL] placeholderImage:[UIImage imageNamed:@"imageplaceholder.png"] options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                            
-                            //                        NSLog(@"%d",cacheType);
-                            
-                            if (error) {
-                                
-                                NSLog(@"Error : load image fail.");
-                                imgV.image = [UIImage imageNamed:@"imageerror.png"];
-                                
-                                
-                            }
-                            else
-                            {
-                                imgV.image = image;
-                                
-//                                NSData *d = UIImagePNGRepresentation(image);
-//                                NSLog(@"image length  %d",d.length);
-                                
-                                if (cacheType == 0) { // request url
-                                    CATransition *transition = [CATransition animation];
-                                    transition.duration = 1.0f;
-                                    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-                                    transition.type = kCATransitionFade;
-                                    
-                                    [imgV.layer addAnimation:transition forKey:nil];
-                                }
-                            }
-                            
-                            
-                            
-                        }];
+                    cell.titleLabel.frame = CGRectMake(cell.titleLabel.frame.origin.x,
+                                                       cell.titleLabel.frame.origin.y,
+                                                       titleSize.width,
+                                                       cell.titleLabel.font.lineHeight * 1);
+                    calculateHeight = cell.titleLabel.frame.origin.y + cell.titleLabel.font.lineHeight * 1;
+                }
+                else
+                {
+                    cell.titleLabel.frame = CGRectMake(cell.titleLabel.frame.origin.x,
+                                                       cell.titleLabel.frame.origin.y,
+                                                       titleSize.width,
+                                                       titleSize.height);
+                    calculateHeight = cell.titleLabel.frame.origin.y + titleSize.height;
+                }
+                
+                
+                cell.titleLabel.text = sContent.shareTitle;
+                
+                /*
+                // calculate content size.
+                CGSize contentSize = [sContent.shareContent sizeWithFont:[UIFont systemFontOfSize:CONTENTFONTSIZE] constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:UILineBreakModeWordWrap];
+                
+                
+                
+                if (contentSize.height > cell.contentLabel.font.lineHeight * 3)
+                {
+                    [cell.contentLabel setFrame:CGRectMake(50,
+                                                           calculateHeight + 25,
+                                                           contentSize.width,
+                                                           cell.contentLabel.font.lineHeight * 3)];
+                    calculateHeight = calculateHeight + 25 + cell.contentLabel.font.lineHeight * 3;
+                }
+                else
+                {
+                    
+                    [cell.contentLabel setFrame:CGRectMake(50,
+                                                           calculateHeight + 25,
+                                                           contentSize.width,
+                                                           contentSize.height)];
+                    NSLog(@"ssssss : %f , %d,%f",contentSize.height,indexPath.row,cell.contentLabel.font.lineHeight);
+                    calculateHeight = calculateHeight + (ABS(contentSize.height) <= 14 ? 14 : (contentSize.height + 25));
+                }
+                */
+                
+                cell.contentLabel.text = sContent.shareContent;
+                
+                
+                
+                // --------   加载视频   --------
+                    
+                cell.contentBackView.frame = CGRectMake(cell.contentBackView.frame.origin.x,
+                                                    calculateHeight + 15,
+                                                    cell.contentBackView.frame.size.width,
+                                                    cell.contentBackView.frame.size.height);
+                [cell setMovieURL:source];
+//                NSLog(@"%@",source);
+                
+                [cell.movieThumbnailImgV setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@.jpg",source]] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType)
+                {
+                    
+                    cell.movieThumbnailImgV.image = image;
+                }];
+                
+                calculateHeight = calculateHeight + 10 + cell.contentBackView.frame.size.width + 10;
+                
+                
+                
+//                if (titleSize.height > cell.titleLabel.font.lineHeight * 1)
+//                {
+//                    cell.triangle.frame = CGRectMake(cell.backImgV.frame.origin.x + 15,
+//                                                     cell.titleLabel.frame.origin.y + cell.titleLabel.font.lineHeight * 1,
+//                                                     14,
+//                                                     12);
+//                    
+//                    cell.backImgV.frame = CGRectMake(cell.backImgV.frame.origin.x,
+//                                                     cell.titleLabel.frame.origin.y + cell.titleLabel.font.lineHeight * 1 + 12,
+//                                                     cell.backImgV.frame.size.width,
+//                                                     calculateHeight - cell.titleLabel.frame.origin.y - cell.titleLabel.font.lineHeight * 1 - 12);
+//                }
+//                else
+//                {
+//                    cell.triangle.frame = CGRectMake(cell.backImgV.frame.origin.x + 15,
+//                                                     cell.titleLabel.frame.origin.y + titleSize.height,
+//                                                     14,
+//                                                     12);
+//                    
+//                    cell.backImgV.frame = CGRectMake(cell.backImgV.frame.origin.x,
+//                                                     cell.titleLabel.frame.origin.y + titleSize.height + 12,
+//                                                     cell.backImgV.frame.size.width,
+//                                                     calculateHeight - cell.titleLabel.frame.origin.y - titleSize.height - 12);
+//                }
+                
+                
+                calculateHeight += 10;
+                
+                cell.timeLabel.frame = CGRectMake(50, calculateHeight, cell.timeLabel.frame.size.width, cell.timeLabel.frame.size.height);
+                
+                //----- calculate time -----------
+                NSString *time = sContent.publishtime;
+                
+                int cDate = [[NSDate date] timeIntervalSince1970];
+                NSDate *pDate = [NSDate dateWithTimeIntervalSince1970:time.intValue];
+                int sub = cDate - time.intValue;
+                
+                NSString *dateStr;
+                
+                if (sub < 60*60)//小于一小时
+                {
+                    dateStr = [NSString stringWithFormat:@"%d %@",sub/60 == 0 ? 1 : sub/60,LOCAL(@"minutesago", @"")];
+                }
+                else if (sub < 12*60*60 && sub >= 60*60)
+                {
+                    dateStr = [NSString stringWithFormat:@"%d %@",sub/(60*60),LOCAL(@"hoursago", @"")];
+                }
+                else if (pDate.year == [NSDate date].year)
+                {
+                    NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
+                    format.dateFormat = @"MM-dd HH:mm";
+                    dateStr = [NSString stringWithFormat:@"%@",[format stringFromDate:pDate]];
+                }
+                else if (pDate.year < [NSDate date].year)
+                {
+                    NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
+                    format.dateFormat = @"yyyy-MM-dd HH:mm";
+                    dateStr = [NSString stringWithFormat:@"%@",[format stringFromDate:pDate]];
+                }
+                else
+                {
+                    dateStr = [NSString stringWithFormat:@"error time"];
+                }
+                
+                
+                if (time !=nil) {
+                    cell.timeLabel.text = dateStr;
+                }
+                
+                // -----------------------
+                
+                int centerHeight = calculateHeight + cell.timeLabel.frame.size.height/2;
+                
+                cell.praiseButton.frame = CGRectMake(cell.praiseButton.frame.origin.x, centerHeight - cell.praiseButton.frame.size.height/2, cell.praiseButton.frame.size.width, cell.praiseButton.frame.size.height);
+                
+                cell.commentsButton.frame = CGRectMake(cell.commentsButton.frame.origin.x, centerHeight - cell.commentsButton.frame.size.height/2, cell.commentsButton.frame.size.width, cell.commentsButton.frame.size.height);
+                
+                
+                cell.praiseImgV.frame = CGRectMake(cell.praiseButton.frame.origin.x + 5, centerHeight - 8, 20, 16);
+                
+                if (sContent.havezan.intValue == 0)
+                {
+                    cell.praiseImgV.image = [UIImage imageNamed:@"cellPraise.png"];
+                }
+                else
+                {
+                    cell.praiseImgV.image = [UIImage imageNamed:@"myzan.png"];
+                }
+                
+                cell.theShareCtnt = sContent;
+                
+                NSArray *languages = [NSLocale preferredLanguages];
+                NSString *currentLanguage = [languages objectAtIndex:0]; //获得当期语言.
+                
+                cell.praiseLab.frame = CGRectMake(cell.praiseButton.frame.origin.x + 25, centerHeight - 7, 35, 14);
+                cell.praiseLab.text = [NSString stringWithFormat:@"%@", (sContent.upnum.intValue == 0 ? LOCAL(@"upText", @"") : sContent.upnum)];
+                if (sContent.upnum.intValue == 0)
+                {
+                    if([currentLanguage isEqualToString:@"en"])
+                    {
+                        cell.praiseLab.font = [UIFont systemFontOfSize:8];
                     }
                     else
                     {
-                        NSLog(@"Error : picture url error .");
+                        cell.praiseLab.font = [UIFont systemFontOfSize:12];
                     }
                     
+                }
+                else
+                {
+                    cell.praiseLab.font = [UIFont systemFontOfSize:CONTENTFONTSIZE];
+                }
+                
+                cell.commentImgV.frame = CGRectMake(cell.commentsButton.frame.origin.x + 5, centerHeight - 8, 20, 16);
+                cell.commentLab.frame = CGRectMake(cell.commentsButton.frame.origin.x + 25, centerHeight - 7 , 38, 14);
+                cell.commentLab.text = [NSString stringWithFormat:@"%@",(sContent.commentnum.intValue == 0 ? LOCAL(@"comText", @"") : sContent.commentnum)];
+                if (sContent.commentnum.intValue == 0)
+                {
                     
-                    
-                    imgV.frame = CGRectMake(58 + i%3*(75 + 5), calculateHeight + 10/*the distance is between content and image*/ + i/3*(75 + 5), 75, 75);
-                    
+                    if([currentLanguage isEqualToString:@"en"])
+                    {
+                        cell.commentLab.font = [UIFont systemFontOfSize:8];
+                    }
+                    else
+                    {
+                        cell.commentLab.font = [UIFont systemFontOfSize:12];
+                    }
                     
                 }
                 else
                 {
-                    imgV.image = nil;
-                    imgV.frame = CGRectZero;
+                    cell.commentLab.font = [UIFont systemFontOfSize:CONTENTFONTSIZE];
+                }
+                
+                cell.line.frame = CGRectMake(0, calculateHeight + 25, 320, 2);
+                
+                
+                
+                UserLogin *user = [UserLogin currentLogin];
+                
+                if (user.can_comment != nil && [user.can_comment isEqualToString:@"1"]) {
+                    //                cell.commentsButton.enabled = YES;
+                    cell.commentImgV.image = [UIImage imageNamed:@"cellComment.png"];
+                }else{
+                    //                cell.commentsButton.enabled = NO;
+                    cell.commentImgV.image = [UIImage imageNamed:@"cellComment_disable.png"];
+                }
+                
+                if (user.can_comment_action != nil && [user.can_comment_action isEqualToString:@"1"]) {
+                    //                cell.praiseButton.enabled = YES;
+                }else{
+                    //                cell.praiseButton.enabled = NO;
+                    cell.praiseImgV.image = [UIImage imageNamed:@"cellPraise_disable.png"];
                 }
                 
             }
             
             
-            calculateHeight = calculateHeight + 10 + (sContent.sharePicArr.count == 0 ? 0 : ((sContent.sharePicArr.count-1)/3 + 1) * (75 + 10));
+            return cell;
             
-            
-            
-            if (titleSize.height > cell.titleLabel.font.lineHeight * 1)
+           
+        }
+        else
+        {
+            CellIdentifier1 = @"classCell";
+            ClassShareCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier1];
+            if(cell == nil)
             {
-                cell.triangle.frame = CGRectMake(cell.backImgV.frame.origin.x + 15,
-                                                 cell.titleLabel.frame.origin.y + cell.titleLabel.font.lineHeight * 1,
-                                                 14,
-                                                 12);
+                cell= [[[ClassShareCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier1 cellMode:Normal] autorelease];
+                cell.delegate=self;
+                cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            }
+            
+            if(indexPath.row==[self.list count]-1)
+            {
+                if(isMore)
+                    [self setFooterView];
+            }
+            if(self.list.count >0)
+            {
+                cell.tag = indexPath.row;
+                ShareContent *sContent=[self.list objectAtIndex:indexPath.row];
                 
-                cell.backImgV.frame = CGRectMake(cell.backImgV.frame.origin.x,
-                                                 cell.titleLabel.frame.origin.y + cell.titleLabel.font.lineHeight * 1 + 12,
-                                                 cell.backImgV.frame.size.width,
-                                                 calculateHeight - cell.titleLabel.frame.origin.y - cell.titleLabel.font.lineHeight * 1 - 12);
-            }
-            else
-            {
-                cell.triangle.frame = CGRectMake(cell.backImgV.frame.origin.x + 15,
-                                                 cell.titleLabel.frame.origin.y + titleSize.height,
-                                                 14,
-                                                 12);
                 
-                cell.backImgV.frame = CGRectMake(cell.backImgV.frame.origin.x, cell.titleLabel.frame.origin.y + titleSize.height + 12, cell.backImgV.frame.size.width, calculateHeight - cell.titleLabel.frame.origin.y - titleSize.height - 12);
-            }
-            
-            
-            calculateHeight += 10;
-            
-            cell.timeLabel.frame = CGRectMake(50, calculateHeight, cell.timeLabel.frame.size.width, cell.timeLabel.frame.size.height);
-            
-      //----- calculate time -----------
-            NSString *time = sContent.publishtime;
-            
-            int cDate = [[NSDate date] timeIntervalSince1970];
-            NSDate *pDate = [NSDate dateWithTimeIntervalSince1970:time.intValue];
-            int sub = cDate - time.intValue;
-            
-            NSString *dateStr;
-            
-            if (sub < 60*60)//小于一小时
-            {
-                dateStr = [NSString stringWithFormat:@"%d %@",sub/60 == 0 ? 1 : sub/60,LOCAL(@"minutesago", @"")];
-            }
-            else if (sub < 12*60*60 && sub >= 60*60)
-            {
-                dateStr = [NSString stringWithFormat:@"%d %@",sub/(60*60),LOCAL(@"hoursago", @"")];
-            }
-            else if (pDate.year == [NSDate date].year)
-            {
-                NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
-                format.dateFormat = @"MM-dd HH:mm";
-                dateStr = [NSString stringWithFormat:@"%@",[format stringFromDate:pDate]];
-            }
-            else if (pDate.year < [NSDate date].year)
-            {
-                NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
-                format.dateFormat = @"yyyy-MM-dd HH:mm";
-                dateStr = [NSString stringWithFormat:@"%@",[format stringFromDate:pDate]];
-            }
-            else
-            {
-                dateStr = [NSString stringWithFormat:@"error time"];
-            }
-            
-            
-            if (time !=nil) {
-                cell.timeLabel.text = dateStr;
-            }
-            
-    // -----------------------
-            
-            int centerHeight = calculateHeight + cell.timeLabel.frame.size.height/2;
-            
-            cell.praiseButton.frame = CGRectMake(cell.praiseButton.frame.origin.x, centerHeight - cell.praiseButton.frame.size.height/2, cell.praiseButton.frame.size.width, cell.praiseButton.frame.size.height);
-            
-            cell.commentsButton.frame = CGRectMake(cell.commentsButton.frame.origin.x, centerHeight - cell.commentsButton.frame.size.height/2, cell.commentsButton.frame.size.width, cell.commentsButton.frame.size.height);
-            
-            
-            cell.praiseImgV.frame = CGRectMake(cell.praiseButton.frame.origin.x + 5, centerHeight - 8, 20, 16);
-            
-            if (sContent.havezan.intValue == 0)
-            {
-                cell.praiseImgV.image = [UIImage imageNamed:@"cellPraise.png"];
-            }
-            else
-            {
-                cell.praiseImgV.image = [UIImage imageNamed:@"myzan.png"];
-            }
-            
-            
-            
-            NSArray *languages = [NSLocale preferredLanguages];
-            NSString *currentLanguage = [languages objectAtIndex:0]; //获得当期语言.
-            
-            cell.praiseLab.frame = CGRectMake(cell.praiseButton.frame.origin.x + 25, centerHeight - 7, 35, 14);
-            cell.praiseLab.text = [NSString stringWithFormat:@"%@", (sContent.upnum.intValue == 0 ? LOCAL(@"upText", @"") : sContent.upnum)];
-            if (sContent.upnum.intValue == 0)
-            {
-                if([currentLanguage isEqualToString:@"en"])
+                int calculateHeight = 0; // add up height.
+                
+                // calculate title size.
+                CGSize titleSize = [sContent.shareTitle sizeWithFont:[UIFont systemFontOfSize:TITLEFONTSIZE] constrainedToSize:CGSizeMake(230, 1000) lineBreakMode:UILineBreakModeWordWrap];
+                
+                if (titleSize.height > cell.titleLabel.font.lineHeight * 1)
                 {
-                    cell.praiseLab.font = [UIFont systemFontOfSize:8];
+                    cell.titleLabel.frame = CGRectMake(cell.titleLabel.frame.origin.x,
+                                                       cell.titleLabel.frame.origin.y,
+                                                       titleSize.width,
+                                                       cell.titleLabel.font.lineHeight * 1);
+                    calculateHeight = cell.titleLabel.frame.origin.y + cell.titleLabel.font.lineHeight * 1;
                 }
                 else
                 {
-                    cell.praiseLab.font = [UIFont systemFontOfSize:12];
+                    cell.titleLabel.frame = CGRectMake(cell.titleLabel.frame.origin.x,
+                                                       cell.titleLabel.frame.origin.y,
+                                                       titleSize.width,
+                                                       titleSize.height);
+                    calculateHeight = cell.titleLabel.frame.origin.y + titleSize.height;
                 }
                 
-            }
-            else
-            {
-                cell.praiseLab.font = [UIFont systemFontOfSize:CONTENTFONTSIZE];
-            }
-            
-            cell.commentImgV.frame = CGRectMake(cell.commentsButton.frame.origin.x + 5, centerHeight - 8, 20, 16);
-            cell.commentLab.frame = CGRectMake(cell.commentsButton.frame.origin.x + 25, centerHeight - 7 , 38, 14);
-            cell.commentLab.text = [NSString stringWithFormat:@"%@",(sContent.commentnum.intValue == 0 ? LOCAL(@"comText", @"") : sContent.commentnum)];
-            if (sContent.commentnum.intValue == 0)
-            {
                 
-                if([currentLanguage isEqualToString:@"en"])
+                cell.titleLabel.text = sContent.shareTitle;
+                
+                
+                // calculate content size.
+                CGSize contentSize = [sContent.shareContent sizeWithFont:[UIFont systemFontOfSize:CONTENTFONTSIZE] constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:UILineBreakModeWordWrap];
+                
+                
+                
+                if (contentSize.height > cell.contentLabel.font.lineHeight * 3)
                 {
-                    cell.commentLab.font = [UIFont systemFontOfSize:8];
+                    [cell.contentLabel setFrame:CGRectMake(50,
+                                                           calculateHeight + 25,//the distance is between title and content
+                                                           contentSize.width,
+                                                           cell.contentLabel.font.lineHeight * 3)];
+                    calculateHeight = calculateHeight + 25 + cell.contentLabel.font.lineHeight * 3;
                 }
                 else
                 {
-                    cell.commentLab.font = [UIFont systemFontOfSize:12];
+                    
+                    [cell.contentLabel setFrame:CGRectMake(50,
+                                                           calculateHeight + 25, //the distance is between title and content,
+                                                           contentSize.width,
+                                                           contentSize.height)];
+                    NSLog(@"ssssss : %f , %d,%f",contentSize.height,indexPath.row,cell.contentLabel.font.lineHeight);
+                    calculateHeight = calculateHeight + (ABS(contentSize.height) <= 14 ? 14 : (contentSize.height + 25));
+                }
+                
+                
+                cell.contentLabel.text = sContent.shareContent;
+                
+                
+                
+                if ([CellIdentifier1 isEqualToString:@"movieCell"]) {  // 判断是否是视频
+                    
+                    cell.contentView.frame = CGRectMake(cell.contentView.frame.origin.x,
+                                                        calculateHeight + 10,
+                                                        cell.contentView.frame.size.width,
+                                                        cell.contentView.frame.size.height);
+                    
+                    
+                    
+                }
+                
+                
+                for (int i = 0; i < cell.photoImgVArr.count; i++) {
+                    
+                    UIImageView *imgV = [cell.photoImgVArr objectAtIndex:i];
+                    int picCount = sContent.sharePicArr.count;
+                    if (i < picCount)
+                    {
+                        NSDictionary *dic = [sContent.sharePicArr objectAtIndex:i];
+                        if ([dic objectForKey:@"source"]) {
+                            NSString *picURL=[NSString stringWithFormat:@"%@",[dic objectForKey:@"source"]];
+                            picURL = [picURL stringByAppendingString:@".tiny.jpg"];
+                            
+                            [imgV setImageWithURL:[NSURL URLWithString:picURL] placeholderImage:[UIImage imageNamed:@"imageplaceholder.png"] options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                                
+                                //                        NSLog(@"%d",cacheType);
+                                
+                                if (error) {
+                                    
+                                    NSLog(@"Error : load image fail.");
+                                    imgV.image = [UIImage imageNamed:@"imageerror.png"];
+                                    
+                                    
+                                }
+                                else
+                                {
+                                    imgV.image = image;
+                                    
+                                    //                                NSData *d = UIImagePNGRepresentation(image);
+                                    //                                NSLog(@"image length  %d",d.length);
+                                    
+                                    if (cacheType == 0) { // request url
+                                        CATransition *transition = [CATransition animation];
+                                        transition.duration = 1.0f;
+                                        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+                                        transition.type = kCATransitionFade;
+                                        
+                                        [imgV.layer addAnimation:transition forKey:nil];
+                                    }
+                                }
+                                
+                                
+                                
+                            }];
+                        }
+                        else
+                        {
+                            NSLog(@"Error : picture url error .");
+                        }
+                        
+                        
+                        
+                        imgV.frame = CGRectMake(58 + i%3*(75 + 5), calculateHeight + 10 + i/3*(75 + 5), 75, 75);
+                        
+                        
+                    }
+                    else
+                    {
+                        imgV.image = nil;
+                        imgV.frame = CGRectZero;
+                    }
+                    
+                }
+                
+                
+                calculateHeight = calculateHeight + 10 + (sContent.sharePicArr.count == 0 ? 0 : ((sContent.sharePicArr.count-1)/3 + 1) * (75 + 10));
+                
+                
+                
+                if (titleSize.height > cell.titleLabel.font.lineHeight * 1)
+                {
+                    cell.triangle.frame = CGRectMake(cell.backImgV.frame.origin.x + 15,
+                                                     cell.titleLabel.frame.origin.y + cell.titleLabel.font.lineHeight * 1,
+                                                     14,
+                                                     12);
+                    
+                    cell.backImgV.frame = CGRectMake(cell.backImgV.frame.origin.x,
+                                                     cell.titleLabel.frame.origin.y + cell.titleLabel.font.lineHeight * 1 + 12,
+                                                     cell.backImgV.frame.size.width,
+                                                     calculateHeight - cell.titleLabel.frame.origin.y - cell.titleLabel.font.lineHeight * 1 - 12);
+                }
+                else
+                {
+                    cell.triangle.frame = CGRectMake(cell.backImgV.frame.origin.x + 15,
+                                                     cell.titleLabel.frame.origin.y + titleSize.height,
+                                                     14,
+                                                     12);
+                    
+                    cell.backImgV.frame = CGRectMake(cell.backImgV.frame.origin.x, cell.titleLabel.frame.origin.y + titleSize.height + 12, cell.backImgV.frame.size.width, calculateHeight - cell.titleLabel.frame.origin.y - titleSize.height - 12);
+                }
+                
+                
+                calculateHeight += 10;
+                
+                cell.timeLabel.frame = CGRectMake(50, calculateHeight, cell.timeLabel.frame.size.width, cell.timeLabel.frame.size.height);
+                
+                //----- calculate time -----------
+                NSString *time = sContent.publishtime;
+                
+                int cDate = [[NSDate date] timeIntervalSince1970];
+                NSDate *pDate = [NSDate dateWithTimeIntervalSince1970:time.intValue];
+                int sub = cDate - time.intValue;
+                
+                NSString *dateStr;
+                
+                if (sub < 60*60)//小于一小时
+                {
+                    dateStr = [NSString stringWithFormat:@"%d %@",sub/60 == 0 ? 1 : sub/60,LOCAL(@"minutesago", @"")];
+                }
+                else if (sub < 12*60*60 && sub >= 60*60)
+                {
+                    dateStr = [NSString stringWithFormat:@"%d %@",sub/(60*60),LOCAL(@"hoursago", @"")];
+                }
+                else if (pDate.year == [NSDate date].year)
+                {
+                    NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
+                    format.dateFormat = @"MM-dd HH:mm";
+                    dateStr = [NSString stringWithFormat:@"%@",[format stringFromDate:pDate]];
+                }
+                else if (pDate.year < [NSDate date].year)
+                {
+                    NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
+                    format.dateFormat = @"yyyy-MM-dd HH:mm";
+                    dateStr = [NSString stringWithFormat:@"%@",[format stringFromDate:pDate]];
+                }
+                else
+                {
+                    dateStr = [NSString stringWithFormat:@"error time"];
+                }
+                
+                
+                if (time !=nil) {
+                    cell.timeLabel.text = dateStr;
+                }
+                
+                // -----------------------
+                
+                int centerHeight = calculateHeight + cell.timeLabel.frame.size.height/2;
+                
+                cell.praiseButton.frame = CGRectMake(cell.praiseButton.frame.origin.x, centerHeight - cell.praiseButton.frame.size.height/2, cell.praiseButton.frame.size.width, cell.praiseButton.frame.size.height);
+                
+                cell.commentsButton.frame = CGRectMake(cell.commentsButton.frame.origin.x, centerHeight - cell.commentsButton.frame.size.height/2, cell.commentsButton.frame.size.width, cell.commentsButton.frame.size.height);
+                
+                
+                cell.praiseImgV.frame = CGRectMake(cell.praiseButton.frame.origin.x + 5, centerHeight - 8, 20, 16);
+                
+                if (sContent.havezan.intValue == 0)
+                {
+                    cell.praiseImgV.image = [UIImage imageNamed:@"cellPraise.png"];
+                }
+                else
+                {
+                    cell.praiseImgV.image = [UIImage imageNamed:@"myzan.png"];
+                }
+                
+                
+                
+                NSArray *languages = [NSLocale preferredLanguages];
+                NSString *currentLanguage = [languages objectAtIndex:0]; //获得当期语言.
+                
+                cell.praiseLab.frame = CGRectMake(cell.praiseButton.frame.origin.x + 25, centerHeight - 7, 35, 14);
+                cell.praiseLab.text = [NSString stringWithFormat:@"%@", (sContent.upnum.intValue == 0 ? LOCAL(@"upText", @"") : sContent.upnum)];
+                if (sContent.upnum.intValue == 0)
+                {
+                    if([currentLanguage isEqualToString:@"en"])
+                    {
+                        cell.praiseLab.font = [UIFont systemFontOfSize:8];
+                    }
+                    else
+                    {
+                        cell.praiseLab.font = [UIFont systemFontOfSize:12];
+                    }
+                    
+                }
+                else
+                {
+                    cell.praiseLab.font = [UIFont systemFontOfSize:CONTENTFONTSIZE];
+                }
+                
+                cell.commentImgV.frame = CGRectMake(cell.commentsButton.frame.origin.x + 5, centerHeight - 8, 20, 16);
+                cell.commentLab.frame = CGRectMake(cell.commentsButton.frame.origin.x + 25, centerHeight - 7 , 38, 14);
+                cell.commentLab.text = [NSString stringWithFormat:@"%@",(sContent.commentnum.intValue == 0 ? LOCAL(@"comText", @"") : sContent.commentnum)];
+                if (sContent.commentnum.intValue == 0)
+                {
+                    
+                    if([currentLanguage isEqualToString:@"en"])
+                    {
+                        cell.commentLab.font = [UIFont systemFontOfSize:8];
+                    }
+                    else
+                    {
+                        cell.commentLab.font = [UIFont systemFontOfSize:12];
+                    }
+                    
+                }
+                else
+                {
+                    cell.commentLab.font = [UIFont systemFontOfSize:CONTENTFONTSIZE];
+                }
+                
+                cell.line.frame = CGRectMake(0, calculateHeight + 25, 320, 2);
+                
+                
+                cell.theShareCtnt = sContent;
+                
+                
+                UserLogin *user = [UserLogin currentLogin];
+                
+                if (user.can_comment != nil && [user.can_comment isEqualToString:@"1"]) {
+                    //                cell.commentsButton.enabled = YES;
+                    cell.commentImgV.image = [UIImage imageNamed:@"cellComment.png"];
+                }else{
+                    //                cell.commentsButton.enabled = NO;
+                    cell.commentImgV.image = [UIImage imageNamed:@"cellComment_disable.png"];
+                }
+                
+                if (user.can_comment_action != nil && [user.can_comment_action isEqualToString:@"1"]) {
+                    //                cell.praiseButton.enabled = YES;
+                }else{
+                    //                cell.praiseButton.enabled = NO;
+                    cell.praiseImgV.image = [UIImage imageNamed:@"cellPraise_disable.png"];
                 }
                 
             }
-            else
-            {
-                cell.commentLab.font = [UIFont systemFontOfSize:CONTENTFONTSIZE];
-            }
-            
-            cell.line.frame = CGRectMake(0, calculateHeight + 25, 320, 2);
             
             
-            cell.theShareCtnt = sContent;
-            
-            
-            UserLogin *user = [UserLogin currentLogin];
-            
-            if (user.can_comment != nil && [user.can_comment isEqualToString:@"1"]) {
-//                cell.commentsButton.enabled = YES;
-                cell.commentImgV.image = [UIImage imageNamed:@"cellComment.png"];
-            }else{
-//                cell.commentsButton.enabled = NO;
-                cell.commentImgV.image = [UIImage imageNamed:@"cellComment_disable.png"];
-            }
-            
-            if (user.can_comment_action != nil && [user.can_comment_action isEqualToString:@"1"]) {
-//                cell.praiseButton.enabled = YES;
-            }else{
-//                cell.praiseButton.enabled = NO;
-                cell.praiseImgV.image = [UIImage imageNamed:@"cellPraise_disable.png"];
-            }
+            return cell;
             
         }
         
         
-        return cell;
+        
+        
     }
     
     
@@ -1019,21 +1311,36 @@
     }
     
     
+    NSDictionary *fDic = [sContent.sharePicArr objectAtIndex:0];
+    NSString *source = [NSString stringWithFormat:@"%@",[fDic objectForKey:@"source"]];
+//    NSString *source = @"http://yunxiaoche.blob.core.windows.net/article-source/39958_1389601724_644558.mp4";
+    NSString *ext = [[source componentsSeparatedByString:@"."] lastObject]; // 获取后缀名
     
-    CGSize contentSize = [sContent.shareContent sizeWithFont:[UIFont systemFontOfSize:CONTENTFONTSIZE] constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:UILineBreakModeWordWrap];
     
-    if (contentSize.height > [UIFont systemFontOfSize:CONTENTFONTSIZE].lineHeight * 3)
+    if ([ext isEqualToString:@"mp4"])
     {
-        calculateHeight = calculateHeight + 25 + [UIFont systemFontOfSize:CONTENTFONTSIZE].lineHeight * 3;
+        calculateHeight = calculateHeight + 10 + 300 + 10 + 10 + 26;
     }
     else
     {
-        calculateHeight = calculateHeight + (ABS(contentSize.height) <= 14 ? 14 : (contentSize.height + 25));
+        CGSize contentSize = [sContent.shareContent sizeWithFont:[UIFont systemFontOfSize:CONTENTFONTSIZE] constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:UILineBreakModeWordWrap];
+        
+        if (contentSize.height > [UIFont systemFontOfSize:CONTENTFONTSIZE].lineHeight * 3)
+        {
+            calculateHeight = calculateHeight + 25 + [UIFont systemFontOfSize:CONTENTFONTSIZE].lineHeight * 3;
+        }
+        else
+        {
+            calculateHeight = calculateHeight + (ABS(contentSize.height) <= 14 ? 14 : (contentSize.height + 25));
+        }
+        
+        
+        
+        calculateHeight = calculateHeight + 10 + (sContent.sharePicArr.count == 0 ? 0 : ((sContent.sharePicArr.count-1)/3 + 1) * (75 + 10)) + 10 + 26;
     }
     
     
     
-    calculateHeight = calculateHeight + 10 + (sContent.sharePicArr.count == 0 ? 0 : ((sContent.sharePicArr.count-1)/3 + 1) * (75 + 10)) + 10 + 26;
     
     return calculateHeight;
        
@@ -1144,7 +1451,7 @@
     [detailviewcontroller release];
 }
 
-- (void) clickPraise:(ClassShareCell *)cell
+- (void) clickPraise:(UITableViewCell *)cell
 {
     
     UserLogin *user = [UserLogin currentLogin];
@@ -1185,6 +1492,7 @@
         }
         
     }];
+    
 }
 
 
@@ -1212,6 +1520,94 @@
     
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    int y = scrollView.contentOffset.y;
+    if (y <= 0)
+    {
+        if (ABS(y) >= 30)
+        {
+            self.topBackImgView.transform = CGAffineTransformMakeScale(1 + (ABS(y)-30) * 0.2f/30.0f, 1 + (ABS(y)-30) * 0.2f/30.0f);
+        }
+        else
+        {
+            //            topBackImgView.transform = CGAffineTransformMakeTranslation(0, ABS(y)*0.2);
+            self.topBackImgView.frame = CGRectMake(self.topBackImgView.frame.origin.x,
+                                                   -10 + ABS(y)*0.3f,
+                                                   self.topBackImgView.frame.size.width,
+                                                   self.topBackImgView.frame.size.height);
+        }
+    }
+    else
+    {
+        self.topBackImgView.frame = CGRectMake(self.topBackImgView.frame.origin.x,
+                                               -10 - y,
+                                               self.topBackImgView.frame.size.width,
+                                               self.topBackImgView.frame.size.height);
+    }
+    
+    
+    if (self._slimeView) {
+        [self._slimeView scrollViewDidScroll];
+    }
+    
+    
+    if(self._refreshFooterView)
+    {
+        [self._refreshFooterView egoRefreshScrollViewDidScroll:scrollView];
+    }
+    
+    
+    
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(controlVisibleCellPlay) object:nil];
+    [self performSelector:@selector(controlVisibleCellPlay) withObject:nil afterDelay:0.5];
+    
+    
+}
+
+
+
+- (void)controlVisibleCellPlay
+{
+    
+    NSArray *cells = [self._tableView visibleCells];
+    
+//    NSLog(@"%@",cells);
+    
+    GKMovieCell *cell;
+    
+    int minDis = 1000;
+    
+    for (int i = cells.count - 1 ; i>=0 ; i--) {
+        id obj = [cells objectAtIndex:i];
+        
+        if ([obj isKindOfClass:[GKMovieCell class]])
+        {
+            GKMovieCell *tempCell = (GKMovieCell *)obj;
+            
+            int dis = ABS(tempCell.frame.origin.y - (self._tableView.contentOffset.y + self._tableView.frame.size.height/3.0f));
+            if (dis < minDis) {
+                minDis = dis;
+                cell = tempCell;
+            }
+//            NSLog(@"%f,%f",tempCell.frame.origin.y,self._tableView.contentOffset.y + self._tableView.frame.size.height/2.0f);
+            
+            
+        }
+        
+    }
+    
+    if (minDis != 1000) {
+        
+//        NSLog(@"%f",cell.frame.origin.y);
+        if (cell.mPlayer.playbackState == MPMoviePlaybackStateStopped || cell.mPlayer.playbackState == MPMoviePlaybackStatePaused) {
+            [cell.mPlayer play];
+        }
+    }
+    
+    
+    
+}
 
 - (BOOL)shouldAutorotate
 {

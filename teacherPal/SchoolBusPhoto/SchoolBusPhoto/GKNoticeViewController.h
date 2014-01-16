@@ -13,7 +13,7 @@
 #import "GKStudentView.h"
 #import "EKRequest.h"
 #import "GTMBase64.h"
-@interface GKNoticeViewController : GKBaseViewController<UITextViewDelegate,studentViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EKProtocol>
+@interface GKNoticeViewController : GKBaseViewController<UITextViewDelegate,studentViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EKProtocol,UIAlertViewDelegate>
 {
     UITextView *_textView;
     
@@ -24,6 +24,7 @@
     UILabel *numberWord;
     
 }
+@property (nonatomic,assign)BOOL isConform;
 @property(nonatomic,retain)UITextView *_textView;
 
 @property(nonatomic,retain)NSMutableArray *stuArr;

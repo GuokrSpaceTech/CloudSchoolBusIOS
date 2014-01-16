@@ -719,11 +719,17 @@
         // 增加写文件错误处理
             uint8_t * buffer = malloc(131072);
             while (offset<[representation size] && [outPutStream hasSpaceAvailable]) {
+                
+                
+                
                 bytesRead = [representation getBytes:buffer fromOffset:offset length:131072 error:&error];
-                if(error) // 如果写文件出错 跳出改讯黄
+                if(error || bytesRead==0) // 如果写文件出错 跳出改讯黄
                     break;
                 [outPutStream write:buffer maxLength:bytesRead];
-                offset = offset+bytesRead;  
+                offset = offset+bytesRead;
+                
+                
+                NSLog(@" ------representationsize:%lld---------offset:%lld",representation.size, offset);
             }  
             [outPutStream close];  
             free(buffer);
@@ -881,7 +887,7 @@
             
         }else{
             
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"Cancelphotos", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") otherButtonTitles:NSLocalizedString(@"OK", @""), nil];
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"Cancelphotos", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"no", @"") otherButtonTitles:NSLocalizedString(@"yes", @""), nil];
             [alert show];
             [alert release];
             

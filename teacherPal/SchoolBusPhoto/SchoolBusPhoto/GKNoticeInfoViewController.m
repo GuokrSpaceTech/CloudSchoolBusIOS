@@ -263,7 +263,7 @@
         cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
         cell.backgroundColor=[UIColor clearColor];
         
-        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(210, 5, 20, 20)];
+        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(230, 5, 20, 20)];
         imageView.backgroundColor=[UIColor clearColor];
         [cell.contentView addSubview:imageView];
         imageView.tag=1006;
@@ -273,7 +273,7 @@
     }
   
     cell.textLabel.text=[notice.slistname objectAtIndex:indexPath.row];
-    cell.textLabel.font=[UIFont systemFontOfSize:12];
+    cell.textLabel.font=[UIFont systemFontOfSize:14];
     
     UIImageView *iamgeView=(UIImageView *)[cell.contentView viewWithTag:1006];
     
@@ -284,7 +284,7 @@
             NSString *str=[notice.slistname objectAtIndex:indexPath.row];
             if([notice.sisconfirm containsObject:str])
             {
-                iamgeView.image=[UIImage imageNamed:@"duihao.png"];
+                iamgeView.image=[UIImage imageNamed:@"duihaohuizhi.png"];
             }
             else
             {
@@ -314,7 +314,7 @@
 {
     
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
-    view.backgroundColor=[UIColor grayColor];
+    view.backgroundColor=[UIColor colorWithRed:98/255.0 green:181/255.0 blue:204/255.0 alpha:1];
     
     UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 100, 20)];
     label.backgroundColor=[UIColor clearColor];

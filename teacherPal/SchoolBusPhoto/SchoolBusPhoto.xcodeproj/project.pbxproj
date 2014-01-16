@@ -43,6 +43,8 @@
 		113BCAC6182B5F8E0079E9AD /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = 113BCAC5182B5F8E0079E9AD /* line.png */; };
 		114B58FF1820AD5500163A4A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114B58FE1820AD5500163A4A /* ImageIO.framework */; };
 		114B59021821220E00163A4A /* GKShowBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B59011821220E00163A4A /* GKShowBigImageViewController.m */; };
+		114F66A71887C16E0071D2AE /* kuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 114F66A61887C16E0071D2AE /* kuang.png */; };
+		114F66A91887C2780071D2AE /* duihaohuizhi.png in Resources */ = {isa = PBXBuildFile; fileRef = 114F66A81887C2780071D2AE /* duihaohuizhi.png */; };
 		11514F41187EB9AD00EEB656 /* GKHelpSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11514F40187EB9AD00EEB656 /* GKHelpSupportViewController.m */; };
 		1155E92B1856BC75005D09C1 /* KKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1155E9291856BC74005D09C1 /* KKNavigationController.m */; };
 		1165E27C182CFCE000B60A81 /* pic-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1165E278182CFCE000B60A81 /* pic-2.png */; };
@@ -440,6 +442,8 @@
 		114B58FE1820AD5500163A4A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		114B59001821220E00163A4A /* GKShowBigImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKShowBigImageViewController.h; sourceTree = "<group>"; };
 		114B59011821220E00163A4A /* GKShowBigImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKShowBigImageViewController.m; sourceTree = "<group>"; };
+		114F66A61887C16E0071D2AE /* kuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kuang.png; sourceTree = "<group>"; };
+		114F66A81887C2780071D2AE /* duihaohuizhi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = duihaohuizhi.png; sourceTree = "<group>"; };
 		11514F3F187EB9AD00EEB656 /* GKHelpSupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHelpSupportViewController.h; sourceTree = "<group>"; };
 		11514F40187EB9AD00EEB656 /* GKHelpSupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKHelpSupportViewController.m; sourceTree = "<group>"; };
 		1155E9291856BC74005D09C1 /* KKNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKNavigationController.m; sourceTree = "<group>"; };
@@ -1299,6 +1303,8 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				114F66A81887C2780071D2AE /* duihaohuizhi.png */,
+				114F66A61887C16E0071D2AE /* kuang.png */,
 				11CE2A8F187FF5AD00742001 /* imageerror.png */,
 				11CE2A8B187FEE3500742001 /* writeRizhiH.png */,
 				11CE2A8C187FEE3500742001 /* writeRizhi.png */,
@@ -1829,6 +1835,7 @@
 				111E8CF3181E6E9F00234014 /* input.png in Resources */,
 				11AF3AEB18166AB200B36176 /* navLeftBtn_default.png in Resources */,
 				11D42951187E4BE60002810E /* gradeFen@2x.png in Resources */,
+				114F66A91887C2780071D2AE /* duihaohuizhi.png in Resources */,
 				11BF896F1836325F008E72F0 /* 120.png in Resources */,
 				2A32A56918122C02007CAA8E /* InfoPlist.strings in Resources */,
 				11A5A890187B9E2500EA22CD /* gradeEH.png in Resources */,
@@ -1872,6 +1879,7 @@
 				78709C1C187D1733009250FB /* navbar-button-back-black-alt@2x.png in Resources */,
 				78709C0F187D1733009250FB /* camera-shutter-video-default-active.png in Resources */,
 				11B852BE18334D52005FA5B9 /* upbutton.png in Resources */,
+				114F66A71887C16E0071D2AE /* kuang.png in Resources */,
 				11BF898118363E58008E72F0 /* addPer.png in Resources */,
 				11BF898518363F5C008E72F0 /* sendNoticeH.png in Resources */,
 				1194023218235F6100F21FB8 /* box-1.png in Resources */,

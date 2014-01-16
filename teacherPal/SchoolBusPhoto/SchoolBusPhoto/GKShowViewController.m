@@ -708,7 +708,11 @@
             ALAssetRepresentation *representation = [photo.asset defaultRepresentation];
             NSString* filename = [documentpath stringByAppendingPathComponent:[representation filename]];
             UIImage *thumbiamge=[UIImage imageWithCGImage:photo.asset.thumbnail];
-            [[NSFileManager defaultManager] createFileAtPath:filename contents:nil attributes:nil];
+            BOOL cureateSuccess= [[NSFileManager defaultManager] createFileAtPath:filename contents:nil attributes:nil];
+            if(!cureateSuccess)
+            {
+                continue;
+            }
             NSOutputStream *outPutStream = [NSOutputStream outputStreamToFileAtPath:filename append:YES];
             [outPutStream open];
             long long offset = 0;

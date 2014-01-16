@@ -206,22 +206,47 @@ static GKUpQueue *gkqueue=nil;
 - (void)requestDidFailed:(ASIFormDataRequest *)_request{
     
     NSLog(@"%@",_request.error.description);
-//    NSString *picId=[[_request userInfo] objectForKey:@"nameid"];
-//    
-//    //UpLoader *up= [[GKLoaderManager createLoaderManager] getOneData:picId];
-//   
-//    GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
-//    // [manager removeWraperFromArr:<#(NSString *)#>]
-//    // [manager removeWraperFromArr:<#(NSString *)#>];
-//    [manager toTail:picId];
-//    
-//    [manager startUpLoader];
-//
-    //    NSString *picPath=[[_request userInfo] objectForKey:@"path"];
-//
-//    NSString *picname=[[_request userInfo] objectForKey:@"filename"];
     
-  //  [self addRequestToQueue:picPath name:picname nameid:<#(NSString *)#> studentid:<#(NSString *)#> time:<#(NSNumber *)#>];
+    
+    if(_request.error.code==6) // 改文件不存在
+    {
+        NSString *picId=[[_request userInfo] objectForKey:@"nameid"];
+        NSString *picPath=[[_request userInfo] objectForKey:@"path"];
+        
+        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:picId,@"key", nil];
+        NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
+        [center postNotificationName:@"changeupload" object:nil userInfo:dic];
+        GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
+
+        // upArr 删除下载完成的
+
+        // 删除 coredate 改条信息
+        
+        [manager deleteCoreDataLoadingState:picId];
+        
+        // 删除 manager 数组第一条数据
+        [manager removeWraperFromArr:picId];
+        
+        
+        //从document中删除临时文件
+        NSError *error=nil;
+        NSFileManager *fileManage=[NSFileManager defaultManager];
+        if([fileManage fileExistsAtPath:picPath])
+        {
+            BOOL success= [fileManage removeItemAtPath:picPath error:&error];
+            if(!success)
+            {
+                NSLog(@"删除文件失败 %@",error.description);
+            }
+            else
+            {
+                NSLog(@"删除成功");
+            }
+        }
+
+        
+    }
+
     
 }
 -(void)dealloc

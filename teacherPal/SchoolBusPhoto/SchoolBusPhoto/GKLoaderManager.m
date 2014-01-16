@@ -199,6 +199,30 @@ static GKLoaderManager *manager=nil;
        
     }
 }
+-(BOOL)deleteCoreDataLoadingState:(NSString *)nameid
+{
+    NSError *err = nil;
+    GKAppDelegate *delegate = SHARED_APP_DELEGATE;
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"UpLoader" inManagedObjectContext:delegate.managedObjectContext];
+    [request setEntity:entity];
+    NSPredicate *pred=[NSPredicate predicateWithFormat:@"(nameID = %@)",nameid];
+    [request setPredicate:pred];
+    
+    
+    NSArray *arr = [delegate.managedObjectContext executeFetchRequest:request error:&err];
+    
+    if (!arr) {
+        NSLog(@"!!!! search articals error : %@",err);
+    }
+    
+    UpLoader *loader = [arr objectAtIndex:0];
+    [delegate.managedObjectContext deleteObject:loader];
+    BOOL successful = [delegate.managedObjectContext save:nil];
+    
+    return successful;
+}
+
 -(void)changeCoreDataLoadingState:(NSString *)nameid
 {
     GKAppDelegate *delegate=APPDELEGATE;

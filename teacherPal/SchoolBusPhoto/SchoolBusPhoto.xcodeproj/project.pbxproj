@@ -308,10 +308,6 @@
 		2AFFF35318122D8B0045BFD0 /* GKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFFF35118122D8B0045BFD0 /* GKMainViewController.m */; };
 		2AFFF35418122D8B0045BFD0 /* GKMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AFFF35218122D8B0045BFD0 /* GKMainViewController.xib */; };
 		2AFFF364181231040045BFD0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AFFF363181231040045BFD0 /* AVFoundation.framework */; };
-		2AFFF36E181232B60045BFD0 /* AVCamCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFFF368181232B60045BFD0 /* AVCamCaptureManager.m */; };
-		2AFFF36F181232B60045BFD0 /* AVCamRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFFF36A181232B60045BFD0 /* AVCamRecorder.m */; };
-		2AFFF370181232B60045BFD0 /* AVCamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFFF36C181232B60045BFD0 /* AVCamViewController.m */; };
-		2AFFF371181232B60045BFD0 /* AVCamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AFFF36D181232B60045BFD0 /* AVCamViewController.xib */; };
 		2AFFF373181232E70045BFD0 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AFFF372181232E60045BFD0 /* AssetsLibrary.framework */; };
 		2AFFF376181233580045BFD0 /* GKUpLoaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFFF375181233580045BFD0 /* GKUpLoaderViewController.m */; };
 		78709BC9187D16CA009250FB /* GKFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BBA187D16CA009250FB /* GKFilterViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -824,13 +820,6 @@
 		2AFFF35118122D8B0045BFD0 /* GKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMainViewController.m; sourceTree = "<group>"; };
 		2AFFF35218122D8B0045BFD0 /* GKMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKMainViewController.xib; sourceTree = "<group>"; };
 		2AFFF363181231040045BFD0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		2AFFF367181232B60045BFD0 /* AVCamCaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamCaptureManager.h; sourceTree = "<group>"; };
-		2AFFF368181232B60045BFD0 /* AVCamCaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamCaptureManager.m; sourceTree = "<group>"; };
-		2AFFF369181232B60045BFD0 /* AVCamRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamRecorder.h; sourceTree = "<group>"; };
-		2AFFF36A181232B60045BFD0 /* AVCamRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamRecorder.m; sourceTree = "<group>"; };
-		2AFFF36B181232B60045BFD0 /* AVCamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamViewController.h; sourceTree = "<group>"; };
-		2AFFF36C181232B60045BFD0 /* AVCamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamViewController.m; sourceTree = "<group>"; };
-		2AFFF36D181232B60045BFD0 /* AVCamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AVCamViewController.xib; sourceTree = "<group>"; };
 		2AFFF372181232E60045BFD0 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		2AFFF374181233580045BFD0 /* GKUpLoaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKUpLoaderViewController.h; sourceTree = "<group>"; };
 		2AFFF375181233580045BFD0 /* GKUpLoaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKUpLoaderViewController.m; sourceTree = "<group>"; };
@@ -1051,21 +1040,11 @@
 				11B852C518335275005FA5B9 /* ETShowBigImageViewController.m */,
 				11B852CB183352AE005FA5B9 /* GKShowViewController.h */,
 				11B852C618335275005FA5B9 /* GKShowViewController.m */,
-				11B85295183221CF005FA5B9 /* ETNicknameViewController.h */,
-				11B85296183221CF005FA5B9 /* ETNicknameViewController.m */,
-				11B85297183221CF005FA5B9 /* ETNicknameViewController.xib */,
 				119EA9BC181616990070DBF1 /* GKImagePickerViewController.h */,
 				119EA9BD181616990070DBF1 /* GKImagePickerViewController.m */,
 				119EA9C218162D340070DBF1 /* ETPhotoCell.h */,
 				119EA9C318162D340070DBF1 /* ETPhotoCell.m */,
 				119EA9BB1816114D0070DBF1 /* SideBarSelectedDelegate.h */,
-				2AFFF367181232B60045BFD0 /* AVCamCaptureManager.h */,
-				2AFFF368181232B60045BFD0 /* AVCamCaptureManager.m */,
-				2AFFF369181232B60045BFD0 /* AVCamRecorder.h */,
-				2AFFF36A181232B60045BFD0 /* AVCamRecorder.m */,
-				2AFFF36B181232B60045BFD0 /* AVCamViewController.h */,
-				2AFFF36C181232B60045BFD0 /* AVCamViewController.m */,
-				2AFFF36D181232B60045BFD0 /* AVCamViewController.xib */,
 				11EFE1D81817C08C009CE69F /* GKStudentView.h */,
 				11EFE1D91817C08C009CE69F /* GKStudentView.m */,
 				11BF898C183646DF008E72F0 /* GKBadgeView.h */,
@@ -1500,6 +1479,9 @@
 		11A5AE621863E045008794C0 /* setting */ = {
 			isa = PBXGroup;
 			children = (
+				11B85295183221CF005FA5B9 /* ETNicknameViewController.h */,
+				11B85296183221CF005FA5B9 /* ETNicknameViewController.m */,
+				11B85297183221CF005FA5B9 /* ETNicknameViewController.xib */,
 				1102A7E5181A4E2000E6295C /* GKAboutViewController.h */,
 				1102A7E6181A4E2000E6295C /* GKAboutViewController.m */,
 				1102A7E7181A4E2000E6295C /* GKAboutViewController.xib */,
@@ -1897,7 +1879,6 @@
 				1193A6C5182C785B004011BC /* 谁在照片里_05.png in Resources */,
 				78709C29187D1779009250FB /* camera-backspace-confirm-active@2x.png in Resources */,
 				78709C09187D1733009250FB /* camera-library-overlay.png in Resources */,
-				2AFFF371181232B60045BFD0 /* AVCamViewController.xib in Resources */,
 				11BF8988183641E2008E72F0 /* notice.png in Resources */,
 				11AF3B051816832D00B36176 /* showMain.png in Resources */,
 				1102A7E1181A4ABD00E6295C /* paizhao-1-1.png in Resources */,
@@ -2053,7 +2034,6 @@
 				11B852C918335275005FA5B9 /* ETShowBigImageViewController.m in Sources */,
 				7870A104187E4A48009250FB /* GKCoreDataManager.m in Sources */,
 				1155E92B1856BC75005D09C1 /* KKNavigationController.m in Sources */,
-				2AFFF36E181232B60045BFD0 /* AVCamCaptureManager.m in Sources */,
 				119E962F1814C5A300866DE8 /* ASIS3ServiceRequest.m in Sources */,
 				2A32A56F18122C02007CAA8E /* GKAppDelegate.m in Sources */,
 				11C75DAB1812728500A3AA89 /* GKUserLogin.m in Sources */,
@@ -2169,12 +2149,10 @@
 				119E96181814C5A300866DE8 /* ASIAuthenticationDialog.m in Sources */,
 				119E96201814C5A300866DE8 /* ASIWebPageRequest.m in Sources */,
 				119E961B1814C5A300866DE8 /* ASIDownloadCache.m in Sources */,
-				2AFFF36F181232B60045BFD0 /* AVCamRecorder.m in Sources */,
 				11A5A898187BBC9F00EA22CD /* MTCustomActionSheet.m in Sources */,
 				119EA9BA18160F170070DBF1 /* GKLeftViewController.m in Sources */,
 				11A3BF48187567E20032BA07 /* GKStudentListViewController.m in Sources */,
 				2AFFF35318122D8B0045BFD0 /* GKMainViewController.m in Sources */,
-				2AFFF370181232B60045BFD0 /* AVCamViewController.m in Sources */,
 				119E96241814C5A300866DE8 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				111E8CE4181E532400234014 /* SDWebImageDownloaderOperation.m in Sources */,
 				119F0C96181A0AFC00A5910C /* GKButton.m in Sources */,

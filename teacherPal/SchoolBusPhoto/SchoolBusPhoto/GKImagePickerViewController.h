@@ -17,19 +17,23 @@
 //#import "GKUserLogin.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "KKNavigationController.h"
-@interface GKImagePickerViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate,photoCellDelegate,showViewController>
+
+@class GKBadgeView;
+@interface GKImagePickerViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate,photoCellDelegate,showViewController,UIAlertViewDelegate>
 {
     NSMutableArray *imageArr;
     
    // GKUserLogin *usr;
     UITableView *_tableView;
-    
+    UIButton *delButton;
+    UIButton * photobutton;
+    GKBadgeView *badgeView;
     //GKBadgeView *badgeView;
 }
 @property(nonatomic,retain)ALAssetsGroup *group_;
 @property (nonatomic,retain)NSMutableArray *selectArr;
 @property (nonatomic,retain)NSMutableArray *imageArr;
-@property (nonatomic,retain) UILabel *countLabel;
+//@property (nonatomic,retain) UILabel *countLabel;
 //@property (nonatomic, retain)SRRefreshView   *_slimeView;
 //@property (nonatomic,retain)ALAssetsLibrary *libery;
 @end

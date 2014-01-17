@@ -109,6 +109,8 @@
 		119AC2771839C63500ED19D3 /* GKUploaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 119AC2761839C63500ED19D3 /* GKUploaderCell.m */; };
 		119AC2991839FB3B00ED19D3 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 119AC2981839FB3B00ED19D3 /* DACircularProgressView.m */; };
 		119AC29B183A0C1F00ED19D3 /* zhushi1.png in Resources */ = {isa = PBXBuildFile; fileRef = 119AC29A183A0C1F00ED19D3 /* zhushi1.png */; };
+		119C7C8D1889062A00572BCB /* delN.png in Resources */ = {isa = PBXBuildFile; fileRef = 119C7C8B1889062A00572BCB /* delN.png */; };
+		119C7C8E1889062A00572BCB /* delH.png in Resources */ = {isa = PBXBuildFile; fileRef = 119C7C8C1889062A00572BCB /* delH.png */; };
 		119E5FCB1818C65100726761 /* ClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 119E5FC81818C65100726761 /* ClassInfo.m */; };
 		119E5FD21818EE8D00726761 /* GKBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 119E5FD11818EE8D00726761 /* GKBaseViewController.m */; };
 		119E5FD91818FD5300726761 /* GKFindWraper.m in Sources */ = {isa = PBXBuildFile; fileRef = 119E5FD81818FD5300726761 /* GKFindWraper.m */; };
@@ -528,6 +530,8 @@
 		119AC2971839FB3B00ED19D3 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
 		119AC2981839FB3B00ED19D3 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 		119AC29A183A0C1F00ED19D3 /* zhushi1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zhushi1.png; sourceTree = "<group>"; };
+		119C7C8B1889062A00572BCB /* delN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delN.png; sourceTree = "<group>"; };
+		119C7C8C1889062A00572BCB /* delH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delH.png; sourceTree = "<group>"; };
 		119E5FC71818C65100726761 /* ClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassInfo.h; sourceTree = "<group>"; };
 		119E5FC81818C65100726761 /* ClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassInfo.m; sourceTree = "<group>"; };
 		119E5FD01818EE8D00726761 /* GKBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBaseViewController.h; sourceTree = "<group>"; };
@@ -1282,6 +1286,8 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				119C7C8B1889062A00572BCB /* delN.png */,
+				119C7C8C1889062A00572BCB /* delH.png */,
 				114F66A81887C2780071D2AE /* duihaohuizhi.png */,
 				114F66A61887C16E0071D2AE /* kuang.png */,
 				11CE2A8F187FF5AD00742001 /* imageerror.png */,
@@ -1938,6 +1944,7 @@
 				11BF897918363CF7008E72F0 /* homeNotice.png in Resources */,
 				7870A0FC187E44A2009250FB /* save_default.png in Resources */,
 				11A5A888187B986600EA22CD /* setting.png in Resources */,
+				119C7C8E1889062A00572BCB /* delH.png in Resources */,
 				1194023F182360EB00F21FB8 /* M-6.png in Resources */,
 				119F0CB6181A2D5B00A5910C /* back.png in Resources */,
 				1165E27C182CFCE000B60A81 /* pic-2.png in Resources */,
@@ -1982,6 +1989,7 @@
 				11B852A7183221CF005FA5B9 /* OKBtn_sel.png in Resources */,
 				11AF3B0D18168C4900B36176 /* loginIcon11.png in Resources */,
 				11940246182391C100F21FB8 /* back-2.png in Resources */,
+				119C7C8D1889062A00572BCB /* delN.png in Resources */,
 				78709C20187D1733009250FB /* navbar-button-green-active@2x.png in Resources */,
 				113BCAC4182B5E900079E9AD /* jifen.png in Resources */,
 				1102A7F1181A537B00E6295C /* guanlian.png in Resources */,

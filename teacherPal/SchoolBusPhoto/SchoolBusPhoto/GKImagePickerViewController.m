@@ -10,7 +10,7 @@
 #import "ETPhoto.h"
 #import "GKAppDelegate.h"
 #import "GKBadgeView.h"
-
+#import "GKLoaderManager.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UpLoader.h"
 
@@ -628,7 +628,7 @@
     an.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     an.duration =0.15;
     an.repeatCount = 1;
-    an.autoreverses = YES;
+    //an.autoreverses = YES;
     an.fromValue = [NSNumber numberWithFloat:0.2];
     an.toValue = [NSNumber numberWithFloat:1.0];
     [badgeView.layer addAnimation:an forKey:@"dfdf"];

@@ -39,7 +39,8 @@
 		// This may change later, see observeValueForKeyPath...
 		CGFloat offset = theme.thickness;
 		CGFloat width = frame.size.width - offset;
-		CGFloat height = frame.size.height - offset;
+//		CGFloat height = frame.size.height - offset;
+        CGFloat height = 20;
 		CGRect adjustedFrame = CGRectMake(frame.origin.x + offset, frame.origin.y + offset, width, height);
 		self.bounds = adjustedFrame;
 		

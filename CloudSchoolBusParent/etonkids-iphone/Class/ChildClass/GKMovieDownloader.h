@@ -11,7 +11,7 @@
 
 @protocol GKMovieDownloaderDelegate <NSObject>
 
-- (void)didFinishedDownloadMovieWithPath:(NSString *)path;
+- (void)sharecontent:(NSString *)shareId didFinishedDownloadMovieWithPath:(NSString *)path;
 
 @end
 
@@ -23,9 +23,12 @@
 @property (nonatomic, retain) NSString *movieURL;
 @property (nonatomic, assign) id<GKMovieDownloaderDelegate> delegate;
 @property (nonatomic, retain) MDRadialProgressView *radiaProgress;
+@property (nonatomic, retain) UIView *progressShowView;
+@property (nonatomic, retain)NSString *shareID;
 
 
 - (id)initWithMovieURL:(NSString *)url;
 - (void)startDownload;
+- (void)progressShowInView:(UIView *)view;
 
 @end

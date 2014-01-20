@@ -32,6 +32,10 @@
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"CHILDINFO" object:nil];
+    self.mainTV = nil;
+    self.tImageArr = nil;
+    self.titleArr = nil;
+    
     [super dealloc];
 }
 

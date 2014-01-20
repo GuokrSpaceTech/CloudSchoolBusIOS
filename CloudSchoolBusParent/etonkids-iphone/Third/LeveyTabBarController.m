@@ -214,6 +214,7 @@ static LeveyTabBarController *leveyTabBarController;
 //	[_tabBar release];
 //    [_containerView release];
 //    [_transitionView release];
+    NSLog(@"%d",_viewControllers.retainCount);
 	[_viewControllers release];
     [super dealloc];
 }

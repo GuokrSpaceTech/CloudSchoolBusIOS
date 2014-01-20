@@ -37,4 +37,6 @@ static NSString *keyThickness = @"theme.thickness";
 // The label shown in the view's center.
 @property (strong, nonatomic) MDRadialProgressLabel *label;
 
+@property (assign, nonatomic) CGFloat progress;
+
 @end

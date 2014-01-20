@@ -15,7 +15,8 @@
 #import "ETCoreDataManager.h"
 #import "NSDate+convenience.h"
 #import <MediaPlayer/MediaPlayer.h>
-#import "GKMovieCell.h"
+//#import "GKMovieCell.h"
+#import "GKMovieManager.h"
 
 @interface ETClassViewController ()
 
@@ -328,7 +329,10 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"CommentNumberUpdate" object:nil];
+    GKMovieManager *mm = [GKMovieManager shareManager];
+    if (mm.playingCell && mm.playingCell.mPlayer.playbackState == MPMoviePlaybackStatePlaying) {
+        [mm.playingCell.mPlayer stop];
+    }
 }
 
 - (void)doUpdate:(NSNotification *)noti
@@ -655,6 +659,15 @@
 
 #pragma mark - Table view data source
 
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell isKindOfClass:[GKMovieCell class]])
+    {
+        GKMovieCell *mCell = (GKMovieCell *)cell;
+        [mCell.mPlayer stop];
+    }
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -735,22 +748,22 @@
                 // calculate title size.
                 CGSize titleSize = [sContent.shareTitle sizeWithFont:[UIFont systemFontOfSize:TITLEFONTSIZE] constrainedToSize:CGSizeMake(230, 1000) lineBreakMode:UILineBreakModeWordWrap];
                 
-                if (titleSize.height > cell.titleLabel.font.lineHeight * 1)
-                {
+//                if (titleSize.height > cell.titleLabel.font.lineHeight * 1)
+//                {
                     cell.titleLabel.frame = CGRectMake(cell.titleLabel.frame.origin.x,
                                                        cell.titleLabel.frame.origin.y,
                                                        titleSize.width,
                                                        cell.titleLabel.font.lineHeight * 1);
                     calculateHeight = cell.titleLabel.frame.origin.y + cell.titleLabel.font.lineHeight * 1;
-                }
-                else
-                {
-                    cell.titleLabel.frame = CGRectMake(cell.titleLabel.frame.origin.x,
-                                                       cell.titleLabel.frame.origin.y,
-                                                       titleSize.width,
-                                                       titleSize.height);
-                    calculateHeight = cell.titleLabel.frame.origin.y + titleSize.height;
-                }
+//                }
+//                else
+//                {
+//                    cell.titleLabel.frame = CGRectMake(cell.titleLabel.frame.origin.x,
+//                                                       cell.titleLabel.frame.origin.y,
+//                                                       titleSize.width,
+//                                                       titleSize.height);
+//                    calculateHeight = cell.titleLabel.frame.origin.y + titleSize.height;
+//                }
                 
                 
                 cell.titleLabel.text = sContent.shareTitle;
@@ -993,22 +1006,22 @@
                 // calculate title size.
                 CGSize titleSize = [sContent.shareTitle sizeWithFont:[UIFont systemFontOfSize:TITLEFONTSIZE] constrainedToSize:CGSizeMake(230, 1000) lineBreakMode:UILineBreakModeWordWrap];
                 
-                if (titleSize.height > cell.titleLabel.font.lineHeight * 1)
-                {
+//                if (titleSize.height > cell.titleLabel.font.lineHeight * 1)
+//                {
                     cell.titleLabel.frame = CGRectMake(cell.titleLabel.frame.origin.x,
                                                        cell.titleLabel.frame.origin.y,
                                                        titleSize.width,
                                                        cell.titleLabel.font.lineHeight * 1);
                     calculateHeight = cell.titleLabel.frame.origin.y + cell.titleLabel.font.lineHeight * 1;
-                }
-                else
-                {
-                    cell.titleLabel.frame = CGRectMake(cell.titleLabel.frame.origin.x,
-                                                       cell.titleLabel.frame.origin.y,
-                                                       titleSize.width,
-                                                       titleSize.height);
-                    calculateHeight = cell.titleLabel.frame.origin.y + titleSize.height;
-                }
+//                }
+//                else
+//                {
+//                    cell.titleLabel.frame = CGRectMake(cell.titleLabel.frame.origin.x,
+//                                                       cell.titleLabel.frame.origin.y,
+//                                                       titleSize.width,
+//                                                       titleSize.height);
+//                    calculateHeight = cell.titleLabel.frame.origin.y + titleSize.height;
+//                }
                 
                 
                 cell.titleLabel.text = sContent.shareTitle;
@@ -1300,15 +1313,15 @@
     int calculateHeight = 0; // add up height.
     
     // calculate title size.
-    CGSize titleSize = [sContent.shareTitle sizeWithFont:[UIFont systemFontOfSize:TITLEFONTSIZE] constrainedToSize:CGSizeMake(230, 1000) lineBreakMode:UILineBreakModeWordWrap];
-    if (titleSize.height > [UIFont systemFontOfSize:TITLEFONTSIZE].lineHeight * 1)
-    {
+//    CGSize titleSize = [sContent.shareTitle sizeWithFont:[UIFont systemFontOfSize:TITLEFONTSIZE] constrainedToSize:CGSizeMake(230, 1000) lineBreakMode:UILineBreakModeWordWrap];
+//    if (titleSize.height > [UIFont systemFontOfSize:TITLEFONTSIZE].lineHeight * 1)
+//    {
         calculateHeight = 10 + [UIFont systemFontOfSize:TITLEFONTSIZE].lineHeight * 1;
-    }
-    else
-    {
-        calculateHeight = 10 + titleSize.height;
-    }
+//    }
+//    else
+//    {
+//        calculateHeight = 10 + titleSize.height;
+//    }
     
     
     NSDictionary *fDic = [sContent.sharePicArr objectAtIndex:0];
@@ -1340,7 +1353,7 @@
     }
     
     
-    
+//    NSLog(@"index path %d,    %d",indexPath.row,calculateHeight);
     
     return calculateHeight;
        
@@ -1560,7 +1573,7 @@
     
     
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(controlVisibleCellPlay) object:nil];
-    [self performSelector:@selector(controlVisibleCellPlay) withObject:nil afterDelay:0.5];
+    [self performSelector:@selector(controlVisibleCellPlay) withObject:nil afterDelay:0.1f];
     
     
 }
@@ -1569,6 +1582,7 @@
 
 - (void)controlVisibleCellPlay
 {
+    
     
     NSArray *cells = [self._tableView visibleCells];
     
@@ -1585,23 +1599,24 @@
         {
             GKMovieCell *tempCell = (GKMovieCell *)obj;
             
-            int dis = ABS(tempCell.frame.origin.y - (self._tableView.contentOffset.y + self._tableView.frame.size.height/3.0f));
+            int dis = ABS(tempCell.frame.origin.y - (self._tableView.contentOffset.y));
             if (dis < minDis) {
                 minDis = dis;
                 cell = tempCell;
             }
-//            NSLog(@"%f,%f",tempCell.frame.origin.y,self._tableView.contentOffset.y + self._tableView.frame.size.height/2.0f);
+//            NSLog(@"%f,%f",tempCell.frame.origin.y,self._tableView.contentOffset.y );
             
             
         }
         
     }
     
-    if (minDis != 1000) {
-        
-//        NSLog(@"%f",cell.frame.origin.y);
-        if (cell.mPlayer.playbackState == MPMoviePlaybackStateStopped || cell.mPlayer.playbackState == MPMoviePlaybackStatePaused) {
-            [cell.mPlayer play];
+    if (minDis != 1000)
+    {
+        if (cell.mPlayer.playbackState == MPMoviePlaybackStateStopped || cell.mPlayer.playbackState == MPMoviePlaybackStatePaused)
+        {
+            GKMovieManager *mm = [GKMovieManager shareManager];
+            [mm toggleMoviePlayingWithCell:cell];
         }
     }
     

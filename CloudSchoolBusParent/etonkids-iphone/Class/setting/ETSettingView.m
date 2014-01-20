@@ -21,6 +21,7 @@
 #import "ETChildManagerViewController.h"
 #import "AboutOursViewController.h"
 #import "ETHelpViewController.h"
+#import "GKMovieCache.h"
 
 #define VersionAlert 996
 
@@ -71,7 +72,7 @@
         case 0:
             return 3;
         case 1:
-            return 3;
+            return 4;
             
             
     }
@@ -145,15 +146,20 @@
     else if (indexPath.section == 1)
     {
         if (indexPath.row == 0) {
+            float size = [GKMovieCache getSize]/1024.0f/1024.f;
+            cell.textLabel.text = [NSString stringWithFormat:@"%@   ( %.2f M )", LOCAL(@"clearCache", @""),size];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        else if (indexPath.row == 1) {
             cell.textLabel.text = LOCAL(@"btm_newversion",@"");
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
-        else if (indexPath.row == 1)
+        else if (indexPath.row == 2)
         {
             cell.textLabel.text = LOCAL(@"About Us", @"");
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
-        else if (indexPath.row == 2)
+        else if (indexPath.row == 3)
         {
             cell.textLabel.text = LOCAL(@"setting_help", @"");
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -201,17 +207,22 @@
     }
     if(indexPath.section == 1)
     {
-        if(indexPath.row==0)
+        if (indexPath.row == 0)
+        {
+            ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"confirmClear", @"")  delegate:self cancelButtonTitle:LOCAL(@"cancel", @"") otherButtonTitles:LOCAL(@"ok", @""), nil];
+            [alert show];
+        }
+        else if(indexPath.row == 1)
         {
             [self checkVersion];
         }
-        else if (indexPath.row == 1)
+        else if (indexPath.row == 2)
         {
             AboutOursViewController *aboutVC = [[AboutOursViewController alloc] init];
             [app.bottomNav pushViewController:aboutVC animated:YES];
             [aboutVC release];
         }
-        else if (indexPath.row == 2)
+        else if (indexPath.row == 3)
         {
             ETHelpViewController *aboutVC = [[ETHelpViewController alloc] init];
             [app.bottomNav pushViewController:aboutVC animated:YES];
@@ -220,6 +231,16 @@
     }
     
     
+}
+
+- (void)alertView:(ETCustomAlertView *)alertView didSelectButtonAtIndex:(NSInteger)index
+{
+    if (index == 1) {
+        NSLog(@"clear cache ");
+        [GKMovieCache clearDiskCache];
+        
+        [self.mainTV reloadData];
+    }
 }
 
 - (void)checkVersion

@@ -301,10 +301,12 @@
     }
     
     
-    topView = [[UIView alloc] initWithFrame:CGRectMake(0, ios7 ? 20 : 0, 320, iphone5 ? 548 : 460)];
-    topView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:topView];
-    [topView release];
+    UIView *topv = [[UIView alloc] initWithFrame:CGRectMake(0, ios7 ? 20 : 0, 320, iphone5 ? 548 : 460)];
+    topv.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:topv];
+    [topv release];
+    
+    self.topView = topv;
     
     [self openGesture];
     
@@ -622,7 +624,7 @@
                 [[topView viewWithTag:1111] removeFromSuperview];
                 self.leveyTBC = nil;
                 
-                [self removeBlackViewWithFade];
+//                [self removeBlackViewWithFade];
                 
             }
             

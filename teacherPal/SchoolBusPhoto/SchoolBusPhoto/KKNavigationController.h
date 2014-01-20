@@ -19,7 +19,7 @@
 #define startX  -200;
 
 
-@interface KKNavigationController : UINavigationController
+@interface KKNavigationController : UINavigationController<UIGestureRecognizerDelegate>
 {
     CGFloat startBackViewX;
     UIPanGestureRecognizer *recognizer ;

@@ -83,6 +83,7 @@ static  GKMainViewController*rootViewCon;
     
     
     _panGestureReconginzer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panInContentView:)];
+    _panGestureReconginzer.delegate=self;
     [self.contentView addGestureRecognizer:_panGestureReconginzer];
     [_panGestureReconginzer release];
     
@@ -170,6 +171,17 @@ static  GKMainViewController*rootViewCon;
     // Dispose of any resources that can be recreated.
 }
 
+// 增加 去除button 相应时间  扩大button 相应区域
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    UIView* touchedView = [touch view];
+    if([touchedView isKindOfClass:[UIButton class]]) {
+        
+        return NO;
+    }
+    
+    return YES;
+}
 - (void)panInContentView:(UIPanGestureRecognizer *)panGestureReconginzer
 {
     [self.view endEditing:YES];

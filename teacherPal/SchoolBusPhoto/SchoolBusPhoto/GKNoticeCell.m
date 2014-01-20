@@ -33,7 +33,7 @@
         IconImageView=[[UIImageView alloc]initWithFrame:CGRectMake(15, 10, 25, 25)];
         IconImageView.backgroundColor=[UIColor clearColor];
         [self.contentView addSubview:IconImageView];
-        IconImageView.image=[UIImage imageNamed:@"noticeInfo.png"];
+        IconImageView.image=[UIImage imageNamed:@"noticeStar.png"];
         
         lineImageView=[[UIImageView alloc]initWithFrame:CGRectZero];
         lineImageView.backgroundColor=[UIColor clearColor];
@@ -280,11 +280,14 @@
     {
         huizhiLabel.frame=CGRectMake(200, 10+height+10, 100, 15);
         huizhiLabel.text=[NSString stringWithFormat:@"已回执%d人",[notice.sisconfirm count]];
+        IconImageView.image=[UIImage imageNamed:@"noticeStar.png"];
+      
 
     }
     else
     {
         huizhiLabel.frame=CGRectZero;
+        IconImageView.image=[UIImage imageNamed:@"noticeEmail.png"];
     }
     height+=20; // time 高度
     bottomView.frame=CGRectMake(10,5 , 300, 10+height+10);

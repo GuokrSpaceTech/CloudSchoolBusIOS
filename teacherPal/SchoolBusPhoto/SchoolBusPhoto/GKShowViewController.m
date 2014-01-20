@@ -57,6 +57,7 @@
 
     
 
+    
     prePage=0;
     stuList = [[NSMutableArray alloc] init];
     picTextArr = [[NSMutableArray alloc] init];

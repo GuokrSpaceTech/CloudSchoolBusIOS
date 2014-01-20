@@ -170,11 +170,66 @@
     else
     {
         //把 数据加入到数据库
+       
         
-
+        
+        [self performSelectorInBackground:@selector(addIgnore:) withObject:nil];
+    
+  //  [manager addNewPicToCoreData:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];// 图片tag
         
 
     }
+}
+-(void)addIgnore:(id)sender
+{
+    GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
+    for (int i=0; i<[selectArr count]; i++) {
+        ETPhoto *photo=[selectArr objectAtIndex:i];
+        
+        
+        [manager addNewPicToCoreData:@"" name:@"" iSloading:[NSNumber numberWithInt:2] nameId:photo.nameId studentId:@"" time:[NSNumber numberWithInt:0] fsize:[NSNumber numberWithInt:0] classID:[NSNumber numberWithInt:0] intro:@"" data:nil tag:@""];// 图片tag
+    }
+    
+    [self
+     performSelectorOnMainThread:@selector(uploadUI) withObject:nil waitUntilDone:YES];
+}
+-(void)uploadUI
+{
+
+  
+    if([selectArr count] >0)
+    {
+        // GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
+        // NSArray *coreArr= [manager getAllUploaderPhotoFromCoreData];
+        
+        for (int i=0; i<[selectArr count]; i++) {
+            ETPhoto *photo=[selectArr objectAtIndex:i];
+            for (int j=0; j<[imageArr count]; j++) {
+                ETPhoto *temp=[imageArr objectAtIndex:j];
+
+                if([photo.nameId isEqualToString:temp.nameId])
+                {
+                    [imageArr removeObject:photo];
+                }
+            }
+        }
+        
+        if([imageArr count]==0)
+        {
+            [self setNOView:NO];
+        }
+        else
+            [self setNOView:YES];
+      
+    
+    }
+    
+    [selectArr removeAllObjects];
+    [self setAllPhotoSelect:NO];
+    [_tableView reloadData];
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"忽略成功" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+    [alert show];
+    [alert release];
 }
 //-(id)retain {
 //    return [super retain];

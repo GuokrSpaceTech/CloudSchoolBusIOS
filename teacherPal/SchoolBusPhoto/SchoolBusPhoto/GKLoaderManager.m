@@ -50,8 +50,8 @@ static GKLoaderManager *manager=nil;
     upLoader.ftime=time;
     upLoader.introduce=intro;
     upLoader.tag = tag;
-    upLoader.isUploading=[NSNumber numberWithInt:UPLOADING];
-    
+   // upLoader.isUploading=[NSNumber numberWithInt:UPLOADING];
+    upLoader.isUploading=isUploading;
     upLoader.smallImage=imageData;
     NSError *err=nil;
    BOOL success= [delegate.managedObjectContext save:&err];

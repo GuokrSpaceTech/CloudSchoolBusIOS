@@ -184,6 +184,8 @@
 		11A5AE6818644125008794C0 /* smilik.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE6718644125008794C0 /* smilik.png */; };
 		11AA3388187CEDC6002FE2D4 /* GKNotice.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AA3387187CEDC6002FE2D4 /* GKNotice.m */; };
 		11AA338B187CFE9A002FE2D4 /* GKNoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AA338A187CFE9A002FE2D4 /* GKNoticeCell.m */; };
+		11AA5B3F188CD93C001EA8B2 /* GKCoreDataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AA5B3E188CD93C001EA8B2 /* GKCoreDataOperation.m */; };
+		11AA5B42188CDC0A001EA8B2 /* GKCoreDataQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AA5B41188CDC0A001EA8B2 /* GKCoreDataQueue.m */; };
 		11AF3AE91816655B00B36176 /* navBarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AE81816655B00B36176 /* navBarImage.png */; };
 		11AF3AEB18166AB200B36176 /* navLeftBtn_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AEA18166AB200B36176 /* navLeftBtn_default.png */; };
 		11AF3AED18166D9A00B36176 /* bottomView.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AEC18166D9A00B36176 /* bottomView.png */; };
@@ -659,6 +661,10 @@
 		11AA3387187CEDC6002FE2D4 /* GKNotice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNotice.m; sourceTree = "<group>"; };
 		11AA3389187CFE9A002FE2D4 /* GKNoticeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKNoticeCell.h; sourceTree = "<group>"; };
 		11AA338A187CFE9A002FE2D4 /* GKNoticeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNoticeCell.m; sourceTree = "<group>"; };
+		11AA5B3D188CD93C001EA8B2 /* GKCoreDataOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCoreDataOperation.h; sourceTree = "<group>"; };
+		11AA5B3E188CD93C001EA8B2 /* GKCoreDataOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCoreDataOperation.m; sourceTree = "<group>"; };
+		11AA5B40188CDC0A001EA8B2 /* GKCoreDataQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCoreDataQueue.h; sourceTree = "<group>"; };
+		11AA5B41188CDC0A001EA8B2 /* GKCoreDataQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCoreDataQueue.m; sourceTree = "<group>"; };
 		11AC07F4186A8BD70080FCC4 /* SchoolBusPhoto 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 3.xcdatamodel"; sourceTree = "<group>"; };
 		11AF3AE81816655B00B36176 /* navBarImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBarImage.png; sourceTree = "<group>"; };
 		11AF3AEA18166AB200B36176 /* navLeftBtn_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navLeftBtn_default.png; sourceTree = "<group>"; };
@@ -1164,6 +1170,10 @@
 				7870A103187E4A48009250FB /* GKCoreDataManager.m */,
 				78881914187F9E0B00D0A851 /* MovieDraft.h */,
 				78881915187F9E0B00D0A851 /* MovieDraft.m */,
+				11AA5B3D188CD93C001EA8B2 /* GKCoreDataOperation.h */,
+				11AA5B3E188CD93C001EA8B2 /* GKCoreDataOperation.m */,
+				11AA5B40188CDC0A001EA8B2 /* GKCoreDataQueue.h */,
+				11AA5B41188CDC0A001EA8B2 /* GKCoreDataQueue.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -2114,6 +2124,7 @@
 				78709BD0187D16CA009250FB /* VideoEncoder.m in Sources */,
 				1193A6CF182C78E9004011BC /* KLineScrollView.m in Sources */,
 				11CE2A97187FF8EA00742001 /* LoadMoreTableFooterView.m in Sources */,
+				11AA5B3F188CD93C001EA8B2 /* GKCoreDataOperation.m in Sources */,
 				11C75DA61812725600A3AA89 /* EKRequest.m in Sources */,
 				119E96211814C5A300866DE8 /* ASICloudFilesCDNRequest.m in Sources */,
 				11B852C718335275005FA5B9 /* ETZoomScrollView.m in Sources */,
@@ -2163,6 +2174,7 @@
 				2AFFF35318122D8B0045BFD0 /* GKMainViewController.m in Sources */,
 				119E96241814C5A300866DE8 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				111E8CE4181E532400234014 /* SDWebImageDownloaderOperation.m in Sources */,
+				11AA5B42188CDC0A001EA8B2 /* GKCoreDataQueue.m in Sources */,
 				119F0C96181A0AFC00A5910C /* GKButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -679,6 +679,12 @@
         [disappearView release];
     }
     [disappearView setactiveStop:NO];
+    
+    
+    
+    
+ 
+    
     [self performSelectorInBackground:@selector(startUpLoaderInBackground) withObject:nil];
     NSLog(@"%d",currentpage);
 
@@ -783,6 +789,11 @@
             }
         NSLog(@"introduce:??????????????????????????????????%@",introduce);
         [manager addNewPicToCoreData:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];// 图片tag
+        
+        
+        
+        
+        
     
         [manager addWraperToArr:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];
         

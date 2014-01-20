@@ -34,7 +34,9 @@
 {
     [super viewDidLoad];
     
-    
+
+ 
+
     UIButton *buttom=[UIButton buttonWithType:UIButtonTypeCustom];
     buttom.frame=CGRectMake(12, 6, 35, 35);
     [buttom setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"left")) forState:UIControlStateNormal];

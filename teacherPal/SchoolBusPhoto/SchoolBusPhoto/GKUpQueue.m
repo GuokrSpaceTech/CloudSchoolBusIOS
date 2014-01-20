@@ -50,7 +50,7 @@ static GKUpQueue *gkqueue=nil;
 -(void)addRequestToQueue:(NSString *)path name:(NSString *)name nameid:(NSString *)nameId studentid:(NSString *)std time:(NSNumber *)time fize:(NSNumber *)fsize classID:(NSNumber *)classid intro:(NSString *)intro tag:(NSString *)tag
 {
     
-    NSAutoreleasePool *pool=[[NSAutoreleasePool alloc]init];
+
     isLoading=YES;
     GKUserLogin *user=[GKUserLogin currentLogin];
     NSLog(@"------%@",classid);
@@ -84,7 +84,7 @@ static GKUpQueue *gkqueue=nil;
     [request addPostValue:[self fileName] forKey:@"pickey"];
     
     [queue addOperation:request];
-    [pool drain];
+
 
     
 }

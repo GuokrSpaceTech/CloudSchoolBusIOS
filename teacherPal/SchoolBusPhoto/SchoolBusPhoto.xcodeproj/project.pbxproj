@@ -109,6 +109,8 @@
 		119AC2771839C63500ED19D3 /* GKUploaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 119AC2761839C63500ED19D3 /* GKUploaderCell.m */; };
 		119AC2991839FB3B00ED19D3 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 119AC2981839FB3B00ED19D3 /* DACircularProgressView.m */; };
 		119AC29B183A0C1F00ED19D3 /* zhushi1.png in Resources */ = {isa = PBXBuildFile; fileRef = 119AC29A183A0C1F00ED19D3 /* zhushi1.png */; };
+		119C7C8D1889062A00572BCB /* delN.png in Resources */ = {isa = PBXBuildFile; fileRef = 119C7C8B1889062A00572BCB /* delN.png */; };
+		119C7C8E1889062A00572BCB /* delH.png in Resources */ = {isa = PBXBuildFile; fileRef = 119C7C8C1889062A00572BCB /* delH.png */; };
 		119E5FCB1818C65100726761 /* ClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 119E5FC81818C65100726761 /* ClassInfo.m */; };
 		119E5FD21818EE8D00726761 /* GKBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 119E5FD11818EE8D00726761 /* GKBaseViewController.m */; };
 		119E5FD91818FD5300726761 /* GKFindWraper.m in Sources */ = {isa = PBXBuildFile; fileRef = 119E5FD81818FD5300726761 /* GKFindWraper.m */; };
@@ -182,6 +184,8 @@
 		11A5AE6818644125008794C0 /* smilik.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE6718644125008794C0 /* smilik.png */; };
 		11AA3388187CEDC6002FE2D4 /* GKNotice.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AA3387187CEDC6002FE2D4 /* GKNotice.m */; };
 		11AA338B187CFE9A002FE2D4 /* GKNoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AA338A187CFE9A002FE2D4 /* GKNoticeCell.m */; };
+		11AA5B3F188CD93C001EA8B2 /* GKCoreDataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AA5B3E188CD93C001EA8B2 /* GKCoreDataOperation.m */; };
+		11AA5B42188CDC0A001EA8B2 /* GKCoreDataQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AA5B41188CDC0A001EA8B2 /* GKCoreDataQueue.m */; };
 		11AF3AE91816655B00B36176 /* navBarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AE81816655B00B36176 /* navBarImage.png */; };
 		11AF3AEB18166AB200B36176 /* navLeftBtn_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AEA18166AB200B36176 /* navLeftBtn_default.png */; };
 		11AF3AED18166D9A00B36176 /* bottomView.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AEC18166D9A00B36176 /* bottomView.png */; };
@@ -528,6 +532,8 @@
 		119AC2971839FB3B00ED19D3 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
 		119AC2981839FB3B00ED19D3 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 		119AC29A183A0C1F00ED19D3 /* zhushi1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zhushi1.png; sourceTree = "<group>"; };
+		119C7C8B1889062A00572BCB /* delN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delN.png; sourceTree = "<group>"; };
+		119C7C8C1889062A00572BCB /* delH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delH.png; sourceTree = "<group>"; };
 		119E5FC71818C65100726761 /* ClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassInfo.h; sourceTree = "<group>"; };
 		119E5FC81818C65100726761 /* ClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassInfo.m; sourceTree = "<group>"; };
 		119E5FD01818EE8D00726761 /* GKBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBaseViewController.h; sourceTree = "<group>"; };
@@ -655,6 +661,10 @@
 		11AA3387187CEDC6002FE2D4 /* GKNotice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNotice.m; sourceTree = "<group>"; };
 		11AA3389187CFE9A002FE2D4 /* GKNoticeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKNoticeCell.h; sourceTree = "<group>"; };
 		11AA338A187CFE9A002FE2D4 /* GKNoticeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNoticeCell.m; sourceTree = "<group>"; };
+		11AA5B3D188CD93C001EA8B2 /* GKCoreDataOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCoreDataOperation.h; sourceTree = "<group>"; };
+		11AA5B3E188CD93C001EA8B2 /* GKCoreDataOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCoreDataOperation.m; sourceTree = "<group>"; };
+		11AA5B40188CDC0A001EA8B2 /* GKCoreDataQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCoreDataQueue.h; sourceTree = "<group>"; };
+		11AA5B41188CDC0A001EA8B2 /* GKCoreDataQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCoreDataQueue.m; sourceTree = "<group>"; };
 		11AC07F4186A8BD70080FCC4 /* SchoolBusPhoto 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 3.xcdatamodel"; sourceTree = "<group>"; };
 		11AF3AE81816655B00B36176 /* navBarImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBarImage.png; sourceTree = "<group>"; };
 		11AF3AEA18166AB200B36176 /* navLeftBtn_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navLeftBtn_default.png; sourceTree = "<group>"; };
@@ -1160,6 +1170,10 @@
 				7870A103187E4A48009250FB /* GKCoreDataManager.m */,
 				78881914187F9E0B00D0A851 /* MovieDraft.h */,
 				78881915187F9E0B00D0A851 /* MovieDraft.m */,
+				11AA5B3D188CD93C001EA8B2 /* GKCoreDataOperation.h */,
+				11AA5B3E188CD93C001EA8B2 /* GKCoreDataOperation.m */,
+				11AA5B40188CDC0A001EA8B2 /* GKCoreDataQueue.h */,
+				11AA5B41188CDC0A001EA8B2 /* GKCoreDataQueue.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1282,6 +1296,8 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				119C7C8B1889062A00572BCB /* delN.png */,
+				119C7C8C1889062A00572BCB /* delH.png */,
 				114F66A81887C2780071D2AE /* duihaohuizhi.png */,
 				114F66A61887C16E0071D2AE /* kuang.png */,
 				11CE2A8F187FF5AD00742001 /* imageerror.png */,
@@ -1938,6 +1954,7 @@
 				11BF897918363CF7008E72F0 /* homeNotice.png in Resources */,
 				7870A0FC187E44A2009250FB /* save_default.png in Resources */,
 				11A5A888187B986600EA22CD /* setting.png in Resources */,
+				119C7C8E1889062A00572BCB /* delH.png in Resources */,
 				1194023F182360EB00F21FB8 /* M-6.png in Resources */,
 				119F0CB6181A2D5B00A5910C /* back.png in Resources */,
 				1165E27C182CFCE000B60A81 /* pic-2.png in Resources */,
@@ -1982,6 +1999,7 @@
 				11B852A7183221CF005FA5B9 /* OKBtn_sel.png in Resources */,
 				11AF3B0D18168C4900B36176 /* loginIcon11.png in Resources */,
 				11940246182391C100F21FB8 /* back-2.png in Resources */,
+				119C7C8D1889062A00572BCB /* delN.png in Resources */,
 				78709C20187D1733009250FB /* navbar-button-green-active@2x.png in Resources */,
 				113BCAC4182B5E900079E9AD /* jifen.png in Resources */,
 				1102A7F1181A537B00E6295C /* guanlian.png in Resources */,
@@ -2106,6 +2124,7 @@
 				78709BD0187D16CA009250FB /* VideoEncoder.m in Sources */,
 				1193A6CF182C78E9004011BC /* KLineScrollView.m in Sources */,
 				11CE2A97187FF8EA00742001 /* LoadMoreTableFooterView.m in Sources */,
+				11AA5B3F188CD93C001EA8B2 /* GKCoreDataOperation.m in Sources */,
 				11C75DA61812725600A3AA89 /* EKRequest.m in Sources */,
 				119E96211814C5A300866DE8 /* ASICloudFilesCDNRequest.m in Sources */,
 				11B852C718335275005FA5B9 /* ETZoomScrollView.m in Sources */,
@@ -2155,6 +2174,7 @@
 				2AFFF35318122D8B0045BFD0 /* GKMainViewController.m in Sources */,
 				119E96241814C5A300866DE8 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				111E8CE4181E532400234014 /* SDWebImageDownloaderOperation.m in Sources */,
+				11AA5B42188CDC0A001EA8B2 /* GKCoreDataQueue.m in Sources */,
 				119F0C96181A0AFC00A5910C /* GKButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

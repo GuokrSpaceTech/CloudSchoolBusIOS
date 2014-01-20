@@ -57,12 +57,6 @@
 
     
 
-    // 禁用 向左滑动
-    UIPanGestureRecognizer*  recognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(paningGestureReceive:)];
-    [recognizer delaysTouchesBegan];
-    [self.view addGestureRecognizer:recognizer];
-    [recognizer release];
-    
     prePage=0;
     stuList = [[NSMutableArray alloc] init];
     picTextArr = [[NSMutableArray alloc] init];
@@ -167,10 +161,11 @@
     _scroller.showsHorizontalScrollIndicator=NO;
     _scroller.showsVerticalScrollIndicator=NO;
     _scroller.pagingEnabled=YES;
+    _scroller.scrollEnabled=YES;
     _scroller.delegate=self;
     [_scroller release];
     
-    [self.view bringSubviewToFront:navigationView];
+   // [self.view bringSubviewToFront:navigationView];
     
     
     if(ios7)
@@ -684,6 +679,12 @@
         [disappearView release];
     }
     [disappearView setactiveStop:NO];
+    
+    
+    
+    
+ 
+    
     [self performSelectorInBackground:@selector(startUpLoaderInBackground) withObject:nil];
     NSLog(@"%d",currentpage);
 
@@ -699,48 +700,45 @@
     NSString *documentpath=[arr objectAtIndex:0];
     for (int i=0; i<[assetArr count]; i++)
     {
-
-//        if(type==1)
-//        {
-//            //相册
         
-            ETPhoto *photo=[assetArr objectAtIndex:i];
-            ALAssetRepresentation *representation = [photo.asset defaultRepresentation];
-            NSString* filename = [documentpath stringByAppendingPathComponent:[representation filename]];
-            UIImage *thumbiamge=[UIImage imageWithCGImage:photo.asset.thumbnail];
-            BOOL cureateSuccess= [[NSFileManager defaultManager] createFileAtPath:filename contents:nil attributes:nil];
-            if(!cureateSuccess)
-            {
-                continue;
-            }
-            NSOutputStream *outPutStream = [NSOutputStream outputStreamToFileAtPath:filename append:YES];
-            [outPutStream open];
-            long long offset = 0;
-            long long bytesRead = 0;
-            NSLog(@"%lld",representation.size);
-            NSError *error=nil;
+        NSAutoreleasePool *pool=[[NSAutoreleasePool alloc]init];
+        
+        ETPhoto *photo=[assetArr objectAtIndex:i];
+        ALAssetRepresentation *representation = [photo.asset defaultRepresentation];
+        NSString* filename = [documentpath stringByAppendingPathComponent:[representation filename]];
+        UIImage *thumbiamge=[UIImage imageWithCGImage:photo.asset.thumbnail];
+        BOOL cureateSuccess= [[NSFileManager defaultManager] createFileAtPath:filename contents:nil attributes:nil];
+        if(!cureateSuccess)
+        {
+            NSLog(@"----------------------------创建文件失败");
+            continue;
+        }
+        
+        NSLog(@"----------------------------创建文件成功");
+        NSOutputStream *outPutStream = [NSOutputStream outputStreamToFileAtPath:filename append:YES];
+        [outPutStream open];
+        long long offset = 0;
+        long long bytesRead = 0;
+        //NSLog(@"%lld",representation.size);
+        NSError *error=nil;
             
         // 增加写文件错误处理
-            uint8_t * buffer = malloc(131072);
-            while (offset<[representation size] && [outPutStream hasSpaceAvailable]) {
-                
-                
-                
-                bytesRead = [representation getBytes:buffer fromOffset:offset length:131072 error:&error];
-                if(error || bytesRead==0) // 如果写文件出错 跳出改讯黄
-                    break;
-                [outPutStream write:buffer maxLength:bytesRead];
-                offset = offset+bytesRead;
-                
-                
-                NSLog(@" ------representationsize:%lld---------offset:%lld",representation.size, offset);
-            }  
+        uint8_t * buffer = malloc(131072);
+        while (offset<[representation size] && [outPutStream hasSpaceAvailable]) {
+            bytesRead = [representation getBytes:buffer fromOffset:offset length:131072 error:&error];
+            if(error || bytesRead==0) // 如果写文件出错 跳出改讯黄
+            {
+                NSLog(@"？？？？？？？？？？？？？？？？？？？？写文件失败");
+                break;
+            }
+            [outPutStream write:buffer maxLength:bytesRead];
+            offset = offset+bytesRead;
+               // NSLog(@" ------representationsize:%lld---------offset:%lld",representation.size, offset);
+        }
             [outPutStream close];  
             free(buffer);
-            
-            
         
-            NSLog(@"%@",error);
+            NSLog(@"error:%@",error);
             if(error || offset==0)
             {
                 // 如果写文件失败 跳过上传该文件
@@ -748,7 +746,7 @@
                 continue;
                // return;
             }
-        
+           NSLog(@"？？？？？？？？？？？？？？？？？？？？写文件成功");
      
            // NSLog(@"%@",photo.date);
             
@@ -761,12 +759,13 @@
                  ftime=[[NSDate date]timeIntervalSince1970];
             }
             
-            NSString *studentId=nil;
+            NSString *studentId=@"";
             NSString *key=[NSString stringWithFormat:@"%d",i];
             NSString *introduce = @"";
             
             for (int j=0; j<[stuList count]; j++)
             {
+                
                 NSDictionary *dic=[stuList objectAtIndex:j];
                 NSString *tempKey=[[dic allKeys] objectAtIndex:0];
                 if([key isEqualToString:tempKey])
@@ -775,6 +774,8 @@
                     break;
                 }
             }
+        
+        NSLog(@"studentId:??????????????????????????????????%@",studentId);
             for (int j = 0; j < [picTextArr count]; j++) {
                 NSDictionary *introduceDic = [picTextArr objectAtIndex:j];
                 NSString *txtKey = [[introduceDic allKeys] lastObject];
@@ -786,22 +787,29 @@
                     break;
                 }
             }
-
-            BOOL success= [manager addNewPicToCoreData:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];// 图片tag
-            if(success)
-            {
-                [manager addWraperToArr:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];
-            }
-     
-
-    }
+        NSLog(@"introduce:??????????????????????????????????%@",introduce);
+        [manager addNewPicToCoreData:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];// 图片tag
+        
+        
+        
+        
+        
     
+        [manager addWraperToArr:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];
+        
+            [pool release];
+        }
+     
+    
+
+    
+     NSLog(@"？？？？？？？？？？？？？？？？？？？？循环完毕");
     [self performSelectorOnMainThread:@selector(toMainThread) withObject:nil waitUntilDone:YES];
 
 }
 -(void)toMainThread
 {
-    
+     NSLog(@"？？？？？？？？？？？？？？？？？？？进入主线程");
     disappearView.textLabel.text=NSLocalizedString(@"processingafter", @"");
     [disappearView setactiveStop:YES];
     [self.navigationController popViewControllerAnimated:YES];
@@ -812,7 +820,7 @@
 }
 -(void)delay
 {
-    
+     NSLog(@"？？？？？？？？？？？？？？？？？？？view  消失");
     if(disappearView!=nil)
     {
         [disappearView removeFromSuperview];
@@ -966,10 +974,7 @@
     
     
 }
-- (void)paningGestureReceive:(UIPanGestureRecognizer *)recoginzer
-{
-    return;
-}
+
 -(void)setAlreayStudent
 {
     

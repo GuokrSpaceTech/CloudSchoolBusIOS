@@ -8,9 +8,9 @@
 
 #import "GKImagePickerViewController.h"
 #import "ETPhoto.h"
+#import "GKAppDelegate.h"
+#import "GKBadgeView.h"
 #import "GKLoaderManager.h"
-
-
 #import <QuartzCore/QuartzCore.h>
 #import "UpLoader.h"
 
@@ -23,7 +23,7 @@
 @implementation GKImagePickerViewController
 @synthesize imageArr;
 @synthesize selectArr;
-@synthesize countLabel;
+//@synthesize countLabel;
 //@synthesize _slimeView;
 //@synthesize libery;
 @synthesize group_;
@@ -40,9 +40,12 @@
 {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(LoadPhotoIfDeviceActive) name:@"ACTIVEPHOTO" object:nil];
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(LoadPhotoIfDeviceActive) name:@"ACTIVEPHOTO" object:nil];
     
+    // 增加监听 ，当相册相片改变时 执行
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(LoadPhotoIfDeviceActive:) name:ALAssetsLibraryChangedNotification object:nil];
+    //ALAssetsLibraryChangedNotification
     if(imageArr==nil)
         imageArr=[[NSMutableArray alloc]init];
     else
@@ -53,36 +56,14 @@
 
     UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeRoundedRect];
     buttonBack.frame=CGRectMake(10, 5, 34, 35);
-    [buttonBack setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [buttonBack setBackgroundImage:[UIImage imageNamed:@"backH.png"] forState:UIControlStateHighlighted];
+    [buttonBack setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"back")) forState:UIControlStateNormal];
+    [buttonBack setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"backH")) forState:UIControlStateHighlighted];
     [navigationView addSubview:buttonBack];
     [buttonBack addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
 
-    
-
-    
-    
-    
-    
-    
-//    UIButton *photobutton=[UIButton buttonWithType:UIButtonTypeCustom];
-//    photobutton.frame=CGRectMake(280, 5, 35, 35);
-//    [photobutton setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"photoBtn")) forState:UIControlStateNormal];
-//    [photobutton setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"photoBtnH")) forState:UIControlStateHighlighted];
-//    [photobutton addTarget:self action:@selector(takePhoto:) forControlEvents:UIControlEventTouchUpInside];
-//    [navigationView addSubview:photobutton];
-    
- 
-    
-//    usr=[GKUserLogin currentLogin];
-// 
-//    [usr addObserver:self forKeyPath:@"badgeNumber" options:NSKeyValueObservingOptionNew context:NULL];
-//    
-//    titlelabel.text=usr.classInfo.classname;
-
     NSLog(@"%f",self.view.frame.size.height);
     if(ios7)
-        _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, IOS7OFFSET+46, self.view.frame.size.width, self.view.frame.size.height-46-IOS7OFFSET - 45) style:UITableViewStylePlain];
+        _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, IOS7OFFSET+46, self.view.frame.size.width, self.view.frame.size.height-46-IOS7OFFSET) style:UITableViewStylePlain];
     else
         _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 46, self.view.frame.size.width, self.view.frame.size.height-46 - 45) style:UITableViewStylePlain];
     _tableView.delegate=self;
@@ -92,47 +73,58 @@
     _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [_tableView release];
     
-    UIView *bottomview=[[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-45, 320, 45)];
-    bottomview.backgroundColor=[UIColor colorWithPatternImage:IMAGENAME(IMAGEWITHPATH(@"bottomView"))];
-    [self.view addSubview:bottomview];
-    [bottomview release];
     
-    countLabel=[[UILabel alloc]initWithFrame:CGRectMake(255, 5, 60, 35)];
-    countLabel.backgroundColor=[UIColor clearColor];
-    [bottomview addSubview:countLabel];
-    countLabel.textColor=[UIColor whiteColor];
-    countLabel.font=[UIFont systemFontOfSize:15];
-    countLabel.text=[NSString stringWithFormat:@""];
-    if(IOSVERSION>=6.0)
-        countLabel.textAlignment=NSTextAlignmentCenter;
-    else
-        countLabel.textAlignment=UITextAlignmentCenter;
     
-//    _slimeView = [[SRRefreshView alloc] init];
-//    _slimeView.delegate = self;
-//    _slimeView.upInset = 0;
-//    _slimeView.slimeMissWhenGoingBack = YES;
-//    _slimeView.slime.bodyColor = [UIColor blackColor];
-//    _slimeView.slime.skinColor = [UIColor blackColor];
-//    _slimeView.slime.lineWith = 1;
-//    _slimeView.slime.shadowBlur = 4;
-//    _slimeView.slime.shadowColor = [UIColor blackColor];
+    
+    delButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    [delButton setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"delN")) forState:UIControlStateNormal];
+    [delButton setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"delH")) forState:UIControlStateHighlighted];
+    [delButton setFrame:CGRectMake(self.view.frame.size.width/2.0-35/2, self.view.frame.size.height-35-5, 35, 35)];
+    [delButton addTarget:self action:@selector(deleteBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:delButton];
+    delButton.hidden=YES;
+    
+    
+    photobutton=[UIButton buttonWithType:UIButtonTypeCustom];
+    photobutton.frame=CGRectMake(280, 5, 35, 35);
+    [photobutton setBackgroundImage:[UIImage imageNamed:@"upNormal.png"] forState:UIControlStateNormal];
+    [photobutton setBackgroundImage:[UIImage imageNamed:@"upHight.png"] forState:UIControlStateHighlighted];
+    [photobutton addTarget:self action:@selector(upLoaderClilck:) forControlEvents:UIControlEventTouchUpInside];
+    [navigationView addSubview:photobutton];
+
+  //    badgeView=[[GKBadgeView alloc]initWithFrame:CGRectMake(38, 2, 16, 16)];
+    badgeView =[[GKBadgeView alloc]initWithFrame:CGRectMake(300, 2, 16, 16)];
+    badgeView.backgroundColor=[UIColor clearColor];
+    badgeView.bagde=0;
+    [navigationView addSubview:badgeView];
+    [badgeView release];
+    
+    
+//    UIView *bottomview=[[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-45, 320, 45)];
+//    bottomview.backgroundColor=[UIColor colorWithPatternImage:IMAGENAME(IMAGEWITHPATH(@"bottomView"))];
+//    [self.view addSubview:bottomview];
+//    [bottomview release];
 //    
-//    [_tableView addSubview:self._slimeView];
+//    countLabel=[[UILabel alloc]initWithFrame:CGRectMake(255, 5, 60, 35)];
+//    countLabel.backgroundColor=[UIColor clearColor];
+//    [bottomview addSubview:countLabel];
+//    countLabel.textColor=[UIColor whiteColor];
+//    countLabel.font=[UIFont systemFontOfSize:15];
+//    countLabel.text=[NSString stringWithFormat:@""];
+//    if(IOSVERSION>=6.0)
+//        countLabel.textAlignment=NSTextAlignmentCenter;
+//    else
+//        countLabel.textAlignment=UITextAlignmentCenter;
     
-    
- //   libery=[[ALAssetsLibrary alloc] init];
-
-    
-    UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
-
-    button.frame=CGRectMake(30, 4, 225, 37);
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [button setTitle:NSLocalizedString(@"UpPic", @"") forState:UIControlStateNormal];
-    [button setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"upbuttonH"))  forState:UIControlStateNormal];
-    [button setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"upbutton")) forState:UIControlStateHighlighted];
-    [button addTarget:self action:@selector(upLoaderClilck:) forControlEvents:UIControlEventTouchUpInside];
-    [bottomview addSubview:button];
+//    UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
+//
+//    button.frame=CGRectMake(30, 4, 225, 37);
+//    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [button setTitle:NSLocalizedString(@"UpPic", @"") forState:UIControlStateNormal];
+//    [button setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"upbuttonH"))  forState:UIControlStateNormal];
+//    [button setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"upbutton")) forState:UIControlStateHighlighted];
+//    [button addTarget:self action:@selector(upLoaderClilck:) forControlEvents:UIControlEventTouchUpInside];
+//    [bottomview addSubview:button];
     
 
     
@@ -153,6 +145,8 @@
     
     NSLog(@"----------%@",[NSDate date]);
     
+    
+  
     [self loadPhoto];
     
     //450 75
@@ -160,6 +154,86 @@
 	// Do any additional setup after loading the view.
 }
 
+-(void)deleteBtnClick:(UIButton *)btn
+{
+    // 把 数据加入到数据库
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"忽略照片" message:@"选择忽略后，改照片将不再程序中显示，并不会删除照片，你依然可以在相册中查看" delegate:self cancelButtonTitle:NSLocalizedString(@"no", @"") otherButtonTitles:NSLocalizedString(@"yes", @""), nil];
+    [alert show];
+    [alert release];
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex==0)
+    {
+       
+    }
+    else
+    {
+        //把 数据加入到数据库
+       
+        
+        
+        [self performSelectorInBackground:@selector(addIgnore:) withObject:nil];
+    
+  //  [manager addNewPicToCoreData:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];// 图片tag
+        
+
+    }
+}
+-(void)addIgnore:(id)sender
+{
+    GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
+    for (int i=0; i<[selectArr count]; i++) {
+        ETPhoto *photo=[selectArr objectAtIndex:i];
+        
+        
+        [manager addNewPicToCoreData:@"" name:@"" iSloading:[NSNumber numberWithInt:2] nameId:photo.nameId studentId:@"" time:[NSNumber numberWithInt:0] fsize:[NSNumber numberWithInt:0] classID:[NSNumber numberWithInt:0] intro:@"" data:nil tag:@""];// 图片tag
+    }
+    
+    [self
+     performSelectorOnMainThread:@selector(uploadUI) withObject:nil waitUntilDone:YES];
+}
+-(void)uploadUI
+{
+
+  
+    if([selectArr count] >0)
+    {
+        // GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
+        // NSArray *coreArr= [manager getAllUploaderPhotoFromCoreData];
+        
+        for (int i=0; i<[selectArr count]; i++) {
+            ETPhoto *photo=[selectArr objectAtIndex:i];
+            for (int j=0; j<[imageArr count]; j++) {
+                ETPhoto *temp=[imageArr objectAtIndex:j];
+
+                if([photo.nameId isEqualToString:temp.nameId])
+                {
+                    [imageArr removeObject:photo];
+                }
+            }
+        }
+        
+        if([imageArr count]==0)
+        {
+            [self setNOView:NO];
+        }
+        else
+            [self setNOView:YES];
+      
+    
+    }
+    
+    [selectArr removeAllObjects];
+    [self setAllPhotoSelect:NO];
+    [_tableView reloadData];
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"忽略成功" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+    [alert show];
+    [alert release];
+}
+//-(id)retain {
+//    return [super retain];
+//}
 -(void)back:(UIButton *)btn
 {
     
@@ -186,9 +260,11 @@
 //   // }
 //}
 
--(void)LoadPhotoIfDeviceActive
+-(void)LoadPhotoIfDeviceActive:(NSNotification *)no
 {
     [self loadPhoto];
+  
+
 }
 -(void)refreashPickViewController:(NSArray *)arr
 {
@@ -201,7 +277,10 @@
         return;
     }
     [selectArr removeAllObjects];
-      countLabel.text=[NSString stringWithFormat:@"%d/%d",0,[imageArr count]];
+     // countLabel.text=[NSString stringWithFormat:@"%d/%d",0,[imageArr count]];
+    
+    [self playAnimation:0];
+    
     if([arr count] >0)
     {
        // GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
@@ -280,6 +359,8 @@
 {
     
     [imageArr removeAllObjects];
+    [self setAllPhotoSelect:NO];
+    [selectArr removeAllObjects];
     [_tableView reloadData];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
@@ -298,14 +379,7 @@
                 photo.isSelected=NO;
                 photo.asset=result;
                 
-                //NSLog(@"%@",[result defaultRepresentation].url);
-                //NSDate *date= [result valueForProperty:ALAssetPropertyDate];
                 photo.date=[result valueForProperty:ALAssetPropertyDate];
-//                NSArray *key=[result valueForProperty:ALAssetPropertyRepresentations];
-//                NSDictionary *dic=[result valueForProperty:ALAssetPropertyURLs];
-//                photo.nameId= [NSString stringWithFormat:@"%@",[dic objectForKey:[key objectAtIndex:0]]];
-                //NSLog(@"_____________%@",photo.nameId);
-                
                 photo.nameId= [NSString stringWithFormat:@"%@",[result defaultRepresentation].url];
                 if(photo.nameId)  // 如果图片删除，判断该照片是否为空 ，如果为空就不加入到数组
                     [imageArr insertObject:photo atIndex:0];
@@ -347,7 +421,8 @@
                     if([imageArr count]>0)
                     {
                         [self setNOView:YES];
-                         countLabel.text=[NSString stringWithFormat:@"%d/%d",0,[imageArr count]];
+                        // countLabel.text=[NSString stringWithFormat:@"%d/%d",0,[imageArr count]];
+                        [self playAnimation:0];
                     }
                     else
                     {
@@ -503,15 +578,19 @@
     if(!an)
     {
         
-          countLabel.text=[NSString stringWithFormat:@"%d/%d",0,[imageArr count]];
-        [selectArr removeLastObject];
+       // countLabel.text=[NSString stringWithFormat:@"%d/%d",0,[imageArr count]];
+       
+        [selectArr removeAllObjects];
+        [self playAnimation:0];
+        delButton.hidden=YES;
     }
    
     else
     {
         [selectArr removeAllObjects];
         self.selectArr=[NSMutableArray arrayWithArray:self.imageArr];
-        countLabel.text=[NSString stringWithFormat:@"%d/%d",[selectArr count],[imageArr count]];
+        [self playAnimation:[selectArr count]];
+      //  countLabel.text=[NSString stringWithFormat:@"%d/%d",[selectArr count],[imageArr count]];
     }
     
     [_tableView reloadData];
@@ -580,56 +659,49 @@
     
     if([selectArr count]==0)
     {
-          countLabel.text=[NSString stringWithFormat:@"%d/%d",0,[imageArr count]];
+       // countLabel.text=[NSString stringWithFormat:@"%d/%d",0,[imageArr count]];
+        
+        [self playAnimation:0];
+        
+        
+        delButton.hidden=YES;
     }
     else
     {
-        countLabel.text=[NSString stringWithFormat:@"%d/%d",[selectArr count],[imageArr count]];
+        //countLabel.text=[NSString stringWithFormat:@"%d/%d",[selectArr count],[imageArr count]];
+        delButton.hidden=NO;
+        [self playAnimation:[selectArr count]];
     }
     
     
     
 }
-    // [self uploadUI];
+-(void)playAnimation:(int)a
+{
+    CABasicAnimation *an=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
     
-   // [tableView_ reloadData];
+    an.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    an.duration =0.15;
+    an.repeatCount = 1;
+    //an.autoreverses = YES;
+    an.fromValue = [NSNumber numberWithFloat:0.2];
+    an.toValue = [NSNumber numberWithFloat:1.0];
+    [badgeView.layer addAnimation:an forKey:@"dfdf"];
+    
+    badgeView.bagde=a;
 
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//    
-//    if (self._slimeView) {
-//        [self._slimeView scrollViewDidScroll];
-//    }
-//    
-//}
-//
-//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-//{
-//    if (self._slimeView) {
-//        [self._slimeView scrollViewDidEndDraging];
-//    }
-//    
-//
-//}
-//- (void)slimeRefreshStartRefresh:(SRRefreshView *)refreshView
-//{
-//    NSLog(@"start refresh");
-//    //    [self showHUD:YES];
-//    [self loadImageFromPick];
-//    //theRefreshPos = EGORefreshHeader;
-//    //[self requestNoticeData:nil];
-//}
+}
 -(void)dealloc
 {
 
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"ACTIVEPHOTO" object:nil];
-    
-    [imageArr removeAllObjects];
+     [[NSNotificationCenter defaultCenter]removeObserver:self name:ALAssetsLibraryChangedNotification object:nil];
+   // [[NSNotificationCenter defaultCenter]removeObserver:self name:@"ACTIVEPHOTO" object:nil];
+        [imageArr removeAllObjects];
     [selectArr removeAllObjects];
     self.imageArr=nil;
     self.selectArr=nil;
 //    self._slimeView=nil;
-    self.countLabel=nil;
+    //self.countLabel=nil;
     self.group_=nil;
 //    self.libery=nil;
     [super dealloc];

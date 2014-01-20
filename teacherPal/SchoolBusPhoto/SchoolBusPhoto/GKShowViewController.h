@@ -12,6 +12,7 @@
 #import "EKRequest.h"
 #import "ETNicknameViewController.h"
 #import "GKDisapperView.h"
+#import "MBProgressHUD.h"
 @protocol showViewController;
 @interface GKShowViewController : GKBaseViewController<UIScrollViewDelegate,studentViewDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,EKProtocol,ETNicknameViewControllerDelegate,UITextViewDelegate,UIAlertViewDelegate>
 {
@@ -45,7 +46,7 @@
     UILabel *labelNum;
     
     
-    
+    MBProgressHUD *HUD;
    // NSMutableArray *alreadyArr;
     
   //  NSDictionary * stuList;

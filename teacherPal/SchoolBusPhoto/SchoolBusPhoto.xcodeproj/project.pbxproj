@@ -44,7 +44,6 @@
 		114B58FF1820AD5500163A4A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114B58FE1820AD5500163A4A /* ImageIO.framework */; };
 		114B59021821220E00163A4A /* GKShowBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B59011821220E00163A4A /* GKShowBigImageViewController.m */; };
 		114F66A71887C16E0071D2AE /* kuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 114F66A61887C16E0071D2AE /* kuang.png */; };
-		114F66A91887C2780071D2AE /* duihaohuizhi.png in Resources */ = {isa = PBXBuildFile; fileRef = 114F66A81887C2780071D2AE /* duihaohuizhi.png */; };
 		11514F41187EB9AD00EEB656 /* GKHelpSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11514F40187EB9AD00EEB656 /* GKHelpSupportViewController.m */; };
 		1155E92B1856BC75005D09C1 /* KKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1155E9291856BC74005D09C1 /* KKNavigationController.m */; };
 		1165E27C182CFCE000B60A81 /* pic-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1165E278182CFCE000B60A81 /* pic-2.png */; };
@@ -184,6 +183,7 @@
 		11AA338B187CFE9A002FE2D4 /* GKNoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AA338A187CFE9A002FE2D4 /* GKNoticeCell.m */; };
 		11AA5B4A188D277D001EA8B2 /* noticeStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AA5B48188D277D001EA8B2 /* noticeStar.png */; };
 		11AA5B4B188D277D001EA8B2 /* noticeEmail.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AA5B49188D277D001EA8B2 /* noticeEmail.png */; };
+		11AA5B4D188D3BA3001EA8B2 /* duihaohuizhi.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AA5B4C188D3BA3001EA8B2 /* duihaohuizhi.png */; };
 		11AF3AE91816655B00B36176 /* navBarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AE81816655B00B36176 /* navBarImage.png */; };
 		11AF3AEB18166AB200B36176 /* navLeftBtn_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AEA18166AB200B36176 /* navLeftBtn_default.png */; };
 		11AF3AED18166D9A00B36176 /* bottomView.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AEC18166D9A00B36176 /* bottomView.png */; };
@@ -440,7 +440,6 @@
 		114B59001821220E00163A4A /* GKShowBigImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKShowBigImageViewController.h; sourceTree = "<group>"; };
 		114B59011821220E00163A4A /* GKShowBigImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKShowBigImageViewController.m; sourceTree = "<group>"; };
 		114F66A61887C16E0071D2AE /* kuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kuang.png; sourceTree = "<group>"; };
-		114F66A81887C2780071D2AE /* duihaohuizhi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = duihaohuizhi.png; sourceTree = "<group>"; };
 		11514F3F187EB9AD00EEB656 /* GKHelpSupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHelpSupportViewController.h; sourceTree = "<group>"; };
 		11514F40187EB9AD00EEB656 /* GKHelpSupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKHelpSupportViewController.m; sourceTree = "<group>"; };
 		1155E9291856BC74005D09C1 /* KKNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKNavigationController.m; sourceTree = "<group>"; };
@@ -658,6 +657,7 @@
 		11AA338A187CFE9A002FE2D4 /* GKNoticeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNoticeCell.m; sourceTree = "<group>"; };
 		11AA5B48188D277D001EA8B2 /* noticeStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noticeStar.png; sourceTree = "<group>"; };
 		11AA5B49188D277D001EA8B2 /* noticeEmail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noticeEmail.png; sourceTree = "<group>"; };
+		11AA5B4C188D3BA3001EA8B2 /* duihaohuizhi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = duihaohuizhi.png; sourceTree = "<group>"; };
 		11AC07F4186A8BD70080FCC4 /* SchoolBusPhoto 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 3.xcdatamodel"; sourceTree = "<group>"; };
 		11AF3AE81816655B00B36176 /* navBarImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBarImage.png; sourceTree = "<group>"; };
 		11AF3AEA18166AB200B36176 /* navLeftBtn_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navLeftBtn_default.png; sourceTree = "<group>"; };
@@ -1284,9 +1284,9 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				11AA5B4C188D3BA3001EA8B2 /* duihaohuizhi.png */,
 				11AA5B48188D277D001EA8B2 /* noticeStar.png */,
 				11AA5B49188D277D001EA8B2 /* noticeEmail.png */,
-				114F66A81887C2780071D2AE /* duihaohuizhi.png */,
 				114F66A61887C16E0071D2AE /* kuang.png */,
 				11CE2A8F187FF5AD00742001 /* imageerror.png */,
 				11CE2A8B187FEE3500742001 /* writeRizhiH.png */,
@@ -1821,7 +1821,6 @@
 				111E8CF3181E6E9F00234014 /* input.png in Resources */,
 				11AF3AEB18166AB200B36176 /* navLeftBtn_default.png in Resources */,
 				11D42951187E4BE60002810E /* gradeFen@2x.png in Resources */,
-				114F66A91887C2780071D2AE /* duihaohuizhi.png in Resources */,
 				11BF896F1836325F008E72F0 /* 120.png in Resources */,
 				2A32A56918122C02007CAA8E /* InfoPlist.strings in Resources */,
 				11A5A890187B9E2500EA22CD /* gradeEH.png in Resources */,
@@ -1837,6 +1836,7 @@
 				1102A7FF181A715D00E6295C /* guanlian-B-2.png in Resources */,
 				78709C11187D1733009250FB /* camera-tray-cover.png in Resources */,
 				78709C12187D1733009250FB /* edit-filters-normal.png in Resources */,
+				11AA5B4D188D3BA3001EA8B2 /* duihaohuizhi.png in Resources */,
 				7870A0FD187E44A2009250FB /* save_active.png in Resources */,
 				11FC0F41182C9ECC00442EF6 /* scoreBtn_default.png in Resources */,
 				11DB02E2183379AF007981C6 /* send_24.png in Resources */,

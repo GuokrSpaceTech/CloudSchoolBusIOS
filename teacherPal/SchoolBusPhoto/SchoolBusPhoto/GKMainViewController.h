@@ -12,7 +12,7 @@
 #import "EKRequest.h"
 
 extern int badge;
-@interface GKMainViewController : UIViewController<SideBarSelectDelegate,UINavigationControllerDelegate,EKProtocol>
+@interface GKMainViewController : UIViewController<SideBarSelectDelegate,UINavigationControllerDelegate,EKProtocol,UIGestureRecognizerDelegate>
 {
     UIViewController  *_currentMainController;
     UITapGestureRecognizer *_tapGestureRecognizer;

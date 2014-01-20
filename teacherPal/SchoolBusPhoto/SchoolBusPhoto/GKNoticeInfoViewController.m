@@ -263,7 +263,7 @@
         cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
         cell.backgroundColor=[UIColor clearColor];
         
-        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(230, 5, 20, 20)];
+        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(260, 5, 20, 20)];
         imageView.backgroundColor=[UIColor clearColor];
         [cell.contentView addSubview:imageView];
         imageView.tag=1006;
@@ -316,9 +316,10 @@
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
     view.backgroundColor=[UIColor colorWithRed:98/255.0 green:181/255.0 blue:204/255.0 alpha:1];
     
-    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 100, 20)];
+    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(15, 0, 100, 20)];
     label.backgroundColor=[UIColor clearColor];
     label.font=[UIFont systemFontOfSize:14];
+    label.textColor=[UIColor whiteColor];
     [view addSubview:label];
     [label release];
     
@@ -332,6 +333,15 @@
         huizlabel.backgroundColor=[UIColor clearColor];
         huizlabel.font=[UIFont systemFontOfSize:14];
         [view addSubview:huizlabel];
+        huizlabel.textColor=[UIColor whiteColor];
+        if(IOSVERSION>=6.0)
+        {
+            huizlabel.textAlignment=NSTextAlignmentRight;
+        }
+        else
+        {
+             huizlabel.textAlignment=UITextAlignmentRight;
+        }
         [huizlabel release];
         huizlabel.text=NSLocalizedString(@"huizhi",@"");
     }

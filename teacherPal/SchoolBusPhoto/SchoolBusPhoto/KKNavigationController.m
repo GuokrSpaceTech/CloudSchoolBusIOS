@@ -140,6 +140,7 @@
         if(!recognizer)
         {
             recognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(paningGestureReceive:)];
+            recognizer.delegate=self;
             [recognizer delaysTouchesBegan];
             [self.view addGestureRecognizer:recognizer];
         }
@@ -161,7 +162,16 @@
 {
     return YES;
 }
-
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    UIView* touchedView = [touch view];
+    if([touchedView isKindOfClass:[UIButton class]]) {
+        
+        return NO;
+    }
+    
+    return YES;
+}
 #pragma mark - Gesture Recognizer -
 
 - (void)paningGestureReceive:(UIPanGestureRecognizer *)recoginzer

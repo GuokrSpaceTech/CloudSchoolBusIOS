@@ -57,11 +57,6 @@
 
     
 
-    // 禁用 向左滑动
-    UIPanGestureRecognizer*  recognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(paningGestureReceive:)];
-    [recognizer delaysTouchesBegan];
-    [self.view addGestureRecognizer:recognizer];
-    [recognizer release];
     
     prePage=0;
     stuList = [[NSMutableArray alloc] init];
@@ -966,10 +961,7 @@
     
     
 }
-- (void)paningGestureReceive:(UIPanGestureRecognizer *)recoginzer
-{
-    return;
-}
+
 -(void)setAlreayStudent
 {
     

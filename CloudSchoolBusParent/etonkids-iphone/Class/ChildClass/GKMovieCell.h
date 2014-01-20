@@ -16,6 +16,7 @@
 #import "ClassShareCell.h"
 #import "EKRequest.h"
 
+
 @interface GKMovieCell : UITableViewCell<GKMovieDownloaderDelegate,EKProtocol>
 
 @property(nonatomic,retain) UILabel *titleLabel;
@@ -41,10 +42,13 @@
 @property (nonatomic, retain) UIView *contentBackView;
 @property (nonatomic, retain) UIImageView *movieThumbnailImgV;
 
-@property (nonatomic, retain) MDRadialProgressView *radial;
 
-@property (nonatomic, retain) id<ClassShareCellDelegate> delegate;
+
+@property (nonatomic, assign) id<ClassShareCellDelegate> delegate;
 @property(nonatomic,retain) ShareContent *theShareCtnt;
+@property (nonatomic, retain) MDRadialProgressView *radia;
+
+@property (nonatomic, retain) NSString *canceledURL;
 
 
 - (void)setMovieURL:(NSString *)url;

@@ -23,6 +23,7 @@
 
 
 @implementation MDRadialProgressView
+@synthesize progress;
 
 #pragma mark - Initialization
 
@@ -57,6 +58,7 @@
 - (void)internalInitWithTheme:(MDRadialProgressTheme *)theme
 {
     // Default values for public properties
+    self.progress = 0.0f;
 	self.progressTotal = 1;
 	self.progressCounter = 0;
 	self.startingSlice = 1;
@@ -66,7 +68,7 @@
 	self.theme = theme;
 	
 	// Init the progress label, even if not visible.
-	self.label = [[MDRadialProgressLabel alloc] initWithFrame:CGRectMake(self.bounds.origin.x + 10, 15, self.bounds.size.width - 20, 30) andTheme:self.theme];
+	self.label = [[MDRadialProgressLabel alloc] initWithFrame:CGRectMake(self.bounds.origin.x + 5, 20, self.bounds.size.width - 10, 30) andTheme:self.theme];
 	[self addSubview:self.label];
 	
 	// Private properties
@@ -84,6 +86,14 @@
 }
 
 #pragma mark - Setters
+
+- (void)setProgress:(CGFloat)_progress
+{
+    _progressCounter = _progress*100;
+    _progressTotal = 100;
+    [self notifyProgressChange];
+	[self setNeedsDisplay];
+}
 
 - (void)setProgressCounter:(NSUInteger)progressCounter
 {

@@ -54,7 +54,7 @@ typedef enum
 
 @property BOOL isLoading;
 @property(nonatomic,retain)IBOutlet UIImage *headImage;
-@property(nonatomic,retain)NSString  *string;
+
 
 @property (nonatomic, retain) NSDictionary *photoParam;
 @property (nonatomic, retain) NSDictionary *noticParam;

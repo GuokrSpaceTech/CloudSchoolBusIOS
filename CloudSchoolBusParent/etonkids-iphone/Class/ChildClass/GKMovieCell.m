@@ -8,12 +8,11 @@
 
 #import "GKMovieCell.h"
 
-#import "MDRadialProgressView.h"
-#import "MDRadialProgressTheme.h"
-#import "MDRadialProgressLabel.h"
+
 #import "GKMovieCache.h"
 #import "ETKids.h"
 #import "ETCommonClass.h"
+#import "MDRadialProgressTheme.h"
 
 #define BUTTONTAG 888
 
@@ -22,7 +21,7 @@
 @synthesize titleLabel,contentLabel,timeLabel,backImgV;
 @synthesize praiseButton;
 @synthesize commentsButton,contentView;
-@synthesize praiseLab,commentLab,praiseImgV,commentImgV,triangle,mPlayer,radial,delegate,theShareCtnt;
+@synthesize praiseLab,commentLab,praiseImgV,commentImgV,triangle,mPlayer,delegate,theShareCtnt,radia;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -34,6 +33,7 @@
         // Initialization code
         self.contentView.backgroundColor = CELLCOLOR;
         self.backgroundColor = CELLCOLOR;
+        self.backgroundView.backgroundColor = CELLCOLOR;
         
         UIImageView *carImgV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 25, 23)];
         carImgV.image = [UIImage imageNamed:@"car.png"];
@@ -162,6 +162,33 @@
         self.movieThumbnailImgV = mthumbImgV;
         
         
+        MDRadialProgressTheme *newTheme = [[MDRadialProgressTheme alloc] init];
+        newTheme.completedColor = [UIColor colorWithRed:45/255.0 green:117/255.0 blue:140/255.0 alpha:1.0];
+        newTheme.incompletedColor = [UIColor colorWithRed:110/255.0 green:191/255.0 blue:210/255.0 alpha:1.0];
+        newTheme.centerColor = [UIColor clearColor];
+        //        newTheme.centerColor = [UIColor colorWithRed:224/255.0 green:248/255.0 blue:216/255.0 alpha:1.0];
+        newTheme.sliceDividerHidden = YES;
+        newTheme.labelColor = [UIColor whiteColor];
+        newTheme.labelShadowColor = [UIColor whiteColor];
+        
+        CGRect frame = CGRectMake(self.contentBackView.frame.size.width/2.0f - 35, self.contentBackView.frame.size.height/2.0f - 35, 70, 70);
+        MDRadialProgressView *radialView7 = [[MDRadialProgressView alloc] initWithFrame:frame andTheme:newTheme];
+        radialView7.hidden = YES;
+        [self.contentBackView addSubview:radialView7];
+        [radialView7 release];
+        
+        self.radia = radialView7;
+        
+        MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:nil];//写入url
+        player.controlStyle = MPMovieControlStyleNone;
+        player.movieSourceType = MPMovieSourceTypeFile;
+        player.view.hidden = YES;
+        [player.view setFrame:self.contentBackView.bounds];
+        [self.contentBackView addSubview:player.view];
+        //    [player prepareToPlay];
+        self.mPlayer = player;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackChangeState:) name:MPMoviePlayerPlaybackStateDidChangeNotification object:self.mPlayer];
         
         UIImageView *l = [[UIImageView alloc] initWithFrame:CGRectZero];
         l.image = [UIImage imageNamed:@"cellline.png"];
@@ -175,79 +202,79 @@
 
 - (void)setMovieURL:(NSString *)url
 {
-    if (self.mPlayer)
+    
+    @synchronized(self)
     {
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackStateDidChangeNotification object:self.mPlayer];
-        
-        [self.mPlayer.view removeFromSuperview];
-        self.mPlayer = nil;
-        [[self.contentBackView viewWithTag:BUTTONTAG] removeFromSuperview];
-        self.downloader.delegate = nil;
-        self.downloader = nil;
-        
-        [self.radial removeFromSuperview];
-        
-        
+        if (self.mPlayer)
+        {
+            
+            NSLog(@"ssssssssssssssssssssssssssssssssssssssssssssssssss ,%f",self.frame.origin.y);
+            [self.mPlayer stop];
+            
+            self.radia.progress = 0;
+
+            [[self.contentBackView viewWithTag:BUTTONTAG] removeFromSuperview];
+            self.downloader.delegate = nil;
+            self.downloader = nil;
+            
+        }
+
     }
     
     // 延时下载
     
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(downloadMovie:) object:url];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(downloadMovie:) object:self.canceledURL];
     [self performSelector:@selector(downloadMovie:) withObject:url afterDelay:0.5f];
     
+    
+    self.canceledURL = url;//记录请求过的url  供取消使用
     
 }
 - (void)downloadMovie:(NSString *)url
 {
-    
-    MDRadialProgressTheme *newTheme = [[MDRadialProgressTheme alloc] init];
-	newTheme.completedColor = [UIColor colorWithRed:90/255.0 green:212/255.0 blue:39/255.0 alpha:1.0];
-	newTheme.incompletedColor = [UIColor colorWithRed:164/255.0 green:231/255.0 blue:134/255.0 alpha:1.0];
-	newTheme.centerColor = [UIColor clearColor];
-	newTheme.centerColor = [UIColor colorWithRed:224/255.0 green:248/255.0 blue:216/255.0 alpha:1.0];
-	newTheme.sliceDividerHidden = YES;
-	newTheme.labelColor = [UIColor blackColor];
-	newTheme.labelShadowColor = [UIColor whiteColor];
-	
-	
-	CGRect frame = CGRectMake(self.contentBackView.frame.size.width/2.0f - 30, self.contentBackView.frame.size.height/2.0f - 30, 60, 60);
-    MDRadialProgressView *radialView7 = [[MDRadialProgressView alloc] initWithFrame:frame andTheme:newTheme];
-	[self.contentBackView addSubview:radialView7];
-    [radialView7 release];
-    
-    self.radial = radialView7;
-    
-    
-    GKMovieDownloader *d = [[GKMovieDownloader alloc] initWithMovieURL:[NSURL URLWithString:url]];
+
+    NSLog(@"##########################");
+    GKMovieDownloader *d = [[GKMovieDownloader alloc] initWithMovieURL:url];
     d.delegate = self;
-    d.radiaProgress = radialView7;
+    d.shareID = self.theShareCtnt.shareId;
+    d.radiaProgress = self.radia;
     [d startDownload];
     
     self.downloader = d;
 }
 
-- (void)didFinishedDownloadMovieWithPath:(NSString *)path
+- (void)sharecontent:(NSString *)shareId didFinishedDownloadMovieWithPath:(NSString *)path
 {
     
-    [self.radial removeFromSuperview];
+    if (self.mPlayer == nil) {/*
+        MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:path]];//写入url
+        player.controlStyle = MPMovieControlStyleNone;
+        player.movieSourceType = MPMovieSourceTypeFile;
+        player.view.hidden = YES;
+        [player.view setFrame:self.contentBackView.bounds];
+        [self.contentBackView addSubview:player.view];
+        //    [player prepareToPlay];
+        self.mPlayer = player;*/
+    }
     
-    MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:path]];//写入url
-    player.controlStyle = MPMovieControlStyleNone;
-    player.movieSourceType = MPMovieSourceTypeFile;
-    [player.view setFrame:self.contentBackView.bounds];
-//    [player requestThumbnailImagesAtTimes:[NSArray arrayWithObject:[NSNumber numberWithDouble:1.0]] timeOption:MPMovieTimeOptionExact];
-    [self.contentBackView addSubview:player.view];
-//    [player prepareToPlay];
-    self.mPlayer = player;
+    if ([self.theShareCtnt.shareId isEqualToString:shareId])
+    {
+        NSLog(@"gggggggggggggggggggggggggggggggggggggggggggggggg,%f",self.frame.origin.y);
+        self.mPlayer.contentURL = [NSURL fileURLWithPath:path];
+        
+        if (![self viewWithTag:BUTTONTAG]) {
+            UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+            [btn setImage:nil forState:UIControlStateNormal];
+            btn.tag = BUTTONTAG;
+            [btn addTarget:self action:@selector(controlMovie:) forControlEvents:UIControlEventTouchUpInside];
+            [btn setFrame:self.contentBackView.bounds];
+            [self.contentBackView addSubview:btn];
+        }
+    }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackChangeState:) name:MPMoviePlayerPlaybackStateDidChangeNotification object:self.mPlayer];
     
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
-    btn.tag = BUTTONTAG;
-    [btn addTarget:self action:@selector(controlMovie:) forControlEvents:UIControlEventTouchUpInside];
-    [btn setFrame:self.contentBackView.bounds];
-    [self.contentBackView addSubview:btn];
+    
+    
     
     
 }
@@ -256,16 +283,33 @@
 
 - (void)playbackChangeState:(MPMediaPickerController *)player
 {
-    UIButton *b = (UIButton *)[self.contentBackView viewWithTag:BUTTONTAG];
+//    @synchronized(self)
+//    {
     
-    if (self.mPlayer.playbackState == MPMoviePlaybackStatePaused || self.mPlayer.playbackState == MPMoviePlaybackStateStopped)
-    {
-        [b setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
-    }
-    else
-    {
-        [b setImage:nil forState:UIControlStateNormal];
-    }
+//        NSLog(@"player %@",player);
+        
+        UIButton *b = (UIButton *)[self.contentBackView viewWithTag:BUTTONTAG];
+        
+        if (self.mPlayer.playbackState == MPMoviePlaybackStatePaused)
+        {
+            NSLog(@"pause %f",self.frame.origin.y);
+            self.mPlayer.view.hidden = NO;
+            [b setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
+        }
+        else if (self.mPlayer.playbackState == MPMoviePlaybackStateStopped)
+        {
+            NSLog(@"stop %f",self.frame.origin.y);
+            self.mPlayer.view.hidden = YES;
+            [b setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
+        }
+        else if (self.mPlayer.playbackState == MPMoviePlaybackStatePlaying)
+        {
+            NSLog(@"playing %f",self.frame.origin.y);
+            self.mPlayer.view.hidden = NO;
+            [b setImage:nil forState:UIControlStateNormal];
+        }
+//    }
+    
 }
 
 - (void)controlMovie:(UIButton *)sender
@@ -315,7 +359,6 @@
 
 - (void)addPraiseNumber
 {
-    
     self.praiseLab.text = [NSString stringWithFormat:@"%d",self.praiseLab.text.intValue + 1];
     
     self.praiseImgV.image = [UIImage imageNamed:@"myzan.png"];
@@ -338,13 +381,13 @@
     if (delegate && [delegate respondsToSelector:@selector(clickComment:)]) {
         [delegate clickComment:self.theShareCtnt];
     }
-    
 }
 
 
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackStateDidChangeNotification object:self.mPlayer];
     self.titleLabel = nil;
     self.contentLabel = nil;
     self.timeLabel = nil;
@@ -361,7 +404,6 @@
     self.downloader = nil;
     self.contentBackView = nil;
     self.movieThumbnailImgV = nil;
-    self.radial = nil;
     [super dealloc];
 }
 

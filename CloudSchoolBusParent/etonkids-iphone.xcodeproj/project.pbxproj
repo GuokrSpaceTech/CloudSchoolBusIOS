@@ -119,6 +119,7 @@
 		7860CB2C188686EC00DD0E80 /* MDRadialProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7860CB29188686EC00DD0E80 /* MDRadialProgressView.m */; };
 		7860CB2E1886907F00DD0E80 /* movieplay.png in Resources */ = {isa = PBXBuildFile; fileRef = 7860CB2D1886907F00DD0E80 /* movieplay.png */; };
 		7860CB3118877B7F00DD0E80 /* GKMovieCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7860CB3018877B7F00DD0E80 /* GKMovieCache.m */; };
+		7860CB341888F6E300DD0E80 /* GKMovieManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7860CB331888F6E300DD0E80 /* GKMovieManager.m */; };
 		78709BB6187CFE51009250FB /* aboutlogo_EN(1).png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BB2187CFE51009250FB /* aboutlogo_EN(1).png */; };
 		78709BB7187CFE51009250FB /* aboutlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BB3187CFE51009250FB /* aboutlogo.png */; };
 		78709BB8187CFE51009250FB /* guide3dot0.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BB4187CFE51009250FB /* guide3dot0.png */; };
@@ -749,6 +750,8 @@
 		7860CB2D1886907F00DD0E80 /* movieplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movieplay.png; sourceTree = "<group>"; };
 		7860CB2F18877B7F00DD0E80 /* GKMovieCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMovieCache.h; sourceTree = "<group>"; };
 		7860CB3018877B7F00DD0E80 /* GKMovieCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMovieCache.m; sourceTree = "<group>"; };
+		7860CB321888F6E300DD0E80 /* GKMovieManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMovieManager.h; sourceTree = "<group>"; };
+		7860CB331888F6E300DD0E80 /* GKMovieManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMovieManager.m; sourceTree = "<group>"; };
 		78709BB2187CFE51009250FB /* aboutlogo_EN(1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutlogo_EN(1).png"; sourceTree = "<group>"; };
 		78709BB3187CFE51009250FB /* aboutlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aboutlogo.png; sourceTree = "<group>"; };
 		78709BB4187CFE51009250FB /* guide3dot0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide3dot0.png; sourceTree = "<group>"; };
@@ -2218,6 +2221,8 @@
 				7860CB1F18862A5200DD0E80 /* GKMovieCell.m */,
 				7860CB2F18877B7F00DD0E80 /* GKMovieCache.h */,
 				7860CB3018877B7F00DD0E80 /* GKMovieCache.m */,
+				7860CB321888F6E300DD0E80 /* GKMovieManager.h */,
+				7860CB331888F6E300DD0E80 /* GKMovieManager.m */,
 			);
 			path = ChildClass;
 			sourceTree = "<group>";
@@ -3194,6 +3199,7 @@
 				7365F6AD177AF4C9007EAF57 /* Modify.m in Sources */,
 				73F3B90B178166C5004A7C23 /* CustomActionSheet.m in Sources */,
 				7860CB2018862A5200DD0E80 /* GKMovieCell.m in Sources */,
+				7860CB341888F6E300DD0E80 /* GKMovieManager.m in Sources */,
 				735282B41783F6D700A62EF5 /* ScheduleCell.m in Sources */,
 				735282B71784067700A62EF5 /* FoodCell.m in Sources */,
 				118CBBF5178D5851006AA633 /* ETInformationViewController.m in Sources */,

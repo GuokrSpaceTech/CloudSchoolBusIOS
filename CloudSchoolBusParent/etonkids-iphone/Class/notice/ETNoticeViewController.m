@@ -23,7 +23,7 @@
 @synthesize isLoading;
 @synthesize _info;
 @synthesize conformInfo;
-@synthesize headImage,string,photoParam,noticParam,getNoticeParam;
+@synthesize headImage,photoParam,noticParam,getNoticeParam;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -667,8 +667,19 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"UPDATEPHOTO" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"BUDGEHIDDEN" object:nil];
     self.dataList=nil;
+    self.conformInfo = nil;
+    self._info = nil;
+    self.headImage = nil;
+    self.photoParam = nil;
+    self.noticParam = nil;
+    self.getNoticeParam = nil;
+    self.allNoticeList = nil;
+    self.importantList = nil;
+    self.dataList = nil;
     [super dealloc];
 }
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

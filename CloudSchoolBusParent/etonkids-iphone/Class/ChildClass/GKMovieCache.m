@@ -10,18 +10,6 @@
 
 @implementation GKMovieCache
 
-+ (id)shareMovieCache
-{
-    @synchronized(self)
-    {
-        static GKMovieCache *mc;
-        if (mc == nil) {
-            mc = [[GKMovieCache alloc] init];
-        }
-        return mc;
-    }
-}
-
 + (unsigned long long)getSize
 {
     unsigned long long size = 0;
@@ -36,6 +24,17 @@
         size += [attrs fileSize];
     }
     return size;
+}
+
++ (void)clearDiskCache
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *diskPath = [paths objectAtIndex:0];
+    [[NSFileManager defaultManager] removeItemAtPath:diskPath error:nil];
+    [[NSFileManager defaultManager] createDirectoryAtPath:diskPath
+                              withIntermediateDirectories:YES
+                                               attributes:nil
+                                                    error:NULL];
 }
 
 @end

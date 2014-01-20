@@ -10,9 +10,10 @@
 #import "ASIHTTPRequest.h"
 
 
+
 @implementation GKMovieDownloader
 
-@synthesize diskCachePath,movieURL,delegate,radiaProgress;
+@synthesize diskCachePath,movieURL,delegate,radiaProgress,progressShowView,shareID;
 
 - (id)initWithMovieURL:(NSString *)url
 {
@@ -38,6 +39,10 @@
         NSLog(@"movie url is null");
     }
 }
+- (void)progressShowInView:(UIView *)view
+{
+    self.progressShowView = view;
+}
 
 - (void)downloadMovieByURL:(NSString *)url
 {
@@ -52,8 +57,8 @@
     if ([fm fileExistsAtPath:diskPath])
     {
         //直接读取
-        if (delegate && [delegate respondsToSelector:@selector(didFinishedDownloadMovieWithPath:)]) {
-            [delegate didFinishedDownloadMovieWithPath:diskPath];
+        if (delegate && [delegate respondsToSelector:@selector(sharecontent:didFinishedDownloadMovieWithPath:)]) {
+            [delegate sharecontent:self.shareID didFinishedDownloadMovieWithPath:diskPath];
         }
     }
     else
@@ -64,9 +69,13 @@
         [request setDownloadDestinationPath:diskPath];
 //        [request setDownloadProgressDelegate:];
         [request setDelegate:self];
+        [request setAllowResumeForFileDownloads:YES];
         [request setCompletionBlock:^{
-            if (delegate && [delegate respondsToSelector:@selector(didFinishedDownloadMovieWithPath:)]) {
-                [delegate didFinishedDownloadMovieWithPath:diskPath];
+            
+            self.radiaProgress.hidden = YES;
+            
+            if (delegate && [delegate respondsToSelector:@selector(sharecontent:didFinishedDownloadMovieWithPath:)]) {
+                [delegate sharecontent:self.shareID didFinishedDownloadMovieWithPath:diskPath];
             }
         }];
         [request setFailedBlock:^{
@@ -76,14 +85,16 @@
         
         s = 0;
         
-        [request setBytesReceivedBlock:^(unsigned long long size, unsigned long long total) {
-            
-            s += size;
-            self.radiaProgress.progressCounter = s;
-            self.radiaProgress.progressTotal = total;
-            
-//            NSLog(@"%lld %lld",size,total);
-        }];
+        self.radiaProgress.hidden = NO;
+        request.downloadProgressDelegate = self.radiaProgress;
+//        [request setBytesReceivedBlock:^(unsigned long long size, unsigned long long total) {
+//            
+//            s += size;
+//            self.radiaProgress.progressCounter = s;
+//            self.radiaProgress.progressTotal = total;
+//            
+////            NSLog(@"%lld %lld",size,total);
+//        }];
         
         [request startAsynchronous];
     }
@@ -100,6 +111,7 @@
 {
     self.movieURL = nil;
     self.radiaProgress = nil;
+    self.progressShowView = nil;
     [super dealloc];
 }
 

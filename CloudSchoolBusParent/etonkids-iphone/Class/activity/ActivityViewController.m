@@ -855,12 +855,26 @@
         [events release];
     }
 }
-
+- (void)viewWillDisappear:(BOOL)animated
+{
+}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)dealloc
+{
+    self.activityList = nil;
+    self.myActivityList = nil;
+    self.noStartActivityList = nil;
+    self.photoParam = nil;
+    self.requestArray = nil;
+    self.eventParam = nil;
+    self.dataList = nil;
+    [super dealloc];
+}
+
 
 @end

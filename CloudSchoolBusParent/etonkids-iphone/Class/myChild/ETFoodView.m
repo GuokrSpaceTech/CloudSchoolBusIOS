@@ -118,14 +118,16 @@
         
         
         //列表
-        tableview=[[UITableView alloc]initWithFrame:CGRectMake(0, NAVIHEIGHT, 320, self.frame.size.height - NAVIHEIGHT)];
+        UITableView *tv=[[UITableView alloc]initWithFrame:CGRectMake(0, NAVIHEIGHT, 320, self.frame.size.height - NAVIHEIGHT)];
         
-        tableview.delegate=self;
-        tableview.dataSource=self;
-        tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-        tableview.backgroundColor = CELLCOLOR;
-        [self addSubview:self.tableview];
-//        [tableview release];
+        tv.delegate=self;
+        tv.dataSource=self;
+        tv.separatorStyle = UITableViewCellSeparatorStyleNone;
+        tv.backgroundColor = CELLCOLOR;
+        [self addSubview:tv];
+        [tv release];
+        
+        self.tableview = tv;
         
         NSDictionary *dateDic = [NSDictionary dictionaryWithObjectsAndKeys:timestamp,@"menu_time", nil];
         [[EKRequest Instance] EKHTTPRequest:menu parameters:dateDic requestMethod:GET forDelegate:self];

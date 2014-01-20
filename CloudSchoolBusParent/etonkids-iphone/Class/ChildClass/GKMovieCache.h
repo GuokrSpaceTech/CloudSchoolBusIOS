@@ -10,8 +10,8 @@
 
 @interface GKMovieCache : NSObject
 
-+ (id)shareMovieCache;
 
 + (unsigned long long)getSize;
++ (void)clearDiskCache;
 
 @end

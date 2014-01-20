@@ -459,3 +459,5 @@
 "setting_help" = "帮助与支持";
 
 "guide" = "guide3dot0.png";
+"clearCache" = "清除缓存";
+"confirmClear" = "确认清除";

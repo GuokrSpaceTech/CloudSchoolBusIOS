@@ -182,6 +182,8 @@
 		11A5AE6818644125008794C0 /* smilik.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5AE6718644125008794C0 /* smilik.png */; };
 		11AA3388187CEDC6002FE2D4 /* GKNotice.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AA3387187CEDC6002FE2D4 /* GKNotice.m */; };
 		11AA338B187CFE9A002FE2D4 /* GKNoticeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AA338A187CFE9A002FE2D4 /* GKNoticeCell.m */; };
+		11AA5B4A188D277D001EA8B2 /* noticeStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AA5B48188D277D001EA8B2 /* noticeStar.png */; };
+		11AA5B4B188D277D001EA8B2 /* noticeEmail.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AA5B49188D277D001EA8B2 /* noticeEmail.png */; };
 		11AF3AE91816655B00B36176 /* navBarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AE81816655B00B36176 /* navBarImage.png */; };
 		11AF3AEB18166AB200B36176 /* navLeftBtn_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AEA18166AB200B36176 /* navLeftBtn_default.png */; };
 		11AF3AED18166D9A00B36176 /* bottomView.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AEC18166D9A00B36176 /* bottomView.png */; };
@@ -245,7 +247,6 @@
 		11C75DBD181276BA00A3AA89 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C75DBC181276BA00A3AA89 /* SystemConfiguration.framework */; };
 		11CE2A85187FA18400742001 /* NSDate+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2A84187FA18400742001 /* NSDate+convenience.m */; };
 		11CE2A88187FAF8E00742001 /* GKNoticeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2A87187FAF8E00742001 /* GKNoticeInfoViewController.m */; };
-		11CE2A8A187FEADF00742001 /* noticeInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CE2A89187FEADF00742001 /* noticeInfo.png */; };
 		11CE2A8D187FEE3500742001 /* writeRizhiH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CE2A8B187FEE3500742001 /* writeRizhiH.png */; };
 		11CE2A8E187FEE3500742001 /* writeRizhi.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CE2A8C187FEE3500742001 /* writeRizhi.png */; };
 		11CE2A90187FF5AD00742001 /* imageerror.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CE2A8F187FF5AD00742001 /* imageerror.png */; };
@@ -655,6 +656,8 @@
 		11AA3387187CEDC6002FE2D4 /* GKNotice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNotice.m; sourceTree = "<group>"; };
 		11AA3389187CFE9A002FE2D4 /* GKNoticeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKNoticeCell.h; sourceTree = "<group>"; };
 		11AA338A187CFE9A002FE2D4 /* GKNoticeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNoticeCell.m; sourceTree = "<group>"; };
+		11AA5B48188D277D001EA8B2 /* noticeStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noticeStar.png; sourceTree = "<group>"; };
+		11AA5B49188D277D001EA8B2 /* noticeEmail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noticeEmail.png; sourceTree = "<group>"; };
 		11AC07F4186A8BD70080FCC4 /* SchoolBusPhoto 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 3.xcdatamodel"; sourceTree = "<group>"; };
 		11AF3AE81816655B00B36176 /* navBarImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBarImage.png; sourceTree = "<group>"; };
 		11AF3AEA18166AB200B36176 /* navLeftBtn_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navLeftBtn_default.png; sourceTree = "<group>"; };
@@ -738,7 +741,6 @@
 		11CE2A84187FA18400742001 /* NSDate+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+convenience.m"; sourceTree = "<group>"; };
 		11CE2A86187FAF8E00742001 /* GKNoticeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKNoticeInfoViewController.h; sourceTree = "<group>"; };
 		11CE2A87187FAF8E00742001 /* GKNoticeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNoticeInfoViewController.m; sourceTree = "<group>"; };
-		11CE2A89187FEADF00742001 /* noticeInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noticeInfo.png; sourceTree = "<group>"; };
 		11CE2A8B187FEE3500742001 /* writeRizhiH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = writeRizhiH.png; sourceTree = "<group>"; };
 		11CE2A8C187FEE3500742001 /* writeRizhi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = writeRizhi.png; sourceTree = "<group>"; };
 		11CE2A8F187FF5AD00742001 /* imageerror.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageerror.png; sourceTree = "<group>"; };
@@ -1282,12 +1284,13 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				11AA5B48188D277D001EA8B2 /* noticeStar.png */,
+				11AA5B49188D277D001EA8B2 /* noticeEmail.png */,
 				114F66A81887C2780071D2AE /* duihaohuizhi.png */,
 				114F66A61887C16E0071D2AE /* kuang.png */,
 				11CE2A8F187FF5AD00742001 /* imageerror.png */,
 				11CE2A8B187FEE3500742001 /* writeRizhiH.png */,
 				11CE2A8C187FEE3500742001 /* writeRizhi.png */,
-				11CE2A89187FEADF00742001 /* noticeInfo.png */,
 				7888190D187F996500D0A851 /* 草稿箱@2x.png */,
 				7870A107187E9852009250FB /* Tophoto.png */,
 				7870A105187E97EE009250FB /* settingH.png */,
@@ -1810,6 +1813,7 @@
 				119F0CA3181A216100A5910C /* about.png in Resources */,
 				1193A6D2182C8653004011BC /* loginBG.png in Resources */,
 				11AF3B1118168D5C00B36176 /* aa.png in Resources */,
+				11AA5B4B188D277D001EA8B2 /* noticeEmail.png in Resources */,
 				11AF3AF018166ECB00B36176 /* upHight.png in Resources */,
 				78709C25187D1733009250FB /* play.png in Resources */,
 				E797189B18798BAB00353BAF /* README.md in Resources */,
@@ -1943,6 +1947,7 @@
 				1165E27C182CFCE000B60A81 /* pic-2.png in Resources */,
 				11DB02F81833A0AA007981C6 /* noticeE.png in Resources */,
 				119366D2184C3283008D2FA2 /* leftupH.png in Resources */,
+				11AA5B4A188D277D001EA8B2 /* noticeStar.png in Resources */,
 				11E27F90183C6AAC00CAE0BB /* shareBtnSel3.0.png in Resources */,
 				1102A7FE181A715D00E6295C /* guanlian-B-1.png in Resources */,
 				1193A6B4182B9150004011BC /* duihao.png in Resources */,
@@ -1975,7 +1980,6 @@
 				78709C24187D1733009250FB /* navbar-button-green@2x.png in Resources */,
 				78709C16187D1733009250FB /* logo-flat-dark.png in Resources */,
 				11DB02FC1833A0AA007981C6 /* aboutE.png in Resources */,
-				11CE2A8A187FEADF00742001 /* noticeInfo.png in Resources */,
 				11DB02EB18337F40007981C6 /* buyButtonN.png in Resources */,
 				11A5AE6818644125008794C0 /* smilik.png in Resources */,
 				11DB02FD1833A0AA007981C6 /* leftUpNE.png in Resources */,

@@ -263,7 +263,7 @@
         cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
         cell.backgroundColor=[UIColor clearColor];
         
-        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(260, 5, 20, 20)];
+        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(262, 7, 16, 16)];
         imageView.backgroundColor=[UIColor clearColor];
         [cell.contentView addSubview:imageView];
         imageView.tag=1006;

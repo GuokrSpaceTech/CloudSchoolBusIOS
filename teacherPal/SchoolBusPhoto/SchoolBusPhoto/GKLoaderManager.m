@@ -11,7 +11,7 @@
 #import "GKUserLogin.h"
 #import "GKFindWraper.h"
 #import "TestFlight.h"
-
+#import "DBManager.h"
 #define NSLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
 
@@ -28,43 +28,43 @@ static GKLoaderManager *manager=nil;
     
     return manager;
 }
--(BOOL)addNewPicToCoreData:(NSString *)path name:(NSString *)name iSloading:(NSNumber *)isUploading nameId:(NSString *)nameId studentId:(NSString *)std time:(NSNumber *)time fsize:(NSNumber *)fize classID:(NSNumber *)classid intro:(NSString *)intro data:(NSData *)imageData tag:(NSString *)tag
-{
-    GKUserLogin *user=[GKUserLogin currentLogin];
-   // NSLog(@"?????????????????%@",nameId);
-    UpLoader *aa=[self getOneData:nameId];
-    
-    if(aa!=nil && [aa.nameID isEqualToString:nameId])
-    {
-        return NO;
-    }
-    NSString *imageName=[NSString stringWithFormat:@"%@_%@_%@",user.classInfo.uid,time,fize];
-    GKAppDelegate *delegate=APPDELEGATE;
-    UpLoader *upLoader= [NSEntityDescription insertNewObjectForEntityForName:@"UpLoader" inManagedObjectContext:delegate.managedObjectContext];
-    upLoader.image=path;
-    upLoader.nameID=nameId;
-    upLoader.classUid=classid;
-    upLoader.name=imageName;
-    upLoader.studentId=std;
-    upLoader.fsize=fize;
-    upLoader.ftime=time;
-    upLoader.introduce=intro;
-    upLoader.tag = tag;
-   // upLoader.isUploading=[NSNumber numberWithInt:UPLOADING];
-    upLoader.isUploading=isUploading;
-    upLoader.smallImage=imageData;
-    NSError *err=nil;
-   BOOL success= [delegate.managedObjectContext save:&err];
-    if(!success)
-    {
-        NSLog(@"coredata 写入失败： %@",err.description);
-    }
-    return success;
-   // NSLog(@"%@",[err description]);
-    
-    
-    
-}
+//-(BOOL)addNewPicToCoreData:(NSString *)path name:(NSString *)name iSloading:(NSNumber *)isUploading nameId:(NSString *)nameId studentId:(NSString *)std time:(NSNumber *)time fsize:(NSNumber *)fize classID:(NSNumber *)classid intro:(NSString *)intro data:(NSData *)imageData tag:(NSString *)tag
+//{
+//    GKUserLogin *user=[GKUserLogin currentLogin];
+//   // NSLog(@"?????????????????%@",nameId);
+//    UpLoader *aa=[self getOneData:nameId];
+//    
+//    if(aa!=nil && [aa.nameID isEqualToString:nameId])
+//    {
+//        return NO;
+//    }
+//    NSString *imageName=[NSString stringWithFormat:@"%@_%@_%@",user.classInfo.uid,time,fize];
+//    GKAppDelegate *delegate=APPDELEGATE;
+//    UpLoader *upLoader= [NSEntityDescription insertNewObjectForEntityForName:@"UpLoader" inManagedObjectContext:delegate.managedObjectContext];
+//    upLoader.image=path;
+//    upLoader.nameID=nameId;
+//    upLoader.classUid=classid;
+//    upLoader.name=imageName;
+//    upLoader.studentId=std;
+//    upLoader.fsize=fize;
+//    upLoader.ftime=time;
+//    upLoader.introduce=intro;
+//    upLoader.tag = tag;
+//   // upLoader.isUploading=[NSNumber numberWithInt:UPLOADING];
+//    upLoader.isUploading=isUploading;
+//    upLoader.smallImage=imageData;
+//    NSError *err=nil;
+//   BOOL success= [delegate.managedObjectContext save:&err];
+//    if(!success)
+//    {
+//        NSLog(@"coredata 写入失败： %@",err.description);
+//    }
+//    return success;
+//   // NSLog(@"%@",[err description]);
+//    
+//    
+//    
+//}
 -(NSArray *)getAllUploaderPhotoFromCoreData
 {
     GKAppDelegate *delegate=APPDELEGATE;
@@ -90,44 +90,49 @@ static GKLoaderManager *manager=nil;
     GKAppDelegate *delegate=APPDELEGATE;
     
 
+
     NSEntityDescription *entity=[NSEntityDescription entityForName:@"UpLoader" inManagedObjectContext:delegate.managedObjectContext];
     NSPredicate *pred=[NSPredicate predicateWithFormat:@"(isUploading = %@)",[NSNumber numberWithInt:UPLOADING]];
-    NSFetchRequest *request=[[NSFetchRequest alloc]init];
+    NSFetchRequest *request=[[[NSFetchRequest alloc]init] autorelease];
     [request setEntity:entity];
     [request setPredicate:pred];
-    NSError *err=nil;
-    NSArray *arr=[delegate.managedObjectContext executeFetchRequest:request error:&err];
-    [request release];
+   // NSError *err=nil;
+  //  NSArray *arr=[delegate.managedObjectContext executeFetchRequest:request error:&err];
+    //[request release];
     
-    
-    for (int i=0; i<[arr count]; i++) {
-        UpLoader *loader=[arr objectAtIndex:i];
+    [[DBManager shareInstance]retriveObject:request success:^(NSArray *array) {
+        for (int i=0; i<[array count]; i++) {
+            UpLoader *loader=[array objectAtIndex:i];
+            
+            GKUpWraper *wraper=[[GKUpWraper alloc]init];
+            
+            wraper.tag = loader.tag;
+            wraper.name=loader.name;
+            wraper.isUploading=loader.isUploading;
+            wraper.path=loader.image;
+            wraper.nameid=loader.nameID;
+            wraper.tid=loader.studentId;
+            wraper.intro=loader.introduce;
+            wraper.time=loader.ftime;
+            wraper.fize=loader.fsize;
+            wraper.classid=loader.classUid;
+            wraper.imageData=loader.smallImage;
+            [upArr addObject:wraper];
+            [GKFindWraper addUpWrapper:wraper Key:loader.nameID];
+            
+            
+            //
+            //
+            //        [[GKUpQueue creatQueue] addRequestToQueue:loader.image name:loader.name nameid:loader.nameID studentid:loader.studentId time:loader.ftime fize:loader.fsize classID:loader.classUid];
+            
+            
+            [[GKUpQueue creatQueue]addRequestToQueue:wraper.path name:wraper.name nameid:wraper.nameid studentid:wraper.tid time:wraper.time fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag];
+            [wraper release];
+        }
+    } failed:^(NSError *err) {
         
-        GKUpWraper *wraper=[[GKUpWraper alloc]init];
-        
-        wraper.tag = loader.tag;
-        wraper.name=loader.name;
-        wraper.isUploading=loader.isUploading;
-        wraper.path=loader.image;
-        wraper.nameid=loader.nameID;
-        wraper.tid=loader.studentId;
-        wraper.intro=loader.introduce;
-        wraper.time=loader.ftime;
-        wraper.fize=loader.fsize;
-        wraper.classid=loader.classUid;
-        wraper.imageData=loader.smallImage;
-        [upArr addObject:wraper];
-        [GKFindWraper addUpWrapper:wraper Key:loader.nameID];
- 
-        
-       //
-//        
-//        [[GKUpQueue creatQueue] addRequestToQueue:loader.image name:loader.name nameid:loader.nameID studentid:loader.studentId time:loader.ftime fize:loader.fsize classID:loader.classUid];
-        
+    }];
 
-        [[GKUpQueue creatQueue]addRequestToQueue:wraper.path name:wraper.name nameid:wraper.nameid studentid:wraper.tid time:wraper.time fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag];
-        [wraper release];
-    }
     
     
   
@@ -199,55 +204,55 @@ static GKLoaderManager *manager=nil;
        
     }
 }
--(BOOL)deleteCoreDataLoadingState:(NSString *)nameid
-{
-    NSError *err = nil;
-    GKAppDelegate *delegate = SHARED_APP_DELEGATE;
-    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"UpLoader" inManagedObjectContext:delegate.managedObjectContext];
-    [request setEntity:entity];
-    NSPredicate *pred=[NSPredicate predicateWithFormat:@"(nameID = %@)",nameid];
-    [request setPredicate:pred];
-    
-    
-    NSArray *arr = [delegate.managedObjectContext executeFetchRequest:request error:&err];
-    
-    if (!arr) {
-        NSLog(@"!!!! search articals error : %@",err);
-    }
-    if([arr count]>0)
-    {
-        UpLoader *loader = [arr objectAtIndex:0];
-        [delegate.managedObjectContext deleteObject:loader];
-        BOOL successful = [delegate.managedObjectContext save:nil];
-        
-        return successful;
-    }
-    
-    return NO;
-    
-}
+//-(BOOL)deleteCoreDataLoadingState:(NSString *)nameid
+//{
+//    NSError *err = nil;
+//    GKAppDelegate *delegate = SHARED_APP_DELEGATE;
+//    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"UpLoader" inManagedObjectContext:delegate.managedObjectContext];
+//    [request setEntity:entity];
+//    NSPredicate *pred=[NSPredicate predicateWithFormat:@"(nameID = %@)",nameid];
+//    [request setPredicate:pred];
+//    
+//    
+//    NSArray *arr = [delegate.managedObjectContext executeFetchRequest:request error:&err];
+//    
+//    if (!arr) {
+//        NSLog(@"!!!! search articals error : %@",err);
+//    }
+//    if([arr count]>0)
+//    {
+//        UpLoader *loader = [arr objectAtIndex:0];
+//        [delegate.managedObjectContext deleteObject:loader];
+//        BOOL successful = [delegate.managedObjectContext save:nil];
+//        
+//        return successful;
+//    }
+//    
+//    return NO;
+//    
+//}
 
--(void)changeCoreDataLoadingState:(NSString *)nameid
-{
-    GKAppDelegate *delegate=APPDELEGATE;
-    NSEntityDescription *entity=[NSEntityDescription entityForName:@"UpLoader" inManagedObjectContext:delegate.managedObjectContext];
-    NSPredicate *pred=[NSPredicate predicateWithFormat:@"(nameID = %@)",nameid];
-    NSFetchRequest *request=[[NSFetchRequest alloc]init];
-    [request setEntity:entity];
-    [request setPredicate:pred];
-    NSError *err=nil;
-    NSArray *arr=[delegate.managedObjectContext executeFetchRequest:request error:&err];
-    [request release];
-    
-    for (int i=0; i<[arr count]; i++) {
-        UpLoader *loader=[arr objectAtIndex:i];
-        loader.isUploading=[NSNumber numberWithInt:UPDOWN]; // 下载完成
-    }
-    [delegate.managedObjectContext save:&err];
-
-
-}
+//-(void)changeCoreDataLoadingState:(NSString *)nameid
+//{
+//    GKAppDelegate *delegate=APPDELEGATE;
+//    NSEntityDescription *entity=[NSEntityDescription entityForName:@"UpLoader" inManagedObjectContext:delegate.managedObjectContext];
+//    NSPredicate *pred=[NSPredicate predicateWithFormat:@"(nameID = %@)",nameid];
+//    NSFetchRequest *request=[[NSFetchRequest alloc]init];
+//    [request setEntity:entity];
+//    [request setPredicate:pred];
+//    NSError *err=nil;
+//    NSArray *arr=[delegate.managedObjectContext executeFetchRequest:request error:&err];
+//    [request release];
+//    
+//    for (int i=0; i<[arr count]; i++) {
+//        UpLoader *loader=[arr objectAtIndex:i];
+//        loader.isUploading=[NSNumber numberWithInt:UPDOWN]; // 下载完成
+//    }
+//    [delegate.managedObjectContext save:&err];
+//
+//
+//}
 
 -(void)removeWraperFromArr:(NSString *)key
 {

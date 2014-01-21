@@ -13,7 +13,7 @@
 #import "GKLoaderManager.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UpLoader.h"
-
+#import "DBManager.h"
 
 #define UPBUTTONTAG 1000
 @interface GKImagePickerViewController ()
@@ -182,16 +182,42 @@
 }
 -(void)addIgnore:(id)sender
 {
-    GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
+   // GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
     for (int i=0; i<[selectArr count]; i++) {
         ETPhoto *photo=[selectArr objectAtIndex:i];
         
         
-        [manager addNewPicToCoreData:@"" name:@"" iSloading:[NSNumber numberWithInt:2] nameId:photo.nameId studentId:@"" time:[NSNumber numberWithInt:0] fsize:[NSNumber numberWithInt:0] classID:[NSNumber numberWithInt:0] intro:@"" data:nil tag:@""];// 图片tag
+        [[DBManager shareInstance]insertObject:^(NSManagedObject *object) {
+            UpLoader *aa=(UpLoader *)object;
+            aa.image=@"";
+            aa.nameID=photo.nameId;
+            aa.classUid=[NSNumber numberWithInt:0];
+            aa.name=@"";
+            aa.studentId=@"";
+            aa.fsize=[NSNumber numberWithInt:0];
+            aa.ftime=[NSNumber numberWithInt:0];
+            aa.introduce=@"";
+            aa.tag=@"";
+            aa.isUploading=[NSNumber numberWithInt:2];
+            aa.smallImage=nil;
+            
+        } entityName:@"UpLoader" success:^{
+            
+            
+            NSLog(@"cccccfggggg");
+            
+            //[manager addWraperToArr:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];
+            
+            
+        } failed:^(NSError *err) {
+            NSLog(@"ssssbbbbbbb");
+        }];
+
+        
+        //[manager addNewPicToCoreData:@"" name:@"" iSloading:[NSNumber numberWithInt:2] nameId:photo.nameId studentId:@"" time:[NSNumber numberWithInt:0] fsize:[NSNumber numberWithInt:0] classID:[NSNumber numberWithInt:0] intro:@"" data:nil tag:@""];// 图片tag
     }
     
-    [self
-     performSelectorOnMainThread:@selector(uploadUI) withObject:nil waitUntilDone:YES];
+    [self performSelectorOnMainThread:@selector(uploadUI) withObject:nil waitUntilDone:YES];
 }
 -(void)uploadUI
 {

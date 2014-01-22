@@ -84,7 +84,7 @@
     [presetBtn setFrame:thumbImgV.frame];
     if (self.moviePath != nil)
     {
-        [presetBtn setImage:nil forState:UIControlStateNormal];
+        [presetBtn setImage:[UIImage imageNamed:@"moviepresetplay.png"] forState:UIControlStateNormal];
     }
     [presetBtn addTarget:self action:@selector(presetMedia:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:presetBtn];

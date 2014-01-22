@@ -403,6 +403,8 @@
     
     if (isBind)
     {
+        if (![self checkMobile]) return;
+        
         if(HUD==nil)
         {
             HUD=[[MBProgressHUD alloc]initWithView:self.view];

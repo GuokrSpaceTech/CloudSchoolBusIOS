@@ -716,7 +716,12 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     
     
 }
-
+- (void)viewDidDisappear:(BOOL)animated
+{
+    if (self.mPlayer && self.mPlayer.playbackState == MPMoviePlaybackStatePlaying) {
+        [self.mPlayer stop];
+    }
+}
 - (void)viewWillAppear:(BOOL)animated
 {
    

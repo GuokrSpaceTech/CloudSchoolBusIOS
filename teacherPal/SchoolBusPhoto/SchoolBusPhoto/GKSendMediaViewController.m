@@ -11,6 +11,7 @@
 #import "GKFilterViewController.h"
 #import "GKLoaderManager.h"
 #import "GKCoreDataManager.h"
+#import "DBManager.h"
 @interface GKSendMediaViewController ()
 
 @end
@@ -327,13 +328,35 @@
     
     NSLog(@"students %@ , photo tag : %@",students,(photoTag == nil ? @"" : photoTag));
     
-   [manager addNewPicToCoreData:filePath name:@"" iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:contentTV.text data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"" : photoTag)] ;
+     NSString *imageName=[NSString stringWithFormat:@"%@_%@_%@",user.classInfo.uid,[NSNumber numberWithInt:[timestamp intValue]],[NSNumber numberWithInt:fise]];
     
-   
-         [manager addWraperToArr:filePath name:@"" iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:contentTV.text data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"":photoTag)];
-    
-   
-    
+    [[DBManager shareInstance]insertObject:^(NSManagedObject *object) {
+        UpLoader *aa=(UpLoader *)object;
+        aa.image=filePath;
+        aa.nameID=[NSString stringWithFormat:@"draft%@",timestamp];
+        aa.classUid=[NSNumber numberWithInt:[user.classInfo.uid integerValue]];
+        aa.name=imageName;
+        aa.studentId=students;
+        aa.fsize=[NSNumber numberWithInt:fise];
+        aa.ftime=[NSNumber numberWithInt:[timestamp intValue]];
+        aa.introduce=contentTV.text;
+        aa.tag=(photoTag == nil ? @"" : photoTag);
+        aa.isUploading=[NSNumber numberWithInt:1];
+        aa.smallImage=UIImageJPEGRepresentation(thumbImgV.image, 0.1);
+        
+    } entityName:@"UpLoader" success:^{
+        
+        
+        NSLog(@"cccccfggggg");
+        
+        [manager addWraperToArr:filePath name:@"" iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:contentTV.text data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"":photoTag)];
+        
+        
+    } failed:^(NSError *err) {
+        NSLog(@"ssssbbbbbbb");
+    }];
+
+   //[manager addNewPicToCoreData:filePath name:@"" iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:contentTV.text data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"" : photoTag)] ;
     [self.navigationController dismissModalViewControllerAnimated:YES];
     
 }

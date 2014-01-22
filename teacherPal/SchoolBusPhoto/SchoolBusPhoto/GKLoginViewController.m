@@ -296,7 +296,8 @@
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
 {
   
-    
+    NSString *str=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",str);
     NSDictionary *dic= [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
     GKUserLogin *user=[GKUserLogin currentLogin];
     if(method==tsignin && code==1)

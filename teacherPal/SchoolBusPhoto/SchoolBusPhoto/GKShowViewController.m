@@ -17,7 +17,7 @@
 #import "ETShowBigImageViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "KKNavigationController.h"
-
+#import "DBManager.h"
 #define TAG 1000
 
 #define STUDENTCELLHEIGHT 50
@@ -789,14 +789,36 @@
                 }
             }
         NSLog(@"introduce:??????????????????????????????????%@",introduce);
-        [manager addNewPicToCoreData:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];// 图片tag
         
         
         
-        
-        
-    
+        [[DBManager shareInstance]insertObject:^(NSManagedObject *object) {
+            UpLoader *aa=(UpLoader *)object;
+            aa.image=filename;
+            aa.nameID=photo.nameId;
+            aa.classUid=[NSNumber numberWithInt:[user.classInfo.uid integerValue]];
+            aa.name=representation.filename;
+            aa.studentId=studentId;
+            aa.fsize=[NSNumber numberWithInt:representation.size];
+            aa.ftime=[NSNumber numberWithInt:ftime];
+            aa.introduce=introduce;
+            aa.tag=@"";
+            aa.isUploading=[NSNumber numberWithInt:1];
+            aa.smallImage=UIImageJPEGRepresentation(thumbiamge, 0.5);
+            
+        } entityName:@"UpLoader" success:^{
+            
+            
+            NSLog(@"cccccfggggg");
+            
         [manager addWraperToArr:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];
+
+            
+        } failed:^(NSError *err) {
+              NSLog(@"ssssbbbbbbb");
+        }];
+        
+        //[manager addNewPicToCoreData:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];// 图片tag
         
             [pool release];
         }

@@ -45,8 +45,7 @@
                                           [ NSNumber numberWithFloat: rate], AVSampleRateKey,
                                           [ NSNumber numberWithInt: 64000 ], AVEncoderBitRateKey,
                 nil];
-    _audioInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeAudio outputSettings:settings];
-    _audioInput.expectsMediaDataInRealTime = YES;
+       _audioInput.expectsMediaDataInRealTime = YES;
     [_writer addInput:_audioInput];
 }
 

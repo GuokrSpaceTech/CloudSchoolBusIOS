@@ -11,7 +11,8 @@
 #import "GKLoaderManager.h"
 #import "GKFindWraper.h"
 #import "TestFlight.h"
-
+#import "DBManager.h"
+#import "GKAppDelegate.h"
 #define NSLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
 static GKUpQueue *gkqueue=nil;
@@ -127,69 +128,53 @@ static GKUpQueue *gkqueue=nil;
 
 - (void)requestDidSuccess:(ASIHTTPRequest *)request
 {
-    NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
-     GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
+//    NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
+//     GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
     NSLog(@"%@",request.responseHeaders);
+    
+    NSString *picId=[[request userInfo] objectForKey:@"nameid"];
+    NSString *picPath=[[request userInfo] objectForKey:@"path"];
+     //  [self ChageCoreDataDeleteOrUoloadingAlter:NO picId:picId picPath:picPath];
+    
     if([[request.responseHeaders objectForKey:@"Code"] integerValue]==1)
     {
-        NSString *picId=[[request userInfo] objectForKey:@"nameid"];
-        NSString *picPath=[[request userInfo] objectForKey:@"path"];
-        
-        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:picId,@"key", nil];
-        
-        [center postNotificationName:@"changeupload" object:nil userInfo:dic];
-        
-        // upArr 删除下载完成的
-        //改变coreData 的下载状态
-        [manager changeCoreDataLoadingState:picId];
-        // 删除 manager 数组第一条数据
-        [manager removeWraperFromArr:picId];
-        
-        
-        //从document中删除临时文件
-        NSError *error=nil;
-        NSFileManager *fileManage=[NSFileManager defaultManager];
-        if([fileManage fileExistsAtPath:picPath])
-        {
-            BOOL success= [fileManage removeItemAtPath:picPath error:&error];
-            if(!success)
-            {
-                NSLog(@"删除文件失败 %@",error.description);
-            }
-            else
-            {
-                 NSLog(@"删除成功");
-            }
-        }
+        [self ChageCoreDataDeleteOrUoloadingAlter:YES picId:picId picPath:picPath];
     }
  
     else if([[request.responseHeaders objectForKey:@"Code"] integerValue]==-37) //时间戳错误
     {
         NSLog(@"时间戳错误");
+         [self ChageCoreDataDeleteOrUoloadingAlter:NO picId:picId picPath:picPath];
     }
     else if([[request.responseHeaders objectForKey:@"Code"] integerValue]==-40) // 图片内容空
     {
         NSLog(@"图片内容空");
+         [self ChageCoreDataDeleteOrUoloadingAlter:NO picId:picId picPath:picPath];
     }
     else if([[request.responseHeaders objectForKey:@"Code"] integerValue]==-41) // base64 错误
     {
         NSLog(@"base64 错误");
+         [self ChageCoreDataDeleteOrUoloadingAlter:NO picId:picId picPath:picPath];
     }
     else if([[request.responseHeaders objectForKey:@"Code"] integerValue]==-38) //fsize空
     {
         NSLog(@"fsize空");
+         [self ChageCoreDataDeleteOrUoloadingAlter:NO picId:picId picPath:picPath];
     }
     else if([[request.responseHeaders objectForKey:@"Code"] integerValue]==-42) //收到的文件流与 fsize 的大小不一致
     {
         NSLog(@"收到的文件流与 fsize 的大小不一致");
+         [self ChageCoreDataDeleteOrUoloadingAlter:NO picId:picId picPath:picPath];
     }
     else if([[request.responseHeaders objectForKey:@"Code"] integerValue]==-43) //生成的文件不是图片
     {
         NSLog(@"生成的文件不是图片");
+         [self ChageCoreDataDeleteOrUoloadingAlter:NO picId:picId picPath:picPath];
     }
     else if([[request.responseHeaders objectForKey:@"Code"] integerValue]==-44) //ffmpeg没有载入
     {
         NSLog(@"ffmpeg没有载入");
+         [self ChageCoreDataDeleteOrUoloadingAlter:NO picId:picId picPath:picPath];
     }
     else
     {
@@ -202,7 +187,87 @@ static GKUpQueue *gkqueue=nil;
    // [manager startUpLoader];
     
 }
+-(void)ChageCoreDataDeleteOrUoloadingAlter:(BOOL)an  picId:(NSString *)picId picPath:(NSString *)path
+{
+    
+    NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
+    
+    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:picId,@"key", nil];
+    [center postNotificationName:@"changeupload" object:nil userInfo:dic];
+    GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
+    GKAppDelegate *appdelegate=APPDELEGATE;
+    
+   
+    if(an==YES) //更改coredata 状态
+    {
+        // upArr 删除下载完成的
+        //改变coreData 的下载状态
+        
+        //[manager changeCoreDataLoadingState:picId];
+        NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+        NSManagedObjectContext *moContext = appdelegate.managedObjectContext;
+        
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"UpLoader" inManagedObjectContext:moContext];
+        [request setEntity:entity];
+        NSPredicate *pred=[NSPredicate predicateWithFormat:@"(nameID = %@)",picId];
+        request.predicate=pred;
 
+        [[DBManager shareInstance]updateObject:^(NSManagedObject *object) {
+            
+            UpLoader *loader=(UpLoader *)object;
+          
+            loader.isUploading=[NSNumber numberWithInt:2];
+            
+        } request:request success:^{
+            
+          
+            
+        } failed:^(NSError *err) {
+         
+        }];
+        
+        // 删除 manager 数组第一条数据
+        [manager removeWraperFromArr:picId];
+
+
+    }
+    else // 删除上传  重新上传
+    {
+        // upArr 删除下载完成的
+        // 删除 coredate 改条信息
+        //[manager deleteCoreDataLoadingState:picId];
+        NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+        NSManagedObjectContext *moContext = appdelegate.managedObjectContext;
+        
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"UpLoader" inManagedObjectContext:moContext];
+        [request setEntity:entity];
+        NSPredicate *pred=[NSPredicate predicateWithFormat:@"(nameID = %@)",picId];
+        request.predicate=pred;
+
+        [[DBManager shareInstance]deleteObject:request success:^{
+            
+        } failed:^(NSError *err) {
+            
+        }];
+        // 删除 manager 数组第一条数据
+        [manager removeWraperFromArr:picId];
+    }
+    //从document中删除临时文件
+    NSError *error=nil;
+    NSFileManager *fileManage=[NSFileManager defaultManager];
+    if([fileManage fileExistsAtPath:path])
+    {
+        BOOL success= [fileManage removeItemAtPath:path error:&error];
+        if(!success)
+        {
+            NSLog(@"删除文件失败 %@",error.description);
+        }
+        else
+        {
+            NSLog(@"删除成功");
+        }
+    }
+}
 - (void)requestDidFailed:(ASIFormDataRequest *)_request{
     
     NSLog(@"%@",_request.error.description);
@@ -212,38 +277,7 @@ static GKUpQueue *gkqueue=nil;
     {
         NSString *picId=[[_request userInfo] objectForKey:@"nameid"];
         NSString *picPath=[[_request userInfo] objectForKey:@"path"];
-        
-        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:picId,@"key", nil];
-        NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
-        [center postNotificationName:@"changeupload" object:nil userInfo:dic];
-        GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
-
-        // upArr 删除下载完成的
-
-        // 删除 coredate 改条信息
-        
-        [manager deleteCoreDataLoadingState:picId];
-        
-        // 删除 manager 数组第一条数据
-        [manager removeWraperFromArr:picId];
-        
-        
-        //从document中删除临时文件
-        NSError *error=nil;
-        NSFileManager *fileManage=[NSFileManager defaultManager];
-        if([fileManage fileExistsAtPath:picPath])
-        {
-            BOOL success= [fileManage removeItemAtPath:picPath error:&error];
-            if(!success)
-            {
-                NSLog(@"删除文件失败 %@",error.description);
-            }
-            else
-            {
-                NSLog(@"删除成功");
-            }
-        }
-
+        [self ChageCoreDataDeleteOrUoloadingAlter:NO picId:picId picPath:picPath];
         
     }
 

@@ -107,9 +107,16 @@ static GKCameraManager *cameraManager;
         //--------------- output ------------------
         
         AVCaptureStillImageOutput *stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
+        
         if ([_session canAddOutput:stillImageOutput])
         {
-            [stillImageOutput setOutputSettings:@{AVVideoCodecKey : AVVideoCodecJPEG}];
+            NSDictionary* settings = [NSDictionary dictionaryWithObjectsAndKeys:
+                                      AVVideoCodecJPEG, AVVideoCodecKey,
+//                                      [NSNumber numberWithInt: 480], AVVideoWidthKey,
+//                                      [NSNumber numberWithInt: 480], AVVideoHeightKey,
+                                      AVVideoScalingModeFit, AVVideoScalingModeKey,
+                                      nil];
+            [stillImageOutput setOutputSettings:settings];
             [_session addOutput:stillImageOutput];
             _stillImageOutput = stillImageOutput;
         }
@@ -133,8 +140,8 @@ static GKCameraManager *cameraManager;
         NSDictionary* actual = videoout.videoSettings;
 //        _cy = (int)[[actual objectForKey:@"Height"] integerValue];
 //        _cx = (int)[[actual objectForKey:@"Width"] integerValue];
-        _cy = 640;
-        _cx = 640;
+        _cy = 480;
+        _cx = 480;
         
         [_videoConnection setVideoOrientation:AVCaptureVideoOrientationPortrait];
         
@@ -246,17 +253,17 @@ static GKCameraManager *cameraManager;
             CGImageRef imgRef;
             
             
-            if (currentVideoOrientation == AVCaptureVideoOrientationPortrait)
-            {
+//            if (currentVideoOrientation == AVCaptureVideoOrientationPortrait)
+//            {
                 imgRef = CGImageCreateWithImageInRect(img.CGImage, CGRectMake(0, 80, 480, 480));
-            }
-            else
-            {
-                imgRef = CGImageCreateWithImageInRect(img.CGImage, CGRectMake(80, 0, 480, 480));
-            }
+//            }
+//            else
+//            {
+//                imgRef = CGImageCreateWithImageInRect(img.CGImage, CGRectMake(80, 0, 480, 480));
+//            }
             
             UIImage *a = [UIImage imageWithCGImage:imgRef];
-                
+            
             mBlock(a, error);
 
         }

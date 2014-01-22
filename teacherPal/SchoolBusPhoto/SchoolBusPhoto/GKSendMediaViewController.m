@@ -12,6 +12,9 @@
 #import "GKLoaderManager.h"
 #import "GKCoreDataManager.h"
 #import "DBManager.h"
+#import "MovieDraft.h"
+
+
 @interface GKSendMediaViewController ()
 
 @end
@@ -121,6 +124,7 @@
     //int row=([user.studentArr count] )%4;
     int y = MIN(col+1, 4);
     
+    
     GKStudentView *studentView=[[GKStudentView alloc]initWithFrame:CGRectMake(0, (iphone5 ? 548 : 460) + (ios7 ? 20 : 0) - (y*50), 320,( y*50))];
     studentView.backgroundColor=[UIColor whiteColor];
     studentView.delegate=self;
@@ -174,7 +178,7 @@
 {
     int a= [self textLength:textView.text];
     
-    NSLog(@"%d",a);
+//    NSLog(@"%d",a);
     calWordsLab.text=[NSString stringWithFormat:@"%d/140",a];
     
     if(a>140)
@@ -375,6 +379,11 @@
         [as showInView:self.view];
         [as release];
     }
+    else
+    {
+        [self.navigationController dismissModalViewControllerAnimated:YES];
+        return;
+    }
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -384,8 +393,25 @@
         NSString *stamp = [NSString stringWithFormat:@"%d", (int)[[NSDate date] timeIntervalSince1970]];
         
         GKUserLogin *user=[GKUserLogin currentLogin];
-        BOOL success = [GKCoreDataManager addMovieDraftWithUserid:[NSString stringWithFormat:@"%@", user.classInfo.classid] moviePath:self.moviePath dateStamp:stamp thumbnail:UIImageJPEGRepresentation(self.thumbnail, 0.1)];
-        NSLog(@"save draft : %d",success);
+//        BOOL success = [GKCoreDataManager addMovieDraftWithUserid:[NSString stringWithFormat:@"%@", user.classInfo.classid] moviePath:self.moviePath dateStamp:stamp thumbnail:UIImageJPEGRepresentation(self.thumbnail, 0.1)];
+//        NSLog(@"save draft : %d",success);
+        
+        [[DBManager shareInstance] insertObject:^(NSManagedObject *object) {
+            
+            MovieDraft *movie = (MovieDraft *)object;
+            movie.createdate = stamp;
+            movie.moviepath = self.moviePath;
+            movie.userid = [NSString stringWithFormat:@"%@", user.classInfo.classid];
+            movie.thumbnail = UIImageJPEGRepresentation(self.thumbnail, 0.1);
+            
+            
+            
+        } entityName:@"MovieDraft" success:^{
+            
+        } failed:^(NSError *err) {
+            
+        }];
+        
         
         [self.navigationController dismissModalViewControllerAnimated:YES];
     }
@@ -419,6 +445,17 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)dealloc
+{
+    self.sourcePicture = nil;
+    self.moviePath = nil;
+    self.thumbnail = nil;
+    self.stuList = nil;
+    self.photoTag = nil;
+    [super dealloc];
 }
 
 @end

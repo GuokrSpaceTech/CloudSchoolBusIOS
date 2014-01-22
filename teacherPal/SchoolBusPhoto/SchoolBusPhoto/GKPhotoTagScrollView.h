@@ -18,10 +18,9 @@
 {
     int selectedTag;
 }
-
 @property (nonatomic, assign)id<GKPhotoTagScrollViewDelegate> tagDelegate;
 @property (nonatomic, retain) NSArray *photoTags;
-
+-(void)setSelectTag:(NSString *) tagstr;
 - (void)setPhotoTags:(NSArray *)tags;
 
 @end

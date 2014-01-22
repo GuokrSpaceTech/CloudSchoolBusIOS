@@ -111,7 +111,29 @@
     
     
 }
-
+-(void)setSelectTag:(NSString *) tagstr
+{
+    for (int i = 0; i < photoTags.count; i++) {
+        //重置所有按钮.
+        
+        UIButton *btn = (UIButton *)[self viewWithTag:TAG + i];
+        [btn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        if([btn.titleLabel.text isEqualToString:tagstr])
+        {
+            [btn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue-active"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];
+            selectedTag = btn.tag;
+            [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        }
+        
+        
+    }
+    if([tagstr isEqualToString:@""])
+    {
+        selectedTag=0;
+    }
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

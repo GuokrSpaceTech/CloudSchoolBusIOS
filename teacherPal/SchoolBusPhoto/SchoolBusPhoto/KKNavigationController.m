@@ -11,6 +11,7 @@
 #import "KKNavigationController.h"
 #import <QuartzCore/QuartzCore.h>
 #import <math.h>
+#import "GKSaySomethingView.h"
 #import <QuartzCore/QuartzCore.h>
 @interface KKNavigationController ()
 {
@@ -165,7 +166,7 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     UIView* touchedView = [touch view];
-    if([touchedView isKindOfClass:[UIButton class]]) {
+    if([touchedView isKindOfClass:[UIButton class]] ||[touchedView isKindOfClass:[GKSaySomethingView class]] || [touchedView isKindOfClass:[UITextView class]]) {
         
         return NO;
     }

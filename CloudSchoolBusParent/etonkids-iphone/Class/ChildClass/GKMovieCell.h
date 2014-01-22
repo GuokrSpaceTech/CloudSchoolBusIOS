@@ -17,6 +17,7 @@
 #import "EKRequest.h"
 
 
+
 @interface GKMovieCell : UITableViewCell<GKMovieDownloaderDelegate,EKProtocol>
 
 @property(nonatomic,retain) UILabel *titleLabel;
@@ -49,11 +50,13 @@
 @property (nonatomic, retain) MDRadialProgressView *radia;
 
 @property (nonatomic, retain) NSString *canceledURL;
-
+@property (nonatomic, retain) NSString *currentURL;
 
 - (void)setMovieURL:(NSString *)url;
 
 - (void)addPraiseNumber;
 - (void)subPraiseNumber;
+
+- (void)playMovie;
 
 @end

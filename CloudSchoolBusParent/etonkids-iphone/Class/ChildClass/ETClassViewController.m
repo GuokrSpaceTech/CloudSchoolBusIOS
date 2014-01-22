@@ -33,17 +33,24 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDownloadCompleteNotification:) name:@"MOVIEDOWNLOADCOMPLETE" object:nil];
     }
     return self;
 }
+
+- (void)movieDownloadCompleteNotification:(NSNotification *)noti
+{
+    [self controlVisibleCellPlay];
+}
+
 -(void) didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
 -(void)dealloc
 {
-
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"MOVIEDOWNLOADCOMPLETE" object:nil];
     self.list=nil;
     self.shareContent=nil;
     self.headImage = nil;
@@ -1582,8 +1589,6 @@
 
 - (void)controlVisibleCellPlay
 {
-    
-    
     NSArray *cells = [self._tableView visibleCells];
     
 //    NSLog(@"%@",cells);
@@ -1605,8 +1610,6 @@
                 cell = tempCell;
             }
 //            NSLog(@"%f,%f",tempCell.frame.origin.y,self._tableView.contentOffset.y );
-            
-            
         }
         
     }
@@ -1619,8 +1622,6 @@
             [mm toggleMoviePlayingWithCell:cell];
         }
     }
-    
-    
     
 }
 

@@ -37,4 +37,19 @@
                                                     error:NULL];
 }
 
++ (BOOL)isContainMovieByURL:(NSString *)url
+{
+    NSString *mURL = [NSString stringWithFormat:@"%@",url];
+    
+    NSString *filename = [[mURL componentsSeparatedByString:@"/"] lastObject];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *diskPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:filename];
+    
+    NSFileManager *fm = [NSFileManager defaultManager];
+    if ([fm fileExistsAtPath:diskPath])
+        return YES;
+    return NO;
+}
+
 @end

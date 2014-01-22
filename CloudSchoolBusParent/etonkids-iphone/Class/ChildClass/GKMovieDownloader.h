@@ -8,27 +8,37 @@
 
 #import <Foundation/Foundation.h>
 #import "MDRadialProgressView.h"
+#import "ASIHTTPRequest.h"
+
+typedef void(^GKMovieDownloadCompletedBlock)(NSString *path, NSError *error);
+typedef void (^GKProgressBlock)(unsigned long long size, unsigned long long total,NSString *downloadingPath);
+
+@class GKMovieDownloader;
 
 @protocol GKMovieDownloaderDelegate <NSObject>
 
-- (void)sharecontent:(NSString *)shareId didFinishedDownloadMovieWithPath:(NSString *)path;
+- (void)downloader:(GKMovieDownloader *)dl didFinishedDownloadMovieWithPath:(NSString *)path;
 
 @end
 
 @interface GKMovieDownloader : NSObject
 {
     int s;   // 已经接收的字节数
+    ASIHTTPRequest *request;
 }
 @property (nonatomic, retain)NSString *diskCachePath;
 @property (nonatomic, retain) NSString *movieURL;
 @property (nonatomic, assign) id<GKMovieDownloaderDelegate> delegate;
-@property (nonatomic, retain) MDRadialProgressView *radiaProgress;
-@property (nonatomic, retain) UIView *progressShowView;
-@property (nonatomic, retain)NSString *shareID;
+
+@property (nonatomic, assign) GKMovieDownloadCompletedBlock completion;
+@property (nonatomic, assign) GKProgressBlock progress;
 
 
 - (id)initWithMovieURL:(NSString *)url;
 - (void)startDownload;
-- (void)progressShowInView:(UIView *)view;
+- (void)cancelRequest;
+
+
+
 
 @end

@@ -12,6 +12,9 @@
 #import "GKLoaderManager.h"
 #import "GKCoreDataManager.h"
 #import "DBManager.h"
+#import "MovieDraft.h"
+
+
 @interface GKSendMediaViewController ()
 
 @end
@@ -384,8 +387,25 @@
         NSString *stamp = [NSString stringWithFormat:@"%d", (int)[[NSDate date] timeIntervalSince1970]];
         
         GKUserLogin *user=[GKUserLogin currentLogin];
-        BOOL success = [GKCoreDataManager addMovieDraftWithUserid:[NSString stringWithFormat:@"%@", user.classInfo.classid] moviePath:self.moviePath dateStamp:stamp thumbnail:UIImageJPEGRepresentation(self.thumbnail, 0.1)];
-        NSLog(@"save draft : %d",success);
+//        BOOL success = [GKCoreDataManager addMovieDraftWithUserid:[NSString stringWithFormat:@"%@", user.classInfo.classid] moviePath:self.moviePath dateStamp:stamp thumbnail:UIImageJPEGRepresentation(self.thumbnail, 0.1)];
+//        NSLog(@"save draft : %d",success);
+        
+        [[DBManager shareInstance] insertObject:^(NSManagedObject *object) {
+            
+            MovieDraft *movie = (MovieDraft *)object;
+            movie.createdate = stamp;
+            movie.moviepath = self.moviePath;
+            movie.userid = [NSString stringWithFormat:@"%@", user.classInfo.classid];
+            movie.thumbnail = UIImageJPEGRepresentation(self.thumbnail, 0.1);
+            
+            
+            
+        } entityName:@"MovieDraft" success:^{
+            
+        } failed:^(NSError *err) {
+            
+        }];
+        
         
         [self.navigationController dismissModalViewControllerAnimated:YES];
     }

@@ -12,6 +12,9 @@
 #import "MovieDraft.h"
 #import "GKSendMediaViewController.h"
 #import "KKNavigationController.h"
+#import "DBManager.h"
+#import "GKAppDelegate.h"
+
 @interface GKDraftViewController ()
 
 @end
@@ -48,7 +51,24 @@
     [buttonBack addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     
     GKUserLogin *user = [GKUserLogin currentLogin];
-    self.dataArray = [NSMutableArray arrayWithArray:[GKCoreDataManager searchMovieDraftByUserid:[NSString stringWithFormat:@"%@",user.classInfo.classid]]];
+    
+    GKAppDelegate *delegate = SHARED_APP_DELEGATE;
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"MovieDraft" inManagedObjectContext:delegate.managedObjectContext];
+    [request setEntity:entity];
+    NSPredicate *searchPre = [NSPredicate predicateWithFormat:@"(userid = %@)",[NSString stringWithFormat:@"%@",user.classInfo.classid]];
+    [request setPredicate:searchPre];
+    NSSortDescriptor *sortDes = [NSSortDescriptor sortDescriptorWithKey:@"createdate" ascending:NO];
+    [request setSortDescriptors:[NSArray arrayWithObject:sortDes]];
+    [[DBManager shareInstance] retriveObject:request success:^(NSArray *array) {
+        
+        self.dataArray = [NSMutableArray arrayWithArray:array];
+        
+    } failed:^(NSError *err) {
+        
+    }];
+    
+//    self.dataArray = [NSMutableArray arrayWithArray:[GKCoreDataManager searchMovieDraftByUserid:[NSString stringWithFormat:@"%@",user.classInfo.classid]]];
     
     
     
@@ -162,7 +182,21 @@
 {
     // 删除 数据库 和 本地视频文件
     MovieDraft *draft = [self.dataArray objectAtIndex:indexPath.row];
-    [GKCoreDataManager removeMovieDraftByUserid:draft.userid moviePath:draft.moviepath];
+    
+    
+    GKAppDelegate *delegate = SHARED_APP_DELEGATE;
+    NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"MovieDraft" inManagedObjectContext:delegate.managedObjectContext];
+    [request setEntity:entity];
+    NSPredicate *searchPre = [NSPredicate predicateWithFormat:@"(userid = %@ and moviepath = %@)",draft.userid,draft.moviepath];
+    [request setPredicate:searchPre];
+    [[DBManager shareInstance] deleteObject:request success:^{
+        
+    } failed:^(NSError *err) {
+        
+    }];
+    
+//    [GKCoreDataManager removeMovieDraftByUserid:draft.userid moviePath:draft.moviepath];
     
     [[NSFileManager defaultManager] removeItemAtPath:draft.moviepath error:nil];
 

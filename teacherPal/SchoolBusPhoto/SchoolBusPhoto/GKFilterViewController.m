@@ -10,6 +10,9 @@
 #import "GKSendMediaViewController.h"
 #import "GKCoreDataManager.h"
 #import "GKUserLogin.h"
+#import "DBManager.h"
+#import "GKAppDelegate.h"
+#import "MovieDraft.h"
 
 #define FILTER_BUTTON_TAG 999
 #define SELECT_OVERLAY_TAG 888
@@ -391,8 +394,29 @@
         NSString *stamp = [NSString stringWithFormat:@"%d", (int)[[NSDate date] timeIntervalSince1970]];
         
         GKUserLogin *user=[GKUserLogin currentLogin];
-        BOOL success = [GKCoreDataManager addMovieDraftWithUserid:[NSString stringWithFormat:@"%@", user.classInfo.classid] moviePath:self.moviePath dateStamp:stamp thumbnail:UIImageJPEGRepresentation(self.movieThumbnail, 0.1)];
-        NSLog(@"save draft : %d",success);
+//        BOOL success = [GKCoreDataManager addMovieDraftWithUserid:[NSString stringWithFormat:@"%@", user.classInfo.classid] moviePath:self.moviePath dateStamp:stamp thumbnail:UIImageJPEGRepresentation(self.movieThumbnail, 0.1)];
+        
+//        GKAppDelegate* delegate = SHARED_APP_DELEGATE;
+        
+        [[DBManager shareInstance] insertObject:^(NSManagedObject *object) {
+            
+            MovieDraft *movie = (MovieDraft *)object;
+            movie.createdate = stamp;
+            movie.moviepath = self.moviePath;
+            movie.userid = [NSString stringWithFormat:@"%@", user.classInfo.classid];
+            movie.thumbnail = UIImageJPEGRepresentation(self.movieThumbnail, 0.1);
+            
+            
+            
+        } entityName:@"MovieDraft" success:^{
+            
+        } failed:^(NSError *err) {
+            
+        }];
+        
+        
+        
+//        NSLog(@"save draft : %d",success);
         
         [self.navigationController dismissModalViewControllerAnimated:YES];
     }

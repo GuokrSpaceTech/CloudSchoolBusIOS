@@ -12,9 +12,10 @@
 #import "EKRequest.h"
 #import "ETNicknameViewController.h"
 #import "GKDisapperView.h"
-#import "MBProgressHUD.h"
+
+#import "GKSaySomethingView.h"
 @protocol showViewController;
-@interface GKShowViewController : GKBaseViewController<UIScrollViewDelegate,studentViewDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,EKProtocol,ETNicknameViewControllerDelegate,UITextViewDelegate,UIAlertViewDelegate>
+@interface GKShowViewController : GKBaseViewController<UIScrollViewDelegate,studentViewDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,EKProtocol,ETNicknameViewControllerDelegate,UITextViewDelegate,UIAlertViewDelegate,GKSaySomethingViewDelegate>
 {
     UIScrollView *_scroller;
     
@@ -34,7 +35,7 @@
     int type;
     
     UIView *changeView;
-    UITextView *picTxtView;
+   // UITextView *picTxtView;
     UIImageView *numView;
     UIButton *photobutton;
     
@@ -43,10 +44,12 @@
     
     
     
-    UILabel *labelNum;
+    //UILabel *labelNum;
     
     
-    MBProgressHUD *HUD;
+    GKSaySomethingView *sayView;
+    
+    int whichView; // 1 为照片view  2为 说点什么view
    // NSMutableArray *alreadyArr;
     
   //  NSDictionary * stuList;
@@ -59,6 +62,7 @@
 @property (nonatomic, retain)NSMutableArray *picTextArr;
 @property (nonatomic,retain)NSString *preStr;
 @property (nonatomic,retain)Student * tempStu; // 修改头像时 的 临时变量
+@property (nonatomic,retain)NSString *tag;
 @end
 
 @protocol showViewController <NSObject>

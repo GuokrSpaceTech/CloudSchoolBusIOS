@@ -27,6 +27,7 @@
 
 @implementation GKShowViewController
 @synthesize assetArr;
+@synthesize tag;
 //@synthesize type;
 //alreadyArr@synthesize alreadyArr;
 @synthesize stuList;
@@ -56,8 +57,8 @@
     
 
     
-
-    
+    whichView=1;
+    self.tag=@"";
     prePage=0;
     stuList = [[NSMutableArray alloc] init];
     picTextArr = [[NSMutableArray alloc] init];
@@ -102,46 +103,58 @@
     int y = MIN(col+1, 4);
 
     changeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0+46 + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height-(5 + y*STUDENTCELLHEIGHT)- (ios7 ? 20 : 0)-46)];
+       // changeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0+46 + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height- (ios7 ? 20 : 0)-46)];
+    
     changeView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:changeView];
     [changeView release];
     
-    UIView *txtView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, changeView.frame.size.width, changeView.frame.size.height)];
-    txtView.tag = 1234;
-    txtView.backgroundColor = [UIColor colorWithRed:240/255.0f green:238/255.0f blue:227/255.0f alpha:1.0f];
-    [changeView addSubview:txtView];
-    [txtView release];
+    
+    
+    sayView=[[GKSaySomethingView alloc]initWithFrame:CGRectMake(0, 0+46 + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height-(0+46 + (ios7 ? 20 : 0)))];
+    //sayView.backgroundColor=[UIColor clearColor];
+    sayView.backgroundColor = [UIColor colorWithRed:240/255.0f green:238/255.0f blue:227/255.0f alpha:1.0f];
+    sayView.delegate=self;
+    sayView.hidden=YES;
+    [self.view addSubview:sayView];
+    [sayView release];
+    
+//    UIView *txtView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, changeView.frame.size.width, changeView.frame.size.height)];
+//    txtView.tag = 1234;
+//    txtView.backgroundColor = [UIColor colorWithRed:240/255.0f green:238/255.0f blue:227/255.0f alpha:1.0f];
+//    [changeView addSubview:txtView];
+//    [txtView release];
 
-    picTxtView = [[UITextView alloc] initWithFrame:CGRectMake(10, 5, 320 - 20, txtView.frame.size.height - 100)];
-    picTxtView.backgroundColor = [UIColor whiteColor];
-    picTxtView.text = @"";
-    picTxtView.font=[UIFont systemFontOfSize:16];
-    picTxtView.layer.cornerRadius=5;
-    picTxtView.delegate = self;
-    [txtView addSubview:picTxtView];
-    //增加字数限制
-    labelNum=[[UILabel alloc]initWithFrame:CGRectMake(10, picTxtView.frame.size.height+picTxtView.frame.origin.y+5, 50, 20)];
-    labelNum.backgroundColor=[UIColor clearColor];
-    labelNum.text=@"0/140";
-    labelNum.font=[UIFont systemFontOfSize:12];
-    [txtView addSubview:labelNum];
-  
+//    picTxtView = [[UITextView alloc] initWithFrame:CGRectMake(10, 5, 320 - 20, txtView.frame.size.height - 100)];
+//    picTxtView.backgroundColor = [UIColor whiteColor];
+//    picTxtView.text = @"";
+//    picTxtView.font=[UIFont systemFontOfSize:16];
+//    picTxtView.layer.cornerRadius=5;
+//    picTxtView.delegate = self;
+//    [txtView addSubview:picTxtView];
+//    //增加字数限制
+//    labelNum=[[UILabel alloc]initWithFrame:CGRectMake(10, picTxtView.frame.size.height+picTxtView.frame.origin.y+5, 50, 20)];
+//    labelNum.backgroundColor=[UIColor clearColor];
+//    labelNum.text=@"0/140";
+//    labelNum.font=[UIFont systemFontOfSize:12];
+//    [txtView addSubview:labelNum];
+//  
+//    
+//    [picTxtView release];
     
-    [picTxtView release];
     
-    
-    UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
-    
-    //apply
-    [button setTitle:NSLocalizedString(@"apply", @"") forState:UIControlStateNormal];
-    button.frame=CGRectMake(230, picTxtView.frame.origin.y+picTxtView.frame.size.height+5, 80, 40);
-    
-    UIImage *iamge=[[UIImage imageNamed:@"loginBtn"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 20, 15, 20)];
-    
-    [button setBackgroundImage:iamge forState:UIControlStateNormal];
-    button.titleLabel.font=[UIFont systemFontOfSize:16];
-    [button addTarget:self action:@selector(applyAll:) forControlEvents:UIControlEventTouchUpInside];
-    [txtView addSubview:button];
+//    UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
+//    
+//    //apply
+//    [button setTitle:NSLocalizedString(@"apply", @"") forState:UIControlStateNormal];
+//    button.frame=CGRectMake(230, picTxtView.frame.origin.y+picTxtView.frame.size.height+5, 80, 40);
+//    
+//    UIImage *iamge=[[UIImage imageNamed:@"loginBtn"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 20, 15, 20)];
+//    
+//    [button setBackgroundImage:iamge forState:UIControlStateNormal];
+//    button.titleLabel.font=[UIFont systemFontOfSize:16];
+//    [button addTarget:self action:@selector(applyAll:) forControlEvents:UIControlEventTouchUpInside];
+//    [txtView addSubview:button];
     
     UIView *picView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, changeView.frame.size.width, changeView.frame.size.height)];
     picView.backgroundColor = [UIColor colorWithRed:240/255.0f green:238/255.0f blue:227/255.0f alpha:1.0f];
@@ -262,60 +275,115 @@
     return number;
 }
 
-
--(void)applyAll:(UIButton *)btn
+-(void)applyAll:(NSString *)str
 {
-    
-    if([picTxtView.text isEqualToString:@""])
-    {
-        return;
-    }
-    
-    if([self textLength:picTxtView.text] > 140)
-    {
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"字数过长" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
-        [alert show];
-        [alert release];
-        return;
-    }
+
     [picTextArr removeAllObjects];
     for (int i=0; i<[assetArr count]; i++) {
-         NSString *key=[NSString stringWithFormat:@"%d",i];
-         [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:picTxtView.text,key, nil]];
+        NSString *key=[NSString stringWithFormat:@"%d",i];
+        
+        NSMutableDictionary *dic= [NSMutableDictionary dictionaryWithObjectsAndKeys:self.tag,@"tag",str,@"text", nil];
+        
+        [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:dic,key, nil]];
     }
-    
-
 
 }
-
-- (void)textViewDidChange:(UITextView *)textView
+-(void)tag:(NSString *)tagTxt
 {
-
-    int a= [self textLength:picTxtView.text];
-  
-    NSLog(@"%d",a);
-
-   
-    labelNum.text=[NSString stringWithFormat:@"%d/140",a];
+    self.tag=tagTxt;
     
-    if(a>140)
+    
+    NSString *key=[NSString stringWithFormat:@"%d",currentpage];
+    
+    for (int i=0; i<[self.picTextArr count]; i++) {
+        NSDictionary *dic=[self.picTextArr objectAtIndex:i];
+        NSString *keytemp = [[dic allKeys] objectAtIndex:0];
+        if([key isEqualToString:keytemp])
+        {
+            //self.tag,@"tag",str,@"text", nil];
+
+            NSMutableDictionary *tempDic=[dic objectForKey:key];
+            
+            [tempDic setObject:tagTxt forKey:@"tag"];
+            
+           // sayView.contextView.text=[[dic objectForKey:key] objectForKey:@"text"];
+            break;
+        }
+         if (i == self.picTextArr.count - 1)
+         {
+             NSDictionary *addtag=[NSMutableDictionary dictionaryWithObjectsAndKeys:tagTxt,@"tag", nil];
+             [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:addtag,key, nil]];
+
+             break;
+         }
+    
+    }
+    if ([picTextArr count]==0)
     {
+        NSDictionary *addtag=[NSMutableDictionary dictionaryWithObjectsAndKeys:tagTxt,@"tag", nil];
+        [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:addtag,key, nil]];
         
-        labelNum.textColor=[UIColor redColor];;
         
     }
-    else
-    {
-        labelNum.textColor=[UIColor blackColor];
-        self.preStr=picTxtView.text;
-      
-    }
+
+
+    
 }
+//-(void)applyAll:(UIButton *)btn
+//{
+//
+//    if([picTxtView.text isEqualToString:@""])
+//    {
+//        return;
+//    }
+//    
+//    if([self textLength:picTxtView.text] > 140)
+//    {
+//        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"字数过长" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+//        [alert show];
+//        [alert release];
+//        return;
+//    }
+//    [picTextArr removeAllObjects];
+//    for (int i=0; i<[assetArr count]; i++) {
+//         NSString *key=[NSString stringWithFormat:@"%d",i];
+//         [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:picTxtView.text,key, nil]];
+//    }
+//    
+//
+//
+//}
+
+//- (void)textViewDidChange:(UITextView *)textView
+//{
+//
+//    int a= [self textLength:picTxtView.text];
+//  
+//    NSLog(@"%d",a);
+//
+//   
+//    labelNum.text=[NSString stringWithFormat:@"%d/140",a];
+//    
+//    if(a>140)
+//    {
+//        
+//        labelNum.textColor=[UIColor redColor];;
+//        
+//    }
+//    else
+//    {
+//        labelNum.textColor=[UIColor blackColor];
+//        self.preStr=picTxtView.text;
+//      
+//    }
+//}
 
 - (void)doEditText:(UIButton *)sender
-    {
-        [picTxtView resignFirstResponder];
-        
+{
+    
+
+       // [picTxtView resignFirstResponder];
+        sayView.tagStr=@"";;
         NSString *key=[NSString stringWithFormat:@"%d",currentpage];
         
         for (int i=0; i<[self.picTextArr count]; i++) {
@@ -323,32 +391,63 @@
             NSString *keytemp = [[dic allKeys] objectAtIndex:0];
             if([key isEqualToString:keytemp])
             {
-                picTxtView.text = [NSString stringWithFormat:@"%@",[dic objectForKey:key]];
-                
-                labelNum.text=[NSString stringWithFormat:@"%d/140",[self textLength:picTxtView.text]];
-                
+                NSString *text=[[dic objectForKey:key] objectForKey:@"text"];
+                sayView.contextView.text=text;
+                // 设置 tag
+                NSString *tagTemp=[[dic objectForKey:key] objectForKey:@"tag"];
+                if(tagTemp==nil)
+                {
+                    tagTemp=@"";
+                }
+                sayView.tagStr=tagTemp;
                 UILabel *label=(UILabel *)[textView viewWithTag:9632];
-                label.text=[NSString stringWithFormat:@"%@",[dic objectForKey:key]];
-                if([label.text isEqualToString:@""])
+                NSString *labelstr=[NSString stringWithFormat:@"%@ %@",tagTemp,text];
+                label.text=labelstr;
+                if([tagTemp isEqualToString:@""]&&[text isEqualToString:@""])
                         textView.hidden=YES;
                 else
                       textView.hidden=NO;
-            
                 break;
             }
-            picTxtView.text = @"";
+            sayView.contextView.text = @"";
         }
-        UIView *visibleView = [[changeView subviews] objectAtIndex:1];
-        if (visibleView.tag != 1234) {
-            photobutton.hidden = YES;
-            numView.hidden=YES;
-            titlelabel.text=NSLocalizedString(@"story", @"");
-            [picTxtView becomeFirstResponder];
-            
-              textView.hidden=YES;
-        }
+//        UIView *visibleView = [[changeView subviews] objectAtIndex:1];
+//        if (visibleView.tag != 1234) {
+//            photobutton.hidden = YES;
+//            numView.hidden=YES;
+//            titlelabel.text=NSLocalizedString(@"story", @"");
+//            [picTxtView becomeFirstResponder];
+//            
+//              textView.hidden=YES;
+//        }
+//        
         
+    if(sender==nil)
+    {
+        whichView=1;
+        changeView.hidden=NO;
+        studentView.hidden=NO;
+        sayView.hidden=YES;
         
+        photobutton.hidden = NO;
+        titlelabel.text=NSLocalizedString(@"who", @"");
+        numView.hidden=NO;
+        self.tag=@"";
+    }
+    else
+    {
+        whichView=2;
+        titlelabel.text=NSLocalizedString(@"story", @"");
+        changeView.hidden=YES;
+        studentView.hidden=YES;
+        sayView.hidden=NO;
+        textView.hidden=YES;
+        photobutton.hidden = YES;
+        numView.hidden=YES;
+    }
+    
+    if(sayView.hidden==YES)
+    {
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:changeView cache:YES];
         [UIView setAnimationDuration:0.3f];
@@ -356,6 +455,17 @@
         [changeView exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
         [UIView commitAnimations];
     }
+    else
+    {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:sayView cache:YES];
+        [UIView setAnimationDuration:0.3f];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [sayView exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
+        [UIView commitAnimations];
+    }
+
+}
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -763,7 +873,7 @@
             NSString *studentId=@"";
             NSString *key=[NSString stringWithFormat:@"%d",i];
             NSString *introduce = @"";
-            
+            NSString *tagcontent=@"";
             for (int j=0; j<[stuList count]; j++)
             {
                 
@@ -783,7 +893,20 @@
                 if([key isEqualToString:txtKey])
                 {
                     if (txtKey != nil) {
+                        
+                        NSString *tmptext=[[introduceDic objectForKey:txtKey] objectForKey:@"text"];
+                        NSString *tmptag=[[introduceDic objectForKey:txtKey] objectForKey:@"tag"];
                         introduce = [introduceDic objectForKey:txtKey];
+                        if(tmptext)
+                            introduce=tmptext;
+                        else
+                            introduce=@"";
+                        
+                        if(tmptag)
+                            tagcontent=tmptag;
+                        else
+                            tagcontent=@"";
+                        
                     }
                     break;
                 }
@@ -802,7 +925,7 @@
             aa.fsize=[NSNumber numberWithInt:representation.size];
             aa.ftime=[NSNumber numberWithInt:ftime];
             aa.introduce=introduce;
-            aa.tag=@"";
+            aa.tag=tagcontent;
             aa.isUploading=[NSNumber numberWithInt:1];
             aa.smallImage=UIImageJPEGRepresentation(thumbiamge, 0.5);
             
@@ -811,7 +934,7 @@
             
             NSLog(@"cccccfggggg");
             
-        [manager addWraperToArr:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];
+        [manager addWraperToArr:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:tagcontent];
 
             
         } failed:^(NSError *err) {
@@ -858,8 +981,8 @@
 }
 -(void)back:(UIButton *)btn
 {
-        UIView *visibleView = [[changeView subviews] objectAtIndex:1];
-        if (visibleView.tag == 1234) {
+        //UIView *visibleView = [[changeView subviews] objectAtIndex:1];
+        if (whichView == 2) {
             
         
             
@@ -869,7 +992,7 @@
                 NSString *keytemp = [[dic allKeys] objectAtIndex:0];
                 if([key isEqualToString:keytemp])
                 {
-                    if([self textLength:picTxtView.text] > 140)
+                    if([self textLength:sayView.contextView.text] > 140)
                     {
                         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"字数过长" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
                         [alert show];
@@ -879,12 +1002,14 @@
                        // picTxtView.text=self.preStr;
                     }
                     
-                    [dic setObject:picTxtView.text forKey:key];
+                    NSMutableDictionary *tempDic=[dic objectForKey:key];
+                    [tempDic setObject:sayView.contextView.text forKey:@"text"];
+                    //[dic setObject:sayView.contextView.text forKey:key];
                     break;
                 }
                 if (i == self.picTextArr.count - 1)
                 {
-                    if([self textLength:picTxtView.text] > 140)
+                    if([self textLength:sayView.contextView.text] > 140)
                     {
                         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"字数过长" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
                         [alert show];
@@ -892,13 +1017,15 @@
                         return;
                             //picTxtView.text=self.preStr;
                     }
-                    [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:picTxtView.text,key, nil]];
+                    NSDictionary *adddic=[NSMutableDictionary dictionaryWithObjectsAndKeys:sayView.contextView.text,@"text", nil];
+                    //[self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:sayView.contextView.text,key, nil]];
+                    [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:adddic,key, nil]];
                     break;
                 }
             }
             if (self.picTextArr.count == 0) {
                 
-                if([self textLength:picTxtView.text] > 140)
+                if([self textLength:sayView.contextView.text] > 140)
                 {
                     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"字数过长" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
                     [alert show];
@@ -906,15 +1033,14 @@
                     return;
                     // picTxtView.text=self.preStr;
                 }
-                [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:picTxtView.text,key, nil]];
+                NSDictionary *adddic=[NSMutableDictionary dictionaryWithObjectsAndKeys:sayView.contextView.text,@"text", nil];
+                [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:adddic,key, nil]];
+                //[self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:sayView.contextView.text,key, nil]];
             }
 
-            
-            
-            [picTxtView resignFirstResponder];
-            photobutton.hidden = NO;
             titlelabel.text=NSLocalizedString(@"who", @"");
-            numView.hidden=NO;
+
+            [sayView.contextView resignFirstResponder];
             [self doEditText:nil];
             
             
@@ -1012,20 +1138,30 @@
     
     
     NSString *introduce = @"";
+    NSString *tagStr=@"";
     for (int j = 0; j < [picTextArr count]; j++) {
         NSDictionary *introduceDic = [picTextArr objectAtIndex:j];
         NSString *txtKey = [[introduceDic allKeys] lastObject];
         if([key isEqualToString:txtKey])
         {
             if (txtKey != nil) {
-                introduce = [introduceDic objectForKey:txtKey];
+                
+                //introduce = [introduceDic objectForKey:txtKey];
+                introduce = [[introduceDic objectForKey:txtKey] objectForKey:@"text"];
+
+                tagStr = [[introduceDic objectForKey:txtKey] objectForKey:@"tag"];
+                if(tag==nil)
+                {
+                    tagStr=@"";
+                }
+                
             }
             break;
         }
     }
 
-    label.text=introduce;
-    if([label.text isEqualToString:@""])
+    label.text=[NSString stringWithFormat:@"%@ %@",tagStr,introduce]; ;
+    if([tagStr isEqualToString:@""] && [introduce isEqualToString:@""])
         textView.hidden=YES;
     else
     textView.hidden=NO;
@@ -1059,6 +1195,7 @@
     [stuList removeAllObjects];
     self.assetArr=nil;
     self.stuList=nil;
+    self.tag=nil;
     [super dealloc];
 }
 - (void)didReceiveMemoryWarning

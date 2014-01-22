@@ -124,6 +124,7 @@
     //int row=([user.studentArr count] )%4;
     int y = MIN(col+1, 4);
     
+    
     GKStudentView *studentView=[[GKStudentView alloc]initWithFrame:CGRectMake(0, (iphone5 ? 548 : 460) + (ios7 ? 20 : 0) - (y*50), 320,( y*50))];
     studentView.backgroundColor=[UIColor whiteColor];
     studentView.delegate=self;
@@ -177,7 +178,7 @@
 {
     int a= [self textLength:textView.text];
     
-    NSLog(@"%d",a);
+//    NSLog(@"%d",a);
     calWordsLab.text=[NSString stringWithFormat:@"%d/140",a];
     
     if(a>140)
@@ -378,6 +379,11 @@
         [as showInView:self.view];
         [as release];
     }
+    else
+    {
+        [self.navigationController dismissModalViewControllerAnimated:YES];
+        return;
+    }
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -439,6 +445,17 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)dealloc
+{
+    self.sourcePicture = nil;
+    self.moviePath = nil;
+    self.thumbnail = nil;
+    self.stuList = nil;
+    self.photoTag = nil;
+    [super dealloc];
 }
 
 @end

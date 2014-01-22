@@ -37,7 +37,12 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    
+    if (player != nil) {
+        if (player.playbackState == MPMoviePlaybackStatePlaying) {
+            [player stop];
+        }
+        
+    }
 }
 
 - (void)viewDidLoad
@@ -509,5 +514,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

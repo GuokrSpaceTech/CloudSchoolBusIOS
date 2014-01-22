@@ -30,20 +30,49 @@
     NSURL* url = [NSURL fileURLWithPath:self.path];
     NSLog(@"##########################       new writer");
     _writer = [AVAssetWriter assetWriterWithURL:url fileType:AVFileTypeQuickTimeMovie error:nil];
+    /*
+    NSDictionary *videoCleanApertureSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                [NSNumber numberWithInt:320], AVVideoCleanApertureWidthKey,
+                                                [NSNumber numberWithInt:480], AVVideoCleanApertureHeightKey,
+                                                [NSNumber numberWithInt:10], AVVideoCleanApertureHorizontalOffsetKey,
+                                                [NSNumber numberWithInt:10], AVVideoCleanApertureVerticalOffsetKey,
+                                                nil];
+    
+    
+    NSDictionary *videoAspectRatioSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                                              [NSNumber numberWithInt:1], AVVideoPixelAspectRatioHorizontalSpacingKey,
+                                              [NSNumber numberWithInt:1], AVVideoPixelAspectRatioVerticalSpacingKey,
+                                              nil];
+    
+    
+    
+    NSDictionary *codecSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                   [NSNumber numberWithInt:960000], AVVideoAverageBitRateKey,
+//                                   [NSNumber numberWithInt:1],AVVideoMaxKeyFrameIntervalKey,
+//                                   videoCleanApertureSettings, AVVideoCleanApertureKey,
+                                   videoAspectRatioSettings, AVVideoPixelAspectRatioKey,
+                                   //AVVideoProfileLevelH264Main30, AVVideoProfileLevelKey,
+                                   nil];
+    */
     NSDictionary* settings = [NSDictionary dictionaryWithObjectsAndKeys:
                               AVVideoCodecH264, AVVideoCodecKey,
                               [NSNumber numberWithInt: cx], AVVideoWidthKey,
                               [NSNumber numberWithInt: cy], AVVideoHeightKey,
+                              AVVideoScalingModeResizeAspectFill, AVVideoScalingModeKey,
                               nil];
     _videoInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:settings];
     _videoInput.expectsMediaDataInRealTime = YES;
     [_writer addInput:_videoInput];
     
+    AudioChannelLayout acl;
+    bzero(&acl, sizeof(acl));
+    acl.mChannelLayoutTag = kAudioChannelLayoutTag_Stereo;
     settings = [NSDictionary dictionaryWithObjectsAndKeys:
-                                          [ NSNumber numberWithInt: kAudioFormatMPEG4AAC], AVFormatIDKey,
-                                          [ NSNumber numberWithInt: ch], AVNumberOfChannelsKey,
-                                          [ NSNumber numberWithFloat: rate], AVSampleRateKey,
-                                          [ NSNumber numberWithInt: 64000 ], AVEncoderBitRateKey,
+                [ NSNumber numberWithInt: kAudioFormatMPEG4AAC], AVFormatIDKey,
+                [ NSNumber numberWithInt: 2], AVNumberOfChannelsKey,   //如果是4s  需要两个声道
+                [ NSNumber numberWithFloat: rate], AVSampleRateKey,
+                [ NSNumber numberWithInt: 64000 ], AVEncoderBitRateKey,
+                [NSData dataWithBytes:&acl length:sizeof(AudioChannelLayout)], AVChannelLayoutKey,
                 nil];
     _audioInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeAudio outputSettings:settings];
     _audioInput.expectsMediaDataInRealTime = YES;

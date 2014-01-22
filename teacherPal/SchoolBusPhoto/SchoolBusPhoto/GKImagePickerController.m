@@ -207,14 +207,14 @@
     
     // orientation
     
-    motionManager = [[CMMotionManager alloc] init];
+//    motionManager = [[CMMotionManager alloc] init];
     
     
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    
+    /*
     [motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
         
         double ax = accelerometerData.acceleration.x;
@@ -239,6 +239,7 @@
         [camManager setCameraOrientation:orientation];
         
     }];
+     */
     
     [self performSelector:@selector(openCameraAnimate) withObject:nil afterDelay:1.0f];
 //    [self openCameraAnimate];
@@ -275,7 +276,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     
-    [motionManager stopAccelerometerUpdates];
+//    [motionManager stopAccelerometerUpdates];
     
     [self closeCameraAnimateCompletion:YES];
 }

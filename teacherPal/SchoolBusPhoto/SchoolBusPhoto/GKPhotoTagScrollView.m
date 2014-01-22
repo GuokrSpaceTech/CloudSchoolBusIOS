@@ -123,11 +123,15 @@
         if([btn.titleLabel.text isEqualToString:tagstr])
         {
             [btn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue-active"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];
-            
+            selectedTag = btn.tag;
             [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         }
         
         
+    }
+    if([tagstr isEqualToString:@""])
+    {
+        selectedTag=0;
     }
 }
 /*

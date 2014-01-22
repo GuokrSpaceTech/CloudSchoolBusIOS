@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "GKAppDelegate.h"
 #import "GKLoaderManager.h"
+#import "GKSaySomethingView.h"
 @interface GKMainViewController ()
 
 @end
@@ -175,13 +176,14 @@ static  GKMainViewController*rootViewCon;
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     UIView* touchedView = [touch view];
-    if([touchedView isKindOfClass:[UIButton class]]) {
+    if([touchedView isKindOfClass:[UIButton class]] ||[touchedView isKindOfClass:[GKSaySomethingView class]] || [touchedView isKindOfClass:[UITextView class]]) {
         
         return NO;
     }
     
     return YES;
 }
+
 - (void)panInContentView:(UIPanGestureRecognizer *)panGestureReconginzer
 {
     [self.view endEditing:YES];

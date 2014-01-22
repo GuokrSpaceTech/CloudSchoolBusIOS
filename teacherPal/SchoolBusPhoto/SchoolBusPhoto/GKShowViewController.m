@@ -1150,7 +1150,7 @@
                 introduce = [[introduceDic objectForKey:txtKey] objectForKey:@"text"];
 
                 tagStr = [[introduceDic objectForKey:txtKey] objectForKey:@"tag"];
-                if(tag==nil)
+                if(tagStr==nil)
                 {
                     tagStr=@"";
                 }
@@ -1182,7 +1182,10 @@
     
     
 }
-
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [sayView.contextView resignFirstResponder]; 
+}
 - (void)changeNicknameSuccess
 {
     GKUserLogin *user=[GKUserLogin currentLogin];

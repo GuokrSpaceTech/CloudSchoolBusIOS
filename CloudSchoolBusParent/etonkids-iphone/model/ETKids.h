@@ -35,7 +35,7 @@
 
 #define HEADMAXCOUNT 7     //正文页面 可显示最多头像数
 
-#define NAVIHEIGHT 46
+#define NAVIHEIGHT 46                         
 
 #define ORDER_BLOCK_WIDTH 140
 #define ORDER_BLOCK_HEIGHT 120

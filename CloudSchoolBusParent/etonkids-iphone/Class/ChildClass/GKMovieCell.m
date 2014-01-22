@@ -13,6 +13,7 @@
 #import "ETKids.h"
 #import "ETCommonClass.h"
 #import "MDRadialProgressTheme.h"
+#import "GKMovieManager.h"
 
 #define BUTTONTAG 888
 
@@ -21,7 +22,7 @@
 @synthesize titleLabel,contentLabel,timeLabel,backImgV;
 @synthesize praiseButton;
 @synthesize commentsButton,contentView;
-@synthesize praiseLab,commentLab,praiseImgV,commentImgV,triangle,mPlayer,delegate,theShareCtnt,radia;
+@synthesize praiseLab,commentLab,praiseImgV,commentImgV,triangle,mPlayer,delegate,theShareCtnt,radia,currentURL;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -190,6 +191,14 @@
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackChangeState:) name:MPMoviePlayerPlaybackStateDidChangeNotification object:self.mPlayer];
         
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btn setImage:nil forState:UIControlStateNormal];
+//        btn.backgroundColor = [UIColor redColor];
+        btn.tag = BUTTONTAG;
+        [btn addTarget:self action:@selector(controlMovie:) forControlEvents:UIControlEventTouchUpInside];
+        [btn setFrame:self.contentBackView.bounds];
+        [self.contentBackView addSubview:btn];
+        
         UIImageView *l = [[UIImageView alloc] initWithFrame:CGRectZero];
         l.image = [UIImage imageNamed:@"cellline.png"];
         [self addSubview:l];
@@ -202,81 +211,69 @@
 
 - (void)setMovieURL:(NSString *)url
 {
-    
     @synchronized(self)
     {
         if (self.mPlayer)
         {
-            
             NSLog(@"ssssssssssssssssssssssssssssssssssssssssssssssssss ,%f",self.frame.origin.y);
             [self.mPlayer stop];
+            self.mPlayer.contentURL = nil;
             
-            self.radia.progress = 0;
-
-            [[self.contentBackView viewWithTag:BUTTONTAG] removeFromSuperview];
-            self.downloader.delegate = nil;
-            self.downloader = nil;
-            
+            self.radia.hidden = YES;
+            UIButton *b = (UIButton *)[self.contentBackView viewWithTag:BUTTONTAG];
+            [b setImage:nil forState:UIControlStateNormal];
         }
-
     }
+    
+    self.currentURL = url;
     
     // 延时下载
     
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(downloadMovie:) object:self.canceledURL];
     [self performSelector:@selector(downloadMovie:) withObject:url afterDelay:0.5f];
-    
-    
     self.canceledURL = url;//记录请求过的url  供取消使用
     
 }
 - (void)downloadMovie:(NSString *)url
 {
-
-    NSLog(@"##########################");
-    GKMovieDownloader *d = [[GKMovieDownloader alloc] initWithMovieURL:url];
-    d.delegate = self;
-    d.shareID = self.theShareCtnt.shareId;
-    d.radiaProgress = self.radia;
-    [d startDownload];
     
-    self.downloader = d;
-}
-
-- (void)sharecontent:(NSString *)shareId didFinishedDownloadMovieWithPath:(NSString *)path
-{
-    
-    if (self.mPlayer == nil) {/*
-        MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:path]];//写入url
-        player.controlStyle = MPMovieControlStyleNone;
-        player.movieSourceType = MPMovieSourceTypeFile;
-        player.view.hidden = YES;
-        [player.view setFrame:self.contentBackView.bounds];
-        [self.contentBackView addSubview:player.view];
-        //    [player prepareToPlay];
-        self.mPlayer = player;*/
-    }
-    
-    if ([self.theShareCtnt.shareId isEqualToString:shareId])
+    [[GKMovieManager shareManager] downloadMovieWithURL:url progress:^(unsigned long long size, unsigned long long total, NSString *downloadingPath)
     {
-        NSLog(@"gggggggggggggggggggggggggggggggggggggggggggggggg,%f",self.frame.origin.y);
-        self.mPlayer.contentURL = [NSURL fileURLWithPath:path];
-        
-        if (![self viewWithTag:BUTTONTAG]) {
-            UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-            [btn setImage:nil forState:UIControlStateNormal];
-            btn.tag = BUTTONTAG;
-            [btn addTarget:self action:@selector(controlMovie:) forControlEvents:UIControlEventTouchUpInside];
-            [btn setFrame:self.contentBackView.bounds];
-            [self.contentBackView addSubview:btn];
+        NSString *filename = [[downloadingPath componentsSeparatedByString:@"/"] lastObject];
+        NSString *curName = [[self.currentURL componentsSeparatedByString:@"/"] lastObject];
+        if ([curName isEqualToString:filename])
+        {
+            self.radia.hidden = NO;
+            self.radia.progressCounter = size;
+            self.radia.progressTotal = total;
+        }
+        else
+        {
+//            self.radia.hidden = YES;
         }
     }
-    
-    
-    
-    
-    
-    
+    complete:^(NSString *path, NSError *error)
+    {
+        NSLog(@"############# %f",self.frame.origin.y);
+        
+        
+        NSString *filename = [[path componentsSeparatedByString:@"/"] lastObject];
+        NSString *curName = [[self.currentURL componentsSeparatedByString:@"/"] lastObject];
+        
+//        NSLog(@"############# %@,%@",filename,self.currentURL);
+        
+        if ([curName isEqualToString:filename])   //
+        {
+            self.radia.hidden = YES;
+            self.mPlayer.contentURL = [NSURL fileURLWithPath:path];
+            
+            //下载完成后谁优先谁播放
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"MOVIEDOWNLOADCOMPLETE" object:nil];
+            
+        }
+        
+    }];
 }
 
 
@@ -382,7 +379,6 @@
         [delegate clickComment:self.theShareCtnt];
     }
 }
-
 
 
 - (void)dealloc

@@ -7,13 +7,13 @@
 //
 
 #import "GKMovieDownloader.h"
-#import "ASIHTTPRequest.h"
+
 
 
 
 @implementation GKMovieDownloader
 
-@synthesize diskCachePath,movieURL,delegate,radiaProgress,progressShowView,shareID;
+@synthesize diskCachePath,movieURL,delegate,progress,completion;
 
 - (id)initWithMovieURL:(NSString *)url
 {
@@ -39,10 +39,7 @@
         NSLog(@"movie url is null");
     }
 }
-- (void)progressShowInView:(UIView *)view
-{
-    self.progressShowView = view;
-}
+
 
 - (void)downloadMovieByURL:(NSString *)url
 {
@@ -57,44 +54,47 @@
     if ([fm fileExistsAtPath:diskPath])
     {
         //直接读取
-        if (delegate && [delegate respondsToSelector:@selector(sharecontent:didFinishedDownloadMovieWithPath:)]) {
-            [delegate sharecontent:self.shareID didFinishedDownloadMovieWithPath:diskPath];
+        if (self.completion != nil) {
+            self.completion(diskPath,nil);
+        }
+        
+        
+        if (delegate && [delegate respondsToSelector:@selector(downloader:didFinishedDownloadMovieWithPath:)]) {
+            [delegate downloader:self didFinishedDownloadMovieWithPath:diskPath];
         }
     }
     else
     {
         //xiazai
         
-        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:mURL]];
+        request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:mURL]];
         [request setDownloadDestinationPath:diskPath];
 //        [request setDownloadProgressDelegate:];
         [request setDelegate:self];
         [request setAllowResumeForFileDownloads:YES];
         [request setCompletionBlock:^{
             
-            self.radiaProgress.hidden = YES;
-            
-            if (delegate && [delegate respondsToSelector:@selector(sharecontent:didFinishedDownloadMovieWithPath:)]) {
-                [delegate sharecontent:self.shareID didFinishedDownloadMovieWithPath:diskPath];
+            if (self.completion != nil) {
+                self.completion(diskPath,nil);
+            }
+            if (delegate && [delegate respondsToSelector:@selector(downloader:didFinishedDownloadMovieWithPath:)]) {
+                [delegate downloader:self didFinishedDownloadMovieWithPath:diskPath];
             }
         }];
+        
         [request setFailedBlock:^{
             [[NSFileManager defaultManager] removeItemAtPath:diskPath error:nil];
             NSLog(@"ASIHttpRequest %@ error ",mURL);
         }];
         
         s = 0;
-        
-        self.radiaProgress.hidden = NO;
-        request.downloadProgressDelegate = self.radiaProgress;
-//        [request setBytesReceivedBlock:^(unsigned long long size, unsigned long long total) {
-//            
-//            s += size;
-//            self.radiaProgress.progressCounter = s;
-//            self.radiaProgress.progressTotal = total;
-//            
-////            NSLog(@"%lld %lld",size,total);
-//        }];
+        [request setBytesReceivedBlock:^(unsigned long long size, unsigned long long total)
+        {
+            s += size;
+            if (self.progress) {
+                self.progress(s,total,self.movieURL);
+            }
+        }];
         
         [request startAsynchronous];
     }
@@ -110,8 +110,8 @@
 - (void)dealloc
 {
     self.movieURL = nil;
-    self.radiaProgress = nil;
-    self.progressShowView = nil;
+
+
     [super dealloc];
 }
 
@@ -119,6 +119,14 @@
 - (void)failWithError:(NSError *)theError
 {
     NSLog(@"ASIHttpRequest error : %@",theError);
+}
+
+- (void)cancelRequest
+{
+    if (request != nil) {
+        [request clearDelegatesAndCancel];
+    }
+    
 }
 
 @end

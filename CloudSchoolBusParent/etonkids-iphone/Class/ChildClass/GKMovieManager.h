@@ -9,16 +9,21 @@
 #import <Foundation/Foundation.h>
 #import "GKMovieCell.h"
 
-@interface GKMovieManager : NSObject
+
+//typedef void(^GKMovieDownloadCompletedBlock)(NSString *path, NSError *error);
+
+@interface GKMovieManager : NSObject<GKMovieDownloaderDelegate>
 
 @property (nonatomic, retain)GKMovieCell *playingCell;
-//@property (nonatomic, retain)UITableViewCell *playingCell;
-
+@property (nonatomic, retain)NSMutableArray *downloadList;
 
 
 + (id)shareManager;
 
 - (void)toggleMoviePlayingWithCell:(GKMovieCell *)cell;
+- (void)downloadMovieWithURL:(NSString *)dUrl progress:(GKProgressBlock)progress complete:(GKMovieDownloadCompletedBlock)completion;
+
+
 
 
 @end

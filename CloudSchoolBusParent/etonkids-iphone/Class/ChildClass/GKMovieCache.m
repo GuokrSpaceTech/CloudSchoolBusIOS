@@ -23,7 +23,7 @@
         NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];
         size += [attrs fileSize];
         
-        NSLog(@"filename : %@",fileName);
+//        NSLog(@"filename : %@",fileName);
     }
     return size;
 }

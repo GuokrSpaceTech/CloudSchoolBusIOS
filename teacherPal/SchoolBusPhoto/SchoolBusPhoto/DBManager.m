@@ -121,6 +121,7 @@
         }
         
         int count = [commandArray count];
+        NSLog(@"count %d",count);
         [syCondition unlockWithCondition:(count > 0)?LOCK_CONDITION_HAVEDATA : LOCK_CONDITION_NODATA];
     }
 }
@@ -354,7 +355,8 @@
     [rB release];
     [fB release];
 
-    [syCondition lock];
+    NSLog(@"~~~~~~~~~~ %d",[syCondition tryLock]);
+//    [syCondition lock];
     [commandArray addObject:command];
     [syCondition unlockWithCondition:LOCK_CONDITION_HAVEDATA];
 }

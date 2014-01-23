@@ -593,7 +593,7 @@
     {
         NSDictionary *myDic=(NSDictionary *)[arr objectAtIndex:i];
         
-        ShareContent *share=[[[ShareContent alloc]init] autorelease];
+        ShareContent *share=[[ShareContent alloc]init];
         share.shareId=[myDic objectForKey:@"articleid"];
         
         NSArray * plists = [myDic objectForKey:@"plist"];
@@ -624,7 +624,7 @@
         
         [self.list addObject:share];
 
-        
+        [share release];
     }
 
 }

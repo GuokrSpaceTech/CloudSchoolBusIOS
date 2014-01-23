@@ -53,7 +53,7 @@
 @property BOOL isLoading;
 @property(nonatomic,retain)NSMutableArray *list;
 
-@property(nonatomic,retain)IBOutlet UIImage  *headImage;
+@property(nonatomic,retain)UIImage *headImage;
 
 
 

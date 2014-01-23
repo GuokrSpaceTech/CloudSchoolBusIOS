@@ -212,7 +212,7 @@ static GKUpQueue *gkqueue=nil;
         NSPredicate *pred=[NSPredicate predicateWithFormat:@"(nameID = %@)",picId];
         request.predicate=pred;
 
-        [[DBManager shareInstance]updateObject:^(NSManagedObject *object) {
+        [[DBManager shareInstance] updateObject:^(NSManagedObject *object) {
             
             UpLoader *loader=(UpLoader *)object;
           
@@ -220,9 +220,8 @@ static GKUpQueue *gkqueue=nil;
             
         } request:request success:^{
             
-          
             
-        } failed:^(NSError *err) {
+        } failed:^(NSError *err){
          
         }];
         

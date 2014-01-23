@@ -19,7 +19,7 @@
 @end
 
 @implementation ETChildViewController
-@synthesize mainTV,titleArr,tImageArr;
+@synthesize titleArr,tImageArr;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -32,7 +32,7 @@
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"CHILDINFO" object:nil];
-    self.mainTV = nil;
+
     self.tImageArr = nil;
     self.titleArr = nil;
     
@@ -52,15 +52,19 @@
     self.titleArr = array;
     self.tImageArr = imgArr;
     
-    UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, (iphone5 ? 548 : 460) - 46 - 57) style:UITableViewStyleGrouped];
-    table.backgroundView = nil;
-    table.backgroundColor = CELLCOLOR;
-    table.delegate = self;
-    table.dataSource = self;
-    [self.view addSubview:table];
-    [table release];
+    mainTV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, (iphone5 ? 548 : 460) - 46 - 57) style:UITableViewStyleGrouped];
+    mainTV.backgroundView = nil;
+    mainTV.backgroundColor = CELLCOLOR;
+    mainTV.delegate = self;
+    mainTV.dataSource = self;
+    [self.view addSubview:mainTV];
+    [mainTV release];
     
-    self.mainTV = table;
+//    NSLog(@"################# %d",table.retainCount);
+//    NSLog(@"################# %d",self.mainTV.retainCount);
+    
+    
+//    NSLog(@"################# %d",self.mainTV.retainCount);
     
 }
 
@@ -239,12 +243,12 @@
 
 -(void)updateChildInfo:(NSNotification *) notification
 {
-    [self.mainTV reloadData];
+    [mainTV reloadData];
 }
 
 - (void)reloadChildMessage
 {
-    [self.mainTV reloadData];
+    [mainTV reloadData];
 }
 
 - (void)didReceiveMemoryWarning

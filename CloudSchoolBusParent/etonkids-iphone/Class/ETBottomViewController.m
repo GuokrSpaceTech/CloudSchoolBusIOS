@@ -578,7 +578,7 @@
 //    ETEducationViewController *infoVC = [[ETEducationViewController alloc] init];
 //    ETSettingsViewController *infoVC = [[ETSettingsViewController alloc] init];
     ETChildViewController *infoVC = [[ETChildViewController alloc] init];
-    
+
     NSArray *ctrlArr = [NSArray arrayWithObjects:classViewController,noticeViewController,activeVC,infoVC,nil];
     
     [classViewController release];

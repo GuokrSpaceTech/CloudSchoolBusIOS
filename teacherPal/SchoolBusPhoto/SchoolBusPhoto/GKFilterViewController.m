@@ -50,7 +50,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor blackColor];
-
+    
+    if(!ios7)
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
 //    primaryView = [[GPUImageView alloc] initWithFrame:CGRectMake(0, 100, 320, 320)];
 //    [self.view addSubview:primaryView];
@@ -501,11 +503,13 @@
 - (void)doBack:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
 }
 
 - (void)dismissViewController:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
 }
 
 

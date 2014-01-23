@@ -167,7 +167,7 @@ static EKRequest * instance = nil;
           
             // NSDictionary * json = [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
              
-             
+             NSLog(@"code:=%d",code);
              
              [delegate getEKResponse:response forMethod:function parm:param resultCode:code];
          }];
@@ -202,7 +202,7 @@ static EKRequest * instance = nil;
            
              NSDictionary * allHeaderInfo = [urlResponse allHeaderFields];
              int code = [[allHeaderInfo objectForKey:@"Code"] intValue];
-    
+            NSLog(@"code:=%d",code);
              
              
 
@@ -221,7 +221,7 @@ static EKRequest * instance = nil;
              }
              NSDictionary * allHeaderInfo = [urlResponse allHeaderFields];
              int code = [[allHeaderInfo objectForKey:@"Code"] intValue];
-             NSLog(@"codedddddddd=%d",code);
+      
              // NSString *str=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
             // NSDictionary * json = [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
              [delegate getEKResponse:response forMethod:function parm:param  resultCode:code];

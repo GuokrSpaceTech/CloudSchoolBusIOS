@@ -65,7 +65,7 @@
     if(ios7)
         _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, IOS7OFFSET+46, self.view.frame.size.width, self.view.frame.size.height-46-IOS7OFFSET) style:UITableViewStylePlain];
     else
-        _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 46, self.view.frame.size.width, self.view.frame.size.height-46 - 45) style:UITableViewStylePlain];
+        _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 46, self.view.frame.size.width, self.view.frame.size.height-46) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
     _tableView.backgroundColor=[UIColor colorWithRed:232/255.0 green:229/255.0 blue:220/255.0 alpha:1];
@@ -415,30 +415,47 @@
             else
             {
                 
-                GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
-                NSArray *arr= [manager getAllUploaderPhotoFromCoreData];
-                for (NSObject *obj in arr) {
-                //for (int i=0; i<[arr count]; i++) {
-                   // UpLoader *loader=[arr objectAtIndex:i];
-                    UpLoader *loader=(UpLoader *)obj;
-                    //NSLog(@"??????%@",loader.nameID);
-                    for (int j=0; j<[imageArr count]; j++) {
-                        ETPhoto *photo=[imageArr objectAtIndex:j];
-                        //NSLog(@"~~~~~~~~~~~%@",photo.nameId);
-                        
-                        //NSLog(@"????%@",[photo.asset valueForProperty:ALAssetPropertyRepresentations]);
-                        
-//                        NSArray *keydd=[photo.asset valueForProperty:ALAssetPropertyRepresentations];
-//                        NSDictionary *dic=[photo.asset valueForProperty:ALAssetPropertyURLs];
-//                        NSString *pid= [NSString stringWithFormat:@"%@",[dic objectForKey:[keydd objectAtIndex:0]]];
-                        
-                        if([loader.nameID isEqualToString:photo.nameId])
-                        {
-                            [imageArr removeObject:photo];
+               // GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
+               // NSArray *arr= [manager getAllUploaderPhotoFromCoreData];
+                
+                
+                GKAppDelegate *delegate=APPDELEGATE;
+                NSEntityDescription *entity=[NSEntityDescription entityForName:@"UpLoader" inManagedObjectContext:delegate.managedObjectContext];
+               
+                NSFetchRequest *request=[[NSFetchRequest alloc]init];
+                [request setEntity:entity];
+                
+
+
+                
+                [[DBManager shareInstance]retriveObject:request success:^(NSArray *array) {
+                    for (NSObject *obj in array) {
+                        //for (int i=0; i<[arr count]; i++) {
+                        // UpLoader *loader=[arr objectAtIndex:i];
+                        UpLoader *loader=(UpLoader *)obj;
+                        //NSLog(@"??????%@",loader.nameID);
+                        for (int j=0; j<[imageArr count]; j++) {
+                            ETPhoto *photo=[imageArr objectAtIndex:j];
+                            //NSLog(@"~~~~~~~~~~~%@",photo.nameId);
+                            
+                            //NSLog(@"????%@",[photo.asset valueForProperty:ALAssetPropertyRepresentations]);
+                            
+                            //                        NSArray *keydd=[photo.asset valueForProperty:ALAssetPropertyRepresentations];
+                            //                        NSDictionary *dic=[photo.asset valueForProperty:ALAssetPropertyURLs];
+                            //                        NSString *pid= [NSString stringWithFormat:@"%@",[dic objectForKey:[keydd objectAtIndex:0]]];
+                            
+                            if([loader.nameID isEqualToString:photo.nameId])
+                            {
+                                [imageArr removeObject:photo];
+                            }
                         }
                     }
-                }
 
+                } failed:^(NSError *err) {
+                    
+                }];
+                
+                
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     

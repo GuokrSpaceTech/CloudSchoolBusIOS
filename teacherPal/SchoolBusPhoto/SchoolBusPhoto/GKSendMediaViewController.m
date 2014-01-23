@@ -36,7 +36,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     if (self.moviePath != nil)
     {
         self.titlelabel.text = @"上传视频";

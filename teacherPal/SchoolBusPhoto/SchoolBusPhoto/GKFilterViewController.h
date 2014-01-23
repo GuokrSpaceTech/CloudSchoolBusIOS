@@ -32,10 +32,10 @@
     
 }
 
-@property (nonatomic) UIImage *sourceImage;
-@property (nonatomic) NSString *moviePath;
+@property (nonatomic,strong) UIImage *sourceImage;
+@property (nonatomic,strong) NSString *moviePath;
 @property (nonatomic) BOOL isEnableFilter;  // enable filter   default is no
-@property (nonatomic) UIImage *movieThumbnail;
+@property (nonatomic,strong) UIImage *movieThumbnail;
 @property (nonatomic) BOOL isPreview;
 
 @end

@@ -57,7 +57,7 @@
         {
             originX = LEFTMARGIN;
             originY = y + DISTANCE + BUTTON_HEIGHT;
-            x = LEFTMARGIN;
+            x = originX + width + DISTANCE;  //
             y = originY;
         }
         

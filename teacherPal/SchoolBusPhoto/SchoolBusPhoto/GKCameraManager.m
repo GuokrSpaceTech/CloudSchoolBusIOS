@@ -137,7 +137,7 @@ static GKCameraManager *cameraManager;
         
         _videoConnection = [videoout connectionWithMediaType:AVMediaTypeVideo];
         // find the actual dimensions used so we can set up the encoder to the same.
-        NSDictionary* actual = videoout.videoSettings;
+      //  NSDictionary* actual = videoout.videoSettings;
 //        _cy = (int)[[actual objectForKey:@"Height"] integerValue];
 //        _cx = (int)[[actual objectForKey:@"Width"] integerValue];
         _cy = 480;

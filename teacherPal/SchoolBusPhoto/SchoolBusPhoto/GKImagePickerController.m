@@ -252,6 +252,7 @@
 
 - (void)doBack:(id)sender
 {
+     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     [self closeCameraAnimateCompletion:YES];
 }
@@ -539,6 +540,7 @@
 
 - (void)push:(UIImage *)stillImage
 {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     GKFilterViewController *filterVC = [[GKFilterViewController alloc] init];
     filterVC.sourceImage = stillImage;
     filterVC.isPreview = YES; // 预览页面.

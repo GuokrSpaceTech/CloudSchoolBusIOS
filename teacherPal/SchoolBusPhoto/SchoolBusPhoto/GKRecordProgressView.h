@@ -21,7 +21,7 @@
 }
 
 @property (nonatomic) float progress;
-@property (nonatomic) id<GKRecordProgressViewDelegate> delegate;
+@property (nonatomic,weak) id<GKRecordProgressViewDelegate> delegate;
 
 - (void)markSegment;
 

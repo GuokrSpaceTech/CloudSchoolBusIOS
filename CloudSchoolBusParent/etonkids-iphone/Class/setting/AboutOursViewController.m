@@ -86,6 +86,28 @@
     webBtn.center = CGPointMake(webBtn.center.x, webBtn.center.y + (iphone5?30:0));
     emailBtn.center = CGPointMake(emailBtn.center.x, emailBtn.center.y + (iphone5?30:0));
     
+    NSArray *languages = [NSLocale preferredLanguages];
+    NSString *currentLanguage = [languages objectAtIndex:0];
+    
+    int width;
+    if ([currentLanguage isEqualToString:@"en"])
+    {
+        width = 72;
+    }
+    else
+    {
+        width = 53;
+    }
+    
+    UILabel *versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(212 - 9 - width + aboutLogo.frame.origin.x, 34 + aboutLogo.frame.origin.y, width, 13)];
+    versionLabel.backgroundColor = [UIColor clearColor];
+    versionLabel.textColor = [UIColor whiteColor];
+    versionLabel.font = [UIFont boldSystemFontOfSize:8];
+    versionLabel.textAlignment = UITextAlignmentCenter;
+    versionLabel.text = LOCAL(@"aboutversion", @"");
+    [self.view addSubview:versionLabel];
+    [versionLabel release];
+    
     
 }
 - (void)viewWillAppear:(BOOL)animated

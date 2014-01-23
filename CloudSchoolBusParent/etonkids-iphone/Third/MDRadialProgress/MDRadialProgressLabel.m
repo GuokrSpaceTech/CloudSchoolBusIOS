@@ -49,7 +49,7 @@
 		self.textAlignment = UITextAlignmentCenter;
 		self.textColor = theme.labelColor;
 		self.pointSizeToWidthFactor = 0.5;
-		self.adjustFontSizeToFitBounds = YES;
+//		self.adjustFontSizeToFitBounds = YES;
 		if (theme.dropLabelShadow) {
 			self.shadowColor = theme.labelShadowColor;
 			self.shadowOffset = theme.labelShadowOffset;

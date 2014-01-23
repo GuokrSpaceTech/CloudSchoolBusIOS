@@ -268,8 +268,17 @@
             self.mPlayer.contentURL = [NSURL fileURLWithPath:path];
             
             //下载完成后谁优先谁播放
+            NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+            if ([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"1"])
+            {//如果设置自动播放
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"MOVIEDOWNLOADCOMPLETE" object:nil];
+            }
+            else
+            {
+                UIButton *b = (UIButton *)[self.contentBackView viewWithTag:BUTTONTAG];
+                [b setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
+            }
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"MOVIEDOWNLOADCOMPLETE" object:nil];
             
         }
         

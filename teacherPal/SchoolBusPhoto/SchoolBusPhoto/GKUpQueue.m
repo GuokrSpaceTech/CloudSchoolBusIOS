@@ -139,6 +139,8 @@ static GKUpQueue *gkqueue=nil;
     if([[request.responseHeaders objectForKey:@"Code"] integerValue]==1)
     {
         [self ChageCoreDataDeleteOrUoloadingAlter:YES picId:picId picPath:picPath];
+        
+        
     }
  
     else if([[request.responseHeaders objectForKey:@"Code"] integerValue]==-37) //时间戳错误
@@ -203,6 +205,23 @@ static GKUpQueue *gkqueue=nil;
         // upArr 删除下载完成的
         //改变coreData 的下载状态
         
+        GKUserLogin *user=[GKUserLogin currentLogin];
+        
+        NSFetchRequest *mRequest = [[[NSFetchRequest alloc] init] autorelease];
+        NSEntityDescription *mEntity = [NSEntityDescription entityForName:@"MovieDraft" inManagedObjectContext:appdelegate.managedObjectContext];
+        [mRequest setEntity:mEntity];
+        NSPredicate *searchPre = [NSPredicate predicateWithFormat:@"(userid = %@ and moviepath = %@)",[NSString stringWithFormat:@"%@", user.classInfo.classid],path];
+        [mRequest setPredicate:searchPre];
+        [[DBManager shareInstance] deleteObject:mRequest success:^{
+            NSLog(@"草稿箱删除成功");
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"DRAFTDELETESUCCESS" object:nil];
+            
+        } failed:^(NSError *err) {
+            NSLog(@"草稿箱删除失败");
+        }];
+        
+        
+        
         //[manager changeCoreDataLoadingState:picId];
         NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
         NSManagedObjectContext *moContext = appdelegate.managedObjectContext;
@@ -227,6 +246,9 @@ static GKUpQueue *gkqueue=nil;
         
         // 删除 manager 数组第一条数据
         [manager removeWraperFromArr:picId];
+        
+        
+        
 
 
     }

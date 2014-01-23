@@ -20,9 +20,9 @@
     
     UILabel *birthdaylabel;
     MBProgressHUD *HUD;
+    UITableView *mainTV;
 }
 
-@property (nonatomic, retain)UITableView *mainTV;
 @property (nonatomic, retain)NSArray *titleArr;
 @property (nonatomic, retain)NSArray *tImageArr;
 

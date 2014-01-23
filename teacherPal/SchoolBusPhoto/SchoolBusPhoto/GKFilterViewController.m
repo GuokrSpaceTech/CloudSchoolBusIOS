@@ -114,8 +114,8 @@
         
         
         
-        controlImgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 128, 128)];
-        controlImgV.image = [UIImage imageNamed:@"play.png"];
+        controlImgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
+        controlImgV.image = [UIImage imageNamed:@"movieplay.png"];
         controlImgV.center = player.view.center;
         controlImgV.hidden = YES;
         controlImgV.userInteractionEnabled = YES;
@@ -201,8 +201,8 @@
         // 显示大图
         
         UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [backBtn setImage:[UIImage imageNamed:@"box-3.png"] forState:UIControlStateNormal];
-        [backBtn setFrame:CGRectMake(0, 0, 45, 45)];
+        [backBtn setImage:[UIImage imageNamed:@"X.png"] forState:UIControlStateNormal];
+        [backBtn setFrame:CGRectMake(0, 0, 40, 40)];
         [backBtn setCenter:CGPointMake(45, 50)];
         [backBtn addTarget:self action:@selector(dismissViewController:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:backBtn];
@@ -485,7 +485,7 @@
 
 - (void)requestFinishedThumbnailImage:(NSNotification *)notification
 {
-    NSLog(@" MPMoviePlayerThumbnailImageRequestDidFinishNotification : %@",notification);
+//    NSLog(@" MPMoviePlayerThumbnailImageRequestDidFinishNotification : %@",notification);
     
     UIImage *image =[notification.userInfo objectForKey: @"MPMoviePlayerThumbnailImageKey"];
     self.movieThumbnail = image;

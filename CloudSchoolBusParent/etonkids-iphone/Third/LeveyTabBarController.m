@@ -199,8 +199,8 @@ static LeveyTabBarController *leveyTabBarController;
 {
 	[super viewDidUnload];
 	
-	_tabBar = nil;
-	_viewControllers = nil;
+//	_tabBar = nil;
+//	_viewControllers = nil;
 }
 
 - (void)dealloc 
@@ -214,8 +214,9 @@ static LeveyTabBarController *leveyTabBarController;
 //	[_tabBar release];
 //    [_containerView release];
 //    [_transitionView release];
-    NSLog(@"%d",_viewControllers.retainCount);
-	[_viewControllers release];
+//    NSLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~~~%d",_viewControllers.retainCount);
+//	[_viewControllers release];
+    self.viewControllers = nil;
     [super dealloc];
 }
 

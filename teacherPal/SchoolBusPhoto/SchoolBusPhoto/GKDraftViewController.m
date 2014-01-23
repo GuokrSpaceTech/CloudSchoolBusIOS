@@ -27,6 +27,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView:) name:@"DRAFTDELETESUCCESS" object:nil];
     }
     return self;
 }
@@ -34,6 +35,10 @@
 {
     [super viewWillAppear:animated];
     [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
+}
+- (void)reloadTableView:(NSNotification *)notifi
+{
+    [self loadData];
 }
 - (void)viewDidLoad
 {
@@ -50,6 +55,19 @@
     [navigationView addSubview:buttonBack];
     [buttonBack addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    
+//    self.dataArray = [NSMutableArray arrayWithArray:[GKCoreDataManager searchMovieDraftByUserid:[NSString stringWithFormat:@"%@",user.classInfo.classid]]];
+    
+    
+    
+    
+    [self loadData];
+    
+}
+
+- (void)loadData
+{
     GKUserLogin *user = [GKUserLogin currentLogin];
     
     GKAppDelegate *delegate = SHARED_APP_DELEGATE;
@@ -61,55 +79,65 @@
     NSSortDescriptor *sortDes = [NSSortDescriptor sortDescriptorWithKey:@"createdate" ascending:NO];
     [request setSortDescriptors:[NSArray arrayWithObject:sortDes]];
     [[DBManager shareInstance] retriveObject:request success:^(NSArray *array) {
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.dataArray = [NSMutableArray arrayWithArray:array];
+            if (self.dataArray.count == 0)
+            {
+                UILabel *noDataLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
+                noDataLab.center = CGPointMake(160, 160);
+                noDataLab.text = NSLocalizedString(@"nodata", @"");
+                noDataLab.textAlignment = UITextAlignmentCenter;
+                noDataLab.backgroundColor = [UIColor clearColor];
+                [self.view addSubview:noDataLab];
+                [noDataLab release];
+                
+                if (self._tableView) {
+                    self._tableView.hidden = YES;
+                }
+            }
+            else
+            {
+                if (editButton == nil) {
+                    editButton = [UIButton buttonWithType:UIButtonTypeCustom];
+                    [editButton setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue-active"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];
+                    [editButton setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateHighlighted];
+                    [editButton setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateSelected];
+                    [editButton setTitle:NSLocalizedString(@"draftedit", @"") forState:UIControlStateNormal];
+                    [editButton setFrame:CGRectMake(320 - 50 - 10, (navigationView.frame.size.height - 30)/2, 50, 30)];
+                    editButton.titleLabel.font = [UIFont systemFontOfSize:13];
+                    [editButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                    [editButton addTarget:self action:@selector(editDraft:) forControlEvents:UIControlEventTouchUpInside];
+                    [navigationView addSubview:editButton];
+                }
+                
+                if (self._tableView == nil) {
+                    UITableView *tv = [[UITableView alloc]initWithFrame:CGRectMake(0, navigationView.frame.size.height+navigationView.frame.origin.y, 320, self.view.frame.size.height-( navigationView.frame.size.height+navigationView.frame.origin.y)) style:UITableViewStylePlain];
+                    tv.backgroundColor=[UIColor clearColor];
+                    tv.backgroundColor=[UIColor colorWithRed:232/255.0 green:229/255.0 blue:220/255.0 alpha:1];
+                    tv.backgroundView=nil;
+                    tv.delegate=self;
+                    //        [tv setEditing:YES animated:YES];
+                    tv.dataSource=self;
+                    [self.view addSubview:tv];
+                    [tv release];
+                    
+                    self._tableView = tv;
+                }
+                else
+                {
+                    [self._tableView reloadData];
+                }
+                
+            }
+        });
         
-        self.dataArray = [NSMutableArray arrayWithArray:array];
         
     } failed:^(NSError *err) {
         
     }];
-    
-//    self.dataArray = [NSMutableArray arrayWithArray:[GKCoreDataManager searchMovieDraftByUserid:[NSString stringWithFormat:@"%@",user.classInfo.classid]]];
-    
-    
-    
-    if (self.dataArray.count == 0)
-    {
-        UILabel *noDataLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
-        noDataLab.center = CGPointMake(160, 160);
-        noDataLab.text = NSLocalizedString(@"nodata", @"");
-        noDataLab.textAlignment = UITextAlignmentCenter;
-        noDataLab.backgroundColor = [UIColor clearColor];
-        [self.view addSubview:noDataLab];
-        [noDataLab release];
-    }
-    else
-    {
-        editButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [editButton setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue-active"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];
-        [editButton setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateHighlighted];
-        [editButton setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateSelected];
-        [editButton setTitle:NSLocalizedString(@"draftedit", @"") forState:UIControlStateNormal];
-        [editButton setFrame:CGRectMake(320 - 50 - 10, (navigationView.frame.size.height - 30)/2, 50, 30)];
-        editButton.titleLabel.font = [UIFont systemFontOfSize:13];
-        [editButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [editButton addTarget:self action:@selector(editDraft:) forControlEvents:UIControlEventTouchUpInside];
-        [navigationView addSubview:editButton];
-        
-        UITableView *tv = [[UITableView alloc]initWithFrame:CGRectMake(0, navigationView.frame.size.height+navigationView.frame.origin.y, 320, self.view.frame.size.height-( navigationView.frame.size.height+navigationView.frame.origin.y)) style:UITableViewStylePlain];
-        tv.backgroundColor=[UIColor clearColor];
-        tv.backgroundColor=[UIColor colorWithRed:232/255.0 green:229/255.0 blue:220/255.0 alpha:1];
-        tv.backgroundView=nil;
-        tv.delegate=self;
-//        [tv setEditing:YES animated:YES];
-        tv.dataSource=self;
-        [self.view addSubview:tv];
-        [tv release];
-        
-        self._tableView = tv;
-    }
-    
-    
 }
+
 - (void)editDraft:(id)sender
 {
     if (self._tableView.editing) {
@@ -245,6 +273,7 @@
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DRAFTDELETESUCCESS" object:nil];
     self._tableView = nil;
     self.dataArray = nil;
     [super dealloc];

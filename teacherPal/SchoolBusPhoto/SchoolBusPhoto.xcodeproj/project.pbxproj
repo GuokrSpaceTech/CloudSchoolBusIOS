@@ -323,8 +323,6 @@
 		78709BCE187D16CA009250FB /* GKRecordProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC4187D16CA009250FB /* GKRecordProgressView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		78709BCF187D16CA009250FB /* UIImage+GKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC6187D16CA009250FB /* UIImage+GKImage.m */; };
 		78709BD0187D16CA009250FB /* VideoEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC8187D16CA009250FB /* VideoEncoder.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		78709BFC187D1733009250FB /* camera-backspace-confirm-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD2187D1732009250FB /* camera-backspace-confirm-default@2x.png */; };
-		78709BFD187D1733009250FB /* camera-backspace-default-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD3187D1732009250FB /* camera-backspace-default-default@2x.png */; };
 		78709BFE187D1733009250FB /* camera-blind-bottom-simple.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD4187D1732009250FB /* camera-blind-bottom-simple.png */; };
 		78709BFF187D1733009250FB /* camera-blind-bottom-simple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD5187D1732009250FB /* camera-blind-bottom-simple@2x.png */; };
 		78709C00187D1733009250FB /* camera-blind-top-simple.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD6187D1732009250FB /* camera-blind-top-simple.png */; };
@@ -340,10 +338,6 @@
 		78709C0A187D1733009250FB /* camera-progress-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE0187D1733009250FB /* camera-progress-background.png */; };
 		78709C0B187D1733009250FB /* camera-progress-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE1187D1733009250FB /* camera-progress-background@2x.png */; };
 		78709C0C187D1733009250FB /* camera-progress-min.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE2187D1733009250FB /* camera-progress-min.png */; };
-		78709C0D187D1733009250FB /* camera-shutter-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE3187D1733009250FB /* camera-shutter-active.png */; };
-		78709C0E187D1733009250FB /* camera-shutter-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE4187D1733009250FB /* camera-shutter-default.png */; };
-		78709C0F187D1733009250FB /* camera-shutter-video-default-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE5187D1733009250FB /* camera-shutter-video-default-active.png */; };
-		78709C10187D1733009250FB /* camera-shutter-video-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE6187D1733009250FB /* camera-shutter-video-default.png */; };
 		78709C11187D1733009250FB /* camera-tray-cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE7187D1733009250FB /* camera-tray-cover.png */; };
 		78709C12187D1733009250FB /* edit-filters-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE8187D1733009250FB /* edit-filters-normal.png */; };
 		78709C13187D1733009250FB /* edit-filters-overlay-default-short.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BE9187D1733009250FB /* edit-filters-overlay-default-short.png */; };
@@ -366,7 +360,6 @@
 		78709C24187D1733009250FB /* navbar-button-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BFA187D1733009250FB /* navbar-button-green@2x.png */; };
 		78709C25187D1733009250FB /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BFB187D1733009250FB /* play.png */; };
 		78709C27187D174E009250FB /* 视频框(1).png in Resources */ = {isa = PBXBuildFile; fileRef = 78709C26187D174E009250FB /* 视频框(1).png */; };
-		78709C29187D1779009250FB /* camera-backspace-confirm-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709C28187D1779009250FB /* camera-backspace-confirm-active@2x.png */; };
 		78709C2B187D1A30009250FB /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78709C2A187D1A30009250FB /* CoreVideo.framework */; };
 		78709C2D187D1A3B009250FB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78709C2C187D1A3B009250FB /* CoreMedia.framework */; };
 		78709C2F187D1A43009250FB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78709C2E187D1A43009250FB /* MediaPlayer.framework */; };
@@ -383,6 +376,16 @@
 		78881912187F9A2600D0A851 /* GKDraftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78881910187F9A2600D0A851 /* GKDraftViewController.m */; };
 		78881913187F9A2600D0A851 /* GKDraftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78881911187F9A2600D0A851 /* GKDraftViewController.xib */; };
 		78881916187F9E0B00D0A851 /* MovieDraft.m in Sources */ = {isa = PBXBuildFile; fileRef = 78881915187F9E0B00D0A851 /* MovieDraft.m */; };
+		788C7C23188FCAEF00BA9BD0 /* camera-backspace-confirm-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 788C7C1C188FCAEF00BA9BD0 /* camera-backspace-confirm-active@2x.png */; };
+		788C7C24188FCAEF00BA9BD0 /* camera-backspace-confirm-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 788C7C1D188FCAEF00BA9BD0 /* camera-backspace-confirm-default@2x.png */; };
+		788C7C25188FCAEF00BA9BD0 /* camera-backspace-default-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 788C7C1E188FCAEF00BA9BD0 /* camera-backspace-default-default@2x.png */; };
+		788C7C26188FCAEF00BA9BD0 /* camera-shutter-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 788C7C1F188FCAEF00BA9BD0 /* camera-shutter-active.png */; };
+		788C7C27188FCAEF00BA9BD0 /* camera-shutter-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 788C7C20188FCAEF00BA9BD0 /* camera-shutter-default.png */; };
+		788C7C28188FCAEF00BA9BD0 /* camera-shutter-video-default-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 788C7C21188FCAEF00BA9BD0 /* camera-shutter-video-default-active.png */; };
+		788C7C29188FCAEF00BA9BD0 /* camera-shutter-video-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 788C7C22188FCAEF00BA9BD0 /* camera-shutter-video-default.png */; };
+		788C7C2B188FCBBE00BA9BD0 /* X.png in Resources */ = {isa = PBXBuildFile; fileRef = 788C7C2A188FCBBE00BA9BD0 /* X.png */; };
+		788C7C2D188FCC3800BA9BD0 /* movieplay.png in Resources */ = {isa = PBXBuildFile; fileRef = 788C7C2C188FCC3800BA9BD0 /* movieplay.png */; };
+		788C7C2F188FCC9200BA9BD0 /* moviepresetplay.png in Resources */ = {isa = PBXBuildFile; fileRef = 788C7C2E188FCC9200BA9BD0 /* moviepresetplay.png */; };
 		E797189A18798BAB00353BAF /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E797189418798BAB00353BAF /* libTestFlight.a */; };
 		E797189B18798BAB00353BAF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E797189518798BAB00353BAF /* README.md */; };
 		E797189C18798BAB00353BAF /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = E797189618798BAB00353BAF /* release_notes.md */; };
@@ -850,8 +853,6 @@
 		78709BC6187D16CA009250FB /* UIImage+GKImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GKImage.m"; sourceTree = "<group>"; };
 		78709BC7187D16CA009250FB /* VideoEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoEncoder.h; sourceTree = "<group>"; };
 		78709BC8187D16CA009250FB /* VideoEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoEncoder.m; sourceTree = "<group>"; };
-		78709BD2187D1732009250FB /* camera-backspace-confirm-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-backspace-confirm-default@2x.png"; sourceTree = "<group>"; };
-		78709BD3187D1732009250FB /* camera-backspace-default-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-backspace-default-default@2x.png"; sourceTree = "<group>"; };
 		78709BD4187D1732009250FB /* camera-blind-bottom-simple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-blind-bottom-simple.png"; sourceTree = "<group>"; };
 		78709BD5187D1732009250FB /* camera-blind-bottom-simple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-blind-bottom-simple@2x.png"; sourceTree = "<group>"; };
 		78709BD6187D1732009250FB /* camera-blind-top-simple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-blind-top-simple.png"; sourceTree = "<group>"; };
@@ -867,10 +868,6 @@
 		78709BE0187D1733009250FB /* camera-progress-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-progress-background.png"; sourceTree = "<group>"; };
 		78709BE1187D1733009250FB /* camera-progress-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-progress-background@2x.png"; sourceTree = "<group>"; };
 		78709BE2187D1733009250FB /* camera-progress-min.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-progress-min.png"; sourceTree = "<group>"; };
-		78709BE3187D1733009250FB /* camera-shutter-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-shutter-active.png"; sourceTree = "<group>"; };
-		78709BE4187D1733009250FB /* camera-shutter-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-shutter-default.png"; sourceTree = "<group>"; };
-		78709BE5187D1733009250FB /* camera-shutter-video-default-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-shutter-video-default-active.png"; sourceTree = "<group>"; };
-		78709BE6187D1733009250FB /* camera-shutter-video-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-shutter-video-default.png"; sourceTree = "<group>"; };
 		78709BE7187D1733009250FB /* camera-tray-cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-tray-cover.png"; sourceTree = "<group>"; };
 		78709BE8187D1733009250FB /* edit-filters-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-filters-normal.png"; sourceTree = "<group>"; };
 		78709BE9187D1733009250FB /* edit-filters-overlay-default-short.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-filters-overlay-default-short.png"; sourceTree = "<group>"; };
@@ -893,7 +890,6 @@
 		78709BFA187D1733009250FB /* navbar-button-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-green@2x.png"; sourceTree = "<group>"; };
 		78709BFB187D1733009250FB /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		78709C26187D174E009250FB /* 视频框(1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "视频框(1).png"; sourceTree = "<group>"; };
-		78709C28187D1779009250FB /* camera-backspace-confirm-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-backspace-confirm-active@2x.png"; sourceTree = "<group>"; };
 		78709C2A187D1A30009250FB /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		78709C2C187D1A3B009250FB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		78709C2E187D1A43009250FB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -916,6 +912,16 @@
 		78881911187F9A2600D0A851 /* GKDraftViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKDraftViewController.xib; sourceTree = "<group>"; };
 		78881914187F9E0B00D0A851 /* MovieDraft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDraft.h; sourceTree = "<group>"; };
 		78881915187F9E0B00D0A851 /* MovieDraft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDraft.m; sourceTree = "<group>"; };
+		788C7C1C188FCAEF00BA9BD0 /* camera-backspace-confirm-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-backspace-confirm-active@2x.png"; sourceTree = "<group>"; };
+		788C7C1D188FCAEF00BA9BD0 /* camera-backspace-confirm-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-backspace-confirm-default@2x.png"; sourceTree = "<group>"; };
+		788C7C1E188FCAEF00BA9BD0 /* camera-backspace-default-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-backspace-default-default@2x.png"; sourceTree = "<group>"; };
+		788C7C1F188FCAEF00BA9BD0 /* camera-shutter-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-shutter-active.png"; sourceTree = "<group>"; };
+		788C7C20188FCAEF00BA9BD0 /* camera-shutter-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-shutter-default.png"; sourceTree = "<group>"; };
+		788C7C21188FCAEF00BA9BD0 /* camera-shutter-video-default-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-shutter-video-default-active.png"; sourceTree = "<group>"; };
+		788C7C22188FCAEF00BA9BD0 /* camera-shutter-video-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-shutter-video-default.png"; sourceTree = "<group>"; };
+		788C7C2A188FCBBE00BA9BD0 /* X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = X.png; sourceTree = "<group>"; };
+		788C7C2C188FCC3800BA9BD0 /* movieplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movieplay.png; sourceTree = "<group>"; };
+		788C7C2E188FCC9200BA9BD0 /* moviepresetplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moviepresetplay.png; sourceTree = "<group>"; };
 		E797189418798BAB00353BAF /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		E797189518798BAB00353BAF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E797189618798BAB00353BAF /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
@@ -1298,6 +1304,9 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				788C7C2E188FCC9200BA9BD0 /* moviepresetplay.png */,
+				788C7C2C188FCC3800BA9BD0 /* movieplay.png */,
+				788C7C2A188FCBBE00BA9BD0 /* X.png */,
 				11BF8986183641E2008E72F0 /* notice.png */,
 				11BF8987183641E2008E72F0 /* noticeNormal.png */,
 				11BF898218363F5C008E72F0 /* sendNotice.png */,
@@ -1694,10 +1703,14 @@
 		78709BD1187D1715009250FB /* tempResource */ = {
 			isa = PBXGroup;
 			children = (
-				78709C28187D1779009250FB /* camera-backspace-confirm-active@2x.png */,
+				788C7C1C188FCAEF00BA9BD0 /* camera-backspace-confirm-active@2x.png */,
+				788C7C1D188FCAEF00BA9BD0 /* camera-backspace-confirm-default@2x.png */,
+				788C7C1E188FCAEF00BA9BD0 /* camera-backspace-default-default@2x.png */,
+				788C7C1F188FCAEF00BA9BD0 /* camera-shutter-active.png */,
+				788C7C20188FCAEF00BA9BD0 /* camera-shutter-default.png */,
+				788C7C21188FCAEF00BA9BD0 /* camera-shutter-video-default-active.png */,
+				788C7C22188FCAEF00BA9BD0 /* camera-shutter-video-default.png */,
 				78709C26187D174E009250FB /* 视频框(1).png */,
-				78709BD2187D1732009250FB /* camera-backspace-confirm-default@2x.png */,
-				78709BD3187D1732009250FB /* camera-backspace-default-default@2x.png */,
 				78709BD4187D1732009250FB /* camera-blind-bottom-simple.png */,
 				78709BD5187D1732009250FB /* camera-blind-bottom-simple@2x.png */,
 				78709BD6187D1732009250FB /* camera-blind-top-simple.png */,
@@ -1713,10 +1726,6 @@
 				78709BE0187D1733009250FB /* camera-progress-background.png */,
 				78709BE1187D1733009250FB /* camera-progress-background@2x.png */,
 				78709BE2187D1733009250FB /* camera-progress-min.png */,
-				78709BE3187D1733009250FB /* camera-shutter-active.png */,
-				78709BE4187D1733009250FB /* camera-shutter-default.png */,
-				78709BE5187D1733009250FB /* camera-shutter-video-default-active.png */,
-				78709BE6187D1733009250FB /* camera-shutter-video-default.png */,
 				78709BE7187D1733009250FB /* camera-tray-cover.png */,
 				78709BE8187D1733009250FB /* edit-filters-normal.png */,
 				78709BE9187D1733009250FB /* edit-filters-overlay-default-short.png */,
@@ -1823,7 +1832,9 @@
 				11A5A891187B9E2500EA22CD /* gradeE.png in Resources */,
 				11AF3AE91816655B00B36176 /* navBarImage.png in Resources */,
 				113BCAC6182B5F8E0079E9AD /* line.png in Resources */,
+				788C7C23188FCAEF00BA9BD0 /* camera-backspace-confirm-active@2x.png in Resources */,
 				78709C05187D1733009250FB /* camera-glyph-flash-on.png in Resources */,
+				788C7C26188FCAEF00BA9BD0 /* camera-shutter-active.png in Resources */,
 				11AF3B0B18168C0200B36176 /* loginback3.0.png in Resources */,
 				78709C1A187D1733009250FB /* navbar-button-back-black-alt-active@2x.png in Resources */,
 				119F0CA3181A216100A5910C /* about.png in Resources */,
@@ -1879,7 +1890,6 @@
 				78881913187F9A2600D0A851 /* GKDraftViewController.xib in Resources */,
 				78709C0C187D1733009250FB /* camera-progress-min.png in Resources */,
 				78709C1C187D1733009250FB /* navbar-button-back-black-alt@2x.png in Resources */,
-				78709C0F187D1733009250FB /* camera-shutter-video-default-active.png in Resources */,
 				11B852BE18334D52005FA5B9 /* upbutton.png in Resources */,
 				114F66A71887C16E0071D2AE /* kuang.png in Resources */,
 				11BF898118363E58008E72F0 /* addPer.png in Resources */,
@@ -1888,16 +1898,15 @@
 				11A5A88C187B988B00EA22CD /* grade.png in Resources */,
 				7870A106187E97EE009250FB /* settingH.png in Resources */,
 				2A32A57518122C02007CAA8E /* Default-568h@2x.png in Resources */,
+				788C7C2D188FCC3800BA9BD0 /* movieplay.png in Resources */,
 				2A32A58218122C25007CAA8E /* GKLoginViewController.xib in Resources */,
 				11FC0F3C182C90DE00442EF6 /* qipao1@2x.png in Resources */,
 				1193A6A5182B68CC004011BC /* buyBG.png in Resources */,
 				11BF898418363F5C008E72F0 /* sendNotice.png in Resources */,
 				1193A6B8182B9225004011BC /* photoBtn.png in Resources */,
-				78709BFD187D1733009250FB /* camera-backspace-default-default@2x.png in Resources */,
 				78709BCC187D16CA009250FB /* GKSendMediaViewController.xib in Resources */,
 				78709C06187D1733009250FB /* camera-handle-photo.png in Resources */,
 				1193A6C5182C785B004011BC /* 谁在照片里_05.png in Resources */,
-				78709C29187D1779009250FB /* camera-backspace-confirm-active@2x.png in Resources */,
 				78709C09187D1733009250FB /* camera-library-overlay.png in Resources */,
 				11BF8988183641E2008E72F0 /* notice.png in Resources */,
 				11AF3B051816832D00B36176 /* showMain.png in Resources */,
@@ -1910,7 +1919,6 @@
 				11AF3B1318168DCC00B36176 /* we.png in Resources */,
 				119402481823962E00F21FB8 /* box-3.png in Resources */,
 				11E27F94183C72FC00CAE0BB /* clean.png in Resources */,
-				78709C10187D1733009250FB /* camera-shutter-video-default.png in Resources */,
 				1102A7ED181A4FF500E6295C /* guanyu-3.png in Resources */,
 				1102A7F9181A5D9500E6295C /* guanlian-2-1@2x.png in Resources */,
 				78709C18187D1733009250FB /* navbar-button-back-active@2x.png in Resources */,
@@ -1918,7 +1926,6 @@
 				11AF3AED18166D9A00B36176 /* bottomView.png in Resources */,
 				78709C13187D1733009250FB /* edit-filters-overlay-default-short.png in Resources */,
 				1193B39D1827847C00660CB1 /* markScore.png in Resources */,
-				78709BFC187D1733009250FB /* camera-backspace-confirm-default@2x.png in Resources */,
 				11E27F8C183C64E100CAE0BB /* aboutlogo_EN1.png in Resources */,
 				11B852BF18334D52005FA5B9 /* upbuttonH.png in Resources */,
 				11CE2A8D187FEE3500742001 /* writeRizhiH.png in Resources */,
@@ -1932,14 +1939,18 @@
 				7870A0F1187D4637009250FB /* navbar-button-blue@2x.png in Resources */,
 				11AF3B0F18168CB200B36176 /* login_txtBack.png in Resources */,
 				1194023A182360EB00F21FB8 /* M-1.png in Resources */,
+				788C7C25188FCAEF00BA9BD0 /* camera-backspace-default-default@2x.png in Resources */,
 				119366D5184C34AB008D2FA2 /* leftUpHE.png in Resources */,
+				788C7C27188FCAEF00BA9BD0 /* camera-shutter-default.png in Resources */,
 				78709C1D187D1733009250FB /* navbar-button-back.png in Resources */,
 				78709C1E187D1733009250FB /* navbar-button-back@2x.png in Resources */,
+				788C7C29188FCAEF00BA9BD0 /* camera-shutter-video-default.png in Resources */,
 				11BF897718363CF7008E72F0 /* homeNoticeHEN.png in Resources */,
 				1194023B182360EB00F21FB8 /* M-2.png in Resources */,
 				78709BFE187D1733009250FB /* camera-blind-bottom-simple.png in Resources */,
 				78709C02187D1733009250FB /* camera-glyph-cameratoggle.png in Resources */,
 				1194023D182360EB00F21FB8 /* M-4.png in Resources */,
+				788C7C28188FCAEF00BA9BD0 /* camera-shutter-video-default-active.png in Resources */,
 				11B852D4183368A0005FA5B9 /* mail.png in Resources */,
 				11B852A8183221CF005FA5B9 /* OKBtn.png in Resources */,
 				11DB02E518337ACF007981C6 /* loginOUt.png in Resources */,
@@ -1952,6 +1963,7 @@
 				119F0CB8181A2D9600A5910C /* backH.png in Resources */,
 				11D40E3518618700003009D0 /* alterPassword.png in Resources */,
 				1102A7E2181A4ABD00E6295C /* paizhao-1-2.png in Resources */,
+				788C7C2B188FCBBE00BA9BD0 /* X.png in Resources */,
 				11AF3B1618168F3400B36176 /* login_sel.png in Resources */,
 				11B852A6183221CF005FA5B9 /* navigationNoText@2x.png in Resources */,
 				11AF3B1718168F3400B36176 /* login_selBtn.png in Resources */,
@@ -1977,6 +1989,7 @@
 				11B852BD18334D52005FA5B9 /* inputBG.png in Resources */,
 				11EFE1F01817EEF7009CE69F /* sr_refresh@2X.png in Resources */,
 				113BCABE182B41280079E9AD /* topImage.png in Resources */,
+				788C7C2F188FCC9200BA9BD0 /* moviepresetplay.png in Resources */,
 				11D40E3218618700003009D0 /* alterPasswordE.png in Resources */,
 				113BCAC0182B46450079E9AD /* select.png in Resources */,
 				1193A6BF182BAF0C004011BC /* letterLine.png in Resources */,
@@ -2009,6 +2022,7 @@
 				1102A7F1181A537B00E6295C /* guanlian.png in Resources */,
 				78709BFF187D1733009250FB /* camera-blind-bottom-simple@2x.png in Resources */,
 				11EFE1EF1817EEF7009CE69F /* sr_refresh.png in Resources */,
+				788C7C24188FCAEF00BA9BD0 /* camera-backspace-confirm-default@2x.png in Resources */,
 				78709C01187D1733009250FB /* camera-blind-top-simple@2x.png in Resources */,
 				11AF3B091816851900B36176 /* navLeftBtn_selected.png in Resources */,
 				1194023318235F6100F21FB8 /* box-2.png in Resources */,
@@ -2029,7 +2043,6 @@
 				1102A7EF181A4FF500E6295C /* guanyu-5.png in Resources */,
 				11CE2A90187FF5AD00742001 /* imageerror.png in Resources */,
 				78709C00187D1733009250FB /* camera-blind-top-simple.png in Resources */,
-				78709C0E187D1733009250FB /* camera-shutter-default.png in Resources */,
 				11FC0F44182C9F4C00442EF6 /* FZZYJW.TTF in Resources */,
 				78709C08187D1733009250FB /* camera-library-overlay-active.png in Resources */,
 				78709C19187D1733009250FB /* navbar-button-back-black-alt-active.png in Resources */,
@@ -2037,7 +2050,6 @@
 				119366D3184C3283008D2FA2 /* leftUpN.png in Resources */,
 				1193A6D7182C87CC004011BC /* helper.png in Resources */,
 				11DB02FB1833A0AA007981C6 /* aboutNormalE.png in Resources */,
-				78709C0D187D1733009250FB /* camera-shutter-active.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -81,7 +81,11 @@
 
 - (void) finishWithCompletionHandler:(void (^)(void))handler
 {
-    [_writer finishWritingWithCompletionHandler: handler];
+    BOOL success = [_writer finishWriting];
+    if (success) {
+        handler();
+    }
+//    [_writer finishWritingWithCompletionHandler: handler];
 }
 
 - (void)cancelWrite:(void (^)(void))handler

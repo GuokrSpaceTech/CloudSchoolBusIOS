@@ -11,7 +11,7 @@
 
 // The font size is automatically adapted but this is the maximum it will get
 // unless overridden by the user.
-static const int kMaxFontSize = 64;
+static const int kMaxFontSize = 14;
 
 
 @implementation MDRadialProgressTheme

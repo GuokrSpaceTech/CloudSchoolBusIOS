@@ -84,7 +84,7 @@
     [presetBtn setFrame:thumbImgV.frame];
     if (self.moviePath != nil)
     {
-        [presetBtn setImage:nil forState:UIControlStateNormal];
+        [presetBtn setImage:[UIImage imageNamed:@"moviepresetplay.png"] forState:UIControlStateNormal];
     }
     [presetBtn addTarget:self action:@selector(presetMedia:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:presetBtn];
@@ -361,7 +361,15 @@
     }];
 
    //[manager addNewPicToCoreData:filePath name:@"" iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:contentTV.text data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"" : photoTag)] ;
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+    if (self.isPresent) {
+        [self dismissModalViewControllerAnimated:YES];
+    }
+    else
+    {
+        [self.navigationController dismissModalViewControllerAnimated:YES];
+    }
+    
+    
     
 }
 
@@ -408,8 +416,10 @@
             
         } entityName:@"MovieDraft" success:^{
             
-        } failed:^(NSError *err) {
+            NSLog(@"save draft success");
             
+        } failed:^(NSError *err) {
+            NSLog(@"save draft error %@",err);
         }];
         
         

@@ -593,7 +593,7 @@
     {
         NSDictionary *myDic=(NSDictionary *)[arr objectAtIndex:i];
         
-        ShareContent *share=[[[ShareContent alloc]init] autorelease];
+        ShareContent *share=[[ShareContent alloc]init];
         share.shareId=[myDic objectForKey:@"articleid"];
         
         NSArray * plists = [myDic objectForKey:@"plist"];
@@ -624,7 +624,7 @@
         
         [self.list addObject:share];
 
-        
+        [share release];
     }
 
 }
@@ -1079,12 +1079,21 @@
                     
                     UIImageView *imgV = [cell.photoImgVArr objectAtIndex:i];
                     int picCount = sContent.sharePicArr.count;
+                    
                     if (i < picCount)
                     {
                         NSDictionary *dic = [sContent.sharePicArr objectAtIndex:i];
                         if ([dic objectForKey:@"source"]) {
                             NSString *picURL=[NSString stringWithFormat:@"%@",[dic objectForKey:@"source"]];
-                            picURL = [picURL stringByAppendingString:@".tiny.jpg"];
+                            if (picCount == 1)
+                            {
+                                picURL = [picURL stringByAppendingString:@".small.jpg"];
+                            }
+                            else
+                            {
+                                picURL = [picURL stringByAppendingString:@".tiny.jpg"];
+                            }
+                            
                             
                             [imgV setImageWithURL:[NSURL URLWithString:picURL] placeholderImage:[UIImage imageNamed:@"imageplaceholder.png"] options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                                 
@@ -1123,9 +1132,16 @@
                             NSLog(@"Error : picture url error .");
                         }
                         
+                        if (picCount == 1)
+                        {
+                            imgV.frame = CGRectMake(58 + i%3*(75 + 5), calculateHeight + 10 + i/3*(75 + 5), 150, 150);
+                        }
+                        else
+                        {
+                            imgV.frame = CGRectMake(58 + i%3*(75 + 5), calculateHeight + 10 + i/3*(75 + 5), 75, 75);
+                        }
                         
                         
-                        imgV.frame = CGRectMake(58 + i%3*(75 + 5), calculateHeight + 10 + i/3*(75 + 5), 75, 75);
                         
                         
                     }
@@ -1137,8 +1153,14 @@
                     
                 }
                 
-                
-                calculateHeight = calculateHeight + 10 + (sContent.sharePicArr.count == 0 ? 0 : ((sContent.sharePicArr.count-1)/3 + 1) * (75 + 10));
+                if (sContent.sharePicArr.count == 1)
+                {
+                    calculateHeight = calculateHeight + 10 + 150 + 10;
+                }
+                else
+                {
+                    calculateHeight = calculateHeight + 10 + (sContent.sharePicArr.count == 0 ? 0 : ((sContent.sharePicArr.count-1)/3 + 1) * (75 + 10));
+                }
                 
                 
                 
@@ -1355,8 +1377,17 @@
         }
         
         
+        if (sContent.sharePicArr.count == 1)
+        {
+            calculateHeight = calculateHeight + 10 + 150 + 10 + 10 + 26;
+        }
+        else
+        {
+            calculateHeight = calculateHeight + 10 + (sContent.sharePicArr.count == 0 ? 0 : ((sContent.sharePicArr.count-1)/3 + 1) * (75 + 10)) + 10 + 26;
+        }
         
-        calculateHeight = calculateHeight + 10 + (sContent.sharePicArr.count == 0 ? 0 : ((sContent.sharePicArr.count-1)/3 + 1) * (75 + 10)) + 10 + 26;
+        
+//        calculateHeight = calculateHeight + 10 + (sContent.sharePicArr.count == 0 ? 0 : ((sContent.sharePicArr.count-1)/3 + 1) * (75 + 10)) + 10 + 26;
     }
     
     
@@ -1578,9 +1609,14 @@
     }
     
     
+    NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+    if ([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"1"])
+    {//如果设置自动播放
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(controlVisibleCellPlay) object:nil];
+        [self performSelector:@selector(controlVisibleCellPlay) withObject:nil afterDelay:0.1f];
+    }
     
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(controlVisibleCellPlay) object:nil];
-    [self performSelector:@selector(controlVisibleCellPlay) withObject:nil afterDelay:0.1f];
+    
     
     
 }

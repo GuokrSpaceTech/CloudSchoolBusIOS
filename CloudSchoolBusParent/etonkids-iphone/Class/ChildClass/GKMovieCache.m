@@ -22,6 +22,8 @@
         NSString *filePath = [diskPath stringByAppendingPathComponent:fileName];
         NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];
         size += [attrs fileSize];
+        
+//        NSLog(@"filename : %@",fileName);
     }
     return size;
 }

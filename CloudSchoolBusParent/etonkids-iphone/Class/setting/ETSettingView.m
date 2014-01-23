@@ -70,7 +70,7 @@
 {
     switch (section) {
         case 0:
-            return 3;
+            return 4;
         case 1:
             return 4;
             
@@ -105,7 +105,7 @@
 //                [[cell.contentView viewWithTag:345] removeFromSuperview];
 //            }
         }
-        if (indexPath.row==1)
+        else if (indexPath.row==1)
         {
             cell.textLabel.backgroundColor=[UIColor clearColor];
             cell.textLabel.text=LOCAL(@"Password",@"");
@@ -118,7 +118,8 @@
 //            }
         }
         
-        if (indexPath.row == 2) {
+        else if (indexPath.row == 2)
+        {
             cell.textLabel.text = LOCAL(@"SecureSetting", @"");
             //              cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -139,9 +140,31 @@
                 [cell.contentView addSubview:secure];
                 [secure release];
             }
-            
-            
         }
+        
+        else if (indexPath.row == 3)
+        {
+            cell.textLabel.text = LOCAL(@"zidongbofang", @"");
+            //              cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            if (![cell.contentView viewWithTag:345]) {
+                UISwitch *autoplay = [[UISwitch alloc] initWithFrame:CGRectMake(210 + (ios7?45:0), 6, 60, 30)];
+
+                NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+                if ([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"1"]) {
+                    [autoplay setOn:YES];
+                }
+                else if (![userdefault objectForKey:@"AutoPlay"] || [[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"0"]) {
+                    [autoplay setOn:NO];
+                }
+                
+                [autoplay addTarget:self action:@selector(toggleAutoPlay:) forControlEvents:UIControlEventValueChanged];
+                [cell.contentView addSubview:autoplay];
+                [autoplay release];
+            }
+        }
+        
     }
     else if (indexPath.section == 1)
     {
@@ -508,7 +531,19 @@
     [self.mainTV reloadData];
 }
 
-
+- (void)toggleAutoPlay:(UISwitch *)sender
+{
+    NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+    if (sender.on) {
+//        [sender setOn:NO animated:YES];
+        [userdefault setObject:@"1" forKey:@"AutoPlay"];
+    }
+    else
+    {
+//        [sender setOn:YES animated:YES];
+        [userdefault setObject:@"0" forKey:@"AutoPlay"];
+    }
+}
 
 
 - (void)dealloc

@@ -11,7 +11,7 @@
 #import "GKLoaderManager.h"
 #import "GKUpQueue.h"
 #import "TestFlight.h"
-
+#import "DBManager.h"
 #define NSLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
 @interface GKUpLoaderViewController ()
@@ -200,25 +200,17 @@
 -(void)loadUploading
 {
     
+    GKAppDelegate *delegate=APPDELEGATE;
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        GKAppDelegate *delegate=APPDELEGATE;
-        
-        
-        NSEntityDescription *entity=[NSEntityDescription entityForName:@"UpLoader" inManagedObjectContext:delegate.managedObjectContext];
-        NSPredicate *pred=[NSPredicate predicateWithFormat:@"(isUploading = %@)",[NSNumber numberWithInt:1]];
-        NSFetchRequest *request=[[NSFetchRequest alloc]init];
-        [request setEntity:entity];
-        [request setPredicate:pred];
-        NSError *err=nil;
-        NSArray *arr=[delegate.managedObjectContext executeFetchRequest:request error:&err];
-        [request release];
-        
-        
-        
-        for (int i=0; i<[arr count]; i++) {
-            UpLoader *loader=[arr objectAtIndex:i];
+    
+    NSEntityDescription *entity=[NSEntityDescription entityForName:@"UpLoader" inManagedObjectContext:delegate.managedObjectContext];
+    NSPredicate *pred=[NSPredicate predicateWithFormat:@"(isUploading = %@)",[NSNumber numberWithInt:1]];
+    NSFetchRequest *request=[[[NSFetchRequest alloc]init] autorelease];
+    [request setEntity:entity];
+    [request setPredicate:pred];
+    [[DBManager shareInstance]retriveObject:request success:^(NSArray *array) {
+        for (int i=0; i<[array count]; i++) {
+            UpLoader *loader=[array objectAtIndex:i];
             
             GKUpObject *wraper=[[GKUpObject alloc]init];
             
@@ -238,7 +230,6 @@
         }
         
         
-    dispatch_async(dispatch_get_main_queue(), ^{
         if([upArr count]==0)
         {
             [self setNOView:NO];
@@ -247,11 +238,61 @@
             [self setNOView:YES];
         [_tableView reloadData];
 
-    });
+    } failed:^(NSError *err) {
         
-        
-});
+    }];
     
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        
+//        GKAppDelegate *delegate=APPDELEGATE;
+//        
+//        
+//        NSEntityDescription *entity=[NSEntityDescription entityForName:@"UpLoader" inManagedObjectContext:delegate.managedObjectContext];
+//        NSPredicate *pred=[NSPredicate predicateWithFormat:@"(isUploading = %@)",[NSNumber numberWithInt:1]];
+//        NSFetchRequest *request=[[NSFetchRequest alloc]init];
+//        [request setEntity:entity];
+//        [request setPredicate:pred];
+//        NSError *err=nil;
+//        NSArray *arr=[delegate.managedObjectContext executeFetchRequest:request error:&err];
+//        [request release];
+//        
+//        
+//        
+//        for (int i=0; i<[arr count]; i++) {
+//            UpLoader *loader=[arr objectAtIndex:i];
+//            
+//            GKUpObject *wraper=[[GKUpObject alloc]init];
+//            
+//            
+//            wraper.name=loader.name;
+//            
+//            wraper.image=loader.image;
+//            wraper.nameID=loader.nameID;
+//            wraper.name=loader.name;
+//            wraper.ftime=loader.ftime;
+//            
+//            
+//            [upArr addObject:wraper];
+//            
+//            [wraper release];
+//            
+//        }
+//        
+//        
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        if([upArr count]==0)
+//        {
+//            [self setNOView:NO];
+//        }
+//        else
+//            [self setNOView:YES];
+//        [_tableView reloadData];
+//
+//    });
+//        
+//        
+//});
+//    
     
     
 

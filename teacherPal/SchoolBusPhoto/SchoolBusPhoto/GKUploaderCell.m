@@ -25,7 +25,7 @@
         // Initialization code
         
         imageView=[[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 50, 50)];
-        imageView.backgroundColor=[UIColor orangeColor];
+        imageView.backgroundColor=[UIColor clearColor];
         [self.contentView addSubview:imageView];
         
         

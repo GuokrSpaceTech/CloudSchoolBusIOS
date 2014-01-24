@@ -337,6 +337,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     GKMovieManager *mm = [GKMovieManager shareManager];
+//    NSLog(@"@@@@@@@@@@@@@@@@@   %@,%d",mm.playingCell,mm.playingCell.mPlayer.playbackState);
     if (mm.playingCell && mm.playingCell.mPlayer.playbackState == MPMoviePlaybackStatePlaying) {
         [mm.playingCell.mPlayer stop];
     }
@@ -737,7 +738,6 @@
                 cell.delegate = self;
                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
             }
-            
             
             if(indexPath.row==[self.list count]-1)
             {

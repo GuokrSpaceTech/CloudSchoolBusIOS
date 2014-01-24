@@ -345,6 +345,7 @@ static LeveyTabBarController *leveyTabBarController;
         return;
     }
     NSLog(@"Display View.");
+    int preSelectedIndex = _selectedIndex;
     _selectedIndex = index;
     
 	UIViewController *selectedVC = [self.viewControllers objectAtIndex:index];
@@ -353,9 +354,13 @@ static LeveyTabBarController *leveyTabBarController;
     
     NSLog(@"selectedvc height : %f , %f",selectedVC.view.frame.size.height,selectedVC.view.frame.origin.y);
     
+    
+    [[_viewControllers objectAtIndex:preSelectedIndex] viewWillDisappear:YES];
 	if ([selectedVC.view isDescendantOfView:_transitionView]) 
 	{
+        
 		[_transitionView bringSubviewToFront:selectedVC.view];
+        [selectedVC viewWillAppear:YES];
 	}
 	else
 	{

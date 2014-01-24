@@ -168,24 +168,25 @@
     }
     else if (indexPath.section == 1)
     {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         if (indexPath.row == 0) {
             float size = [GKMovieCache getSize]/1024.0f/1024.f;
             cell.textLabel.text = [NSString stringWithFormat:@"%@   ( %.2f M )", LOCAL(@"clearCache", @""),size];
-            cell.accessoryType = UITableViewCellAccessoryNone;
+//            cell.accessoryType = UITableViewCellAccessoryNone;
         }
         else if (indexPath.row == 1) {
             cell.textLabel.text = LOCAL(@"btm_newversion",@"");
-            cell.accessoryType = UITableViewCellAccessoryNone;
+//            cell.accessoryType = UITableViewCellAccessoryNone;
         }
         else if (indexPath.row == 2)
         {
             cell.textLabel.text = LOCAL(@"About Us", @"");
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
         else if (indexPath.row == 3)
         {
             cell.textLabel.text = LOCAL(@"setting_help", @"");
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
         
         cell.backgroundColor=[UIColor whiteColor];

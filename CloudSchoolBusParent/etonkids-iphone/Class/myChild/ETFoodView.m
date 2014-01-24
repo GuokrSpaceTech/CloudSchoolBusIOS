@@ -370,9 +370,15 @@
         //NSMutableArray *MenuArray=(NSMutableArray*)response;
         NSLog(@"%@",result);
         
+        NSString *paramDate = [param objectForKey:@"menu_time"];
+        NSString *t = [datebutton titleForState:UIControlStateNormal];
+        if (![paramDate isEqualToString:t]) {
+            return;
+        }
+        
         self.dataArray = result;
         
-        NSString *paramDate = [param objectForKey:@"menu_time"];
+        
         
         [ETCoreDataManager removeFoodByDate:paramDate];
         [ETCoreDataManager addFood:self.dataArray];

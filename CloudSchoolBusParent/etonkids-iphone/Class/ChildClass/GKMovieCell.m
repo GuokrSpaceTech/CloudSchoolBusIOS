@@ -21,7 +21,7 @@
 @implementation GKMovieCell
 @synthesize titleLabel,contentLabel,timeLabel,backImgV;
 @synthesize praiseButton;
-@synthesize commentsButton,contentView;
+@synthesize commentsButton;
 @synthesize praiseLab,commentLab,praiseImgV,commentImgV,triangle,mPlayer,delegate,theShareCtnt,radia,currentURL;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -320,13 +320,17 @@
 
 - (void)controlMovie:(UIButton *)sender
 {
+    GKMovieManager *mm = [GKMovieManager shareManager];
     if (self.mPlayer.playbackState == MPMoviePlaybackStatePlaying)
     {
+        mm.playingCell = nil;
         [self.mPlayer pause];
         [sender setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
     }
     else
     {
+        
+        [mm toggleMoviePlayingWithCell:self];
         [self.mPlayer play];
         [sender setImage:nil forState:UIControlStateNormal];
     }

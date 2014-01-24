@@ -11,7 +11,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 
 
-
+static int frameNum = 0;
 static GKCameraManager *cameraManager;
 
 @interface GKCameraManager  () <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate>
@@ -535,9 +535,9 @@ static GKCameraManager *cameraManager;
     
     AVURLAsset *asset=[AVURLAsset URLAssetWithURL:inputURL options:nil];
     //AVURLAsset *asset = [AVURLAsset URLAssetWithURL:inputURL opti*****:nil];
-    AVAssetExportSession *session = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPresetMediumQuality];
+    AVAssetExportSession *session = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPresetPassthrough];
     session.outputURL = outputURL;
-    session.outputFileType = AVFileTypeQuickTimeMovie;
+    session.outputFileType = AVFileTypeMPEG4;
     [session exportAsynchronouslyWithCompletionHandler:^(void)
      {
          
@@ -662,10 +662,10 @@ static GKCameraManager *cameraManager;
         {
             bVideo = NO;
         }
-        BOOL isFirstFrame = NO;
+        
         if ((_encoder == nil) && !bVideo)
         {
-            isFirstFrame = YES;
+            frameNum = 0;
             CMFormatDescriptionRef fmt = CMSampleBufferGetFormatDescription(sampleBuffer);
             [self setAudioFormat:fmt];
 //            NSString* filename = [NSString stringWithFormat:@"capture%d.mp4", _currentFile];
@@ -676,7 +676,6 @@ static GKCameraManager *cameraManager;
             if (_progress) {
                 _encoder.slider = _progress;
             }
-            
         }
         if (_discont)
         {
@@ -741,13 +740,15 @@ static GKCameraManager *cameraManager;
         }
         
         
+        frameNum++;
         // pass frame to encoder
-        if (!isFirstFrame) {
+        
+        if (frameNum >1) {  //删除前两帧
             [_encoder encodeFrame:sampleBuffer isVideo:bVideo];
             CFRelease(sampleBuffer);
         }
         
-        
+        CMSampleBufferGetImageBuffer(sampleBuffer);
     }
     
 }

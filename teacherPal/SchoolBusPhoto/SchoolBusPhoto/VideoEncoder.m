@@ -30,7 +30,7 @@
     NSURL* url = [NSURL fileURLWithPath:self.path];
     NSLog(@"##########################       new writer");
     _writer = [AVAssetWriter assetWriterWithURL:url fileType:AVFileTypeQuickTimeMovie error:nil];
-    /*
+    
     NSDictionary *videoCleanApertureSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                                                 [NSNumber numberWithInt:320], AVVideoCleanApertureWidthKey,
                                                 [NSNumber numberWithInt:480], AVVideoCleanApertureHeightKey,
@@ -48,17 +48,19 @@
     
     NSDictionary *codecSettings = [NSDictionary dictionaryWithObjectsAndKeys:
 //                                   [NSNumber numberWithInt:960000], AVVideoAverageBitRateKey,
-//                                   [NSNumber numberWithInt:1],AVVideoMaxKeyFrameIntervalKey,
+//                                   [NSNumber numberWithInt:30],AVVideoMaxKeyFrameIntervalKey,
 //                                   videoCleanApertureSettings, AVVideoCleanApertureKey,
-                                   videoAspectRatioSettings, AVVideoPixelAspectRatioKey,
-                                   //AVVideoProfileLevelH264Main30, AVVideoProfileLevelKey,
+//                                   videoAspectRatioSettings, AVVideoPixelAspectRatioKey,
+                                   AVVideoH264EntropyModeCABAC, AVVideoH264EntropyModeKey,
+                                   AVVideoProfileLevelH264Main30, AVVideoProfileLevelKey,
                                    nil];
-    */
+    
     NSDictionary* settings = [NSDictionary dictionaryWithObjectsAndKeys:
                               AVVideoCodecH264, AVVideoCodecKey,
                               [NSNumber numberWithInt: cx], AVVideoWidthKey,
                               [NSNumber numberWithInt: cy], AVVideoHeightKey,
                               AVVideoScalingModeResizeAspectFill, AVVideoScalingModeKey,
+                              codecSettings, AVVideoCompressionPropertiesKey,
                               nil];
     _videoInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:settings];
     _videoInput.expectsMediaDataInRealTime = YES;
@@ -77,6 +79,8 @@
     _audioInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeAudio outputSettings:settings];
     _audioInput.expectsMediaDataInRealTime = YES;
     [_writer addInput:_audioInput];
+    
+    
 }
 
 - (void) finishWithCompletionHandler:(void (^)(void))handler
@@ -95,8 +99,8 @@
 
 - (BOOL)encodeFrame:(CMSampleBufferRef)sampleBuffer isVideo:(BOOL)bVideo
 {
-    @synchronized(self)
-    {
+//    @synchronized(self)
+//    {
         if (CMSampleBufferDataIsReady(sampleBuffer))
         {
             if (_writer.status == AVAssetWriterStatusUnknown)
@@ -113,6 +117,8 @@
                 NSLog(@"writer error %@", _writer.error.localizedDescription);
                 return NO;
             }
+            
+//            NSLog(@"_writer status %d",_writer.status);
             if (bVideo)
             {
                 if (_videoInput.readyForMoreMediaData == YES)
@@ -147,7 +153,7 @@
             
             
         }
-    }
+//    }
     
     return NO;
 }

@@ -21,7 +21,7 @@
 @implementation GKMovieCell
 @synthesize titleLabel,contentLabel,timeLabel,backImgV;
 @synthesize praiseButton;
-@synthesize commentsButton,contentView;
+@synthesize commentsButton;
 @synthesize praiseLab,commentLab,praiseImgV,commentImgV,triangle,mPlayer,delegate,theShareCtnt,radia,currentURL;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

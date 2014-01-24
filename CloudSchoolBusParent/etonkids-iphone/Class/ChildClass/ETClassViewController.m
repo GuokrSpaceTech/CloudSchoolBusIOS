@@ -739,7 +739,6 @@
                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
             }
             
-            
             if(indexPath.row==[self.list count]-1)
             {
                 if(isMore)

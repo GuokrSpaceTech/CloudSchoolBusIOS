@@ -273,11 +273,15 @@
         
 //        NSMutableArray *result = [resultDic objectForKey:@"schedule"];
         
-        
-        
+        NSString *paramDay = [param objectForKey:@"day"];
+        NSString *t = [datebutton titleForState:UIControlStateNormal];
+        if (![paramDay isEqualToString:t])
+        {
+            return;
+        }
         self.dataArray = result;
         
-        NSString *paramDay = [param objectForKey:@"day"];
+//        NSString *paramDay = [param objectForKey:@"day"];
         [ETCoreDataManager removeScheduleByDate:paramDay];
         [ETCoreDataManager addSchedule:self.dataArray withDate:paramDay];
         

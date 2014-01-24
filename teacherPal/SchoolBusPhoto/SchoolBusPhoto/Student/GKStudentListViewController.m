@@ -101,21 +101,21 @@
         cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier] autorelease];
         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         cell.backgroundColor=[UIColor clearColor];
-        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 40, 40)];
+        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 65, 40)];
         imageView.backgroundColor=[UIColor clearColor];
         imageView.tag=CELLTAG;
         
         [cell.contentView addSubview:imageView];
         [imageView release];
     
-        UILabel *nameLabel=[[UILabel alloc]initWithFrame:CGRectMake(60, 15, 120, 20)];
+        UILabel *nameLabel=[[UILabel alloc]initWithFrame:CGRectMake(75, 15, 120, 20)];
         nameLabel.backgroundColor=[UIColor clearColor];
         nameLabel.tag=CELLTAG+1;
         nameLabel.font=[UIFont systemFontOfSize:15];
         [cell.contentView addSubview:nameLabel];
         [nameLabel release];
         
-        UILabel *ageLabel=[[UILabel alloc]initWithFrame:CGRectMake(200, 15, 100, 20)];
+        UILabel *ageLabel=[[UILabel alloc]initWithFrame:CGRectMake(210, 15, 100, 20)];
         ageLabel.backgroundColor=[UIColor clearColor];
           nameLabel.font=[UIFont systemFontOfSize:15];
         ageLabel.tag=CELLTAG+2;

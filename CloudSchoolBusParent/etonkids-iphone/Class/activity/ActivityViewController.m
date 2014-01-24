@@ -857,6 +857,11 @@
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
+    NSLog(@"disappear");
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"appear");
 }
 
 - (void)didReceiveMemoryWarning

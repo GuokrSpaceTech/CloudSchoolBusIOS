@@ -337,6 +337,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     GKMovieManager *mm = [GKMovieManager shareManager];
+//    NSLog(@"@@@@@@@@@@@@@@@@@   %@,%d",mm.playingCell,mm.playingCell.mPlayer.playbackState);
     if (mm.playingCell && mm.playingCell.mPlayer.playbackState == MPMoviePlaybackStatePlaying) {
         [mm.playingCell.mPlayer stop];
     }

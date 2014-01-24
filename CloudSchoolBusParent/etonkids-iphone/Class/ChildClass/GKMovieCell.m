@@ -320,13 +320,17 @@
 
 - (void)controlMovie:(UIButton *)sender
 {
+    GKMovieManager *mm = [GKMovieManager shareManager];
     if (self.mPlayer.playbackState == MPMoviePlaybackStatePlaying)
     {
+        mm.playingCell = nil;
         [self.mPlayer pause];
         [sender setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
     }
     else
     {
+        
+        [mm toggleMoviePlayingWithCell:self];
         [self.mPlayer play];
         [sender setImage:nil forState:UIControlStateNormal];
     }

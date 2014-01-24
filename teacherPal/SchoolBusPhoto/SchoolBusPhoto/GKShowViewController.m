@@ -167,10 +167,12 @@
         _scroller=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-(5 + y*STUDENTCELLHEIGHT)-IOS7OFFSET-46)];
     _scroller.backgroundColor=[UIColor whiteColor];
     
-    
-    NSLog(@"%f-------------%f",self.view.frame.size.width,self.view.frame.size.height-(5 + y*STUDENTCELLHEIGHT)-IOS7OFFSET-46);
+    _scroller.clipsToBounds=YES;
+    //NSLog(@"%f-------------%f",self.view.frame.size.width,self.view.frame.size.height-(5 + y*STUDENTCELLHEIGHT)-IOS7OFFSET-46);
     
     [picView addSubview:_scroller];
+    
+    NSLog(@"---------------------------------------------- count  %d",[assetArr count]);
     _scroller.contentSize=CGSizeMake([assetArr count] *320, _scroller.frame.size.height);
     _scroller.showsHorizontalScrollIndicator=NO;
     _scroller.showsVerticalScrollIndicator=NO;
@@ -178,6 +180,9 @@
     _scroller.scrollEnabled=YES;
     _scroller.delegate=self;
     [_scroller release];
+    
+    
+    NSLog(@" contentsize%f -----------------%f",_scroller.contentSize.width,_scroller.contentSize.height);
     
    // [self.view bringSubviewToFront:navigationView];
     
@@ -678,24 +683,14 @@
         imageView.image=nil;
         imageView.backgroundColor = [UIColor blackColor];
         imageView.tag=index+TAG;
-        //[self performSelectorInBackground:@selector(setPhotoImage:) withObject:imageView];
-       // if(type==1)
-        //{
-            ETPhoto *photo=[assetArr objectAtIndex:index];
-            NSData *data= UIImageJPEGRepresentation([UIImage imageWithCGImage:[[photo.asset defaultRepresentation] fullScreenImage]], 0.1);
-            imageView.image=[UIImage imageWithData:data];
-       // }
-//        else
-//        {
-//            NSData *data= UIImageJPEGRepresentation([UIImage imageWithData:[assetArr objectAtIndex:index]], 0.1)   ;
-//            imageView.image= [UIImage imageWithData:data];
-//        }
-   
-        
+        ETPhoto *photo=[assetArr objectAtIndex:index];
+        NSData *data= UIImageJPEGRepresentation([UIImage imageWithCGImage:[[photo.asset defaultRepresentation] fullScreenImage]], 0.1);
+        imageView.image=[UIImage imageWithData:data];
+
         imageView.userInteractionEnabled = YES;
        // imageView.contentMode=UIViewContentModeScaleAspectFit;
         imageView.contentMode=UIViewContentModeScaleAspectFill;
-        [imageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
+        //[imageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
         imageView.clipsToBounds=YES;// 防止图片超过iamgeView 的区域
         // 1clipsToBounds
         [_scroller addSubview:imageView];
@@ -1081,12 +1076,7 @@
     int yu=x%(int)(_scroller.frame.size.width);
     
     if (yu == 0) {
-        if(yu>_scroller.frame.size.width/2)
-            num++;
-        
         numbeLabel.text=[NSString stringWithFormat:@"%d/%d",++num,[assetArr count]];
-        
-        
         
         currentpage=num-1;
         
@@ -1095,6 +1085,10 @@
             [studentView setAllButtonSelect:NO];
             
             prePage=currentpage;
+        }
+        else
+        {
+            return;//没有划出本张图片时返回
         }
         
         

@@ -56,6 +56,8 @@
 {
     while (YES) 
     {
+        
+        NSLog(@"yesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyes");
         [syCondition lockWhenCondition:LOCK_CONDITION_HAVEDATA];
         
         
@@ -347,6 +349,7 @@
 
 - (void)retriveObject:(NSFetchRequest *)request success:(retriveBlock)rBlock failed:(failedBlock)fBlock
 {
+  
     retriveBlock rB  = [rBlock copy];
     failedBlock  fB  = [fBlock copy];
     NSNumber *type = [NSNumber numberWithInt:COMMAND_RETRIVE];

@@ -176,6 +176,16 @@ static  GKMainViewController*rootViewCon;
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     UIView* touchedView = [touch view];
+    for (UIView* next = [touchedView superview]; next; next = next.superview)
+    {
+        // 找到GKShowViewController 禁掉拖拽手势手势
+        UIResponder *nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[GKShowViewController class]]) {
+            return NO;
+            
+        }
+ 
+    }
     if([touchedView isKindOfClass:[UIButton class]] ||[touchedView isKindOfClass:[GKSaySomethingView class]] || [touchedView isKindOfClass:[UITextView class]]) {
         
         return NO;

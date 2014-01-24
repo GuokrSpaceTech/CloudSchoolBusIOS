@@ -15,7 +15,7 @@
 
 #import "GKSaySomethingView.h"
 @protocol showViewController;
-@interface GKShowViewController : GKBaseViewController<UIScrollViewDelegate,studentViewDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,EKProtocol,ETNicknameViewControllerDelegate,UITextViewDelegate,UIAlertViewDelegate,GKSaySomethingViewDelegate>
+@interface GKShowViewController : GKBaseViewController<UIScrollViewDelegate,studentViewDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,EKProtocol,ETNicknameViewControllerDelegate,UIAlertViewDelegate,GKSaySomethingViewDelegate>
 {
     UIScrollView *_scroller;
     

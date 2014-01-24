@@ -13,6 +13,7 @@
 #import <math.h>
 #import "GKSaySomethingView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "GKShowViewController.h"
 @interface KKNavigationController ()
 {
     CGPoint startTouch;
@@ -166,10 +167,26 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     UIView* touchedView = [touch view];
+    
+    for (UIView* next = [touchedView superview]; next; next = next.superview)
+    {
+            UIResponder *nextResponder = [next nextResponder];
+                if ([nextResponder isKindOfClass:[GKShowViewController class]]) {
+                    return NO;
+                    
+            }
+        
+        
+     
+    
+    }
     if([touchedView isKindOfClass:[UIButton class]] ||[touchedView isKindOfClass:[GKSaySomethingView class]] || [touchedView isKindOfClass:[UITextView class]]) {
         
         return NO;
     }
+    
+    
+    
     
     return YES;
 }

@@ -57,7 +57,7 @@
         [self addSubview:button];
 
         
-        _tagScrollerView = [[GKPhotoTagScrollView alloc] initWithFrame:CGRectMake(10,  _contextView.frame.origin.y+_contextView.frame.size.height+5+40, 300, 60)];
+        _tagScrollerView = [[GKPhotoTagScrollView alloc] initWithFrame:CGRectMake(10,  _contextView.frame.origin.y+_contextView.frame.size.height+5+40, 300, frame.size.height-labelNum.frame.origin.y-labelNum.frame.size.height)];
         _tagScrollerView.backgroundColor = [UIColor clearColor];
         _tagScrollerView.tagDelegate = self;
         [self addSubview:_tagScrollerView];

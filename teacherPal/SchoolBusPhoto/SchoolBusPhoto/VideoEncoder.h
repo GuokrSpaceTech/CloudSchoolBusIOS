@@ -24,8 +24,8 @@
     float time;
 }
 
-@property NSString* path;
-@property GKRecordProgressView *slider;
+@property(nonatomic,strong) NSString* path;
+@property(nonatomic,strong) GKRecordProgressView *slider;
 
 + (VideoEncoder*)encoderForPath:(NSString*) path Height:(int) cy width:(int) cx channels: (int) ch samples:(Float64) rate;
 

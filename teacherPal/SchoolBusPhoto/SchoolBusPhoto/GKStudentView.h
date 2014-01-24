@@ -26,6 +26,7 @@
 @protocol studentViewDelegate <NSObject>
 
 -(void)whitchSelected:(BOOL)selected uid:(NSString *)uid isAll:(int)an;
+@optional
 - (void)didLongPressStudentButton:(GKButton *)button;
 
 @end

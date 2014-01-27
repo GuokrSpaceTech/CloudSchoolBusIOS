@@ -225,7 +225,7 @@
     int length = [self textLength:nicknametextfield.text];
     if (length > LIMIT_NICKNAME) {
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"limitChar", @"字符少于10个字") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"确定") otherButtonTitles:nil, nil] ;
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"limitChar", @"字符少于12个字") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"确定") otherButtonTitles:nil, nil] ;
         [alert show];
         [alert release];
         

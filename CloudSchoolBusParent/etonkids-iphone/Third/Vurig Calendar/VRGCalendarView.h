@@ -53,10 +53,12 @@
 @property (nonatomic, retain, getter = selectedDate) NSDate *selectedDate;
 @property (nonatomic, retain) NSArray *markedSchoolDates;
 @property (nonatomic, retain) NSArray *markedSummerDates;
+@property (nonatomic, retain) NSArray *markedBudengDates;
 
 -(void)selectDate:(int)date;
 -(void)reset;
 -(void)markqueqinDates:(NSArray *)dates ;
+- (void)markedBuDengDates:(NSArray *)dates;
 -(void)markDates:(NSArray *)dates;
 -(void)markDates:(NSArray *)dates withColors:(NSArray *)colors;
 

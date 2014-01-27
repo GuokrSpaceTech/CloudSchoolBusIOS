@@ -130,6 +130,7 @@
 		788BE6A517EFDC860076D920 /* upBtnSel.png in Resources */ = {isa = PBXBuildFile; fileRef = 788BE6A317EFDC860076D920 /* upBtnSel.png */; };
 		788BE6AE17F00B610076D920 /* ETCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 788BE6AC17F00B610076D920 /* ETCalendarViewController.m */; };
 		788BE6AF17F00B610076D920 /* ETCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788BE6AD17F00B610076D920 /* ETCalendarViewController.xib */; };
+		788C4C951896123800AEB513 /* yellowPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 788C4C941896123800AEB513 /* yellowPoint.png */; };
 		788F8CFA17F40C9B00342A5C /* ETSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 788F8CF917F40C9B00342A5C /* ETSettingView.m */; };
 		78930525187A4D4300628928 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7893051F187A4D4300628928 /* libTestFlight.a */; };
 		78930526187A4D4300628928 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 78930520187A4D4300628928 /* README.md */; };
@@ -762,6 +763,7 @@
 		788BE6AB17F00B610076D920 /* ETCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETCalendarViewController.h; sourceTree = "<group>"; };
 		788BE6AC17F00B610076D920 /* ETCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETCalendarViewController.m; sourceTree = "<group>"; };
 		788BE6AD17F00B610076D920 /* ETCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ETCalendarViewController.xib; sourceTree = "<group>"; };
+		788C4C941896123800AEB513 /* yellowPoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowPoint.png; sourceTree = "<group>"; };
 		788F8CF817F40C9B00342A5C /* ETSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETSettingView.h; sourceTree = "<group>"; };
 		788F8CF917F40C9B00342A5C /* ETSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSettingView.m; sourceTree = "<group>"; };
 		7893051F187A4D4300628928 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
@@ -2099,6 +2101,7 @@
 		E3EA3B01169E94C5000DF7EE /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				788C4C941896123800AEB513 /* yellowPoint.png */,
 				78A41FE61820EF6200D0DE50 /* birthdayIcon.png */,
 				783BD305181514C600687D31 /* deleteTag.png */,
 				78C2ADB617E06F2900E6A5CD /* V3.0 */,
@@ -3024,6 +3027,7 @@
 				78FA83131803E65D009E9176 /* ETPasswordManagerViewController.xib in Resources */,
 				78F841B01819254B007722AE /* aboutBack2.png in Resources */,
 				789EAA4D183A07160029D4B0 /* navigationNoText.png in Resources */,
+				788C4C951896123800AEB513 /* yellowPoint.png in Resources */,
 				78FA831B18064E10009E9176 /* ETChangeGestureViewController.xib in Resources */,
 				78952FF9184C718C001C30D2 /* OKBtn.png in Resources */,
 				78FA832018065116009E9176 /* 03.png in Resources */,

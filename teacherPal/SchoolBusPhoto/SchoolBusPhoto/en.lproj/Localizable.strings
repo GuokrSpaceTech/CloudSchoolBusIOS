@@ -129,7 +129,7 @@
 "newPass" ="New";
 "confromPass" = "Confirm";
 
-"limitChar" = "less than 20 words";
+"limitChar" = "less than 12 words";
 
 "apply"="Apply All";
 

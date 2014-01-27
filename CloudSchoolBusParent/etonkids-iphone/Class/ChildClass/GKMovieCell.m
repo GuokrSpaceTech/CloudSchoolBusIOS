@@ -227,6 +227,7 @@
     
     self.currentURL = url;
     
+    
     // 延时下载
     
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(downloadMovie:) object:self.canceledURL];
@@ -266,6 +267,7 @@
         {
             self.radia.hidden = YES;
             self.mPlayer.contentURL = [NSURL fileURLWithPath:path];
+//            self.mPlayer.initialPlaybackTime = -1;
             
             //下载完成后谁优先谁播放
             NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
@@ -299,7 +301,7 @@
         if (self.mPlayer.playbackState == MPMoviePlaybackStatePaused)
         {
             NSLog(@"pause %f",self.frame.origin.y);
-            self.mPlayer.view.hidden = NO;
+//            self.mPlayer.view.hidden = NO;
             [b setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
         }
         else if (self.mPlayer.playbackState == MPMoviePlaybackStateStopped)
@@ -331,7 +333,7 @@
     {
         
         [mm toggleMoviePlayingWithCell:self];
-        [self.mPlayer play];
+//        [self.mPlayer play];
         [sender setImage:nil forState:UIControlStateNormal];
     }
 }

@@ -68,7 +68,7 @@
     [self.view addSubview:bgView];
     [bgView release];
     
-    UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeCustom];
     buttonBack.frame=CGRectMake(10, 5, 34, 35);
     [buttonBack setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     [buttonBack setBackgroundImage:[UIImage imageNamed:@"backH.png"] forState:UIControlStateHighlighted];

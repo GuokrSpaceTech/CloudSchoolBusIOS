@@ -16,7 +16,7 @@
 
 @interface VideoEncoder : NSObject
 {
-    AVAssetWriter* _writer;
+//    AVAssetWriter* _writer;
     AVAssetWriterInput* _videoInput;
     AVAssetWriterInput* _audioInput;
     NSString* _path;
@@ -24,8 +24,9 @@
     float time;
 }
 
-@property(nonatomic,strong) NSString* path;
-@property(nonatomic,strong) GKRecordProgressView *slider;
+@property(nonatomic,retain) NSString* path;
+@property(nonatomic,retain) GKRecordProgressView *slider;
+@property(nonatomic, retain)AVAssetWriter* _writer;
 
 + (VideoEncoder*)encoderForPath:(NSString*) path Height:(int) cy width:(int) cx channels: (int) ch samples:(Float64) rate;
 

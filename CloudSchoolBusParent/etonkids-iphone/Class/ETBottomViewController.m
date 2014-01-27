@@ -353,7 +353,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     ETClassViewController *classVC = [self.leveyTBC.viewControllers objectAtIndex:0];
-    [classVC._tableView reloadData];
+    [classVC reloadTableViewData];
 }
 
 

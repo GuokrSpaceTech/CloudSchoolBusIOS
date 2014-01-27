@@ -47,14 +47,14 @@
     }
     
     
-    UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeCustom];
     buttonBack.frame=CGRectMake(10, 5, 34, 35);
     [buttonBack setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     [buttonBack setBackgroundImage:[UIImage imageNamed:@"backH.png"] forState:UIControlStateHighlighted];
     [navigationView addSubview:buttonBack];
     [buttonBack addTarget:self action:@selector(doBack:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton *sendButton=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *sendButton=[UIButton buttonWithType:UIButtonTypeCustom];
     sendButton.frame=CGRectMake(320 - 50, 5, 50, 35);
     [sendButton setBackgroundImage:[UIImage imageNamed:@"OKBtn.png"] forState:UIControlStateNormal];
     [sendButton setBackgroundImage:[UIImage imageNamed:@"OKBtn_sel.png"] forState:UIControlStateHighlighted];

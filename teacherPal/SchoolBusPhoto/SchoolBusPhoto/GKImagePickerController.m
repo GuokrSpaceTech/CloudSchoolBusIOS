@@ -29,7 +29,6 @@
         // Custom initialization
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyStopRecord:) name:@"stopRecord" object:nil];
         
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presetMovie:) name:@"preset" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(becomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(exportError:) name:@"MOVIEDATA_EXPORT_ERROR" object:nil];
@@ -80,28 +79,33 @@
     cameraPreview.backgroundColor = [UIColor redColor];
     [camManager embedPreviewInView:cameraPreview];
     [self.view addSubview:cameraPreview];
+    [cameraPreview release];
     
     UITapGestureRecognizer *focusTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(focusPoint:)];
     [cameraPreview addGestureRecognizer:focusTap];
+    [focusTap release];
     
     upOverlay = [[UIImageView alloc] initWithFrame:CGRectMake(0, CENTERLAYOUT - 280 + 40, 320, 280)];
     upOverlay.image = [[UIImage imageNamed:@"camera-blind-top-simple"] stretchableImageWithLeftCapWidth:0 topCapHeight:1];
     [self.view addSubview:upOverlay];
+    [upOverlay release];
     
     downOverlay = [[UIImageView alloc] initWithFrame:CGRectMake(0, CENTERLAYOUT, 320, 250)];
     downOverlay.image = [[UIImage imageNamed:@"camera-blind-bottom-simple"] stretchableImageWithLeftCapWidth:0 topCapHeight:43];
-    
     [self.view addSubview:downOverlay];
+    [downOverlay release];
     
     
     // ----------- 顶部导航条 ----------------
     topToolsbar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
     topToolsbar.backgroundColor = [UIColor grayColor];
     [self.view addSubview:topToolsbar];
+    [topToolsbar release];
     
     UIImageView *tBack = [[UIImageView alloc] initWithFrame:topToolsbar.bounds];
     tBack.image = [UIImage imageNamed:@"edit-tray-background.png"];
     [topToolsbar addSubview:tBack];
+    [tBack release];
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setTitle:@"  返回" forState:UIControlStateNormal];
@@ -159,11 +163,12 @@
     bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height + (ios7 ? 0 : 20) - height, 320, height)];
     bottomView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:bottomView];
+    [bottomView release];
     
     UIImageView *bBack = [[UIImageView alloc] initWithFrame:bottomView.bounds];
     bBack.image = [UIImage imageNamed:@"camera-tray-cover.png"];
     [bottomView addSubview:bBack];
-    
+    [bBack release];
     
     for (int i = 0; i < 3; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -278,7 +283,7 @@
 {
     
 //    [motionManager stopAccelerometerUpdates];
-    
+    [camManager clearMovieCache];
     [self closeCameraAnimateCompletion:YES];
 }
 
@@ -647,6 +652,7 @@
     GKFilterViewController *filterVC = [[GKFilterViewController alloc] init];
     filterVC.moviePath = sender;
     [self.navigationController pushViewController:filterVC animated:YES];
+    [filterVC release];
     NSLog(@"push record ");
 }
 
@@ -688,27 +694,15 @@
     [camManager stopCapture];
 }
 
-- (void)presetMovie:(NSNotification *)notifi
-{
-    NSString* filename = [NSString stringWithFormat:@"capture.mp4"];
-    NSString* path = [NSTemporaryDirectory() stringByAppendingPathComponent:filename];
-    NSURL* url = [NSURL fileURLWithPath:path];
-    
-    MPMoviePlayerController *movie = [[MPMoviePlayerController alloc] initWithContentURL:url];
-    movie.controlStyle = MPMovieControlStyleNone;
-    [movie.view setFrame:CGRectMake(0, 0, 320, 320)];
-    [self.view addSubview:movie.view];
-    
-    [movie prepareToPlay];
-    
-    [movie play];
-}
-
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (void)dealloc
+{
+    [super dealloc];
 }
 
 

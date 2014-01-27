@@ -16,12 +16,13 @@
 
 @interface GKRecordProgressView : UIView
 {
-    NSMutableArray *progressSegments;
+    
     UIView *headView;
 }
 
 @property (nonatomic) float progress;
-@property (nonatomic,weak) id<GKRecordProgressViewDelegate> delegate;
+@property (nonatomic, assign) id<GKRecordProgressViewDelegate> delegate;
+@property (nonatomic, retain) NSMutableArray *progressSegments;
 
 - (void)markSegment;
 

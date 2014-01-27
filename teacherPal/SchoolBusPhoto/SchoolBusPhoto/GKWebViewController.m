@@ -31,7 +31,7 @@
     self.navigationController.navigationBarHidden=YES;
     self.view.backgroundColor=[UIColor colorWithRed:103/255.0 green:183/255.0 blue:204/255.0 alpha:1];
     titlelabel.text=NSLocalizedString(@"privacy", @"");
-    UIButton *buttom=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *buttom=[UIButton buttonWithType:UIButtonTypeCustom];
     buttom.frame=CGRectMake(10, 5, 34, 35);
     //UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 34, 35)];
     [buttom setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];

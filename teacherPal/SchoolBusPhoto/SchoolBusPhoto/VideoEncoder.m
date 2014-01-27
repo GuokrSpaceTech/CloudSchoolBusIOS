@@ -8,11 +8,11 @@
 
 #import "VideoEncoder.h"
 
-#define MAX_RECORD_TIMING 8
+#define MAX_RECORD_TIMING 15
 
 @implementation VideoEncoder
 
-@synthesize path = _path;
+@synthesize path = _path,_writer;
 
 + (VideoEncoder*) encoderForPath:(NSString*) path Height:(int) cy width:(int) cx channels: (int) ch samples:(Float64) rate;
 {
@@ -29,31 +29,18 @@
     [[NSFileManager defaultManager] removeItemAtPath:self.path error:nil];
     NSURL* url = [NSURL fileURLWithPath:self.path];
     NSLog(@"##########################       new writer");
-    _writer = [AVAssetWriter assetWriterWithURL:url fileType:AVFileTypeQuickTimeMovie error:nil];
+    self._writer = [AVAssetWriter assetWriterWithURL:url fileType:AVFileTypeMPEG4 error:nil];
+
     
-    NSDictionary *videoCleanApertureSettings = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                [NSNumber numberWithInt:320], AVVideoCleanApertureWidthKey,
-                                                [NSNumber numberWithInt:480], AVVideoCleanApertureHeightKey,
-                                                [NSNumber numberWithInt:10], AVVideoCleanApertureHorizontalOffsetKey,
-                                                [NSNumber numberWithInt:10], AVVideoCleanApertureVerticalOffsetKey,
-                                                nil];
+    NSMutableDictionary *codecSettings = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+//                                   AVVideoH264EntropyModeCABAC, AVVideoH264EntropyModeKey,
+                                          [NSNumber numberWithInt:480000], AVVideoAverageBitRateKey,
+                                          AVVideoProfileLevelH264Main30, AVVideoProfileLevelKey,
+                                          nil];
     
-    
-    NSDictionary *videoAspectRatioSettings = [NSDictionary dictionaryWithObjectsAndKeys:
-                                              [NSNumber numberWithInt:1], AVVideoPixelAspectRatioHorizontalSpacingKey,
-                                              [NSNumber numberWithInt:1], AVVideoPixelAspectRatioVerticalSpacingKey,
-                                              nil];
-    
-    
-    
-    NSDictionary *codecSettings = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                   [NSNumber numberWithInt:960000], AVVideoAverageBitRateKey,
-//                                   [NSNumber numberWithInt:30],AVVideoMaxKeyFrameIntervalKey,
-//                                   videoCleanApertureSettings, AVVideoCleanApertureKey,
-//                                   videoAspectRatioSettings, AVVideoPixelAspectRatioKey,
-                                   AVVideoH264EntropyModeCABAC, AVVideoH264EntropyModeKey,
-                                   AVVideoProfileLevelH264Main30, AVVideoProfileLevelKey,
-                                   nil];
+    if (ios7) {
+        [codecSettings setObject:AVVideoH264EntropyModeCABAC forKey:AVVideoH264EntropyModeKey];
+    }
     
     NSDictionary* settings = [NSDictionary dictionaryWithObjectsAndKeys:
                               AVVideoCodecH264, AVVideoCodecKey,
@@ -160,6 +147,15 @@
 - (void)setProgress:(NSString *)sender
 {
     self.slider.progress = sender.floatValue;
+}
+
+- (void)dealloc
+{
+    self.path = nil;
+    self._writer = nil;
+    self.slider = nil;
+    [super dealloc];
+    
 }
 
 @end

@@ -190,7 +190,7 @@
     {
         NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
         
-        NSString *str = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+//        NSString *str = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
         
         NSLog(@"%@",dic);
         
@@ -283,6 +283,10 @@
                 }
                 
             }
+            else if (status == 3)
+            {
+                attLabel.text = [NSString stringWithFormat:@"%@",LOCAL(@"budeng", @"")];
+            }
             
             break;
         }
@@ -308,7 +312,7 @@
             NSString *fname = [[fstr componentsSeparatedByString:@","] objectAtIndex:1];
             
             if ([str isEqualToString:fdateStr]) {
-                fesLabel.text = fname;
+                fesLabel.text = LOCAL(fname, @"");
                 fesImgV.hidden = NO;
                 break;
             }
@@ -357,6 +361,7 @@
 {
     NSMutableArray * mutDateArr = [[NSMutableArray alloc] initWithCapacity:1];
     NSMutableArray * quqinArr = [[NSMutableArray alloc] initWithCapacity:1];
+    NSMutableArray *budengArr = [[NSMutableArray alloc] initWithCapacity:1];
     
     for(int i=0;i<[dateArr count];i++)
     {
@@ -399,14 +404,21 @@
             [mutDateArr addObject:myDate];
         if(type==2)
             [quqinArr addObject:myDate];
+        if (type == 3) {
+            [budengArr addObject:myDate];
+        }
     }
     
     if(mutDateArr.count >0)
         [myCalendar markDates:mutDateArr];
     if(quqinArr.count >0)
         [myCalendar markqueqinDates:quqinArr];
+    if (budengArr.count > 0) {
+        [myCalendar markedBuDengDates:budengArr];
+    }
+    
     NSString * totalDays =LOCAL(@"allDay", @"本月出勤总数:") ;//; @"本月出勤总数:";
-    totalDays = [totalDays stringByAppendingFormat:@"%d",mutDateArr.count];
+    totalDays = [totalDays stringByAppendingFormat:@"%d",mutDateArr.count + budengArr.count];
     countLabel.text = totalDays;
     
     [mutDateArr release];

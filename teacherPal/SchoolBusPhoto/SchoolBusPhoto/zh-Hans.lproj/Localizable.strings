@@ -133,7 +133,7 @@
 "newPass" ="新密码";
 
 "confromPass" = "确认密码";
-"limitChar" = "字符少于20个字";
+"limitChar" = "字符少于12个字";
 "apply"="应用全部";
 "tophoto"="立即拍照";
 "uploadsuccess"="恭喜你，所有照片已上传成功!";

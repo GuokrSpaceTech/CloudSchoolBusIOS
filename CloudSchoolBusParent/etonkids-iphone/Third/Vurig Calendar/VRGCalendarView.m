@@ -15,7 +15,7 @@
 @implementation VRGCalendarView
 @synthesize currentMonth,delegate,labelCurrentMonth, animationView_A,animationView_B;
 @synthesize markedDates,markedColors,calendarHeight,selectedDate,markedSchoolDates,markedSummerDates;
-@synthesize markedqueqinDates;
+@synthesize markedqueqinDates,markedBudengDates;
 #pragma mark - Select Date
 -(void)selectDate:(int)date {
     
@@ -78,6 +78,11 @@
     
 }
 
+- (void)markedBuDengDates:(NSArray *)dates {
+    self.markedBudengDates = dates;
+    [self setNeedsDisplay];
+}
+
 
 - (void)markSchoolDates:(NSArray *)dates
 {
@@ -136,6 +141,7 @@
     self.markedDates=nil;
     self.markedqueqinDates=nil;
     self.markedSchoolDates = nil;
+    self.markedBudengDates = nil;
     isAnimating=YES;
     prepAnimationNextMonth=YES;
     
@@ -204,6 +210,7 @@
     self.markedDates=nil;
     self.markedqueqinDates=nil;
     self.markedSchoolDates = nil;
+    self.markedBudengDates = nil;
     //Prepare current screen
     prepAnimationPreviousMonth = YES;
     [self setNeedsDisplay];
@@ -673,6 +680,55 @@
         // CGContextSetFillColorWithColor(context, color.CGColor);
         CGContextFillPath(context);
     }
+    
+    for (int i = 0; i<[self.markedBudengDates count]; i++) {
+        id markedDateObj = [self.markedBudengDates objectAtIndex:i];
+        
+        int targetDate;
+        if ([markedDateObj isKindOfClass:[NSNumber class]]) {
+            targetDate = [(NSNumber *)markedDateObj intValue];
+        } else if ([markedDateObj isKindOfClass:[NSDate class]]) {
+            NSDate *date = (NSDate *)markedDateObj;
+            targetDate = [date day];
+        } else {
+            continue;
+        }
+        
+        
+        
+        int targetBlock = firstWeekDay + (targetDate-1);
+        int targetColumn = targetBlock%7;
+        int targetRow = targetBlock/7;
+        
+        int targetX = targetColumn * (kVRGCalendarViewDayWidth+2) +45;
+        int targetY = kVRGCalendarViewTopBarHeight + targetRow * (kVRGCalendarViewDayHeight+2)+8;
+        // 图片
+        
+        
+        CGRect rectangle = CGRectMake(targetX,targetY,9,9);
+        UIImage *imageGreen=[UIImage imageNamed:@"yellowPoint.png"];
+        [imageGreen drawInRect:rectangle];
+        // CGContextAddRect(context, rectangle);
+        
+        //  UIColor *color;
+        if (selectedDate && selectedDateBlock==targetBlock) {
+            // color = [UIColor whiteColor];
+            UIImage *imageGreen=[UIImage imageNamed:@"yellowPoint.png"];
+            [imageGreen drawInRect:rectangle];
+        }  else if (todayBlock==targetBlock) {
+            UIImage *imageGreen=[UIImage imageNamed:@"yellowPoint.png"];
+            [imageGreen drawInRect:rectangle];
+            // color = [UIColor whiteColor];
+        } else {
+            // color  = (UIColor *)[markedColors objectAtIndex:i];
+            UIImage *imageGreen=[UIImage imageNamed:@"yellowPoint.png"];
+            [imageGreen drawInRect:rectangle];
+        }
+        
+        
+        // CGContextSetFillColorWithColor(context, color.CGColor);
+        CGContextFillPath(context);
+    }
 
     
     
@@ -779,6 +835,7 @@
     self.markedDates=nil;
     self.markedColors=nil;
     self.markedSchoolDates = nil;
+    self.markedBudengDates = nil;
     
     [super dealloc];
 }

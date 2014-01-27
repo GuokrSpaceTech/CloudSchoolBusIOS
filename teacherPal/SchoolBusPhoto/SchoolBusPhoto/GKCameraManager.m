@@ -454,6 +454,9 @@ static GKCameraManager *cameraManager;
             NSLog(@"starting capture");
             
             // create the encoder once we have the audio params
+            if (_encoder) {
+                [_encoder release];
+            }
             _encoder = nil;
             self.isPaused = NO;
             _discont = NO;
@@ -483,6 +486,8 @@ static GKCameraManager *cameraManager;
             dispatch_async(_captureQueue, ^{
                 [_encoder finishWithCompletionHandler:^{
 //                    [self performSelectorOnMainThread:@selector(resetRecordPara) withObject:nil waitUntilDone:NO];
+                    [_encoder release];
+                    _encoder = nil;
                     
                     NSString *oFilename = [NSString stringWithFormat:@"output%d.mp4",(int)[[NSDate date] timeIntervalSince1970]];
                     NSString *oPath = [NSTemporaryDirectory() stringByAppendingPathComponent:oFilename];
@@ -534,7 +539,6 @@ static GKCameraManager *cameraManager;
 {
     
     AVURLAsset *asset=[AVURLAsset URLAssetWithURL:inputURL options:nil];
-    //AVURLAsset *asset = [AVURLAsset URLAssetWithURL:inputURL opti*****:nil];
     AVAssetExportSession *session = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPresetPassthrough];
     session.outputURL = outputURL;
     session.outputFileType = AVFileTypeMPEG4;

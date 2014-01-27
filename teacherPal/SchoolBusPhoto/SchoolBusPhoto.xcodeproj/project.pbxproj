@@ -33,7 +33,7 @@
 		111E8CE8181E532400234014 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E8CD7181E532400234014 /* UIImage+GIF.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		111E8CE9181E532400234014 /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E8CD9181E532400234014 /* UIImage+MultiFormat.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		111E8CEA181E532400234014 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E8CDB181E532400234014 /* UIImage+WebP.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		111E8CEB181E532400234014 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E8CDD181E532400234014 /* UIImageView+WebCache.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		111E8CEB181E532400234014 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E8CDD181E532400234014 /* UIImageView+WebCache.m */; };
 		111E8CF1181E540900234014 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 111E8CF0181E540900234014 /* MapKit.framework */; };
 		111E8CF3181E6E9F00234014 /* input.png in Resources */ = {isa = PBXBuildFile; fileRef = 111E8CF2181E6E9F00234014 /* input.png */; };
 		113BCABE182B41280079E9AD /* topImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 113BCABD182B41280079E9AD /* topImage.png */; };
@@ -241,7 +241,7 @@
 		11BF898E183646DF008E72F0 /* GKBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BF898D183646DF008E72F0 /* GKBadgeView.m */; };
 		11C75DA61812725600A3AA89 /* EKRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DA01812725600A3AA89 /* EKRequest.m */; };
 		11C75DA71812725600A3AA89 /* SVHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DA31812725600A3AA89 /* SVHTTPClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		11C75DA81812725600A3AA89 /* SVHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DA51812725600A3AA89 /* SVHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		11C75DA81812725600A3AA89 /* SVHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DA51812725600A3AA89 /* SVHTTPRequest.m */; };
 		11C75DAB1812728500A3AA89 /* GKUserLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DAA1812728500A3AA89 /* GKUserLogin.m */; };
 		11C75DAF1812729500A3AA89 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DAE1812729500A3AA89 /* SFHFKeychainUtils.m */; };
 		11C75DB1181272BB00A3AA89 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C75DB0181272BB00A3AA89 /* Security.framework */; };
@@ -315,14 +315,14 @@
 		2AFFF364181231040045BFD0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AFFF363181231040045BFD0 /* AVFoundation.framework */; };
 		2AFFF373181232E70045BFD0 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AFFF372181232E60045BFD0 /* AssetsLibrary.framework */; };
 		2AFFF376181233580045BFD0 /* GKUpLoaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFFF375181233580045BFD0 /* GKUpLoaderViewController.m */; };
-		78709BC9187D16CA009250FB /* GKFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BBA187D16CA009250FB /* GKFilterViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		78709BC9187D16CA009250FB /* GKFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BBA187D16CA009250FB /* GKFilterViewController.m */; };
 		78709BCA187D16CA009250FB /* GKSendMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BBC187D16CA009250FB /* GKSendMediaViewController.m */; };
-		78709BCB187D16CA009250FB /* GKImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BBD187D16CA009250FB /* GKImagePickerController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		78709BCB187D16CA009250FB /* GKImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BBD187D16CA009250FB /* GKImagePickerController.m */; };
 		78709BCC187D16CA009250FB /* GKSendMediaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78709BBF187D16CA009250FB /* GKSendMediaViewController.xib */; };
-		78709BCD187D16CA009250FB /* GKCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC1187D16CA009250FB /* GKCameraManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		78709BCE187D16CA009250FB /* GKRecordProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC4187D16CA009250FB /* GKRecordProgressView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		78709BCD187D16CA009250FB /* GKCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC1187D16CA009250FB /* GKCameraManager.m */; };
+		78709BCE187D16CA009250FB /* GKRecordProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC4187D16CA009250FB /* GKRecordProgressView.m */; };
 		78709BCF187D16CA009250FB /* UIImage+GKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC6187D16CA009250FB /* UIImage+GKImage.m */; };
-		78709BD0187D16CA009250FB /* VideoEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC8187D16CA009250FB /* VideoEncoder.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		78709BD0187D16CA009250FB /* VideoEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709BC8187D16CA009250FB /* VideoEncoder.m */; };
 		78709BFE187D1733009250FB /* camera-blind-bottom-simple.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD4187D1732009250FB /* camera-blind-bottom-simple.png */; };
 		78709BFF187D1733009250FB /* camera-blind-bottom-simple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD5187D1732009250FB /* camera-blind-bottom-simple@2x.png */; };
 		78709C00187D1733009250FB /* camera-blind-top-simple.png in Resources */ = {isa = PBXBuildFile; fileRef = 78709BD6187D1732009250FB /* camera-blind-top-simple.png */; };

@@ -218,8 +218,8 @@
 }
 - (void)moveBlock:(OrderBlock *)block Position:(CGPoint)pos touchPos:(CGPoint)tPos
 {
-    self._tableView.scrollEnabled = NO;
-    [self._tableView bringSubviewToFront:block];
+    _tableView.scrollEnabled = NO;
+    [_tableView bringSubviewToFront:block];
     
     int originIndex = [self.blockArr indexOfObject:block];
     
@@ -265,7 +265,7 @@
 }
 - (void)endMoveBlock:(OrderBlock *)block
 {
-    self._tableView.scrollEnabled = YES;
+    _tableView.scrollEnabled = YES;
     
     int index = [self.blockArr indexOfObject:block];
     

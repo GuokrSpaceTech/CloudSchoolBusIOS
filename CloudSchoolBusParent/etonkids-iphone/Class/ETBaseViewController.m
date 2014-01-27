@@ -5,9 +5,9 @@
 #import "keyedArchiver.h"
 @implementation ETBaseViewController
 
-@synthesize _topView;
-@synthesize _tableView;
-@synthesize weiboEngine,_slimeView,topBackImgView,_refreshFooterView;
+//@synthesize _topView;
+//@synthesize _tableView;
+@synthesize weiboEngine;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,7 +50,7 @@
     [self updateBackGround:nil];
     
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, (iphone5 ? 548 : 460) -57 - 46) style:UITableViewStylePlain];
-    self._tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+    _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     _tableView.backgroundColor = [UIColor clearColor];
     
     _tableView.delegate=self;
@@ -62,7 +62,7 @@
     _topView=[[[ETTableViewHeaderView alloc]initWithFrame:CGRectMake(0, 0, 320, 140)] autorelease];
     _topView.backgroundColor=[UIColor clearColor];
     _topView.delegate=self;
-    self._tableView.tableHeaderView=_topView;
+    _tableView.tableHeaderView=_topView;
     [_topView release];
 
 //    UserLogin * user = (UserLogin *)[keyedArchiver getArchiver:@"LOGIN" forKey:@"LOGIN"];
@@ -86,19 +86,19 @@
 //    }
     
     
-    self._slimeView = [[SRRefreshView alloc] init];
-    self._slimeView.delegate = self;
-    self._slimeView.upInset = 0;
-    self._slimeView.slimeMissWhenGoingBack = YES;
-    self._slimeView.slime.bodyColor = [UIColor blackColor];
-    self._slimeView.slime.skinColor = [UIColor blackColor];
-    self._slimeView.slime.lineWith = 1;
-    self._slimeView.slime.shadowBlur = 4;
-    self._slimeView.slime.shadowColor = [UIColor blackColor];
+    _slimeView = [[SRRefreshView alloc] init];
+    _slimeView.delegate = self;
+    _slimeView.upInset = 0;
+    _slimeView.slimeMissWhenGoingBack = YES;
+    _slimeView.slime.bodyColor = [UIColor blackColor];
+    _slimeView.slime.skinColor = [UIColor blackColor];
+    _slimeView.slime.lineWith = 1;
+    _slimeView.slime.shadowBlur = 4;
+    _slimeView.slime.shadowColor = [UIColor blackColor];
     
-    [_tableView addSubview:self._slimeView];
+    [_tableView addSubview:_slimeView];
     
-    [self._slimeView release];
+    [_slimeView release];
     
     
     toTopBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -157,8 +157,8 @@
         [_tableView addSubview:refreshFooterView];
         [refreshFooterView release];
         
-        self._refreshFooterView = refreshFooterView;
-        self._refreshFooterView.backgroundColor=[UIColor clearColor];
+        _refreshFooterView = refreshFooterView;
+        _refreshFooterView.backgroundColor=[UIColor clearColor];
     }
     
 }
@@ -206,8 +206,8 @@
     }
     
     
-    if (self._slimeView) {
-        [self._slimeView scrollViewDidScroll];
+    if (_slimeView) {
+        [_slimeView scrollViewDidScroll];
     }
     
     
@@ -219,8 +219,8 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    if (self._slimeView) {
-        [self._slimeView scrollViewDidEndDraging];
+    if (_slimeView) {
+        [_slimeView scrollViewDidEndDraging];
     }
     
     if(_refreshFooterView)
@@ -280,14 +280,20 @@
 }
 - (void)autoDragScrollLoading
 {
-    [self._tableView setContentOffset:CGPointMake(0, -50) animated:NO];
-    self._slimeView.loading = YES;
-    self._slimeView.alpha = 0.0f;
-    self._slimeView.broken = YES;
+    [_tableView setContentOffset:CGPointMake(0, -50) animated:NO];
+    _slimeView.loading = YES;
+    _slimeView.alpha = 0.0f;
+    _slimeView.broken = YES;
     
-    [self._slimeView scrollViewDidScrollToPoint:CGPointMake(0, -50)];
-    [self._slimeView scrollViewDidEndDraging];
-    [self._slimeView pullApart];
+    [_slimeView scrollViewDidScrollToPoint:CGPointMake(0, -50)];
+    [_slimeView scrollViewDidEndDraging];
+    [_slimeView pullApart];
+}
+
+- (void) reloadTableViewData
+{
+//    NSLog(@"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+    [_tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -295,14 +301,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 -(void)dealloc
 {
-    self._topView=nil;
-    self._tableView = nil;
-    self._slimeView = nil;
-    self.topBackImgView = nil;
+//    self._topView=nil;
+//    self._tableView = nil;
+//    self._slimeView = nil;
+//    self.topBackImgView = nil;
     self.weiboEngine = nil;
-    self._refreshFooterView = nil;
+//    self._refreshFooterView = nil;
     [super dealloc];
 }
 

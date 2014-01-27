@@ -55,7 +55,7 @@
     self.titlelabel.text=NSLocalizedString(@"passwordalter", @"");
     
     
-    UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeCustom];
     buttonBack.frame=CGRectMake(10, 5, 34, 35);
     [buttonBack setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     [buttonBack setBackgroundImage:[UIImage imageNamed:@"backH.png"] forState:UIControlStateHighlighted];
@@ -65,7 +65,7 @@
     
 
     
-    UIButton *sendbutton=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *sendbutton=[UIButton buttonWithType:UIButtonTypeCustom];
     sendbutton.frame=CGRectMake(270, 5, 50, 35);
     [sendbutton setBackgroundImage:[UIImage imageNamed:@"OKBtn.png"] forState:UIControlStateNormal];
     [sendbutton setBackgroundImage:[UIImage imageNamed:@"OKBtn_sel.png"] forState:UIControlStateHighlighted];

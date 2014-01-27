@@ -560,7 +560,6 @@
 		F96332B616D626A800BFE8E9 /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = F96332B516D626A700BFE8E9 /* NetWork.m */; };
 		F96332B816D62A4100BFE8E9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F96332B716D62A4000BFE8E9 /* SystemConfiguration.framework */; };
 		F96B77CD16EF055E0062B1AA /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = F96B77CC16EF055E0062B1AA /* Food.m */; };
-		F9816FB816BCC4460077F77B /* ETSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9816FB716BCC4460077F77B /* ETSummaryViewController.m */; };
 		F9838F1816BF68B30088DEEB /* ETRePassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9838F1616BF68B30088DEEB /* ETRePassWordViewController.m */; };
 		F9838F1916BF68B30088DEEB /* ETRePassWordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9838F1716BF68B30088DEEB /* ETRePassWordViewController.xib */; };
 		F99196D516BD0F9B005FF6CA /* greenPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = F99196D316BD0F9B005FF6CA /* greenPoint.png */; };
@@ -1369,8 +1368,6 @@
 		F96332B716D62A4000BFE8E9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F96B77CB16EF055E0062B1AA /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
 		F96B77CC16EF055E0062B1AA /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
-		F9816FB616BCC4460077F77B /* ETSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETSummaryViewController.h; sourceTree = "<group>"; };
-		F9816FB716BCC4460077F77B /* ETSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSummaryViewController.m; sourceTree = "<group>"; };
 		F9838F1516BF68B30088DEEB /* ETRePassWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETRePassWordViewController.h; sourceTree = "<group>"; };
 		F9838F1616BF68B30088DEEB /* ETRePassWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETRePassWordViewController.m; sourceTree = "<group>"; };
 		F9838F1716BF68B30088DEEB /* ETRePassWordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ETRePassWordViewController.xib; sourceTree = "<group>"; };
@@ -2250,8 +2247,6 @@
 				E3F4F3F316B910C500CB8E31 /* ETCalendarView.m */,
 				F91AE3B316BB610000BF3E5C /* DutyDayView.h */,
 				F91AE3B416BB610000BF3E5C /* DutyDayView.m */,
-				F9816FB616BCC4460077F77B /* ETSummaryViewController.h */,
-				F9816FB716BCC4460077F77B /* ETSummaryViewController.m */,
 				B5A3418A1717E6DC000382D6 /* ETFoodDetailView.h */,
 				B5A3418B1717E6DC000382D6 /* ETFoodDetailView.m */,
 				B5CE26D5173D1ABB00F76ACD /* UIActivityImageView.h */,
@@ -3096,7 +3091,6 @@
 				781E53AD181E57520052851A /* ETActicalPicture.m in Sources */,
 				F91AE3B516BB610000BF3E5C /* DutyDayView.m in Sources */,
 				F91AE3CB16BBA41900BF3E5C /* MBProgressHUD.m in Sources */,
-				F9816FB816BCC4460077F77B /* ETSummaryViewController.m in Sources */,
 				F9838F1816BF68B30088DEEB /* ETRePassWordViewController.m in Sources */,
 				F927996516D4A98E00E2F3AF /* ImageScaleView.m in Sources */,
 				F96332AC16D6026A00BFE8E9 /* LoadMoreTableFooterView.m in Sources */,

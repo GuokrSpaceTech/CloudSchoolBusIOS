@@ -77,7 +77,7 @@
         primaryView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 100, 320, 320)];
         primaryView.image = self.sourceImage;
         [self.view addSubview:primaryView];
-        
+        [primaryView release];
         
         
         
@@ -121,9 +121,9 @@
         controlImgV.userInteractionEnabled = YES;
         [controlImgV addGestureRecognizer:tap];
         [self.view addSubview:controlImgV];
+        [controlImgV release];
         
-        
-
+        [tap release];
         
     }
 
@@ -169,10 +169,12 @@
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 65)];
         view.backgroundColor = [UIColor grayColor];
         [self.view addSubview:view];
+        [view release];
         
         UIImageView *tBack = [[UIImageView alloc] initWithFrame:view.bounds];
         tBack.image = [UIImage imageNamed:@"edit-tray-background.png"];
         [view addSubview:tBack];
+        [tBack release];
         
         UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [backBtn setTitle:@"  重拍" forState:UIControlStateNormal];
@@ -210,11 +212,11 @@
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissViewController:)];
         if (self.sourceImage != nil)
         {
-            
             primaryView.userInteractionEnabled = YES;
             [primaryView addGestureRecognizer:tap];
         }
         [self.view addGestureRecognizer:tap];
+        [tap release];
         
     }
     
@@ -432,8 +434,9 @@
 
 - (void)saveDraft:(id)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert", @"") message:@"是否保存到草稿箱 ？" delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") otherButtonTitles:NSLocalizedString(@"OK", @""), nil];
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert", @"") message:@"是否保存到草稿箱 ？" delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") otherButtonTitles:NSLocalizedString(@"OK", @""), nil] autorelease];
     [alert show];
+    
 }
 
 - (void)doTap:(UIGestureRecognizer *)gesture
@@ -481,6 +484,7 @@
         sendMediaVC.thumbnail = self.movieThumbnail;
     }
     [self.navigationController pushViewController:sendMediaVC animated:YES];
+    [sendMediaVC release];
 }
 
 - (void)requestFinishedThumbnailImage:(NSNotification *)notification
@@ -517,6 +521,15 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (void)dealloc
+{
+    self.sourceImage = nil;
+    self.moviePath = nil;
+    self.movieThumbnail = nil;
+    
+    [super dealloc];
+    
 }
 
 

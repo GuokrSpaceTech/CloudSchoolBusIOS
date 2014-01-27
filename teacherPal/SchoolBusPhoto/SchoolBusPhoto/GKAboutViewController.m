@@ -36,7 +36,7 @@
 //    BGView.backgroundColor=[UIColor colorWithRed:237/255.0 green:234/255.0 blue:225/255.0 alpha:1];
 //    [self.view addSubview:BGView];
 //    [BGView release];
-    UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeCustom];
     buttonBack.frame=CGRectMake(10, 5, 34, 35);
     [buttonBack setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     [buttonBack setBackgroundImage:[UIImage imageNamed:@"backH.png"] forState:UIControlStateHighlighted];
@@ -47,7 +47,7 @@
     
     _BGView.frame=CGRectMake(0, (iOS7?(20+46):46), 320, self.view.frame.size.height-(iOS7?(20+46):46));
     [_privaty setTitle:NSLocalizedString(@"privacyC", @"") forState:UIControlStateNormal];
-    UIButton *buttom=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *buttom=[UIButton buttonWithType:UIButtonTypeCustom];
     buttom.frame=CGRectMake(10, 5, 34, 35);
     //UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 34, 35)];
     

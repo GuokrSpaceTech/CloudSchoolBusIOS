@@ -64,21 +64,21 @@
     isLoading = NO;
     if (theRefreshPos == EGORefreshHeader)
     {
-        if (self._slimeView) {
-            [self._slimeView endRefresh];
+        if (_slimeView) {
+            [_slimeView endRefresh];
         }
     }
     else if (theRefreshPos == EGORefreshFooter)
     {
-        if(self._refreshFooterView)
+        if(_refreshFooterView)
         {
-            [self._refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
+            [_refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
 //            NSLog(@"%@",self._refreshFooterView);
-            self._refreshFooterView.hidden = YES;
+            _refreshFooterView.hidden = YES;
 //            [self removeFooterView];
         }
     }
-    [self._tableView reloadData];
+    [_tableView reloadData];
     
     
 }
@@ -324,7 +324,7 @@
 }
 -(void)LoginFailedresult:(NSString *)str
 {
-    [self._slimeView endRefresh];
+    [_slimeView endRefresh];
     
     ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:str delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
     [alert show];
@@ -429,12 +429,12 @@
                     NSString *ext = [[source componentsSeparatedByString:@"."] lastObject];
                     
                     if ([ext isEqualToString:@"mp4"]) {
-                        GKMovieCell *cell = (GKMovieCell *)[self._tableView cellForRowAtIndexPath:index];
+                        GKMovieCell *cell = (GKMovieCell *)[_tableView cellForRowAtIndexPath:index];
                         [cell addPraiseNumber];
                     }
                     else
                     {
-                        ClassShareCell *cell = (ClassShareCell *)[self._tableView cellForRowAtIndexPath:index];
+                        ClassShareCell *cell = (ClassShareCell *)[_tableView cellForRowAtIndexPath:index];
                         [cell addPraiseNumber];
                     }
                     
@@ -484,12 +484,12 @@
                     NSString *ext = [[source componentsSeparatedByString:@"."] lastObject];
                     
                     if ([ext isEqualToString:@"mp4"]) {
-                        GKMovieCell *cell = (GKMovieCell *)[self._tableView cellForRowAtIndexPath:index];
+                        GKMovieCell *cell = (GKMovieCell *)[_tableView cellForRowAtIndexPath:index];
                         [cell subPraiseNumber];
                     }
                     else
                     {
-                        ClassShareCell *cell = (ClassShareCell *)[self._tableView cellForRowAtIndexPath:index];
+                        ClassShareCell *cell = (ClassShareCell *)[_tableView cellForRowAtIndexPath:index];
                         [cell subPraiseNumber];
                     }
                     
@@ -638,8 +638,8 @@
 //    UserLogin *user = [UserLogin currentLogin];
 //    NSLog(@"%d",user.loginStatus);
     
-    if (self._tableView) {
-        [self._tableView reloadData];
+    if (_tableView) {
+        [_tableView reloadData];
     }
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doUpdate:) name:@"CommentNumberUpdate" object:nil];
@@ -1516,7 +1516,7 @@
     }
     
     
-    NSIndexPath *indexpath = [self._tableView indexPathForCell:cell];
+    NSIndexPath *indexpath = [_tableView indexPathForCell:cell];
     
     ShareContent *sContent=[self.list objectAtIndex:indexpath.row];
     
@@ -1564,9 +1564,9 @@
     
     //更新学生信息 获取头像链接  此函数请求学生信息接口   服务器返回已更改  本地更新数据库 并更新UI  以后 学生昵称，年龄，等学生信息均可使用该函数.
     
-    [self._topView.photoImageView setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@""] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+    [_topView.photoImageView setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@""] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
         
-        self._topView.photoImageView.image = image;
+        _topView.photoImageView.image = image;
     }];
     
 }
@@ -1578,34 +1578,34 @@
     {
         if (ABS(y) >= 30)
         {
-            self.topBackImgView.transform = CGAffineTransformMakeScale(1 + (ABS(y)-30) * 0.2f/30.0f, 1 + (ABS(y)-30) * 0.2f/30.0f);
+            topBackImgView.transform = CGAffineTransformMakeScale(1 + (ABS(y)-30) * 0.2f/30.0f, 1 + (ABS(y)-30) * 0.2f/30.0f);
         }
         else
         {
             //            topBackImgView.transform = CGAffineTransformMakeTranslation(0, ABS(y)*0.2);
-            self.topBackImgView.frame = CGRectMake(self.topBackImgView.frame.origin.x,
+            topBackImgView.frame = CGRectMake(topBackImgView.frame.origin.x,
                                                    -10 + ABS(y)*0.3f,
-                                                   self.topBackImgView.frame.size.width,
-                                                   self.topBackImgView.frame.size.height);
+                                                   topBackImgView.frame.size.width,
+                                                   topBackImgView.frame.size.height);
         }
     }
     else
     {
-        self.topBackImgView.frame = CGRectMake(self.topBackImgView.frame.origin.x,
+        topBackImgView.frame = CGRectMake(topBackImgView.frame.origin.x,
                                                -10 - y,
-                                               self.topBackImgView.frame.size.width,
-                                               self.topBackImgView.frame.size.height);
+                                               topBackImgView.frame.size.width,
+                                               topBackImgView.frame.size.height);
     }
     
     
-    if (self._slimeView) {
-        [self._slimeView scrollViewDidScroll];
+    if (_slimeView) {
+        [_slimeView scrollViewDidScroll];
     }
     
     
-    if(self._refreshFooterView)
+    if(_refreshFooterView)
     {
-        [self._refreshFooterView egoRefreshScrollViewDidScroll:scrollView];
+        [_refreshFooterView egoRefreshScrollViewDidScroll:scrollView];
     }
     
     
@@ -1625,7 +1625,7 @@
 
 - (void)controlVisibleCellPlay
 {
-    NSArray *cells = [self._tableView visibleCells];
+    NSArray *cells = [_tableView visibleCells];
     
 //    NSLog(@"%@",cells);
     
@@ -1640,7 +1640,7 @@
         {
             GKMovieCell *tempCell = (GKMovieCell *)obj;
             
-            int dis = ABS(tempCell.frame.origin.y - (self._tableView.contentOffset.y));
+            int dis = ABS(tempCell.frame.origin.y - (_tableView.contentOffset.y));
             if (dis < minDis) {
                 minDis = dis;
                 cell = tempCell;

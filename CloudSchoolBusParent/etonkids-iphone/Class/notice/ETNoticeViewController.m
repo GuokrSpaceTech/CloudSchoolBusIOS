@@ -79,7 +79,7 @@
     
     [self updateDataList];
     
-    [self._tableView reloadData];
+    [_tableView reloadData];
     
     UserLogin *user = [UserLogin currentLogin];
     
@@ -183,12 +183,12 @@
 }
 -(void) getErrorInfo:(NSError *)error
 {
-    [self._slimeView endRefresh];
+    [_slimeView endRefresh];
     isLoading = NO;
     
-    if(self._refreshFooterView)
+    if(_refreshFooterView)
     {
-        [self._refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
+        [_refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
         [self removeFooterView];
     }
     
@@ -199,12 +199,12 @@
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
 {
     
-    [self._slimeView endRefresh];
+    [_slimeView endRefresh];
     isLoading = NO;
     
-    if(self._refreshFooterView)
+    if(_refreshFooterView)
     {
-        [self._refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
+        [_refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
         [self removeFooterView];
     }
     
@@ -272,7 +272,7 @@
                
                
                [self updateDataList];
-               [self._tableView reloadData];
+               [_tableView reloadData];
 
            }
            
@@ -350,7 +350,7 @@
                 
                
                [self updateDataList];
-               [self._tableView reloadData];
+               [_tableView reloadData];
            }
            else if(code == -2)
            {
@@ -383,7 +383,7 @@
                }
 
                [self updateDataList];
-               [self._tableView reloadData];
+               [_tableView reloadData];
                
            }
            else
@@ -488,9 +488,9 @@
     }
     
     
-    if(self._refreshFooterView)
+    if(_refreshFooterView)
     {
-        [self._refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
+        [_refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
         [self removeFooterView];
     }
 }
@@ -522,7 +522,7 @@
     info.isMore=!info.isMore;
     
 //    [self removeFooterView];
-    [self._tableView reloadData];
+    [_tableView reloadData];
 }
 - (void)clickComfirmNoticeCell:(NoticeCell *)_notice
 {
@@ -1089,7 +1089,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     
     
     [self updateDataList];
-    [self._tableView reloadData];
+    [_tableView reloadData];
     
     //    [self requestNewData];
     

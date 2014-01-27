@@ -54,7 +54,7 @@
  // 存放选中的照片
     selectArr=[[NSMutableArray alloc]init];
 
-    UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeCustom];
     buttonBack.frame=CGRectMake(10, 5, 34, 35);
     [buttonBack setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"back")) forState:UIControlStateNormal];
     [buttonBack setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"backH")) forState:UIControlStateHighlighted];
@@ -450,6 +450,23 @@
                             }
                         }
                     }
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        [_tableView reloadData];
+                        
+                        if([imageArr count]>0)
+                        {
+                            [self setNOView:YES];
+                            // countLabel.text=[NSString stringWithFormat:@"%d/%d",0,[imageArr count]];
+                            [self playAnimation:0];
+                        }
+                        else
+                        {
+                            [self setNOView:NO];
+                        }
+                    });
+                    
 
                 } failed:^(NSError *err) {
                     
@@ -457,21 +474,7 @@
                 
                 
                 
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                    [_tableView reloadData];
-                 
-                    if([imageArr count]>0)
-                    {
-                        [self setNOView:YES];
-                        // countLabel.text=[NSString stringWithFormat:@"%d/%d",0,[imageArr count]];
-                        [self playAnimation:0];
-                    }
-                    else
-                    {
-                        [self setNOView:NO];
-                    }
-                });
+                
                 
             }
             

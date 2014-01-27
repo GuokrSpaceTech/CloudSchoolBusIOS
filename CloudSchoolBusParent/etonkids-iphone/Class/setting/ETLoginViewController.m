@@ -334,6 +334,21 @@
     NSLog(@"%@，%@",dic,[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding]);
     NSLog(@"error code %d",code);
     //登录成功后获取学生信息
+    
+    if (code == -1115) {
+        
+        if(HUD)
+        {
+            [HUD removeFromSuperview];
+            HUD=nil;
+        }
+        
+        ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"fufei", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+        
+    }
+    
     if(method == signin && code == 1)
     {
         

@@ -57,7 +57,7 @@
         
         
         
-        buyButton=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+        buyButton=[UIButton buttonWithType:UIButtonTypeCustom];
         buyButton.frame=CGRectMake(82, 110, 22, 22);
         [buyButton setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"box-1")) forState:UIControlStateNormal];
         [buyButton addTarget:self action:@selector(buyClick:) forControlEvents:UIControlEventTouchUpInside];

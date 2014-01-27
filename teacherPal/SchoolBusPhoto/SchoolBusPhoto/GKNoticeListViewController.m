@@ -43,7 +43,7 @@
     [super viewDidLoad];
    
     noticeList=[[NSMutableArray alloc]init];
-    UIButton *buttom=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *buttom=[UIButton buttonWithType:UIButtonTypeCustom];
     buttom.frame=CGRectMake(10, 5, 34, 35);
     //UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 34, 35)];
     [buttom setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"back")) forState:UIControlStateNormal];

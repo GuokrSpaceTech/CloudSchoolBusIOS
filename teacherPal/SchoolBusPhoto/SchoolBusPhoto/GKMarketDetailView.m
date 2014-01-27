@@ -25,7 +25,7 @@
         [bgImageView release];
         
         
-        UIButton *button=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+        UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
         [button setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"box-3"))forState:UIControlStateNormal];
         [button addTarget:self action:@selector(closeClick:) forControlEvents:UIControlEventTouchUpInside];
         button.frame=CGRectMake(bgImageView.frame.size.width+bgImageView.frame.origin.x - 22 -5 , bgImageView.frame.origin.y +5 , 22, 22);

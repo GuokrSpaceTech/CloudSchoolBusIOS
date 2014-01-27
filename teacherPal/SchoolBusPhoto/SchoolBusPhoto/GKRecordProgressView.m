@@ -10,7 +10,7 @@
 
 
 @implementation GKRecordProgressView
-@synthesize progress,delegate;
+@synthesize progress,delegate,progressSegments;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -33,11 +33,12 @@
         min.image = [UIImage imageNamed:@"camera-progress-min.png"];
         [self addSubview:min];
         
-        progressSegments = [NSMutableArray array];
+        self.progressSegments = [NSMutableArray array];
         
         headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 8)];
         headView.backgroundColor = [UIColor whiteColor];
         [self addSubview:headView];
+        [headView release];
         
         
         CABasicAnimation *opacity=[CABasicAnimation animationWithKeyPath:@"opacity"];
@@ -114,11 +115,16 @@
     UIView *progressView = [[UIView alloc] initWithFrame:CGRectMake(a, 1, 0, self.frame.size.height - 2)];
     progressView.backgroundColor = [UIColor colorWithRed:53/255.0f green:146/255.0f blue:238/255.0f alpha:0.8];
     [self addSubview:progressView];
+    [progressView release];
     
     [progressSegments addObject:progressView];
 }
 
-
+- (void)dealloc
+{
+    self.progressSegments = nil;
+    [super dealloc];
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

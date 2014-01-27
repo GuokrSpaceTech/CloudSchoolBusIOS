@@ -106,7 +106,7 @@
     [inputView addSubview:selectImageView];
     [selectImageView release];
     
-    UIButton *button=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
    // [button setTitle:@"选择学生" forState:UIControlStateNormal];
     [button setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"addPerH")) forState:UIControlStateNormal];
       [button setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"addPer")) forState:UIControlStateHighlighted];
@@ -115,7 +115,7 @@
     [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     [inputView addSubview:button];
     
-    UIButton *buttonPhoto=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *buttonPhoto=[UIButton buttonWithType:UIButtonTypeCustom];
     [buttonPhoto setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"addPic")) forState:UIControlStateNormal];
     [buttonPhoto setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"addPicH"))forState:UIControlStateHighlighted];
 
@@ -129,7 +129,7 @@
     _textView.inputAccessoryView=inputView;
     [inputView release];
     
-    UIButton *buttom=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *buttom=[UIButton buttonWithType:UIButtonTypeCustom];
     buttom.frame=CGRectMake(10, 5, 34, 35);
     //UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 34, 35)];
     [buttom setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"back")) forState:UIControlStateNormal];
@@ -139,7 +139,7 @@
     [navigationView addSubview:buttom];
     
    // sendNoticeH.png
-    UIButton *sendbutton=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *sendbutton=[UIButton buttonWithType:UIButtonTypeCustom];
     sendbutton.frame=CGRectMake(260, 3, 60, 44);
     [sendbutton setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"sendNotice")) forState:UIControlStateNormal];
     [sendbutton setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"sendNoticeH")) forState:UIControlStateHighlighted];

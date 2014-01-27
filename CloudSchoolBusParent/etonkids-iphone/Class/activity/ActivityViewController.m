@@ -153,7 +153,7 @@
     }
     
     [self updateDataList];
-    [self._tableView reloadData];
+    [_tableView reloadData];
     
 }
 
@@ -167,7 +167,7 @@
     
     [self updateDataList];
     
-    [self._tableView reloadData];
+    [_tableView reloadData];
     
     
     
@@ -255,9 +255,9 @@
     }
     
     
-    if(self._refreshFooterView)
+    if(_refreshFooterView)
     {
-        [self._refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
+        [_refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
         [self removeFooterView];
     }
 }
@@ -526,7 +526,7 @@
     
     
     [self updateDataList];
-    [self._tableView reloadData];
+    [_tableView reloadData];
     
 //    [self requestNewData];
     
@@ -647,7 +647,7 @@
 - (void)getErrorInfo:(NSError *)error
 {
     isLoading = NO;
-    [self._slimeView endRefresh];
+    [_slimeView endRefresh];
     ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"busy", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
     [alert show];
 }
@@ -673,7 +673,7 @@
     else if (method == eventslist)
     {
         
-        [self._slimeView endRefresh];
+        [_slimeView endRefresh];
         
         NSLog(@"%d",code);
         
@@ -747,7 +747,7 @@
             }
         
             [self updateDataList];
-            [self._tableView reloadData];
+            [_tableView reloadData];
             
 //            SignupStatus
 //                case 1:
@@ -816,7 +816,7 @@
             }
             
             [self updateDataList];
-            [self._tableView reloadData];
+            [_tableView reloadData];
         }
         else
         {

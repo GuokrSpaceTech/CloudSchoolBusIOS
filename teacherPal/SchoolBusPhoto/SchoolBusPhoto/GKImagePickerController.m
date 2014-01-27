@@ -283,7 +283,7 @@
 {
     
 //    [motionManager stopAccelerometerUpdates];
-    
+    [camManager clearMovieCache];
     [self closeCameraAnimateCompletion:YES];
 }
 

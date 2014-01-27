@@ -34,8 +34,9 @@
     
     NSMutableDictionary *codecSettings = [NSMutableDictionary dictionaryWithObjectsAndKeys:
 //                                   AVVideoH264EntropyModeCABAC, AVVideoH264EntropyModeKey,
-                                   AVVideoProfileLevelH264Main30, AVVideoProfileLevelKey,
-                                   nil];
+                                          [NSNumber numberWithInt:480000], AVVideoAverageBitRateKey,
+                                          AVVideoProfileLevelH264Main30, AVVideoProfileLevelKey,
+                                          nil];
     
     if (ios7) {
         [codecSettings setObject:AVVideoH264EntropyModeCABAC forKey:AVVideoH264EntropyModeKey];

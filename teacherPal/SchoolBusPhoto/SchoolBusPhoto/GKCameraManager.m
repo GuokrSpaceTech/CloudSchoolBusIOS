@@ -487,6 +487,7 @@ static GKCameraManager *cameraManager;
                 [_encoder finishWithCompletionHandler:^{
 //                    [self performSelectorOnMainThread:@selector(resetRecordPara) withObject:nil waitUntilDone:NO];
                     [_encoder release];
+                    _encoder = nil;
                     
                     NSString *oFilename = [NSString stringWithFormat:@"output%d.mp4",(int)[[NSDate date] timeIntervalSince1970]];
                     NSString *oPath = [NSTemporaryDirectory() stringByAppendingPathComponent:oFilename];
@@ -538,7 +539,6 @@ static GKCameraManager *cameraManager;
 {
     
     AVURLAsset *asset=[AVURLAsset URLAssetWithURL:inputURL options:nil];
-    //AVURLAsset *asset = [AVURLAsset URLAssetWithURL:inputURL opti*****:nil];
     AVAssetExportSession *session = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPresetPassthrough];
     session.outputURL = outputURL;
     session.outputFileType = AVFileTypeMPEG4;

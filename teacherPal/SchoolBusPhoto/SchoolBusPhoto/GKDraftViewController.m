@@ -84,13 +84,11 @@
             self.dataArray = [NSMutableArray arrayWithArray:array];
             if (self.dataArray.count == 0)
             {
-                UILabel *noDataLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
-                noDataLab.center = CGPointMake(160, 160);
-                noDataLab.text = NSLocalizedString(@"nodata", @"");
-                noDataLab.textAlignment = UITextAlignmentCenter;
-                noDataLab.backgroundColor = [UIColor clearColor];
-                [self.view addSubview:noDataLab];
-                [noDataLab release];
+                UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 151, 131)];
+                imgV.image = [UIImage imageNamed:@"NOData.png"];
+                imgV.center = CGPointMake(160, ((iphone5 ? 548 : 460) - 46 )/2);
+                [self.view addSubview:imgV];
+                [imgV release];
                 
                 if (self._tableView) {
                     self._tableView.hidden = YES;
@@ -235,13 +233,13 @@
         
         tableView.hidden = YES;
         
-        UILabel *noDataLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
-        noDataLab.center = CGPointMake(160, 160);
-        noDataLab.text = NSLocalizedString(@"nodata", @"");
-        noDataLab.textAlignment = UITextAlignmentCenter;
-        noDataLab.backgroundColor = [UIColor clearColor];
-        [self.view addSubview:noDataLab];
-        [noDataLab release];
+        
+        UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 151, 131)];
+        imgV.image = [UIImage imageNamed:@"NOData.png"];
+        imgV.center = CGPointMake(160, ((iphone5 ? 548 : 460) - 46 )/2);
+        [self.view addSubview:imgV];
+        [imgV release];
+        
     }
 
     [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]

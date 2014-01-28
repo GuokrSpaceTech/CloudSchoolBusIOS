@@ -20,7 +20,7 @@
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
-@synthesize pushMsg;
+@synthesize pushMsg,networkStatus;
 
 - (void)dealloc
 {
@@ -33,19 +33,20 @@
 {
     Reachability* curReach = [no object];
     NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
-    NetworkStatus status = [curReach currentReachabilityStatus];
+    networkStatus = [curReach currentReachabilityStatus];
     
-    switch (status) {
+    
+    switch (networkStatus) {
         case NotReachable:
         {
             ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"busy", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
             [alert show];
+            break;
         }
-           
-            break;
         case ReachableViaWiFi:
-
+        {
             break;
+        }
         case ReachableViaWWAN:
         {
             ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:@"当前为3G 网络" delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
@@ -57,10 +58,8 @@
         default:
             break;
     }
-    
-
-    
 }
+
 -(BOOL)isConnectNetwork
 {
     NetworkStatus state;

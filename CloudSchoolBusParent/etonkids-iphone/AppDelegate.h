@@ -62,6 +62,8 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
+@property (nonatomic, assign)NetworkStatus networkStatus;
+
 
 /**
  *	检查版本更新.

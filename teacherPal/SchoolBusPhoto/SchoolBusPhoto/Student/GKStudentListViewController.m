@@ -61,7 +61,7 @@
 
     // 显示一共多少学生的View
     UIView *bottomView=[[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-20, 320, 20)];
-    bottomView.backgroundColor=[UIColor blackColor];
+    bottomView.backgroundColor=[UIColor colorWithRed:103/255.0 green:183/255.0 blue:204/255.0 alpha:1];
     UILabel *numLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
  //   numLabel.backgroundColor=[UIColor clearColor];
     numLabel.textColor=[UIColor whiteColor];
@@ -117,7 +117,7 @@
         
         UILabel *ageLabel=[[UILabel alloc]initWithFrame:CGRectMake(210, 15, 100, 20)];
         ageLabel.backgroundColor=[UIColor clearColor];
-          nameLabel.font=[UIFont systemFontOfSize:15];
+        ageLabel.font=[UIFont systemFontOfSize:14];
         ageLabel.tag=CELLTAG+2;
         [cell.contentView addSubview:ageLabel];
         [ageLabel release];

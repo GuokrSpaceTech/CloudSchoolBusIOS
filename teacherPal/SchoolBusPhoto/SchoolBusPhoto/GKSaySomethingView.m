@@ -20,6 +20,16 @@
         
        // self.backgroundColor=[UIColor re];
         
+        UIView *inputView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+        inputView.backgroundColor = [UIColor clearColor];
+        UIButton *inputBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [inputBtn setTitle:@"等图" forState:UIControlStateNormal];
+        [inputBtn setBackgroundImage:[UIImage imageNamed:@"applyAll.png"] forState:UIControlStateNormal];
+        [inputBtn setFrame:CGRectMake(320 - 50, 0, 50, 40)];
+        [inputBtn addTarget:self action:@selector(endEdit:) forControlEvents:UIControlEventTouchUpInside];
+        [inputView addSubview:inputBtn];
+        
+        
         _contextView=[[UITextView alloc]initWithFrame:CGRectMake(10, 10, self.frame.size.width-20, 150)];
         _contextView.layer.cornerRadius=5;
         _contextView.backgroundColor = [UIColor whiteColor];
@@ -28,13 +38,15 @@
         _contextView.font=[UIFont systemFontOfSize:16];
         _contextView.layer.cornerRadius=5;
         _contextView.delegate = self;
+        _contextView.inputAccessoryView = inputView;
+        [inputView release];
         
         [self addSubview:_contextView];
         
         //增加字数限制
         labelNum=[[UILabel alloc]initWithFrame:CGRectMake(10, _contextView.frame.size.height+_contextView.frame.origin.y+5, 50, 20)];
         labelNum.backgroundColor=[UIColor clearColor];
-        labelNum.text=@"0/140";
+        labelNum.text=@"0/280";
         labelNum.font=[UIFont systemFontOfSize:12];
         [self addSubview:labelNum];
         [labelNum release];
@@ -49,15 +61,17 @@
         [button setTitle:NSLocalizedString(@"apply", @"") forState:UIControlStateNormal];
         button.frame=CGRectMake(230, _contextView.frame.origin.y+_contextView.frame.size.height+5, 80, 40);
         
-        UIImage *iamge=[[UIImage imageNamed:@"loginBtn"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 20, 15, 20)];
-        
-        [button setBackgroundImage:iamge forState:UIControlStateNormal];
+//        UIImage *iamge=[[UIImage imageNamed:@"loginBtn"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 20, 15, 20)];
+        button.tag = 333;
+        [button setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];
+        [button setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue-active"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateHighlighted];
+        [button setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue-active"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateSelected];
         button.titleLabel.font=[UIFont systemFontOfSize:16];
         [button addTarget:self action:@selector(applyAll:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
 
         
-        _tagScrollerView = [[GKPhotoTagScrollView alloc] initWithFrame:CGRectMake(10,  _contextView.frame.origin.y+_contextView.frame.size.height+5+40, 300, frame.size.height-labelNum.frame.origin.y-labelNum.frame.size.height)];
+        _tagScrollerView = [[GKPhotoTagScrollView alloc] initWithFrame:CGRectMake(5,  _contextView.frame.origin.y+_contextView.frame.size.height+5+40, 310, frame.size.height-labelNum.frame.origin.y-labelNum.frame.size.height)];
         _tagScrollerView.backgroundColor = [UIColor clearColor];
         _tagScrollerView.tagDelegate = self;
         [self addSubview:_tagScrollerView];
@@ -70,6 +84,12 @@
     }
     return self;
 }
+
+- (void)endEdit:(id)sender
+{
+    [self endEditing:YES];
+}
+
 -(void)applyAll:(UIButton *)btn
 {
     if([_contextView.text isEqualToString:@""])
@@ -77,14 +97,29 @@
         return;
     }
     
-    if([self textLength:_contextView.text] > 140)
+    if([self textLength:_contextView.text] > 280)
     {
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"字数过长" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
         [alert show];
         [alert release];
         return;
     }
-    [delegate applyAll:_contextView.text];
+    
+    
+
+    
+    
+    [btn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue-active"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];
+        
+    if (delegate && [delegate respondsToSelector:@selector(applyAll:)])
+    {
+        [delegate applyAll:_contextView.text];
+    }
+    
+    
+
+    
+    
     
 
 }
@@ -120,14 +155,17 @@
 - (void)textViewDidChange:(UITextView *)textView
 {
     
+    UIButton *button = (UIButton *)[self viewWithTag:333];
+    [button setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];
+    
     int a= [self textLength:_contextView.text];
     
     NSLog(@"%d",a);
     
     
-    labelNum.text=[NSString stringWithFormat:@"%d/140",a];
+    labelNum.text=[NSString stringWithFormat:@"%d/280",a];
     
-    if(a>140)
+    if(a>280)
     {
         
         labelNum.textColor=[UIColor redColor];;
@@ -143,6 +181,8 @@
 
 - (void)didSelectPhotoTag:(NSString *)tag
 {
+    UIButton *button = (UIButton *)[self viewWithTag:333];
+    [button setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];
     [delegate tag:tag];
 }
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event

@@ -293,6 +293,12 @@
     }
 
 }
+
+- (void)cancelApplyAll
+{
+    [picTextArr removeAllObjects];
+}
+
 -(void)tag:(NSString *)tagTxt
 {
     self.tag=tagTxt;
@@ -987,7 +993,7 @@
                 NSString *keytemp = [[dic allKeys] objectAtIndex:0];
                 if([key isEqualToString:keytemp])
                 {
-                    if([self textLength:sayView.contextView.text] > 140)
+                    if([self textLength:sayView.contextView.text] > 280)
                     {
                         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"字数过长" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
                         [alert show];
@@ -1004,7 +1010,7 @@
                 }
                 if (i == self.picTextArr.count - 1)
                 {
-                    if([self textLength:sayView.contextView.text] > 140)
+                    if([self textLength:sayView.contextView.text] > 280)
                     {
                         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"字数过长" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
                         [alert show];
@@ -1020,7 +1026,7 @@
             }
             if (self.picTextArr.count == 0) {
                 
-                if([self textLength:sayView.contextView.text] > 140)
+                if([self textLength:sayView.contextView.text] > 280)
                 {
                     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"字数过长" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
                     [alert show];

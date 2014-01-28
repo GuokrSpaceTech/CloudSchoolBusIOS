@@ -230,9 +230,21 @@
     
     // 延时下载
     
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(downloadMovie:) object:self.canceledURL];
-    [self performSelector:@selector(downloadMovie:) withObject:url afterDelay:0.5f];
-    self.canceledURL = url;//记录请求过的url  供取消使用
+    NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+    AppDelegate *appDelegte = SHARED_APP_DELEGATE;
+    if ([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"1"] && appDelegte.networkStatus != ReachableViaWWAN)
+    {//如果设置自动播放
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(downloadMovie:) object:self.canceledURL];
+        [self performSelector:@selector(downloadMovie:) withObject:url afterDelay:0.5f];
+        self.canceledURL = url;//记录请求过的url  供取消使用
+    }
+    else
+    {
+        UIButton *b = (UIButton *)[self.contentBackView viewWithTag:BUTTONTAG];
+        [b setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
+    }
+    
+    
     
 }
 - (void)downloadMovie:(NSString *)url
@@ -270,16 +282,16 @@
 //            self.mPlayer.initialPlaybackTime = -1;
             
             //下载完成后谁优先谁播放
-            NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
-            if ([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"1"])
-            {//如果设置自动播放
+//            NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+//            if ([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"1"])
+//            {//如果设置自动播放
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"MOVIEDOWNLOADCOMPLETE" object:nil];
-            }
-            else
-            {
-                UIButton *b = (UIButton *)[self.contentBackView viewWithTag:BUTTONTAG];
-                [b setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
-            }
+//            }
+//            else
+//            {
+//                UIButton *b = (UIButton *)[self.contentBackView viewWithTag:BUTTONTAG];
+//                [b setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
+//            }
             
             
         }
@@ -329,12 +341,15 @@
         [self.mPlayer pause];
         [sender setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
     }
+    else if (self.mPlayer.playbackState == MPMoviePlaybackStatePaused)
+    {
+        [mm toggleMoviePlayingWithCell:self];
+        [sender setImage:nil forState:UIControlStateNormal];
+    }
     else
     {
-        
-        [mm toggleMoviePlayingWithCell:self];
-//        [self.mPlayer play];
         [sender setImage:nil forState:UIControlStateNormal];
+        [self downloadMovie:self.currentURL];
     }
 }
 

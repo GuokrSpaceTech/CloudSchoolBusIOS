@@ -12,7 +12,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "GKPhotoTagScrollView.h"
 
-@interface GKSendMediaViewController : GKBaseViewController<UIActionSheetDelegate,studentViewDelegate,UITextViewDelegate,GKPhotoTagScrollViewDelegate>
+@interface GKSendMediaViewController : GKBaseViewController<UIActionSheetDelegate,studentViewDelegate,UITextViewDelegate,GKPhotoTagScrollViewDelegate,UIAlertViewDelegate>
 {
     
     UITextView *contentTV;

@@ -518,7 +518,7 @@
         // 切换 拍照模式
         // 动画  2 秒
         [self closeCameraAnimateCompletion:YES];
-        [self performSelector:@selector(openCameraAnimate) withObject:nil afterDelay:2.0f];
+        [self performSelector:@selector(openCameraAnimate) withObject:nil afterDelay:1.0f];
 //        [self disableButton];
         
         [camManager clearMovieCache];
@@ -580,7 +580,7 @@
         // 动画  2 秒   动画期间 禁用所有按钮.
         
         [self closeCameraAnimateCompletion:YES];
-        [self performSelector:@selector(openCameraAnimate) withObject:nil afterDelay:2.0f];
+        [self performSelector:@selector(openCameraAnimate) withObject:nil afterDelay:1.0f];
 //        [self disableButton];
         
         [self changeRecordUI];

@@ -52,6 +52,8 @@
 @property (nonatomic, retain) NSString *canceledURL;
 @property (nonatomic, retain) NSString *currentURL;
 
+
+
 - (void)setMovieURL:(NSString *)url;
 
 - (void)addPraiseNumber;

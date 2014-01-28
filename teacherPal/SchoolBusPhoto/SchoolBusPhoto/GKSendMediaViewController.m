@@ -62,7 +62,7 @@
     [sendButton addTarget:self action:@selector(uploadMedia:) forControlEvents:UIControlEventTouchUpInside];
     
     // 背景 框
-    UIImageView *boardImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300, 130)];
+    UIImageView *boardImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300, 100)];
     boardImageView.center = CGPointMake(160, navigationView.frame.origin.y + navigationView.frame.size.height + 15 + boardImageView.frame.size.height/2.0f);
     boardImageView.image = IMAGENAME(IMAGEWITHPATH(@"视频框(1)"));
     [self.view addSubview:boardImageView];
@@ -91,25 +91,37 @@
     
     
     // 输入框
-    contentTV = [[UITextView alloc] initWithFrame:CGRectMake(thumbImgV.frame.origin.x + thumbImgV.frame.size.width + 10, thumbImgV.frame.origin.y - 7, 200, 100)];
-    contentTV.text = @"描述。。。。。";
+    
+    UIView *inputView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+    inputView.backgroundColor = [UIColor clearColor];
+    UIButton *inputBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [inputBtn setTitle:@"等图" forState:UIControlStateNormal];
+    [inputBtn setBackgroundImage:[UIImage imageNamed:@"applyAll.png"] forState:UIControlStateNormal];
+    [inputBtn setFrame:CGRectMake(320 - 50, 0, 50, 40)];
+    [inputBtn addTarget:self action:@selector(endEdit:) forControlEvents:UIControlEventTouchUpInside];
+    [inputView addSubview:inputBtn];
+    
+    contentTV = [[UITextView alloc] initWithFrame:CGRectMake(thumbImgV.frame.origin.x + thumbImgV.frame.size.width + 10, thumbImgV.frame.origin.y - 7, 200, 90)];
+    contentTV.text = @"描述......";
     contentTV.delegate = self;
     contentTV.font = [UIFont systemFontOfSize:15];
     contentTV.textColor = [UIColor grayColor];
     contentTV.backgroundColor = [UIColor whiteColor];
+    contentTV.inputAccessoryView = inputView;
+    [inputView release];
     [self.view addSubview:contentTV];
     
     // 计数 label
     calWordsLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
     calWordsLab.backgroundColor = [UIColor clearColor];
     calWordsLab.textAlignment = NSTextAlignmentCenter;
-    calWordsLab.text = @"0/140";
+    calWordsLab.text = @"0/280";
     calWordsLab.font = [UIFont systemFontOfSize:15];
-    calWordsLab.center = CGPointMake(thumbImgV.center.x, thumbImgV.frame.origin.y + thumbImgV.frame.size.height + 25);
+    calWordsLab.center = CGPointMake(thumbImgV.center.x, thumbImgV.frame.origin.y + thumbImgV.frame.size.height + 12);
     [self.view addSubview:calWordsLab];
     
     
-    GKPhotoTagScrollView *tagView = [[GKPhotoTagScrollView alloc] initWithFrame:CGRectMake(boardImageView.frame.origin.x, boardImageView.frame.origin.y + boardImageView.frame.size.height + 5, boardImageView.frame.size.width, iphone5 ? boardImageView.frame.size.height : 40)];
+    GKPhotoTagScrollView *tagView = [[GKPhotoTagScrollView alloc] initWithFrame:CGRectMake(boardImageView.frame.origin.x - 5, boardImageView.frame.origin.y + boardImageView.frame.size.height + 5, boardImageView.frame.size.width + 10, iphone5 ? boardImageView.frame.size.height : 85)];
     tagView.backgroundColor = [UIColor clearColor];
     tagView.tagDelegate = self;
     [self.view addSubview:tagView];
@@ -135,9 +147,15 @@
     self.stuList = [NSMutableArray array];
     
 }
+
+- (void)endEdit:(id)sender
+{
+    [self.view endEditing:YES];
+}
+
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    if ([textView.text isEqualToString:@"描述。。。。。"]) {
+    if ([textView.text isEqualToString:@"描述......"]) {
         textView.text = @"";
         textView.textColor = [UIColor blackColor];
     }
@@ -146,7 +164,7 @@
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView
 {
     if ([textView.text isEqualToString:@""]) {
-        textView.text = @"描述。。。。。";
+        textView.text = @"描述......";
         textView.textColor = [UIColor grayColor];
     }
     return YES;
@@ -179,9 +197,9 @@
     int a= [self textLength:textView.text];
     
 //    NSLog(@"%d",a);
-    calWordsLab.text=[NSString stringWithFormat:@"%d/140",a];
+    calWordsLab.text=[NSString stringWithFormat:@"%d/280",a];
     
-    if(a>140)
+    if(a>280)
     {
         calWordsLab.textColor=[UIColor redColor];;
     }
@@ -343,17 +361,16 @@
         aa.studentId=students;
         aa.fsize=[NSNumber numberWithInt:fise];
         aa.ftime=[NSNumber numberWithInt:[timestamp intValue]];
-        aa.introduce=contentTV.text;
+        aa.introduce = ([contentTV.text isEqualToString:@"描述......"] ? @"" : contentTV.text);
         aa.tag=(photoTag == nil ? @"" : photoTag);
         aa.isUploading=[NSNumber numberWithInt:1];
         aa.smallImage=UIImageJPEGRepresentation(thumbImgV.image, 0.1);
         
     } entityName:@"UpLoader" success:^{
         
-        
         NSLog(@"cccccfggggg");
         
-        [manager addWraperToArr:filePath name:@"" iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:contentTV.text data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"":photoTag)];
+        [manager addWraperToArr:filePath name:@"" iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:([contentTV.text isEqualToString:@"描述......"] ? @"" : contentTV.text) data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"":photoTag)];
         
         
     } failed:^(NSError *err) {
@@ -373,10 +390,24 @@
     
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        [self dismissModalViewControllerAnimated:YES];
+    }
+}
+
 - (void)doBack:(id)sender
 {
     
-    if (self.isPresent) {
+    if (self.isPresent) {  //从视频草稿箱 推入界面
+        
+        if (![contentTV.text isEqualToString:@""] && ![contentTV.text isEqualToString:@"描述......"]) {
+            UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert", @"") message:@"是否退出？" delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") otherButtonTitles:NSLocalizedString(@"OK", @""), nil] autorelease];
+            [alert show];
+            return;
+        }
+        
         [self dismissModalViewControllerAnimated:YES];
         return;
     }
@@ -443,7 +474,7 @@
 - (BOOL)checkContentLength
 {
     int a = [self textLength:contentTV.text];
-    if (a > 140) {
+    if (a > 280) {
         UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"" message:@"" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil] autorelease];
         [alert show];
         return NO;

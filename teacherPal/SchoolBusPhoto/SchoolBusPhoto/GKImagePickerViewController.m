@@ -274,6 +274,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    delButton.hidden = YES;
     [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
 }
 //-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -384,11 +385,13 @@
 -(void)loadPhoto
 {
     
-    [imageArr removeAllObjects];
-    [self setAllPhotoSelect:NO];
-    [selectArr removeAllObjects];
-    [_tableView reloadData];
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        [imageArr removeAllObjects];
+        [self setAllPhotoSelect:NO];
+        [selectArr removeAllObjects];
+        [_tableView reloadData];
         
       
         ALAssetsFilter *fiter=[ALAssetsFilter allPhotos];

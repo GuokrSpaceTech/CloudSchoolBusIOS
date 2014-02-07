@@ -76,7 +76,7 @@
 //    [camManager startRuning];
     
     UIView *cameraPreview = [[UIView alloc] initWithFrame:CGRectMake(0, 50 + (iphone5 ? 20 : 0), 320, 320)];
-    cameraPreview.backgroundColor = [UIColor redColor];
+    cameraPreview.backgroundColor = [UIColor blackColor];
     [camManager embedPreviewInView:cameraPreview];
     [self.view addSubview:cameraPreview];
     [cameraPreview release];
@@ -174,12 +174,12 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         
         
-        if (i == 2) {
+        if (i == 1) {
             photoBtn = button;
 //            [button setTitle:@"拍照" forState:UIControlStateNormal];
             [button setFrame:CGRectMake(0, 0, 80, 80)];
-            [button setImage:[UIImage imageNamed:@"camera-shutter-default.png"] forState:UIControlStateNormal];
-            [button setImage:[UIImage imageNamed:@"camera-shutter-active.png"] forState:UIControlStateHighlighted];
+            [button setImage:[UIImage imageNamed:@"camera-handle-photo.png"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"camera-handle-photo.png"] forState:UIControlStateHighlighted];
             [button addTarget:self action:@selector(takePhoto:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if (i == 0)
@@ -193,22 +193,23 @@
             [button setImage:[UIImage imageNamed:@"camera-backspace-default-default@2x.png"] forState:UIControlStateHighlighted];
             [button addTarget:self action:@selector(deleteRecord:) forControlEvents:UIControlEventTouchUpInside];
         }
-        else if (i == 1)
+        else if (i == 2)
         {
             recordBtn = button;
 //            [button setTitle:@"录像" forState:UIControlStateNormal];
             [button setFrame:CGRectMake(0, 0, 80, 80)];
-            [button setImage:[UIImage imageNamed:@"camera-handle-video.png"] forState:UIControlStateNormal];
-            [button setImage:[UIImage imageNamed:@"camera-handle-video.png"] forState:UIControlStateHighlighted];
+            
+            [button setImage:[UIImage imageNamed:@"camera-shutter-video-default.png"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"camera-shutter-video-default-active.png"] forState:UIControlStateHighlighted];
             [button addTarget:self action:@selector(takeRecord:) forControlEvents:UIControlEventTouchUpInside];
         }
         [button setCenter:CGPointMake(60 + 100 * i, bottomView.frame.size.height/2)];
         [bottomView addSubview:button];
     }
     
-    currentModel = photoModel;
-    [self changePhotoUI];
+    [self changeRecordUI];
     
+    [self disableButton];
     
     // orientation
     
@@ -330,6 +331,8 @@
 - (void)changePhotoUI
 {
 
+    currentModel = photoModel;
+    [self removeRecordProgressBar];
     
 //    posBtn.center = CGPointMake(160, posBtn.center.y);
     flashBtn.hidden = NO;
@@ -370,6 +373,8 @@
 - (void)changeRecordUI
 {
     
+    currentModel = recordModel;
+    
 //    posBtn.center = CGPointMake(160, posBtn.center.y);
     flashBtn.hidden = YES;
     nextBtn.hidden = NO;
@@ -383,6 +388,17 @@
     
     [recordBtn setImage:[UIImage imageNamed:@"camera-shutter-video-default.png"] forState:UIControlStateNormal];
     [recordBtn setImage:[UIImage imageNamed:@"camera-shutter-video-default-active.png"] forState:UIControlStateHighlighted];
+    
+    
+    [recordBtn removeTarget:self action:@selector(takeRecord:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [recordBtn addTarget:self action:@selector(startRecord:) forControlEvents:UIControlEventTouchDown];
+    [recordBtn addTarget:self action:@selector(stopRecord:) forControlEvents:UIControlEventTouchUpInside];
+    [recordBtn addTarget:self action:@selector(stopRecord:) forControlEvents:UIControlEventTouchUpOutside];
+    
+    [self createRecordProgressBar];
+    
+    isStartRecording = YES;
     
     if ([camManager currentVideoPosition] == AVCaptureDevicePositionFront)
     {
@@ -519,14 +535,14 @@
         // 动画  2 秒
         [self closeCameraAnimateCompletion:YES];
         [self performSelector:@selector(openCameraAnimate) withObject:nil afterDelay:1.0f];
-//        [self disableButton];
+        
         
         [camManager clearMovieCache];
         
         [self changePhotoUI];
-        currentModel = photoModel;
         
-        [self removeRecordProgressBar];
+        [self disableButton];
+        
         
     }
     else
@@ -584,18 +600,7 @@
 //        [self disableButton];
         
         [self changeRecordUI];
-        currentModel = recordModel;
         
-        [self createRecordProgressBar];
-        
-        isStartRecording = YES;
-        
-        [sender removeTarget:self action:@selector(takeRecord:) forControlEvents:UIControlEventTouchUpInside];
-        
-//        [sender setTitle:@"按住" forState:UIControlStateNormal];
-        [sender addTarget:self action:@selector(startRecord:) forControlEvents:UIControlEventTouchDown];
-        [sender addTarget:self action:@selector(stopRecord:) forControlEvents:UIControlEventTouchUpInside];
-        [sender addTarget:self action:@selector(stopRecord:) forControlEvents:UIControlEventTouchUpOutside];
         
         
     }

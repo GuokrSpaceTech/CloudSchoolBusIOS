@@ -228,6 +228,7 @@
     self.currentURL = url;
     
     
+    
     // 延时下载
     
     NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];

@@ -53,9 +53,9 @@
     
     
     UIButton *photobutton=[UIButton buttonWithType:UIButtonTypeCustom];
-    photobutton.frame=CGRectMake(280, 5, 35, 35);
-    [photobutton setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"photoBtn")) forState:UIControlStateNormal];
-    [photobutton setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"photoBtnH")) forState:UIControlStateHighlighted];
+    photobutton.frame=CGRectMake(275, 5, 35, 35);
+    [photobutton setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"视频1")) forState:UIControlStateNormal];
+    [photobutton setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"视频2")) forState:UIControlStateHighlighted];
     [photobutton addTarget:self action:@selector(takePhoto:) forControlEvents:UIControlEventTouchUpInside];
     [navigationView addSubview:photobutton];
     

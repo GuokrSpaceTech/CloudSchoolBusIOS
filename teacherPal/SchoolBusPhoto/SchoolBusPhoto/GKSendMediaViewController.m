@@ -130,7 +130,23 @@
     
     GKUserLogin *user=[GKUserLogin currentLogin];
     
-    [tagView setPhotoTags:user.photoTagArray];
+    NSString* strLanguage = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
+    //        NSLog(@"%@",strLanguage);
+    if ([strLanguage isEqualToString:@"zh-Hans"])
+    {
+        if (nil != [user.photoTagArray objectAtIndex:0] && [[user.photoTagArray objectAtIndex:0] isKindOfClass:[NSArray class]])
+        {
+            [tagView setPhotoTags:[user.photoTagArray objectAtIndex:0]];
+        }
+    }
+    else
+    {
+        if (nil != [user.photoTagArray objectAtIndex:1] && [[user.photoTagArray objectAtIndex:1] isKindOfClass:[NSArray class]])
+        {
+            [tagView setPhotoTags:[user.photoTagArray objectAtIndex:1]];
+        }
+        
+    }
     
     int col=([user.studentArr count] )/4; //行
     //int row=([user.studentArr count] )%4;

@@ -386,6 +386,8 @@
 		788C7C2B188FCBBE00BA9BD0 /* X.png in Resources */ = {isa = PBXBuildFile; fileRef = 788C7C2A188FCBBE00BA9BD0 /* X.png */; };
 		788C7C2D188FCC3800BA9BD0 /* movieplay.png in Resources */ = {isa = PBXBuildFile; fileRef = 788C7C2C188FCC3800BA9BD0 /* movieplay.png */; };
 		788C7C2F188FCC9200BA9BD0 /* moviepresetplay.png in Resources */ = {isa = PBXBuildFile; fileRef = 788C7C2E188FCC9200BA9BD0 /* moviepresetplay.png */; };
+		78DB7FB818A5CF7C00421D0D /* 视频1.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DB7FB618A5CF7C00421D0D /* 视频1.png */; };
+		78DB7FB918A5CF7C00421D0D /* 视频2.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DB7FB718A5CF7C00421D0D /* 视频2.png */; };
 		E797189A18798BAB00353BAF /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E797189418798BAB00353BAF /* libTestFlight.a */; };
 		E797189B18798BAB00353BAF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E797189518798BAB00353BAF /* README.md */; };
 		E797189C18798BAB00353BAF /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = E797189618798BAB00353BAF /* release_notes.md */; };
@@ -922,6 +924,8 @@
 		788C7C2A188FCBBE00BA9BD0 /* X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = X.png; sourceTree = "<group>"; };
 		788C7C2C188FCC3800BA9BD0 /* movieplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movieplay.png; sourceTree = "<group>"; };
 		788C7C2E188FCC9200BA9BD0 /* moviepresetplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moviepresetplay.png; sourceTree = "<group>"; };
+		78DB7FB618A5CF7C00421D0D /* 视频1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "视频1.png"; sourceTree = "<group>"; };
+		78DB7FB718A5CF7C00421D0D /* 视频2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "视频2.png"; sourceTree = "<group>"; };
 		E797189418798BAB00353BAF /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		E797189518798BAB00353BAF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E797189618798BAB00353BAF /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
@@ -1304,6 +1308,8 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				78DB7FB618A5CF7C00421D0D /* 视频1.png */,
+				78DB7FB718A5CF7C00421D0D /* 视频2.png */,
 				788C7C2E188FCC9200BA9BD0 /* moviepresetplay.png */,
 				788C7C2C188FCC3800BA9BD0 /* movieplay.png */,
 				788C7C2A188FCBBE00BA9BD0 /* X.png */,
@@ -1941,6 +1947,7 @@
 				1194023A182360EB00F21FB8 /* M-1.png in Resources */,
 				788C7C25188FCAEF00BA9BD0 /* camera-backspace-default-default@2x.png in Resources */,
 				119366D5184C34AB008D2FA2 /* leftUpHE.png in Resources */,
+				78DB7FB918A5CF7C00421D0D /* 视频2.png in Resources */,
 				788C7C27188FCAEF00BA9BD0 /* camera-shutter-default.png in Resources */,
 				78709C1D187D1733009250FB /* navbar-button-back.png in Resources */,
 				78709C1E187D1733009250FB /* navbar-button-back@2x.png in Resources */,
@@ -1955,6 +1962,7 @@
 				11B852A8183221CF005FA5B9 /* OKBtn.png in Resources */,
 				11DB02E518337ACF007981C6 /* loginOUt.png in Resources */,
 				1102A7FB181A5E1200E6295C /* guanlianbottom.png in Resources */,
+				78DB7FB818A5CF7C00421D0D /* 视频1.png in Resources */,
 				11E27F8A183C643600CAE0BB /* helperE.png in Resources */,
 				1193A6B7182B9225004011BC /* photoBtnH.png in Resources */,
 				11BF897F18363E58008E72F0 /* addPerH.png in Resources */,

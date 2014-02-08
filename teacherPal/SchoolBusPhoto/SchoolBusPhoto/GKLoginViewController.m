@@ -402,15 +402,15 @@
         
         user.upIP=[dic objectForKey:@"clientip"];
         
-        if ([[dic objectForKey:@"photo_tag"] isKindOfClass:[NSDictionary class]])
+        if ([[dic objectForKey:@"photo_tag"] isKindOfClass:[NSArray class]])
         {
-            NSMutableArray *arr = [NSMutableArray array];
-            NSDictionary *tagDic = [dic objectForKey:@"photo_tag"];
-            for (id key in tagDic.allKeys)
-            {
-                [arr addObject:[NSString stringWithFormat:@"%@",[tagDic objectForKey:key]]];
-            }
-            user.photoTagArray = arr;
+//            NSMutableArray *arr = [NSMutableArray array];
+//            NSDictionary *tagDic = [dic objectForKey:@"photo_tag"];
+//            for (id key in tagDic.allKeys)
+//            {
+//                [arr addObject:[NSString stringWithFormat:@"%@",[tagDic objectForKey:key]]];
+//            }
+            user.photoTagArray = [dic objectForKey:@"photo_tag"];
             NSLog(@"photo_tag : %@",user.photoTagArray);
         }
         else

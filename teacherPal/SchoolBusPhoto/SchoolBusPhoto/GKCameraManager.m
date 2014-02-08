@@ -467,6 +467,56 @@ static GKCameraManager *cameraManager;
 }
 
 
+//新建相册
+- (void)saveToAlbumWithVideo:(NSURL *)videoURL
+                completionBlock:(void (^)(void))completionBlock
+                   failureBlock:(void (^)(NSError *error))failureBlock
+{
+    ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
+    void (^AddAsset)(ALAssetsLibrary *, NSURL *) = ^(ALAssetsLibrary *assetsLibrary, NSURL *assetURL) {
+        [assetsLibrary assetForURL:assetURL resultBlock:^(ALAsset *asset) {
+            [assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+                if ([[group valueForProperty:ALAssetsGroupPropertyName] isEqualToString:CUSTOMALBUMNAME]) {
+                    [group addAsset:asset];
+                    if (completionBlock) {
+                        completionBlock();
+                    }
+                }
+            } failureBlock:^(NSError *error) {
+                if (failureBlock) {
+                    failureBlock(error);
+                }
+            }];
+        } failureBlock:^(NSError *error) {
+            if (failureBlock) {
+                failureBlock(error);
+            }
+        }];
+    };
+    [assetsLibrary writeVideoAtPathToSavedPhotosAlbum:videoURL completionBlock:^(NSURL *assetURL, NSError *error) {
+        
+        [assetsLibrary addAssetsGroupAlbumWithName:CUSTOMALBUMNAME resultBlock:^(ALAssetsGroup *group) {
+            if (group) {
+                [assetsLibrary assetForURL:assetURL resultBlock:^(ALAsset *asset) {
+                    [group addAsset:asset];
+                    if (completionBlock) {
+                        completionBlock();
+                    }
+                } failureBlock:^(NSError *error) {
+                    if (failureBlock) {
+                        failureBlock(error);
+                    }
+                }];
+            } else {
+                AddAsset(assetsLibrary, assetURL);
+            }
+        } failureBlock:^(NSError *error) {
+                AddAsset(assetsLibrary, assetURL);
+        }];
+        
+    }];
+}
+
 - (void) stopCapture
 {
     @synchronized(self)
@@ -497,16 +547,27 @@ static GKCameraManager *cameraManager;
                         
                         if (session.status == AVAssetExportSessionStatusCompleted)
                         {
-                            ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-                            [library writeVideoAtPathToSavedPhotosAlbum:outputURL completionBlock:^(NSURL *assetURL, NSError *error){
-                                NSLog(@"save completed %@",error);
+                            
+                            [self saveToAlbumWithVideo:outputURL completionBlock:^{
                                 [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
                                 
                                 if (delegate && [delegate respondsToSelector:@selector(didFinishedRecord:)]) {
                                     [delegate didFinishedRecord:oPath];
                                 }
-                                
+                            } failureBlock:^(NSError *error) {
+                                NSLog(@"save completed %@",error);
                             }];
+                            
+                            
+//                            [library writeVideoAtPathToSavedPhotosAlbum:outputURL completionBlock:^(NSURL *assetURL, NSError *error){
+//                                NSLog(@"save completed %@",error);
+//                                [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+//                                
+//                                if (delegate && [delegate respondsToSelector:@selector(didFinishedRecord:)]) {
+//                                    [delegate didFinishedRecord:oPath];
+//                                }
+//                                
+//                            }];
                             
                             
                         }

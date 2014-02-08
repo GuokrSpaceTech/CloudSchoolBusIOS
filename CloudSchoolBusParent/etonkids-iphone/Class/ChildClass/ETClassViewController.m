@@ -638,9 +638,9 @@
 //    UserLogin *user = [UserLogin currentLogin];
 //    NSLog(@"%d",user.loginStatus);
     
-    if (_tableView) {
-        [_tableView reloadData];
-    }
+//    if (_tableView) {
+//        [_tableView reloadData];
+//    }
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doUpdate:) name:@"CommentNumberUpdate" object:nil];
     

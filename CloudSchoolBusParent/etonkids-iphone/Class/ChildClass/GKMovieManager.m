@@ -18,6 +18,7 @@ static GKMovieManager *mm ;
 {
     if (mm == nil) {
         mm = [[GKMovieManager alloc] init];
+        mm.downloadList = [NSMutableArray array];
     }
     return mm;
 }
@@ -53,6 +54,7 @@ static GKMovieManager *mm ;
 
 - (BOOL)downloadListContainsURL:(NSString *)url
 {
+    
     for (int i = 0; i < self.downloadList.count; i++) {
         GKMovieDownloader *d = (GKMovieDownloader *)[self.downloadList objectAtIndex:i];
         if ([url isEqualToString:d.movieURL]) {
@@ -76,8 +78,8 @@ static GKMovieManager *mm ;
         
         NSString *filename = [[dUrl componentsSeparatedByString:@"/"] lastObject];
         
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-        NSString *diskPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:filename];
+//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        NSString *diskPath = [[GKMovieCache videoCachePath] stringByAppendingPathComponent:filename];
         
         completion(diskPath,nil);
         

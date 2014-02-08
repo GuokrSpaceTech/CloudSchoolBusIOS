@@ -13,7 +13,7 @@
 
 + (unsigned long long)getSize;
 + (void)clearDiskCache;
-
++ (NSString *)videoCachePath;
 
 + (BOOL)isContainMovieByURL:(NSString *)url;  // 判断本地是否包含此视频.
 

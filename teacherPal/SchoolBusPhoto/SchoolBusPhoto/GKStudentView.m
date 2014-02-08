@@ -84,7 +84,7 @@
             GKButton *button=[[GKButton alloc]initWithFrame:CGRectMake(3 +row*(74+6), col *(40 +15), 74, 40)];
 //            button.layer.cornerRadius = 7;
 //            button.layer.masksToBounds = YES;
-            [button.photoImageView setImageWithURL:[NSURL URLWithString:st.avatar] placeholderImage:nil];
+            [button.photoImageView setImageWithURL:[NSURL URLWithString:st.avatar] placeholderImage:nil options:SDWebImageRefreshCached];
 
             button.student=st;
             
@@ -130,7 +130,7 @@
             UILabel *label=(UILabel *)[self viewWithTag: i + BTNTAG - 1 + 10000];
             GKButton *button = (GKButton *)[scroller viewWithTag:(i + BTNTAG - 1)];
 
-            [button.photoImageView setImageWithURL:[NSURL URLWithString:st.avatar] placeholderImage:nil];
+            [button.photoImageView setImageWithURL:[NSURL URLWithString:st.avatar] placeholderImage:nil options:SDWebImageRefreshCached];
             label.text=[NSString stringWithFormat:@"%@",st.enname];
             //[button setTitle:[NSString stringWithFormat:@"%@",st.enname] forState:UIControlStateNormal];
         }

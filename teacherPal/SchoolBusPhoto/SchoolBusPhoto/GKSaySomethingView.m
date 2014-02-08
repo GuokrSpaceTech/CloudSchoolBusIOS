@@ -79,7 +79,25 @@
         
         GKUserLogin *user=[GKUserLogin currentLogin];
         
-        [_tagScrollerView setPhotoTags:user.photoTagArray];
+        NSString* strLanguage = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
+//        NSLog(@"%@",strLanguage);
+        if ([strLanguage isEqualToString:@"zh-Hans"])
+        {
+            if (nil != [user.photoTagArray objectAtIndex:0] && [[user.photoTagArray objectAtIndex:0] isKindOfClass:[NSArray class]])
+            {
+                [_tagScrollerView setPhotoTags:[user.photoTagArray objectAtIndex:0]];
+            }
+        }
+        else
+        {
+            if (nil != [user.photoTagArray objectAtIndex:1] && [[user.photoTagArray objectAtIndex:1] isKindOfClass:[NSArray class]])
+            {
+                [_tagScrollerView setPhotoTags:[user.photoTagArray objectAtIndex:1]];
+            }
+            
+        }
+        
+        
         
     }
     return self;

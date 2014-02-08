@@ -146,7 +146,7 @@
             case 0:
                 nameLabel.text=NSLocalizedString(@"avator", @"");
                 //(10, 11, 100, 20)];
-                [imageView setImageWithURL:[NSURL URLWithString:st.avatar]];
+                [imageView setImageWithURL:[NSURL URLWithString:st.avatar] placeholderImage:nil options:SDWebImageRefreshCached];
                 nameLabel.frame=CGRectMake(10, 20, 100, 20);
                 
                 break;

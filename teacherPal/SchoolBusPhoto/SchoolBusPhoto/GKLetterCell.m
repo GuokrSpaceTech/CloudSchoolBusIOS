@@ -38,10 +38,13 @@
 //        [self.contentView addSubview:labeTime];
 //        
         
-        labelcontent=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+        labelcontent=[[HTCopyableLabel alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
         labelcontent.backgroundColor=[UIColor clearColor];
         labelcontent.font=[UIFont systemFontOfSize:14];
         labelcontent.textColor=[UIColor blackColor];
+        labelcontent.userInteractionEnabled=YES;
+        
+           
         labelcontent.numberOfLines=0;
         if(IOSVERSION>=6.0)
             labelcontent.lineBreakMode=NSLineBreakByWordWrapping;
@@ -52,6 +55,8 @@
     }
     return self;
 }
+
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {

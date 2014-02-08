@@ -260,6 +260,7 @@
  
   
 }
+
 -(void)upClick:(UIButton *)btn
 {
     if([inputField.text isEqualToString:@""])

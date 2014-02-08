@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Letter.h"
+#import "HTCopyableLabel.h"
 @protocol letterCellDelegate;
 @interface GKLetterCell : UITableViewCell
 @property (nonatomic,assign)id<letterCellDelegate>delegate;
 
 //@property (nonatomic,retain)UILabel *labelWho;
 //@property (nonatomic,retain)UILabel *labeTime;
-@property (nonatomic,retain)UILabel *labelcontent;
+@property (nonatomic,retain)HTCopyableLabel *labelcontent;
 
 @property (nonatomic,retain)Letter *letter;
 @end

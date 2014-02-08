@@ -187,6 +187,7 @@
 		11AA5B4A188D277D001EA8B2 /* noticeStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AA5B48188D277D001EA8B2 /* noticeStar.png */; };
 		11AA5B4B188D277D001EA8B2 /* noticeEmail.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AA5B49188D277D001EA8B2 /* noticeEmail.png */; };
 		11AA5B4D188D3BA3001EA8B2 /* duihaohuizhi.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AA5B4C188D3BA3001EA8B2 /* duihaohuizhi.png */; };
+		11AB5FE218A5E227001E2EB1 /* HTCopyableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AB5FE118A5E227001E2EB1 /* HTCopyableLabel.m */; };
 		11AF3AE91816655B00B36176 /* navBarImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AE81816655B00B36176 /* navBarImage.png */; };
 		11AF3AEB18166AB200B36176 /* navLeftBtn_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AEA18166AB200B36176 /* navLeftBtn_default.png */; };
 		11AF3AED18166D9A00B36176 /* bottomView.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3AEC18166D9A00B36176 /* bottomView.png */; };
@@ -669,6 +670,8 @@
 		11AA5B48188D277D001EA8B2 /* noticeStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noticeStar.png; sourceTree = "<group>"; };
 		11AA5B49188D277D001EA8B2 /* noticeEmail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noticeEmail.png; sourceTree = "<group>"; };
 		11AA5B4C188D3BA3001EA8B2 /* duihaohuizhi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = duihaohuizhi.png; sourceTree = "<group>"; };
+		11AB5FE018A5E227001E2EB1 /* HTCopyableLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTCopyableLabel.h; sourceTree = "<group>"; };
+		11AB5FE118A5E227001E2EB1 /* HTCopyableLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTCopyableLabel.m; sourceTree = "<group>"; };
 		11AC07F4186A8BD70080FCC4 /* SchoolBusPhoto 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 3.xcdatamodel"; sourceTree = "<group>"; };
 		11AF3AE81816655B00B36176 /* navBarImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBarImage.png; sourceTree = "<group>"; };
 		11AF3AEA18166AB200B36176 /* navLeftBtn_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navLeftBtn_default.png; sourceTree = "<group>"; };
@@ -1002,6 +1005,8 @@
 		119973371821F59C0017E99A /* letterVC */ = {
 			isa = PBXGroup;
 			children = (
+				11AB5FE018A5E227001E2EB1 /* HTCopyableLabel.h */,
+				11AB5FE118A5E227001E2EB1 /* HTCopyableLabel.m */,
 				119566AE181E038600366B13 /* GKLetterViewController.h */,
 				119566AF181E038600366B13 /* GKLetterViewController.m */,
 				1193A6BB182B9A64004011BC /* GKLetterData.h */,
@@ -2121,6 +2126,7 @@
 				78709BC9187D16CA009250FB /* GKFilterViewController.m in Sources */,
 				11B218171835C624002825FA /* GKNoticeViewController.m in Sources */,
 				111E8CEA181E532400234014 /* UIImage+WebP.m in Sources */,
+				11AB5FE218A5E227001E2EB1 /* HTCopyableLabel.m in Sources */,
 				78881912187F9A2600D0A851 /* GKDraftViewController.m in Sources */,
 				1199733D1821FA700017E99A /* GKMarketGird.m in Sources */,
 				111E8CDF181E532400234014 /* NSData+GIF.m in Sources */,
@@ -2293,8 +2299,8 @@
 					"${SRCROOT}/TestFlightSDK2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E9428310-D61C-4C56-B6E9-969CFB8FB164";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E9428310-D61C-4C56-B6E9-969CFB8FB164";
+				PROVISIONING_PROFILE = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2319,8 +2325,8 @@
 					"$(SRCROOT)/TestFlightSDK2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E9428310-D61C-4C56-B6E9-969CFB8FB164";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E9428310-D61C-4C56-B6E9-969CFB8FB164";
+				PROVISIONING_PROFILE = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

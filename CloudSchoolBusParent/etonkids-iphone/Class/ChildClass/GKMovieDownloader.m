@@ -8,7 +8,7 @@
 
 #import "GKMovieDownloader.h"
 
-
+#import "GKMovieCache.h"
 
 
 @implementation GKMovieDownloader
@@ -47,8 +47,8 @@
     
     NSString *filename = [[mURL componentsSeparatedByString:@"/"] lastObject];
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *diskPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:filename];
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *diskPath = [[GKMovieCache videoCachePath] stringByAppendingPathComponent:filename];
     
     NSFileManager *fm = [NSFileManager defaultManager];
     if ([fm fileExistsAtPath:diskPath])

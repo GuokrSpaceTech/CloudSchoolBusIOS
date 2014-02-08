@@ -32,6 +32,7 @@
 {
     _longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
     [self addGestureRecognizer:_longPressGestureRecognizer];
+    [_longPressGestureRecognizer release];
 
     _copyMenuArrowDirection = UIMenuControllerArrowDefault;
 

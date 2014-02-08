@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 @interface ETPhoto : NSObject
-@property BOOL isSelected;
+@property (nonatomic,assign)BOOL isSelected;
 @property (nonatomic,retain)NSString *nameId;
 @property (nonatomic,retain)ALAsset *asset;
 @property (nonatomic,retain)NSDate *  date;

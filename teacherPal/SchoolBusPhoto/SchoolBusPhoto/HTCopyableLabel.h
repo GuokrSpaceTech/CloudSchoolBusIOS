@@ -19,7 +19,9 @@
 @end
 
 @interface HTCopyableLabel : UILabel
-
+{
+    UIMenuController *copyMenu;
+}
 @property (nonatomic, assign) BOOL copyingEnabled; // Defaults to YES
 
 @property (nonatomic, assign) id<HTCopyableLabelDelegate> copyableLabelDelegate;
@@ -28,5 +30,5 @@
 
 // You may want to add longPressGestureRecognizer to a container view
 @property (nonatomic, strong, readonly) UILongPressGestureRecognizer *longPressGestureRecognizer;
-
+-(void)setCopyMenuVisible:(BOOL)an;
 @end

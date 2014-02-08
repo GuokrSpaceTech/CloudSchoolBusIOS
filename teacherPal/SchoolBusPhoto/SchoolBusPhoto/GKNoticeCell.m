@@ -66,7 +66,7 @@
             huizhiLabel.textAlignment=UITextAlignmentRight;
         [self.contentView addSubview:huizhiLabel];
         
-        contentlabel=[[UILabel alloc]initWithFrame:CGRectZero];
+        contentlabel=[[HTCopyableLabel alloc]initWithFrame:CGRectZero];
         contentlabel.backgroundColor=[UIColor clearColor];
         contentlabel.font=FONTSIZE;
         contentlabel.textColor=[UIColor colorWithRed:123/255.0 green:123/255.0 blue:123/255.0 alpha:1];

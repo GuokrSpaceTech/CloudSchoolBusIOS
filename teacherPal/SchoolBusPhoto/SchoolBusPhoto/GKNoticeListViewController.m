@@ -157,7 +157,7 @@
     
     GKNotice *notice=[noticeList objectAtIndex:indexPath.row];
     cell.notice=notice;
-    
+   
     if(indexPath.row==[self.noticeList count]-1)
     {
         if(isMore)
@@ -337,6 +337,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    GKNoticeCell *cell=(GKNoticeCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [cell.contentlabel setCopyMenuVisible:NO];
     
      GKNotice *_notice=[noticeList objectAtIndex:indexPath.row];
     

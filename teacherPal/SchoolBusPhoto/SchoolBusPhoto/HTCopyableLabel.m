@@ -64,7 +64,7 @@
         {
             NSAssert([self becomeFirstResponder], @"Sorry, UIMenuController will not work with %@ since it cannot become first responder", self);
 
-            UIMenuController *copyMenu = [UIMenuController sharedMenuController];
+            copyMenu = [UIMenuController sharedMenuController];
             if ([self.copyableLabelDelegate respondsToSelector:@selector(copyMenuTargetRectInCopyableLabelCoordinates:)])
             {
                 [copyMenu setTargetRect:[self.copyableLabelDelegate copyMenuTargetRectInCopyableLabelCoordinates:self] inView:self];
@@ -78,7 +78,10 @@
         }
     }
 }
-
+-(void)setCopyMenuVisible:(BOOL)an
+{
+    [copyMenu setMenuVisible:an];
+}
 #pragma mark - UIResponder
 
 - (BOOL)canBecomeFirstResponder

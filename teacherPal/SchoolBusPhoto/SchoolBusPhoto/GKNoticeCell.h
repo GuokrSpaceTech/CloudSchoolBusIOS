@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "GKNotice.h"
+#import "HTCopyableLabel.h"
 @protocol noticeCelldelegate;
 @interface GKNoticeCell : UITableViewCell
 {
     UILabel *titleLable;
-    UILabel *contentlabel;
+    HTCopyableLabel *contentlabel;
     UILabel *timeLabel;
     
     UIView *bottomView;
@@ -22,7 +23,7 @@
     UIImageView *lineImageView;
 }
 @property (nonatomic,retain)  UILabel *titleLable;
-@property (nonatomic,retain)  UILabel *contentlabel;
+@property (nonatomic,retain)  HTCopyableLabel *contentlabel;
 @property (nonatomic,retain)  UILabel *timeLabel;
 
 @property (nonatomic,retain)  UILabel *huizhiLabel;

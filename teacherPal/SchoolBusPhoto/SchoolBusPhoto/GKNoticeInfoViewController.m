@@ -12,6 +12,7 @@
 #import "NSDate+convenience.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIImageView+WebCache.h"
+#import "HTCopyableLabel.h"
 @interface GKNoticeInfoViewController ()
 
 @end
@@ -73,7 +74,7 @@
     height+=size.height+5;
     
     
-    UILabel *contentLabel=[[UILabel alloc]initWithFrame:CGRectZero];
+    HTCopyableLabel *contentLabel=[[HTCopyableLabel alloc]initWithFrame:CGRectZero];
     contentLabel.text=notice.noticecontent;
     contentLabel.backgroundColor=[UIColor clearColor];
     contentLabel.numberOfLines=0;

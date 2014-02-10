@@ -100,21 +100,21 @@
    
     //NSLog(@"%@",[UIDevice currentDevice].model);
     // 如果ipod touch 不支持打电话
-    if([[UIDevice currentDevice].model isEqualToString:@"iPod touch"] || [[UIDevice currentDevice].model isEqualToString:@"iPhone Simulator"] )
+    if([[UIDevice currentDevice].model isEqualToString:@"iPod touch"] || [[UIDevice currentDevice].model isEqualToString:@"iPhone Simulator"]  ||[[UIDevice currentDevice].model isEqualToString:@"iPad"])
     {
         UIAlertView *alertsupport=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"nosupport", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
         [alertsupport show];
         [alertsupport release];
         return;
     }
-    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"call", @"") message:@"18612653984" delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") otherButtonTitles:NSLocalizedString(@"OK", @""), nil];
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"call", @"") message:@"400-606-3996" delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") otherButtonTitles:NSLocalizedString(@"OK", @""), nil];
     [alert show];
     [alert release];
 }
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if(buttonIndex==1)
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://01065980507"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://4006063996"]];
 }
 - (IBAction)webClick:(id)sender {
     

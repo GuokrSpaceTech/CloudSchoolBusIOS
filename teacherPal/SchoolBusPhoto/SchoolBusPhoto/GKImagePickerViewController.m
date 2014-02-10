@@ -93,7 +93,7 @@
     [navigationView addSubview:photobutton];
 
   //    badgeView=[[GKBadgeView alloc]initWithFrame:CGRectMake(38, 2, 16, 16)];
-    badgeView =[[GKBadgeView alloc]initWithFrame:CGRectMake(298, 2, 16, 16)];
+    badgeView =[[GKBadgeView alloc]initWithFrame:CGRectMake(297, 2, 16, 16)];
     badgeView.backgroundColor=[UIColor clearColor];
     badgeView.bagde=0;
     [navigationView addSubview:badgeView];

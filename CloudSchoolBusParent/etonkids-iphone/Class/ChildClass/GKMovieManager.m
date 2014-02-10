@@ -34,14 +34,23 @@ static GKMovieManager *mm ;
         
         NSLog(@"暂停之前正在播放的cell %@",self.playingCell);
         [self.playingCell.mPlayer pause];
+        [self.playingCell.mPlayer stop];
     }
     
 //    [cell.mPlayer prepareToPlay];
     
     if (cell.mPlayer.contentURL != nil)
     {
-        NSLog(@"player 不为空");
-        [cell.mPlayer play];
+        NSLog(@"player 不为空 %d",cell.mPlayer.playbackState); // 0 stop   1 playing   2 pause;
+        if (cell.mPlayer.playbackState == MPMoviePlaybackStateStopped)
+        {
+            [cell.mPlayer prepareToPlay];
+        }
+        else
+        {
+            [cell.mPlayer play];
+        }
+        
     }
     else
     {

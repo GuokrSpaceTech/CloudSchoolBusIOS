@@ -229,7 +229,7 @@
         if (ax < -0.7)
         {
             orientation = AVCaptureVideoOrientationLandscapeRight;
-            NSLog(@"right");
+//            NSLog(@"right");
             
             if (currentModel == photoModel && !CGAffineTransformEqualToTransform(photoBtn.transform, CGAffineTransformMakeRotation(M_PI_2))) {
                 
@@ -246,7 +246,7 @@
         }
         else if (ax > 0.7)
         {
-            NSLog(@"left");
+//            NSLog(@"left");
             orientation = AVCaptureVideoOrientationLandscapeLeft;
             if (currentModel == photoModel && !CGAffineTransformEqualToTransform(photoBtn.transform, CGAffineTransformMakeRotation(-M_PI_2))) {
                 [UIView animateWithDuration:0.2f animations:^{

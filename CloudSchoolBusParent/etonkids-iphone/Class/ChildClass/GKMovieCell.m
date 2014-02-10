@@ -233,13 +233,18 @@
     
     NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
     AppDelegate *appDelegte = SHARED_APP_DELEGATE;
-    if ([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"1"] && appDelegte.networkStatus != ReachableViaWWAN)
-    {//如果设置自动播放
+    
+    
+    
+    
+    if (([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"1"] && appDelegte.networkStatus != ReachableViaWWAN) // wifi下自动播放
+        || [[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"2"])// 始终自动播放
+    {
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(downloadMovie:) object:self.canceledURL];
         [self performSelector:@selector(downloadMovie:) withObject:url afterDelay:0.5f];
         self.canceledURL = url;//记录请求过的url  供取消使用
     }
-    else
+    else // 关闭自动播放  或其他
     {
         UIButton *b = (UIButton *)[self.contentBackView viewWithTag:BUTTONTAG];
         [b setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
@@ -313,6 +318,7 @@
         
         if (self.mPlayer.playbackState == MPMoviePlaybackStatePaused)
         {
+            
             NSLog(@"pause %f",self.frame.origin.y);
 //            self.mPlayer.view.hidden = NO;
             [b setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];

@@ -1610,7 +1610,7 @@
     
     
     NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
-    if ([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"1"])
+    if ([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"1"] || [[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"2"])
     {//如果设置自动播放
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(controlVisibleCellPlay) object:nil];
         [self performSelector:@selector(controlVisibleCellPlay) withObject:nil afterDelay:0.1f];

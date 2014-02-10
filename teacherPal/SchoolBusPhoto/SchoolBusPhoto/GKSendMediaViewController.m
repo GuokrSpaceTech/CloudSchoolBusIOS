@@ -92,14 +92,14 @@
     
     // 输入框
     
-    UIView *inputView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-    inputView.backgroundColor = [UIColor clearColor];
-    UIButton *inputBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [inputBtn setTitle:@"等图" forState:UIControlStateNormal];
-    [inputBtn setBackgroundImage:[UIImage imageNamed:@"applyAll.png"] forState:UIControlStateNormal];
-    [inputBtn setFrame:CGRectMake(320 - 50, 0, 50, 40)];
-    [inputBtn addTarget:self action:@selector(endEdit:) forControlEvents:UIControlEventTouchUpInside];
-    [inputView addSubview:inputBtn];
+//    UIView *inputView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+//    inputView.backgroundColor = [UIColor clearColor];
+//    UIButton *inputBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [inputBtn setTitle:@"图" forState:UIControlStateNormal];
+//    [inputBtn setBackgroundImage:[UIImage imageNamed:@"applyAll.png"] forState:UIControlStateNormal];
+//    [inputBtn setFrame:CGRectMake(320 - 50, 0, 50, 40)];
+//    [inputBtn addTarget:self action:@selector(endEdit:) forControlEvents:UIControlEventTouchUpInside];
+//    [inputView addSubview:inputBtn];
     
     contentTV = [[UITextView alloc] initWithFrame:CGRectMake(thumbImgV.frame.origin.x + thumbImgV.frame.size.width + 10, thumbImgV.frame.origin.y - 7, 200, 90)];
     contentTV.text = @"描述......";
@@ -107,8 +107,8 @@
     contentTV.font = [UIFont systemFontOfSize:15];
     contentTV.textColor = [UIColor grayColor];
     contentTV.backgroundColor = [UIColor whiteColor];
-    contentTV.inputAccessoryView = inputView;
-    [inputView release];
+//    contentTV.inputAccessoryView = inputView;
+//    [inputView release];
     [self.view addSubview:contentTV];
     
     // 计数 label

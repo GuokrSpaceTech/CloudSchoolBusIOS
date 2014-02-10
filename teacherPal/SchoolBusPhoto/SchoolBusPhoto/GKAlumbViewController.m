@@ -10,7 +10,7 @@
 
 #import "GKMainViewController.h"
 #import "GKImagePickerController.h"
-
+#import "GKDraftViewController.h"
 #import "GKImagePickerViewController.h"
 @interface GKAlumbViewController ()
 
@@ -206,7 +206,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [arr count];
+    return [arr count]+1;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -241,12 +241,27 @@
         [imageline release];
     
     }
-     ALAssetsGroup *group=[arr objectAtIndex:indexPath.row];
-    UIImageView *iamgeView=(UIImageView *)[cell viewWithTag:852];
-    iamgeView.image=[UIImage imageWithCGImage:[group posterImage]];
     
-    UILabel *label=(UILabel *)[cell viewWithTag:853];
-    label.text=[group valueForProperty:ALAssetsGroupPropertyName];
+    if (indexPath.row == arr.count)
+    {
+        UIImageView *iamgeView=(UIImageView *)[cell viewWithTag:852];
+//        iamgeView.image=[UIImage imageWithCGImage:[group posterImage]];
+//        iamgeView.image = [UIImage imageNamed:<#(NSString *)#>]
+        
+        UILabel *label=(UILabel *)[cell viewWithTag:853];
+        label.text = NSLocalizedString(@"productname", @"");
+    }
+    else
+    {
+        ALAssetsGroup *group=[arr objectAtIndex:indexPath.row];
+        UIImageView *iamgeView=(UIImageView *)[cell viewWithTag:852];
+        iamgeView.image=[UIImage imageWithCGImage:[group posterImage]];
+        
+        UILabel *label=(UILabel *)[cell viewWithTag:853];
+        label.text=[group valueForProperty:ALAssetsGroupPropertyName];
+    }
+    
+    
     
    // cell.textLabel.text=[group valueForProperty:ALAssetsGroupPropertyName];
     //cell.imageView.image=[UIImage imageWithCGImage:[group posterImage]];
@@ -261,10 +276,20 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    GKImagePickerViewController *imagePickVC=[[GKImagePickerViewController alloc]init];
-    imagePickVC.group_=[arr objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:imagePickVC animated:YES];
-    [imagePickVC release];
+    if (indexPath.row == arr.count)
+    {
+        GKDraftViewController *draftVC = [[GKDraftViewController alloc] init];
+        [self.navigationController pushViewController:draftVC animated:YES];
+        [draftVC release];
+    }
+    else
+    {
+        GKImagePickerViewController *imagePickVC=[[GKImagePickerViewController alloc]init];
+        imagePickVC.group_=[arr objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:imagePickVC animated:YES];
+        [imagePickVC release];
+    }
+    
     
 }
 

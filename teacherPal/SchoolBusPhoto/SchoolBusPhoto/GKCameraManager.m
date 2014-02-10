@@ -235,7 +235,7 @@ static GKCameraManager *cameraManager;
 - (void)snapStillImage:(void (^)(UIImage *stillImage, NSError *error))mBlock
 {
     
-//    [[_stillImageOutput connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:currentVideoOrientation];
+    [[_stillImageOutput connectionWithMediaType:AVMediaTypeVideo] setVideoOrientation:currentVideoOrientation];
 		// Capture a still image.
         
     [_stillImageOutput captureStillImageAsynchronouslyFromConnection:[_stillImageOutput connectionWithMediaType:AVMediaTypeVideo] completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
@@ -253,14 +253,14 @@ static GKCameraManager *cameraManager;
             CGImageRef imgRef;
             
             
-//            if (currentVideoOrientation == AVCaptureVideoOrientationPortrait)
-//            {
+            if (currentVideoOrientation == AVCaptureVideoOrientationPortrait)
+            {
                 imgRef = CGImageCreateWithImageInRect(img.CGImage, CGRectMake(0, 80, 480, 480));
-//            }
-//            else
-//            {
-//                imgRef = CGImageCreateWithImageInRect(img.CGImage, CGRectMake(80, 0, 480, 480));
-//            }
+            }
+            else
+            {
+                imgRef = CGImageCreateWithImageInRect(img.CGImage, CGRectMake(80, 0, 480, 480));
+            }
             
             UIImage *a = [UIImage imageWithCGImage:imgRef];
             
@@ -305,6 +305,10 @@ static GKCameraManager *cameraManager;
 {
     currentVideoOrientation = toInterfaceOrientation;
 //    [[_preview connection] setVideoOrientation:(AVCaptureVideoOrientation)toInterfaceOrientation];
+    
+    
+    
+    
 }
 
 - (void)focusWithMode:(AVCaptureFocusMode)focusMode exposeWithMode:(AVCaptureExposureMode)exposureMode atDevicePoint:(CGPoint)point monitorSubjectAreaChange:(BOOL)monitorSubjectAreaChange

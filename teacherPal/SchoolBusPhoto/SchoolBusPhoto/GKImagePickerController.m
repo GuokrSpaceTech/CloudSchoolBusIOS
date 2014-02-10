@@ -213,14 +213,14 @@
     
     // orientation
     
-//    motionManager = [[CMMotionManager alloc] init];
+    motionManager = [[CMMotionManager alloc] init];
     
     
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    /*
+    
     [motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
         
         double ax = accelerometerData.acceleration.x;
@@ -229,23 +229,50 @@
         if (ax < -0.7)
         {
             orientation = AVCaptureVideoOrientationLandscapeRight;
-//            NSLog(@"right");
+            NSLog(@"right");
+            
+            if (currentModel == photoModel && !CGAffineTransformEqualToTransform(photoBtn.transform, CGAffineTransformMakeRotation(M_PI_2))) {
+                
+                [UIView animateWithDuration:0.2f animations:^{
+                    photoBtn.transform = CGAffineTransformMakeRotation(M_PI_2);
+                    recordBtn.transform = CGAffineTransformMakeRotation(M_PI_2);
+                    flashBtn.transform = CGAffineTransformMakeRotation(M_PI_2);
+                }];
+                
+                
+                
+            }
+            
         }
         else if (ax > 0.7)
         {
-//            NSLog(@"left");
+            NSLog(@"left");
             orientation = AVCaptureVideoOrientationLandscapeLeft;
+            if (currentModel == photoModel && !CGAffineTransformEqualToTransform(photoBtn.transform, CGAffineTransformMakeRotation(-M_PI_2))) {
+                [UIView animateWithDuration:0.2f animations:^{
+                    photoBtn.transform = CGAffineTransformMakeRotation(-M_PI_2);
+                    recordBtn.transform = CGAffineTransformMakeRotation(-M_PI_2);
+                    flashBtn.transform = CGAffineTransformMakeRotation(-M_PI_2);
+                }];
+            }
         }
         else
         {
             
             orientation = AVCaptureVideoOrientationPortrait;
+            if (currentModel == photoModel && !CGAffineTransformEqualToTransform(photoBtn.transform, CGAffineTransformIdentity)) {
+                [UIView animateWithDuration:0.2f animations:^{
+                    photoBtn.transform = CGAffineTransformIdentity;
+                    recordBtn.transform = CGAffineTransformIdentity;
+                    flashBtn.transform = CGAffineTransformIdentity;
+                }];
+            }
         }
         
         [camManager setCameraOrientation:orientation];
         
     }];
-     */
+    
     
     [self performSelector:@selector(openCameraAnimate) withObject:nil afterDelay:1.0f];
 //    [self openCameraAnimate];
@@ -283,7 +310,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     
-//    [motionManager stopAccelerometerUpdates];
+    [motionManager stopAccelerometerUpdates];
     [camManager clearMovieCache];
     [self closeCameraAnimateCompletion:YES];
 }
@@ -334,6 +361,10 @@
     currentModel = photoModel;
     [self removeRecordProgressBar];
     
+    recordBtn.transform = CGAffineTransformIdentity;
+    photoBtn.transform = CGAffineTransformIdentity;
+    flashBtn.transform = CGAffineTransformIdentity;
+    
 //    posBtn.center = CGPointMake(160, posBtn.center.y);
     flashBtn.hidden = NO;
     nextBtn.hidden = YES;
@@ -374,6 +405,10 @@
 {
     
     currentModel = recordModel;
+    
+    recordBtn.transform = CGAffineTransformIdentity;
+    photoBtn.transform = CGAffineTransformIdentity;
+    flashBtn.transform = CGAffineTransformIdentity;
     
 //    posBtn.center = CGPointMake(160, posBtn.center.y);
     flashBtn.hidden = YES;

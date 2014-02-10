@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1280" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -70,11 +70,11 @@
                             <rect key="frame" x="97" y="182" width="178" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="186-1235-3984">
+                            <state key="normal" title="400-606-3996">
                                 <color key="titleColor" red="0.38823533059999998" green="0.38823533059999998" blue="0.38823533059999998" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                            <state key="highlighted" title="186-1235-3984">
+                            <state key="highlighted" title="400-606-3996">
                                 <color key="titleColor" red="0.270588249" green="0.34509804840000002" blue="0.46274513010000001" alpha="1" colorSpace="deviceRGB"/>
                             </state>
                             <connections>

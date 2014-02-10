@@ -86,14 +86,14 @@
     
     
     photobutton=[UIButton buttonWithType:UIButtonTypeCustom];
-    photobutton.frame=CGRectMake(280, 5, 35, 35);
-    [photobutton setBackgroundImage:[UIImage imageNamed:@"upNormal.png"] forState:UIControlStateNormal];
-    [photobutton setBackgroundImage:[UIImage imageNamed:@"upHight.png"] forState:UIControlStateHighlighted];
+    photobutton.frame=CGRectMake(260, 0, 60, 45);
+    [photobutton setImage:[UIImage imageNamed:@"upNormal.png"] forState:UIControlStateNormal];
+    [photobutton setImage:[UIImage imageNamed:@"upHight.png"] forState:UIControlStateHighlighted];
     [photobutton addTarget:self action:@selector(upLoaderClilck:) forControlEvents:UIControlEventTouchUpInside];
     [navigationView addSubview:photobutton];
 
   //    badgeView=[[GKBadgeView alloc]initWithFrame:CGRectMake(38, 2, 16, 16)];
-    badgeView =[[GKBadgeView alloc]initWithFrame:CGRectMake(300, 2, 16, 16)];
+    badgeView =[[GKBadgeView alloc]initWithFrame:CGRectMake(298, 2, 16, 16)];
     badgeView.backgroundColor=[UIColor clearColor];
     badgeView.bagde=0;
     [navigationView addSubview:badgeView];

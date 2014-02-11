@@ -153,7 +153,7 @@
     
     webVC.urlstr=@"http://cloud.yunxiaoche.com/html/privacy.html";
     
-  
+    webVC.titlestr=NSLocalizedString(@"privacy", @"");
     [self.navigationController pushViewController:webVC animated:YES];
     
 

@@ -15,6 +15,7 @@
 @implementation GKWebViewController
 @synthesize webController;
 @synthesize urlstr;
+@synthesize titlestr;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -30,7 +31,7 @@
     
     self.navigationController.navigationBarHidden=YES;
     self.view.backgroundColor=[UIColor colorWithRed:103/255.0 green:183/255.0 blue:204/255.0 alpha:1];
-    titlelabel.text=NSLocalizedString(@"privacy", @"");
+    titlelabel.text=titlestr;
     UIButton *buttom=[UIButton buttonWithType:UIButtonTypeCustom];
     buttom.frame=CGRectMake(10, 5, 34, 35);
     //UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 34, 35)];
@@ -81,6 +82,7 @@
 {
     self.webController=nil;
     self.urlstr=nil;
+    self.titlestr=nil;
     [super dealloc];
 }
 @end

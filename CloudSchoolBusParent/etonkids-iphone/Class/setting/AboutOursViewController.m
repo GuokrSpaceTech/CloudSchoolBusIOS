@@ -226,7 +226,7 @@
 - (void)alertView:(ETCustomAlertView *)alertView didSelectButtonAtIndex:(NSInteger)index
 {
     if (index == 1) {
-        NSString *num = [[NSString alloc] initWithFormat:@"tel://%@",[teleButton titleForState:UIControlStateNormal]];
+        NSString *num = [[NSString alloc] initWithFormat:@"tel://%@",@"4006063996"];
         UIApplication *app = [UIApplication sharedApplication];
         [app openURL:[NSURL URLWithString:num]];
     }

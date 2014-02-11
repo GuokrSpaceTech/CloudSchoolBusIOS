@@ -9,7 +9,7 @@
 #import "GKSettingViewController.h"
 #import "GKMainViewController.h"
 #import "KKNavigationController.h"
-#import "GKHelpSupportViewController.h"
+#import "GKWebViewController.h"
 #import "GKRePasswordViewController.h"
 #import "GKAboutViewController.h"
 @interface GKSettingViewController ()
@@ -102,18 +102,33 @@
             VC=[[GKRePasswordViewController alloc]init];
             break;
         case 1:
-             VC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];
+            VC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];
+          
+           // VC.urlstr=@"http://cloud.yunxiaoche.com/html/privacy.html";
+            
+            //VC.titlestr=NSLocalizedString(@"privacy", @"");
+
             
             break;
         case 2:
-            VC=[[GKHelpSupportViewController alloc]init];
+            VC=[[GKWebViewController alloc]init];
             
             break;
               default:
             break;
     }
+    if(indexPath.row==2)
+    {
+        GKWebViewController *web=(GKWebViewController *)VC;
+        web.urlstr=@"http://www.yunxiaoche.com/help/teacher.html";
+        web.titlestr=  titlelabel.text=NSLocalizedString(@"helpSupport", @"");;
+        [self.navigationController pushViewController:web animated:YES];
+    }
+    else
+    {
+        [self.navigationController pushViewController:VC animated:YES];
+    }
     
-    [self.navigationController pushViewController:VC animated:YES];
     [VC release];
     
 }

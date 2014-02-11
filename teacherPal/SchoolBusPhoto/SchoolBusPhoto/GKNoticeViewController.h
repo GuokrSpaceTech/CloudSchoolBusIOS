@@ -13,7 +13,7 @@
 #import "GKStudentView.h"
 #import "EKRequest.h"
 #import "GTMBase64.h"
-@interface GKNoticeViewController : GKBaseViewController<UITextViewDelegate,studentViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EKProtocol,UIAlertViewDelegate>
+@interface GKNoticeViewController : GKBaseViewController<UITextViewDelegate,studentViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EKProtocol,UIAlertViewDelegate,UITextFieldDelegate>
 {
     UITextView *_textView;
     
@@ -26,7 +26,7 @@
 }
 @property (nonatomic,assign)BOOL isConform;
 @property(nonatomic,retain)UITextView *_textView;
-
+@property (nonatomic,retain)UITextField *_titleField;
 @property(nonatomic,retain)NSMutableArray *stuArr;
 @property (nonatomic,retain)NSData *upData;
 @end

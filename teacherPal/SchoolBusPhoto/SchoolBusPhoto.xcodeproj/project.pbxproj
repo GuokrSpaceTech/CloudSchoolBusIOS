@@ -44,7 +44,6 @@
 		114B58FF1820AD5500163A4A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114B58FE1820AD5500163A4A /* ImageIO.framework */; };
 		114B59021821220E00163A4A /* GKShowBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B59011821220E00163A4A /* GKShowBigImageViewController.m */; };
 		114F66A71887C16E0071D2AE /* kuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 114F66A61887C16E0071D2AE /* kuang.png */; };
-		11514F41187EB9AD00EEB656 /* GKHelpSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11514F40187EB9AD00EEB656 /* GKHelpSupportViewController.m */; };
 		1155E92B1856BC75005D09C1 /* KKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1155E9291856BC74005D09C1 /* KKNavigationController.m */; };
 		1165E27C182CFCE000B60A81 /* pic-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1165E278182CFCE000B60A81 /* pic-2.png */; };
 		1165E27E182CFCE000B60A81 /* pic-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1165E27A182CFCE000B60A81 /* pic-1.png */; };
@@ -450,8 +449,6 @@
 		114B59001821220E00163A4A /* GKShowBigImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKShowBigImageViewController.h; sourceTree = "<group>"; };
 		114B59011821220E00163A4A /* GKShowBigImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKShowBigImageViewController.m; sourceTree = "<group>"; };
 		114F66A61887C16E0071D2AE /* kuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kuang.png; sourceTree = "<group>"; };
-		11514F3F187EB9AD00EEB656 /* GKHelpSupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHelpSupportViewController.h; sourceTree = "<group>"; };
-		11514F40187EB9AD00EEB656 /* GKHelpSupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKHelpSupportViewController.m; sourceTree = "<group>"; };
 		1155E9291856BC74005D09C1 /* KKNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKNavigationController.m; sourceTree = "<group>"; };
 		1155E92A1856BC74005D09C1 /* KKNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKNavigationController.h; sourceTree = "<group>"; };
 		1165E278182CFCE000B60A81 /* pic-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic-2.png"; sourceTree = "<group>"; };
@@ -1537,8 +1534,6 @@
 				1192E400181B6CE200C5F33B /* GKWebViewController.m */,
 				11A2BF501876B5AD00E321F3 /* GKSettingViewController.h */,
 				11A2BF511876B5AD00E321F3 /* GKSettingViewController.m */,
-				11514F3F187EB9AD00EEB656 /* GKHelpSupportViewController.h */,
-				11514F40187EB9AD00EEB656 /* GKHelpSupportViewController.m */,
 			);
 			name = setting;
 			sourceTree = "<group>";
@@ -2186,7 +2181,6 @@
 				111E8CE9181E532400234014 /* UIImage+MultiFormat.m in Sources */,
 				1192B7771829EB8D0082D37B /* JSONKit.m in Sources */,
 				11B852A1183221CF005FA5B9 /* ETNicknameViewController.m in Sources */,
-				11514F41187EB9AD00EEB656 /* GKHelpSupportViewController.m in Sources */,
 				11A5A89B187BF2FE00EA22CD /* GKNoticeListViewController.m in Sources */,
 				119E5FD21818EE8D00726761 /* GKBaseViewController.m in Sources */,
 				119E5FF21819470400726761 /* Student.m in Sources */,

@@ -281,6 +281,7 @@
 		11DB02FB1833A0AA007981C6 /* aboutNormalE.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DB02F41833A0AA007981C6 /* aboutNormalE.png */; };
 		11DB02FC1833A0AA007981C6 /* aboutE.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DB02F51833A0AA007981C6 /* aboutE.png */; };
 		11DB02FD1833A0AA007981C6 /* leftUpNE.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DB02F61833A0AA007981C6 /* leftUpNE.png */; };
+		11DB43ED18AB41F600F77C1A /* GKCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DB43EC18AB41F600F77C1A /* GKCustomButton.m */; };
 		11E27F8A183C643600CAE0BB /* helperE.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E27F89183C643600CAE0BB /* helperE.png */; };
 		11E27F8C183C64E100CAE0BB /* aboutlogo_EN1.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E27F8B183C64E100CAE0BB /* aboutlogo_EN1.png */; };
 		11E27F8F183C6AAC00CAE0BB /* shareBtn3.0.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E27F8D183C6AAC00CAE0BB /* shareBtn3.0.png */; };
@@ -795,6 +796,8 @@
 		11DB02F41833A0AA007981C6 /* aboutNormalE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aboutNormalE.png; sourceTree = "<group>"; };
 		11DB02F51833A0AA007981C6 /* aboutE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aboutE.png; sourceTree = "<group>"; };
 		11DB02F61833A0AA007981C6 /* leftUpNE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftUpNE.png; sourceTree = "<group>"; };
+		11DB43EB18AB41F600F77C1A /* GKCustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCustomButton.h; sourceTree = "<group>"; };
+		11DB43EC18AB41F600F77C1A /* GKCustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCustomButton.m; sourceTree = "<group>"; };
 		11E27F89183C643600CAE0BB /* helperE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helperE.png; sourceTree = "<group>"; };
 		11E27F8B183C64E100CAE0BB /* aboutlogo_EN1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aboutlogo_EN1.png; sourceTree = "<group>"; };
 		11E27F8D183C6AAC00CAE0BB /* shareBtn3.0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareBtn3.0.png; sourceTree = "<group>"; };
@@ -1189,6 +1192,8 @@
 				78881915187F9E0B00D0A851 /* MovieDraft.m */,
 				118AE7EC188E69840034AE63 /* DBManager.h */,
 				118AE7ED188E69840034AE63 /* DBManager.m */,
+				11DB43EB18AB41F600F77C1A /* GKCustomButton.h */,
+				11DB43EC18AB41F600F77C1A /* GKCustomButton.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -2100,6 +2105,7 @@
 				11C75DA71812725600A3AA89 /* SVHTTPClient.m in Sources */,
 				119E962B1814C5A300866DE8 /* ASIS3BucketObject.m in Sources */,
 				2AFFF376181233580045BFD0 /* GKUpLoaderViewController.m in Sources */,
+				11DB43ED18AB41F600F77C1A /* GKCustomButton.m in Sources */,
 				11A212A818697B8800A2D909 /* GKAlumbViewController.m in Sources */,
 				119E962A1814C5A300866DE8 /* ASIS3Bucket.m in Sources */,
 				11A3BF4B18756A3A0032BA07 /* GKStudentInfoViewController.m in Sources */,

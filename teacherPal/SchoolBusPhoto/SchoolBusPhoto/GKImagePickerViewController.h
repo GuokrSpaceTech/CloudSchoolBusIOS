@@ -17,7 +17,7 @@
 //#import "GKUserLogin.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "KKNavigationController.h"
-
+@class GKCustomButton;
 @class GKBadgeView;
 @interface GKImagePickerViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate,photoCellDelegate,showViewController,UIAlertViewDelegate>
 {
@@ -25,7 +25,7 @@
     
    // GKUserLogin *usr;
     UITableView *_tableView;
-    UIButton *delButton;
+    GKCustomButton *delButton;
     UIButton * photobutton;
     GKBadgeView *badgeView;
     //GKBadgeView *badgeView;

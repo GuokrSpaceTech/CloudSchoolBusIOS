@@ -146,7 +146,8 @@
            // 5 8 12  10
             UIImageView *bgView=(UIImageView *)[self.contentView viewWithTag:BGTAG];
             bgView.frame=CGRectMake(320-size.width-30, 10, size.width +20, labelcontent.frame.origin.y + labelcontent.frame.size.height);
-            UIImage *iamge=[[UIImage imageNamed:@"qipao-2.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(3, 4, 12, 11)];
+            UIImage *iamge=[[UIImage imageNamed:@"qipao22.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(3, 4, 12, 11)];
+             //UIImage *iamge=[UIImage imageNamed:@"qipao22.png"];
             bgView.image=iamge;
 
         }
@@ -170,7 +171,8 @@
 
             UIImageView *bgView=(UIImageView *)[self.contentView viewWithTag:BGTAG];
             bgView.frame=CGRectMake(320-75-30, 10, 75 +20, 100+10);
-            UIImage *iamge=[[UIImage imageNamed:@"qipao-2.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(3, 4, 12, 11)];
+            UIImage *iamge=[[UIImage imageNamed:@"qipao22.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(3, 4, 12, 11)];
+            // UIImage *iamge=[UIImage imageNamed:@"qipao22.png"];
             bgView.image=iamge;
             
         }

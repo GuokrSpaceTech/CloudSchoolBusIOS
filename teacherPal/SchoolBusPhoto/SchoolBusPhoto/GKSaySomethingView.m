@@ -38,6 +38,7 @@
         _contextView.font=[UIFont systemFontOfSize:16];
         _contextView.layer.cornerRadius=5;
         _contextView.delegate = self;
+        _contextView.returnKeyType = UIReturnKeyDone;
 //        _contextView.inputAccessoryView = inputView;
 //        [inputView release];
         
@@ -168,6 +169,15 @@
         }
     }
     return number;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text; {
+    
+    if ([@"\n" isEqualToString:text] == YES) {
+        [self endEditing:YES];
+        return NO;
+    }
+    return YES;
 }
 
 - (void)textViewDidChange:(UITextView *)textView

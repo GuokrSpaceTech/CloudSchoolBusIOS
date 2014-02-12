@@ -706,22 +706,22 @@
         
         
         CGRect rectangle = CGRectMake(targetX,targetY,9,9);
-        UIImage *imageGreen=[UIImage imageNamed:@"yellowPoint.png"];
+        UIImage *imageGreen=[UIImage imageNamed:@"redPoint.png"];
         [imageGreen drawInRect:rectangle];
         // CGContextAddRect(context, rectangle);
         
         //  UIColor *color;
         if (selectedDate && selectedDateBlock==targetBlock) {
             // color = [UIColor whiteColor];
-            UIImage *imageGreen=[UIImage imageNamed:@"yellowPoint.png"];
+            UIImage *imageGreen=[UIImage imageNamed:@"redPoint.png"];
             [imageGreen drawInRect:rectangle];
         }  else if (todayBlock==targetBlock) {
-            UIImage *imageGreen=[UIImage imageNamed:@"yellowPoint.png"];
+            UIImage *imageGreen=[UIImage imageNamed:@"redPoint.png"];
             [imageGreen drawInRect:rectangle];
             // color = [UIColor whiteColor];
         } else {
             // color  = (UIColor *)[markedColors objectAtIndex:i];
-            UIImage *imageGreen=[UIImage imageNamed:@"yellowPoint.png"];
+            UIImage *imageGreen=[UIImage imageNamed:@"redPoint.png"];
             [imageGreen drawInRect:rectangle];
         }
         

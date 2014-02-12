@@ -22,7 +22,7 @@
 #import "GKMovieManager.h"
 
 #define BUTTONTAG  777
-
+#define VIDEOTAG   8888
 #define TAPIMAGETAG 111
 @interface CommentDetailViewController ()
 
@@ -232,7 +232,7 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
         newTheme.labelShadowColor = [UIColor whiteColor];
         
         
-        CGRect frame = CGRectMake(self.movieBackView.frame.size.width/2.0f - 30, self.movieBackView.frame.size.height/2.0f - 30, 60, 60);
+        CGRect frame = CGRectMake(self.movieBackView.frame.size.width/2.0f - 30, self.movieBackView.frame.size.height/2.0f - 30, 70, 70);
         MDRadialProgressView *radialView7 = [[MDRadialProgressView alloc] initWithFrame:frame andTheme:newTheme];
         radialView7.hidden = YES;
         [self.movieBackView addSubview:radialView7];
@@ -257,6 +257,11 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
         [btn addTarget:self action:@selector(controlMovie:) forControlEvents:UIControlEventTouchUpInside];
         [btn setFrame:self.movieBackView.bounds];
         [self.movieBackView addSubview:btn];
+        
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(saveMovie:)];
+        [btn addGestureRecognizer:longPress];
+        [longPress release];
+        
         
         [self performSelector:@selector(downloadMovie:) withObject:source afterDelay:0.0f];
         
@@ -721,6 +726,8 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     if (self.mPlayer && self.mPlayer.playbackState == MPMoviePlaybackStatePlaying) {
         [self.mPlayer stop];
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIFICELL" object:nil];//通知cell 更新下载进度
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -1372,6 +1379,27 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
             [self replyCommentByCommentId:currentComId];
         }
     }
+    else if (actionSheet.tag == VIDEOTAG)
+    {
+        if (index == 0)
+        {
+            if (self.mPlayer.contentURL) {
+                
+                NSLog(@"保存视频");
+                NSString *p = [self.mPlayer.contentURL path];
+                //        UISaveVideoAtPathToSavedPhotosAlbum(p, nil, nil, nil);
+                UISaveVideoAtPathToSavedPhotosAlbum(p, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+                //        UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(p);
+            }
+            else
+            {
+                //        NSLog(@"no download");
+                ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:nil message:@"未下载完成" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil, nil];
+                [alert show];
+            }
+        }
+        
+    }
 }
 
 
@@ -1445,6 +1473,13 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
 
 - (void)downloadMovie:(NSString *)url
 {
+    GKMovieManager *man = [GKMovieManager shareManager];
+    if ([man downloadListContainsURL:url])
+    {
+        
+    }
+    
+    
     [[GKMovieManager shareManager] downloadMovieWithURL:url progress:^(unsigned long long size, unsigned long long total, NSString *downloadingPath)
     {
         self.radial.hidden = NO;
@@ -1457,7 +1492,6 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
         self.radial.hidden = YES;
         self.mPlayer.contentURL = [NSURL fileURLWithPath:path];
         [self.mPlayer play];
-         
     }];
     
 }
@@ -1492,7 +1526,39 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     }
 }
 
-
+- (void)saveMovie:(UIGestureRecognizer *)gesture
+{
+    
+    if(gesture.state == UIGestureRecognizerStateBegan)
+    {
+        MTCustomActionSheet *action = [[MTCustomActionSheet alloc] initWithTitle:LOCAL(@"alert", @"") delegate:self cancelButtonTitle:LOCAL(@"cancel", @"") otherButtonTitles:LOCAL(@"baocunshipin", @""), nil];
+        action.tag = VIDEOTAG;
+        [action showInView:self.view];
+        [action release];
+    }
+    
+    
+}
+- (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error contextInfo: (void *)contextInfo {
+    
+    NSLog(@"%@",videoPath);
+    
+    NSLog(@"%@",error);
+    
+    NSString *info;
+    
+    if (error) {
+        info = @"保存失败";
+    }
+    else
+    {
+        info = @"保存成功";
+    }
+    
+    ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:nil message:info delegate:nil cancelButtonTitle:nil otherButtonTitles:nil, nil];
+    [alert show];
+    
+}
 
 - (void)didReceiveMemoryWarning
 {

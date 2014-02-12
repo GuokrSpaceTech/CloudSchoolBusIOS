@@ -69,7 +69,6 @@
         
         request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:mURL]];
         [request setDownloadDestinationPath:diskPath];
-//        [request setDownloadProgressDelegate:];
         [request setDelegate:self];
         [request setAllowResumeForFileDownloads:YES];
         [request setCompletionBlock:^{
@@ -124,8 +123,15 @@
 - (void)cancelRequest
 {
     if (request != nil) {
+        
+        if (delegate && [delegate respondsToSelector:@selector(downloader:didFinishedDownloadMovieWithPath:)]) {
+            [delegate downloader:self didFinishedDownloadMovieWithPath:nil];
+        }
+        
         [request clearDelegatesAndCancel];
     }
+    
+    
     
 }
 

@@ -67,6 +67,7 @@ static GKMovieManager *mm ;
     for (int i = 0; i < self.downloadList.count; i++) {
         GKMovieDownloader *d = (GKMovieDownloader *)[self.downloadList objectAtIndex:i];
         if ([url isEqualToString:d.movieURL]) {
+            
             return YES;
         }
     }
@@ -79,6 +80,17 @@ static GKMovieManager *mm ;
     if (self.downloadList != nil && [self downloadListContainsURL:dUrl])
     {
         NSLog(@"下载列表存在该视频");
+        
+        for (int i = 0; i < mm.downloadList.count; i++)
+        {
+            GKMovieDownloader *d = [mm.downloadList objectAtIndex:i];
+            if ([d.movieURL isEqualToString:dUrl]) {
+                d.completion = [completion copy];
+                d.progress = [progress copy];
+                break;
+            }
+        }
+        
         return;
     }
     if ([GKMovieCache isContainMovieByURL:dUrl])

@@ -107,6 +107,7 @@
     contentTV.font = [UIFont systemFontOfSize:15];
     contentTV.textColor = [UIColor grayColor];
     contentTV.backgroundColor = [UIColor whiteColor];
+    contentTV.returnKeyType = UIReturnKeyDone;
 //    contentTV.inputAccessoryView = inputView;
 //    [inputView release];
     [self.view addSubview:contentTV];
@@ -167,6 +168,15 @@
 - (void)endEdit:(id)sender
 {
     [self.view endEditing:YES];
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text; {
+    
+    if ([@"\n" isEqualToString:text] == YES) {
+        [self.view endEditing:YES];
+        return NO;
+    }
+    return YES;
 }
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView

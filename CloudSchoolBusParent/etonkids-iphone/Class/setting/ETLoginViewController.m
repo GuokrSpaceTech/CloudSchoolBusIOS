@@ -177,22 +177,22 @@
     //记住密码*******************************
     
     //判定是否设定了记住密码
-    if([defaultUser objectForKey:REMEMBERPSAAWORD])
-    {
+//    if([defaultUser objectForKey:REMEMBERPSAAWORD])
+//    {
 //        remImgV.hidden = NO;
         //判定最后一次登录的状态是否成功，及判定帐号和密码是否存在
-        if ([user getLastLogin])
-        {
-            userNameField.text=user.regName;
+//        if ([user getLastLogin])
+//        {
+//            userNameField.text=user.regName;
 //            passWordField.text=user.passWord;
-        }
+//        }
 
         
-    }
-    else
-    {
+//    }
+//    else
+//    {
 //        remImgV.hidden = YES;
-    }
+//    }
     
     
     
@@ -384,7 +384,7 @@
                 
                 // 提示 为空
             }
-            else if (resultSelectChild.count == 1)
+            else if (resultSelectChild.count == 1)// 如果为一个学生
             {
                 NSDictionary *dic = [resultSelectChild objectAtIndex:0];
                 NSString *cid = [NSString stringWithFormat:@"%@",[dic objectForKey:@"uid_class"]];
@@ -396,7 +396,7 @@
                 
                 [[EKRequest Instance] EKHTTPRequest:unit parameters:param requestMethod:POST forDelegate:self];
             }
-            else
+            else    // 多个学生
             {
                 
                 if(HUD)
@@ -420,7 +420,7 @@
         }
         
       
-    }
+    }/*
     else if (method == unit && code == 1 && [param objectForKey:@"parentid"])
     {
         self.resultSelectChild = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
@@ -471,7 +471,7 @@
             [alert show];
         }
         
-    }
+    }*/
     else if (method == unit && code == 1)
     {
 //        NSString *s = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
@@ -627,7 +627,7 @@
     }
     else
     {
-        if(method==signin &&code!=1)
+        if(method==signin && code!=1)
         {
             [self performSelectorOnMainThread:@selector(LoginFailedresult:) withObject:LOCAL(@"LoginErr",  @"") waitUntilDone:NO];
             return;
@@ -730,7 +730,7 @@
     }
     [[EKRequest Instance]clearSid];
     NSLog(@"%@",delegate.token);
-    NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:self.userNameField.text,@"username",[MTAuthCode authEncode:self.passWordField.text authKey:@"mactop" expiryPeriod:0  ],@"password", delegate.token,@"token", nil];
+    NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:self.userNameField.text,@"username",[MTAuthCode authEncode:self.passWordField.text authKey:@"mactop" expiryPeriod:0],@"password", delegate.token,@"token", nil];
     [[EKRequest Instance] EKHTTPRequest:signin parameters:param requestMethod:POST forDelegate:self];
     
     
@@ -784,8 +784,9 @@
 //    }
 //    else
 //    {
-        [defaultUser setObject:AUTOLOGINVALUE forKey:AUTOLOGIN];
-        [ETCoreDataManager saveUser];
+    [defaultUser setObject:AUTOLOGINVALUE forKey:AUTOLOGIN];
+    [defaultUser setObject:@"1" forKey:@"AutoPlay"];
+    [ETCoreDataManager saveUser];
 //    }
     
     
@@ -867,7 +868,7 @@
     
     else if (alertView.tag == 3333)
     {
-        if (index != resultSelectChild.count) {
+        if (index != resultSelectChild.count) { //如果不是最后一个按钮，即取消按钮
             
             AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
             if(HUD==nil)

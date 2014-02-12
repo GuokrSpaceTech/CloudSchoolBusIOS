@@ -84,6 +84,7 @@
 + (NSArray *)searchCalendarByMonth:(NSString *)month;
 + (BOOL)removeCalendarByMonth:(NSString *)month;
 + (BOOL)addCalendar:(NSArray *)calArr withMonth:(NSString *)month;
++ (BOOL)removeAllCalendar;
 
 
 + (NSArray *)searchScheduleByDate:(NSString *)date;

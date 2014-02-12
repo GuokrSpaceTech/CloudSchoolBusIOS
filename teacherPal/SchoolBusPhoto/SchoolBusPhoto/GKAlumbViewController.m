@@ -246,7 +246,7 @@
     {
         UIImageView *iamgeView=(UIImageView *)[cell viewWithTag:852];
 //        iamgeView.image=[UIImage imageWithCGImage:[group posterImage]];
-//        iamgeView.image = [UIImage imageNamed:<#(NSString *)#>]
+        iamgeView.image = [UIImage imageNamed:@"云中校车视频相册封面.png"];
         
         UILabel *label=(UILabel *)[cell viewWithTag:853];
         label.text = NSLocalizedString(@"productname", @"");

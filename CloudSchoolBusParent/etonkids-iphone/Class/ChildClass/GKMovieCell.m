@@ -225,6 +225,19 @@
         }
     }
     
+    if (self.currentURL !=nil && ![self.currentURL isEqualToString:url]) {
+        // 把重用之前的download cancel
+//        GKMovieManager *mm = [GKMovieManager shareManager];
+//        
+//        for (int i = 0; i < mm.downloadList.count; i++) {
+//            GKMovieDownloader *d = [mm.downloadList objectAtIndex:i];
+//            if ([d.movieURL isEqualToString:self.currentURL]) {
+//                [d cancelRequest];
+//                break;
+//            }
+//        }
+    }
+    
     self.currentURL = url;
     
     

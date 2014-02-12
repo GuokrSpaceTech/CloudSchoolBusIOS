@@ -1303,6 +1303,31 @@
     
     return successful;
 }
+
++ (BOOL)removeAllCalendar
+{
+    NSError *err = nil;
+    AppDelegate *delegate = SHARED_APP_DELEGATE;
+    NSFetchRequest* request = [[[NSFetchRequest alloc] init] autorelease];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"ETCalendar" inManagedObjectContext:delegate.managedObjectContext];
+    [request setEntity:entity];
+    
+    NSArray *attendance = [delegate.managedObjectContext executeFetchRequest:request error:&err];
+    if (!attendance) {
+        NSLog(@"!!!! remove calendar error : %@",err);
+        return NO;
+    }
+    
+    for (ETCalendar *obj in attendance) {
+        [delegate.managedObjectContext deleteObject:obj];
+    }
+    
+    
+    BOOL successful = [self saveContext];
+    
+    return successful;
+}
+
 + (BOOL)addCalendar:(NSArray *)calArr withMonth:(NSString *)month
 {
     AppDelegate* delegate = SHARED_APP_DELEGATE;
@@ -1340,6 +1365,8 @@
     return successful;
     
 }
+
+
 
 
 

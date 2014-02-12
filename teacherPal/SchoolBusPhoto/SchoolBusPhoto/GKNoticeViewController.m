@@ -461,6 +461,7 @@
     if(code==1&&method==tnotice)
     {
         _textView.text=@"";
+        _titleField.text=@"";
         [studentView setAllButtonSelect:NO];
         [stuArr removeAllObjects];
         

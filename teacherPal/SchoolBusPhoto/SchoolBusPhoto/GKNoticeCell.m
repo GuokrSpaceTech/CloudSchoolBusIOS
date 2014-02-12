@@ -279,6 +279,7 @@
     if([notice.isconfirm integerValue]==1)
     {
         huizhiLabel.frame=CGRectMake(200, 10+height+10, 100, 15);
+        huizhiLabel.textColor=[UIColor redColor];
         huizhiLabel.text=[NSString stringWithFormat:@"已回执%d人",[notice.sisconfirm count]];
         IconImageView.image=[UIImage imageNamed:@"noticeStar.png"];
       

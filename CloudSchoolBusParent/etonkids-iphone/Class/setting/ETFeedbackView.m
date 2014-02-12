@@ -76,7 +76,7 @@
 - (void)rightButtonClick:(UIButton *)sender
 {
     
-    if (feedbackTV.text == nil || [feedbackTV.text isEqualToString:@""]) {
+    if (feedbackTV.text == nil || [feedbackTV.text isEqualToString:@""] || [feedbackTV.text isEqualToString:LOCAL(@"feedbackPlaceholder", @"")]) {
         ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"input", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
         [alert show];
         return;
@@ -96,6 +96,7 @@
     
     NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"", @"email", feedbackTV.text, @"content",nil];
     [[EKRequest Instance] EKHTTPRequest:feedback parameters:param requestMethod:POST forDelegate:self];
+    
 }
 
 -(void)LoginFailedresult:(NSString *)str
@@ -108,7 +109,6 @@
 -(void) getErrorInfo:(NSError *)error
 {
     [self performSelectorOnMainThread:@selector(LoginFailedresult:) withObject:LOCAL(@"busy", @"网络故障，请稍后重试") waitUntilDone:NO];
-    
 }
 -(void) getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
 {

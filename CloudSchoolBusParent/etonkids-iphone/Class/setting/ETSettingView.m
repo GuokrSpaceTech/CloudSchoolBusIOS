@@ -63,15 +63,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
         case 0:
-            return 4;
+            return 3;
         case 1:
+            return 3;
+        case 2:
             return 4;
             
             
@@ -92,7 +94,47 @@
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
         
     }
-    if (indexPath.section == 0) {
+    
+    if (indexPath.section == 0)
+    {
+        NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+        // 0:关闭自动播放     1:wifi下自动播放     2:始终自动播放
+        int autoplay = [[userdefault objectForKey:@"AutoPlay"] intValue];
+        if (indexPath.row == 0)
+        {
+            cell.textLabel.backgroundColor=[UIColor clearColor];
+            cell.textLabel.text = @"关闭自动播放";
+            cell.backgroundColor = [UIColor whiteColor];
+            cell.selectionStyle=UITableViewCellSelectionStyleBlue;
+        }
+        else if (indexPath.row == 1)
+        {
+            cell.textLabel.backgroundColor=[UIColor clearColor];
+            cell.textLabel.text = @"Wifi下自动播放";
+            cell.backgroundColor = [UIColor whiteColor];
+            cell.selectionStyle=UITableViewCellSelectionStyleBlue;
+        }
+        else if (indexPath.row == 2)
+        {
+            cell.textLabel.backgroundColor=[UIColor clearColor];
+            cell.textLabel.text = @"始终自动播放";
+            cell.backgroundColor = [UIColor whiteColor];
+            cell.selectionStyle=UITableViewCellSelectionStyleBlue;
+        }
+        
+        if (indexPath.row == autoplay)
+        {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else
+        {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        
+        
+    }
+    else if (indexPath.section == 1)
+    {
         if (indexPath.row==0)
         {
             cell.textLabel.backgroundColor=[UIColor clearColor];
@@ -141,7 +183,7 @@
                 [secure release];
             }
         }
-        
+        /*
         else if (indexPath.row == 3)
         {
             cell.textLabel.text = LOCAL(@"zidongbofang", @"");
@@ -164,9 +206,10 @@
                 [autoplay release];
             }
         }
+        */
         
     }
-    else if (indexPath.section == 1)
+    else if (indexPath.section == 2)
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         if (indexPath.row == 0) {
@@ -213,7 +256,14 @@
 //    UserLogin *user = [UserLogin currentLogin];
     AppDelegate *app = SHARED_APP_DELEGATE;
     
-    if(indexPath.section == 0)
+    if (indexPath.section == 0)
+    {
+        NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+        // 0:关闭自动播放     1:wifi下自动播放     2:始终自动播放
+        [userdefault setObject:[NSString stringWithFormat:@"%d",indexPath.row] forKey:@"AutoPlay"];
+        [tableView reloadData];
+    }
+    else if(indexPath.section == 1)
     {
         if (indexPath.row == 0)
         {
@@ -229,7 +279,7 @@
         }
         
     }
-    if(indexPath.section == 1)
+    else if(indexPath.section == 2)
     {
         if (indexPath.row == 0)
         {

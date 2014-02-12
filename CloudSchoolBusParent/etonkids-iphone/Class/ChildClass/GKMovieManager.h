@@ -22,6 +22,7 @@
 
 - (void)toggleMoviePlayingWithCell:(GKMovieCell *)cell;
 - (void)downloadMovieWithURL:(NSString *)dUrl progress:(GKProgressBlock)progress complete:(GKMovieDownloadCompletedBlock)completion;
+- (BOOL)downloadListContainsURL:(NSString *)url;
 
 
 

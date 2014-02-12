@@ -34,8 +34,13 @@
     if (self)
     {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDownloadCompleteNotification:) name:@"MOVIEDOWNLOADCOMPLETE" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:@"NOTIFICELL" object:nil];
     }
     return self;
+}
+- (void)reloadTable:(NSNotification *)noti
+{
+    [_tableView reloadData];
 }
 
 - (void)movieDownloadCompleteNotification:(NSNotification *)noti
@@ -643,6 +648,13 @@
 //    }
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doUpdate:) name:@"CommentNumberUpdate" object:nil];
+    
+//    NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+//    if ([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"1"] || [[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"2"])
+//    {//如果设置自动播放
+//        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(controlVisibleCellPlay) object:nil];
+//        [self performSelector:@selector(controlVisibleCellPlay) withObject:nil afterDelay:0.1f];
+//    }
     
 }
 
@@ -1610,7 +1622,7 @@
     
     
     NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
-    if ([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"1"])
+    if ([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"1"] || [[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"2"])
     {//如果设置自动播放
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(controlVisibleCellPlay) object:nil];
         [self performSelector:@selector(controlVisibleCellPlay) withObject:nil afterDelay:0.1f];
@@ -1626,6 +1638,9 @@
 - (void)controlVisibleCellPlay
 {
     NSArray *cells = [_tableView visibleCells];
+    
+    GKMovieManager *mm = [GKMovieManager shareManager];
+    NSMutableArray *tempDownloadingArray = [NSMutableArray arrayWithArray:mm.downloadList];
     
 //    NSLog(@"%@",cells);
     
@@ -1646,18 +1661,54 @@
                 cell = tempCell;
             }
 //            NSLog(@"%f,%f",tempCell.frame.origin.y,self._tableView.contentOffset.y );
+            
+            
+//            if ([mm downloadListContainsURL:tempCell.currentURL])   //建立一个临时的正在下载的数组 删除可见cell的下载，剩下的就是不可见cell的下载 并吧不可见cell 的下载 cancel掉
+//            {
+//                for (int i = 0; i < tempDownloadingArray.count; i++) {
+//                    GKMovieDownloader *d = [tempDownloadingArray objectAtIndex:i];
+//                    if ([d.movieURL isEqualToString:tempCell.currentURL]) {
+//                        [tempDownloadingArray removeObject:d];
+//                        break;
+//                    }
+//                }
+//            }
+            
+            
         }
         
     }
+    
+//    if (tempDownloadingArray.count != 0) { //cancel不可见cell 的下载
+//        
+//        for (int i = 0; i < tempDownloadingArray.count; i++) {
+//            
+//            GKMovieDownloader *td = [tempDownloadingArray objectAtIndex:i];
+//            
+//            for (int j = 0; j < mm.downloadList.count; j++) {
+//                GKMovieDownloader *rd = [mm.downloadList objectAtIndex:j];//真实下载数组
+//                if ([td.movieURL isEqualToString:rd.movieURL]) {
+//                    NSLog(@"rd %@",rd);
+//                    [rd cancelRequest];
+//                    break;
+//                }
+//            }
+//        }
+//        
+//    }
+    
+    
     
     if (minDis != 1000)
     {
         if (cell.mPlayer.playbackState == MPMoviePlaybackStateStopped || cell.mPlayer.playbackState == MPMoviePlaybackStatePaused)
         {
-            GKMovieManager *mm = [GKMovieManager shareManager];
+            
             [mm toggleMoviePlayingWithCell:cell];
         }
     }
+    
+    
     
 }
 

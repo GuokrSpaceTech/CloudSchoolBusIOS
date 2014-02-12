@@ -52,7 +52,7 @@
     _tableView.dataSource=self;
     [self.view addSubview:_tableView];
     
-    self.arr=[NSArray arrayWithObjects:NSLocalizedString(@"classFen", @""),NSLocalizedString(@"uploadQ", @""),NSLocalizedString(@"studentQ", @""),NSLocalizedString(@"moviedraft", @""), nil];
+    self.arr=[NSArray arrayWithObjects:NSLocalizedString(@"classFen", @""),NSLocalizedString(@"uploadQ", @""),NSLocalizedString(@"studentQ", @""), nil];
     
 
      //self.arr=[NSArray arrayWithObjects:@"班级积分",@"上传列表",@"班级学生", nil];

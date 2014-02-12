@@ -81,6 +81,9 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor blackColor];
     
+//    int a = 3; int b = 5; int c= a^b;
+//    NSLog(@"%d",c);
+    
     [TestFlight takeOff:@"0dc70c2c-7827-4489-835b-2486c0601baa"];
 //    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
 //        self.window.frame =  CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
@@ -96,7 +99,7 @@
     
     
     NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
-    if (![userdefault objectForKey:SWITHGESTURE]) {
+    if (![userdefault objectForKey:SWITHGESTURE]) { // 设置页面手势密码开关   默认关闭
         [userdefault setObject:@"0" forKey:SWITHGESTURE];
     }
 
@@ -186,6 +189,7 @@
 //    NSDate *d2 = [format dateFromString:@"2012-12-12 09:00:00"];
 //    int a =[d2 timeIntervalSinceDate:d1];
 //    NSLog(@"%d",a);
+    
     
     
     

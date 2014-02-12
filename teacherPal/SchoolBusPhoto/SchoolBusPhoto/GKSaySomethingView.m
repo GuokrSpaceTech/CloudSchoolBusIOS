@@ -20,14 +20,14 @@
         
        // self.backgroundColor=[UIColor re];
         
-        UIView *inputView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-        inputView.backgroundColor = [UIColor clearColor];
-        UIButton *inputBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [inputBtn setTitle:@"等图" forState:UIControlStateNormal];
-        [inputBtn setBackgroundImage:[UIImage imageNamed:@"applyAll.png"] forState:UIControlStateNormal];
-        [inputBtn setFrame:CGRectMake(320 - 50, 0, 50, 40)];
-        [inputBtn addTarget:self action:@selector(endEdit:) forControlEvents:UIControlEventTouchUpInside];
-        [inputView addSubview:inputBtn];
+//        UIView *inputView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+//        inputView.backgroundColor = [UIColor clearColor];
+//        UIButton *inputBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [inputBtn setTitle:@"图" forState:UIControlStateNormal];
+//        [inputBtn setBackgroundImage:[UIImage imageNamed:@"applyAll.png"] forState:UIControlStateNormal];
+//        [inputBtn setFrame:CGRectMake(320 - 50, 0, 50, 40)];
+//        [inputBtn addTarget:self action:@selector(endEdit:) forControlEvents:UIControlEventTouchUpInside];
+//        [inputView addSubview:inputBtn];
         
         
         _contextView=[[UITextView alloc]initWithFrame:CGRectMake(10, 10, self.frame.size.width-20, 150)];
@@ -38,8 +38,9 @@
         _contextView.font=[UIFont systemFontOfSize:16];
         _contextView.layer.cornerRadius=5;
         _contextView.delegate = self;
-        _contextView.inputAccessoryView = inputView;
-        [inputView release];
+        _contextView.returnKeyType = UIReturnKeyDone;
+//        _contextView.inputAccessoryView = inputView;
+//        [inputView release];
         
         [self addSubview:_contextView];
         
@@ -168,6 +169,15 @@
         }
     }
     return number;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text; {
+    
+    if ([@"\n" isEqualToString:text] == YES) {
+        [self endEditing:YES];
+        return NO;
+    }
+    return YES;
 }
 
 - (void)textViewDidChange:(UITextView *)textView

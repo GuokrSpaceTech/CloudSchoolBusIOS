@@ -35,9 +35,6 @@
 
 + (void)clearDiskCache
 {
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-//    NSString *diskPath = [paths objectAtIndex:0];
-//    NSLog(@"disk path %@",diskPath);
     [[NSFileManager defaultManager] removeItemAtPath:[GKMovieCache videoCachePath] error:nil];
     [[NSFileManager defaultManager] createDirectoryAtPath:[GKMovieCache videoCachePath]
                               withIntermediateDirectories:YES

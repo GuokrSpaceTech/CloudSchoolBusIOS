@@ -34,14 +34,23 @@ static GKMovieManager *mm ;
         
         NSLog(@"暂停之前正在播放的cell %@",self.playingCell);
         [self.playingCell.mPlayer pause];
+        [self.playingCell.mPlayer stop];
     }
     
 //    [cell.mPlayer prepareToPlay];
     
     if (cell.mPlayer.contentURL != nil)
     {
-        NSLog(@"player 不为空");
-        [cell.mPlayer play];
+        NSLog(@"player 不为空 %d",cell.mPlayer.playbackState); // 0 stop   1 playing   2 pause;
+        if (cell.mPlayer.playbackState == MPMoviePlaybackStateStopped)
+        {
+            [cell.mPlayer prepareToPlay];
+        }
+        else
+        {
+            [cell.mPlayer play];
+        }
+        
     }
     else
     {
@@ -58,6 +67,7 @@ static GKMovieManager *mm ;
     for (int i = 0; i < self.downloadList.count; i++) {
         GKMovieDownloader *d = (GKMovieDownloader *)[self.downloadList objectAtIndex:i];
         if ([url isEqualToString:d.movieURL]) {
+            
             return YES;
         }
     }
@@ -70,6 +80,17 @@ static GKMovieManager *mm ;
     if (self.downloadList != nil && [self downloadListContainsURL:dUrl])
     {
         NSLog(@"下载列表存在该视频");
+        
+        for (int i = 0; i < mm.downloadList.count; i++)
+        {
+            GKMovieDownloader *d = [mm.downloadList objectAtIndex:i];
+            if ([d.movieURL isEqualToString:dUrl]) {
+                d.completion = [completion copy];
+                d.progress = [progress copy];
+                break;
+            }
+        }
+        
         return;
     }
     if ([GKMovieCache isContainMovieByURL:dUrl])

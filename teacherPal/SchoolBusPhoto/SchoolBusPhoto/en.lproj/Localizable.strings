@@ -199,6 +199,9 @@
 "yes"="Yes";
 "no"="No";
 
+"productname" = "Cloud School Bus";
+
+
 "title"="Title";
 
 "ignore"="Ignore";

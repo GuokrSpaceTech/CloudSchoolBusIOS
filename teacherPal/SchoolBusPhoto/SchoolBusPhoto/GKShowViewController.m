@@ -78,11 +78,18 @@
 
     
     photobutton=[UIButton buttonWithType:UIButtonTypeCustom];
-    photobutton.frame=CGRectMake(280, 5, 35, 35);
-    [photobutton setBackgroundImage:[UIImage imageNamed:@"upNormal.png"] forState:UIControlStateNormal];
-    [photobutton setBackgroundImage:[UIImage imageNamed:@"upHight.png"] forState:UIControlStateHighlighted];
+    photobutton.frame=CGRectMake(260, 0, 60, 45);
+    [photobutton setImage:[UIImage imageNamed:@"upNormal.png"] forState:UIControlStateNormal];
+    [photobutton setImage:[UIImage imageNamed:@"upHight.png"] forState:UIControlStateHighlighted];
     [photobutton addTarget:self action:@selector(OKClick:) forControlEvents:UIControlEventTouchUpInside];
     [navigationView addSubview:photobutton];
+    
+//    photobutton=[UIButton buttonWithType:UIButtonTypeCustom];
+//    photobutton.frame=CGRectMake(280, 5, 35, 35);
+//    [photobutton setBackgroundImage:[UIImage imageNamed:@"upNormal.png"] forState:UIControlStateNormal];
+//    [photobutton setBackgroundImage:[UIImage imageNamed:@"upHight.png"] forState:UIControlStateHighlighted];
+//    [photobutton addTarget:self action:@selector(OKClick:) forControlEvents:UIControlEventTouchUpInside];
+//    [navigationView addSubview:photobutton];
     
     titlelabel.text=NSLocalizedString(@"who", @"");
     [numbeLabel release];

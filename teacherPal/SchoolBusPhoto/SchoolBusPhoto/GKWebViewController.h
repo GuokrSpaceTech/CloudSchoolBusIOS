@@ -14,4 +14,5 @@
 }
 @property (nonatomic,retain)UIWebView *webController;
 @property (nonatomic,retain)NSString *urlstr;
+@property (nonatomic,retain)NSString *titlestr;
 @end

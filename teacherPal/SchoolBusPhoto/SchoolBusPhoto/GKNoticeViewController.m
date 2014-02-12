@@ -18,6 +18,7 @@
 @synthesize stuArr;
 @synthesize upData;
 @synthesize isConform;
+@synthesize _titleField;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -61,14 +62,23 @@
     bgView.backgroundColor=[UIColor colorWithRed:237/255.0 green:234/255.0 blue:225/255.0 alpha:1];
     [self.view addSubview:bgView];
     [bgView release];
-    _textView=[[UITextView alloc]initWithFrame:CGRectMake(10, navigationView.frame.size.height+navigationView.frame.origin.y+5, 300, 120)];
+    
+    _titleField=[[UITextField alloc]initWithFrame:CGRectMake(10, navigationView.frame.size.height+navigationView.frame.origin.y+5, 300, 30)];
+    _titleField.delegate=self;
+    _titleField.font=[UIFont systemFontOfSize:16];
+    _titleField.borderStyle=UITextBorderStyleRoundedRect;
+    _titleField.placeholder=NSLocalizedString(@"title", @"");
+    [_titleField becomeFirstResponder];
+    [self.view addSubview:_titleField];
+    
+    _textView=[[UITextView alloc]initWithFrame:CGRectMake(10, _titleField.frame.size.height+_titleField.frame.origin.y+5, 300, 120)];
     [self.view addSubview:_textView];
 	// Do any additional setup after loading the view.
     _textView.delegate=self;
     _textView.text=@"";
     _textView.layer.cornerRadius=5;
     _textView.font=[UIFont systemFontOfSize:16];
-    [_textView becomeFirstResponder];
+    //[_textView becomeFirstResponder];
     
     numberWord =[[UILabel alloc]initWithFrame:CGRectMake(10 , _textView.frame.size.height+_textView.frame.origin.y+5, 100, 20)];
     numberWord.text=@"";
@@ -199,6 +209,12 @@
         }
     }
     return number;
+}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if(textField==_titleField)
+        return YES;
+    return NO;
 }
 - (void)textViewDidChange:(UITextView *)textView
 {
@@ -340,13 +356,21 @@
     NSString *createT=[self creattime];
     
     NSString *title=nil;
-    if([_textView.text length]>10)
+    if([_titleField.text isEqualToString:@""] || _titleField.text==nil)
     {
-        title=[_textView.text substringToIndex:10];
+        if([_textView.text length]>10)
+        {
+            title=[_textView.text substringToIndex:10];
+        }
+        else
+        {
+            title=_textView.text;
+        }
+
     }
     else
     {
-        title=_textView.text;
+        title=_titleField.text;
     }
     
   
@@ -365,7 +389,6 @@
     if(buttonIndex==0)
     {
         // 不确认
-        
         NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:title,@"title",_textView.text,@"content",@"",@"createrid",studentID,@"slist",key,@"noticekey",createT,@"createtime",@"0",@"isconfirm", nil];
         [[EKRequest Instance]EKHTTPRequest:tnotice parameters:dic requestMethod:POST forDelegate:self];
 
@@ -384,6 +407,7 @@
     if(btn.tag==100)
     {
         [_textView resignFirstResponder];
+        [_titleField resignFirstResponder];
     }
     if(btn.tag==101)
     {
@@ -437,6 +461,7 @@
     if(code==1&&method==tnotice)
     {
         _textView.text=@"";
+        _titleField.text=@"";
         [studentView setAllButtonSelect:NO];
         [stuArr removeAllObjects];
         
@@ -527,6 +552,7 @@
     self._textView=nil;
     self.upData=nil;
     self.stuArr=nil;
+    self._titleField=nil;
     [super dealloc];
 }
 - (void)didReceiveMemoryWarning

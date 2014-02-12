@@ -14,7 +14,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UpLoader.h"
 #import "DBManager.h"
-
+#import "GKCustomButton.h"
 #define UPBUTTONTAG 1000
 @interface GKImagePickerViewController ()
 
@@ -73,27 +73,32 @@
     _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [_tableView release];
     
+    //170 69
+   // "ignore"="忽略";
     
-    
-    
-    delButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    delButton=[GKCustomButton buttonWithType:UIButtonTypeCustom];
+    delButton.titleRect=CGRectMake(5, 3, 65, 30);
+    delButton.titleLabel.font=[UIFont systemFontOfSize:16];
+    delButton.titleLabel.textAlignment=NSTextAlignmentCenter;
     [delButton setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"delN")) forState:UIControlStateNormal];
     [delButton setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"delH")) forState:UIControlStateHighlighted];
-    [delButton setFrame:CGRectMake(self.view.frame.size.width/2.0-35/2, self.view.frame.size.height-35-5, 35, 35)];
+    [delButton setTitle:NSLocalizedString(@"ignore", @"") forState:UIControlStateNormal];
+    //[delButton setFrame:CGRectMake(self.view.frame.size.width/2.0-35/2, self.view.frame.size.height-35-5, 170/2, 69/2.0)];
+    delButton.frame=CGRectMake(self.view.frame.size.width, self.view.frame.size.height-69/2.0, 170/2.0, 69/2.0);
     [delButton addTarget:self action:@selector(deleteBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:delButton];
-    delButton.hidden=YES;
+    //delButton.hidden=YES;
     
     
     photobutton=[UIButton buttonWithType:UIButtonTypeCustom];
-    photobutton.frame=CGRectMake(280, 5, 35, 35);
-    [photobutton setBackgroundImage:[UIImage imageNamed:@"upNormal.png"] forState:UIControlStateNormal];
-    [photobutton setBackgroundImage:[UIImage imageNamed:@"upHight.png"] forState:UIControlStateHighlighted];
+    photobutton.frame=CGRectMake(260, 0, 60, 45);
+    [photobutton setImage:[UIImage imageNamed:@"upNormal.png"] forState:UIControlStateNormal];
+    [photobutton setImage:[UIImage imageNamed:@"upHight.png"] forState:UIControlStateHighlighted];
     [photobutton addTarget:self action:@selector(upLoaderClilck:) forControlEvents:UIControlEventTouchUpInside];
     [navigationView addSubview:photobutton];
 
   //    badgeView=[[GKBadgeView alloc]initWithFrame:CGRectMake(38, 2, 16, 16)];
-    badgeView =[[GKBadgeView alloc]initWithFrame:CGRectMake(300, 2, 16, 16)];
+    badgeView =[[GKBadgeView alloc]initWithFrame:CGRectMake(297, 2, 16, 16)];
     badgeView.backgroundColor=[UIColor clearColor];
     badgeView.bagde=0;
     [navigationView addSubview:badgeView];
@@ -154,6 +159,31 @@
 	// Do any additional setup after loading the view.
 }
 
+// 忽略按钮出现消失 动画
+-(void)deleButtonAnimation:(BOOL)an
+{
+    if(an)
+    {
+       // void (^animation)()=^(void)
+       // {
+            //170 69
+            [UIView beginAnimations:@"appear" context:@""];
+            [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+            delButton.frame=CGRectMake(self.view.frame.size.width-170/2.0, self.view.frame.size.height-69/2.0, 170/2.0, 69/2.0);
+            [UIView commitAnimations];
+      //  };
+        //[UIView animateWithDuration:1.0 animations:animation];
+        
+
+    }
+    else
+    {
+        [UIView beginAnimations:@"disappear" context:@""];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        delButton.frame=CGRectMake(self.view.frame.size.width, self.view.frame.size.height-69/2.0, 170/2.0, 69/2.0);
+        [UIView commitAnimations];
+    }
+}
 -(void)deleteBtnClick:(UIButton *)btn
 {
     // 把 数据加入到数据库
@@ -274,7 +304,8 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    delButton.hidden = YES;
+   // delButton.hidden = YES;
+    [self deleButtonAnimation:NO];
     [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
 }
 //-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -631,7 +662,8 @@
        
         [selectArr removeAllObjects];
         [self playAnimation:0];
-        delButton.hidden=YES;
+       // delButton.hidden=YES;
+        [self deleButtonAnimation:NO];
     }
    
     else
@@ -713,18 +745,21 @@
         [self playAnimation:0];
         
         
-        delButton.hidden=YES;
+        //delButton.hidden=YES;
+         [self deleButtonAnimation:NO];
     }
     else
     {
         //countLabel.text=[NSString stringWithFormat:@"%d/%d",[selectArr count],[imageArr count]];
-        delButton.hidden=NO;
+       // delButton.hidden=NO;
+         [self deleButtonAnimation:YES];
         [self playAnimation:[selectArr count]];
     }
     
     
     
 }
+// 动画  按钮上显示所选照片数量
 -(void)playAnimation:(int)a
 {
     CABasicAnimation *an=[CABasicAnimation animationWithKeyPath:@"transform.scale"];

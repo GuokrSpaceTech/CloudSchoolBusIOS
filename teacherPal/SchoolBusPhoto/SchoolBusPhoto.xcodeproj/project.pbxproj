@@ -221,6 +221,7 @@
 		11B852C918335275005FA5B9 /* ETShowBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B852C518335275005FA5B9 /* ETShowBigImageViewController.m */; };
 		11B852CA18335275005FA5B9 /* GKShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B852C618335275005FA5B9 /* GKShowViewController.m */; };
 		11B852D4183368A0005FA5B9 /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B852D3183368A0005FA5B9 /* mail.png */; };
+		11BB992118AB15B9006273A7 /* qipao22@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BB992018AB15B9006273A7 /* qipao22@2x.png */; };
 		11BF896B18363221008E72F0 /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF896818363221008E72F0 /* 114.png */; };
 		11BF896D18363221008E72F0 /* ICON.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF896A18363221008E72F0 /* ICON.png */; };
 		11BF896F1836325F008E72F0 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF896E1836325F008E72F0 /* 120.png */; };
@@ -715,6 +716,7 @@
 		11B852C618335275005FA5B9 /* GKShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKShowViewController.m; sourceTree = "<group>"; };
 		11B852CB183352AE005FA5B9 /* GKShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKShowViewController.h; sourceTree = "<group>"; };
 		11B852D3183368A0005FA5B9 /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail.png; sourceTree = "<group>"; };
+		11BB992018AB15B9006273A7 /* qipao22@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qipao22@2x.png"; sourceTree = "<group>"; };
 		11BF896818363221008E72F0 /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
 		11BF896A18363221008E72F0 /* ICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ICON.png; sourceTree = "<group>"; };
 		11BF896E1836325F008E72F0 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
@@ -810,7 +812,6 @@
 		11EFE1EC1817EEF7009CE69F /* SRRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRefreshView.m; sourceTree = "<group>"; };
 		11EFE1ED1817EEF7009CE69F /* SRSlimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSlimeView.h; sourceTree = "<group>"; };
 		11EFE1EE1817EEF7009CE69F /* SRSlimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSlimeView.m; sourceTree = "<group>"; };
-		11FC0F39182C90D200442EF6 /* qipao-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qipao-2@2x.png"; sourceTree = "<group>"; };
 		11FC0F3B182C90DE00442EF6 /* qipao1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qipao1@2x.png"; sourceTree = "<group>"; };
 		11FC0F3D182C9ECC00442EF6 /* scoreBack_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scoreBack_new.png; sourceTree = "<group>"; };
 		11FC0F3E182C9ECC00442EF6 /* scoreBtn_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scoreBtn_default.png; sourceTree = "<group>"; };
@@ -1424,7 +1425,7 @@
 				1165E278182CFCE000B60A81 /* pic-2.png */,
 				1165E27A182CFCE000B60A81 /* pic-1.png */,
 				11FC0F3B182C90DE00442EF6 /* qipao1@2x.png */,
-				11FC0F39182C90D200442EF6 /* qipao-2@2x.png */,
+				11BB992018AB15B9006273A7 /* qipao22@2x.png */,
 				1193A6BE182BAF0C004011BC /* letterLine.png */,
 				11940234182360EB00F21FB8 /* M-1.png */,
 				11940235182360EB00F21FB8 /* M-2.png */,
@@ -2047,6 +2048,7 @@
 				1194023E182360EB00F21FB8 /* M-5.png in Resources */,
 				11BF897618363CF7008E72F0 /* homeNoticeEN.png in Resources */,
 				11D40E3318618700003009D0 /* alterPasswordSE.png in Resources */,
+				11BB992118AB15B9006273A7 /* qipao22@2x.png in Resources */,
 				11E27F96183C731F00CAE0BB /* textfield123.png in Resources */,
 				1102A7EF181A4FF500E6295C /* guanyu-5.png in Resources */,
 				11CE2A90187FF5AD00742001 /* imageerror.png in Resources */,

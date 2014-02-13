@@ -12,7 +12,7 @@
 #define LEFTMARGIN 5
 #define DISTANCE 5  // 间距.
 
-#define BUTTON_HEIGHT 30
+#define BUTTON_HEIGHT 40
 
 #define TAG 999
 
@@ -63,6 +63,7 @@
         }
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.titleLabel.numberOfLines = 2;
         [btn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];
         [btn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue-active"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateHighlighted];
         [btn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue-active"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateSelected];

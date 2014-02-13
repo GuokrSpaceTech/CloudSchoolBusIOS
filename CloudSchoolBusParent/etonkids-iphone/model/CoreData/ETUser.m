@@ -2,8 +2,8 @@
 //  ETUser.m
 //  etonkids-iphone
 //
-//  Created by CaiJingPeng on 13-11-5.
-//  Copyright (c) 2013年 wpf. All rights reserved.
+//  Created by CaiJingPeng on 14-2-13.
+//  Copyright (c) 2014年 wpf. All rights reserved.
 //
 
 #import "ETUser.h"
@@ -16,6 +16,8 @@
 @dynamic allowmutionline;
 @dynamic avatar;
 @dynamic birthday;
+@dynamic can_comment;
+@dynamic can_comment_action;
 @dynamic classname;
 @dynamic cnname;
 @dynamic enname;
@@ -31,7 +33,7 @@
 @dynamic uid_class;
 @dynamic uid_student;
 @dynamic username;
-@dynamic can_comment;
-@dynamic can_comment_action;
+@dynamic ordertitle;
+@dynamic orderenddate;
 
 @end

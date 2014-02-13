@@ -71,6 +71,8 @@
         user.username = login.username;
         user.can_comment = login.can_comment;
         user.can_comment_action = login.can_comment_action;
+        user.orderenddate = login.orderEndTime;
+        user.ordertitle = login.orderTitle;
         
         BOOL success = [delegate.managedObjectContext save:&error];
         NSLog(@"user save success: %d",success);
@@ -131,6 +133,8 @@
     login.username = user.username;
     login.can_comment_action = user.can_comment_action;
     login.can_comment = user.can_comment;
+    login.orderTitle = user.ordertitle;
+    login.orderEndTime = user.orderenddate;
     
     return login;
 }

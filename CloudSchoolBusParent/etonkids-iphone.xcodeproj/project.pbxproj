@@ -231,6 +231,7 @@
 		78A4201018223A5200D0DE50 /* fesimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A4200E18223A5200D0DE50 /* fesimg.png */; };
 		78A4201118223A5200D0DE50 /* attimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A4200F18223A5200D0DE50 /* attimg.png */; };
 		78AD8541186593540082E082 /* ETHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AD8540186593540082E082 /* ETHelpViewController.m */; };
+		78B06D8918AC64A10071EEF1 /* ETUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B06D8818AC64A10071EEF1 /* ETUser.m */; };
 		78BC611B17E85E0C0063B68A /* ETZoomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BC611A17E85E0C0063B68A /* ETZoomScrollView.m */; };
 		78C2ADB817E06F4E00E6A5CD /* tabbarBackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C2ADB717E06F4E00E6A5CD /* tabbarBackGround.png */; };
 		78C2ADBA17E06FEC00E6A5CD /* tabbarSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C2ADB917E06FEC00E6A5CD /* tabbarSelected.png */; };
@@ -289,7 +290,6 @@
 		78DFFBBB1848301C000BF443 /* 加餐.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DFFBB61848301C000BF443 /* 加餐.png */; };
 		78DFFBBC1848301C000BF443 /* 午餐.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DFFBB71848301C000BF443 /* 午餐.png */; };
 		78DFFBBD1848301C000BF443 /* 早餐.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DFFBB81848301C000BF443 /* 早餐.png */; };
-		78E892F01828EC0D00025EB5 /* ETUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E892EF1828EC0D00025EB5 /* ETUser.m */; };
 		78E892F21828F34D00025EB5 /* 012.png in Resources */ = {isa = PBXBuildFile; fileRef = 78E892F11828F34D00025EB5 /* 012.png */; };
 		78E892F41828F39500025EB5 /* noticeTabBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 78E892F31828F39500025EB5 /* noticeTabBack.png */; };
 		78E892FA182A1DB200025EB5 /* -vip.png in Resources */ = {isa = PBXBuildFile; fileRef = 78E892F5182A1DB200025EB5 /* -vip.png */; };
@@ -881,6 +881,8 @@
 		78A4200F18223A5200D0DE50 /* attimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attimg.png; sourceTree = "<group>"; };
 		78AD853F186593540082E082 /* ETHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETHelpViewController.h; sourceTree = "<group>"; };
 		78AD8540186593540082E082 /* ETHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETHelpViewController.m; sourceTree = "<group>"; };
+		78B06D8718AC64A10071EEF1 /* ETUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETUser.h; sourceTree = "<group>"; };
+		78B06D8818AC64A10071EEF1 /* ETUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETUser.m; sourceTree = "<group>"; };
 		78BC611917E85E0C0063B68A /* ETZoomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETZoomScrollView.h; sourceTree = "<group>"; };
 		78BC611A17E85E0C0063B68A /* ETZoomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETZoomScrollView.m; sourceTree = "<group>"; };
 		78C2ADB717E06F4E00E6A5CD /* tabbarBackGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbarBackGround.png; sourceTree = "<group>"; };
@@ -956,8 +958,6 @@
 		78DFFBB61848301C000BF443 /* 加餐.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加餐.png"; sourceTree = "<group>"; };
 		78DFFBB71848301C000BF443 /* 午餐.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "午餐.png"; sourceTree = "<group>"; };
 		78DFFBB81848301C000BF443 /* 早餐.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "早餐.png"; sourceTree = "<group>"; };
-		78E892EE1828EC0D00025EB5 /* ETUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETUser.h; sourceTree = "<group>"; };
-		78E892EF1828EC0D00025EB5 /* ETUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETUser.m; sourceTree = "<group>"; };
 		78E892F11828F34D00025EB5 /* 012.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 012.png; sourceTree = "<group>"; };
 		78E892F31828F39500025EB5 /* noticeTabBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noticeTabBack.png; sourceTree = "<group>"; };
 		78E892F5182A1DB200025EB5 /* -vip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "-vip.png"; sourceTree = "<group>"; };
@@ -1789,12 +1789,12 @@
 				781E53A9181E57510052851A /* ETNoticPicture.m */,
 				781E53AB181E57520052851A /* ETActicalPicture.h */,
 				781E53AC181E57520052851A /* ETActicalPicture.m */,
-				78E892EE1828EC0D00025EB5 /* ETUser.h */,
-				78E892EF1828EC0D00025EB5 /* ETUser.m */,
 				789EAA491839C02A0029D4B0 /* ETtest.h */,
 				789EAA4A1839C02A0029D4B0 /* ETtest.m */,
 				78952FE5184C6488001C30D2 /* ETFood.h */,
 				78952FE6184C6488001C30D2 /* ETFood.m */,
+				78B06D8718AC64A10071EEF1 /* ETUser.h */,
+				78B06D8818AC64A10071EEF1 /* ETUser.m */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -3121,6 +3121,7 @@
 				F95021CD16DCAF640079A05E /* TimelineQuery.m in Sources */,
 				F95021CE16DCAF640079A05E /* UserQuery.m in Sources */,
 				F95021CF16DCAF640079A05E /* WeiboQuery.m in Sources */,
+				78B06D8918AC64A10071EEF1 /* ETUser.m in Sources */,
 				F95021D016DCAF640079A05E /* WeiboRequest.m in Sources */,
 				F95021D116DCAF640079A05E /* WeiboSignIn.m in Sources */,
 				78F841B41819280D007722AE /* ETPrivateViewController.m in Sources */,
@@ -3146,7 +3147,6 @@
 				F950241516DCB61B0079A05E /* UINoteView.m in Sources */,
 				F950241616DCB61B0079A05E /* UITableViewFriendCell.m in Sources */,
 				F950241716DCB61B0079A05E /* UIWaitingView.m in Sources */,
-				78E892F01828EC0D00025EB5 /* ETUser.m in Sources */,
 				F950241816DCB61B0079A05E /* WordsLeftView.m in Sources */,
 				F950241916DCB61B0079A05E /* NSObject+SBJSON.m in Sources */,
 				F950241A16DCB61B0079A05E /* NSString+SBJSON.m in Sources */,

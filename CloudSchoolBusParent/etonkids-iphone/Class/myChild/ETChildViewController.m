@@ -132,7 +132,7 @@
         [cell.contentView addSubview:headImage];
         [headImage release];
         
-        UILabel *nicknamelabel=[[UILabel alloc]initWithFrame:CGRectMake(100,35,170,20)];
+        UILabel *nicknamelabel=[[UILabel alloc]initWithFrame:CGRectMake(100,25,170,20)];
         nicknamelabel.tag = 101;
 //        nicknamelabel.textAlignment=UITextAlignmentRight;
         [cell.contentView addSubview:nicknamelabel];
@@ -141,14 +141,18 @@
         nicknamelabel.text=user.nickname;
         [nicknamelabel release];
         
-//        UILabel *typelabel=[[UILabel alloc]initWithFrame:CGRectMake(100,50,170,20)];
-//        typelabel.tag = 101;
-////        typelabel.textAlignment=UITextAlignmentRight;
-//        [cell.contentView addSubview:typelabel];
-//        typelabel.backgroundColor=[UIColor clearColor];
-//        typelabel.font=[UIFont systemFontOfSize:16];
-//        typelabel.text=@"类型：VIP";
-//        [typelabel release];
+        NSDate *d = [NSDate dateWithTimeIntervalSince1970:user.orderEndTime.integerValue];
+        NSDateFormatter *f = [[[NSDateFormatter alloc] init] autorelease];
+        [f setDateFormat:@"yyyy-MM-dd"];
+        
+        UILabel *orderlabel = [[UILabel alloc]initWithFrame:CGRectMake(100,55,170,20)];
+//        typelabel.tag = 102;
+//        typelabel.textAlignment=UITextAlignmentRight;
+        [cell.contentView addSubview:orderlabel];
+        orderlabel.backgroundColor = [UIColor clearColor];
+        orderlabel.font = [UIFont systemFontOfSize:16];
+        orderlabel.text = [NSString stringWithFormat:@"%@%@",[f stringFromDate:d],LOCAL(@"daoqi", @"到期")];;
+        [orderlabel release];
         
         
         

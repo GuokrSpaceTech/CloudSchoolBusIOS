@@ -116,7 +116,7 @@
     if (section == 0) {
         return 4;
     }
-    return 3;
+    return 4;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -226,7 +226,7 @@
     }
     else if (indexPath.section == 1) {
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        if (indexPath.row==0)
+        if (indexPath.row == 0)
         {
             cell.textLabel.backgroundColor=[UIColor clearColor];
             cell.textLabel.text=LOCAL(@"Name", @"姓名");
@@ -242,7 +242,7 @@
             [cell.contentView addSubview:namelabel];
             [namelabel release];
         }
-        else if(indexPath.row==1)
+        else if(indexPath.row == 1)
         {
             cell.textLabel.backgroundColor=[UIColor clearColor];
             cell.textLabel.text=LOCAL(@"Class", @"班级");
@@ -256,7 +256,7 @@
             [classlabel release];
             
         }
-        else if(indexPath.row==2)
+        else if(indexPath.row == 2)
         {
             cell.textLabel.backgroundColor=[UIColor clearColor];
             cell.textLabel.text=LOCAL(@"School", @"学校");
@@ -276,6 +276,25 @@
             schoollabel.backgroundColor=[UIColor clearColor];
             [schoollabel release];
         }
+        else if (indexPath.row == 3)
+        {
+            cell.textLabel.backgroundColor=[UIColor clearColor];
+            cell.textLabel.text=LOCAL(@"fuwuzhuangtai", @"服务状态");
+            
+            NSDate *d = [NSDate dateWithTimeIntervalSince1970:user.orderEndTime.integerValue];
+            NSDateFormatter *f = [[[NSDateFormatter alloc] init] autorelease];
+            [f setDateFormat:@"yyyy-MM-dd"];
+            
+            
+            UILabel  *orderlabel=[[UILabel alloc]initWithFrame:CGRectMake(100,12,180,20)];
+            orderlabel.textAlignment=UITextAlignmentRight;
+            [cell.contentView addSubview:orderlabel];
+            orderlabel.backgroundColor = [UIColor clearColor];
+            orderlabel.font = [UIFont systemFontOfSize:CONTENTFONTSIZE];
+            orderlabel.text = [NSString stringWithFormat:@"%@%@",[f stringFromDate:d],LOCAL(@"daoqi", @"到期")];
+            [orderlabel release];
+        }
+        
     }
     
     

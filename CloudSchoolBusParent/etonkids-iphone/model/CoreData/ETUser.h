@@ -2,8 +2,8 @@
 //  ETUser.h
 //  etonkids-iphone
 //
-//  Created by CaiJingPeng on 13-11-5.
-//  Copyright (c) 2013年 wpf. All rights reserved.
+//  Created by CaiJingPeng on 14-2-13.
+//  Copyright (c) 2014年 wpf. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -17,6 +17,8 @@
 @property (nonatomic, retain) NSString * allowmutionline;
 @property (nonatomic, retain) NSString * avatar;
 @property (nonatomic, retain) NSString * birthday;
+@property (nonatomic, retain) NSString * can_comment;
+@property (nonatomic, retain) NSString * can_comment_action;
 @property (nonatomic, retain) NSString * classname;
 @property (nonatomic, retain) NSString * cnname;
 @property (nonatomic, retain) NSString * enname;
@@ -32,7 +34,7 @@
 @property (nonatomic, retain) NSString * uid_class;
 @property (nonatomic, retain) NSString * uid_student;
 @property (nonatomic, retain) NSString * username;
-@property (nonatomic, retain) NSString * can_comment;
-@property (nonatomic, retain) NSString * can_comment_action;
+@property (nonatomic, retain) NSString * ordertitle;
+@property (nonatomic, retain) NSString * orderenddate;
 
 @end

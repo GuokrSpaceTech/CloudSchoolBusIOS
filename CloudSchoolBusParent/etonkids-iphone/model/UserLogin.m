@@ -23,22 +23,24 @@ static UserLogin *current=nil;
             avatar,
             loginStatus,
             allowmutionline,
-pid,
-uid_class,
-uid_student,
-ischeck_mobile,
-skinid,
-username,
-can_comment,
-can_comment_action,
+            pid,
+            uid_class,
+            uid_student,
+            ischeck_mobile,
+            skinid,
+            username,
+            can_comment,
+            can_comment_action,
 //            pull_rate,
 //            company,
 //            copyright,
 //            phone,
 //            product,
-studentId,
+            studentId,
 //website,
-           schoolname;
+            schoolname,
+            orderTitle,
+            orderEndTime;
 
 
 #pragma --
@@ -139,6 +141,8 @@ studentId,
     self.pid = nil;
     self.uid_student = nil;
     self.uid_class = nil;
+    self.orderEndTime = nil;
+    self.orderTitle = nil;
 
 //    self.pull_rate = nil;
 //    self.company = nil;

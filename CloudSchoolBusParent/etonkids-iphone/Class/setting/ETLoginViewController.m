@@ -499,6 +499,8 @@
         user.ischeck_mobile = [NSString stringWithFormat:@"%@",[dic objectForKey:@"ischeck_mobile"]];
         user.skinid = [NSString stringWithFormat:@"%@",[dic objectForKey:@"skinid"]];
         user.username = [NSString stringWithFormat:@"%@",[dic objectForKey:@"username"]];
+        user.orderTitle = [NSString stringWithFormat:@"%@",[dic objectForKey:@"ordertitle"]];
+        user.orderEndTime = [NSString stringWithFormat:@"%@",[dic objectForKey:@"orderendtime"]];
 
         [[EKRequest Instance] EKHTTPRequest:classinfo parameters:nil requestMethod:GET forDelegate:self];
         

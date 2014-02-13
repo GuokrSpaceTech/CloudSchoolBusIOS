@@ -133,6 +133,8 @@
         <attribute name="ischeck_mobile" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nikename" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orderenddate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ordertitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="schoolname" optional="YES" attributeType="String" syncable="YES"/>

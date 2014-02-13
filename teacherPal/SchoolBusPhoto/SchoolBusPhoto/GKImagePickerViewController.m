@@ -77,7 +77,7 @@
    // "ignore"="忽略";
     
     delButton=[GKCustomButton buttonWithType:UIButtonTypeCustom];
-    delButton.titleRect=CGRectMake(5, 3, 65, 30);
+    delButton.titleRect=CGRectMake(5, 2, 65, 30);
     delButton.titleLabel.font=[UIFont systemFontOfSize:16];
     delButton.titleLabel.textAlignment=NSTextAlignmentCenter;
     [delButton setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"delN")) forState:UIControlStateNormal];
@@ -184,13 +184,41 @@
         [UIView commitAnimations];
     }
 }
+//设置alert 文字左对齐  //ios7 一下版本实用
+- (void)willPresentAlertView:(UIAlertView *)alertView
+{
+    for (UIView *view in alertView.subviews) {
+        
+        NSLog(@"%@",view);
+        if([view isKindOfClass:[UILabel class]])
+        {
+            UILabel *label =(UILabel *)view;
+            if(![label.text isEqualToString:NSLocalizedString(@"ignore", @"")])
+            {
+                if(IOSVERSION>=6.0)
+                {
+                    label.textAlignment=NSTextAlignmentLeft;
+                }
+                else
+                {
+                    label.textAlignment=UITextAlignmentLeft;
+                }
+
+            }
+        }
+    }
+
+}
 -(void)deleteBtnClick:(UIButton *)btn
 {
     // 把 数据加入到数据库
-    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"忽略照片" message:@"选择忽略后，改照片将不再程序中显示，并不会删除照片，你依然可以在相册中查看" delegate:self cancelButtonTitle:NSLocalizedString(@"no", @"") otherButtonTitles:NSLocalizedString(@"yes", @""), nil];
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"ignore", @"") message:@"选择忽略后，改照片将不再程序中显示，并不会删除照片，你依然可以在相册中查看" delegate:self cancelButtonTitle:NSLocalizedString(@"no", @"") otherButtonTitles:NSLocalizedString(@"yes", @""), nil];
+   // NSLog(@"%@,%d",alert.subviews,[alert.subviews count]);
+    
     [alert show];
     [alert release];
 }
+
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if(buttonIndex==0)

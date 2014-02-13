@@ -72,6 +72,7 @@ static GKUpQueue *gkqueue=nil;
     [request setDidFailSelector:@selector(requestDidFailed:)];
     //[request setdid];
     [request setDidFinishSelector:@selector(requestDidSuccess:)];
+
    [request setFile:path forKey:@"fbody"];
     [request addPostValue:@"article" forKey:@"pictype"];
     //[request addPostValue:@"jpg" forKey:@"fext"];
@@ -293,7 +294,7 @@ static GKUpQueue *gkqueue=nil;
     
     NSLog(@"%@",_request.error.description);
     
-    
+     NSLog(@"%@",_request.responseString);
     if(_request.error.code==6) // 改文件不存在
     {
         NSString *picId=[[_request userInfo] objectForKey:@"nameid"];

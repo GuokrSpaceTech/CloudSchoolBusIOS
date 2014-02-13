@@ -108,25 +108,39 @@
         [cell.contentView addSubview:imageView];
         [imageView release];
     
-        UILabel *nameLabel=[[UILabel alloc]initWithFrame:CGRectMake(75, 15, 120, 20)];
+        UILabel *nameLabel=[[UILabel alloc]initWithFrame:CGRectMake(75, 15, 70, 20)];
         nameLabel.backgroundColor=[UIColor clearColor];
         nameLabel.tag=CELLTAG+1;
         nameLabel.font=[UIFont systemFontOfSize:15];
         [cell.contentView addSubview:nameLabel];
         [nameLabel release];
         
-        UILabel *ageLabel=[[UILabel alloc]initWithFrame:CGRectMake(210, 15, 100, 20)];
+        UILabel *ageLabel=[[UILabel alloc]initWithFrame:CGRectMake(150 , 15, 60, 20)];
         ageLabel.backgroundColor=[UIColor clearColor];
         ageLabel.font=[UIFont systemFontOfSize:14];
+        if(IOSVERSION>=6.0)
+            ageLabel.textAlignment=NSTextAlignmentCenter;
+        else
+            ageLabel.textAlignment=UITextAlignmentCenter;
         ageLabel.tag=CELLTAG+2;
         [cell.contentView addSubview:ageLabel];
         [ageLabel release];
+        
+        UILabel *priceLabel=[[UILabel alloc]initWithFrame:CGRectMake(230, 15, 70, 20)];
+        priceLabel.backgroundColor=[UIColor clearColor];
+        priceLabel.tag=CELLTAG+3;
+        priceLabel.font=[UIFont systemFontOfSize:14];
+        [cell.contentView addSubview:priceLabel];
+        [priceLabel release];
         
         UIImageView *LineimageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 49, 320, 1)];
         
         LineimageView.image=IMAGENAME(IMAGEWITHPATH(@"line"));;
         [cell.contentView addSubview:LineimageView];
         [LineimageView release];
+        
+        
+   
         
     }
      Student *st=[studentArr objectAtIndex:indexPath.row];
@@ -143,9 +157,33 @@
     }
     else
     {
-        ageLabel.text=[NSString stringWithFormat:@"%@岁",st.age];
+        ageLabel.text=[NSString stringWithFormat:@"%@ %@",st.age,NSLocalizedString(@"year", @"")];
+    }
+    UILabel *priceLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+3];
+    
+    if(st.orderendtime==nil)
+    {
+        priceLabel.text=NSLocalizedString(@"Notservice", @"");
+        priceLabel.textColor=[UIColor redColor];
+        
+    }
+    else
+    {
+        int time=[[NSDate date] timeIntervalSinceNow];
+        if(time<[[st orderendtime] integerValue])
+        {
+            priceLabel.text=NSLocalizedString(@"Inservice", @"");
+            priceLabel.textColor=[UIColor blackColor];
+        }
+        else
+        {
+            priceLabel.text=NSLocalizedString(@"renewal", @"");
+            priceLabel.textColor=[UIColor redColor];
+        }
+        
     }
     
+  
     return cell;
     
 }

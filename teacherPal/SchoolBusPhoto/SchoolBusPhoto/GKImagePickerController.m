@@ -107,8 +107,9 @@
     [topToolsbar addSubview:tBack];
     [tBack release];
     
+    NSString *str=[NSString stringWithFormat:@"  %@",NSLocalizedString(@"back", @"")];
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backBtn setTitle:@"  返回" forState:UIControlStateNormal];
+    [backBtn setTitle:str forState:UIControlStateNormal];
     [backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     backBtn.titleLabel.font = [UIFont boldSystemFontOfSize:12];
     [backBtn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-back-black-alt"] stretchableImageWithLeftCapWidth:13 topCapHeight:0] forState:UIControlStateNormal];
@@ -144,7 +145,7 @@
             nextBtn = button;
             
             [button setFrame:CGRectMake(0, 0, 60, 30)];
-            [button setTitle:@"下一步" forState:UIControlStateNormal];
+            [button setTitle:NSLocalizedString(@"next", @"") forState:UIControlStateNormal];
             [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             button.titleLabel.font = [UIFont boldSystemFontOfSize:12];
             [button setBackgroundImage:[[UIImage imageNamed:@"navbar-button-green-disabled"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];

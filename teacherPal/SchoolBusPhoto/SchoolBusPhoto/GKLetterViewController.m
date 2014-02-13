@@ -12,6 +12,7 @@
 #import "GKShowBigImageViewController.h"
 #import "KKNavigationController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "GKAppDelegate.h"
 @interface GKLetterViewController ()
 
 @end
@@ -225,7 +226,7 @@
     {
         UIImagePickerController *pickerController=[[UIImagePickerController alloc]init];
         pickerController.delegate=self;
-        pickerController.allowsEditing=YES;
+        pickerController.allowsEditing=NO;
         NSLog(@"paiz");
         if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
         {
@@ -245,7 +246,7 @@
     {
         UIImagePickerController *pickerController=[[UIImagePickerController alloc]init];
         pickerController.delegate=self;
-        pickerController.allowsEditing=YES;
+        pickerController.allowsEditing=NO;
         NSLog(@"选取");
         if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
         {
@@ -289,48 +290,36 @@
 {
     
 
-    UIImage *theImage;
-    if ([picker allowsEditing]){
-        //获取用户编辑之后的图像
-        theImage = [info objectForKey:UIImagePickerControllerEditedImage];
-    } else {
-        // 照片的元数据参数
-        theImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-        
-    }
-    
-    
-    
-    
-//    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-//    [library assetForURL:[info objectForKey:UIImagePickerControllerReferenceURL]
-//             resultBlock:^(ALAsset *asset)
-//     {
-//        // NSData * data = UIImageJPEGRepresentation(image, 0.5);
-//         
-//     }failureBlock:^(NSError *error){
-//         NSLog(@"couldn't get asset: %@", error);
-//     }
-//     ];
-//    
-    
-    
-   // fixOrientation111()
-    
-    NSData *data= UIImageJPEGRepresentation(theImage, 0.5);
-    
-    UIImage *image=[UIImage imageWithData:data];
-    NSData *dataqq=UIImageJPEGRepresentation(image, 1);
-    NSString *base64=[[[NSString alloc]initWithData:[GTMBase64 encodeData:dataqq] encoding:NSUTF8StringEncoding] autorelease];
-    
-    int ftime=[[NSDate date]timeIntervalSince1970];
+    @autoreleasepool {
 
-    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"img",@"lettertype",base64,@"fbody",[NSNumber numberWithInt:ftime],@"ftime",[NSNumber numberWithInt:[base64 length]],@"fsize",@"jpg",@"fext", nil];
-    [[EKRequest Instance]EKHTTPRequest:LetterF parameters:dic requestMethod:POST forDelegate:self];
-    
-    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+        UIImage *theImage;
+        if ([picker allowsEditing]){
+            //获取用户编辑之后的图像
+            theImage = [info objectForKey:UIImagePickerControllerEditedImage];
+        } else {
+            // 照片的元数据参数
+            theImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+            
+        }
         
-    }];
+        
+        NSData *data= UIImageJPEGRepresentation(theImage, 0.5);
+        
+        UIImage *image=[UIImage imageWithData:data];
+        NSData *dataqq=UIImageJPEGRepresentation(image, 1);
+        NSString *base64=[[[NSString alloc]initWithData:[GTMBase64 encodeData:dataqq] encoding:NSUTF8StringEncoding] autorelease];
+        
+        int ftime=[[NSDate date]timeIntervalSince1970];
+        
+        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"img",@"lettertype",base64,@"fbody",[NSNumber numberWithInt:ftime],@"ftime",[NSNumber numberWithInt:[base64 length]],@"fsize",@"jpg",@"fext", nil];
+        [[EKRequest Instance]EKHTTPRequest:LetterF parameters:dic requestMethod:POST forDelegate:self];
+        
+
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+
+    }
     
 
 }
@@ -358,8 +347,8 @@
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
 {
     NSLog(@"%d",code);
-    NSString *str=[[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding] autorelease];
-    NSLog(@"%@",str);
+//    NSString *str=[[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding] autorelease];
+//    NSLog(@"%@",str);
        [_slimeView endRefresh];
 //    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"code %d",code] message:str delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
 //    [alert show];

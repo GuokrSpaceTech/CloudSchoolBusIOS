@@ -134,7 +134,7 @@
          // 左气泡
 //        labelWho.frame=CGRectMake(120, 20, 60, 20);
 
-       
+    
         
         if([_letter.letterLetterType isEqualToString:@"txt"])
         {
@@ -181,6 +181,7 @@
     }
     
 }
+
 -(void)tapClick:(UITapGestureRecognizer *)tap
 {
     [delegate clickImageViewLookImage:letter.letterContent];

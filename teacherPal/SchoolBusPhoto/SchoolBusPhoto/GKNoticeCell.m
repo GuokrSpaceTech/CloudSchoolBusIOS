@@ -270,8 +270,8 @@
     
     
 
-    
-    
+   // NSLocalizedString(@"Confirmednotice",@"")
+
     
     lineImageView.frame=CGRectMake(10, 10+height+5, 300, 1);
     timeLabel.text=[self timeStr:notice.addtime];
@@ -280,7 +280,7 @@
     {
         huizhiLabel.frame=CGRectMake(200, 10+height+10, 100, 15);
         huizhiLabel.textColor=[UIColor redColor];
-        huizhiLabel.text=[NSString stringWithFormat:@"已回执%d人",[notice.sisconfirm count]];
+        huizhiLabel.text=[NSString stringWithFormat:@"%@%d%@",NSLocalizedString(@"Confirmednotice",@""), [notice.sisconfirm count],NSLocalizedString(@"people",@"")];
         IconImageView.image=[UIImage imageNamed:@"noticeStar.png"];
       
 

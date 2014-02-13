@@ -28,6 +28,7 @@ studentno,
 isinstalled,
 online,
 uid,
+orderendtime,
 stunumber;
 
 -(void)dealloc
@@ -50,6 +51,7 @@ stunumber;
     self.age=nil;
     self.uid=nil;
     self.stunumber=nil;
+    self.orderendtime=nil;
     [super dealloc];
 }
 @end

@@ -39,8 +39,9 @@
     
     [_jiaoshiLogin setImage:helper];
     
-    
-    
+
+    _userName.placeholder=NSLocalizedString(@"classaccount", @"");
+    _passWord.placeholder=NSLocalizedString(@"passwordlogin", @"");
     [_loginBtn setTitle:NSLocalizedString(@"login", @"") forState:UIControlStateNormal];
     GKUserLogin *user=[GKUserLogin currentLogin];
     
@@ -379,6 +380,7 @@
             student.online=[studentInfo objectForKey:@"online"];
             student.uid=[studentInfo objectForKey:@"uid"];
             student.stunumber=[studentInfo objectForKey:@"studentno"];
+            student.orderendtime=[studentInfo objectForKey:@"orderendtime"];
             [studentArr addObject:student];
             [student release];
             

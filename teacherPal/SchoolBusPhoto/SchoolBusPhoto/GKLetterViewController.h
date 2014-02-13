@@ -14,6 +14,7 @@
 #import "Letter.h"
 #import "GKMainViewController.h"
 #import "SRRefreshView.h"
+
 @interface GKLetterViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate,EKProtocol,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,SRRefreshDelegate,letterCellDelegate>
 {
     UITableView *_tableView;
@@ -21,7 +22,7 @@
     UITextField *inputField;
     UIView  *inputView;
     
-
+ 
 }
 @property (nonatomic,retain)UITableView *_tableView;
 @property (nonatomic,retain)NSMutableArray *dataArr;

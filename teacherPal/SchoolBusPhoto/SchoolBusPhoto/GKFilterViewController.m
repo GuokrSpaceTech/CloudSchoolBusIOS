@@ -175,9 +175,11 @@
         tBack.image = [UIImage imageNamed:@"edit-tray-background.png"];
         [view addSubview:tBack];
         [tBack release];
-        
+   
+       
+        NSString *remake=[NSString stringWithFormat:@"  %@",NSLocalizedString(@"remake", @"")];
         UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [backBtn setTitle:@"  重拍" forState:UIControlStateNormal];
+        [backBtn setTitle:remake forState:UIControlStateNormal];
         [backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         backBtn.titleLabel.font = [UIFont boldSystemFontOfSize:12];
         [backBtn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-back-black-alt"] stretchableImageWithLeftCapWidth:13 topCapHeight:0] forState:UIControlStateNormal];
@@ -188,7 +190,7 @@
         [self.view addSubview:backBtn];
         
         UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [nextBtn setTitle:@"下一步" forState:UIControlStateNormal];
+        //[nextBtn setTitle:@"ddd" forState:UIControlStateNormal];
         [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         nextBtn.titleLabel.font = [UIFont boldSystemFontOfSize:12];
         [nextBtn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-green"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];

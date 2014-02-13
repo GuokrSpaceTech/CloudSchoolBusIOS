@@ -13,6 +13,7 @@
 #import "GKStudentView.h"
 #import "EKRequest.h"
 #import "GTMBase64.h"
+#import "MBProgressHUD.h"
 @interface GKNoticeViewController : GKBaseViewController<UITextViewDelegate,studentViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EKProtocol,UIAlertViewDelegate,UITextFieldDelegate>
 {
     UITextView *_textView;
@@ -22,6 +23,7 @@
     UIImageView *selectImageView;
     
     UILabel *numberWord;
+    MBProgressHUD *HUD;
     
 }
 @property (nonatomic,assign)BOOL isConform;

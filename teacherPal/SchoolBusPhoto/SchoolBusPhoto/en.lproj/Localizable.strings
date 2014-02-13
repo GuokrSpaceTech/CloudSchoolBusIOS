@@ -205,3 +205,16 @@
 "title"="Title";
 
 "ignore"="Ignore";
+"classaccount"="Class Account";
+"passwordlogin"="Password";
+
+"next"="Next";
+"back"="Back";
+"remake"="Remake";
+"state"="State";
+"Notservice"="Not yet in service";
+"Inservice"="In service";
+"renewal"="Waiting for a renewal";
+"Confirmednotice"=" Confirmed:";
+"people"="";
+

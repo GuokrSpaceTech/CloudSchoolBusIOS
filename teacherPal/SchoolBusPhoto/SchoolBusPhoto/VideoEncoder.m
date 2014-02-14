@@ -8,7 +8,6 @@
 
 #import "VideoEncoder.h"
 
-#define MAX_RECORD_TIMING 15
 
 @implementation VideoEncoder
 
@@ -86,8 +85,8 @@
 
 - (BOOL)encodeFrame:(CMSampleBufferRef)sampleBuffer isVideo:(BOOL)bVideo
 {
-//    @synchronized(self)
-//    {
+    @synchronized(self)
+    {
         if (CMSampleBufferDataIsReady(sampleBuffer))
         {
             if (_writer.status == AVAssetWriterStatusUnknown)
@@ -101,7 +100,9 @@
             }
             if (_writer.status == AVAssetWriterStatusFailed)
             {
-                NSLog(@"writer error %@", _writer.error.localizedDescription);
+                CMTime startTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
+                float s = ((double)startTime.value)/startTime.timescale;
+                NSLog(@"writer error %@,%f", _writer.error.localizedDescription,s);
                 return NO;
             }
             
@@ -113,17 +114,8 @@
                     [_videoInput appendSampleBuffer:sampleBuffer];
                     
                     CMTime startTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
-                    
                     float s = ((double)startTime.value)/startTime.timescale;
-                    
-                    float value = (s - time) / MAX_RECORD_TIMING;
-                    //                NSLog(@"progress : %f",value);
-                    if (self.slider) {
-                        [self performSelectorOnMainThread:@selector(setProgress:) withObject:[NSString stringWithFormat:@"%f",value] waitUntilDone:NO];
-                        if (self.slider.progress >= 1) {
-                            [[NSNotificationCenter defaultCenter] postNotificationName:@"stopRecord" object:nil];
-                        }
-                    }
+//                    NSLog(@"~~~~~~~~~ : %f",s);
                     
                     return YES;
                 }
@@ -137,10 +129,8 @@
                 }
             }
             
-            
-            
         }
-//    }
+    }
     
     return NO;
 }

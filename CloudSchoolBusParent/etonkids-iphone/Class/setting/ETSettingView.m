@@ -103,21 +103,21 @@
         if (indexPath.row == 0)
         {
             cell.textLabel.backgroundColor=[UIColor clearColor];
-            cell.textLabel.text = @"关闭自动播放";
+            cell.textLabel.text = LOCAL(@"guanbizidongbofnag", @"");
             cell.backgroundColor = [UIColor whiteColor];
             cell.selectionStyle=UITableViewCellSelectionStyleBlue;
         }
         else if (indexPath.row == 1)
         {
             cell.textLabel.backgroundColor=[UIColor clearColor];
-            cell.textLabel.text = @"Wifi下自动播放";
+            cell.textLabel.text = LOCAL(@"wifizidongbofang", @"");
             cell.backgroundColor = [UIColor whiteColor];
             cell.selectionStyle=UITableViewCellSelectionStyleBlue;
         }
         else if (indexPath.row == 2)
         {
             cell.textLabel.backgroundColor=[UIColor clearColor];
-            cell.textLabel.text = @"始终自动播放";
+            cell.textLabel.text = LOCAL(@"shizhongzidongbofang", @"");
             cell.backgroundColor = [UIColor whiteColor];
             cell.selectionStyle=UITableViewCellSelectionStyleBlue;
         }

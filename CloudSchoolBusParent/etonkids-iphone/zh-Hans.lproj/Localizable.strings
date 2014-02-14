@@ -467,3 +467,10 @@
 "baocunshipin" = "保存视频";
 "fuwuzhuangtai" = "服务状态";
 "daoqi" = "到期";
+
+
+"guanbizidongbofnag" = "关闭自动播放";
+"wifizidongbofang" = "WiFi下自动播放";
+"shizhongzidongbofang" = "始终自动播放";
+
+

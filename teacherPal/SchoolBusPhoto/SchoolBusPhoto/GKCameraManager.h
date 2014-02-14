@@ -24,9 +24,12 @@
 @interface GKCameraManager : NSObject
 {
     NSString* capfilename;
+    float time;
+    float lastTime;
 }
 
 @property (atomic, readwrite) BOOL isCapturing;
+@property (nonatomic, retain) NSTimer *progressTimer;
 @property (atomic, readwrite) BOOL isPaused;
 @property (nonatomic,assign) id<GKCameraManagerDelegate> delegate;
 

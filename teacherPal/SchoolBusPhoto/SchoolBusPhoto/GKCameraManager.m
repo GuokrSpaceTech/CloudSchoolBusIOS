@@ -9,6 +9,7 @@
 #import "GKCameraManager.h"
 #import "UIImage+GKImage.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#define MAX_RECORD_TIMING 15
 
 
 static int frameNum = 0;
@@ -47,7 +48,7 @@ static GKCameraManager *cameraManager;
 @end
 
 @implementation GKCameraManager
-@synthesize delegate;
+@synthesize delegate,progressTimer;
 
 + (id)manager
 {
@@ -468,8 +469,26 @@ static GKCameraManager *cameraManager;
             self.isCapturing = YES;
         }
     }
+    
+    if (_progress) {
+        time = 0.0f;
+        _progress.progress = 0.0f;
+        self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1/30.0f target:self selector:@selector(takeTiming) userInfo:nil repeats:YES];
+    }
+    
 }
+- (void)takeTiming{
+    
+//    NSLog(@"###");
+    
+    time+=1/30.0f;
 
+    _progress.progress = time/MAX_RECORD_TIMING;
+    
+    if (_progress.progress >= 1) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"stopRecord" object:nil];
+    }
+}
 
 //新建相册
 - (void)saveToAlbumWithVideo:(NSURL *)videoURL
@@ -533,6 +552,7 @@ static GKCameraManager *cameraManager;
             NSURL* url = [NSURL fileURLWithPath:path];
             _currentFile++;
             
+            [self.progressTimer invalidate];
             
             // serialize with audio and video capture
             
@@ -552,15 +572,15 @@ static GKCameraManager *cameraManager;
                         if (session.status == AVAssetExportSessionStatusCompleted)
                         {
                             
-                            [self saveToAlbumWithVideo:outputURL completionBlock:^{
+//                            [self saveToAlbumWithVideo:outputURL completionBlock:^{
                                 [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
                                 
                                 if (delegate && [delegate respondsToSelector:@selector(didFinishedRecord:)]) {
                                     [delegate didFinishedRecord:oPath];
                                 }
-                            } failureBlock:^(NSError *error) {
-                                NSLog(@"save completed %@",error);
-                            }];
+//                            } failureBlock:^(NSError *error) {
+//                                NSLog(@"save completed %@",error);
+//                            }];
                             
                             
 //                            [library writeVideoAtPathToSavedPhotosAlbum:outputURL completionBlock:^(NSURL *assetURL, NSError *error){
@@ -675,6 +695,8 @@ static GKCameraManager *cameraManager;
             self.isPaused = YES;
             _discont = YES;
             
+            [self.progressTimer invalidate];
+            
             [_progress markSegment];
         }
     }
@@ -688,6 +710,8 @@ static GKCameraManager *cameraManager;
         {
             NSLog(@"Resuming capture");
             self.isPaused = NO;
+            
+            self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1/30.0f target:self selector:@selector(takeTiming) userInfo:nil repeats:YES];
         }
     }
 }
@@ -742,9 +766,9 @@ static GKCameraManager *cameraManager;
             NSString* path = [NSTemporaryDirectory() stringByAppendingPathComponent:filename];
             _encoder = [VideoEncoder encoderForPath:path Height:_cy width:_cx channels:_channels samples:_samplerate];
             
-            if (_progress) {
-                _encoder.slider = _progress;
-            }
+//            if (_progress) {
+//                _encoder.slider = _progress;
+//            }
         }
         if (_discont)
         {
@@ -808,21 +832,41 @@ static GKCameraManager *cameraManager;
             _lastAudio = pts;
         }
         
-        
         frameNum++;
         // pass frame to encoder
         
-        if (frameNum >1) {  //删除前两帧
-            [_encoder encodeFrame:sampleBuffer isVideo:bVideo];
-            CFRelease(sampleBuffer);
-        }
+        if (frameNum >1)
+        {  //删除前两帧
+            
+            CMTime startTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
+            float s = ((double)startTime.value)/startTime.timescale;
+//            NSLog(@"######### : %f",s - lastTime);
+            
+            if (s - lastTime >= -0.03) {
+                [_encoder encodeFrame:sampleBuffer isVideo:bVideo];
+                lastTime = s;
+            }
+            else
+            {
+//                NSLog(@"------------ : %f",s);
+            }
         
-        CMSampleBufferGetImageBuffer(sampleBuffer);
+            
+            
+        }
+        CFRelease(sampleBuffer);
+        
     }
     
 }
 
-
+- (void)setRecordProgress:(NSString *)sender
+{
+    if (_progress.progress >= 1) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"stopRecord" object:nil];
+    }
+    _progress.progress = sender.floatValue;
+}
 
 - (void)clearMovieCache
 {

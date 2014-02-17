@@ -67,8 +67,9 @@
     {
         if (gestureRecognizer.state == UIGestureRecognizerStateBegan)
         {
-            NSAssert([self becomeFirstResponder], @"Sorry, UIMenuController will not work with %@ since it cannot become first responder", self);
+            //NSAssert([self becomeFirstResponder], @"Sorry, UIMenuController will not work with %@ since it cannot become first responder", self);
 
+            [self becomeFirstResponder];
             copyMenu = [UIMenuController sharedMenuController];
             if ([self.copyableLabelDelegate respondsToSelector:@selector(copyMenuTargetRectInCopyableLabelCoordinates:)])
             {

@@ -216,9 +216,6 @@
 		11B852BD18334D52005FA5B9 /* inputBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B852B918334D52005FA5B9 /* inputBG.png */; };
 		11B852BE18334D52005FA5B9 /* upbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B852BA18334D52005FA5B9 /* upbutton.png */; };
 		11B852BF18334D52005FA5B9 /* upbuttonH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B852BB18334D52005FA5B9 /* upbuttonH.png */; };
-		11B852C718335275005FA5B9 /* ETZoomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B852C218335275005FA5B9 /* ETZoomScrollView.m */; };
-		11B852C818335275005FA5B9 /* ETShowBigImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B852C418335275005FA5B9 /* ETShowBigImageView.m */; };
-		11B852C918335275005FA5B9 /* ETShowBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B852C518335275005FA5B9 /* ETShowBigImageViewController.m */; };
 		11B852CA18335275005FA5B9 /* GKShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B852C618335275005FA5B9 /* GKShowViewController.m */; };
 		11B852D4183368A0005FA5B9 /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B852D3183368A0005FA5B9 /* mail.png */; };
 		11BB992118AB15B9006273A7 /* qipao22@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BB992018AB15B9006273A7 /* qipao22@2x.png */; };
@@ -250,6 +247,8 @@
 		11C75DBA181273E600A3AA89 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DB6181273E600A3AA89 /* NSDataAdditions.m */; };
 		11C75DBB181273E600A3AA89 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DB8181273E600A3AA89 /* NSStringAdditions.m */; };
 		11C75DBD181276BA00A3AA89 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C75DBC181276BA00A3AA89 /* SystemConfiguration.framework */; };
+		11CBB31718B1BBA100614FF0 /* delphoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CBB31518B1BBA100614FF0 /* delphoto.png */; };
+		11CBB31818B1BBA100614FF0 /* delphotoH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CBB31618B1BBA100614FF0 /* delphotoH.png */; };
 		11CE2A85187FA18400742001 /* NSDate+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2A84187FA18400742001 /* NSDate+convenience.m */; };
 		11CE2A88187FAF8E00742001 /* GKNoticeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2A87187FAF8E00742001 /* GKNoticeInfoViewController.m */; };
 		11CE2A8D187FEE3500742001 /* writeRizhiH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CE2A8B187FEE3500742001 /* writeRizhiH.png */; };
@@ -709,12 +708,6 @@
 		11B852B918334D52005FA5B9 /* inputBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inputBG.png; sourceTree = "<group>"; };
 		11B852BA18334D52005FA5B9 /* upbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upbutton.png; sourceTree = "<group>"; };
 		11B852BB18334D52005FA5B9 /* upbuttonH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upbuttonH.png; sourceTree = "<group>"; };
-		11B852C018335275005FA5B9 /* ETShowBigImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETShowBigImageViewController.h; sourceTree = "<group>"; };
-		11B852C118335275005FA5B9 /* ETZoomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETZoomScrollView.h; sourceTree = "<group>"; };
-		11B852C218335275005FA5B9 /* ETZoomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETZoomScrollView.m; sourceTree = "<group>"; };
-		11B852C318335275005FA5B9 /* ETShowBigImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETShowBigImageView.h; sourceTree = "<group>"; };
-		11B852C418335275005FA5B9 /* ETShowBigImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETShowBigImageView.m; sourceTree = "<group>"; };
-		11B852C518335275005FA5B9 /* ETShowBigImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETShowBigImageViewController.m; sourceTree = "<group>"; };
 		11B852C618335275005FA5B9 /* GKShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKShowViewController.m; sourceTree = "<group>"; };
 		11B852CB183352AE005FA5B9 /* GKShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKShowViewController.h; sourceTree = "<group>"; };
 		11B852D3183368A0005FA5B9 /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail.png; sourceTree = "<group>"; };
@@ -756,6 +749,8 @@
 		11C75DB7181273E600A3AA89 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		11C75DB8181273E600A3AA89 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
 		11C75DBC181276BA00A3AA89 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		11CBB31518B1BBA100614FF0 /* delphoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delphoto.png; sourceTree = "<group>"; };
+		11CBB31618B1BBA100614FF0 /* delphotoH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delphotoH.png; sourceTree = "<group>"; };
 		11CE2A83187FA18400742001 /* NSDate+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+convenience.h"; sourceTree = "<group>"; };
 		11CE2A84187FA18400742001 /* NSDate+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+convenience.m"; sourceTree = "<group>"; };
 		11CE2A86187FAF8E00742001 /* GKNoticeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKNoticeInfoViewController.h; sourceTree = "<group>"; };
@@ -1062,12 +1057,6 @@
 				78709BC8187D16CA009250FB /* VideoEncoder.m */,
 				114B59001821220E00163A4A /* GKShowBigImageViewController.h */,
 				114B59011821220E00163A4A /* GKShowBigImageViewController.m */,
-				11B852C118335275005FA5B9 /* ETZoomScrollView.h */,
-				11B852C218335275005FA5B9 /* ETZoomScrollView.m */,
-				11B852C318335275005FA5B9 /* ETShowBigImageView.h */,
-				11B852C418335275005FA5B9 /* ETShowBigImageView.m */,
-				11B852C018335275005FA5B9 /* ETShowBigImageViewController.h */,
-				11B852C518335275005FA5B9 /* ETShowBigImageViewController.m */,
 				11B852CB183352AE005FA5B9 /* GKShowViewController.h */,
 				11B852C618335275005FA5B9 /* GKShowViewController.m */,
 				119EA9BC181616990070DBF1 /* GKImagePickerViewController.h */,
@@ -1342,6 +1331,8 @@
 				11CE2A8F187FF5AD00742001 /* imageerror.png */,
 				11CE2A8B187FEE3500742001 /* writeRizhiH.png */,
 				11CE2A8C187FEE3500742001 /* writeRizhi.png */,
+				11CBB31518B1BBA100614FF0 /* delphoto.png */,
+				11CBB31618B1BBA100614FF0 /* delphotoH.png */,
 				7888190D187F996500D0A851 /* 草稿箱@2x.png */,
 				7870A107187E9852009250FB /* Tophoto.png */,
 				7870A105187E97EE009250FB /* settingH.png */,
@@ -1861,6 +1852,7 @@
 				E797189B18798BAB00353BAF /* README.md in Resources */,
 				11BF896B18363221008E72F0 /* 114.png in Resources */,
 				111E8CF3181E6E9F00234014 /* input.png in Resources */,
+				11CBB31818B1BBA100614FF0 /* delphotoH.png in Resources */,
 				11AF3AEB18166AB200B36176 /* navLeftBtn_default.png in Resources */,
 				11D42951187E4BE60002810E /* gradeFen@2x.png in Resources */,
 				11BF896F1836325F008E72F0 /* 120.png in Resources */,
@@ -2045,6 +2037,7 @@
 				11AF3B091816851900B36176 /* navLeftBtn_selected.png in Resources */,
 				1194023318235F6100F21FB8 /* box-2.png in Resources */,
 				119F0CAE181A297300A5910C /* leftN.png in Resources */,
+				11CBB31718B1BBA100614FF0 /* delphoto.png in Resources */,
 				11D42952187E4BE60002810E /* uploadIcon@2x.png in Resources */,
 				11B852BC18334D52005FA5B9 /* textFileBG.png in Resources */,
 				78709C23187D1733009250FB /* navbar-button-green.png in Resources */,
@@ -2084,7 +2077,6 @@
 				119E96221814C5A300866DE8 /* ASICloudFilesContainer.m in Sources */,
 				1192E401181B6CE200C5F33B /* GKWebViewController.m in Sources */,
 				119E961C1814C5A300866DE8 /* ASIFormDataRequest.m in Sources */,
-				11B852C918335275005FA5B9 /* ETShowBigImageViewController.m in Sources */,
 				7870A104187E4A48009250FB /* GKCoreDataManager.m in Sources */,
 				1155E92B1856BC75005D09C1 /* KKNavigationController.m in Sources */,
 				119E962F1814C5A300866DE8 /* ASIS3ServiceRequest.m in Sources */,
@@ -2164,7 +2156,6 @@
 				11CE2A97187FF8EA00742001 /* LoadMoreTableFooterView.m in Sources */,
 				11C75DA61812725600A3AA89 /* EKRequest.m in Sources */,
 				119E96211814C5A300866DE8 /* ASICloudFilesCDNRequest.m in Sources */,
-				11B852C718335275005FA5B9 /* ETZoomScrollView.m in Sources */,
 				1102A7E8181A4E2000E6295C /* GKAboutViewController.m in Sources */,
 				11CE2A85187FA18400742001 /* NSDate+convenience.m in Sources */,
 				1193A6BD182B9A64004011BC /* GKLetterData.m in Sources */,
@@ -2186,7 +2177,6 @@
 				11D40E3818618D1B003009D0 /* GKRePasswordViewController.m in Sources */,
 				78709BCF187D16CA009250FB /* UIImage+GKImage.m in Sources */,
 				1195719E183B461800CE9F1B /* GKNODataView.m in Sources */,
-				11B852C818335275005FA5B9 /* ETShowBigImageView.m in Sources */,
 				119E964518151F0300866DE8 /* GTMBase64.m in Sources */,
 				111E8CE5181E532400234014 /* SDWebImageManager.m in Sources */,
 				11CE2A9B1880091E00742001 /* MBProgressHUD.m in Sources */,

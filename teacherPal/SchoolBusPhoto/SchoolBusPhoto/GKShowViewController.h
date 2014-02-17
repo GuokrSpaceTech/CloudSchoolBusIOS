@@ -12,10 +12,10 @@
 #import "EKRequest.h"
 #import "ETNicknameViewController.h"
 #import "GKDisapperView.h"
-
+#import "GKShowBigImageViewController.h"
 #import "GKSaySomethingView.h"
 @protocol showViewController;
-@interface GKShowViewController : GKBaseViewController<UIScrollViewDelegate,studentViewDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,EKProtocol,ETNicknameViewControllerDelegate,UIAlertViewDelegate,GKSaySomethingViewDelegate>
+@interface GKShowViewController : GKBaseViewController<UIScrollViewDelegate,studentViewDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,EKProtocol,ETNicknameViewControllerDelegate,UIAlertViewDelegate,GKSaySomethingViewDelegate,GKShowBigImageViewControllerDelegate>
 {
     UIScrollView *_scroller;
     
@@ -56,7 +56,7 @@
 }
 //@property int type;
 @property (nonatomic,assign)id<showViewController>delegate;
-@property (nonatomic,copy)NSMutableArray *assetArr;
+@property (nonatomic,retain)NSMutableArray *assetArr;
 //@property (nonatomic,retain)NSMutableArray *alreadyArr;
 @property (nonatomic,retain)NSMutableArray * stuList;
 @property (nonatomic, retain)NSMutableArray *picTextArr;

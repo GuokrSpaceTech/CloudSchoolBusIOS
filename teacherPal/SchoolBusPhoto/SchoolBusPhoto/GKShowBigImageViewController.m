@@ -15,6 +15,9 @@
 
 @implementation GKShowBigImageViewController
 @synthesize path;
+@synthesize Image;
+@synthesize type;
+@synthesize delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -26,6 +29,7 @@
 -(void)dealloc
 {
     self.path=nil;
+    self.Image=nil;
     [super dealloc];
 }
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -41,12 +45,42 @@
         [alert release];
     }
 }
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex==0)
+    {
+
+    }
+    else
+    {
+        NSLog(@"delete");
+        
+        if(delegate&&[delegate respondsToSelector:@selector(deletePhoto)])
+        {
+            [delegate deletePhoto];
+        }
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+        
+    }
+}
 -(void)rightClick:(UIButton *)btn
 {
-    
-    UIActionSheet *actionSheet=[[UIActionSheet alloc]initWithTitle:NSLocalizedString(@"savepic", @"")  delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"savephoto", @""), nil];
-    [actionSheet showInView:self.view];
-    [actionSheet release];
+    if(type==1)
+    {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"comDelete", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"no", @"") otherButtonTitles:NSLocalizedString(@"yes", @""), nil];
+        [alert show];
+        [alert release];
+    }
+    else
+    {
+        UIActionSheet *actionSheet=[[UIActionSheet alloc]initWithTitle:NSLocalizedString(@"savepic", @"")  delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"savephoto", @""), nil];
+        [actionSheet showInView:self.view];
+        [actionSheet release];
+    }
+
     
    
 }
@@ -65,16 +99,34 @@
     [navigationView addSubview:buttom];
     
     
-    
-    UIButton *right=[UIButton buttonWithType:UIButtonTypeCustom];
-    right.frame=CGRectMake(265, 5, 34, 35);
-    //UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 34, 35)];
-    [right setBackgroundImage:[UIImage imageNamed:@"shareBtn3.0.png"] forState:UIControlStateNormal];
-    [right setBackgroundImage:[UIImage imageNamed:@"shareBtnSel3.0.png"] forState:UIControlStateHighlighted];
-    
-    [right addTarget:self action:@selector(rightClick:) forControlEvents:UIControlEventTouchUpInside];
-    [navigationView addSubview:right];
+    if(type==1)
+    {
+        // 相册显示大图
+        
+        UIButton *right=[UIButton buttonWithType:UIButtonTypeCustom];
+        right.frame=CGRectMake(265, 5, 34, 35);
 
+        [right setBackgroundImage:[UIImage imageNamed:@"delphoto.png"] forState:UIControlStateNormal];
+        [right setBackgroundImage:[UIImage imageNamed:@"delphotoH.png"] forState:UIControlStateHighlighted];
+        
+        right.titleLabel.textColor=[UIColor redColor];
+        [right addTarget:self action:@selector(rightClick:) forControlEvents:UIControlEventTouchUpInside];
+        [navigationView addSubview:right];
+        
+    }
+    else
+    {
+        UIButton *right=[UIButton buttonWithType:UIButtonTypeCustom];
+        right.frame=CGRectMake(265, 5, 34, 35);
+        //UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 34, 35)];
+        [right setBackgroundImage:[UIImage imageNamed:@"shareBtn3.0.png"] forState:UIControlStateNormal];
+        [right setBackgroundImage:[UIImage imageNamed:@"shareBtnSel3.0.png"] forState:UIControlStateHighlighted];
+        
+        [right addTarget:self action:@selector(rightClick:) forControlEvents:UIControlEventTouchUpInside];
+        [navigationView addSubview:right];
+
+    }
+   
     
 
     
@@ -92,37 +144,47 @@
     imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, scroller.frame.size.width, scroller.frame.size.height)];
     imageView.backgroundColor=[UIColor clearColor];
     [scroller addSubview:imageView];
+    [imageView release];
     imageView.contentMode=UIViewContentModeScaleAspectFit;
     
+    
+    if(type==1)
+    {
+        imageView.image=Image;
+    }
+    else
+    {
+        MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:scroller];
+        hud.center = CGPointMake(scroller.frame.size.width/2, scroller.frame.size.height/2.0f);
+        hud.mode = MBProgressHUDModeAnnularDeterminate;
+        //hud.tag = HUDTAG + i;
+        [scroller addSubview:hud];
+        [hud release];
+        [hud show:YES];
+        
+        
+        [imageView setImageWithURL:[NSURL URLWithString:path] placeholderImage:nil options:0 progress:^(NSUInteger receivedSize, long long expectedSize) {
+            imageView.userInteractionEnabled=YES;
+            
+            hud.progress = receivedSize/(float)expectedSize;
+            
+            // hud.progress=receivedSize/expectedSize;
+            
+        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            
+            
+            [hud removeFromSuperview];
+            
+        }];
+
+    }
 //    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick:)];
 //    tap.numberOfTapsRequired=1;
 //    [imageView addGestureRecognizer:tap];
 //    [tap release];
     
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:scroller];
-    hud.center = CGPointMake(scroller.frame.size.width/2, scroller.frame.size.height/2.0f);
-    hud.mode = MBProgressHUDModeAnnularDeterminate;
-    //hud.tag = HUDTAG + i;
-    [scroller addSubview:hud];
-    [hud release];
-    [hud show:YES];
     
     
-    [imageView setImageWithURL:[NSURL URLWithString:path] placeholderImage:nil options:0 progress:^(NSUInteger receivedSize, long long expectedSize) {
-        imageView.userInteractionEnabled=YES;
-        
-        hud.progress = receivedSize/(float)expectedSize;
- 
-       // hud.progress=receivedSize/expectedSize;
-        
-    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-        
-
-        [hud removeFromSuperview];
-        
-    }];
-    
-    [imageView release];
     
 	// Do any additional setup after loading the view.
 }

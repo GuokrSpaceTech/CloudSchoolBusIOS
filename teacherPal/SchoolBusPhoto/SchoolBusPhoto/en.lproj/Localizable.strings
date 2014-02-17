@@ -205,11 +205,13 @@
 "title"="Title";
 
 "ignore"="Ignore";
+"querenquxiao" = "Cancel sending the notice?";
+"chongpai" = "  Remake";
+"back" = "  Back";
 "classaccount"="Class Account";
 "passwordlogin"="Password";
 
 "next"="Next";
-"back"="Back";
 "remake"="Remake";
 "state"="State";
 "Notservice"="Not yet in service";

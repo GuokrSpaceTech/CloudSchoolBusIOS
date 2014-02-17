@@ -177,20 +177,19 @@
         [tBack release];
    
        
-        NSString *remake=[NSString stringWithFormat:@"  %@",NSLocalizedString(@"remake", @"")];
         UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [backBtn setTitle:remake forState:UIControlStateNormal];
+        [backBtn setTitle:NSLocalizedString(@"chongpai", @"  重拍") forState:UIControlStateNormal];
         [backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         backBtn.titleLabel.font = [UIFont boldSystemFontOfSize:12];
         [backBtn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-back-black-alt"] stretchableImageWithLeftCapWidth:13 topCapHeight:0] forState:UIControlStateNormal];
         [backBtn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-back-black-alt-active"] stretchableImageWithLeftCapWidth:13 topCapHeight:0] forState:UIControlStateHighlighted];
-        [backBtn setFrame:CGRectMake(0, 0, 45, 30)];
+        [backBtn setFrame:CGRectMake(0, 0, 60, 30)];
         [backBtn setCenter:CGPointMake(30, 40)];
         [backBtn addTarget:self action:@selector(doBack:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:backBtn];
         
         UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        //[nextBtn setTitle:@"ddd" forState:UIControlStateNormal];
+        [nextBtn setTitle:NSLocalizedString(@"next", @"下一步") forState:UIControlStateNormal];
         [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         nextBtn.titleLabel.font = [UIFont boldSystemFontOfSize:12];
         [nextBtn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-green"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];

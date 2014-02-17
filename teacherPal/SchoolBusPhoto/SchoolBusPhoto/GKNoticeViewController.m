@@ -288,9 +288,19 @@
 }
 -(void)leftClick:(UIButton *)btn
 {
-    
-    [self.navigationController popViewControllerAnimated:YES];
+//    NSLog(@"%@,%@",_titleField.text,_textView.text);
+    if (![_titleField.text isEqualToString:@""] || ![_textView.text isEqualToString:@""] )
+    {
+        UIAlertView *alert=[[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"querenquxiao", @"")  delegate:self cancelButtonTitle:NSLocalizedString(@"no", @"") otherButtonTitles:NSLocalizedString(@"yes", @""), nil] autorelease];
+        alert.tag = 789;
+        [alert show];
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
+
 
 //-(void)textViewDidBeginEditing:(UITextView *)textView
 //{
@@ -351,6 +361,16 @@
 }
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    
+    if (alertView.tag == 789) {
+        if (buttonIndex == 1)
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+        return;
+    }
+    
     
     if(HUD==nil)
     {

@@ -398,6 +398,24 @@
         
         
     }
+    else if (index == 2)
+    {
+        WXMediaMessage *message = [WXMediaMessage message];
+        message.title = etevent.htmlurl;
+        message.description = @"";
+        //        [message setThumbImage:[UIImage imageNamed:@"res2.jpg"]];
+        
+        WXWebpageObject *ext = [WXWebpageObject object];
+        ext.webpageUrl = etevent.htmlurl;
+        
+        message.mediaObject = ext;
+        
+        GetMessageFromWXResp* resp = [[[GetMessageFromWXResp alloc] init] autorelease];
+        resp.message = message;
+        resp.bText = NO;
+        
+        [WXApi sendResp:resp];
+    }
     else
     {
         ETShareViewController *shareController=[[ETShareViewController alloc]initWithNibName:@"ETShareViewController" bundle:nil];

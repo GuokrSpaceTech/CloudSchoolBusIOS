@@ -75,6 +75,22 @@
     [super dealloc];
 }
 
+- (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    // Create a graphics image context
+    
+    UIGraphicsBeginImageContext(newSize);
+    // Tell the old image to draw in this new context, with the desired
+    // new size
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    // Get the new image from the context
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    // End the context
+    UIGraphicsEndImageContext();
+    // Return the new image.
+    return newImage;
+}
+
 #pragma mark -------------- sina --------------
 - (void)didSelectedShareImage:(UIImage *)image shareType:(int)shareType content:(NSString *)shareCOn
 {
@@ -95,22 +111,40 @@
         
         [WXApi sendReq:req];
         
-
+    }
+    else if (shareType == 3)
+    {
+        WXMediaMessage *message = [WXMediaMessage message];
+        
+        NSData *data=UIImageJPEGRepresentation(image, 0.1);
+        // message.title=
+        UIImage *imageTemp=[UIImage imageWithData:data];
         
         
-//        WXMediaMessage *message = [WXMediaMessage message];
-//        message.title = self.etevent.htmlurl;
-//        message.description = @"";
-//        message.mediaObject = ext;
+        CGFloat width=imageTemp.size.width;
+        CGFloat height=imageTemp.size.height;
         
-//        SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
-//        req.message = message;
-//        
-//        req.text = self.etevent.htmlurl;
-//        req.scene = WXSceneTimeline;
-//        
-//        [WXApi sendReq:req];
+        float scale=(float)(width/height);
         
+        CGFloat scaleH=100/scale;
+        
+        UIImage *smallImage=[self imageWithImage:image scaledToSize:CGSizeMake(100, scaleH)];
+        
+        NSData *dataScale=UIImageJPEGRepresentation(smallImage, 1);
+        NSLog(@"%d  K",[dataScale length]/1024);
+        
+        UIImage *imageThum=[UIImage imageWithData:dataScale];
+        [message setThumbImage:imageThum];
+        
+        
+        
+        WXImageObject *ext = [WXImageObject object];
+        ext.imageData=UIImageJPEGRepresentation(image, 0.5f);;
+        message.mediaObject = ext;
+        SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+        req.bText = NO;
+        req.message = message;
+        [WXApi sendReq:req];
     }
     else if (shareType == 5)
     {

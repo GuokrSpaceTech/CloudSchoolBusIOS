@@ -403,33 +403,60 @@
     }
     
   
-    if(self.upData)
-    {
-        NSString * base64 = [[NSString alloc] initWithData:[GTMBase64 encodeData:self.upData] encoding:NSUTF8StringEncoding];
-        NSDictionary *picdic=[NSDictionary dictionaryWithObjectsAndKeys:key,@"pickey",[self getFileName:0],@"fname",[self numberSize:self.upData],@"fsize",base64,@"fbody",@"jpg",@"fext",@"notice",@"pictype", nil];
-       // NSLog(@"%@",picdic);
-        
-        [[EKRequest Instance]EKHTTPRequest:pic parameters:picdic requestMethod:POST forDelegate:self];
-        [base64 release];
-        
-    }
+
     
     
     if(buttonIndex==0)
     {
         // 不确认
-        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:title,@"title",_textView.text,@"content",@"",@"createrid",studentID,@"slist",key,@"noticekey",createT,@"createtime",@"0",@"isconfirm", nil];
-        [[EKRequest Instance]EKHTTPRequest:tnotice parameters:dic requestMethod:POST forDelegate:self];
 
+
+        if(self.upData)
+        {
+            NSString * base64 = [[NSString alloc] initWithData:[GTMBase64 encodeData:self.upData] encoding:NSUTF8StringEncoding];
+            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:[self getFileName:0],@"fname",[self numberSize:self.upData],@"fsize",base64,@"fbody",@"jpg",@"fext",@"notice",@"pictype",title,@"title",_textView.text,@"content",@"",@"createrid",studentID,@"slist",key,@"noticekey",createT,@"createtime",@"0",@"isconfirm", nil];
+            // NSLog(@"%@",picdic);
+            [[EKRequest Instance]EKHTTPRequest:tnotice parameters:dic requestMethod:POST forDelegate:self];
+            //[[EKRequest Instance]EKHTTPRequest:pic parameters:picdic requestMethod:POST forDelegate:self];
+            [base64 release];
+
+        }
+        else
+        {
+        
+            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:title,@"title",_textView.text,@"content",@"",@"createrid",studentID,@"slist",key,@"noticekey",createT,@"createtime",@"0",@"isconfirm", nil];
+            [[EKRequest Instance]EKHTTPRequest:tnotice parameters:dic requestMethod:POST forDelegate:self];
+        }
+        
     }
     if(buttonIndex==1)
     {
         // 确认
-        
-        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:title,@"title",_textView.text,@"content",@"",@"createrid",studentID,@"slist",key,@"noticekey",createT,@"createtime",@"1",@"isconfirm", nil];
-        [[EKRequest Instance]EKHTTPRequest:tnotice parameters:dic requestMethod:POST forDelegate:self];
-
+        if(self.upData)
+        {
+            NSString * base64 = [[NSString alloc] initWithData:[GTMBase64 encodeData:self.upData] encoding:NSUTF8StringEncoding];
+            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:[self getFileName:0],@"fname",[self numberSize:self.upData],@"fsize",base64,@"fbody",@"jpg",@"fext",@"notice",@"pictype",title,@"title",_textView.text,@"content",@"",@"createrid",studentID,@"slist",key,@"noticekey",createT,@"createtime",@"1",@"isconfirm", nil];
+            // NSLog(@"%@",picdic);
+            [[EKRequest Instance]EKHTTPRequest:tnotice parameters:dic requestMethod:POST forDelegate:self];
+            //[[EKRequest Instance]EKHTTPRequest:pic parameters:picdic requestMethod:POST forDelegate:self];
+            [base64 release];
+            
+            
+            
+            
+            
+            
+            
+        }
+        else
+        {
+            
+            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:title,@"title",_textView.text,@"content",@"",@"createrid",studentID,@"slist",key,@"noticekey",createT,@"createtime",@"1",@"isconfirm", nil];
+            [[EKRequest Instance]EKHTTPRequest:tnotice parameters:dic requestMethod:POST forDelegate:self];
+        }
     }
+    
+
 }
 -(void)buttonClick:(UIButton *)btn
 {
@@ -497,7 +524,8 @@
         _titleField.text=@"";
         [studentView setAllButtonSelect:NO];
         [stuArr removeAllObjects];
-        
+        self.upData=nil;
+        selectImageView.image=nil;
         numberWord.text=@"";
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"sendsucess", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
         [alert show];
@@ -508,11 +536,7 @@
         [alert show];
         [alert release];
     }
-    if(code==1 && method==pic)
-    {
-        self.upData=nil;
-        selectImageView.image=nil;
-    }
+
 }
 -(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
 {

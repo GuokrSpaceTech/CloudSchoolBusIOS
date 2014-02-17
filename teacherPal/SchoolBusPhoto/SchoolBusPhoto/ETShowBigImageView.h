@@ -57,6 +57,8 @@
     
     UIImageView *navigationBackView;
     
+    
+    
 }
 
 @property (nonatomic, retain) NSArray *imgUrlArr;

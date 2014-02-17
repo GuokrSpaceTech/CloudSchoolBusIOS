@@ -25,5 +25,6 @@
 }
 
 @property (nonatomic, retain)UIImage *targetImage;
+@property (nonatomic, assign)int  page;
 
 @end

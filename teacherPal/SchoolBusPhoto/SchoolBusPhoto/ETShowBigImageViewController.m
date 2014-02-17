@@ -14,6 +14,7 @@
 
 @implementation ETShowBigImageViewController
 @synthesize targetImage;
+@synthesize page;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

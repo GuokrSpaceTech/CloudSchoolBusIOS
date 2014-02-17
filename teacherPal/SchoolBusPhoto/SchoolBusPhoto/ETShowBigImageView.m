@@ -50,6 +50,15 @@
 
         
         
+//        rightButton =[UIButton buttonWithType:UIButtonTypeCustom];
+//        [leftButton setFrame:CGRectMake(0, 0, 34, 35)];
+//        [leftButton setCenter:CGPointMake(10 + 34/2, navigationBackView.frame.size.height/2)];
+//        [leftButton setImage:[UIImage imageWithContentsOfFile:path] forState:UIControlStateNormal];
+//        [leftButton setImage:[UIImage imageWithContentsOfFile:path1] forState:UIControlStateHighlighted];
+//        [leftButton addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [navigationBackView addSubview:leftButton];
+        
+        
         zoomImgV = [[ETZoomScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, self.frame.size.height)];
         zoomImgV.backgroundColor = [UIColor blackColor];
         zoomImgV.imageView.image = image;

@@ -358,7 +358,7 @@
     if(arr==nil)
     {
         [self setAllPhotoSelect:NO];
-            [selectArr removeAllObjects];
+        [selectArr removeAllObjects];
         [_tableView reloadData];
         return;
     }
@@ -561,6 +561,9 @@
 
     GKShowViewController *showVC=[[GKShowViewController alloc]init];
     showVC.assetArr=self.selectArr;
+    
+    NSLog(@"%@",self.selectArr);
+    
    // showVC.type=1;
     showVC.delegate=self;
     
@@ -677,8 +680,8 @@
 }
 -(void)setAllPhotoSelect:(BOOL)an
 {
-    for (int i=0; i<[selectArr count]; i++) {
-        ETPhoto *photo=[selectArr objectAtIndex:i];
+    for (int i=0; i<[imageArr count]; i++) {
+        ETPhoto *photo=[imageArr objectAtIndex:i];
         
         photo.isSelected=an;
         

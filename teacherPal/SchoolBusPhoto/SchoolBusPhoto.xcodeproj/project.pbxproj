@@ -250,6 +250,8 @@
 		11C75DBA181273E600A3AA89 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DB6181273E600A3AA89 /* NSDataAdditions.m */; };
 		11C75DBB181273E600A3AA89 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DB8181273E600A3AA89 /* NSStringAdditions.m */; };
 		11C75DBD181276BA00A3AA89 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C75DBC181276BA00A3AA89 /* SystemConfiguration.framework */; };
+		11CBB31718B1BBA100614FF0 /* delphoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CBB31518B1BBA100614FF0 /* delphoto.png */; };
+		11CBB31818B1BBA100614FF0 /* delphotoH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CBB31618B1BBA100614FF0 /* delphotoH.png */; };
 		11CE2A85187FA18400742001 /* NSDate+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2A84187FA18400742001 /* NSDate+convenience.m */; };
 		11CE2A88187FAF8E00742001 /* GKNoticeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2A87187FAF8E00742001 /* GKNoticeInfoViewController.m */; };
 		11CE2A8D187FEE3500742001 /* writeRizhiH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CE2A8B187FEE3500742001 /* writeRizhiH.png */; };
@@ -756,6 +758,8 @@
 		11C75DB7181273E600A3AA89 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		11C75DB8181273E600A3AA89 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
 		11C75DBC181276BA00A3AA89 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		11CBB31518B1BBA100614FF0 /* delphoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delphoto.png; sourceTree = "<group>"; };
+		11CBB31618B1BBA100614FF0 /* delphotoH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delphotoH.png; sourceTree = "<group>"; };
 		11CE2A83187FA18400742001 /* NSDate+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+convenience.h"; sourceTree = "<group>"; };
 		11CE2A84187FA18400742001 /* NSDate+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+convenience.m"; sourceTree = "<group>"; };
 		11CE2A86187FAF8E00742001 /* GKNoticeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKNoticeInfoViewController.h; sourceTree = "<group>"; };
@@ -1342,6 +1346,8 @@
 				11CE2A8F187FF5AD00742001 /* imageerror.png */,
 				11CE2A8B187FEE3500742001 /* writeRizhiH.png */,
 				11CE2A8C187FEE3500742001 /* writeRizhi.png */,
+				11CBB31518B1BBA100614FF0 /* delphoto.png */,
+				11CBB31618B1BBA100614FF0 /* delphotoH.png */,
 				7888190D187F996500D0A851 /* 草稿箱@2x.png */,
 				7870A107187E9852009250FB /* Tophoto.png */,
 				7870A105187E97EE009250FB /* settingH.png */,
@@ -1861,6 +1867,7 @@
 				E797189B18798BAB00353BAF /* README.md in Resources */,
 				11BF896B18363221008E72F0 /* 114.png in Resources */,
 				111E8CF3181E6E9F00234014 /* input.png in Resources */,
+				11CBB31818B1BBA100614FF0 /* delphotoH.png in Resources */,
 				11AF3AEB18166AB200B36176 /* navLeftBtn_default.png in Resources */,
 				11D42951187E4BE60002810E /* gradeFen@2x.png in Resources */,
 				11BF896F1836325F008E72F0 /* 120.png in Resources */,
@@ -2045,6 +2052,7 @@
 				11AF3B091816851900B36176 /* navLeftBtn_selected.png in Resources */,
 				1194023318235F6100F21FB8 /* box-2.png in Resources */,
 				119F0CAE181A297300A5910C /* leftN.png in Resources */,
+				11CBB31718B1BBA100614FF0 /* delphoto.png in Resources */,
 				11D42952187E4BE60002810E /* uploadIcon@2x.png in Resources */,
 				11B852BC18334D52005FA5B9 /* textFileBG.png in Resources */,
 				78709C23187D1733009250FB /* navbar-button-green.png in Resources */,

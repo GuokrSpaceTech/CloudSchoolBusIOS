@@ -177,13 +177,7 @@
             NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
             if(dic!=nil)
             {
-                
-//                "uptotle"="Pictures Uploaded:";
-//                "zhang"="";
-             
-                NSString *numstr=[NSString stringWithFormat:@"%@%@%@",NSLocalizedString(@"uptotle", @""),[dic objectForKey:@"zongshu"],NSLocalizedString(@"zhang", @"")];
-                
-               // NSString *num=numstr;
+                NSString *numstr=[NSString stringWithFormat:@"%@%@%@ %@%@%@",NSLocalizedString(@"uptotle", @""),[dic objectForKey:@"zongshu"],NSLocalizedString(@"zhang", @""),NSLocalizedString(@"upvedio", @""),[dic objectForKey:@"mp4zongshu"],NSLocalizedString(@"zhang", @"")];
                 numLabel.text=numstr;
             }
             

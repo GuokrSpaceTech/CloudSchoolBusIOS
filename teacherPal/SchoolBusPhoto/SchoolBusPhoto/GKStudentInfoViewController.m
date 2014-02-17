@@ -74,7 +74,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(section==0)
-        return 1;
+        return 2;
     else
         return 4;
 }
@@ -131,8 +131,44 @@
     {
         cell.accessoryType=UITableViewCellAccessoryNone;
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        nameLabel.text=NSLocalizedString(@"realName", @"");
-        realLabel.text=st.cnname;
+        if(indexPath.row==0)
+        {
+            nameLabel.text=NSLocalizedString(@"realName", @"");
+            realLabel.text=st.cnname;
+        }
+        else
+        {
+//            "state"="服务状态";
+//            "Notservice"="尚未开通";
+//            "Inservice"="已开通";
+//            "renewal"="服务过期";
+            nameLabel.text=NSLocalizedString(@"state", @"");
+            
+            if(st.orderendtime==nil)
+            {
+                realLabel.text=NSLocalizedString(@"Notservice", @"");
+                realLabel.textColor=[UIColor redColor];
+                
+            }
+            else
+            {
+                int time=[[NSDate date] timeIntervalSinceNow];
+                if(time<[[st orderendtime] integerValue])
+                {
+                    realLabel.text=NSLocalizedString(@"Inservice", @"");
+                    realLabel.textColor=[UIColor blackColor];
+                }
+                else
+                {
+                    realLabel.text=NSLocalizedString(@"renewal", @"");
+                    realLabel.textColor=[UIColor redColor];
+                }
+                
+            }
+
+            
+        }
+      
     }
     else
     {

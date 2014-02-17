@@ -207,3 +207,15 @@
 
 
 
+"classaccount"="班级账号";
+"passwordlogin"="密码";
+"remake"="重拍";
+"state"="服务状态";
+"Notservice"="尚未开通";
+"Inservice"="已开通";
+"renewal"="服务过期";
+"Confirmednotice"="已回执";
+"people"="人";
+
+"comDelete"="确认删除？";
+

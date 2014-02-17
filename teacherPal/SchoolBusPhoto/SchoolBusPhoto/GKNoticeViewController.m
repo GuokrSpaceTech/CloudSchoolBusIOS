@@ -223,23 +223,26 @@
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    
-    [picker dismissModalViewControllerAnimated:YES];
-    
-    UIImage *theImage;
-    if ([picker allowsEditing]){
-        //获取用户编辑之后的图像
-        theImage = [info objectForKey:UIImagePickerControllerEditedImage];
-    } else {
-        // 照片的元数据参数
-        theImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+
+    @autoreleasepool {
+        [picker dismissModalViewControllerAnimated:YES];
         
+        UIImage *theImage;
+        if ([picker allowsEditing]){
+            //获取用户编辑之后的图像
+            theImage = [info objectForKey:UIImagePickerControllerEditedImage];
+        } else {
+            // 照片的元数据参数
+            theImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+            
+        }
+        NSData *data= UIImageJPEGRepresentation(theImage, 0.5);
+        
+        self.upData=data;
+        selectImageView.image=[UIImage imageWithData:data];
+        [_textView becomeFirstResponder];
+
     }
-     NSData *data= UIImageJPEGRepresentation(theImage, 0.5);
-    
-    self.upData=data;
-    selectImageView.image=[UIImage imageWithData:data];
-    [_textView becomeFirstResponder];
 }
 
 -(void)whitchSelected:(BOOL)selected uid:(NSString *)uid isAll:(int)an
@@ -335,7 +338,7 @@
             
             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
             picker.delegate = self;
-            picker.allowsEditing = YES;
+            picker.allowsEditing = NO;
             picker.sourceType = sourceType;
             
             [self presentModalViewController:picker animated:YES];
@@ -347,7 +350,7 @@
             
             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
             picker.delegate = self;
-            picker.allowsEditing = YES;
+            picker.allowsEditing = NO;
             picker.sourceType = sourceType;
             
             
@@ -369,6 +372,13 @@
     }
     
     
+    if(HUD==nil)
+    {
+        HUD=[[MBProgressHUD alloc]initWithView:self.view];
+        [self.view addSubview:HUD];
+        [HUD release];
+        [HUD show:YES];
+    }
     NSString *studentID=[self selectStudentID];
     
     NSString *key=[self createKey];
@@ -397,7 +407,7 @@
     {
         NSString * base64 = [[NSString alloc] initWithData:[GTMBase64 encodeData:self.upData] encoding:NSUTF8StringEncoding];
         NSDictionary *picdic=[NSDictionary dictionaryWithObjectsAndKeys:key,@"pickey",[self getFileName:0],@"fname",[self numberSize:self.upData],@"fsize",base64,@"fbody",@"jpg",@"fext",@"notice",@"pictype", nil];
-        NSLog(@"%@",picdic);
+       // NSLog(@"%@",picdic);
         
         [[EKRequest Instance]EKHTTPRequest:pic parameters:picdic requestMethod:POST forDelegate:self];
         [base64 release];
@@ -475,7 +485,11 @@
 
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
 {
-    
+    if(HUD)
+    {
+        [HUD removeFromSuperview];
+        HUD=nil;
+    }
     NSLog(@"%d",code);
     if(code==1&&method==tnotice)
     {
@@ -502,6 +516,11 @@
 }
 -(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
 {
+    if(HUD)
+    {
+        [HUD removeFromSuperview];
+        HUD=nil;
+    }
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"sendfailed", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
     [alert show];
     [alert release];

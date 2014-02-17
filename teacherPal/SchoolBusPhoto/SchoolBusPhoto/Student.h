@@ -93,6 +93,8 @@
 @property (nonatomic,copy)NSNumber *online;
 @property (nonatomic,copy)NSNumber *uid;
 
+@property (nonatomic,copy)NSNumber *orderendtime;
+
 //
 //isinstalled = 1;
 //islock = 0;

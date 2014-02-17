@@ -266,7 +266,15 @@
         
         UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(262, 7, 16, 16)];
         imageView.backgroundColor=[UIColor clearColor];
-        [cell.contentView addSubview:imageView];
+        if(iOS7)
+        {
+            [cell.contentView addSubview:imageView];
+        }
+        else
+        {
+                [cell addSubview:imageView];
+        }
+    
         imageView.tag=1006;
         [imageView release];
         
@@ -275,8 +283,15 @@
   
     cell.textLabel.text=[notice.slistname objectAtIndex:indexPath.row];
     cell.textLabel.font=[UIFont systemFontOfSize:14];
-    
-    UIImageView *iamgeView=(UIImageView *)[cell.contentView viewWithTag:1006];
+    UIImageView *iamgeView=nil;
+    if(iOS7)
+    {
+         iamgeView=(UIImageView *)[cell.contentView viewWithTag:1006];
+    }
+    else
+    {
+         iamgeView=(UIImageView *)[cell viewWithTag:1006];
+    }
     
     
     if([notice.isconfirm integerValue]==1)

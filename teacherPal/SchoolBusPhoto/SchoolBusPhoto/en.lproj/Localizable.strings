@@ -207,6 +207,18 @@
 "ignore"="Ignore";
 "querenquxiao" = "Cancel sending the notice?";
 "chongpai" = "  Remake";
-"next" = "Next";
 "back" = "  Back";
+"classaccount"="Class Account";
+"passwordlogin"="Password";
+
+"next"="Next";
+"remake"="Remake";
+"state"="State";
+"Notservice"="Not yet in service";
+"Inservice"="In service";
+"renewal"="Waiting for a renewal";
+"Confirmednotice"=" Confirmed:";
+"people"="";
+
+"comDelete"="Confirm Delete？";
 

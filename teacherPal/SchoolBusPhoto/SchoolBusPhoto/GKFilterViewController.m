@@ -175,7 +175,8 @@
         tBack.image = [UIImage imageNamed:@"edit-tray-background.png"];
         [view addSubview:tBack];
         [tBack release];
-        
+   
+       
         UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [backBtn setTitle:NSLocalizedString(@"chongpai", @"  重拍") forState:UIControlStateNormal];
         [backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

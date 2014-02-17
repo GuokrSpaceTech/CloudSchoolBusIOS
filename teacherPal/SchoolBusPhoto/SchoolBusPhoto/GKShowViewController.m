@@ -14,7 +14,7 @@
 #import "GTMBase64.h"
 #import "GKUpQueue.h"
 #import "GKUserLogin.h"
-#import "ETShowBigImageViewController.h"
+
 #import <QuartzCore/QuartzCore.h>
 #import "KKNavigationController.h"
 #import "DBManager.h"
@@ -63,6 +63,9 @@
     stuList = [[NSMutableArray alloc] init];
     picTextArr = [[NSMutableArray alloc] init];
     currentpage=0;
+    
+
+    
     UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(0, navigationView.frame.size.height+navigationView.frame.origin.y, 320, self.view.frame.size.height -navigationView.frame.size.height-navigationView.frame.origin.y)];
     bgView.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:bgView];
@@ -126,42 +129,6 @@
     [self.view addSubview:sayView];
     [sayView release];
     
-//    UIView *txtView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, changeView.frame.size.width, changeView.frame.size.height)];
-//    txtView.tag = 1234;
-//    txtView.backgroundColor = [UIColor colorWithRed:240/255.0f green:238/255.0f blue:227/255.0f alpha:1.0f];
-//    [changeView addSubview:txtView];
-//    [txtView release];
-
-//    picTxtView = [[UITextView alloc] initWithFrame:CGRectMake(10, 5, 320 - 20, txtView.frame.size.height - 100)];
-//    picTxtView.backgroundColor = [UIColor whiteColor];
-//    picTxtView.text = @"";
-//    picTxtView.font=[UIFont systemFontOfSize:16];
-//    picTxtView.layer.cornerRadius=5;
-//    picTxtView.delegate = self;
-//    [txtView addSubview:picTxtView];
-//    //增加字数限制
-//    labelNum=[[UILabel alloc]initWithFrame:CGRectMake(10, picTxtView.frame.size.height+picTxtView.frame.origin.y+5, 50, 20)];
-//    labelNum.backgroundColor=[UIColor clearColor];
-//    labelNum.text=@"0/140";
-//    labelNum.font=[UIFont systemFontOfSize:12];
-//    [txtView addSubview:labelNum];
-//  
-//    
-//    [picTxtView release];
-    
-    
-//    UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
-//    
-//    //apply
-//    [button setTitle:NSLocalizedString(@"apply", @"") forState:UIControlStateNormal];
-//    button.frame=CGRectMake(230, picTxtView.frame.origin.y+picTxtView.frame.size.height+5, 80, 40);
-//    
-//    UIImage *iamge=[[UIImage imageNamed:@"loginBtn"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 20, 15, 20)];
-//    
-//    [button setBackgroundImage:iamge forState:UIControlStateNormal];
-//    button.titleLabel.font=[UIFont systemFontOfSize:16];
-//    [button addTarget:self action:@selector(applyAll:) forControlEvents:UIControlEventTouchUpInside];
-//    [txtView addSubview:button];
     
     UIView *picView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, changeView.frame.size.width, changeView.frame.size.height)];
     picView.backgroundColor = [UIColor colorWithRed:240/255.0f green:238/255.0f blue:227/255.0f alpha:1.0f];
@@ -721,33 +688,114 @@
 - (void)showBigImage:(UIGestureRecognizer *)sender
 {
     UIImageView *imgv = (UIImageView *)sender.view;
-    ETShowBigImageViewController *showBigVC = [[ETShowBigImageViewController alloc] init];
-    showBigVC.targetImage = imgv.image;
+    GKShowBigImageViewController *showBigVC = [[GKShowBigImageViewController alloc] init];
+    showBigVC.Image = imgv.image;
+    showBigVC.type=1;
+    showBigVC.delegate=self;
     [self presentModalViewController:showBigVC animated:YES];
     [showBigVC release];
 }
-
-//-(void)setPhotoImage:(UIImageView*)img
-//{
-//    
-//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-//    
-//    if(type==1)
-//    {
-//        ETPhoto *photo=[assetArr objectAtIndex:img.tag - TAG];
-//        NSData *data= UIImageJPEGRepresentation([UIImage imageWithCGImage:[[photo.asset defaultRepresentation] fullScreenImage]], 0.1);
-//        img.image=[UIImage imageWithData:data];
+// 删除图片
+-(void)deletePhoto
+{
+    // 让 current 后面的图片key 的值赋给前一个
+    //NSString *currentKey=[NSString stringWithFormat:@"%d",currentpage];
+//    int a=currentpage;
+//    int b=currentpage;
 //
-//    }
-//    else
-//    {
-//        NSData *data= UIImageJPEGRepresentation([UIImage imageWithData:[assetArr objectAtIndex:img.tag-TAG]], 0.1)   ;
-//        img.image= [UIImage imageWithData:data];
-//       
-//    }
-//    [pool release];
-//    
-//}
+    
+    // 找到当前照片的关联学生 然后删除
+    
+    NSString *key=[NSString stringWithFormat:@"%d",currentpage];
+    for (int i=0; i<[stuList count]; i++) {
+        NSDictionary *dic=[stuList objectAtIndex:i];
+        NSString *keytemp=[[dic allKeys]objectAtIndex:0];
+        if([key isEqualToString:keytemp])
+        {
+            [stuList removeObject:dic];
+            break;
+        }
+    }
+    // 得到剩余stuList 所有key 如果key 大于 currentpage 使key 变为 key-1
+    
+    for (int i=0; i<[stuList count]; i++) {
+        NSDictionary *dic=[stuList objectAtIndex:i];
+        NSString *keytemp=[[dic allKeys]objectAtIndex:0];
+        
+        int keyInt=[keytemp integerValue];
+        if(keyInt>currentpage)
+        {
+            id value=[dic objectForKey:keytemp];
+            NSDictionary *dicNew=[NSDictionary dictionaryWithObjectsAndKeys:value,[NSString stringWithFormat:@"%d",keyInt-1], nil];
+            [stuList replaceObjectAtIndex:i withObject:dicNew];
+        }
+        
+        
+    }
+
+    // 找到当前照片的说点什么 然后删除
+    
+    //NSString *key=[NSString stringWithFormat:@"%d",currentpage];
+    for (int i=0; i<[picTextArr count]; i++) {
+        NSDictionary *dic=[picTextArr objectAtIndex:i];
+        NSString *keytemp=[[dic allKeys]objectAtIndex:0];
+        if([key isEqualToString:keytemp])
+        {
+            [picTextArr removeObject:dic];
+            break;
+        }
+    }
+    // 得到剩余picTextArr 所有key 如果key 大于 currentpage 使key 变为 key-1
+    
+    for (int i=0; i<[picTextArr count]; i++) {
+        NSMutableDictionary *dic=[picTextArr objectAtIndex:i];
+        NSString *keytemp=[[dic allKeys]objectAtIndex:0];
+        
+        int keyInt=[keytemp integerValue];
+        if(keyInt>currentpage)
+        {
+            id value=[dic objectForKey:keytemp];
+            NSMutableDictionary *dicNew=[NSMutableDictionary dictionaryWithObjectsAndKeys:value,[NSString stringWithFormat:@"%d",keyInt-1], nil];
+            [picTextArr replaceObjectAtIndex:i withObject:dicNew];
+        }
+        
+        
+    }
+    
+
+
+ //判断是否为最后一个 如果是 currentpage-1
+    BOOL last=(currentpage==[assetArr count]-1)?YES:NO;
+    [assetArr removeObjectAtIndex:currentpage];
+
+    if(last)
+        currentpage=currentpage-1;
+        
+    numbeLabel.text=[NSString stringWithFormat:@"%d/%d",currentpage+1,[assetArr count]];
+    
+     _scroller.contentSize=CGSizeMake([assetArr count] *320, _scroller.frame.size.height);
+   // -(void)addImageViewToScroller:(int)index
+    for (UIView *view in _scroller.subviews) {
+
+        
+            [view removeFromSuperview];
+        
+        
+    }
+    //currentpage=0;
+    if([assetArr count]==0)
+    {
+        [delegate refreashPickViewController:nil];
+        [self.navigationController popViewControllerAnimated:YES];
+        return;
+    }
+    [self setAlreayStudent];
+    [self addImageViewToScroller:currentpage];
+    
+    
+    
+}
+
 -(NSString *)fileName:(int)index
 {
     int a=arc4random()%1000;

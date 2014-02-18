@@ -11,6 +11,7 @@
 #import "ShareContent.h"
 #import <CoreMotion/CoreMotion.h>
 
+#import "ETShowBigImageViewController.h"
 
 #define IMAGEVIEWHEIGHT [UIScreen mainScreen].applicationFrame.size.height
 @implementation ETShowBigImageView
@@ -249,16 +250,17 @@
         [delegate didClickBackButton];
     }
 }
+
 -(void)rightButtonClick:(UIButton*)sender
 {
-   
+    ETShowBigImageViewController *vc = (ETShowBigImageViewController *)self.delegate;
     
     NSArray *imgArr = [NSArray arrayWithObjects:@"保存.png",@"logo_sinaweibo.png",@"腾讯微博.png",@"logo_wechat.png",@"logo_wechatmoments(1).png",@"email.png", nil];
     NSArray *nameArr = [NSArray arrayWithObjects:LOCAL(@"savePhoto", @""),LOCAL(@"sina", @""),LOCAL(@"tencent", @""),LOCAL(@"wechat", @""),LOCAL(@"friend", @"分享到微信朋友圈"),LOCAL(@"mail",@""), nil];
     MTCustomActionSheet *actionSheet = [[MTCustomActionSheet alloc] initWithFrame:CGRectZero andImageArr:imgArr nameArray:nameArr orientation:[UIDevice currentDevice].orientation];
     actionSheet.delegate = self;
     actionSheet.tag = 555;
-    [actionSheet showInView:self];
+    [actionSheet showInView:vc.view];
     [actionSheet release];
     
   

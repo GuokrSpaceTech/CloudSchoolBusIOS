@@ -117,7 +117,7 @@
     else
     {
         UIButton *right=[UIButton buttonWithType:UIButtonTypeCustom];
-        right.frame=CGRectMake(265, 5, 34, 35);
+        right.frame=CGRectMake(280, 5, 34, 35);
         //UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 34, 35)];
         [right setBackgroundImage:[UIImage imageNamed:@"shareBtn3.0.png"] forState:UIControlStateNormal];
         [right setBackgroundImage:[UIImage imageNamed:@"shareBtnSel3.0.png"] forState:UIControlStateHighlighted];

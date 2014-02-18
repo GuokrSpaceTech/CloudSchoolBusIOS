@@ -220,6 +220,7 @@
     [ETCoreDataManager removeAllNoStartActivity];
     [ETCoreDataManager removeAllImportantNotices];
     [ETCoreDataManager removeAllCalendar];
+    [ETCoreDataManager removeAllAttendance];
     
     
 }

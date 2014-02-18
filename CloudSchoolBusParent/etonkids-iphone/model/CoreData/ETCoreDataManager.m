@@ -1255,6 +1255,29 @@
     return successful;
 }
 
++ (BOOL)removeAllAttendance
+{
+    NSError *err = nil;
+    AppDelegate *delegate = SHARED_APP_DELEGATE;
+    NSFetchRequest* request = [[[NSFetchRequest alloc] init] autorelease];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"ETAttendance" inManagedObjectContext:delegate.managedObjectContext];
+    [request setEntity:entity];
+    
+    NSArray *attendance = [delegate.managedObjectContext executeFetchRequest:request error:&err];
+    if (!attendance) {
+        NSLog(@"!!!! remove attendance error : %@",err);
+        return NO;
+    }
+    
+    for (ETAttendance *obj in attendance) {
+        [delegate.managedObjectContext deleteObject:obj];
+    }
+    
+    BOOL successful = [self saveContext];
+    
+    return successful;
+}
+
 
 + (NSArray *)searchCalendarByMonth:(NSString *)month
 {

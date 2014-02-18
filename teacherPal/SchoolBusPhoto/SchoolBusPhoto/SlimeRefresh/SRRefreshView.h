@@ -26,6 +26,8 @@ typedef void (^SRRefreshBlock)(SRRefreshView* sender);
 @property (nonatomic, assign)   BOOL    loading;
 - (void)setLoadingWithexpansion;
 
+@property (nonatomic, assign)   BOOL    broken;
+
 //set the slime's style by this property.
 @property (nonatomic, strong, readonly) SRSlimeView *slime;
 //set your refresh icon.
@@ -43,6 +45,7 @@ typedef void (^SRRefreshBlock)(SRRefreshView* sender);
 @property (nonatomic, assign)   CGFloat upInset;
 
 //
+- (void)scrollViewDidScrollToPoint:(CGPoint)p;
 - (void)scrollViewDidScroll;
 - (void)scrollViewDidEndDraging;
 
@@ -52,6 +55,7 @@ typedef void (^SRRefreshBlock)(SRRefreshView* sender);
 // init default is 32
 - (id)initWithHeight:(CGFloat)height;
 
+- (void)pullApart;
 - (void)pullApart:(SRRefreshView*)refreshView;
 
 @end

@@ -272,7 +272,7 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     }
     else
     {
-        if([shareContent.sharePicArr count]>0)
+        if([shareContent.sharePicArr count]>1)
         {
             
             for (int i=0; i<[shareContent.sharePicArr count]; i++) {
@@ -312,6 +312,35 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
             timeLabel.frame = CGRectMake(30, contentLabel.frame.origin.y + contentLabel.frame.size.height + 10 + height + 5, 100, 16);
             
             contentView.frame=CGRectMake(0, 0, 320, contentLabel.frame.origin.y+contentLabel.frame.size.height+10 +height+5 + 16 );
+        }
+        else if ([shareContent.sharePicArr count] > 0 && [shareContent.sharePicArr count]<=1)
+        {
+            NSDictionary * dic = [shareContent.sharePicArr objectAtIndex:0];
+            NSString *path=[NSString stringWithFormat:@"%@.small.jpg",[dic objectForKey:@"source"]];
+            UIImageView *imageViewPic=[[UIImageView alloc]initWithFrame:CGRectMake(40 , contentLabel.frame.origin.y+contentLabel.frame.size.height+5, 150, 150)];
+            
+            [imageViewPic setImageWithURL:[NSURL URLWithString:path] placeholderImage:[UIImage imageNamed:@"imageplaceholder.png"] options:0 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                
+                if (error) {
+                    imageViewPic.image = [UIImage imageNamed:@"imageerror.png"];
+                }else{
+                    imageViewPic.image = image;
+                }
+                
+            }];
+            imageViewPic.tag = 5555;
+            imageViewPic.backgroundColor=[UIColor clearColor];
+            imageViewPic.userInteractionEnabled = YES;
+            [contentView addSubview:imageViewPic];
+            
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doTap:)];
+            [imageViewPic addGestureRecognizer:tap];
+            [tap release];
+            
+            timeLabel.frame = CGRectMake(30, contentLabel.frame.origin.y + contentLabel.frame.size.height + 10 + 150 + 5, 100, 16);
+            
+            contentView.frame=CGRectMake(0, 0, 320, contentLabel.frame.origin.y+contentLabel.frame.size.height+10 + 150 +5 + 16 );
+            
         }
         else
         {

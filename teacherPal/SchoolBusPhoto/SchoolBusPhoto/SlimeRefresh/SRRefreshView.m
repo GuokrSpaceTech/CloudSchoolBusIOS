@@ -13,7 +13,6 @@
 
 @interface SRRefreshView()
 
-@property (nonatomic, assign)   BOOL    broken;
 @property (nonatomic, strong)   UIScrollView    *scrollView;
 
 @end
@@ -201,6 +200,22 @@
 
 #pragma mark - action
 
+- (void)pullApart
+{
+    //拉断了
+    self.broken = YES;
+    self.loading = YES;
+    if ([_delegate respondsToSelector:@selector(slimeRefreshStartRefresh:)]) {
+        [(id)_delegate performSelector:@selector(slimeRefreshStartRefresh:)
+                            withObject:self
+                            afterDelay:0.0];
+    }
+    if (_block) {
+        _block(self);
+    }
+}
+
+
 - (void)pullApart:(SRRefreshView*)refreshView
 {
     //拉断了
@@ -214,6 +229,51 @@
     }
     if (_block) {
         _block(self);
+    }
+}
+
+- (void)scrollViewDidScrollToPoint:(CGPoint)p
+{
+    //    CGPoint p = pt;
+    
+    //NSLog(@"%f   %f    %f",p.y,-_upInset,-_dragingHeight);
+    
+    CGRect rect = self.frame;
+    if (p.y <= - _dragingHeight - _upInset) {
+        rect.origin.y = p.y + _upInset;
+        rect.size.height = -p.y;
+        rect.size.height = ceilf(rect.size.height);
+        self.frame = rect;
+        if (!self.loading) {
+            [_slime setNeedsDisplay];
+        }
+        if (!_broken) {
+            float l = -(p.y + _dragingHeight + _upInset);
+            
+            //            NSLog(@"%f %f",l,_oldLength);
+            if (l <= _oldLength) {  //下拉松手
+                l = MIN(distansBetween(_slime.startPoint, _slime.toPoint), l);
+                CGPoint ssp = _slime.startPoint;
+                _slime.toPoint = CGPointMake(ssp.x, ssp.y + l);
+                CGFloat pf = (1.0f-l/_slime.viscous) * (1.0f-kStartTo) + kStartTo;
+                _refleshView.layer.transform = CATransform3DMakeScale(pf, pf, 1);
+            }else if (self.scrollView.isDragging) {
+                CGPoint ssp = _slime.startPoint;
+                _slime.toPoint = CGPointMake(ssp.x, ssp.y + l);
+                CGFloat pf = (1.0f-l/_slime.viscous) * (1.0f-kStartTo) + kStartTo;
+                _refleshView.layer.transform = CATransform3DMakeScale(pf, pf, 1);
+            }
+            _oldLength = l;
+        }
+        if (self.alpha != 1.0f)
+            self.alpha = 1.0f;
+    }else if (p.y < -_upInset) {
+        rect.origin.y = -_dragingHeight;
+        rect.size.height = _dragingHeight;
+        self.frame = rect;
+        [_slime setNeedsDisplay];
+        _slime.toPoint = _slime.startPoint;
+        if (_slimeMissWhenGoingBack) self.alpha = -(p.y + _upInset) / _dragingHeight;
     }
 }
 

@@ -79,6 +79,7 @@
 + (NSArray *)searchAttendanceByMonth:(NSString *)month;
 + (BOOL)removeAttendanceByMonth:(NSString *)month;
 + (BOOL)addAttendance:(NSArray *)attArr withMonth:(NSString *)month;
++ (BOOL)removeAllAttendance;
 
 
 + (NSArray *)searchCalendarByMonth:(NSString *)month;

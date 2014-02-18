@@ -37,6 +37,21 @@
 {
     [super viewDidAppear:animated];
     [(KKNavigationController *)self.navigationController setNavigationTouch:NO];
+    
+    [self autoDragScrollLoading];
+    
+    
+}
+- (void)autoDragScrollLoading
+{
+    [_tableView setContentOffset:CGPointMake(0, -50) animated:NO];
+    _slimeView.loading = YES;
+    _slimeView.alpha = 0.0f;
+    _slimeView.broken = YES;
+    
+    [_slimeView scrollViewDidScrollToPoint:CGPointMake(0, -50)];
+    [_slimeView scrollViewDidEndDraging];
+    [_slimeView pullApart];
 }
 - (void)viewDidLoad
 {
@@ -83,9 +98,9 @@
     titlelabel.text=NSLocalizedString(@"noticeQ", @"");
     
 
-    NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
+//    NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
 
-    [self loadNotice:param];
+//    [self loadNotice:param];
      //[[EKRequest Instance]EKHTTPRequest:tnotice parameters:param requestMethod:GET forDelegate:self];
   
 	// Do any additional setup after loading the view.

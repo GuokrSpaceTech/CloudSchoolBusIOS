@@ -20,6 +20,7 @@
 {
     UITableView *_tableView;
     UILabel *numLabel;
+      UIButton *editButton;
 }
 @property (nonatomic ,retain)UITableView *_tableView;
 @property (nonatomic,retain)NSMutableArray *upArr;

@@ -163,7 +163,10 @@ static EKRequest * instance = nil;
              
              NSDictionary * allHeaderInfo = [urlResponse allHeaderFields];
              int code = [[allHeaderInfo objectForKey:@"Code"] intValue];
-
+             if(code<-1000)
+             {
+                 [[NSNotificationCenter defaultCenter] postNotificationName:@"LOGINOUTNOTI" object:nil];
+             }
           
             // NSDictionary * json = [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
              
@@ -204,7 +207,10 @@ static EKRequest * instance = nil;
              int code = [[allHeaderInfo objectForKey:@"Code"] intValue];
             NSLog(@"code:=%d",code);
              
-             
+             if(code<-1000)
+             {
+                 [[NSNotificationCenter defaultCenter] postNotificationName:@"LOGINOUTNOTI" object:nil];
+             }
 
              [delegate getEKResponse:response forMethod:function parm:param resultCode:code];
          }];
@@ -221,7 +227,10 @@ static EKRequest * instance = nil;
              }
              NSDictionary * allHeaderInfo = [urlResponse allHeaderFields];
              int code = [[allHeaderInfo objectForKey:@"Code"] intValue];
-      
+             if(code<-1000)
+             {
+                 [[NSNotificationCenter defaultCenter] postNotificationName:@"LOGINOUTNOTI" object:nil];
+             }
              // NSString *str=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
             // NSDictionary * json = [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
              [delegate getEKResponse:response forMethod:function parm:param  resultCode:code];

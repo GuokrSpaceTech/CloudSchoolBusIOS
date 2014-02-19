@@ -19,4 +19,6 @@
 
 -(void)addRequestToQueue:(NSString *)path name:(NSString *)name nameid:(NSString *)nameId studentid:(NSString *)std time:(NSNumber *)time fize:(NSNumber *)fsize classID:(NSNumber *)classid intro:(NSString *)intro tag:(NSString *)tag;
 +(id)creatQueue;
+-(void)ChageCoreDataDeleteOrUoloadingAlter:(BOOL)an  picId:(NSString *)picId picPath:(NSString *)path;
+-(void)removeQueueAqueuest:(NSString *)nameid;
 @end

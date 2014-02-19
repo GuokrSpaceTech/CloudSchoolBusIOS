@@ -135,16 +135,28 @@
         
     }];
 }
-
 - (void)editDraft:(id)sender
 {
     if (self._tableView.editing) {
         [self._tableView setEditing:NO animated:YES];
+        [editButton setTitle:NSLocalizedString(@"draftedit", @"") forState:UIControlStateNormal];
     }else{
         [self._tableView setEditing:YES animated:YES];
+        
+        [editButton setTitle:NSLocalizedString(@"finish", @"") forState:UIControlStateNormal];
+        
     }
     
 }
+//- (void)editDraft:(id)sender
+//{
+//    if (self._tableView.editing) {
+//        [self._tableView setEditing:NO animated:YES];
+//    }else{
+//        [self._tableView setEditing:YES animated:YES];
+//    }
+//    
+//}
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -247,7 +259,10 @@
     
     
 }
-
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
 -(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return NSLocalizedString(@"删除", @"");

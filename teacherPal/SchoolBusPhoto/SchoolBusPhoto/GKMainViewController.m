@@ -68,6 +68,11 @@ static  GKMainViewController*rootViewCon;
 //    self.contentView.layer.shadowOffset = CGSizeMake(0, 0);
 //    self.contentView.layer.shadowColor = [UIColor blackColor].CGColor;
 //    self.contentView.layer.shadowOpacity = 1;
+   
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loginOUtNoti) name:@"LOGINOUTNOTI" object:nil];
+    
+    
     GKLeftViewController *leftVC=[[GKLeftViewController alloc]init];
     leftVC.delegate=self;
     UINavigationController *navgation=[[UINavigationController alloc]initWithRootViewController:leftVC];
@@ -165,7 +170,14 @@ static  GKMainViewController*rootViewCon;
 
     
 }
-
+-(void)loginOUtNoti
+{
+    [GKUserLogin clearpassword];
+    [[GKLoaderManager createLoaderManager]setQueueStop];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -354,6 +366,8 @@ static  GKMainViewController*rootViewCon;
 }
 - (void)dealloc {
    // [_bottomView release];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"LOGINOUTNOTI" object:nil];
     self.bottomView=nil;
    // [_contentView release];
     self.contentView=nil;

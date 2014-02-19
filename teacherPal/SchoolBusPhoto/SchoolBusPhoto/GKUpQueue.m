@@ -48,6 +48,19 @@ static GKUpQueue *gkqueue=nil;
     
     return gkqueue;
 }
+-(void)removeQueueAqueuest:(NSString *)nameid
+{
+    for (ASIHTTPRequest *request in [queue operations]) {
+        
+        NSString *picId=[[request userInfo] objectForKey:@"nameid"];
+        if([picId isEqualToString:nameid])
+        {
+            [request cancel];
+        }
+        
+
+    }
+}
 -(void)addRequestToQueue:(NSString *)path name:(NSString *)name nameid:(NSString *)nameId studentid:(NSString *)std time:(NSNumber *)time fize:(NSNumber *)fsize classID:(NSNumber *)classid intro:(NSString *)intro tag:(NSString *)tag
 {
     
@@ -86,8 +99,6 @@ static GKUpQueue *gkqueue=nil;
     [request addPostValue:[self fileName] forKey:@"pickey"];
     
     [queue addOperation:request];
-
-
     
 }
 
@@ -132,7 +143,7 @@ static GKUpQueue *gkqueue=nil;
 //    NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
 //     GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
     NSLog(@"%@",request.responseHeaders);
-    
+     NSLog(@"code ----%@",[request.responseHeaders objectForKey:@"Code"]);
     NSString *picId=[[request userInfo] objectForKey:@"nameid"];
     NSString *picPath=[[request userInfo] objectForKey:@"path"];
      //  [self ChageCoreDataDeleteOrUoloadingAlter:NO picId:picId picPath:picPath];
@@ -182,6 +193,7 @@ static GKUpQueue *gkqueue=nil;
     else
     {
         NSLog(@"未知错误 没有code 值");
+        [self ChageCoreDataDeleteOrUoloadingAlter:NO picId:picId picPath:picPath];
     }
         // 从findwraper 中删除
     

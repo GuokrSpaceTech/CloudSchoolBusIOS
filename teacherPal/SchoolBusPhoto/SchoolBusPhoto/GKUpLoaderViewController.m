@@ -329,6 +329,10 @@
 {
     return 60;
 }
+
+
+
+
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"changeupload" object:nil];

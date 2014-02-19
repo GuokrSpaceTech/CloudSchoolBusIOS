@@ -40,4 +40,7 @@
 
 -(void)setQueueStop;
 -(void)setQueueStart;
+
+- (BOOL)isContainLoaderWithPath:(NSString *)path;
+
 @end

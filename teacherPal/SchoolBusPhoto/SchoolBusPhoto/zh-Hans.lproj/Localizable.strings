@@ -136,14 +136,14 @@
 "limitChar" = "字符少于12个字";
 "apply"="应用全部";
 "tophoto"="立即拍照";
-"uploadsuccess"="恭喜你，所有照片已上传成功!";
+"uploadsuccess"="恭喜你，所有照片和视频已上传成功!";
 
 
 "uplist"="上传列表";
 "uptotle"="已上传照片总数：";
 "upvedio"="视频总数：";
 
-"zhang"="张";
+"zhang"="";
 "processing"="正在处理中";
 "processingafter"="图片已提交成功，正在上传，可点击左侧栏-上传列表查看具体进度";
 

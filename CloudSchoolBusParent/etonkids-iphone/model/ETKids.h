@@ -55,7 +55,7 @@
 
 #define RIGHTMARGIN 268
 
-#define SERVICE_NUMBER @"186-1265-3984"
+#define SERVICE_NUMBER @"400-606-3996"
 
 typedef enum
 {

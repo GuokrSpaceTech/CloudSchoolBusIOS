@@ -221,7 +221,7 @@
     }
     else if([notice.plist count]>1)
     {
-        for (int i=0; i<[notice.plist count]; i++) {
+        for (int i=0; i<MIN([notice.plist count],3); i++) {
             
             int row =i/3;
             int col=i%3;

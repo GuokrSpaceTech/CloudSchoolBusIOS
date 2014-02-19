@@ -429,7 +429,7 @@
     if (self.isPresent) {  //从视频草稿箱 推入界面
         
         if (![contentTV.text isEqualToString:@""] && ![contentTV.text isEqualToString:@"描述......"]) {
-            UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert", @"") message:@"是否退出？" delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") otherButtonTitles:NSLocalizedString(@"OK", @""), nil] autorelease];
+            UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"shifoutuichu",@"") delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") otherButtonTitles:NSLocalizedString(@"OK", @""), nil] autorelease];
             [alert show];
             return;
         }
@@ -440,7 +440,7 @@
     
     if (self.moviePath != nil)
     {
-        UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"您是否要保存到草稿箱" delegate:self cancelButtonTitle:NSLocalizedString(@"cancel",@"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"savedraft",@""),NSLocalizedString(@"dontsavedraft",@""), nil];
+        UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"shifoubaocuncaogao",@"是否要保存到草稿箱") delegate:self cancelButtonTitle:NSLocalizedString(@"cancel",@"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"savedraft",@""),NSLocalizedString(@"dontsavedraft",@""), nil];
         [as showInView:self.view];
         [as release];
     }

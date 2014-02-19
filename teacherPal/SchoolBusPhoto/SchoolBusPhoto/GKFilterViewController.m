@@ -408,6 +408,8 @@
         
 //        GKAppDelegate* delegate = SHARED_APP_DELEGATE;
         
+        UISaveVideoAtPathToSavedPhotosAlbum(self.moviePath, nil, nil, nil);
+        
         [[DBManager shareInstance] insertObject:^(NSManagedObject *object) {
             
             MovieDraft *movie = (MovieDraft *)object;
@@ -483,6 +485,9 @@
     {
         sendMediaVC.moviePath = self.moviePath;
         sendMediaVC.thumbnail = self.movieThumbnail;
+        
+//        UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(self.moviePath);
+        UISaveVideoAtPathToSavedPhotosAlbum(self.moviePath, nil, nil, nil);
     }
     [self.navigationController pushViewController:sendMediaVC animated:YES];
     [sendMediaVC release];

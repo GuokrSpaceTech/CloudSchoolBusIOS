@@ -8,7 +8,7 @@
 
 #import "VideoEncoder.h"
 
-
+#define MAX_RECORD_TIMING 15
 @implementation VideoEncoder
 
 @synthesize path = _path,_writer;
@@ -115,7 +115,13 @@
                     
                     CMTime startTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
                     float s = ((double)startTime.value)/startTime.timescale;
+                    
+                    float value = (s - time) / MAX_RECORD_TIMING;
 //                    NSLog(@"~~~~~~~~~ : %f",s);
+                    if (self.slider)
+                    {
+                        [self performSelectorOnMainThread:@selector(setProgress:) withObject:[NSString stringWithFormat:@"%f",value] waitUntilDone:NO];
+                    }
                     
                     return YES;
                 }
@@ -137,6 +143,10 @@
 - (void)setProgress:(NSString *)sender
 {
     self.slider.progress = sender.floatValue;
+    
+    if (self.slider.progress >= 1) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"stopRecord" object:nil];
+    }
 }
 
 - (void)dealloc

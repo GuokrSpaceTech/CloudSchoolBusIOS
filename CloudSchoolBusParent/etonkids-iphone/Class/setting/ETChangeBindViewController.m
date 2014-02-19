@@ -368,6 +368,11 @@
                 str = LOCAL(@"nosendmsg", @"");
                 break;
             }
+            case -10:
+            {
+                str = @"该手机号码已经绑定过";
+                break;
+            }
                 
             default:
                 str = LOCAL(@"busy", @"");

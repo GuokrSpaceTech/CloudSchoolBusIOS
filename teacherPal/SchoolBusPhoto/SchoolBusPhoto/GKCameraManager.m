@@ -25,6 +25,7 @@ static GKCameraManager *cameraManager;
     AVCaptureConnection* _videoConnection;
     dispatch_queue_t _sessionQueue;
     AVCaptureStillImageOutput *_stillImageOutput;
+    dispatch_queue_t encodeQueue;
     
     VideoEncoder* _encoder;
     BOOL _isCapturing;
@@ -70,6 +71,7 @@ static GKCameraManager *cameraManager;
         [self checkDeviceAuthorizationStatus];
         
         _sessionQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_SERIAL);
+        encodeQueue = dispatch_queue_create("encode.sampleBuffer.queue", NULL);
         
         //        dispatch_async(_sessionQueue, ^{
         //            [self setBackgroundRecordingID:UIBackgroundTaskInvalid];
@@ -125,7 +127,7 @@ static GKCameraManager *cameraManager;
         
         _captureQueue = dispatch_queue_create("uk.co.gdcl.cameraengine.capture", DISPATCH_QUEUE_SERIAL);
         AVCaptureVideoDataOutput* videoout = [[AVCaptureVideoDataOutput alloc] init];
-        [videoout setSampleBufferDelegate:self queue:dispatch_get_main_queue()];
+        [videoout setSampleBufferDelegate:self queue:_captureQueue];
         
         
         NSDictionary* setcapSettings = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -473,7 +475,9 @@ static GKCameraManager *cameraManager;
     if (_progress) {
         time = 0.0f;
         _progress.progress = 0.0f;
-        self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1/30.0f target:self selector:@selector(takeTiming) userInfo:nil repeats:YES];
+        
+//        self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1/20.0f target:self selector:@selector(takeTiming) userInfo:nil repeats:YES];
+//        [[NSRunLoop currentRunLoop] addTimer:self.progressTimer forMode:NSDefaultRunLoopMode];
     }
     
 }
@@ -481,7 +485,7 @@ static GKCameraManager *cameraManager;
     
 //    NSLog(@"###");
     
-    time+=1/30.0f;
+    time+=1/20.0f;
 
     _progress.progress = time/MAX_RECORD_TIMING;
     
@@ -695,7 +699,7 @@ static GKCameraManager *cameraManager;
             self.isPaused = YES;
             _discont = YES;
             
-            [self.progressTimer invalidate];
+//            [self.progressTimer invalidate];
             
             [_progress markSegment];
         }
@@ -711,7 +715,7 @@ static GKCameraManager *cameraManager;
             NSLog(@"Resuming capture");
             self.isPaused = NO;
             
-            self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1/30.0f target:self selector:@selector(takeTiming) userInfo:nil repeats:YES];
+//            self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1/30.0f target:self selector:@selector(takeTiming) userInfo:nil repeats:YES];
         }
     }
 }
@@ -766,9 +770,9 @@ static GKCameraManager *cameraManager;
             NSString* path = [NSTemporaryDirectory() stringByAppendingPathComponent:filename];
             _encoder = [VideoEncoder encoderForPath:path Height:_cy width:_cx channels:_channels samples:_samplerate];
             
-//            if (_progress) {
-//                _encoder.slider = _progress;
-//            }
+            if (_progress) {
+                _encoder.slider = _progress;
+            }
         }
         if (_discont)
         {
@@ -842,20 +846,25 @@ static GKCameraManager *cameraManager;
             float s = ((double)startTime.value)/startTime.timescale;
 //            NSLog(@"######### : %f",s - lastTime);
             
-            if (s - lastTime >= -0.03) {
+//            if (s - lastTime >= -0.03) {
                 [_encoder encodeFrame:sampleBuffer isVideo:bVideo];
-                lastTime = s;
-            }
-            else
-            {
-//                NSLog(@"------------ : %f",s);
-            }
-        
+//                lastTime = s;
+//            }
+//            else
+//            {
+////                NSLog(@"------------ : %f",s);
+//            }
+            
+            
+//            dispatch_async(_captureQueue, ^{
+//                [_encoder encodeFrame:sampleBuffer isVideo:bVideo];
+//
+//            });
             
             
         }
-        CFRelease(sampleBuffer);
         
+        CFRelease(sampleBuffer);
     }
     
 }

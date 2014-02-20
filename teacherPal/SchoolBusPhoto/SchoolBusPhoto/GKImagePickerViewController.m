@@ -362,7 +362,8 @@
         [_tableView reloadData];
         return;
     }
-    [selectArr removeAllObjects];
+   
+  
      // countLabel.text=[NSString stringWithFormat:@"%d/%d",0,[imageArr count]];
     
     [self playAnimation:0];
@@ -406,6 +407,9 @@
         }
         else
             [self setNOView:YES];
+        
+         [selectArr removeAllObjects];
+          [self setAllPhotoSelect:NO];
         [_tableView reloadData];
     }
     

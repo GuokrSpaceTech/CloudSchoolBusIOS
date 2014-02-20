@@ -49,9 +49,13 @@
     if([upArr count]==0)
     {
         [self setNOView:NO];
+         editButton.hidden=YES;
     }
     else
+    {
         [self setNOView:YES];
+        editButton.hidden=NO;
+    }
     [_tableView reloadData];
 
 }

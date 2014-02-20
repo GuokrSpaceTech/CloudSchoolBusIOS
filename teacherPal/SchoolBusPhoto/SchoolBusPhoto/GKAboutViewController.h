@@ -14,6 +14,8 @@
 {
     
 }
+@property (retain, nonatomic) IBOutlet UIImageView *iconImageView;
+
 @property (retain, nonatomic) IBOutlet UIView *BGView;
     @property (retain, nonatomic) IBOutlet UIButton *privaty;
 @property (retain, nonatomic) IBOutlet UIImageView *aboutLogo;

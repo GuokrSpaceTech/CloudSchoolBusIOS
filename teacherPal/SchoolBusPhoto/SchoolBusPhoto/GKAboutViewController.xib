@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="BGView" destination="7M4-M4-aIB" id="2vx-1b-tuM"/>
                 <outlet property="aboutLogo" destination="Sje-Eq-eZq" id="C2x-zv-6tf"/>
+                <outlet property="iconImageView" destination="Sje-Eq-eZq" id="cua-dg-lMG"/>
                 <outlet property="privaty" destination="JyI-cD-bu6" id="GQP-Py-Lf5"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -123,13 +124,6 @@
                         <action selector="emailClick:" destination="-1" eventType="touchUpInside" id="O6B-Xi-cEh"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V1.2.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C1b-Q8-KVW">
-                    <rect key="frame" x="217" y="94" width="41" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

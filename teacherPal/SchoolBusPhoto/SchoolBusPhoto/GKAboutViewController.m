@@ -36,6 +36,10 @@
 //    BGView.backgroundColor=[UIColor colorWithRed:237/255.0 green:234/255.0 blue:225/255.0 alpha:1];
 //    [self.view addSubview:BGView];
 //    [BGView release];
+    
+    
+    
+    
     UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeCustom];
     buttonBack.frame=CGRectMake(10, 5, 34, 35);
     [buttonBack setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
@@ -43,6 +47,19 @@
     [navigationView addSubview:buttonBack];
     [buttonBack addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    
+    UILabel *_versionLabel=[[UILabel alloc]initWithFrame:CGRectMake(196-50, 5, 40, 20)];
+    _versionLabel.textColor=[UIColor whiteColor];
+    _versionLabel.font=[UIFont systemFontOfSize:12];
+    _versionLabel.backgroundColor=[UIColor clearColor];
+    if(IOSVERSION>=6.0)
+        _versionLabel.textAlignment=NSTextAlignmentCenter;
+    else
+        _versionLabel.textAlignment=UITextAlignmentCenter;
+    _versionLabel.text=[NSString stringWithFormat:@"V%@",CURRENTVERSION];
+    [_iconImageView addSubview:_versionLabel];
+    [_versionLabel release];
     
     
     _BGView.frame=CGRectMake(0, (iOS7?(20+46):46), 320, self.view.frame.size.height-(iOS7?(20+46):46));
@@ -271,12 +288,16 @@
     [_privaty release];
     [_aboutLogo release];
     [_BGView release];
+    [_iconImageView release];
+    
     [super dealloc];
 }
 - (void)viewDidUnload {
     [self setPrivaty:nil];
     [self setAboutLogo:nil];
     [self setBGView:nil];
+    [self setIconImageView:nil];
+ 
     [super viewDidUnload];
 }
 @end

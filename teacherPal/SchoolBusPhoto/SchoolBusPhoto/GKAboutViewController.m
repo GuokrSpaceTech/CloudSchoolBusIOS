@@ -79,8 +79,8 @@
 //    [navigationView addSubview:buttom];
     titlelabel.text=NSLocalizedString(@"aboutus", @"");
     
-    NSString *logostr= [[NSBundle mainBundle] pathForResource:NSLocalizedString(@"aboutLogo", @"") ofType:@"png"];
-    [_aboutLogo setImage:[UIImage imageWithContentsOfFile:logostr]];
+//    NSString *logostr= [[NSBundle mainBundle] pathForResource:NSLocalizedString(@"aboutLogo", @"") ofType:@"png"];
+//    [_aboutLogo setImage:[UIImage imageWithContentsOfFile:logostr]];
     
 //    
 //    UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(0, navigationView.frame.size.height+navigationView.frame.origin.y, 320,self.view.frame.size.height)];
@@ -286,7 +286,7 @@
 
 - (void)dealloc {
     [_privaty release];
-    [_aboutLogo release];
+   // [_aboutLogo release];
     [_BGView release];
     [_iconImageView release];
     
@@ -294,7 +294,7 @@
 }
 - (void)viewDidUnload {
     [self setPrivaty:nil];
-    [self setAboutLogo:nil];
+    //[self setAboutLogo:nil];
     [self setBGView:nil];
     [self setIconImageView:nil];
  

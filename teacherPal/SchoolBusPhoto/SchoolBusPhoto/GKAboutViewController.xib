@@ -8,7 +8,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GKAboutViewController">
             <connections>
                 <outlet property="BGView" destination="7M4-M4-aIB" id="2vx-1b-tuM"/>
-                <outlet property="aboutLogo" destination="Sje-Eq-eZq" id="C2x-zv-6tf"/>
                 <outlet property="iconImageView" destination="Sje-Eq-eZq" id="cua-dg-lMG"/>
                 <outlet property="privaty" destination="JyI-cD-bu6" id="GQP-Py-Lf5"/>
                 <outlet property="view" destination="1" id="3"/>

@@ -14,6 +14,7 @@
 #import "KKNavigationController.h"
 #import "DBManager.h"
 #import "GKAppDelegate.h"
+#import "GKLoaderManager.h"
 
 @interface GKDraftViewController ()
 
@@ -206,13 +207,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     MovieDraft *draft = [self.dataArray objectAtIndex:indexPath.row];
-    GKSendMediaViewController *sendMediaVC = [[GKSendMediaViewController alloc] init];
-    sendMediaVC.moviePath = draft.moviepath;
-    sendMediaVC.thumbnail = [UIImage imageWithData:draft.thumbnail];
-    sendMediaVC.isPresent = YES;
-    [self presentModalViewController:sendMediaVC animated:YES];
-    [sendMediaVC release];
+    
+    GKLoaderManager *lm = [GKLoaderManager createLoaderManager];
+    if (![lm isContainLoaderWithPath:draft.moviepath])
+    {
+        GKSendMediaViewController *sendMediaVC = [[GKSendMediaViewController alloc] init];
+        sendMediaVC.moviePath = draft.moviepath;
+        sendMediaVC.thumbnail = [UIImage imageWithData:draft.thumbnail];
+        sendMediaVC.isPresent = YES;
+        [self presentModalViewController:sendMediaVC animated:YES];
+        [sendMediaVC release];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"uploading", @"正在上传...") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"确定") otherButtonTitles:nil, nil] ;
+        [alert show];
+        [alert release];
+    }
+    
+    
+    
+    
 }
 
 

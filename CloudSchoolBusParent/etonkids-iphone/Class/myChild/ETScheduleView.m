@@ -275,7 +275,9 @@
         
         NSString *paramDay = [param objectForKey:@"day"];
         NSString *t = [datebutton titleForState:UIControlStateNormal];
-        if (![paramDay isEqualToString:t])
+        NSString *t1 = [t stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        
+        if (![paramDay isEqualToString:[t1 substringFromIndex:2]])
         {
             return;
         }

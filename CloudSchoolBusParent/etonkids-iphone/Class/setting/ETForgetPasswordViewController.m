@@ -460,7 +460,7 @@
 {
     if (alertView.tag == 888) {
         if (index == 1) {
-            NSString *num = [[NSString alloc] initWithFormat:@"tel://%@",SERVICE_NUMBER];
+            NSString *num = [[NSString alloc] initWithFormat:@"tel://4006063996"];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:num]];
         }
     }

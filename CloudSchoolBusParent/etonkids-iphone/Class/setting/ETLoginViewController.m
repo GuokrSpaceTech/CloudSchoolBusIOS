@@ -788,7 +788,7 @@
 //    {
     [defaultUser setObject:AUTOLOGINVALUE forKey:AUTOLOGIN];
     if (![defaultUser objectForKey:@"AutoPlay"]) {
-        [defaultUser setObject:@"1" forKey:@"AutoPlay"];
+        [defaultUser setObject:@"0" forKey:@"AutoPlay"];
     }
 //    [defaultUser setObject:@"1" forKey:@"AutoPlay"];
     [ETCoreDataManager saveUser];

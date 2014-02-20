@@ -408,6 +408,8 @@
         
 //        GKAppDelegate* delegate = SHARED_APP_DELEGATE;
         
+        UISaveVideoAtPathToSavedPhotosAlbum(self.moviePath, nil, nil, nil);
+        
         [[DBManager shareInstance] insertObject:^(NSManagedObject *object) {
             
             MovieDraft *movie = (MovieDraft *)object;
@@ -435,7 +437,7 @@
 
 - (void)saveDraft:(id)sender
 {
-    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert", @"") message:@"是否保存到草稿箱 ？" delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") otherButtonTitles:NSLocalizedString(@"OK", @""), nil] autorelease];
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"shifoubaocuncaogao",@"是否要保存到草稿箱") delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") otherButtonTitles:NSLocalizedString(@"OK", @""), nil] autorelease];
     [alert show];
     
 }
@@ -483,6 +485,9 @@
     {
         sendMediaVC.moviePath = self.moviePath;
         sendMediaVC.thumbnail = self.movieThumbnail;
+        
+//        UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(self.moviePath);
+        UISaveVideoAtPathToSavedPhotosAlbum(self.moviePath, nil, nil, nil);
     }
     [self.navigationController pushViewController:sendMediaVC animated:YES];
     [sendMediaVC release];

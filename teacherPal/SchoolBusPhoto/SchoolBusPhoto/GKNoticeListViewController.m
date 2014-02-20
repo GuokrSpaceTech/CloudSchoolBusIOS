@@ -341,7 +341,7 @@
     }
     else if([_notice.plist count]>1)
     {
-        int row=(ceil([_notice.plist count]/3.0));
+        int row=(ceil(MIN([_notice.plist count],3)/3.0));
         height+=(row*65) +(row-1)*10 +5;
     }
     

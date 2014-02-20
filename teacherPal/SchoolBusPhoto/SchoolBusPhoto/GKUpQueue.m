@@ -99,6 +99,8 @@ static GKUpQueue *gkqueue=nil;
     [request addPostValue:[self fileName] forKey:@"pickey"];
     
     [queue addOperation:request];
+
+    
     
 }
 

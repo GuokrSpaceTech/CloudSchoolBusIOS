@@ -249,7 +249,7 @@
         iamgeView.image = [UIImage imageNamed:@"云中校车视频相册封面.png"];
         
         UILabel *label=(UILabel *)[cell viewWithTag:853];
-        label.text = NSLocalizedString(@"productname", @"");
+        label.text = NSLocalizedString(@"moviedraft", @"");
     }
     else
     {

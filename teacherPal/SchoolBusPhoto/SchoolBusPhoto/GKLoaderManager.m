@@ -327,7 +327,19 @@ static GKLoaderManager *manager=nil;
 
 
 }
-
+- (BOOL)isContainLoaderWithPath:(NSString *)path
+{
+    BOOL isContain = NO;
+    for (int i = 0; i < self.upArr.count; i++) {
+        GKUpWraper *uw = [self.upArr objectAtIndex:i];
+        if ([uw.path isEqualToString:path]) {
+            isContain = YES;
+            break;
+        }
+        
+    }
+    return isContain;
+}
 
 
 @end

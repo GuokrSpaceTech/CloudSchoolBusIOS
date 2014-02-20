@@ -163,7 +163,7 @@ static EKRequest * instance = nil;
              
              NSDictionary * allHeaderInfo = [urlResponse allHeaderFields];
              int code = [[allHeaderInfo objectForKey:@"Code"] intValue];
-             if(code<-1000)
+             if(code==-1113)
              {
                  [[NSNotificationCenter defaultCenter] postNotificationName:@"LOGINOUTNOTI" object:nil];
              }
@@ -207,7 +207,7 @@ static EKRequest * instance = nil;
              int code = [[allHeaderInfo objectForKey:@"Code"] intValue];
             NSLog(@"code:=%d",code);
              
-             if(code<-1000)
+            if(code==-1113)
              {
                  [[NSNotificationCenter defaultCenter] postNotificationName:@"LOGINOUTNOTI" object:nil];
              }
@@ -227,7 +227,7 @@ static EKRequest * instance = nil;
              }
              NSDictionary * allHeaderInfo = [urlResponse allHeaderFields];
              int code = [[allHeaderInfo objectForKey:@"Code"] intValue];
-             if(code<-1000)
+            if(code==-1113)
              {
                  [[NSNotificationCenter defaultCenter] postNotificationName:@"LOGINOUTNOTI" object:nil];
              }

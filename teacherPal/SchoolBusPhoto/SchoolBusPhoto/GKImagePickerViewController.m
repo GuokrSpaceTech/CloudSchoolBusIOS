@@ -212,7 +212,11 @@
 -(void)deleteBtnClick:(UIButton *)btn
 {
     // 把 数据加入到数据库
-    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"ignore", @"") message:@"选择忽略后，改照片将不再程序中显示，并不会删除照片，你依然可以在相册中查看" delegate:self cancelButtonTitle:NSLocalizedString(@"no", @"") otherButtonTitles:NSLocalizedString(@"yes", @""), nil];
+    
+//    "ignoreAlert"="选择忽略后，该照片将不在程序中显示，并不会删除照片，你依然可以在相册中查看";
+ 
+    
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"ignore", @"") message:NSLocalizedString(@"ignoreAlert", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"no", @"") otherButtonTitles:NSLocalizedString(@"yes", @""), nil];
    // NSLog(@"%@,%d",alert.subviews,[alert.subviews count]);
     
     [alert show];
@@ -311,7 +315,8 @@
     [selectArr removeAllObjects];
     [self setAllPhotoSelect:NO];
     [_tableView reloadData];
-    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"忽略成功" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"ignoresuccess", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
     [alert show];
     [alert release];
 }

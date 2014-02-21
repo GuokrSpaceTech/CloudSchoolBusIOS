@@ -35,7 +35,7 @@
 "Product"="商品积分";
 "Photo"="拍照积分";
 "Sharing"="推广积分";
-"year"="年";
+"year"="岁";
 "notice"="noticeNormal.png";
 
 "about"="aboutNormal.png";
@@ -227,4 +227,5 @@
 "shifoutuichu"="是否退出？";
 "shifoubaocuncaogao"="是否要保存到草稿箱?";
 "uploading" = "正在上传...";
-
+"ignoreAlert"="选择忽略后，该照片将不在程序中显示，并不会删除照片，你依然可以在相册中查看";
+"ignoresuccess"="忽略成功";

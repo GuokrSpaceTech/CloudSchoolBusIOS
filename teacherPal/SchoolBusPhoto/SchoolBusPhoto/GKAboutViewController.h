@@ -14,9 +14,11 @@
 {
     
 }
+@property (retain, nonatomic) IBOutlet UIImageView *iconImageView;
+
 @property (retain, nonatomic) IBOutlet UIView *BGView;
     @property (retain, nonatomic) IBOutlet UIButton *privaty;
-@property (retain, nonatomic) IBOutlet UIImageView *aboutLogo;
+//@property (retain, nonatomic) IBOutlet UIImageView *aboutLogo;
 - (IBAction)photoClick:(id)sender;
 - (IBAction)webClick:(id)sender;
 - (IBAction)screctClick:(id)sender;

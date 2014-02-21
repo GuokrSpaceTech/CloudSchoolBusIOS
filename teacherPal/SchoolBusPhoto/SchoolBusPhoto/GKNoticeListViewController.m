@@ -96,14 +96,32 @@
     titlelabel.text=NSLocalizedString(@"noticeQ", @"");
     
 
-    NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
+    
+    UIView *noView=[[UIView alloc]initWithFrame:CGRectMake(320/2.0-303/4,self.view.frame.size.height/2.0-262/4-30, 303/2, 262/2+30) ];
+    noView.tag=232;
+    UIImageView *noImage=[[UIImageView alloc]initWithFrame:CGRectMake(0,0, 303/2, 262/2)];
+    noImage.image=IMAGENAME(IMAGEWITHPATH(@"NOData"));
+    [noView addSubview:noImage];
+    [noImage release];
+    
+     [self.view addSubview:noView];
+    [noView release];
+  //  titlelabel.text=[group_ valueForProperty:ALAssetsGroupPropertyName];
+    [self setNOView:YES];
+    
+//    NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
 
     [self loadNotice:param];
      //[[EKRequest Instance]EKHTTPRequest:tnotice parameters:param requestMethod:GET forDelegate:self];
   
 	// Do any additional setup after loading the view.
 }
-
+-(void)setNOView:(BOOL)an
+{
+    UIView *view=[self.view viewWithTag:232];
+    
+    view.hidden=an;
+}
 -(void)loadNotice:(NSDictionary *)pram
 {
     NSLog(@"%@",pram);
@@ -224,7 +242,7 @@
                 
             }
 
-            [_slimeView endRefresh];
+           
         }
         else
         {
@@ -253,16 +271,27 @@
                 [notice release];
             }
 
-            if(self._refreshFooterView)
-            {
-                [self._refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
-                [self removeFooterView];
-            }
+     
         }
+ 
         //dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
-        
-        [_tableView reloadData];
+
     }
+    if([noticeList count]==0)
+    {
+        [self setNOView:NO];
+    }
+    else
+    {
+        [self setNOView:YES];
+    }
+    if(self._refreshFooterView)
+    {
+        [self._refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
+        [self removeFooterView];
+    }
+     [_slimeView endRefresh];
+    [_tableView reloadData];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

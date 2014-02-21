@@ -439,9 +439,14 @@
     {
        // sex
         //@"birthday"
-        
+       // success
         if(code==1)
         {
+            
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"success", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
+            
             if([[parm allKeys] containsObject:@"sex"])
             {
                 //修改性别成功
@@ -485,7 +490,7 @@
 }
 - (void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
 {
-    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"avatorfailed", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"network", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
     [alert show];
     [alert release];
 }

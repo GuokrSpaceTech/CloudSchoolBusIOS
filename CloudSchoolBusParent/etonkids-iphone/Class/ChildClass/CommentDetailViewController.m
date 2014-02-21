@@ -263,7 +263,16 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
         [longPress release];
         
         
-        [self performSelector:@selector(downloadMovie:) withObject:source afterDelay:0.0f];
+        NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+        if ([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"1"] || [[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"2"])
+        {//如果设置自动播放
+            [self performSelector:@selector(downloadMovie:) withObject:source afterDelay:0.0f];
+        }
+        else
+        {
+            [btn setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
+        }
+        
         
         
         timeLabel.frame = CGRectMake(30, contentLabel.frame.origin.y + contentLabel.frame.size.height + 10 + MOVIESIZE + 5, 100, 16);
@@ -1505,7 +1514,7 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     GKMovieManager *man = [GKMovieManager shareManager];
     if ([man downloadListContainsURL:url])
     {
-        
+        return;
     }
     
     
@@ -1540,9 +1549,18 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
         self.mPlayer.view.hidden = NO;
     }
 }
-
 - (void)controlMovie:(UIButton *)sender
 {
+    NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+    if ([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"0"] && !self.mPlayer.contentURL)
+    {
+        NSDictionary *fDic = [shareContent.sharePicArr objectAtIndex:0];
+        NSString *source = [NSString stringWithFormat:@"%@",[fDic objectForKey:@"source"]];
+        [self performSelector:@selector(downloadMovie:) withObject:source afterDelay:0.0f];
+    }
+    
+    
+    
     if (self.mPlayer.playbackState == MPMoviePlaybackStatePlaying)
     {
         [self.mPlayer pause];

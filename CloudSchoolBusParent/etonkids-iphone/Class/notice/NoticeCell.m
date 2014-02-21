@@ -82,7 +82,7 @@
         self.backImgV = bImgV;
         
         
-        UILabel *nctntLabel=[[UILabel alloc] initWithFrame:CGRectZero];
+        HTCopyableLabel *nctntLabel=[[HTCopyableLabel alloc] initWithFrame:CGRectZero];
         nctntLabel.backgroundColor = [UIColor clearColor];
         nctntLabel.font=[UIFont systemFontOfSize:CONTENTFONTSIZE];
         nctntLabel.textColor = CONTENTTEXTCOLOR;

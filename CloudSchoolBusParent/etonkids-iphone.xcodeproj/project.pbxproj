@@ -10,6 +10,7 @@
 		1112BB471797C43900337CB4 /* MTAuthCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1112BB461797C43900337CB4 /* MTAuthCode.m */; };
 		1112BB4C1797C4E500337CB4 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1112BB491797C4E500337CB4 /* NSDataAdditions.m */; };
 		1112BB4D1797C4E500337CB4 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1112BB4B1797C4E500337CB4 /* NSStringAdditions.m */; };
+		118A1A4A18B6F3B70002BF18 /* HTCopyableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 118A1A4918B6F3B70002BF18 /* HTCopyableLabel.m */; };
 		118CBBF5178D5851006AA633 /* ETInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CBBF4178D5851006AA633 /* ETInformationViewController.m */; };
 		118CBBF8178D5AC2006AA633 /* ETActiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CBBF7178D5AC2006AA633 /* ETActiveViewController.m */; };
 		118CBBFE178D5CE0006AA633 /* ETBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CBBFD178D5CE0006AA633 /* ETBaseTableViewController.m */; };
@@ -580,6 +581,8 @@
 		1112BB491797C4E500337CB4 /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
 		1112BB4A1797C4E500337CB4 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		1112BB4B1797C4E500337CB4 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
+		118A1A4818B6F3B70002BF18 /* HTCopyableLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTCopyableLabel.h; sourceTree = "<group>"; };
+		118A1A4918B6F3B70002BF18 /* HTCopyableLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTCopyableLabel.m; sourceTree = "<group>"; };
 		118CBBF3178D5851006AA633 /* ETInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETInformationViewController.h; sourceTree = "<group>"; };
 		118CBBF4178D5851006AA633 /* ETInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETInformationViewController.m; sourceTree = "<group>"; };
 		118CBBF6178D5AC2006AA633 /* ETActiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETActiveViewController.h; sourceTree = "<group>"; };
@@ -2274,6 +2277,8 @@
 		E3F2AA6416AD0A2E006936A5 /* notice */ = {
 			isa = PBXGroup;
 			children = (
+				118A1A4818B6F3B70002BF18 /* HTCopyableLabel.h */,
+				118A1A4918B6F3B70002BF18 /* HTCopyableLabel.m */,
 				E3F2AA6916AD0A84006936A5 /* ETNoticeViewController.h */,
 				E3F2AA6A16AD0A84006936A5 /* ETNoticeViewController.m */,
 				E31E886E16AE71C40046358C /* NoticeCell.h */,
@@ -3157,6 +3162,7 @@
 				F950241F16DCB61B0079A05E /* SFHFKeychainUtils.m in Sources */,
 				F950242016DCB61B0079A05E /* AuthorizeDelegate.m in Sources */,
 				F950242116DCB61B0079A05E /* NSObject+WBUtil.m in Sources */,
+				118A1A4A18B6F3B70002BF18 /* HTCopyableLabel.m in Sources */,
 				F950242216DCB61B0079A05E /* TCWBAuthorizeViewController.m in Sources */,
 				F950242316DCB61B0079A05E /* TCWBEngine.m in Sources */,
 				F950242416DCB61B0079A05E /* TCWBRequest.m in Sources */,

@@ -109,7 +109,7 @@
   //  titlelabel.text=[group_ valueForProperty:ALAssetsGroupPropertyName];
     [self setNOView:YES];
     
-//    NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
+    NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
 
     [self loadNotice:param];
      //[[EKRequest Instance]EKHTTPRequest:tnotice parameters:param requestMethod:GET forDelegate:self];

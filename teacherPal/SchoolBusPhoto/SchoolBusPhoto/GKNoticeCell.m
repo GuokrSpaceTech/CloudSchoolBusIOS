@@ -288,7 +288,7 @@
     else
     {
         huizhiLabel.frame=CGRectZero;
-        IconImageView.image=[UIImage imageNamed:@"noticeEmail.png"];
+        IconImageView.image=[UIImage imageNamed:@"2.png"];
     }
     height+=20; // time 高度
     bottomView.frame=CGRectMake(10,5 , 300, 10+height+10);

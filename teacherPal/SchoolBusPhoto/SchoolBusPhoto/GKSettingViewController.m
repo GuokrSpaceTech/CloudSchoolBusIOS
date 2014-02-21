@@ -72,12 +72,20 @@
         
     }
     if(indexPath.row==0)
+    {
         cell.textLabel.text=NSLocalizedString(@"passwordalter", @"");
+        cell.imageView.image=[UIImage imageNamed:@"修改密码.png"];
+    }
     else if(indexPath.row==1)
+    {
         cell.textLabel.text=NSLocalizedString(@"aboutus", @"");
+        cell.imageView.image=[UIImage imageNamed:@"关于我们.png"];
+    }
     else if(indexPath.row==2)
+    {
         cell.textLabel.text=NSLocalizedString(@"helpSupport", @"");
-
+        cell.imageView.image=[UIImage imageNamed:@"帮助支持.png"];
+    }
 
     return cell;
     

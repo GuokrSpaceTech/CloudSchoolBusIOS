@@ -79,11 +79,11 @@
       
     }
     if(indexPath.row==0)
-        cell.imageView.image=[UIImage imageNamed:@"gradeFen.png"];
+        cell.imageView.image=[UIImage imageNamed:@"班级积分.png"];
     else if(indexPath.row==1)
-        cell.imageView.image=[UIImage imageNamed:@"uploadIcon.png"];
+        cell.imageView.image=[UIImage imageNamed:@"上传列表.png"];
     else if(indexPath.row == 2)
-        cell.imageView.image=[UIImage imageNamed:@"studentIcon.png"];
+        cell.imageView.image=[UIImage imageNamed:@"班级学生.png"];
     else
         cell.imageView.image=[UIImage imageNamed:@"草稿箱.png"];
     cell.textLabel.text=[arr objectAtIndex:indexPath.row];

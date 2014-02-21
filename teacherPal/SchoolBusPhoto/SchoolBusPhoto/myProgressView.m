@@ -21,14 +21,14 @@
     
         
 
-       
+        self.progress=0.0;
         
         
         processView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-  
-        //processView.progress=0;
-        processView.backgroundColor=[UIColor clearColor];
         [self addSubview:processView];
+        processView.progress=0;
+        processView.backgroundColor=[UIColor clearColor];
+    
         [processView release];
         
         processLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 10, 40, 20)];
@@ -39,7 +39,7 @@
         processLabel.text=@"0%";
         [self addSubview:processLabel];
 
-         self.progress=0.0;
+        
     }
     return self;
 }

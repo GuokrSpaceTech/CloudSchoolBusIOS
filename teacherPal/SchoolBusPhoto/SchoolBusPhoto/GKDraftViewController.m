@@ -7,7 +7,7 @@
 //
 
 #import "GKDraftViewController.h"
-#import "GKCoreDataManager.h"
+
 #import "GKUserLogin.h"
 #import "MovieDraft.h"
 #import "GKSendMediaViewController.h"
@@ -174,7 +174,7 @@
     if(cell==nil)
     {
         cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
-        
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
         UIImageView *thumbImgV = [[UIImageView alloc] initWithFrame:CGRectMake(15, 7, 50, 50)];
         thumbImgV.tag = 555;
         [cell.contentView addSubview:thumbImgV];

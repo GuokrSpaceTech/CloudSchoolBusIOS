@@ -8,7 +8,7 @@
 
 #import "GKFilterViewController.h"
 #import "GKSendMediaViewController.h"
-#import "GKCoreDataManager.h"
+
 #import "GKUserLogin.h"
 #import "DBManager.h"
 #import "GKAppDelegate.h"

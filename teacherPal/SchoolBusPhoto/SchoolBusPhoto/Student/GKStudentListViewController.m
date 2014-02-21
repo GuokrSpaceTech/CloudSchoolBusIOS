@@ -101,6 +101,7 @@
     {
         cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier] autorelease];
         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
         cell.backgroundColor=[UIColor clearColor];
         UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 65, 40)];
         imageView.backgroundColor=[UIColor clearColor];

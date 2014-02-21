@@ -95,6 +95,8 @@
     [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
     
     UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
+    CGSize size =img.size;
+    NSLog(@"%f---%f",size.width,size.height);
     
     UIGraphicsEndImageContext();
     
@@ -228,9 +230,9 @@
             
             
             UIImage *lastScreenShot = [self.screenShotsList lastObject];
-            
+            //NSLog(@"%f---%f",lastScreenShot.size.width,lastScreenShot.size.height);
             lastScreenShotView = [[UIImageView alloc]initWithImage:lastScreenShot];
-            
+            //lastScreenShotView.contentMode=UIViewContentModeScaleAspectFill;
             startBackViewX = startX;
             [lastScreenShotView setFrame:CGRectMake(startBackViewX,
                                                     lastScreenShotView.frame.origin.y,
@@ -246,11 +248,11 @@
                 [UIView animateWithDuration:0.3 animations:^{
                     [self moveViewWithX:320];
                 } completion:^(BOOL finished) {
-                    
-                    [self popViewControllerAnimated:NO];
                     CGRect frame = self.view.frame;
                     frame.origin.x = 0;
                     self.view.frame = frame;
+                    [self popViewControllerAnimated:NO];
+                   
                     
                     _isMoving = NO;
                 }];

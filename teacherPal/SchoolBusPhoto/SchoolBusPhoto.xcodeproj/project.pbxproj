@@ -370,7 +370,6 @@
 		7870A0F5187D54C1009250FB /* UpLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7870A0F4187D54C1009250FB /* UpLoader.m */; };
 		7870A0FC187E44A2009250FB /* save_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A0FA187E44A2009250FB /* save_default.png */; };
 		7870A0FD187E44A2009250FB /* save_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A0FB187E44A2009250FB /* save_active.png */; };
-		7870A104187E4A48009250FB /* GKCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7870A103187E4A48009250FB /* GKCoreDataManager.m */; };
 		7870A106187E97EE009250FB /* settingH.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A105187E97EE009250FB /* settingH.png */; };
 		7870A108187E9852009250FB /* Tophoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A107187E9852009250FB /* Tophoto.png */; };
 		7888190E187F996500D0A851 /* 草稿箱@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7888190D187F996500D0A851 /* 草稿箱@2x.png */; };
@@ -904,8 +903,6 @@
 		7870A0FA187E44A2009250FB /* save_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_default.png; sourceTree = "<group>"; };
 		7870A0FB187E44A2009250FB /* save_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_active.png; sourceTree = "<group>"; };
 		7870A0FE187E454F009250FB /* SchoolBusPhoto 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 4.xcdatamodel"; sourceTree = "<group>"; };
-		7870A102187E4A48009250FB /* GKCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCoreDataManager.h; sourceTree = "<group>"; };
-		7870A103187E4A48009250FB /* GKCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCoreDataManager.m; sourceTree = "<group>"; };
 		7870A105187E97EE009250FB /* settingH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingH.png; sourceTree = "<group>"; };
 		7870A107187E9852009250FB /* Tophoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tophoto.png; sourceTree = "<group>"; };
 		7888190D187F996500D0A851 /* 草稿箱@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "草稿箱@2x.png"; sourceTree = "<group>"; };
@@ -1177,8 +1174,6 @@
 				11AA3387187CEDC6002FE2D4 /* GKNotice.m */,
 				7870A0F3187D54C1009250FB /* UpLoader.h */,
 				7870A0F4187D54C1009250FB /* UpLoader.m */,
-				7870A102187E4A48009250FB /* GKCoreDataManager.h */,
-				7870A103187E4A48009250FB /* GKCoreDataManager.m */,
 				78881914187F9E0B00D0A851 /* MovieDraft.h */,
 				78881915187F9E0B00D0A851 /* MovieDraft.m */,
 				118AE7EC188E69840034AE63 /* DBManager.h */,
@@ -2077,7 +2072,6 @@
 				119E96221814C5A300866DE8 /* ASICloudFilesContainer.m in Sources */,
 				1192E401181B6CE200C5F33B /* GKWebViewController.m in Sources */,
 				119E961C1814C5A300866DE8 /* ASIFormDataRequest.m in Sources */,
-				7870A104187E4A48009250FB /* GKCoreDataManager.m in Sources */,
 				1155E92B1856BC75005D09C1 /* KKNavigationController.m in Sources */,
 				119E962F1814C5A300866DE8 /* ASIS3ServiceRequest.m in Sources */,
 				2A32A56F18122C02007CAA8E /* GKAppDelegate.m in Sources */,

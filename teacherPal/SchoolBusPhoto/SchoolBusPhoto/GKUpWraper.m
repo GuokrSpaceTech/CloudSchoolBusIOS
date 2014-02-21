@@ -44,6 +44,7 @@
     if(self=[super init])
     {
         _progressView=[[myProgressView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
+    
     }
     return self;
 }

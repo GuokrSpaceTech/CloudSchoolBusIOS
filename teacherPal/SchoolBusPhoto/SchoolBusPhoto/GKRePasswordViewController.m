@@ -80,18 +80,19 @@
      NSArray *arrplace=[NSArray arrayWithObjects:NSLocalizedString(@"Enter", @""),NSLocalizedString(@"Set", @""),NSLocalizedString(@"Confirm", @""), nil];
     int hight=navigationView.frame.size.height;
     for (int i=0; i<3; i++) {
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(10, 20+(ios7?(20+hight):hight) + i*(20+30), 100, 30)];
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(20, 20+(ios7?(20+hight):hight) + i*(20+30), 100, 30)];
         label.backgroundColor=[UIColor clearColor];
         label.text=[arrlable objectAtIndex:i];
         if(IOSVERSION<6.0)
-            label.textAlignment=UITextAlignmentCenter;
+            label.textAlignment=UITextAlignmentLeft;
         else
-            label.textAlignment=NSTextAlignmentCenter;
+            label.textAlignment=NSTextAlignmentLeft;
         label.font=[UIFont systemFontOfSize:15];
         [self.view addSubview:label];
         [label release];
         
-        UITextField *textfield=[[UITextField alloc]initWithFrame:CGRectMake(110, 20+(ios7?(20+hight):hight) + i*(20+30), 200, 30)];
+        UITextField *textfield=[[UITextField alloc]initWithFrame:CGRectMake(100, 22+(ios7?(20+hight):hight) + i*(20+30), 200, 26)];
+        
         textfield.borderStyle=UITextBorderStyleRoundedRect;
         [self.view addSubview:textfield];
         textfield.secureTextEntry=YES;

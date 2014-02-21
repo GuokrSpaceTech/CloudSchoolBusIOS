@@ -111,6 +111,9 @@
 "passwordalter"="Change Password";
 
 "input" = "Input can not be empty";
+"neironginput" = "content input can not be empty";
+
+
 "diff"= "Two password input is different";
 "diffoldNew"="The new password and old password cannot be the same";
 

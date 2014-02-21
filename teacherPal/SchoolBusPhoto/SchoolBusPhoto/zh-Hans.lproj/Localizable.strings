@@ -119,6 +119,9 @@
 "passwordalter"="修改密码";
 "diffoldNew"="新密码和老密码相同";
 "input" = "输入不能为空";
+"neironginput" = "内容输入不能为空";
+
+
 "diff"="两次密码输入不同";
 "OidErr" = "旧密码错误";
 "otherErr" = "不能包含特殊字符";

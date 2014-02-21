@@ -169,6 +169,11 @@
         NSLog(@"%@",dic);
         cBlock(nil);
     }
+    else if (code == -1115)
+    {
+        ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"fufei", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
+        [alert show];
+    }
     else
     {
         NSError *err = [[[NSError alloc] initWithDomain:@"login" code:code userInfo:nil] autorelease];

@@ -69,6 +69,7 @@
     {
         cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
         
     }
     if(indexPath.row==0)

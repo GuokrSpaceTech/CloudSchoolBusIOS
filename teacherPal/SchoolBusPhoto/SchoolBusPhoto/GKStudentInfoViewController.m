@@ -86,6 +86,7 @@
     if(cell==nil)
     {
         cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
         UILabel *namelabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 11, 100, 20)];
         namelabel.backgroundColor=[UIColor clearColor];
         namelabel.tag=TAGCELL;
@@ -101,6 +102,10 @@
             reallabel.textAlignment=NSTextAlignmentRight;
         else
             reallabel.textAlignment=UITextAlignmentRight;
+        if(IOSVERSION<7.0)
+        {
+            reallabel.frame=CGRectMake(170, 11, 100, 20);
+        }
         reallabel.font=[UIFont systemFontOfSize:14];
         [cell.contentView addSubview:reallabel];
         [reallabel release];
@@ -419,7 +424,7 @@
         if(code == 1)
         {
             
-            NSString *result = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+            NSString *result = [[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] autorelease];
             
             UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"avatorsuccess", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
             [alert show];

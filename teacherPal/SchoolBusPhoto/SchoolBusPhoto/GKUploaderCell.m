@@ -8,10 +8,6 @@
 
 #import "GKUploaderCell.h"
 #import "GKFindWraper.h"
-#import "TestFlight.h"
-
-#define NSLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-
 @implementation GKUploaderCell
 @synthesize upwraper;
 @synthesize imageView;
@@ -25,7 +21,7 @@
         // Initialization code
         
         imageView=[[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 50, 50)];
-        imageView.backgroundColor=[UIColor clearColor];
+        imageView.backgroundColor=[UIColor orangeColor];
         [self.contentView addSubview:imageView];
         
         
@@ -47,7 +43,7 @@
     [upwraper release];
     upwraper=[_upwraper retain];
     
-    for (UIView *view in  [self.contentView subviews]) {
+    for (UIView *view in  [self subviews]) {
         
         if([view isKindOfClass:[myProgressView class]])
         {

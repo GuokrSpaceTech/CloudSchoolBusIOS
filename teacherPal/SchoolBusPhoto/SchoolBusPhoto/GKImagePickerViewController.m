@@ -604,6 +604,7 @@
     {
         cell=[[[ETPhotoCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellDefiner] autorelease];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
+      
         cell.delegate=self;
     }
     

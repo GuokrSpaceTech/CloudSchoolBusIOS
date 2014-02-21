@@ -16,7 +16,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NoticeInfo.h"
-
+#import "HTCopyableLabel.h"
 @protocol noticeCelldelegate ;
 
 
@@ -27,7 +27,7 @@
 }
 @property(nonatomic,assign) id<noticeCelldelegate>delegate;
 @property(nonatomic,retain)UILabel *noticeTitleLabel;
-@property(nonatomic,retain)UILabel *noticeContentLabel;
+@property(nonatomic,retain)HTCopyableLabel *noticeContentLabel;
 @property(nonatomic,retain)UILabel *noticeTimeLabel;
 
 @property(nonatomic,retain)NoticeInfo *notice;

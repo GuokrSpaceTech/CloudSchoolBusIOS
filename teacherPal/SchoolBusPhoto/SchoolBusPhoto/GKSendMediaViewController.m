@@ -10,7 +10,7 @@
 #import "GKUserLogin.h"
 #import "GKFilterViewController.h"
 #import "GKLoaderManager.h"
-#import "GKCoreDataManager.h"
+
 #import "DBManager.h"
 #import "MovieDraft.h"
 

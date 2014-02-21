@@ -341,7 +341,7 @@
     {
         cell=[[[GKUploaderCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
 
-        
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
     }
     
  

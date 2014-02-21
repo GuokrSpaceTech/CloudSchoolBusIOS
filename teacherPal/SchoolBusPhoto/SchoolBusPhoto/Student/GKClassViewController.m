@@ -76,6 +76,7 @@
     {
         cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
       
     }
     if(indexPath.row==0)
@@ -93,7 +94,8 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+     //[tableView deselectRowAtIndexPath:indexPath animated:YES];
     UIViewController *VC=nil;
     switch (indexPath.row) {
         case 0:
@@ -114,6 +116,7 @@
     }
     
     [self.navigationController pushViewController:VC animated:YES];
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [VC release];
     
 }

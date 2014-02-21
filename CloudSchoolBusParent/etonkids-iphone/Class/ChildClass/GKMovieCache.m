@@ -34,6 +34,7 @@
 }
 
 + (void)clearDiskCache
+
 {
     [[NSFileManager defaultManager] removeItemAtPath:[GKMovieCache videoCachePath] error:nil];
     [[NSFileManager defaultManager] createDirectoryAtPath:[GKMovieCache videoCachePath]

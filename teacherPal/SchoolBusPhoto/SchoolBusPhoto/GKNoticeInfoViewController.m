@@ -263,7 +263,7 @@
     {
         cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
         cell.backgroundColor=[UIColor clearColor];
-        
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
         UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(262, 7, 16, 16)];
         imageView.backgroundColor=[UIColor clearColor];
         if(iOS7)

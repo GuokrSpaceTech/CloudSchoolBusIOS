@@ -113,16 +113,44 @@
             
             [imageView setImageWithURL:[NSURL URLWithString:imagestr] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 imageView.userInteractionEnabled=YES;
+                
+                CGSize size=image.size;
+                
+                float rate=(float)size.width/size.height;
+                float width=0;
+                float height=0;
+                if(rate>1)
+                {
+                    width=100;
+                    height=width * (1/rate);
+                    
+                }
+                else
+                {
+                    height=100;
+                    width=height * rate;
+                    
+                }
+                
+                
+                imageView.frame=CGRectMake(22, 15 ,width, height);
+                
+               // imageView.frame=CGRectMake(22, 15, size.width, size.height);
+                
+                UIImageView *bgView=(UIImageView *)[self.contentView viewWithTag:BGTAG];
+                bgView.frame=CGRectMake(10, 10, width+20, height+10);
+                bgView.backgroundColor=[UIColor clearColor];
+                UIImage *iamge=[[UIImage imageNamed:@"qipao1.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 10, 8, 8)];
+                bgView.image=iamge;
+
+                
+        
             }];
             imageView.tag=PICTAG;
             [self.contentView addSubview:imageView];
             [imageView release];
             
-            UIImageView *bgView=(UIImageView *)[self.contentView viewWithTag:BGTAG];
-            bgView.frame=CGRectMake(10, 10, 75+20, 100+10);
-            bgView.backgroundColor=[UIColor clearColor];
-            UIImage *iamge=[[UIImage imageNamed:@"qipao1.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 10, 8, 8)];
-            bgView.image=iamge;
+            
         }
         
 
@@ -159,6 +187,36 @@
              NSString *imagestr=[NSString stringWithFormat:@"%@.small.jpg",letter.letterContent];
             [imageView setImageWithURL:[NSURL URLWithString:imagestr] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 imageView.userInteractionEnabled=YES;
+                
+                CGSize size=image.size;
+                
+                float rate=(float)size.width/size.height;
+                float width=0;
+                float height=0;
+                if(rate>1)
+                {
+                    width=100;
+                    height=width * (1/rate);
+                    
+                }
+                else
+                {
+                    height=100;
+                    width=height * rate;
+                    
+                }
+                
+               
+                imageView.frame=CGRectMake(320-20-width, 15 ,width, height);
+                
+                
+                UIImageView *bgView=(UIImageView *)[self.contentView viewWithTag:BGTAG];
+                bgView.frame=CGRectMake(320-width-28, 10, width +20, height+10);
+                UIImage *iamge=[[UIImage imageNamed:@"qipao22.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(3, 4, 12, 11)];
+                // UIImage *iamge=[UIImage imageNamed:@"qipao22.png"];
+                bgView.image=iamge;
+
+                
             }];
    
             [self.contentView addSubview:imageView];
@@ -168,12 +226,7 @@
             tap.numberOfTapsRequired=1;
             [imageView addGestureRecognizer:tap];
             [tap release];
-
-            UIImageView *bgView=(UIImageView *)[self.contentView viewWithTag:BGTAG];
-            bgView.frame=CGRectMake(320-75-30, 10, 75 +20, 100+10);
-            UIImage *iamge=[[UIImage imageNamed:@"qipao22.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(3, 4, 12, 11)];
-            // UIImage *iamge=[UIImage imageNamed:@"qipao22.png"];
-            bgView.image=iamge;
+      
             
         }
 

@@ -30,6 +30,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(autoDragScrollLoading) name:@"POPRELAOD" object:nil];
     }
     return self;
 }
@@ -37,11 +38,8 @@
 {
     [super viewDidAppear:animated];
     [(KKNavigationController *)self.navigationController setNavigationTouch:NO];
-    
-    [self autoDragScrollLoading];
-    
-    
 }
+
 - (void)autoDragScrollLoading
 {
     [_tableView setContentOffset:CGPointMake(0, -50) animated:NO];
@@ -98,9 +96,9 @@
     titlelabel.text=NSLocalizedString(@"noticeQ", @"");
     
 
-//    NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
+    NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
 
-//    [self loadNotice:param];
+    [self loadNotice:param];
      //[[EKRequest Instance]EKHTTPRequest:tnotice parameters:param requestMethod:GET forDelegate:self];
   
 	// Do any additional setup after loading the view.

@@ -479,16 +479,14 @@
     }
     if(btn.tag==102)
     {
-        //发送、
-        
+        //发送
        
         if([_textView.text isEqualToString:@""])
         {
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"input", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"neironginput", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
             [alert show];
             [alert release];
             return;
-
         }
         if([stuArr count]==0)
         {
@@ -497,9 +495,6 @@
             [alert release];
             return;
         }
-        
-
-
         
         UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"该通知需要家长确认吗？" delegate:self cancelButtonTitle:NSLocalizedString(@"no", @"") otherButtonTitles:NSLocalizedString(@"yes", @""), nil];
         [alertView show];
@@ -518,6 +513,7 @@
         HUD=nil;
     }
     NSLog(@"%d",code);
+    
     if(code==1&&method==tnotice)
     {
         _textView.text=@"";
@@ -532,9 +528,10 @@
         [alert release];
         
         [self.navigationController popViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"POPRELAOD" object:nil];
         
-        
-    }else if(method==tnotice)
+    }
+    else if(method==tnotice)
     {
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"sendfailed", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
         [alert show];

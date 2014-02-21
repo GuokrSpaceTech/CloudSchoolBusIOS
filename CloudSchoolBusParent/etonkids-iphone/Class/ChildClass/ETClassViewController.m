@@ -79,8 +79,7 @@
         {
             [_refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
 //            NSLog(@"%@",self._refreshFooterView);
-            _refreshFooterView.hidden = YES;
-//            [self removeFooterView];
+            [self removeFooterView];
         }
     }
     [_tableView reloadData];
@@ -609,7 +608,6 @@
             NSDictionary * plist = [plists objectAtIndex:0];
             if(plist != nil && plist.count > 0)
                 share.sharePic=[plist objectForKey:@"source"];
-
         }
         share.shareContent=[myDic objectForKey:@"content"];
         share.shareTitle=[myDic objectForKey:@"title"];
@@ -755,6 +753,8 @@
             {
                 if(isMore)
                     [self setFooterView];
+                else
+                    [self removeFooterView];
             }
             if(self.list.count > 0)
             {
@@ -1013,6 +1013,8 @@
             {
                 if(isMore)
                     [self setFooterView];
+                else
+                    [self removeFooterView];
             }
             if(self.list.count >0)
             {

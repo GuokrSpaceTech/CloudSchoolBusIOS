@@ -162,9 +162,9 @@
 //        NSLog(@"save userinfo success : %d",success);
     }
     
-    
-    
 }
+
+
 + (ETUser *)getUserInfo:(NSString *)account andStudent:(NSString *)stuid{
     AppDelegate* delegate = SHARED_APP_DELEGATE;
     NSFetchRequest* request = [[[NSFetchRequest alloc] init] autorelease];

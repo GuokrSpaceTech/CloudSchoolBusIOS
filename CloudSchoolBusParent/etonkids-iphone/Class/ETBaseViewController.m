@@ -164,13 +164,13 @@
 }
 -(void)removeFooterView
 {
-    _refreshFooterView.hidden = YES;
+//    _refreshFooterView.hidden = YES;
     
-//    if(_refreshFooterView && [_refreshFooterView superview])
-//    {
-//        [_refreshFooterView removeFromSuperview];
-//    }
-//    _refreshFooterView = nil;
+    if(_refreshFooterView && [_refreshFooterView superview])
+    {
+        [_refreshFooterView removeFromSuperview];
+    }
+    _refreshFooterView = nil;
 }
 -(void)showActionSheet
 {

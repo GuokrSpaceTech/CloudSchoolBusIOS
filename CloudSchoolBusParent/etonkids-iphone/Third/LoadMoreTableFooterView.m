@@ -180,8 +180,8 @@
 	
 	if (_state == EGOOPullRefreshLoading) {
 		
-//		CGFloat offset = MAX(scrollView.contentOffset.y * -1, 0);
-//		offset = MIN(offset, 60);
+//		CGFloat offset = MIN(scrollView.contentSize.height, 0);
+//		offset = MAX(offset, REFRESH_REGION_HEIGHT);
 		scrollView.contentInset = UIEdgeInsetsMake(0.0, 0.0f, REFRESH_REGION_HEIGHT, 0.0f);
 		
 	} else if (scrollView.isDragging) {
@@ -232,12 +232,14 @@
 
 - (void)egoRefreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView {
 	
+    [self setState:EGOOPullRefreshNormal];
+    
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:.3];
 	[scrollView setContentInset:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f)];
 	[UIView commitAnimations];
 	
-	[self setState:EGOOPullRefreshNormal];
+	
 }
 
 

@@ -971,6 +971,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     {
         if(isMore)
             [self setFooterView];
+        else
+        {
+            [self removeFooterView];
+        }
     }
     
     

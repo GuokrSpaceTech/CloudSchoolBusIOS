@@ -85,5 +85,6 @@ typedef NSUInteger RequestFunction;
 + (NSString *)md5:(NSString *)str;
 -(void) clearSid;
 -(void) EKHTTPRequest:(RequestFunction) function parameters:(NSDictionary *) param requestMethod:(HTTPMethod) method forDelegate:(id<EKProtocol>) delegate;
-
+- (NSString *)userSid;
+- (void)saveUserSid:(NSString *)sid;
 @end

@@ -654,6 +654,12 @@
 //        [self performSelector:@selector(controlVisibleCellPlay) withObject:nil afterDelay:0.1f];
 //    }
     
+    NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+    if ([[userdefault objectForKey:SWITHGESTURE] isEqualToString:@"1"])
+    {
+        
+    }
+    
 }
 
 
@@ -1587,6 +1593,9 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    
+    [super scrollViewDidScroll:scrollView];
+    /*
     int y = scrollView.contentOffset.y;
     if (y <= 0)
     {
@@ -1621,7 +1630,7 @@
     {
         [_refreshFooterView egoRefreshScrollViewDidScroll:scrollView];
     }
-    
+    */
     
     NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
     if ([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"1"] || [[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"2"])

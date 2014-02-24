@@ -448,7 +448,8 @@
     
 }
 
-- (IBAction)callService:(id)sender {
+- (IBAction)callService:(id)sender
+{
     
     ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:[NSString stringWithFormat:@"%@",SERVICE_NUMBER] delegate:self cancelButtonTitle:LOCAL(@"cancel", @"") otherButtonTitles:LOCAL(@"call", @""), nil];
     alert.tag=888;
@@ -460,7 +461,7 @@
 {
     if (alertView.tag == 888) {
         if (index == 1) {
-            NSString *num = [[NSString alloc] initWithFormat:@"tel://4006063996"];
+            NSString *num = [[NSString alloc] initWithFormat:@"tel://%@",[SERVICE_NUMBER stringByReplacingOccurrencesOfString:@"-" withString:@""]];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:num]];
         }
     }

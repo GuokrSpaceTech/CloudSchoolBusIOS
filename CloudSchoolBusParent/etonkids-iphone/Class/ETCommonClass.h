@@ -16,8 +16,10 @@ typedef void (^CompleteBlock)(NSError *err);
 @interface ETCommonClass : NSObject<EKProtocol>
 {
     CompleteBlock cBlock;
+    
+    NSString *preSid;
 }
-//@property (nonatomic, copy)CompleteBlock cBlock;
+@property (nonatomic, retain)NSString *preSid;;
 
 - (void)requestLoginWithComplete:(CompleteBlock)block;
 - (void)changeChildByClass:(NSString *)cid student:(NSString *)stuid WithComplete:(CompleteBlock)block;

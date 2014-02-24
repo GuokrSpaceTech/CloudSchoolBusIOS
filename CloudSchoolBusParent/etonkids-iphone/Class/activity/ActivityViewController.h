@@ -40,6 +40,8 @@ typedef enum
     BOOL isFirLoadMyAct;
     BOOL isFirLoadNoStartAct;
     
+    UIView *tableHeaderView;
+    
 }
 
 

@@ -13,6 +13,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIImageView+WebCache.h"
 #import "HTCopyableLabel.h"
+#import "GKShowBigImageViewController.h"
+
+
+#define IMGTAG 630
 @interface GKNoticeInfoViewController ()
 
 @end
@@ -93,10 +97,21 @@
     
     if([notice.plist count]==1)
     {
+        
+
+
+        
         UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(110,10+height,100,100)];
-        imageView.backgroundColor=[UIColor redColor];
+        imageView.backgroundColor=[UIColor clearColor];
+        
         [headView addSubview:imageView];
         [imageView release];
+        imageView.tag=IMGTAG;
+        UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick:)];
+        tap.numberOfTapsRequired=1;
+        [imageView addGestureRecognizer:tap];
+        [tap release];
+        
         NSString *urlStr=[[[notice.plist objectAtIndex:0] objectForKey:@"source"] stringByAppendingString:@".tiny.jpg"];
         
         [imageView setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
@@ -109,7 +124,7 @@
             else
             {
                
-                
+                imageView.userInteractionEnabled=YES;
                 if (cacheType == 0) { // request url
                     CATransition *transition = [CATransition animation];
                     transition.duration = 1.0f;
@@ -132,7 +147,8 @@
             int row =i/4;
             int col=i%4;
             UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(12+col*(65+12), (10+height)+row*(65+10) , 65, 65)];
-            imageView.backgroundColor=[UIColor redColor];
+            imageView.backgroundColor=[UIColor clearColor];
+            imageView.tag=IMGTAG+i;
             [headView addSubview:imageView];
             [imageView release];
             NSString *urlStr=[[[notice.plist objectAtIndex:i] objectForKey:@"source"] stringByAppendingString:@".tiny.jpg"];
@@ -147,7 +163,7 @@
                 else
                 {
                     
-                    
+                    imageView.userInteractionEnabled=YES;
                     if (cacheType == 0) { // request url
                         CATransition *transition = [CATransition animation];
                         transition.duration = 1.0f;
@@ -238,6 +254,20 @@
     
     
     return nil;
+}
+-(void)tapClick:(UITapGestureRecognizer *)tap
+{
+    
+    int a=  tap.view.tag-IMGTAG;
+    
+    NSString *urlStr=[[notice.plist objectAtIndex:a] objectForKey:@"source"];
+
+    GKShowBigImageViewController *show=[[GKShowBigImageViewController alloc]init];
+    show.path=urlStr;
+    [self.navigationController presentViewController:show animated:YES completion:^{
+        
+    }];
+    [show release];
 }
 
 -(void)leftClick:(UIButton *)btn

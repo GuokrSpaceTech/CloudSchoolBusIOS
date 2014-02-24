@@ -115,7 +115,7 @@
     }
     
    
-    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(30, self.view.frame.size.height-48, 28, 28)];
+    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(30, self.view.frame.size.height-48, 26, 26)];
     imageView.image=IMAGENAME(IMAGEWITHPATH(@"loginOUt"));
     [self.view addSubview:imageView];
     [imageView release];

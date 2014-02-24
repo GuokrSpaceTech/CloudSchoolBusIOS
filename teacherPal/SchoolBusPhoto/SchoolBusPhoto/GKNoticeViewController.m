@@ -189,6 +189,8 @@
     titlelabel.text=NSLocalizedString(@"homenoticetitle", @"");
     
 }
+
+
 - (int)textLength:(NSString *)text//计算字符串长度
 {
     float number = 0.0;
@@ -215,6 +217,22 @@
     if(textField==_titleField)
         return YES;
     return NO;
+}
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    studentView.hidden=YES;
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+     studentView.hidden=NO;
+}
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+     studentView.hidden=YES;
+}
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
+    studentView.hidden=NO;
 }
 - (void)textViewDidChange:(UITextView *)textView
 {

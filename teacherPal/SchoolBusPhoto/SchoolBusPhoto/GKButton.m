@@ -34,8 +34,10 @@
         [self addSubview:backgroundView];
         
         photoImageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 65, 40)];
-        photoImageView.backgroundColor=[UIColor orangeColor];
+        photoImageView.backgroundColor=[UIColor clearColor];
         [self addSubview:photoImageView];
+        
+    
         
 
         

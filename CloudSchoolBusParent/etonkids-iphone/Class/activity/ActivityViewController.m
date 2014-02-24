@@ -71,6 +71,41 @@
     [self loadData];
     
     
+    tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, _topView.frame.size.height - _tableView.contentOffset.y, 320, HEADERHEIGHT)];
+    tableHeaderView.backgroundColor = [UIColor clearColor];
+    
+    UIImageView *backImgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, HEADERHEIGHT)];
+    backImgV.image = [UIImage imageNamed:@"activity_header.png"];
+    [tableHeaderView addSubview:backImgV];
+    [backImgV release];
+    
+    selImgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 1, 106, HEADERHEIGHT)];
+    selImgV.image = [UIImage imageNamed:@"activity_selected.png"];
+    [tableHeaderView addSubview:selImgV];
+    [selImgV release];
+    
+    NSArray *arr = [NSArray arrayWithObjects:LOCAL(@"wodebaoming",@"我的报名"),LOCAL(@"quanbu",@"全部"),LOCAL(@"kebaoming",@"可报名"), nil];
+    for (int i = 0; i < 3; i++) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        //        [btn setBackgroundColor:[UIColor redColor]];
+        [btn setTitle:[arr objectAtIndex:i] forState:UIControlStateNormal];
+        [btn setTag:333 + i];
+        [btn addTarget:self action:@selector(doChoose:) forControlEvents:UIControlEventTouchUpInside];
+        btn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [btn setFrame:CGRectMake(106*i, 1, 105, HEADERHEIGHT - 2)];
+        [tableHeaderView addSubview:btn];
+    }
+    
+    if (selImgV != nil) {
+        
+        [UIView animateWithDuration:0.2f animations:^{
+            selImgV.center = CGPointMake(106/2 + currentType*107, HEADERHEIGHT/2 + 1);
+        }];
+        
+    }
+    
+    [self.view addSubview:tableHeaderView];
+    [tableHeaderView release];
     
     
     // Do any additional setup after loading the view from its nib.
@@ -477,7 +512,7 @@
 {
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, HEADERHEIGHT)];
     header.backgroundColor = [UIColor clearColor];
-    
+    /*
     UIImageView *backImgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, HEADERHEIGHT)];
     backImgV.image = [UIImage imageNamed:@"activity_header.png"];
     [header addSubview:backImgV];
@@ -507,7 +542,7 @@
         }];
         
     }
-    
+    */
     
     return header;
     
@@ -567,6 +602,14 @@
 }
 
 #pragma mark - Table view delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [super scrollViewDidScroll:scrollView];
+    tableHeaderView.frame = CGRectMake(tableHeaderView.frame.origin.x,
+                                       MAX(0,_topView.frame.size.height - _tableView.contentOffset.y),
+                                       tableHeaderView.frame.size.width,
+                                       tableHeaderView.frame.size.height);
+}
 
 - (void)slimeRefreshStartRefresh:(SRRefreshView *)refreshView
 {

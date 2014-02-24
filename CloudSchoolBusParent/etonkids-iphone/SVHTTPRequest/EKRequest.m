@@ -50,6 +50,18 @@ static EKRequest * instance = nil;
     NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault removeObjectForKey:@"sid"];
 }
+
+- (NSString *)userSid
+{
+    NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
+    return [userDefault objectForKey:@"sid"];
+}
+- (void)saveUserSid:(NSString *)sid
+{
+    NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:sid forKey:@"sid"];
+}
+
 -(NSString *) getFunction:(RequestFunction) fun
 {
     switch (fun)
@@ -185,12 +197,12 @@ static EKRequest * instance = nil;
 //             NSLog(@"%@",json);
              if(json != nil && [json isKindOfClass:[NSDictionary class]])
              {
-                 if([userDefault objectForKey:@"sid"] == nil)
-                 {
+//                 if([userDefault objectForKey:@"sid"] == nil)
+//                 {
                      id sid = [json objectForKey:@"sid"];
                      if(sid != nil)
                          [userDefault setObject:sid forKey:@"sid"];
-                 }
+//                 }
              }
              [delegate getEKResponse:response forMethod:function resultCode:code withParam:param];
          }];

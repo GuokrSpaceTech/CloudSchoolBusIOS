@@ -133,7 +133,7 @@
     [lastScreenShotView setFrame:CGRectMake(startBackViewX+y,
                                             0,
                                             kkBackViewWidth,
-                                            lastScreenShotViewHeight)];
+                                            lastScreenShotView.frame.size.height)];
 
 }
 
@@ -236,8 +236,10 @@
             startBackViewX = startX;
             [lastScreenShotView setFrame:CGRectMake(startBackViewX,
                                                     lastScreenShotView.frame.origin.y,
-                                                    lastScreenShotView.frame.size.height,
-                                                    lastScreenShotView.frame.size.width)];
+                                                    lastScreenShotView.frame.size.width,
+                                                    lastScreenShotView.frame.size.height)];
+//            NSLog(@"%f",lastScreenShotView.frame.size.height);
+        
             
             [self.backgroundView insertSubview:lastScreenShotView belowSubview:blackMask];
             

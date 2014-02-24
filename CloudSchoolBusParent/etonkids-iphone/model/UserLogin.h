@@ -68,4 +68,5 @@ typedef enum {LOGIN_SERVER,LOGIN_OFF} LoginStatus;
 + (void)clearLastPassword;
 + (void)releaseCurrentUser;
 
+
 @end

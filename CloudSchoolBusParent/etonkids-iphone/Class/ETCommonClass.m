@@ -15,7 +15,7 @@
 #import "ETLoginViewController.h"
 
 @implementation ETCommonClass
-//@synthesize cBlock;
+@synthesize preSid;
 
 - (void)requestLoginWithComplete:(CompleteBlock)block
 {
@@ -27,14 +27,11 @@
     {
         AppDelegate *delegate = SHARED_APP_DELEGATE;
         
-        
         [[EKRequest Instance]clearSid];
         
         NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:user.regName,@"username",[MTAuthCode authEncode:user.passWord authKey:@"mactop" expiryPeriod:0],@"password", delegate.token,@"token", nil];
         
         [[EKRequest Instance] EKHTTPRequest:signin parameters:param requestMethod:POST forDelegate:self];
-        
-        
         
     }
     else
@@ -49,6 +46,13 @@
 {
     cBlock = [block copy];
     
+    
+    
+    if ([[EKRequest Instance] userSid] != nil)
+    {
+        self.preSid = [NSString stringWithFormat:@"%@",[[EKRequest Instance] userSid]];
+    }
+    
     [[EKRequest Instance] clearSid];
     
     NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:cid, @"uid_class", stuid, @"uid_student", nil];
@@ -61,7 +65,7 @@
     
     UserLogin *user = [UserLogin currentLogin];
     
-    NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+//    NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
     
     if (method == signin)
     {
@@ -83,36 +87,25 @@
             
         }
         
-//        if (param == nil) {
-//            
-//            [ETCommonClass logoutAndClearUserMessage];
-//            
-//        }else{
-//            user.loginStatus=LOGIN_SERVER;
-////            [[EKRequest Instance] EKHTTPRequest:student parameters:nil requestMethod:GET forDelegate:self];
-//            
-//            NSString *pid = [NSString stringWithFormat:@"%@",[dic objectForKey:@"pid"]];
-//            user.pid = pid;
-//            
-//            NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:pid,@"parentid", nil];
-//            
-//            [[EKRequest Instance] EKHTTPRequest:unit parameters:param requestMethod:GET forDelegate:self];
-//            
-//        }
-        
         
     }
     else if (method == unit && code == 1)
     {
         user.loginStatus=LOGIN_SERVER;
         
-        
+        /*
         if ([param objectForKey:@"uid_class"] && [param objectForKey:@"uid_student"])
         {
             user.uid_class = [param objectForKey:@"uid_class"];
             user.uid_student = [param objectForKey:@"uid_student"];
         }
-        
+        */
+//        NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+//
+//        NSLog(@"%@",dic);
+//        if (nil == dic) {
+//            [[EKRequest Instance] clearSid];
+//        }
         
         [[EKRequest Instance] EKHTTPRequest:student parameters:nil requestMethod:GET forDelegate:self];
     }
@@ -136,6 +129,7 @@
         user.className = [NSString stringWithFormat:@"%@",[dic objectForKey:@"classname"]];
         user.avatar = [NSString stringWithFormat:@"%@",[dic objectForKey:@"avatar"]];
         user.allowmutionline = [NSString stringWithFormat:@"%@",[dic objectForKey:@"allow_muti_online"]];
+        user.uid_student = [NSString stringWithFormat:@"%@",[dic objectForKey:@"studentid"]];
         [[EKRequest Instance] EKHTTPRequest:classinfo parameters:nil requestMethod:GET forDelegate:self];
         
         
@@ -145,6 +139,7 @@
         NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
         NSDictionary * dic11 = [dic objectForKey:@"classinfo"];
         user.schoolname = [dic11 objectForKey:@"schoolname"];
+        user.uid_class = [NSString stringWithFormat:@"%@",[dic11 objectForKey:@"uid"]];
         
         [[EKRequest Instance] EKHTTPRequest:setting parameters:nil requestMethod:GET forDelegate:self];
         
@@ -171,8 +166,16 @@
     }
     else if (code == -1115)
     {
+        
+        if (preSid != nil) {
+            [[EKRequest Instance] saveUserSid:preSid];
+        }
+        
         ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"fufei", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
         [alert show];
+        
+        NSError *err = [[[NSError alloc] initWithDomain:@"login" code:code userInfo:nil] autorelease];
+        cBlock(err);
     }
     else
     {

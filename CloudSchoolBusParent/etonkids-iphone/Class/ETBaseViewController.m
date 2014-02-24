@@ -187,7 +187,18 @@
 #pragma mark UIScrollViewDelegate Methods
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    
+//    CGFloat kImageOriginHight = 220.f;
     int y = scrollView.contentOffset.y;
+//
+//    if (yOffset < 0) {
+//        CGRect f = topBackImgView.frame;
+//        f.origin.y = yOffset;
+//        f.size.height =  -yOffset;
+//        topBackImgView.frame = f;
+//    }
+    
+    
     if (y <= 0)
     {
         if (ABS(y) >= 30)

@@ -46,6 +46,8 @@ typedef enum
     
     
     BOOL isFirstLoading;
+    
+    UIView *tableHeaderView;
 }
 
 @property (nonatomic,retain) NoticeInfo *conformInfo;

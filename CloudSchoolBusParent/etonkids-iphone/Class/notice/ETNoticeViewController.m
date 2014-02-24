@@ -62,6 +62,44 @@
     
     isFirstLoading = YES; // 判断重要通知是否是第一次点击.
     
+    
+    tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, _topView.frame.size.height - _tableView.contentOffset.y, 320, HEADERHEIGHT)];
+    tableHeaderView.backgroundColor = [UIColor clearColor];
+    
+    UIImageView *backImgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, HEADERHEIGHT)];
+    backImgV.image = [UIImage imageNamed:@"noticeTabBack.png"];
+    [tableHeaderView addSubview:backImgV];
+    [backImgV release];
+    
+    selImgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 1, 160, HEADERHEIGHT)];
+    selImgV.image = [UIImage imageNamed:@"noticeTabBtnBack.png"];
+    [tableHeaderView addSubview:selImgV];
+    [selImgV release];
+    
+    NSArray *arr = [NSArray arrayWithObjects:LOCAL(@"quanbutongzhi",@"全部通知"),LOCAL(@"zhongyaotongzhi",@"重要通知"), nil];
+    for (int i = 0; i < 2; i++) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        //        [btn setBackgroundColor:[UIColor redColor]];
+        [btn setTitle:[arr objectAtIndex:i] forState:UIControlStateNormal];
+        [btn setTag:333 + i];
+        [btn addTarget:self action:@selector(doChoose:) forControlEvents:UIControlEventTouchUpInside];
+        btn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [btn setFrame:CGRectMake(160*i, 1, 160, HEADERHEIGHT - 2)];
+        [tableHeaderView addSubview:btn];
+    }
+    
+    if (selImgV != nil) {
+        
+        [UIView animateWithDuration:0.2f animations:^{
+            selImgV.center = CGPointMake(80 + currentType*160, HEADERHEIGHT/2 + 1);
+        }];
+        
+    }
+    
+    [self.view addSubview:tableHeaderView];
+    [tableHeaderView release];
+    
+    
 }
 
 //- (void)setTopView
@@ -1044,8 +1082,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, HEADERHEIGHT)];
     header.backgroundColor = [UIColor clearColor];
-    
-    UIImageView *backImgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, HEADERHEIGHT)];
+    /*
+    UIImageView *backImgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, -10, 320, HEADERHEIGHT)];
     backImgV.image = [UIImage imageNamed:@"noticeTabBack.png"];
     [header addSubview:backImgV];
     [backImgV release];
@@ -1074,7 +1112,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         }];
         
     }
-    
+    */
     
     return header;
     
@@ -1107,6 +1145,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [super scrollViewDidScroll:scrollView];
+    tableHeaderView.frame = CGRectMake(tableHeaderView.frame.origin.x,
+                                       MAX(0,_topView.frame.size.height - _tableView.contentOffset.y),
+                                       tableHeaderView.frame.size.width,
+                                       tableHeaderView.frame.size.height);
+}
 
 - (void)slimeRefreshStartRefresh:(SRRefreshView *)refreshView
 {

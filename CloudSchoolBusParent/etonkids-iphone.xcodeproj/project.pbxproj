@@ -11,21 +11,10 @@
 		1112BB4C1797C4E500337CB4 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1112BB491797C4E500337CB4 /* NSDataAdditions.m */; };
 		1112BB4D1797C4E500337CB4 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1112BB4B1797C4E500337CB4 /* NSStringAdditions.m */; };
 		118A1A4A18B6F3B70002BF18 /* HTCopyableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 118A1A4918B6F3B70002BF18 /* HTCopyableLabel.m */; };
-		118CBBF5178D5851006AA633 /* ETInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CBBF4178D5851006AA633 /* ETInformationViewController.m */; };
-		118CBBF8178D5AC2006AA633 /* ETActiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CBBF7178D5AC2006AA633 /* ETActiveViewController.m */; };
-		118CBBFE178D5CE0006AA633 /* ETBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CBBFD178D5CE0006AA633 /* ETBaseTableViewController.m */; };
-		118CBC0C178D6C2F006AA633 /* ETActiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CBC0B178D6C2F006AA633 /* ETActiveCell.m */; };
 		118CBC17178D7B64006AA633 /* ETActiveDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CBC16178D7B64006AA633 /* ETActiveDetailViewController.m */; };
 		1192A608178E52BA00BDA5BD /* ETEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 1192A607178E52BA00BDA5BD /* ETEvents.m */; };
-		1192A60B178E5C0300BDA5BD /* ETViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1192A60A178E5C0300BDA5BD /* ETViewController.m */; };
-		1192A61A178E77DC00BDA5BD /* ETDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1192A619178E77DB00BDA5BD /* ETDetailInfoViewController.m */; };
-		1192A61D178E847400BDA5BD /* Infomation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1192A61C178E847300BDA5BD /* Infomation.m */; };
-		1192A623178E942100BDA5BD /* ETFreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1192A622178E942100BDA5BD /* ETFreshViewController.m */; };
-		1192A626178E964B00BDA5BD /* ETMyCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1192A625178E964A00BDA5BD /* ETMyCollectViewController.m */; };
-		1192A629178E9FF100BDA5BD /* ETMyActiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1192A628178E9FF000BDA5BD /* ETMyActiveViewController.m */; };
 		1194012C17EE9B4400FA14D4 /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1194012B17EE9B4400FA14D4 /* libBPush.a */; };
 		1194012E17EE9D6500FA14D4 /* BPushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1194012D17EE9D6500FA14D4 /* BPushConfig.plist */; };
-		11964E9E178FCFFE00924DAD /* ETUpdateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11964E9D178FCFFE00924DAD /* ETUpdateView.m */; };
 		11A054F31796831D005C062A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A054F21796831D005C062A /* ImageIO.framework */; };
 		11A054F51796835F005C062A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A054F41796835F005C062A /* MapKit.framework */; };
 		11A0554017968ACB005C062A /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A0552417968ACB005C062A /* MKAnnotationView+WebCache.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -55,7 +44,6 @@
 		73545DE217A79C04000E39FC /* AboutOursViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73545DE017A79C03000E39FC /* AboutOursViewController.m */; };
 		73545DE317A79C04000E39FC /* AboutOursViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73545DE117A79C03000E39FC /* AboutOursViewController.xib */; };
 		7365F6AD177AF4C9007EAF57 /* Modify.m in Sources */ = {isa = PBXBuildFile; fileRef = 7365F6AC177AF4C9007EAF57 /* Modify.m */; };
-		73740F7A179FAFF000DC7BF3 /* ETInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 73740F79179FAFF000DC7BF3 /* ETInformation.m */; };
 		73B9CDBC17ABAE2E00E8AD36 /* ETdefaultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B9CDBA17ABAE2E00E8AD36 /* ETdefaultViewController.m */; };
 		73B9CDBD17ABAE2E00E8AD36 /* ETdefaultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73B9CDBB17ABAE2E00E8AD36 /* ETdefaultViewController.xib */; };
 		73C1C63917B8F0DD001A3BCC /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C1C63817B8F0DC001A3BCC /* CoreMotion.framework */; };
@@ -362,8 +350,6 @@
 		B5A2781D17356D72005A0B86 /* tab_Seting.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A2781B17356D72005A0B86 /* tab_Seting.png */; };
 		B5A341881717B739000382D6 /* ETReStudentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A341861717B739000382D6 /* ETReStudentInfoViewController.m */; };
 		B5A341891717B739000382D6 /* ETReStudentInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A341871717B739000382D6 /* ETReStudentInfoViewController.xib */; };
-		B5A3418C1717E6DC000382D6 /* ETFoodDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A3418B1717E6DC000382D6 /* ETFoodDetailView.m */; };
-		B5CE26D7173D1ABB00F76ACD /* UIActivityImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CE26D6173D1ABB00F76ACD /* UIActivityImageView.m */; };
 		B5D2D21B17185B900012BA0D /* bendidenglu.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D21317185B900012BA0D /* bendidenglu.png */; };
 		B5D2D21C17185B900012BA0D /* bendidenglu1.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D21417185B900012BA0D /* bendidenglu1.png */; };
 		B5D2D21D17185B900012BA0D /* denglu.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D21517185B900012BA0D /* denglu.png */; };
@@ -422,7 +408,6 @@
 		E3F2AA6B16AD0A84006936A5 /* ETNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F2AA6A16AD0A84006936A5 /* ETNoticeViewController.m */; };
 		E3F2AA6E16AD0A9B006936A5 /* ETSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F2AA6D16AD0A9B006936A5 /* ETSettingViewController.m */; };
 		E3F2AA7416AD0AEB006936A5 /* ETClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F2AA7316AD0AEB006936A5 /* ETClassViewController.m */; };
-		E3F2AAD216AD2D05006936A5 /* ControllerTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F2AAD116AD2D05006936A5 /* ControllerTopView.m */; };
 		E3F2AADB16AD43DC006936A5 /* ETTableViewHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F2AADA16AD43DC006936A5 /* ETTableViewHeaderView.m */; };
 		E3F2AAE616AD4D22006936A5 /* ClassShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F2AAE516AD4D22006936A5 /* ClassShareCell.m */; };
 		E3F2AAEF16AD4F9B006936A5 /* ShareContent.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F2AAEE16AD4F9B006936A5 /* ShareContent.m */; };
@@ -583,35 +568,13 @@
 		1112BB4B1797C4E500337CB4 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
 		118A1A4818B6F3B70002BF18 /* HTCopyableLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTCopyableLabel.h; sourceTree = "<group>"; };
 		118A1A4918B6F3B70002BF18 /* HTCopyableLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTCopyableLabel.m; sourceTree = "<group>"; };
-		118CBBF3178D5851006AA633 /* ETInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETInformationViewController.h; sourceTree = "<group>"; };
-		118CBBF4178D5851006AA633 /* ETInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETInformationViewController.m; sourceTree = "<group>"; };
-		118CBBF6178D5AC2006AA633 /* ETActiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETActiveViewController.h; sourceTree = "<group>"; };
-		118CBBF7178D5AC2006AA633 /* ETActiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETActiveViewController.m; sourceTree = "<group>"; };
-		118CBBFC178D5CE0006AA633 /* ETBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETBaseTableViewController.h; sourceTree = "<group>"; };
-		118CBBFD178D5CE0006AA633 /* ETBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETBaseTableViewController.m; sourceTree = "<group>"; };
-		118CBC0A178D6C2F006AA633 /* ETActiveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETActiveCell.h; sourceTree = "<group>"; };
-		118CBC0B178D6C2F006AA633 /* ETActiveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETActiveCell.m; sourceTree = "<group>"; };
 		118CBC15178D7B64006AA633 /* ETActiveDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETActiveDetailViewController.h; sourceTree = "<group>"; };
 		118CBC16178D7B64006AA633 /* ETActiveDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETActiveDetailViewController.m; sourceTree = "<group>"; };
 		1192A606178E52BA00BDA5BD /* ETEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETEvents.h; sourceTree = "<group>"; };
 		1192A607178E52BA00BDA5BD /* ETEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETEvents.m; sourceTree = "<group>"; };
-		1192A609178E5C0300BDA5BD /* ETViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETViewController.h; sourceTree = "<group>"; };
-		1192A60A178E5C0300BDA5BD /* ETViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETViewController.m; sourceTree = "<group>"; };
-		1192A618178E77DB00BDA5BD /* ETDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETDetailInfoViewController.h; sourceTree = "<group>"; };
-		1192A619178E77DB00BDA5BD /* ETDetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETDetailInfoViewController.m; sourceTree = "<group>"; };
-		1192A61B178E847300BDA5BD /* Infomation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Infomation.h; sourceTree = "<group>"; };
-		1192A61C178E847300BDA5BD /* Infomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Infomation.m; sourceTree = "<group>"; };
-		1192A621178E942000BDA5BD /* ETFreshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETFreshViewController.h; sourceTree = "<group>"; };
-		1192A622178E942100BDA5BD /* ETFreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETFreshViewController.m; sourceTree = "<group>"; };
-		1192A624178E964A00BDA5BD /* ETMyCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETMyCollectViewController.h; sourceTree = "<group>"; };
-		1192A625178E964A00BDA5BD /* ETMyCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETMyCollectViewController.m; sourceTree = "<group>"; };
-		1192A627178E9FF000BDA5BD /* ETMyActiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETMyActiveViewController.h; sourceTree = "<group>"; };
-		1192A628178E9FF000BDA5BD /* ETMyActiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETMyActiveViewController.m; sourceTree = "<group>"; };
 		1194012A17EE9B4400FA14D4 /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
 		1194012B17EE9B4400FA14D4 /* libBPush.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBPush.a; sourceTree = "<group>"; };
 		1194012D17EE9D6500FA14D4 /* BPushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BPushConfig.plist; sourceTree = "<group>"; };
-		11964E9C178FCFFE00924DAD /* ETUpdateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETUpdateView.h; sourceTree = "<group>"; };
-		11964E9D178FCFFE00924DAD /* ETUpdateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETUpdateView.m; sourceTree = "<group>"; };
 		11A054F21796831D005C062A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		11A054F41796835F005C062A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		11A0552317968ACB005C062A /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -666,8 +629,6 @@
 		73545DE117A79C03000E39FC /* AboutOursViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutOursViewController.xib; sourceTree = "<group>"; };
 		7365F6AB177AF4C9007EAF57 /* Modify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Modify.h; sourceTree = "<group>"; };
 		7365F6AC177AF4C9007EAF57 /* Modify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Modify.m; sourceTree = "<group>"; };
-		73740F78179FAFEF00DC7BF3 /* ETInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETInformation.h; sourceTree = "<group>"; };
-		73740F79179FAFF000DC7BF3 /* ETInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETInformation.m; sourceTree = "<group>"; };
 		73B9CDB917ABAE2E00E8AD36 /* ETdefaultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETdefaultViewController.h; sourceTree = "<group>"; };
 		73B9CDBA17ABAE2E00E8AD36 /* ETdefaultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETdefaultViewController.m; sourceTree = "<group>"; };
 		73B9CDBB17ABAE2E00E8AD36 /* ETdefaultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ETdefaultViewController.xib; sourceTree = "<group>"; };
@@ -760,6 +721,7 @@
 		78611EF51890FCC800BB60F4 /* aboutlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aboutlogo.png; sourceTree = "<group>"; };
 		78709BB4187CFE51009250FB /* guide3dot0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide3dot0.png; sourceTree = "<group>"; };
 		78709BB5187CFE51009250FB /* 引导页-EN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "引导页-EN.png"; sourceTree = "<group>"; };
+		7874A1DC18BC6FD900D72F8D /* etonkids-iphone 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "etonkids-iphone 3.xcdatamodel"; sourceTree = "<group>"; };
 		788BE69E17EFD9400076D920 /* bottomBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomBack.png; sourceTree = "<group>"; };
 		788BE6A017EFDBE70076D920 /* textBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textBack.png; sourceTree = "<group>"; };
 		788BE6A217EFDC860076D920 /* upBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upBtn.png; sourceTree = "<group>"; };
@@ -1049,10 +1011,6 @@
 		B5A341851717B739000382D6 /* ETReStudentInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETReStudentInfoViewController.h; sourceTree = "<group>"; };
 		B5A341861717B739000382D6 /* ETReStudentInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETReStudentInfoViewController.m; sourceTree = "<group>"; };
 		B5A341871717B739000382D6 /* ETReStudentInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ETReStudentInfoViewController.xib; sourceTree = "<group>"; };
-		B5A3418A1717E6DC000382D6 /* ETFoodDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETFoodDetailView.h; sourceTree = "<group>"; };
-		B5A3418B1717E6DC000382D6 /* ETFoodDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETFoodDetailView.m; sourceTree = "<group>"; };
-		B5CE26D5173D1ABB00F76ACD /* UIActivityImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIActivityImageView.h; sourceTree = "<group>"; };
-		B5CE26D6173D1ABB00F76ACD /* UIActivityImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIActivityImageView.m; sourceTree = "<group>"; };
 		B5D2D21317185B900012BA0D /* bendidenglu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bendidenglu.png; sourceTree = "<group>"; };
 		B5D2D21417185B900012BA0D /* bendidenglu1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bendidenglu1.png; sourceTree = "<group>"; };
 		B5D2D21517185B900012BA0D /* denglu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = denglu.png; sourceTree = "<group>"; };
@@ -1157,8 +1115,6 @@
 		E3F2AA7216AD0AEB006936A5 /* ETClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETClassViewController.h; sourceTree = "<group>"; };
 		E3F2AA7316AD0AEB006936A5 /* ETClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETClassViewController.m; sourceTree = "<group>"; };
 		E3F2AACD16AD2BB9006936A5 /* ETChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETChildViewController.h; sourceTree = "<group>"; };
-		E3F2AAD016AD2D05006936A5 /* ControllerTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllerTopView.h; sourceTree = "<group>"; };
-		E3F2AAD116AD2D05006936A5 /* ControllerTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllerTopView.m; sourceTree = "<group>"; };
 		E3F2AAD916AD43DC006936A5 /* ETTableViewHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETTableViewHeaderView.h; sourceTree = "<group>"; };
 		E3F2AADA16AD43DC006936A5 /* ETTableViewHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETTableViewHeaderView.m; sourceTree = "<group>"; };
 		E3F2AAE416AD4D22006936A5 /* ClassShareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassShareCell.h; sourceTree = "<group>"; };
@@ -1432,32 +1388,10 @@
 			children = (
 				7897DF7B17F2BDF900DB8B21 /* OrderBlock.h */,
 				7897DF7C17F2BDF900DB8B21 /* OrderBlock.m */,
-				118CBBF3178D5851006AA633 /* ETInformationViewController.h */,
-				118CBBF4178D5851006AA633 /* ETInformationViewController.m */,
-				73740F78179FAFEF00DC7BF3 /* ETInformation.h */,
-				73740F79179FAFF000DC7BF3 /* ETInformation.m */,
-				118CBBF6178D5AC2006AA633 /* ETActiveViewController.h */,
-				118CBBF7178D5AC2006AA633 /* ETActiveViewController.m */,
-				118CBBFC178D5CE0006AA633 /* ETBaseTableViewController.h */,
-				118CBBFD178D5CE0006AA633 /* ETBaseTableViewController.m */,
-				118CBC0A178D6C2F006AA633 /* ETActiveCell.h */,
-				118CBC0B178D6C2F006AA633 /* ETActiveCell.m */,
 				118CBC15178D7B64006AA633 /* ETActiveDetailViewController.h */,
 				118CBC16178D7B64006AA633 /* ETActiveDetailViewController.m */,
 				1192A606178E52BA00BDA5BD /* ETEvents.h */,
 				1192A607178E52BA00BDA5BD /* ETEvents.m */,
-				1192A609178E5C0300BDA5BD /* ETViewController.h */,
-				1192A60A178E5C0300BDA5BD /* ETViewController.m */,
-				1192A618178E77DB00BDA5BD /* ETDetailInfoViewController.h */,
-				1192A619178E77DB00BDA5BD /* ETDetailInfoViewController.m */,
-				1192A61B178E847300BDA5BD /* Infomation.h */,
-				1192A61C178E847300BDA5BD /* Infomation.m */,
-				1192A621178E942000BDA5BD /* ETFreshViewController.h */,
-				1192A622178E942100BDA5BD /* ETFreshViewController.m */,
-				1192A624178E964A00BDA5BD /* ETMyCollectViewController.h */,
-				1192A625178E964A00BDA5BD /* ETMyCollectViewController.m */,
-				1192A627178E9FF000BDA5BD /* ETMyActiveViewController.h */,
-				1192A628178E9FF000BDA5BD /* ETMyActiveViewController.m */,
 				7897DF7617F2AB4000DB8B21 /* ETEducationViewController.h */,
 				7897DF7717F2AB4000DB8B21 /* ETEducationViewController.m */,
 				7897DF7817F2AB4000DB8B21 /* ETEducationViewController.xib */,
@@ -2236,12 +2170,8 @@
 		E3F2AA6316AD0A2E006936A5 /* myChild */ = {
 			isa = PBXGroup;
 			children = (
-				11964E9C178FCFFE00924DAD /* ETUpdateView.h */,
-				11964E9D178FCFFE00924DAD /* ETUpdateView.m */,
 				E3F2AACD16AD2BB9006936A5 /* ETChildViewController.h */,
 				F950216C16DC8B090079A05E /* ETChildViewController.m */,
-				E3F2AAD016AD2D05006936A5 /* ControllerTopView.h */,
-				E3F2AAD116AD2D05006936A5 /* ControllerTopView.m */,
 				E3F4F39316B8D14200CB8E31 /* ETFoodView.h */,
 				E3F4F39416B8D14200CB8E31 /* ETFoodView.m */,
 				735282B51784067600A62EF5 /* FoodCell.h */,
@@ -2256,10 +2186,6 @@
 				E3F4F3F316B910C500CB8E31 /* ETCalendarView.m */,
 				F91AE3B316BB610000BF3E5C /* DutyDayView.h */,
 				F91AE3B416BB610000BF3E5C /* DutyDayView.m */,
-				B5A3418A1717E6DC000382D6 /* ETFoodDetailView.h */,
-				B5A3418B1717E6DC000382D6 /* ETFoodDetailView.m */,
-				B5CE26D5173D1ABB00F76ACD /* UIActivityImageView.h */,
-				B5CE26D6173D1ABB00F76ACD /* UIActivityImageView.m */,
 				78A41FD51820B14900D0DE50 /* ETMyAccountView.h */,
 				78A41FD61820B14900D0DE50 /* ETMyAccountView.m */,
 				78A41FE11820E10100D0DE50 /* ETBaseMessageViewController.h */,
@@ -3077,7 +3003,6 @@
 				E3F2AA6B16AD0A84006936A5 /* ETNoticeViewController.m in Sources */,
 				E3F2AA6E16AD0A9B006936A5 /* ETSettingViewController.m in Sources */,
 				E3F2AA7416AD0AEB006936A5 /* ETClassViewController.m in Sources */,
-				E3F2AAD216AD2D05006936A5 /* ControllerTopView.m in Sources */,
 				E3F2AADB16AD43DC006936A5 /* ETTableViewHeaderView.m in Sources */,
 				E3F2AAE616AD4D22006936A5 /* ClassShareCell.m in Sources */,
 				E3F2AAEF16AD4F9B006936A5 /* ShareContent.m in Sources */,
@@ -3171,7 +3096,6 @@
 				F90EA65016E9D9280074BCC3 /* ETApi.m in Sources */,
 				F96B77CD16EF055E0062B1AA /* Food.m in Sources */,
 				B5A341881717B739000382D6 /* ETReStudentInfoViewController.m in Sources */,
-				B5A3418C1717E6DC000382D6 /* ETFoodDetailView.m in Sources */,
 				B566B0E9171D52E500704AA7 /* SVHTTPClient.m in Sources */,
 				B566B0EA171D52E500704AA7 /* SVHTTPRequest.m in Sources */,
 				B566B0ED171D859700704AA7 /* EKRequest.m in Sources */,
@@ -3203,27 +3127,15 @@
 				B5F7FAF21726E1CA00F5AD13 /* ASIS3ServiceRequest.m in Sources */,
 				B5F7FAF61726E44A00F5AD13 /* GTMBase64.m in Sources */,
 				B5F7FAF91726E45800F5AD13 /* keyedArchiver.m in Sources */,
-				B5CE26D7173D1ABB00F76ACD /* UIActivityImageView.m in Sources */,
 				7365F6AD177AF4C9007EAF57 /* Modify.m in Sources */,
 				73F3B90B178166C5004A7C23 /* CustomActionSheet.m in Sources */,
 				7860CB2018862A5200DD0E80 /* GKMovieCell.m in Sources */,
 				7860CB341888F6E300DD0E80 /* GKMovieManager.m in Sources */,
 				735282B41783F6D700A62EF5 /* ScheduleCell.m in Sources */,
 				735282B71784067700A62EF5 /* FoodCell.m in Sources */,
-				118CBBF5178D5851006AA633 /* ETInformationViewController.m in Sources */,
-				118CBBF8178D5AC2006AA633 /* ETActiveViewController.m in Sources */,
-				118CBBFE178D5CE0006AA633 /* ETBaseTableViewController.m in Sources */,
 				78A41FD71820B14900D0DE50 /* ETMyAccountView.m in Sources */,
-				118CBC0C178D6C2F006AA633 /* ETActiveCell.m in Sources */,
 				118CBC17178D7B64006AA633 /* ETActiveDetailViewController.m in Sources */,
 				1192A608178E52BA00BDA5BD /* ETEvents.m in Sources */,
-				1192A60B178E5C0300BDA5BD /* ETViewController.m in Sources */,
-				1192A61A178E77DC00BDA5BD /* ETDetailInfoViewController.m in Sources */,
-				1192A61D178E847400BDA5BD /* Infomation.m in Sources */,
-				1192A623178E942100BDA5BD /* ETFreshViewController.m in Sources */,
-				1192A626178E964B00BDA5BD /* ETMyCollectViewController.m in Sources */,
-				1192A629178E9FF100BDA5BD /* ETMyActiveViewController.m in Sources */,
-				11964E9E178FCFFE00924DAD /* ETUpdateView.m in Sources */,
 				11A0554017968ACB005C062A /* MKAnnotationView+WebCache.m in Sources */,
 				11A0554117968ACB005C062A /* NSData+GIF.m in Sources */,
 				11A0554217968ACB005C062A /* SDImageCache.m in Sources */,
@@ -3243,7 +3155,6 @@
 				781E53B1181FC5E70052851A /* ETVerifyViewController.m in Sources */,
 				7860CB2B188686EC00DD0E80 /* MDRadialProgressTheme.m in Sources */,
 				1112BB4D1797C4E500337CB4 /* NSStringAdditions.m in Sources */,
-				73740F7A179FAFF000DC7BF3 /* ETInformation.m in Sources */,
 				73545DD817A79B9C000E39FC /* ETNicknameViewController.m in Sources */,
 				73545DDD17A79BDA000E39FC /* ETBackgroundViewController.m in Sources */,
 				73545DE217A79C04000E39FC /* AboutOursViewController.m in Sources */,
@@ -3485,10 +3396,11 @@
 		78C2ADF117E152F200E6A5CD /* etonkids-iphone.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				7874A1DC18BC6FD900D72F8D /* etonkids-iphone 3.xcdatamodel */,
 				789EAA481839BFED0029D4B0 /* etonkids-iphone 2.xcdatamodel */,
 				78C2ADF217E152F200E6A5CD /* etonkids-iphone.xcdatamodel */,
 			);
-			currentVersion = 789EAA481839BFED0029D4B0 /* etonkids-iphone 2.xcdatamodel */;
+			currentVersion = 7874A1DC18BC6FD900D72F8D /* etonkids-iphone 3.xcdatamodel */;
 			path = "etonkids-iphone.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

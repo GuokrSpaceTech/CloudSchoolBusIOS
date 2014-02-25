@@ -56,6 +56,7 @@
 {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"MOVIEDOWNLOADCOMPLETE" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"NOTIFICELL" object:nil];
     self.list=nil;
     self.shareContent=nil;
     self.headImage = nil;

@@ -215,7 +215,7 @@
     {
         if (self.mPlayer)
         {
-            NSLog(@"ssssssssssssssssssssssssssssssssssssssssssssssssss ,%f",self.frame.origin.y);
+//            NSLog(@"ssssssssssssssssssssssssssssssssssssssssssssssssss ,%f",self.frame.origin.y);
             [self.mPlayer stop];
             self.mPlayer.contentURL = nil;
             

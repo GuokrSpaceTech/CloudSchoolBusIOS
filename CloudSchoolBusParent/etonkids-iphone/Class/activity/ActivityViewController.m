@@ -223,7 +223,6 @@
         
         [self autoDragScrollLoading];
         
-        
     }
     else
     {

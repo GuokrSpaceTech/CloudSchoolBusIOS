@@ -10,8 +10,6 @@
 #import "ETKids.h"
 #import "ETNoticeViewController.h"
 #import "ActivityViewController.h"
-#import "ETActiveViewController.h"
-#import "ETInformationViewController.h"
 #import "ETClassViewController.h"
 #import "LeveyTabBarController.h"
 #import "ETCoreDataManager.h"

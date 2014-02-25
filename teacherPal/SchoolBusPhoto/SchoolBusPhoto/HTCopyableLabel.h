@@ -1,9 +1,9 @@
 //
 //  HTCopyableLabel.h
-//  HotelTonight
+//  SchoolBusPhoto
 //
-//  Created by Jonathan Sibley on 2/6/13.
-//  Copyright (c) 2013 Hotel Tonight. All rights reserved.
+//  Created by wen peifang on 13-10-28.
+//  Copyright (c) 2013年 mactop. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

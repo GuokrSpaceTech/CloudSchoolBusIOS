@@ -43,7 +43,7 @@
     [upwraper release];
     upwraper=[_upwraper retain];
     
-    for (UIView *view in  [self subviews]) {
+    for (UIView *view in  [self.contentView subviews]) {
         
         if([view isKindOfClass:[myProgressView class]])
         {
@@ -56,7 +56,7 @@
       upwraper._progressView.frame=CGRectMake(270, 10, 40, 40);
     //        [cell addSubview:wraper._progressView];
     
-    [self addSubview:upwraper._progressView];
+    [self.contentView addSubview:upwraper._progressView];
     
     imageView.image=[UIImage imageWithData:upwraper.imageData];
     

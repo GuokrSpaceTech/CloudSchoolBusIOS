@@ -21,7 +21,7 @@
     
         
 
-        self.progress=0.0;
+        
         
         
         processView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
@@ -38,7 +38,7 @@
         processLabel.textAlignment=UITextAlignmentCenter;
         processLabel.text=@"0%";
         [self addSubview:processLabel];
-
+        [self setProgress:0];
         
     }
     return self;
@@ -56,7 +56,7 @@
 {
     progress_=progress;
     
-    processView.progress=progress;
+  
     if( progress_==0 )
     {
         
@@ -74,7 +74,7 @@
        
         processLabel.text=[NSString stringWithFormat:@"%.0f%%",progress_*100];
     }
-      
+    processView.progress=progress;
 }
 
 -(void)dealloc

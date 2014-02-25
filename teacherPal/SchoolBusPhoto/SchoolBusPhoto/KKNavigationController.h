@@ -1,10 +1,10 @@
 //
 //  KKNavigationController.h
-//  TS
+//  SchoolBusPhoto
 //
-//  Created by Coneboy_K on 13-12-2.
-//  Copyright (c) 2013年 Coneboy_K. All rights reserved. MIT
-//  WELCOME TO MY BLOG  http://www.coneboy.com
+//  Created by wen peifang on 13-10-28.
+//  Copyright (c) 2013年 mactop. All rights reserved.
+//
 //
 
 #import <UIKit/UIKit.h>

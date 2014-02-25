@@ -80,7 +80,7 @@ static GKUpQueue *gkqueue=nil;
     [request setDelegate:self];
     request.uploadProgressDelegate=wrapper._progressView;
     request.showAccurateProgress=YES;
-    [request setNumberOfTimesToRetryOnTimeout:5];
+    [request setNumberOfTimesToRetryOnTimeout:1];
     //NSData *imageData=[GTMBase64 ];
     [request setDidFailSelector:@selector(requestDidFailed:)];
     //[request setdid];

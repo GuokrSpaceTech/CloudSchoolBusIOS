@@ -2,7 +2,6 @@
 #import "ETFoodView.h"
 #import "UserLogin.h"
 #import "ETApi.h"
-#import "ETFoodDetailView.h"
 #import "ImageScaleView.h"
 #import "AppDelegate.h"
 #import "FoodCell.h"

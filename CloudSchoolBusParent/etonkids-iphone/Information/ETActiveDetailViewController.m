@@ -337,9 +337,6 @@
     [self.webview stringByEvaluatingJavaScriptFromString:fontStr];
     
     
-    
-    
-    
 }
 
 -(void)leftButtonClick:(id)sender

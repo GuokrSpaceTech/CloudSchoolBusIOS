@@ -15,7 +15,6 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "ETViewController.h"
 #import "ETEvents.h"
 #import "EKRequest.h"
 #import "MBProgressHUD.h"

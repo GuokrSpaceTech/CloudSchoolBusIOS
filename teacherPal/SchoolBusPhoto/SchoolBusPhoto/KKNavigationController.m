@@ -119,7 +119,7 @@
     CGFloat aa = abs(startBackViewX)/kkBackViewWidth;
     CGFloat y = x*aa;
 
-    CGFloat lastScreenShotViewHeight = kkBackViewHeight;
+    //CGFloat lastScreenShotViewHeight = kkBackViewHeight;
     
     //TODO: FIX self.edgesForExtendedLayout = UIRectEdgeNone  SHOW BUG
 /**

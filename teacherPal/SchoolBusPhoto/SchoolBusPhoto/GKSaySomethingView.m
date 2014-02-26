@@ -60,7 +60,7 @@
         
         //apply
         [button setTitle:NSLocalizedString(@"apply", @"") forState:UIControlStateNormal];
-        button.frame=CGRectMake(230, _contextView.frame.origin.y+_contextView.frame.size.height+5, 80, 40);
+        button.frame=CGRectMake(224, _contextView.frame.origin.y+_contextView.frame.size.height+5, 80, 40);
         
 //        UIImage *iamge=[[UIImage imageNamed:@"loginBtn"] resizableImageWithCapInsets:UIEdgeInsetsMake(15, 20, 15, 20)];
         button.tag = 333;

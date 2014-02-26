@@ -43,7 +43,7 @@
         int width; /*按钮宽度*/
         
         NSString *title = [tags objectAtIndex:i];
-        CGSize titleSize = [title sizeWithFont:TITLEFONT constrainedToSize:CGSizeMake(1000, 20) lineBreakMode:NSLineBreakByWordWrapping];
+        //CGSize titleSize = [title sizeWithFont:TITLEFONT constrainedToSize:CGSizeMake(1000, 20) lineBreakMode:NSLineBreakByWordWrapping];
         width = 95; //固定长度
 //        width = titleSize.width + 10;
         

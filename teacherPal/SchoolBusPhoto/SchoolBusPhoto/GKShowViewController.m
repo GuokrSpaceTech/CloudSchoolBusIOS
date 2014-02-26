@@ -138,7 +138,7 @@
     if(ios7)
         _scroller=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-(5 + y*STUDENTCELLHEIGHT)-IOS7OFFSET-46)];
     else
-        _scroller=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-(5 + y*STUDENTCELLHEIGHT)-IOS7OFFSET-46)];
+        _scroller=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-(5 + y*STUDENTCELLHEIGHT)-46)];
     _scroller.backgroundColor=[UIColor whiteColor];
     
     _scroller.clipsToBounds=YES;
@@ -159,13 +159,11 @@
     NSLog(@" contentsize%f -----------------%f",_scroller.contentSize.width,_scroller.contentSize.height);
     
    // [self.view bringSubviewToFront:navigationView];
+
+    textView=[[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-(5 + y*STUDENTCELLHEIGHT)-20, self.view.frame.size.width, 20)];
     
     
-    if(ios7)
-        textView=[[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-(5 + y*STUDENTCELLHEIGHT)-20, self.view.frame.size.width, 20)];
-    else
-        textView=[[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-(5 + y*STUDENTCELLHEIGHT)-20, self.view.frame.size.width, 20)];
-    
+
     textView.backgroundColor=[UIColor clearColor];
     [self.view addSubview:textView];
     [textView release];

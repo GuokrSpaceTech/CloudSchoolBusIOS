@@ -842,8 +842,8 @@ static GKCameraManager *cameraManager;
         if (frameNum >1)
         {  //删除前两帧
             
-            CMTime startTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
-            float s = ((double)startTime.value)/startTime.timescale;
+            //CMTime startTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
+           // float s = ((double)startTime.value)/startTime.timescale;
 //            NSLog(@"######### : %f",s - lastTime);
             
 //            if (s - lastTime >= -0.03) {

@@ -7,10 +7,11 @@
 //
 
 #import "GKMainViewController.h"
-#import <QuartzCore/QuartzCore.h>
+
 #import "GKAppDelegate.h"
 #import "GKLoaderManager.h"
 #import "GKSaySomethingView.h"
+#import "GKLeftViewController.h"
 @interface GKMainViewController ()
 
 @end
@@ -43,12 +44,12 @@ static  GKMainViewController*rootViewCon;
 {
     return rootViewCon;
 }
--(void) getEKResponse:(id) response forMethod:(RequestFunction) method parm:(NSDictionary *)parm resultCode:(int) code
-{
-}
--(void) getErrorInfo:(NSError *) error forMethod:(RequestFunction) method
-{
-}
+//-(void) getEKResponse:(id) response forMethod:(RequestFunction) method parm:(NSDictionary *)parm resultCode:(int) code
+//{
+//}
+//-(void) getErrorInfo:(NSError *) error forMethod:(RequestFunction) method
+//{
+//}
 
 - (void)viewDidLoad
 {

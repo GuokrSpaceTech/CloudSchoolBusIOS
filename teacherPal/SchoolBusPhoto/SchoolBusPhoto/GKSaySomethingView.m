@@ -7,7 +7,6 @@
 //
 
 #import "GKSaySomethingView.h"
-#import <QuartzCore/QuartzCore.h>
 #import "GKUserLogin.h"
 @implementation GKSaySomethingView
 @synthesize delegate;

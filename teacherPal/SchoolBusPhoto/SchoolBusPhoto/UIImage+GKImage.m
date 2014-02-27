@@ -36,6 +36,9 @@
             transform = CGAffineTransformTranslate(transform, 0, self.size.height);
             transform = CGAffineTransformRotate(transform, -M_PI_2);
             break;
+            
+            
+            
     }
     
     switch (self.imageOrientation) {

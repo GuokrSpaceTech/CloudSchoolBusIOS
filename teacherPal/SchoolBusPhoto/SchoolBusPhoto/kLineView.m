@@ -7,7 +7,7 @@
 //
 
 #import "kLineView.h"
-#import <QuartzCore/QuartzCore.h>
+
 
 @implementation kLineView
 @synthesize dataArr,dateTitleArr;

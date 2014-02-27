@@ -12,8 +12,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import <math.h>
 #import "GKSaySomethingView.h"
-#import <QuartzCore/QuartzCore.h>
+
 #import "GKShowViewController.h"
+#import <CoreGraphics/CoreGraphics.h>
 @interface KKNavigationController ()
 {
     CGPoint startTouch;
@@ -61,10 +62,14 @@
 //    shadowImageView.frame = CGRectMake(-10, 0, 10, self.view.frame.size.height);
 //    [self.view addSubview:shadowImageView];
     
+    //[UIBezierPath bezierPathWithRect:self.view.bounds];
+ 
+    self.view.layer.shadowPath =[UIBezierPath bezierPathWithRect:self.view.bounds].CGPath;
+    
     self.view.layer.shadowOffset = CGSizeMake(0, 0);
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
     self.view.layer.shadowOpacity = 1;
-
+//
 }
 
 - (void)didReceiveMemoryWarning

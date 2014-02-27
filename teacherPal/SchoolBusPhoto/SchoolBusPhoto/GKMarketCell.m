@@ -9,7 +9,7 @@
 #import "GKMarketCell.h"
 #import "GKAppDelegate.h"
 #import "GKMarketDetailView.h"
-#import <QuartzCore/QuartzCore.h>
+
 #import "GKAppDelegate.h"
 #import "UIImageView+WebCache.h"
 @implementation GKMarketCell

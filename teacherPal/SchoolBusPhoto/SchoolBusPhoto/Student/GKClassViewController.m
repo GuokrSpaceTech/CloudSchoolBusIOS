@@ -12,6 +12,7 @@
 #import "GKStudentListViewController.h"
 #import "GKMainViewController.h"
 #import "GKDraftViewController.h"
+#import "KKNavigationController.h"
 @interface GKClassViewController ()
 
 @end

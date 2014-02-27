@@ -19,7 +19,7 @@
 @end
 
 @implementation GKLoginViewController
-@synthesize autoImgV,remImgV;
+//@synthesize autoImgV,remImgV;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -46,23 +46,23 @@
     GKUserLogin *user=[GKUserLogin currentLogin];
     
     //[self setNeedsStatusBarAppearanceUpdate];
-    NSUserDefaults *defaultUser=[NSUserDefaults standardUserDefaults];
+   // NSUserDefaults *defaultUser=[NSUserDefaults standardUserDefaults];
     //判定是否设定了自动登录
-    if([defaultUser objectForKey:AUTOLOGIN])
-    {
-        //remImgV.hidden = NO;
-        //autoImgV.hidden = NO;
-        //判定最后一次登录的状态是否成功，及判定帐号和密码是否存在
-        if ([user getLastLogin])
-        {
-            _userName.text=user._userName;
-            _passWord.text=user._passWord;
-        }
-    }
-    else
-    {
-        //autoImgV.hidden = YES;
-    }
+//    if([defaultUser objectForKey:AUTOLOGIN])
+//    {
+//        //remImgV.hidden = NO;
+//        //autoImgV.hidden = NO;
+//        //判定最后一次登录的状态是否成功，及判定帐号和密码是否存在
+//        if ([user getLastLogin])
+//        {
+//            _userName.text=user._userName;
+//            _passWord.text=user._passWord;
+//        }
+//    }
+//    else
+//    {
+//        //autoImgV.hidden = YES;
+//    }
     //记住密码*******************************
     NSUserDefaults *Default=[NSUserDefaults standardUserDefaults];
     //判定是否设定了记住密码
@@ -162,31 +162,31 @@
     [_loginBtn release];
     [_userName release];
     [_passWord release];
-    self.remImgV=nil;
-    self.autoImgV=nil;
+//    self.remImgV=nil;
+//    self.autoImgV=nil;
     [_jiaoshiLogin release];
     [super dealloc];
 }
 
--(IBAction)autoLogin:(id)sender
-{
-    
-    autoImgV.hidden = !autoImgV.hidden;
-    
-    if (!autoImgV.hidden) {
-        remImgV.hidden = NO;
-    }
-    
-    
-}
+//-(IBAction)autoLogin:(id)sender
+//{
+//    
+//    autoImgV.hidden = !autoImgV.hidden;
+//    
+//    if (!autoImgV.hidden) {
+//        remImgV.hidden = NO;
+//    }
+//    
+//    
+//}
 /// 记住密码
-- (IBAction)rember:(UIButton *)sender
-{
-
-    
-    remImgV.hidden = !remImgV.hidden;
-    
-}
+//- (IBAction)rember:(UIButton *)sender
+//{
+//
+//    
+//    remImgV.hidden = !remImgV.hidden;
+//    
+//}
 
 
 
@@ -245,26 +245,26 @@
     
     NSUserDefaults *defaultUser = [NSUserDefaults standardUserDefaults];
     
-    if (autoImgV.hidden)
-    {
-        [defaultUser removeObjectForKey:AUTOLOGIN];
-    }
-    else
-    {
-        [defaultUser setObject:AUTOLOGINVALUE forKey:AUTOLOGIN];
-      
-    }
+//    if (autoImgV.hidden)
+//    {
+//        [defaultUser removeObjectForKey:AUTOLOGIN];
+//    }
+//    else
+//    {
+//        [defaultUser setObject:AUTOLOGINVALUE forKey:AUTOLOGIN];
+//      
+//    }
     
     
     //判定是否设定了记住密码
-    if(remImgV.hidden)
-    {
-        [defaultUser removeObjectForKey:REMEMBERPSAAWORD];
-    }
-    else
-    {
+    //if(remImgV.hidden)
+   // {
+       // [defaultUser removeObjectForKey:REMEMBERPSAAWORD];
+   // }
+    //else
+    //{
         [defaultUser setObject:REMEMBERPSAAWORDVALUE forKey:REMEMBERPSAAWORD];
-    }
+    //}
     
    // [defaultUser setObject:@"5" forKey:@"HEADERBACKGROUND"];
 
@@ -281,6 +281,7 @@
     GKMainViewController *mainVC=[[GKMainViewController alloc]initWithNibName:@"GKMainViewController" bundle:nil];
    // UINavigationController *navigationVC=[[UINavigationController alloc]initWithRootViewController:mainVC];
    
+    //[self presentModalViewController:<#(UIViewController *)#> animated:<#(BOOL)#>];
     [self presentViewController:mainVC animated:YES completion:^{
             
             
@@ -442,8 +443,8 @@
     [self setPassWord:nil];
     [self setJiaoshiLogin:nil];
     [_loginBtn release];
-    self.remImgV=nil;
-    self.autoImgV=nil;
+//    self.remImgV=nil;
+//    self.autoImgV=nil;
 
     
     [super viewDidUnload];

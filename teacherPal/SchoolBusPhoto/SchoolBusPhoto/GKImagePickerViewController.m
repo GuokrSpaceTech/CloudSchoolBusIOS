@@ -11,7 +11,7 @@
 #import "GKAppDelegate.h"
 #import "GKBadgeView.h"
 #import "GKLoaderManager.h"
-#import <QuartzCore/QuartzCore.h>
+
 #import "UpLoader.h"
 #import "DBManager.h"
 #import "GKCustomButton.h"

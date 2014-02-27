@@ -15,7 +15,7 @@
 #import "GKUpQueue.h"
 #import "GKUserLogin.h"
 
-#import <QuartzCore/QuartzCore.h>
+
 #import "KKNavigationController.h"
 #import "DBManager.h"
 #define TAG 1000

@@ -93,8 +93,8 @@
 //    "settingH"="settingH.png";
     
 //    classLeft.png
-    NSLog(@"????? %@",NSLocalizedString(@"classLeft", @""));
-     NSLog(@"????? %@",  NSLocalizedString(@"classLeftH", @""));
+    //NSLog(@"????? %@",NSLocalizedString(@"classLeft", @""));
+     //NSLog(@"????? %@",  NSLocalizedString(@"classLeftH", @""));
   
     NSArray *defArr = [NSArray arrayWithObjects:NSLocalizedString(@"notice", @""),NSLocalizedString(@"grade", @""), NSLocalizedString(@"home", @""),NSLocalizedString(@"setting", @""),nil];
     NSArray *selArr = [NSArray arrayWithObjects:NSLocalizedString(@"noticeH", @""),NSLocalizedString(@"gradeH", @""),NSLocalizedString(@"homeH", @""), NSLocalizedString(@"settingH", @""),  nil];

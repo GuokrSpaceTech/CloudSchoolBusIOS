@@ -15,9 +15,9 @@
 @property (retain, nonatomic) IBOutlet UIButton *loginBtn;
 
 
-
-@property (retain, nonatomic) IBOutlet UIImageView *remImgV;
-@property (retain, nonatomic) IBOutlet UIImageView *autoImgV;
+//
+//@property (retain, nonatomic) IBOutlet UIImageView *remImgV;
+//@property (retain, nonatomic) IBOutlet UIImageView *autoImgV;
 
 
 
@@ -35,7 +35,7 @@
 //-(IBAction)autoLogin:(id)sender;
 
 /// 记住密码按钮事件
-- (IBAction)rember:(UIButton *)sender;
+//- (IBAction)rember:(UIButton *)sender;
 
 
 @end

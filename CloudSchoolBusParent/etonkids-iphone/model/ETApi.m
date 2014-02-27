@@ -84,7 +84,7 @@
     
     NSData *requstData=[NSURLConnection sendSynchronousRequest:requeset returningResponse:nil error:&err];
     
-    NSString *str=[[NSString alloc]initWithData:requstData encoding:NSUTF8StringEncoding];
+//    NSString *str=[[NSString alloc]initWithData:requstData encoding:NSUTF8StringEncoding];
 
     if(!err)
     {

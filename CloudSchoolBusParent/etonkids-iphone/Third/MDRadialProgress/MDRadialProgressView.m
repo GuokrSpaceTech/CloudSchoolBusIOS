@@ -12,6 +12,8 @@
 #import "MDRadialProgressTheme.h"
 
 
+//static NSString *keyThickness = @"theme.thickness";
+
 @interface MDRadialProgressView ()
 
 // Padding from the view bounds to the outer circumference of the view.

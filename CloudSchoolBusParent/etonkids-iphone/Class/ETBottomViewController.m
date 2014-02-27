@@ -163,7 +163,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:44/255.0 green:57/255.0 blue:66/255.0 alpha:1.0f];
     
     
-    UserLogin *user=[UserLogin currentLogin];
+//    UserLogin *user=[UserLogin currentLogin];
     
 
     // ---------  bottom view  -----------
@@ -433,7 +433,7 @@
     }
     else if (sender.state == UIGestureRecognizerStateEnded)
     {
-        CGPoint p = [sender locationInView:[UIApplication sharedApplication].keyWindow];
+//        CGPoint p = [sender locationInView:[UIApplication sharedApplication].keyWindow];
 
 //        [self.countTimer invalidate];
 //        self.countTimer = nil;

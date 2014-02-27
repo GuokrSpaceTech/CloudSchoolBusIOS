@@ -8,7 +8,7 @@
 #import "WeiboAccounts.h"
 #import "ETCustomAlertView.h"
 
-@interface ETShareViewController : UIViewController<WeiboRequestDelegate>
+@interface ETShareViewController : UIViewController<WeiboRequestDelegate,WeiboSignInDelegate>
 {
     TCWBEngine          *wbEngine;
     NSString *content;

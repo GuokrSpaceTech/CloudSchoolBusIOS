@@ -41,7 +41,7 @@ typedef enum {
 @end
 
 @protocol LockDelegate <NSObject>
-
+@optional
 -(void)isSuccess:(BOOL)isSuccess;
 
 - (void)gesturePassword:(NSString *)pwd;

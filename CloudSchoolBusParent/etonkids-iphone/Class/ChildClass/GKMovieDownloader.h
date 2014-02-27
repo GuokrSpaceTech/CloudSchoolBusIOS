@@ -17,6 +17,7 @@ typedef void (^GKProgressBlock)(unsigned long long size, unsigned long long tota
 
 @protocol GKMovieDownloaderDelegate <NSObject>
 
+@optional
 - (void)downloader:(GKMovieDownloader *)dl didFinishedDownloadMovieWithPath:(NSString *)path;
 
 @end

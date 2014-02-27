@@ -168,7 +168,7 @@
 
 ///新浪微博 授权成功.
 - (void)finishedWithAuth:(WeiboAuthentication *)auth error:(NSError *)error {
-    [self hidTabBar:@"1"];
+
     if (error) {
         NSLog(@"failed to auth: %@", error);
     }
@@ -183,14 +183,14 @@
 - (void)onSuccessLogin
 {
     [self shareController:2];
-     [self hidTabBar:@"1"];
+
 }
 
 
 ///登录失败回调.
 - (void)onFailureLogin:(NSError *)error
 {
-    [self hidTabBar:@"1"];
+
 }
 
 
@@ -260,7 +260,7 @@
         WeiboAccount *account=[[WeiboAccounts shared] currentAccount];
         if(!account || account.accessToken==nil)
         {
-            [self hidTabBar:@"0"];
+//            [self hidTabBar:@"0"];
             [_weiboSignIn signInOnViewController:self];
         }
         else
@@ -276,7 +276,7 @@
         {
             if(![weiboEngine isAuthorizeExpired])
             {
-                [self hidTabBar:@"0"];
+//                [self hidTabBar:@"0"];
                 [weiboEngine logInWithDelegate:self
                                      onSuccess:@selector(onSuccessLogin)
                                      onFailure:@selector(onFailureLogin:)];
@@ -289,7 +289,7 @@
         }
         else
         {
-            [self hidTabBar:@"0"];
+//            [self hidTabBar:@"0"];
             [weiboEngine logInWithDelegate:self
                                  onSuccess:@selector(onSuccessLogin)
                                  onFailure:@selector(onFailureLogin:)];
@@ -341,6 +341,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    isVisible = NO;
+    
     GKMovieManager *mm = [GKMovieManager shareManager];
 //    NSLog(@"@@@@@@@@@@@@@@@@@   %@,%d",mm.playingCell,mm.playingCell.mPlayer.playbackState);
     if (mm.playingCell && mm.playingCell.mPlayer.playbackState == MPMoviePlaybackStatePlaying) {
@@ -654,6 +656,8 @@
 //        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(controlVisibleCellPlay) object:nil];
 //        [self performSelector:@selector(controlVisibleCellPlay) withObject:nil afterDelay:0.1f];
 //    }
+    
+    isVisible = YES;
     
     NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
     if ([[userdefault objectForKey:SWITHGESTURE] isEqualToString:@"1"])
@@ -1636,8 +1640,13 @@
     NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
     if ([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"1"] || [[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"2"])
     {//如果设置自动播放
-        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(controlVisibleCellPlay) object:nil];
-        [self performSelector:@selector(controlVisibleCellPlay) withObject:nil afterDelay:0.1f];
+        
+        
+            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(controlVisibleCellPlay) object:nil];
+            [self performSelector:@selector(controlVisibleCellPlay) withObject:nil afterDelay:0.1f];
+        
+        
+        
     }
     
     
@@ -1649,10 +1658,15 @@
 
 - (void)controlVisibleCellPlay
 {
+    
+    if (!isVisible) {
+        return;
+    }
+    
     NSArray *cells = [_tableView visibleCells];
     
     GKMovieManager *mm = [GKMovieManager shareManager];
-    NSMutableArray *tempDownloadingArray = [NSMutableArray arrayWithArray:mm.downloadList];
+//    NSMutableArray *tempDownloadingArray = [NSMutableArray arrayWithArray:mm.downloadList];
     
 //    NSLog(@"%@",cells);
     

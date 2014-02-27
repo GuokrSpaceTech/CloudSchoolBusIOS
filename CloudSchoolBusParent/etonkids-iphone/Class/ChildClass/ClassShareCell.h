@@ -27,13 +27,15 @@
 
 @protocol ClassShareCellDelegate <NSObject>
 
+@optional
+
 - (void) shareCell:(ClassShareCell *)_notice share:(ShareContent *)info;
 - (void) shareWeibo:(ShareContent *)info withTag:(int) tag;
 - (void) clickComment:(ShareContent *)content;
 - (void) clickPraise:(UITableViewCell *)cell;
 - (void) didTapImageWithImageArray:(NSArray *)imgArr showNumber:(int)num content:(ShareContent *)content;
 
-@optional
+
 -(void)playAudioStreamView:(ClassShareCell *)viewCell Info:(ShareContent *)info;
 
 @end
@@ -46,7 +48,7 @@ typedef enum{
 } CellMode ;
 
 
-@interface ClassShareCell : UITableViewCell<UIGestureRecognizerDelegate,EKProtocol>
+@interface ClassShareCell : UITableViewCell<UIGestureRecognizerDelegate>
 {
     UILabel *titleLabel;
     UILabel *contentLabel;

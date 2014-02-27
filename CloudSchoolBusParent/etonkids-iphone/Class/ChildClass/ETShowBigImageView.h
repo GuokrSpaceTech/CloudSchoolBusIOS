@@ -32,7 +32,7 @@
 @protocol ETShowBigImageViewDelegate <NSObject>
 
 
- 
+@optional
 - (void)didSelectedTencentShareImage:(UIImage *) image;
 
 

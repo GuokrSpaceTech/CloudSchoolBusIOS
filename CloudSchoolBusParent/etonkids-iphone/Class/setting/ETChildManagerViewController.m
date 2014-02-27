@@ -189,7 +189,7 @@
             
         }
         
-        UserLogin *user = [UserLogin currentLogin];
+//        UserLogin *user = [UserLogin currentLogin];
         
         ETCommonClass *com = [[ETCommonClass alloc] init];
         [com changeChildByClass:u.uid_class student:u.uid_student WithComplete:^(NSError *err) {

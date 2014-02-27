@@ -729,7 +729,7 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
         UIActivityIndicatorView *cmt = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         if (c != nil) {
             
-            CGPoint p = [tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].center;
+//            CGPoint p = [tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].center;
             cmt.center = [tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].center;
             
         }

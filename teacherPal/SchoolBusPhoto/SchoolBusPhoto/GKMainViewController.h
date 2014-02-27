@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GKLeftViewController.h"
+
 #import "SideBarSelectedDelegate.h"
-#import "EKRequest.h"
+
 
 extern int badge;
-@interface GKMainViewController : UIViewController<SideBarSelectDelegate,UINavigationControllerDelegate,EKProtocol,UIGestureRecognizerDelegate>
+@interface GKMainViewController : UIViewController<SideBarSelectDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate>
 {
     UIViewController  *_currentMainController;
     UITapGestureRecognizer *_tapGestureRecognizer;

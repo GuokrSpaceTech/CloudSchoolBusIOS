@@ -8,7 +8,7 @@
 
 #import "GKNoticeCell.h"
 #import "NSDate+convenience.h"
-#import <QuartzCore/QuartzCore.h>
+
 #import "UIImageView+WebCache.h"
 #define IMAGETAG 100
 @implementation GKNoticeCell

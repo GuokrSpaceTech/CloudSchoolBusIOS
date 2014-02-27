@@ -7,21 +7,21 @@
 //
 
 #import "ETPhotoCell.h"
-#import <QuartzCore/QuartzCore.h>
+
 @implementation ETPhotoCell
 @synthesize imageView1,imageView2,imageView3,imageView4;
 @synthesize delegate;
 @synthesize isSelect1,isSelect2,isSelect3,isSelect4;
 
--(void)shadeoffset:(UIImageView *)iamgeView
-{
-    iamgeView.layer.borderColor=[UIColor whiteColor].CGColor;
-    iamgeView.layer.borderWidth=2;
-    iamgeView.layer.shadowColor=[UIColor blackColor].CGColor;
-    iamgeView.layer.shadowOffset=CGSizeMake(1, 1);
-    iamgeView.layer.shadowOpacity=0.5;
-    iamgeView.layer.shadowRadius=1;
-}
+//-(void)shadeoffset:(UIImageView *)iamgeView
+//{
+//    iamgeView.layer.borderColor=[UIColor whiteColor].CGColor;
+//    iamgeView.layer.borderWidth=2;
+//    iamgeView.layer.shadowColor=[UIColor blackColor].CGColor;
+//    iamgeView.layer.shadowOffset=CGSizeMake(1, 1);
+//    iamgeView.layer.shadowOpacity=0.5;
+//    iamgeView.layer.shadowRadius=1;
+//}
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

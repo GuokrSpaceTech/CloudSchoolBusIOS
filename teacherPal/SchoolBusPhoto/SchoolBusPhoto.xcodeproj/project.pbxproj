@@ -33,7 +33,7 @@
 		111E8CE8181E532400234014 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E8CD7181E532400234014 /* UIImage+GIF.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		111E8CE9181E532400234014 /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E8CD9181E532400234014 /* UIImage+MultiFormat.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		111E8CEA181E532400234014 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E8CDB181E532400234014 /* UIImage+WebP.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		111E8CEB181E532400234014 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E8CDD181E532400234014 /* UIImageView+WebCache.m */; };
+		111E8CEB181E532400234014 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E8CDD181E532400234014 /* UIImageView+WebCache.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		111E8CF1181E540900234014 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 111E8CF0181E540900234014 /* MapKit.framework */; };
 		111E8CF3181E6E9F00234014 /* input.png in Resources */ = {isa = PBXBuildFile; fileRef = 111E8CF2181E6E9F00234014 /* input.png */; };
 		113BCABE182B41280079E9AD /* topImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 113BCABD182B41280079E9AD /* topImage.png */; };
@@ -239,7 +239,7 @@
 		11BF898E183646DF008E72F0 /* GKBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BF898D183646DF008E72F0 /* GKBadgeView.m */; };
 		11C75DA61812725600A3AA89 /* EKRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DA01812725600A3AA89 /* EKRequest.m */; };
 		11C75DA71812725600A3AA89 /* SVHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DA31812725600A3AA89 /* SVHTTPClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		11C75DA81812725600A3AA89 /* SVHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DA51812725600A3AA89 /* SVHTTPRequest.m */; };
+		11C75DA81812725600A3AA89 /* SVHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DA51812725600A3AA89 /* SVHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		11C75DAB1812728500A3AA89 /* GKUserLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DAA1812728500A3AA89 /* GKUserLogin.m */; };
 		11C75DAF1812729500A3AA89 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DAE1812729500A3AA89 /* SFHFKeychainUtils.m */; };
 		11C75DB1181272BB00A3AA89 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C75DB0181272BB00A3AA89 /* Security.framework */; };

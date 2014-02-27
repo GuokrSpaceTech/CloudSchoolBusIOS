@@ -10,7 +10,6 @@
 #import "GKNotice.h"
 #import "KKNavigationController.h"
 #import "NSDate+convenience.h"
-#import <QuartzCore/QuartzCore.h>
 #import "UIImageView+WebCache.h"
 #import "HTCopyableLabel.h"
 #import "GKShowBigImageViewController.h"

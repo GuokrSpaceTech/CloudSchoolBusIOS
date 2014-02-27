@@ -8,7 +8,6 @@
 
 #import "GKNoticeViewController.h"
 #import "KKNavigationController.h"
-#import <QuartzCore/QuartzCore.h>
 @interface GKNoticeViewController ()
 
 @end

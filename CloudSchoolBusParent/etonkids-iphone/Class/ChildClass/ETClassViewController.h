@@ -19,7 +19,7 @@
 
 #import "MBProgressHUD.h"
 
-#import <MessageUI/MessageUI.h>
+//#import <MessageUI/MessageUI.h>
 #import "ShareContent.h"
 #import "EKRequest.h"
 #import <AVFoundation/AVFoundation.h>
@@ -28,7 +28,7 @@
 #import "SDWebImageManager.h"
 
 
-@interface ETClassViewController : ETBaseViewController<WeiboSignInDelegate,MFMessageComposeViewControllerDelegate,MFMailComposeViewControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,ETCustomAlertViewDelegate,UIActionSheetDelegate,UIGestureRecognizerDelegate,EKProtocol,ClassShareCellDelegate>
+@interface ETClassViewController : ETBaseViewController<WeiboSignInDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,ETCustomAlertViewDelegate,UIActionSheetDelegate,UIGestureRecognizerDelegate,EKProtocol,ClassShareCellDelegate>
 {
     MBProgressHUD *HUD;
     int  currentIndex;
@@ -45,7 +45,7 @@
     
     RequestType reqType;
     
-    
+    BOOL isVisible; // 判断当前页面是否可见
     
 }
 @property(nonatomic,retain)ShareContent *shareContent;
@@ -60,7 +60,7 @@
 
 - (void)loadData;
 
-- (void)slimeStartLoading;
+//- (void)slimeStartLoading;
 
 
 @end

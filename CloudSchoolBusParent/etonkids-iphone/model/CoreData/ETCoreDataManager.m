@@ -305,7 +305,7 @@
 {
     for (int i = 0; i < infoArray.count; i++) {
         NSDictionary *infoDic = [infoArray objectAtIndex:i];
-        NSError *err = nil;
+//        NSError *err = nil;
         AppDelegate* delegate = SHARED_APP_DELEGATE;
         ETClassShare *classshare = [NSEntityDescription insertNewObjectForEntityForName:@"ETClassShare" inManagedObjectContext:delegate.managedObjectContext];
         classshare.articleid = [NSString stringWithFormat:@"%@",[infoDic objectForKey:@"articleid"]];
@@ -323,7 +323,7 @@
             
             NSDictionary *picDic = [picArr objectAtIndex:i];
             
-            NSError *err = nil;
+//            NSError *err = nil;
             AppDelegate* delegate = SHARED_APP_DELEGATE;
             ETActicalPicture *pic = [NSEntityDescription insertNewObjectForEntityForName:@"ETActicalPicture" inManagedObjectContext:delegate.managedObjectContext];
             pic.articalid = classshare.articleid;
@@ -380,7 +380,7 @@
 }
 + (BOOL)addSingleArticalData:(ShareContent *)share
 {
-    NSError *err = nil;
+//    NSError *err = nil;
     AppDelegate* delegate = SHARED_APP_DELEGATE;
     ETClassShare *classshare = [NSEntityDescription insertNewObjectForEntityForName:@"ETClassShare" inManagedObjectContext:delegate.managedObjectContext];
     classshare.articleid = share.shareId;
@@ -398,7 +398,7 @@
         
         NSDictionary *picDic = [picArr objectAtIndex:i];
         
-        NSError *err = nil;
+//        NSError *err = nil;
         AppDelegate* delegate = SHARED_APP_DELEGATE;
         ETActicalPicture *pic = [NSEntityDescription insertNewObjectForEntityForName:@"ETActicalPicture" inManagedObjectContext:delegate.managedObjectContext];
         pic.articalid = classshare.articleid;
@@ -578,7 +578,7 @@
 {
     for (int i = 0; i < noticeArray.count; i++) {
         NSDictionary *infoDic = [noticeArray objectAtIndex:i];
-        NSError *err = nil;
+//        NSError *err = nil;
         AppDelegate* delegate = SHARED_APP_DELEGATE;
         ETNotice *notice = [NSEntityDescription insertNewObjectForEntityForName:@"ETNotice" inManagedObjectContext:delegate.managedObjectContext];
         notice.addtime = [NSString stringWithFormat:@"%@",[infoDic objectForKey:@"addtime"]];
@@ -595,7 +595,7 @@
             
             NSDictionary *picDic = [picArr objectAtIndex:i];
             
-            NSError *err = nil;
+//            NSError *err = nil;
             AppDelegate* delegate = SHARED_APP_DELEGATE;
             ETNoticPicture *pic = [NSEntityDescription insertNewObjectForEntityForName:@"ETNoticPicture" inManagedObjectContext:delegate.managedObjectContext];
             pic.noticeid = notice.noticeid;
@@ -730,7 +730,7 @@
 {
     for (int i = 0; i < noticeArray.count; i++) {
         NSDictionary *infoDic = [noticeArray objectAtIndex:i];
-        NSError *err = nil;
+//        NSError *err = nil;
         AppDelegate* delegate = SHARED_APP_DELEGATE;
         ETImportantNotice *notice = [NSEntityDescription insertNewObjectForEntityForName:@"ETImportantNotice" inManagedObjectContext:delegate.managedObjectContext];
         notice.addtime = [NSString stringWithFormat:@"%@",[infoDic objectForKey:@"addtime"]];
@@ -747,7 +747,7 @@
             
             NSDictionary *picDic = [picArr objectAtIndex:i];
             
-            NSError *err = nil;
+//            NSError *err = nil;
             AppDelegate* delegate = SHARED_APP_DELEGATE;
             ETNoticPicture *pic = [NSEntityDescription insertNewObjectForEntityForName:@"ETNoticPicture" inManagedObjectContext:delegate.managedObjectContext];
             pic.noticeid = notice.noticeid;

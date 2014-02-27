@@ -10,6 +10,7 @@
 
 @protocol ImageDownloaderDelegate <NSObject>
 
+@optional
 - (void)imageDidFishLoad:(NSData *)dataImage;
 
 @end

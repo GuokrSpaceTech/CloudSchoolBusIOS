@@ -12,7 +12,7 @@
 #import "EKRequest.h"
 
 @protocol ETBaseMessageViewControllerDelegate <NSObject>
-
+@optional
 - (void)reloadChildMessage;
 
 @end

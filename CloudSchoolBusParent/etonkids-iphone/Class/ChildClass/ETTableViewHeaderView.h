@@ -22,7 +22,7 @@
 #import "MTCustomActionSheet.h"
 
 @protocol headerViewdelegate <NSObject>
-
+@optional
 -(void)headerViewBackButtonClick;
 
 
@@ -54,7 +54,7 @@
 @property(nonatomic,retain) UIImageView *imageBgView;
 @property (nonatomic, retain)UIImageView *ageBack;
 
--(void)hiddenbackButton:(BOOL) hidden;
+//-(void)hiddenbackButton:(BOOL) hidden;
 @end
 
 

@@ -47,7 +47,7 @@
 - (id)initWithViewControllers:(NSArray *)vcs imageArray:(NSArray *)arr withFrame:(CGRect)frame;
 
 - (void)hidesTabBar:(BOOL)yesOrNO animated:(BOOL)animated;
-- (void)hidesTabBar:(BOOL)yesOrNO animated:(BOOL)animated driect:(NSInteger)driect;
+//- (void)hidesTabBar:(BOOL)yesOrNO animated:(BOOL)animated driect:(NSInteger)driect;
 
 // Remove the viewcontroller at index of viewControllers.
 - (void)removeViewControllerAtIndex:(NSUInteger)index;

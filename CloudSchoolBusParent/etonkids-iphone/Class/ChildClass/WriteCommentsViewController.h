@@ -27,12 +27,12 @@ typedef enum
 }CommentType;
 
 @protocol WriteCommentsViewControllerDelegate <NSObject>
-
+@optional
 - (void)replyCommentByParam:(NSDictionary *)param;
 
 @end
 
-@interface WriteCommentsViewController : UIViewController<UITextViewDelegate,EKProtocol>
+@interface WriteCommentsViewController : UIViewController<UITextViewDelegate>
 
 {
     UIImageView *navigationBackView;

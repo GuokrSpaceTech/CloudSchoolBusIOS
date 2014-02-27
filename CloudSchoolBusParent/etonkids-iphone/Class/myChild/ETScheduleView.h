@@ -37,8 +37,4 @@
 @property(nonatomic,retain)IBOutlet UITableView *tableview;
 
 
-
-
-
--(void)selectDate:(int)date;
 @end

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-static const NSString *STANDARD_THEME = @"standard";
+
 
 
 @interface MDRadialProgressTheme : NSObject

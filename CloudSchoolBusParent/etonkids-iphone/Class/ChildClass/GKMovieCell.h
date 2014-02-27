@@ -18,7 +18,7 @@
 
 
 
-@interface GKMovieCell : UITableViewCell<GKMovieDownloaderDelegate,EKProtocol>
+@interface GKMovieCell : UITableViewCell<GKMovieDownloaderDelegate>
 
 @property(nonatomic,retain) UILabel *titleLabel;
 @property(nonatomic,retain) UILabel *contentLabel;
@@ -59,6 +59,5 @@
 - (void)addPraiseNumber;
 - (void)subPraiseNumber;
 
-- (void)playMovie;
 
 @end

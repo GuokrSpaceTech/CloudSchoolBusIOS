@@ -248,7 +248,7 @@
     
     NSLog(@"error code %d",code);
 
-    UserLogin *user=[UserLogin currentLogin];
+//    UserLogin *user=[UserLogin currentLogin];
     
     if(HUD)
     {

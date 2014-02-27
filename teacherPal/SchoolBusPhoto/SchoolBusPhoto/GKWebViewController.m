@@ -78,6 +78,13 @@
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
 }
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"network", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+    [alert show];
+    [alert release];
+}
 -(void)dealloc
 {
     self.webController=nil;

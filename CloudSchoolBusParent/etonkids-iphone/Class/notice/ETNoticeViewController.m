@@ -200,13 +200,13 @@
     
     ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
     [com requestLoginWithComplete:^(NSError *err) {
-        if (err == nil) {
+//        if (err == nil) {
             [[EKRequest Instance] EKHTTPRequest:notice parameters:param requestMethod:GET forDelegate:self];
-        }
-        else
-        {
-            isLoading = NO;
-        }
+//        }
+//        else
+//        {
+//            [self stopRequest];
+//        }
      
     }];
     
@@ -219,7 +219,8 @@
     [alert show];
     
 }
--(void) getErrorInfo:(NSError *)error
+
+- (void)stopRequest
 {
     [_slimeView endRefresh];
     isLoading = NO;
@@ -229,9 +230,14 @@
         [_refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
         [self removeFooterView];
     }
+}
+
+-(void) getErrorInfo:(NSError *)error
+{
     
+    [self stopRequest];
     
-    [self performSelectorOnMainThread:@selector(LoginFailedresult:) withObject:LOCAL(@"busy", @"网络故障，请稍后重试") waitUntilDone:NO];
+    [self LoginFailedresult:LOCAL(@"busy", @"网络故障，请稍后重试")];
 }
 
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param

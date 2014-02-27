@@ -12,6 +12,7 @@
 
 #import "GKUserLogin.h"
 #import "KKNavigationController.h"
+#import "GKAppDelegate.h"
 #define TAGMARKET 222
 @interface GKInfoViewController ()
 
@@ -132,11 +133,28 @@
     
     nodataView.hidden=YES;
     
-  //  Credit
-    [[EKRequest Instance]EKHTTPRequest:Credit parameters:nil requestMethod:GET forDelegate:self];
     
-    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"0",@"isorders", nil];
-    [[EKRequest Instance]EKHTTPRequest:Creditshop parameters:dic requestMethod:GET forDelegate:self];
+    
+    GKAppDelegate *app = (GKAppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    if ([app connectedToNetWork])
+    {
+        [[EKRequest Instance]EKHTTPRequest:Credit parameters:nil requestMethod:GET forDelegate:self];
+        
+        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"0",@"isorders", nil];
+        [[EKRequest Instance]EKHTTPRequest:Creditshop parameters:dic requestMethod:GET forDelegate:self];
+    }
+    else
+    {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"network", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
+    
+    
+    
+  //  Credit
+    
 
     
     //[[EKRequest Instance]EKHTTPRequest:Creditshop parameters:nil requestMethod:GET forDelegate:self];

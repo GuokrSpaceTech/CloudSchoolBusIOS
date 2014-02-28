@@ -8,6 +8,8 @@
 
 #import "GKNoticeViewController.h"
 #import "KKNavigationController.h"
+#import "GKCommonClass.h"
+
 @interface GKNoticeViewController ()
 
 @end
@@ -55,6 +57,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    
     isConform=NO;
     stuArr=[[NSMutableArray alloc]init];
     UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(0, navigationView.frame.size.height+navigationView.frame.origin.y, 320, self.view.frame.size.height)];
@@ -67,7 +72,17 @@
     _titleField.font=[UIFont systemFontOfSize:16];
     _titleField.borderStyle=UITextBorderStyleRoundedRect;
     _titleField.placeholder=NSLocalizedString(@"title", @"");
-    [_titleField becomeFirstResponder];
+    NSString * docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];
+    //拼接文件路径
+    NSString *path = [docPath stringByAppendingPathComponent:[NSString stringWithFormat:@"help_1003"]];
+    //调用文件管理器
+    NSFileManager * fm = [NSFileManager defaultManager];
+    //判断文件是否存在，判断是否第一次运行程序
+    if ([fm fileExistsAtPath:path] == YES)
+    {
+        [_titleField becomeFirstResponder];
+    }
+    
     [self.view addSubview:_titleField];
     
     
@@ -194,6 +209,9 @@
     [whiteView release];
     
     titlelabel.text=NSLocalizedString(@"homenoticetitle", @"");
+    
+    
+    [GKCommonClass createHelpWithTag:1003 image:[UIImage imageNamed:iphone5 ? @"thelp_send_568.png" : @"thelp_send.png"]];
     
 }
 

@@ -598,11 +598,11 @@
     
     if(HUD==nil)
     {
-        AppDelegate *delegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
+        AppDelegate *appDel=(AppDelegate *)[[UIApplication sharedApplication] delegate];
         
-        HUD=[[MBProgressHUD alloc]initWithView:delegate.window];
+        HUD=[[MBProgressHUD alloc]initWithView:appDel.window];
         HUD.labelText=LOCAL(@"upload", @"正在上传头像");   //@"正在上传头像";
-        [delegate.window addSubview:HUD];
+        [appDel.window addSubview:HUD];
         [HUD show:YES];
         [HUD release];
     }

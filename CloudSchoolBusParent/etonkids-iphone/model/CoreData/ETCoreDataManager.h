@@ -34,7 +34,7 @@
 + (UserLogin*)cachedUser:(NSString*)userName withPass:(NSString*)password andStudent:(NSString *)stuid;
 + (ETUser *)getUserInfo:(NSString *)account andStudent:(NSString *)stuid;
 + (NSArray *)getUsers:(NSString *)userName;
-+ (BOOL)saveUserChildren:(NSArray *)children;
+//+ (BOOL)saveUserChildren:(NSArray *)children;
 + (BOOL)saveUserChildren:(NSArray *)children ByAccount:(NSString *)username;
 
 

@@ -19,7 +19,7 @@
 @class CustomActionSheet;
 
 @protocol CustomActionSheetDelegate <NSObject>
-
+@optional
 - (void)customActionSheetDidClickOKButton:(CustomActionSheet *)sheet;
 - (void)customActionSheetDidClickCancelButton:(CustomActionSheet *)sheet;
 

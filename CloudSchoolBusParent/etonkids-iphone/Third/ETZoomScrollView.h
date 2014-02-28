@@ -6,7 +6,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol ETZoomScrollViewDelegate <NSObject>
-
+@optional
 - (void)handleSingleTap;
 
 @end
@@ -19,6 +19,6 @@
 @property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, assign) id<ETZoomScrollViewDelegate> tDelegate;
 
-- (void)reloadFrame:(float)originX;
+//- (void)reloadFrame:(float)originX;
 
 @end

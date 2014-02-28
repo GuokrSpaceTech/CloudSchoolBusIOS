@@ -21,7 +21,7 @@
 #import "ETCustomAlertView.h"
 
 @protocol ETNicknameViewControllerDelegate <NSObject>
-
+@optional
 - (void)changeNicknameSuccess;
 
 @end

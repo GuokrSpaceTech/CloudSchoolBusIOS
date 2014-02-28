@@ -83,7 +83,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UserLogin *user = [UserLogin currentLogin];
+//    UserLogin *user = [UserLogin currentLogin];
     
     static NSString *CellIdentifier = @"section0";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];

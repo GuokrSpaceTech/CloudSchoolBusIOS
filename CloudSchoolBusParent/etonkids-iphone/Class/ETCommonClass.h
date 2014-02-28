@@ -29,4 +29,6 @@ typedef void (^CompleteBlock)(NSError *err);
 - (void)mutiDeviceLogin;
 + (void)clearUserMessage;
 
++ (void)createHelpWithTag:(int)tag image:(UIImage *)img;
+
 @end

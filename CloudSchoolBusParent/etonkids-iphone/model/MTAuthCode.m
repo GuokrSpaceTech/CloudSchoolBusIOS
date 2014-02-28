@@ -87,7 +87,7 @@
             time = (long)[now timeIntervalSince1970] + expiry;
         }
         
-        [mutableString appendFormat:@"%010d", time];
+        [mutableString appendFormat:@"%010ld", time];
         tempStr = [source stringByAppendingString:keyb];
         tempMd5 = [tempStr md5Hash];
         

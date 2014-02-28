@@ -27,9 +27,11 @@ typedef enum{
 
 
 @protocol EGORefreshTableDelegate
+
+@optional
 - (void)egoRefreshTableDidTriggerRefresh:(EGORefreshPos)aRefreshPos;
 - (BOOL)egoRefreshTableDataSourceIsLoading:(UIView*)view;
-@optional
+
 - (NSDate*)egoRefreshTableDataSourceLastUpdated:(UIView*)view;
 @end
 

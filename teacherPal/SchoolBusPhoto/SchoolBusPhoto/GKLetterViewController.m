@@ -302,17 +302,9 @@
             
         }
         
+        [self performSelectorInBackground:@selector(selectPhoto:) withObject:theImage];
         
-        NSData *data= UIImageJPEGRepresentation(theImage, 0.5);
         
-        UIImage *image=[UIImage imageWithData:data];
-        NSData *dataqq=UIImageJPEGRepresentation(image, 1);
-        NSString *base64=[[[NSString alloc]initWithData:[GTMBase64 encodeData:dataqq] encoding:NSUTF8StringEncoding] autorelease];
-        
-        int ftime=[[NSDate date]timeIntervalSince1970];
-        
-        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"img",@"lettertype",base64,@"fbody",[NSNumber numberWithInt:ftime],@"ftime",[NSNumber numberWithInt:[base64 length]],@"fsize",@"jpg",@"fext", nil];
-        [[EKRequest Instance]EKHTTPRequest:LetterF parameters:dic requestMethod:POST forDelegate:self];
         
 
         [self.navigationController dismissViewControllerAnimated:YES completion:^{
@@ -322,6 +314,19 @@
     }
     
 
+}
+- (void)selectPhoto:(UIImage *)img
+{
+    NSData *data= UIImageJPEGRepresentation(img, 0.5);
+    
+    UIImage *image=[UIImage imageWithData:data];
+    NSData *dataqq=UIImageJPEGRepresentation(image, 1);
+    NSString *base64=[[[NSString alloc]initWithData:[GTMBase64 encodeData:dataqq] encoding:NSUTF8StringEncoding] autorelease];
+    
+    int ftime=[[NSDate date]timeIntervalSince1970];
+    
+    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"img",@"lettertype",base64,@"fbody",[NSNumber numberWithInt:ftime],@"ftime",[NSNumber numberWithInt:[base64 length]],@"fsize",@"jpg",@"fext", nil];
+    [[EKRequest Instance]EKHTTPRequest:LetterF parameters:dic requestMethod:POST forDelegate:self];
 }
 
 //- (UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size{

@@ -12,7 +12,7 @@
 #import "ETBaseViewController.h"
 #import "NoticeCell.h"
 #import "MBProgressHUD.h"
-#import <MessageUI/MessageUI.h>
+//#import <MessageUI/MessageUI.h>
 #import "EKRequest.h"
 
 typedef enum
@@ -22,7 +22,7 @@ typedef enum
     
 }ChooseNoticeType;
 
-@interface ETNoticeViewController : ETBaseViewController<noticeCelldelegate,MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,ETCustomAlertViewDelegate,UIActionSheetDelegate,UIGestureRecognizerDelegate,EKProtocol>
+@interface ETNoticeViewController : ETBaseViewController<noticeCelldelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,ETCustomAlertViewDelegate,UIActionSheetDelegate,UIGestureRecognizerDelegate,EKProtocol>
 {
     NSMutableArray *arrList;
     MBProgressHUD *HUD;

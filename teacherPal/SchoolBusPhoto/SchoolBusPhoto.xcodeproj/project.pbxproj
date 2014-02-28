@@ -397,6 +397,15 @@
 		78BE433818B7657B003ADCB8 /* 上传列表@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78BE432F18B7657B003ADCB8 /* 上传列表@2x.png */; };
 		78BE433918B7657B003ADCB8 /* 消息@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78BE433018B7657B003ADCB8 /* 消息@2x.png */; };
 		78BE433A18B7657B003ADCB8 /* 修改密码@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78BE433118B7657B003ADCB8 /* 修改密码@2x.png */; };
+		78D8D10E18C05C6A008860AB /* thelp_notice.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D10A18C05C6A008860AB /* thelp_notice.png */; };
+		78D8D10F18C05C6A008860AB /* thelp_send.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D10B18C05C6A008860AB /* thelp_send.png */; };
+		78D8D11018C05C6A008860AB /* thelp_upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D10C18C05C6A008860AB /* thelp_upload.png */; };
+		78D8D11118C05C6A008860AB /* thelp_zhuye.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D10D18C05C6A008860AB /* thelp_zhuye.png */; };
+		78D8D11418C05CA9008860AB /* GKCommonClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D8D11318C05CA9008860AB /* GKCommonClass.m */; };
+		78D8D11918C07ABC008860AB /* thelp_notice_568.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D11518C07ABC008860AB /* thelp_notice_568.png */; };
+		78D8D11A18C07ABC008860AB /* thelp_upload_568.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D11618C07ABC008860AB /* thelp_upload_568.png */; };
+		78D8D11B18C07ABC008860AB /* thelp_zhuye_568.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D11718C07ABC008860AB /* thelp_zhuye_568.png */; };
+		78D8D11C18C07ABC008860AB /* thelp_send_568.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D11818C07ABC008860AB /* thelp_send_568.png */; };
 		78DB7FB818A5CF7C00421D0D /* 视频1.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DB7FB618A5CF7C00421D0D /* 视频1.png */; };
 		78DB7FB918A5CF7C00421D0D /* 视频2.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DB7FB718A5CF7C00421D0D /* 视频2.png */; };
 		E797189A18798BAB00353BAF /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E797189418798BAB00353BAF /* libTestFlight.a */; };
@@ -942,6 +951,16 @@
 		78BE432F18B7657B003ADCB8 /* 上传列表@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "上传列表@2x.png"; sourceTree = "<group>"; };
 		78BE433018B7657B003ADCB8 /* 消息@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "消息@2x.png"; sourceTree = "<group>"; };
 		78BE433118B7657B003ADCB8 /* 修改密码@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "修改密码@2x.png"; sourceTree = "<group>"; };
+		78D8D10A18C05C6A008860AB /* thelp_notice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_notice.png; sourceTree = "<group>"; };
+		78D8D10B18C05C6A008860AB /* thelp_send.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_send.png; sourceTree = "<group>"; };
+		78D8D10C18C05C6A008860AB /* thelp_upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_upload.png; sourceTree = "<group>"; };
+		78D8D10D18C05C6A008860AB /* thelp_zhuye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_zhuye.png; sourceTree = "<group>"; };
+		78D8D11218C05CA9008860AB /* GKCommonClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCommonClass.h; sourceTree = "<group>"; };
+		78D8D11318C05CA9008860AB /* GKCommonClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCommonClass.m; sourceTree = "<group>"; };
+		78D8D11518C07ABC008860AB /* thelp_notice_568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_notice_568.png; sourceTree = "<group>"; };
+		78D8D11618C07ABC008860AB /* thelp_upload_568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_upload_568.png; sourceTree = "<group>"; };
+		78D8D11718C07ABC008860AB /* thelp_zhuye_568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_zhuye_568.png; sourceTree = "<group>"; };
+		78D8D11818C07ABC008860AB /* thelp_send_568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_send_568.png; sourceTree = "<group>"; };
 		78DB7FB618A5CF7C00421D0D /* 视频1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "视频1.png"; sourceTree = "<group>"; };
 		78DB7FB718A5CF7C00421D0D /* 视频2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "视频2.png"; sourceTree = "<group>"; };
 		E797189418798BAB00353BAF /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
@@ -1050,6 +1069,8 @@
 				2AFFF35018122D8B0045BFD0 /* GKMainViewController.h */,
 				2AFFF35118122D8B0045BFD0 /* GKMainViewController.m */,
 				2AFFF35218122D8B0045BFD0 /* GKMainViewController.xib */,
+				78D8D11218C05CA9008860AB /* GKCommonClass.h */,
+				78D8D11318C05CA9008860AB /* GKCommonClass.m */,
 			);
 			name = mainVC;
 			sourceTree = "<group>";
@@ -1323,6 +1344,14 @@
 			isa = PBXGroup;
 			children = (
 				11B8492D18C058DD00D9205C /* corners@2x.png */,
+				78D8D11518C07ABC008860AB /* thelp_notice_568.png */,
+				78D8D11618C07ABC008860AB /* thelp_upload_568.png */,
+				78D8D11718C07ABC008860AB /* thelp_zhuye_568.png */,
+				78D8D11818C07ABC008860AB /* thelp_send_568.png */,
+				78D8D10A18C05C6A008860AB /* thelp_notice.png */,
+				78D8D10B18C05C6A008860AB /* thelp_send.png */,
+				78D8D10C18C05C6A008860AB /* thelp_upload.png */,
+				78D8D10D18C05C6A008860AB /* thelp_zhuye.png */,
 				78BE432918B7657B003ADCB8 /* 2@2x.png */,
 				78BE432A18B7657B003ADCB8 /* 班级积分@2x.png */,
 				78BE432B18B7657B003ADCB8 /* 班级学生@2x.png */,
@@ -1884,6 +1913,7 @@
 				11AF3AEB18166AB200B36176 /* navLeftBtn_default.png in Resources */,
 				11D42951187E4BE60002810E /* gradeFen@2x.png in Resources */,
 				11BF896F1836325F008E72F0 /* 120.png in Resources */,
+				78D8D11C18C07ABC008860AB /* thelp_send_568.png in Resources */,
 				2A32A56918122C02007CAA8E /* InfoPlist.strings in Resources */,
 				11A5A890187B9E2500EA22CD /* gradeEH.png in Resources */,
 				2A32A57118122C02007CAA8E /* Default.png in Resources */,
@@ -1917,6 +1947,7 @@
 				78709C15187D1733009250FB /* edit-tray-background.png in Resources */,
 				78BE433618B7657B003ADCB8 /* 草稿箱.png in Resources */,
 				11E27F8F183C6AAC00CAE0BB /* shareBtn3.0.png in Resources */,
+				78D8D11918C07ABC008860AB /* thelp_notice_568.png in Resources */,
 				11BF89711836329C008E72F0 /* tiao.png in Resources */,
 				11B852A2183221CF005FA5B9 /* ETNicknameViewController.xib in Resources */,
 				7870A0F2187D4637009250FB /* navbar-button-blue-active@2x.png in Resources */,
@@ -1939,6 +1970,7 @@
 				2A32A58218122C25007CAA8E /* GKLoginViewController.xib in Resources */,
 				11FC0F3C182C90DE00442EF6 /* qipao1@2x.png in Resources */,
 				1193A6A5182B68CC004011BC /* buyBG.png in Resources */,
+				78D8D11A18C07ABC008860AB /* thelp_upload_568.png in Resources */,
 				11BF898418363F5C008E72F0 /* sendNotice.png in Resources */,
 				1193A6B8182B9225004011BC /* photoBtn.png in Resources */,
 				78709BCC187D16CA009250FB /* GKSendMediaViewController.xib in Resources */,
@@ -1948,8 +1980,10 @@
 				78BE433318B7657B003ADCB8 /* 班级积分@2x.png in Resources */,
 				11BF8988183641E2008E72F0 /* notice.png in Resources */,
 				11AF3B051816832D00B36176 /* showMain.png in Resources */,
+				78D8D11018C05C6A008860AB /* thelp_upload.png in Resources */,
 				1102A7E1181A4ABD00E6295C /* paizhao-1-1.png in Resources */,
 				1195719B183B0DFB00CE9F1B /* photocount.png in Resources */,
+				78D8D10F18C05C6A008860AB /* thelp_send.png in Resources */,
 				1193A6C4182C785B004011BC /* 谁在照片里_10_01.png in Resources */,
 				1193A6A8182B69A9004011BC /* minus.png in Resources */,
 				78709C03187D1733009250FB /* camera-glyph-flash-auto.png in Resources */,
@@ -1991,6 +2025,7 @@
 				1194023D182360EB00F21FB8 /* M-4.png in Resources */,
 				788C7C28188FCAEF00BA9BD0 /* camera-shutter-video-default-active.png in Resources */,
 				11B852D4183368A0005FA5B9 /* mail.png in Resources */,
+				78D8D11B18C07ABC008860AB /* thelp_zhuye_568.png in Resources */,
 				11B852A8183221CF005FA5B9 /* OKBtn.png in Resources */,
 				11DB02E518337ACF007981C6 /* loginOUt.png in Resources */,
 				1102A7FB181A5E1200E6295C /* guanlianbottom.png in Resources */,
@@ -2003,6 +2038,7 @@
 				11A5A895187B9E5100EA22CD /* settingE.png in Resources */,
 				119F0CB8181A2D9600A5910C /* backH.png in Resources */,
 				11D40E3518618700003009D0 /* alterPassword.png in Resources */,
+				78D8D10E18C05C6A008860AB /* thelp_notice.png in Resources */,
 				1102A7E2181A4ABD00E6295C /* paizhao-1-2.png in Resources */,
 				788C7C2B188FCBBE00BA9BD0 /* X.png in Resources */,
 				11AF3B1618168F3400B36176 /* login_sel.png in Resources */,
@@ -2086,6 +2122,7 @@
 				11D40E3318618700003009D0 /* alterPasswordSE.png in Resources */,
 				11BB992118AB15B9006273A7 /* qipao22@2x.png in Resources */,
 				11E27F96183C731F00CAE0BB /* textfield123.png in Resources */,
+				78D8D11118C05C6A008860AB /* thelp_zhuye.png in Resources */,
 				1102A7EF181A4FF500E6295C /* guanyu-5.png in Resources */,
 				11CE2A90187FF5AD00742001 /* imageerror.png in Resources */,
 				78709C00187D1733009250FB /* camera-blind-top-simple.png in Resources */,
@@ -2108,6 +2145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A32A56B18122C02007CAA8E /* main.m in Sources */,
+				78D8D11418C05CA9008860AB /* GKCommonClass.m in Sources */,
 				11BF898E183646DF008E72F0 /* GKBadgeView.m in Sources */,
 				119E96221814C5A300866DE8 /* ASICloudFilesContainer.m in Sources */,
 				1192E401181B6CE200C5F33B /* GKWebViewController.m in Sources */,

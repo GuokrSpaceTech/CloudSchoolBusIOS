@@ -872,7 +872,7 @@
     {
         if (index != resultSelectChild.count) { //如果不是最后一个按钮，即取消按钮
             
-            AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+//            AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
             if(HUD==nil)
             {
                 HUD=[[MBProgressHUD alloc]initWithView:self.view];

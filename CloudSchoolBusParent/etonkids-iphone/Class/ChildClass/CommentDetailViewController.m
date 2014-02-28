@@ -62,6 +62,8 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
 //    [[NSNotificationCenter  defaultCenter]postNotificationName:@"TabBarHidden" object:nil userInfo:dic];
     [super viewDidLoad];
     
+    [ETCommonClass createHelpWithTag:1002 image:[UIImage imageNamed:iphone5 ? @"help_detail_568.png" : @"help_detail.png"]];
+    
     if (ios7) {
         [self setNeedsStatusBarAppearanceUpdate];
         
@@ -729,7 +731,7 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
         UIActivityIndicatorView *cmt = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         if (c != nil) {
             
-            CGPoint p = [tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].center;
+//            CGPoint p = [tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].center;
             cmt.center = [tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].center;
             
         }

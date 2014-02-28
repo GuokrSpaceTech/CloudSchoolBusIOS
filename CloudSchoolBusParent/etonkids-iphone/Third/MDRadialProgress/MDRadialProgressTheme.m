@@ -8,6 +8,7 @@
 
 #import "MDRadialProgressTheme.h"
 
+static const NSString *STANDARD_THEME = @"standard";
 
 // The font size is automatically adapted but this is the maximum it will get
 // unless overridden by the user.

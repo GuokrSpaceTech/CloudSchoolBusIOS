@@ -22,7 +22,7 @@
 #import "ETShareViewController.h"
 
 @protocol ETActiveDetailViewControllerDelegate <NSObject>
-
+@optional
 - (void)reloadTableData:(ETEvents *)event;
 
 @end

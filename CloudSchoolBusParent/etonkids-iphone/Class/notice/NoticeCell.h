@@ -47,6 +47,8 @@
 
 @protocol noticeCelldelegate <NSObject>
 
+
+@optional
 /// 点击更多.
 -(void)noticeCell:(NoticeCell *)_notice notice:(NoticeInfo *)info;
 

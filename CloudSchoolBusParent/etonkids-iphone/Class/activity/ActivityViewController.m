@@ -697,7 +697,7 @@
 - (void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
 {
     isLoading = NO;
-    UserLogin *user=[UserLogin currentLogin];
+//    UserLogin *user=[UserLogin currentLogin];
     
     if (code == -1113)
     {

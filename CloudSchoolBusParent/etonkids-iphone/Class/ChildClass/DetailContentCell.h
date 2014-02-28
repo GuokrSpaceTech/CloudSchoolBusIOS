@@ -21,7 +21,7 @@
 @class DetailContentCell;
 
 @protocol DetailContentCellDelegate <NSObject>
-
+@optional
 /// 点击评论回调.
 - (void)didClickComments:(DetailContentCell *)cell;
 

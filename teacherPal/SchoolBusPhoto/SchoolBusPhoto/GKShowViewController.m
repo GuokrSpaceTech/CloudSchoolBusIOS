@@ -14,7 +14,7 @@
 #import "GTMBase64.h"
 #import "GKUpQueue.h"
 #import "GKUserLogin.h"
-
+#import "GKCommonClass.h"
 
 #import "KKNavigationController.h"
 #import "DBManager.h"
@@ -55,7 +55,7 @@
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
     
-
+    [GKCommonClass createHelpWithTag:1004 image:[UIImage imageNamed:iphone5 ? @"thelp_upload_568.png" : @"thelp_upload.png"]];
     
     whichView=1;
     self.tag=@"";

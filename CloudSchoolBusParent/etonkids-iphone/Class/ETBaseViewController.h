@@ -46,7 +46,7 @@
 -(void)pushShareViewController:(UIViewController *)control;
 -(void)setFooterView;
 -(void)removeFooterView;
--(void)hidTabBar:(NSString *)str;
+//-(void)hidTabBar:(NSString *)str;
 -(void)showActionSheet;
 - (void)setTopView;
 - (void)autoDragScrollLoading;  // 默认自动 下拉刷新.

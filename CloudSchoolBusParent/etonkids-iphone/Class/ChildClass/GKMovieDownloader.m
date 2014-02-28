@@ -100,9 +100,9 @@
     
 }
 
-- (void)requestFailed:(ASIHTTPRequest *)request
+- (void)requestFailed:(ASIHTTPRequest *)mRequest
 {
-    NSError *error = [request error];
+    NSError *error = [mRequest error];
     NSLog(@"%@",[error description]);
 }
 

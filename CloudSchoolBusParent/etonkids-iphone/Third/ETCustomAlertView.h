@@ -13,6 +13,7 @@
 
 @protocol ETCustomAlertViewDelegate <NSObject>
 
+@optional
 - (void)alertView:(ETCustomAlertView *)alertView didSelectButtonAtIndex:(NSInteger)index;
 
 @end

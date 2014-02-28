@@ -204,6 +204,7 @@
 		11AF3B1918168FC400B36176 /* loginBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3B1818168FC400B36176 /* loginBtn@2x.png */; };
 		11B218171835C624002825FA /* GKNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B218161835C624002825FA /* GKNoticeViewController.m */; };
 		11B7D684188F6DD70036B7AA /* GKSaySomethingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B7D683188F6DD70036B7AA /* GKSaySomethingView.m */; };
+		11B8492E18C058DD00D9205C /* corners@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B8492D18C058DD00D9205C /* corners@2x.png */; };
 		11B852A1183221CF005FA5B9 /* ETNicknameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B85296183221CF005FA5B9 /* ETNicknameViewController.m */; };
 		11B852A2183221CF005FA5B9 /* ETNicknameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11B85297183221CF005FA5B9 /* ETNicknameViewController.xib */; };
 		11B852A5183221CF005FA5B9 /* navBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B8529D183221CF005FA5B9 /* navBar.png */; };
@@ -710,6 +711,7 @@
 		11B218161835C624002825FA /* GKNoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNoticeViewController.m; sourceTree = "<group>"; };
 		11B7D682188F6DD70036B7AA /* GKSaySomethingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSaySomethingView.h; sourceTree = "<group>"; };
 		11B7D683188F6DD70036B7AA /* GKSaySomethingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSaySomethingView.m; sourceTree = "<group>"; };
+		11B8492D18C058DD00D9205C /* corners@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "corners@2x.png"; sourceTree = "<group>"; };
 		11B85295183221CF005FA5B9 /* ETNicknameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETNicknameViewController.h; sourceTree = "<group>"; };
 		11B85296183221CF005FA5B9 /* ETNicknameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETNicknameViewController.m; sourceTree = "<group>"; };
 		11B85297183221CF005FA5B9 /* ETNicknameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ETNicknameViewController.xib; sourceTree = "<group>"; };
@@ -1341,6 +1343,7 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				11B8492D18C058DD00D9205C /* corners@2x.png */,
 				78D8D11518C07ABC008860AB /* thelp_notice_568.png */,
 				78D8D11618C07ABC008860AB /* thelp_upload_568.png */,
 				78D8D11718C07ABC008860AB /* thelp_zhuye_568.png */,
@@ -1923,6 +1926,7 @@
 				1193B39E1827847C00660CB1 /* 积分.png in Resources */,
 				E797189C18798BAB00353BAF /* release_notes.md in Resources */,
 				1102A7FF181A715D00E6295C /* guanlian-B-2.png in Resources */,
+				11B8492E18C058DD00D9205C /* corners@2x.png in Resources */,
 				78709C11187D1733009250FB /* camera-tray-cover.png in Resources */,
 				78709C12187D1733009250FB /* edit-filters-normal.png in Resources */,
 				11AA5B4D188D3BA3001EA8B2 /* duihaohuizhi.png in Resources */,

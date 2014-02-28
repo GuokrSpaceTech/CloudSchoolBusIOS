@@ -27,15 +27,16 @@
 //        [self.imageView sendSubviewToBack:photoImageView];
         
         
-        
+        photoImageView=[[UIImageView alloc]initWithFrame:CGRectMake(2, 1, 65, 38)];
+        photoImageView.backgroundColor=[UIColor clearColor];
+        [self addSubview:photoImageView];
         
         backgroundView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 74, 40)];
+        backgroundView.backgroundColor=[UIColor clearColor];
         backgroundView.image=[UIImage imageNamed:@"谁在照片里_05.png"];
         [self addSubview:backgroundView];
         
-        photoImageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 65, 40)];
-        photoImageView.backgroundColor=[UIColor clearColor];
-        [self addSubview:photoImageView];
+     
         
     
         

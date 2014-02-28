@@ -138,7 +138,7 @@
         _selectIdnex = 0;
     }
     
-    badgeView=[[GKBadgeView alloc]initWithFrame:CGRectMake(150, 75, 16, 16)];
+    badgeView=[[GKBadgeView alloc]initWithFrame:CGRectMake(150, (iOS7?75:55), 16, 16)];
     badgeView.backgroundColor=[UIColor clearColor];
     badgeView.bagde=0;
     [self.view addSubview:badgeView];

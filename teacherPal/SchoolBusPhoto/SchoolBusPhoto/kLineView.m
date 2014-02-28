@@ -253,7 +253,7 @@
     scoreView.tag = 999;
     scoreView.center = CGPointMake(sender.center.x, sender.center.y - 30);
     scoreView.alpha = 0.0f;
-    scoreView.layer.cornerRadius = 10;
+    //scoreView.layer.cornerRadius = 10;
     [self addSubview:scoreView];
     [scoreView release];
     

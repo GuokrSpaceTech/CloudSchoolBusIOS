@@ -85,12 +85,20 @@
     
     [self.view addSubview:_titleField];
     
+    
+    UIImageView *ImageView=[[UIImageView alloc]initWithFrame:CGRectMake(10, _titleField.frame.size.height+_titleField.frame.origin.y+5, 300, 120)];
+    UIImage *image=[[UIImage imageNamed:@"corners.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20)];
+    ImageView.image=image;
+    [self.view addSubview:ImageView];
+    [ImageView release];
+    
     _textView=[[UITextView alloc]initWithFrame:CGRectMake(10, _titleField.frame.size.height+_titleField.frame.origin.y+5, 300, 120)];
     [self.view addSubview:_textView];
+    _textView.backgroundColor=[UIColor clearColor];
 	// Do any additional setup after loading the view.
     _textView.delegate=self;
     _textView.text=@"";
-    _textView.layer.cornerRadius=5;
+   // _textView.layer.cornerRadius=5;
     _textView.font=[UIFont systemFontOfSize:16];
     //[_textView becomeFirstResponder];
     

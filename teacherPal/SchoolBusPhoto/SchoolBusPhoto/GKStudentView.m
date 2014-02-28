@@ -82,8 +82,9 @@
         
         if (![scroller viewWithTag:(i + BTNTAG - 1)]) {
             GKButton *button=[[GKButton alloc]initWithFrame:CGRectMake(3 +row*(74+6), col *(40 +15), 74, 40)];
-            button.layer.cornerRadius = 7;
-            button.layer.masksToBounds = YES;
+            //button.layer.cornerRadius = 7;
+           // button.layer.masksToBounds = YES;
+            button.backgroundColor=[UIColor clearColor];
             [button.photoImageView setImageWithURL:[NSURL URLWithString:st.avatar] placeholderImage:nil options:SDWebImageRefreshCached];
 
             button.student=st;

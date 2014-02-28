@@ -355,12 +355,10 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   if([[GKUpQueue creatQueue] isLoading] == NO)
+   if([[GKUpQueue creatQueue] operationCount ] == 0)
    {
         [[GKLoaderManager createLoaderManager] setQueueStart];
    }
-    
-
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

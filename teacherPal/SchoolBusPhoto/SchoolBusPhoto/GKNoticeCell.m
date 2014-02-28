@@ -27,7 +27,7 @@
         bottomView.backgroundColor=[UIColor whiteColor];
        
         [self.contentView addSubview:bottomView];
-        bottomView.layer.cornerRadius=5;
+        //bottomView.layer.cornerRadius=5;
         [bottomView release];
         
         IconImageView=[[UIImageView alloc]initWithFrame:CGRectMake(15, 10, 25, 25)];

@@ -5,7 +5,7 @@
 //  Created by mactop on 10/19/13.
 //  Copyright (c) 2013 mactop. All rights reserved.
 //
-// 测试android
+
 #import "GKAppDelegate.h"
 #import "GKUserLogin.h"
 #import "GKUpQueue.h"

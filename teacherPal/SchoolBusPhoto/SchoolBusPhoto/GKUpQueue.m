@@ -107,10 +107,22 @@ static GKUpQueue *gkqueue=nil;
 -(void)queueFinished:(ASIFormDataRequest *)request
 {
     isLoading=NO;
+//    if([[GKLoaderManager createLoaderManager].upArr count]!=0)
+//    {
+//        [[GKLoaderManager createLoaderManager] setQueueStart];
+//    }
+ 
 }
 -(void)queueFail:(ASIFormDataRequest *)request
 {
     isLoading=NO;
+//    
+//    if([queue operationCount]==0)
+//    {
+//        [[GKLoaderManager createLoaderManager] setQueueStart];
+//    }
+    
+    
 }
 -(void)request:(ASIHTTPRequest *)request didSendBytes:(long long)bytes
 {
@@ -144,6 +156,9 @@ static GKUpQueue *gkqueue=nil;
 {
 //    NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
 //     GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
+    
+    
+    
     NSLog(@"%@",request.responseHeaders);
      NSLog(@"code ----%@",[request.responseHeaders objectForKey:@"Code"]);
     NSString *picId=[[request userInfo] objectForKey:@"nameid"];
@@ -307,7 +322,7 @@ static GKUpQueue *gkqueue=nil;
 - (void)requestDidFailed:(ASIFormDataRequest *)_request{
     
     NSLog(@"%@",_request.error.description);
-    
+    NSLog(@"上传失败 ：： %@",_request.error.description);
      NSLog(@"%@",_request.responseString);
     if(_request.error.code==6) // 改文件不存在
     {

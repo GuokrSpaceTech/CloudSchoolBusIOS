@@ -62,6 +62,8 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
 //    [[NSNotificationCenter  defaultCenter]postNotificationName:@"TabBarHidden" object:nil userInfo:dic];
     [super viewDidLoad];
     
+    [ETCommonClass createHelpWithTag:1002 image:[UIImage imageNamed:iphone5 ? @"help_detail_568.png" : @"help_detail.png"]];
+    
     if (ios7) {
         [self setNeedsStatusBarAppearanceUpdate];
         

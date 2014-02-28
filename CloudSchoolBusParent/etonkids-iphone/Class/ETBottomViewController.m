@@ -345,6 +345,10 @@
     }
     
     
+    
+    [ETCommonClass createHelpWithTag:1001 image:[UIImage imageNamed:iphone5 ? @"help_zhuye_568.png" : @"help_zhuye.png"]];
+    
+    
 	// Do any additional setup after loading the view.
 }
 
@@ -364,6 +368,11 @@
     
     if (sender.direction == UISwipeGestureRecognizerDirectionRight)
     {
+        
+        
+        [ETCommonClass createHelpWithTag:1000 image:[UIImage imageNamed:iphone5 ? @"help_cela_568.png" : @"help_cela.png"]];
+        
+        
         [UIView animateWithDuration:0.5f animations:^{
             sender.view.frame = CGRectMake(RIGHTMARGIN, sender.view.frame.origin.y, sender.view.frame.size.width, sender.view.frame.size.height);
         }completion:^(BOOL finished) {

@@ -12,6 +12,9 @@
 #import "GKLoaderManager.h"
 #import "GKSaySomethingView.h"
 #import "GKLeftViewController.h"
+#import "GKCommonClass.h"
+
+
 @interface GKMainViewController ()
 
 @end
@@ -94,7 +97,8 @@ static  GKMainViewController*rootViewCon;
     [self.contentView addGestureRecognizer:_panGestureReconginzer];
     [_panGestureReconginzer release];
     
-   
+    
+    
     
     
     // Do any additional setup after loading thce view from its nib.

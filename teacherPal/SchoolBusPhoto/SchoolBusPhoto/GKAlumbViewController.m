@@ -12,6 +12,8 @@
 #import "GKImagePickerController.h"
 #import "GKDraftViewController.h"
 #import "GKImagePickerViewController.h"
+#import "GKCommonClass.h"
+
 @interface GKAlumbViewController ()
 
 @end
@@ -34,7 +36,7 @@
 {
     [super viewDidLoad];
     
-
+    [GKCommonClass createHelpWithTag:1001 image:[UIImage imageNamed:iphone5 ? @"thelp_zhuye_568.png" : @"thelp_zhuye.png"]];
  
 
     UIButton *buttom=[UIButton buttonWithType:UIButtonTypeCustom];

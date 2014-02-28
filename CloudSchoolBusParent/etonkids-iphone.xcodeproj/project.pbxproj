@@ -257,6 +257,12 @@
 		78C78F2217C2225B008AE873 /* DetailContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C78F2117C2225A008AE873 /* DetailContentCell.m */; };
 		78C78F2617C448F5008AE873 /* ETForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C78F2417C448E5008AE873 /* ETForgetPasswordViewController.m */; };
 		78C78F2717C448F5008AE873 /* ETForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78C78F2517C448EB008AE873 /* ETForgetPasswordViewController.xib */; };
+		78D8D10118C0348F008860AB /* help_cela.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D0FE18C0348F008860AB /* help_cela.png */; };
+		78D8D10218C0348F008860AB /* help_detail.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D0FF18C0348F008860AB /* help_detail.png */; };
+		78D8D10318C0348F008860AB /* help_zhuye.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D10018C0348F008860AB /* help_zhuye.png */; };
+		78D8D10718C03B26008860AB /* help_cela_568.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D10418C03B26008860AB /* help_cela_568.png */; };
+		78D8D10818C03B26008860AB /* help_zhuye_568.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D10518C03B26008860AB /* help_zhuye_568.png */; };
+		78D8D10918C03B26008860AB /* help_detail_568.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D10618C03B26008860AB /* help_detail_568.png */; };
 		78DBF51017E2CBC800D44108 /* cellline.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DBF50F17E2CBC800D44108 /* cellline.png */; };
 		78DBF51217E2E7B400D44108 /* touxiang_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DBF51117E2E7B400D44108 /* touxiang_back.png */; };
 		78DBF51417E2E92400D44108 /* infoBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DBF51317E2E92400D44108 /* infoBar.png */; };
@@ -721,7 +727,7 @@
 		78611EF51890FCC800BB60F4 /* aboutlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aboutlogo.png; sourceTree = "<group>"; };
 		78709BB4187CFE51009250FB /* guide3dot0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide3dot0.png; sourceTree = "<group>"; };
 		78709BB5187CFE51009250FB /* 引导页-EN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "引导页-EN.png"; sourceTree = "<group>"; };
-		7874A1DC18BC6FD900D72F8D /* etonkids-iphone 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "etonkids-iphone 3.xcdatamodel"; sourceTree = "<group>"; };
+		7874A1DC18BC6FD900D72F8D /* etonkids-iphone 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "etonkids-iphone 3.xcdatamodel"; sourceTree = "<group>"; };
 		788BE69E17EFD9400076D920 /* bottomBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomBack.png; sourceTree = "<group>"; };
 		788BE6A017EFDBE70076D920 /* textBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textBack.png; sourceTree = "<group>"; };
 		788BE6A217EFDC860076D920 /* upBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upBtn.png; sourceTree = "<group>"; };
@@ -892,6 +898,12 @@
 		78C78F2317C448E0008AE873 /* ETForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETForgetPasswordViewController.h; sourceTree = "<group>"; };
 		78C78F2417C448E5008AE873 /* ETForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETForgetPasswordViewController.m; sourceTree = "<group>"; };
 		78C78F2517C448EB008AE873 /* ETForgetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ETForgetPasswordViewController.xib; sourceTree = "<group>"; };
+		78D8D0FE18C0348F008860AB /* help_cela.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_cela.png; sourceTree = "<group>"; };
+		78D8D0FF18C0348F008860AB /* help_detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_detail.png; sourceTree = "<group>"; };
+		78D8D10018C0348F008860AB /* help_zhuye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_zhuye.png; sourceTree = "<group>"; };
+		78D8D10418C03B26008860AB /* help_cela_568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_cela_568.png; sourceTree = "<group>"; };
+		78D8D10518C03B26008860AB /* help_zhuye_568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_zhuye_568.png; sourceTree = "<group>"; };
+		78D8D10618C03B26008860AB /* help_detail_568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_detail_568.png; sourceTree = "<group>"; };
 		78DBF50F17E2CBC800D44108 /* cellline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellline.png; sourceTree = "<group>"; };
 		78DBF51117E2E7B400D44108 /* touxiang_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touxiang_back.png; sourceTree = "<group>"; };
 		78DBF51317E2E92400D44108 /* infoBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoBar.png; sourceTree = "<group>"; };
@@ -1506,6 +1518,12 @@
 		78C2ADB617E06F2900E6A5CD /* V3.0 */ = {
 			isa = PBXGroup;
 			children = (
+				78D8D10418C03B26008860AB /* help_cela_568.png */,
+				78D8D10518C03B26008860AB /* help_zhuye_568.png */,
+				78D8D10618C03B26008860AB /* help_detail_568.png */,
+				78D8D0FE18C0348F008860AB /* help_cela.png */,
+				78D8D0FF18C0348F008860AB /* help_detail.png */,
+				78D8D10018C0348F008860AB /* help_zhuye.png */,
 				78611EF41890FCC800BB60F4 /* aboutlogo_EN(1).png */,
 				78611EF51890FCC800BB60F4 /* aboutlogo.png */,
 				7860CB2D1886907F00DD0E80 /* movieplay.png */,
@@ -2696,6 +2714,7 @@
 				F9838F1916BF68B30088DEEB /* ETRePassWordViewController.xib in Resources */,
 				785DE1B4180FB3E6001B0EB3 /* bottomCommentDef.png in Resources */,
 				78A41FEA1820FBCA00D0DE50 /* myChild1_cn.png in Resources */,
+				78D8D10118C0348F008860AB /* help_cela.png in Resources */,
 				F950217516DC8D0F0079A05E /* Localizable.strings in Resources */,
 				78A4201118223A5200D0DE50 /* attimg.png in Resources */,
 				F95021D316DCAF640079A05E /* WeiboSignInViewController.xib in Resources */,
@@ -2723,6 +2742,7 @@
 				F95023DF16DCB61B0079A05E /* composedingwei@2x.png in Resources */,
 				78F841F6181A87C8007722AE /* 008.png in Resources */,
 				789EAA5C183A1B4C0029D4B0 /* 已报名.png in Resources */,
+				78D8D10218C0348F008860AB /* help_detail.png in Resources */,
 				F95023E016DCB61B0079A05E /* composedingweihover.png in Resources */,
 				F95023E116DCB61B0079A05E /* composedingweihover@2x.png in Resources */,
 				F95023E216DCB61B0079A05E /* composeEmotionBg.png in Resources */,
@@ -2865,6 +2885,7 @@
 				78C2ADBA17E06FEC00E6A5CD /* tabbarSelected.png in Resources */,
 				78DFFBBB1848301C000BF443 /* 加餐.png in Resources */,
 				78C2ADBF17E0711700E6A5CD /* tbBtn_activity.png in Resources */,
+				78D8D10818C03B26008860AB /* help_zhuye_568.png in Resources */,
 				789EAA54183A118B0029D4B0 /* sr_refresh@2X.png in Resources */,
 				78C2ADC017E0711700E6A5CD /* tbBtn_classshare.png in Resources */,
 				78F841F8181A87C8007722AE /* 010.png in Resources */,
@@ -2881,6 +2902,7 @@
 				78DFFBB91848301C000BF443 /* 晚餐.png in Resources */,
 				78C2ADE117E0830500E6A5CD /* bottom_food_default.png in Resources */,
 				78C2ADE217E0830500E6A5CD /* bottom_food_selected.png in Resources */,
+				78D8D10918C03B26008860AB /* help_detail_568.png in Resources */,
 				78C2ADE317E0830500E6A5CD /* bottom_logout_default.png in Resources */,
 				78C2ADE417E0830500E6A5CD /* bottom_logout_selected.png in Resources */,
 				78C2ADE517E0830500E6A5CD /* bottom_newversion_default.png in Resources */,
@@ -2892,6 +2914,7 @@
 				78C2ADE917E0830500E6A5CD /* bottom_score_default.png in Resources */,
 				78C2ADEA17E0830500E6A5CD /* bottom_score_selected.png in Resources */,
 				785DE1A3180FB0E5001B0EB3 /* bottomSel.png in Resources */,
+				78D8D10718C03B26008860AB /* help_cela_568.png in Resources */,
 				78C2ADEB17E0830500E6A5CD /* bottom_setting_default.png in Resources */,
 				78C2ADEC17E0830500E6A5CD /* bottom_setting_selected.png in Resources */,
 				78C2AE0A17E1C64F00E6A5CD /* car.png in Resources */,
@@ -2948,6 +2971,7 @@
 				78931AA717F66FD6007A3ACE /* tabbar_badge.png in Resources */,
 				78931AB017F67495007A3ACE /* 1登录_07.png in Resources */,
 				78A0662618A9D61700E3B13B /* redPoint.png in Resources */,
+				78D8D10318C0348F008860AB /* help_zhuye.png in Resources */,
 				78931AB117F67495007A3ACE /* login_pwd.png in Resources */,
 				78931AB217F67495007A3ACE /* login_sel.png in Resources */,
 				78931AB317F67495007A3ACE /* login_selBtn.png in Resources */,

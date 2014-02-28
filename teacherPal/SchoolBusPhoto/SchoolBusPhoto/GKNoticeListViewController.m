@@ -13,6 +13,7 @@
 #import "GKMainViewController.h"
 #import "GKNoticeInfoViewController.h"
 #import "GKNoticeViewController.h"
+#import "GKCommonClass.h"
 
 @interface GKNoticeListViewController ()
 
@@ -54,6 +55,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [GKCommonClass createHelpWithTag:1002 image:[UIImage imageNamed:iphone5 ? @"thelp_notice_568.png" : @"thelp_notice.png"]];
    
     noticeList=[[NSMutableArray alloc]init];
     UIButton *buttom=[UIButton buttonWithType:UIButtonTypeCustom];

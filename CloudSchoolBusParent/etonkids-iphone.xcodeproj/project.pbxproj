@@ -2660,6 +2660,11 @@
 			attributes = {
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = wpf;
+				TargetAttributes = {
+					E3EA3ADE169E9490000DF7EE = {
+						DevelopmentTeam = 6Q77HKGB24;
+					};
+				};
 			};
 			buildConfigurationList = E3EA3AD9169E9490000DF7EE /* Build configuration list for PBXProject "etonkids-iphone" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -3322,7 +3327,7 @@
 		E3EA3AFE169E9491000DF7EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3347,8 +3352,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
+				PROVISIONING_PROFILE = "A9FE79AF-C8D8-4E9C-9EEA-0603D413E36A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A9FE79AF-C8D8-4E9C-9EEA-0603D413E36A";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
@@ -3359,7 +3364,7 @@
 		E3EA3AFF169E9491000DF7EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3384,8 +3389,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
+				PROVISIONING_PROFILE = "A9FE79AF-C8D8-4E9C-9EEA-0603D413E36A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A9FE79AF-C8D8-4E9C-9EEA-0603D413E36A";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";

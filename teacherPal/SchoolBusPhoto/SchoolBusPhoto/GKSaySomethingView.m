@@ -28,16 +28,16 @@
 //        [inputBtn addTarget:self action:@selector(endEdit:) forControlEvents:UIControlEventTouchUpInside];
 //        [inputView addSubview:inputBtn];
         
+//        
+//        UIImageView *ImageView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 10, self.frame.size.width-20, 150)];
+//        UIImage *image=[[UIImage imageNamed:@"corners.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20)];
+//        ImageView.image=image;
+//        [self addSubview:ImageView];
+//        [ImageView release];
         
-        UIImageView *ImageView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 10, self.frame.size.width-20, 150)];
-        UIImage *image=[[UIImage imageNamed:@"corners.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 20, 20, 20)];
-        ImageView.image=image;
-        [self addSubview:ImageView];
-        [ImageView release];
-        
-        
+
         _contextView=[[UITextView alloc]initWithFrame:CGRectMake(10, 10, self.frame.size.width-20, 150)];
-        _contextView.backgroundColor = [UIColor clearColor];
+        _contextView.backgroundColor = [UIColor whiteColor];
         //_contextView.backgroundColor = [UIColor colorWithRed:240/255.0f green:238/255.0f blue:227/255.0f alpha:1.0f];
         _contextView.text = @"";
         _contextView.font=[UIFont systemFontOfSize:16];

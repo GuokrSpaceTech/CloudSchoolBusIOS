@@ -113,8 +113,12 @@
     //成功获取学生信息
     else if(method == student && code == 1)
     {
-        NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
-        
+        id result = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+        if (![result isKindOfClass:[NSDictionary class]]) {
+            NSLog(@"学生信息返回格式错误");
+            return;
+        }
+        NSDictionary *dic = result;
         NSLog(@"%@",dic);
         
         user.studentId = [NSString stringWithFormat:@"%@",[dic objectForKey:@"studentid"]];
@@ -136,7 +140,12 @@
     }
     else if(method == classinfo && code == 1)
     {
-        NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+        id result = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+        if (![result isKindOfClass:[NSDictionary class]]) {
+            NSLog(@"班级信息返回格式错误");
+            return;
+        }
+        NSDictionary *dic = result;
         NSDictionary * dic11 = [dic objectForKey:@"classinfo"];
         user.schoolname = [dic11 objectForKey:@"schoolname"];
         user.uid_class = [NSString stringWithFormat:@"%@",[dic11 objectForKey:@"uid"]];
@@ -146,7 +155,12 @@
     }
     else if(method == setting && code == 1)
     {
-        NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+        id result = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+        if (![result isKindOfClass:[NSDictionary class]]) {
+            NSLog(@"setting接口返回格式错误");
+            return;
+        }
+        NSDictionary *dic = result;
         
         NSDictionary * attendance_type = [dic objectForKey:@"attendance_type"];
         

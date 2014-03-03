@@ -188,8 +188,15 @@
 {
     if(method == attendance && code == 1)
     {
-        NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+        id result =[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
         
+        
+        if (![result isKindOfClass:[NSDictionary class]]) {
+            NSLog(@"校历返回格式错误");
+            return;
+        }
+        
+        NSDictionary *dic = result;
 //        NSString *str = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
         
         NSLog(@"%@",dic);

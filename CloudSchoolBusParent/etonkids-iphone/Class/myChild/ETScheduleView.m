@@ -260,7 +260,15 @@
         }
         
         
-        NSMutableArray *result=[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+        id r = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+        
+        if (![r isKindOfClass:[NSArray class]]) {
+            NSLog(@"课程表返回格式错误");
+            return;
+        }
+        
+        NSMutableArray *result = r;
+        
         
         NSLog(@"%@,%@",[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding],result);
         

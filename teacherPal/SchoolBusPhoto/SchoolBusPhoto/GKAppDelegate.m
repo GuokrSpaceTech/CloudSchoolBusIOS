@@ -65,6 +65,30 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+-(void)applicationDidEnterBackground{
+    NSLog(@"%@",NSStringFromSelector(_cmd));
+    
+    //得到当前应用程序的UIApplication对象
+    UIApplication *app = [UIApplication sharedApplication];
+    
+    //一个后台任务标识符
+    UIBackgroundTaskIdentifier taskID = 0;
+    taskID = [app beginBackgroundTaskWithExpirationHandler:^{
+        //如果系统觉得我们还是运行了;太久，将执行这个程序块，并停止运行应用程序
+        NSLog(@"自动停止");
+        [app endBackgroundTask:taskID];
+    }];
+    //UIBackgroundTaskInvalid表示系统没有为我们提供额外的时候
+    if (taskID == UIBackgroundTaskInvalid) {
+        NSLog(@"Failed to start background task!");
+        return;
+    }
+    NSLog(@"Starting background task with %f seconds remaining", app.backgroundTimeRemaining);
+
+    NSLog(@"Finishing background task with %f seconds remaining",app.backgroundTimeRemaining);
+    //告诉系统我们完成了
+    [app endBackgroundTask:taskID];
+}
 -(BOOL)connectedToNetWork
 {
     
@@ -286,6 +310,8 @@
         [UIApplication sharedApplication].applicationIconBadgeNumber=0;
     }
     [UIApplication sharedApplication].applicationIconBadgeNumber=[badge integerValue];
+   // -(void)applicationDidEnterBackground{
+    [self applicationDidEnterBackground];
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }

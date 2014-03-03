@@ -503,5 +503,5 @@
 "wifizidongbofang"="Autoplay Only WiFi";
 "shizhongzidongbofang"="Autoplay Always";
 
-"privacy"="没有相册访问权限，请在\"设置\"-\"隐私\"-\"照片\"-\"云中校车\"中设置";
-"nofinished"="Download is not complete";
+"privacy"="Cannot access photo album, please enter the \"Setting\"-\"Privacy\"-\"Photos\",  grant the access permit for \"Cloud SchoolBus\" in there.";
+"nofinished"="Loading,Please save the video later";

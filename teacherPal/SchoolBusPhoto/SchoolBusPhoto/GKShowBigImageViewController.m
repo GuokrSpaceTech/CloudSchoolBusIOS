@@ -36,14 +36,44 @@
 {
     if(buttonIndex==0)
     {
-         UIImageWriteToSavedPhotosAlbum(imageView.image, self, nil, NULL);
+        // UIImageWriteToSavedPhotosAlbum(imageView.image, self, nil, NULL);
+    
+        //UIImageWriteToSavedPhotosAlbum(imageView.image, self, @selector(<#selector#>), <#void *contextInfo#>)
         
+        UIImageWriteToSavedPhotosAlbum(imageView.image, self, @selector(imageSavedToPhotosAlbum: didFinishSavingWithError: contextInfo:), nil);
         
-        
+    }
+}
+
+- (void)imageSavedToPhotosAlbum:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *) contextInfo {
+
+
+    if (!error) {
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"savesuccess", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
         [alert show];
         [alert release];
+    } else {
+
+        // message = [error description];
+        
+        // message=@"没有相册访问权限，请在\"设置\"--\"隐私\"--\"照片\"--\"云中校车\"中设置";
+       // message=NSLocalizedString(@"privacy", @"");
+        if(error.code==-3310)
+        {
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"privacyPhoto", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
+        }
+        else
+        {
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"savefailed", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
+        }
+
     }
+
+    
 }
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

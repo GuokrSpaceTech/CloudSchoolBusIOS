@@ -365,7 +365,15 @@
     
     if(method == menu && code == 1)
     {
-        NSMutableArray *result =[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+        id r =[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+        
+        if (![r isKindOfClass:[NSArray class]]) {
+            NSLog(@"食谱返回格式错误");
+            return;
+        }
+        
+        NSMutableArray *result = r;
+        
         //NSMutableArray *MenuArray=(NSMutableArray*)response;
         NSLog(@"%@",result);
         

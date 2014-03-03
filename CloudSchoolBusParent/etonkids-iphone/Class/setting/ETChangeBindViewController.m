@@ -319,7 +319,14 @@
                     str = LOCAL(@"messagealert", @"");
                 }
                 
-                NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+                id result = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+                
+                if (![result isKindOfClass:[NSDictionary class]]) {
+                    NSLog(@"修改绑定返回格式错误");
+                    return;
+                }
+                
+                NSDictionary *dic = result;
                 NSLog(@"%@",dic);
                 
                 self.key = [dic objectForKey:@"key"];

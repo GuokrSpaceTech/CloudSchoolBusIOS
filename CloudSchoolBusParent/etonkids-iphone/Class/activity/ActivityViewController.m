@@ -721,8 +721,15 @@
         
         if(code==1)
         {
+            id result = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
             
-            NSArray *arr =[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+            if (![result isKindOfClass:[NSArray class]]) {
+                
+                NSLog(@"活动列表返回格式错误");
+                return;
+            }
+            
+            NSArray *arr = result;
             
             NSLog(@"%@",arr);
             NSString *p = [NSString stringWithFormat:@"%@",[param objectForKey:@"myevents"]];

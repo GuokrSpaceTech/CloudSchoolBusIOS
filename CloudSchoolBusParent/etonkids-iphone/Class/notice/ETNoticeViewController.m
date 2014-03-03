@@ -291,7 +291,15 @@
         if (![p isEqualToString:@"(null)"]) { // 发送确认
            
            if (code == 1) {
-               NSArray * arr=[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+               id result = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+               
+               if (![result isKindOfClass:[NSArray class]]) {
+                   NSLog(@"通知列表返回格式错误");
+                   return;
+               }
+               
+               NSArray * arr = result;
+               
                NSLog(@"%@",arr);
                
                for (int i = 0; i < self.allNoticeList.count; i++) {

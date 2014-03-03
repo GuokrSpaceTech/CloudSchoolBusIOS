@@ -20,7 +20,7 @@
 #import "ETCommonClass.h"
 #import "NSDate+convenience.h"
 #import "GKMovieManager.h"
-
+#import "GKMovieCache.h"
 #define BUTTONTAG  777
 #define VIDEOTAG   8888
 #define TAPIMAGETAG 111
@@ -1423,7 +1423,10 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     {
         if (index == 0)
         {
-            if (self.mPlayer.contentURL) {
+            
+            NSDictionary *fDic = [shareContent.sharePicArr objectAtIndex:0];
+            NSString *source = [NSString stringWithFormat:@"%@",[fDic objectForKey:@"source"]];
+            if ([GKMovieCache isContainMovieByURL:source]) {
                 
                 NSLog(@"保存视频");
                 NSString *p = [self.mPlayer.contentURL path];
@@ -1434,7 +1437,7 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
             else
             {
                 //        NSLog(@"no download");
-                ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:nil message:@"未下载完成" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil, nil];
+                ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:nil message:NSLocalizedString(@"nofinished", @"") delegate:nil cancelButtonTitle:nil otherButtonTitles:nil, nil];
                 [alert show];
             }
         }
@@ -1598,6 +1601,11 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     
     if (error) {
         info = @"保存失败";
+        if(error.code==-3310)
+        {
+            info=NSLocalizedString(@"privacy", @"");
+        }
+        
     }
     else
     {

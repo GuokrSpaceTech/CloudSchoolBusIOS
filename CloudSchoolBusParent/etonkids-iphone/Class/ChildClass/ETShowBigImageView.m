@@ -373,7 +373,10 @@
         message = LOCAL(@"success", @"保存成功");
     } else {
         title =LOCAL(@"fail",  @"失败");
-        message = [error description];
+       // message = [error description];
+        
+       // message=@"没有相册访问权限，请在\"设置\"--\"隐私\"--\"照片\"--\"云中校车\"中设置";
+        message=NSLocalizedString(@"privacy", @"");
     }
     ETCustomAlertView *alert = [[ETCustomAlertView alloc] initWithTitle:nil message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
     [alert show];

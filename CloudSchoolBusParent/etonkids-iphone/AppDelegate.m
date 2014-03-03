@@ -440,7 +440,7 @@
     
     int delta = [self.enterBackDate timeIntervalSinceNow];
 //    NSLog(@"%d",delta);
-    if (ABS(delta) >= 2) {
+    if (ABS(delta) >= 2*60) {
         NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
         if ([[userdefault objectForKey:SWITHGESTURE] isEqualToString:@"1"])
         {

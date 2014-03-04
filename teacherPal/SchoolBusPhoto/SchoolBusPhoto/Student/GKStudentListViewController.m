@@ -148,7 +148,7 @@
      Student *st=[studentArr objectAtIndex:indexPath.row];
     UIImageView *imageView=(UIImageView *)[cell.contentView viewWithTag:CELLTAG];
     
-    [imageView setImageWithURL:[NSURL URLWithString:st.avatar] placeholderImage:nil];
+    [imageView setImageWithURL:[NSURL URLWithString:st.avatar] placeholderImage:nil options:SDWebImageRefreshCached];
     UILabel *nameLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+1];
     nameLabel.text=st.cnname;;
    

@@ -178,7 +178,11 @@
         buyButton.frame=CGRectMake(82, 110, 22, 22);
         imageViewBG.frame=CGRectMake(5, 5, 198/2, 198/2);
         markerImageView.frame=CGRectMake(15, 15, 198/2-23, 198/2-20);
-        [markerImageView setImageWithURL:[NSURL URLWithString:market.marketUrl] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+//        [markerImageView setImageWithURL:[NSURL URLWithString:market.marketUrl] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+//            
+//        }];
+        
+        [markerImageView setImageWithURL:[NSURL URLWithString:market.marketUrl] placeholderImage:nil options:SDWebImageRefreshCached completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
             
         }];
         titleLabel.text=[NSString stringWithFormat:@"名称：%@",market.marketName];

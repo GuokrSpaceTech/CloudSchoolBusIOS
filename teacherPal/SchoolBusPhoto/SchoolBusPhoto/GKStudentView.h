@@ -10,7 +10,7 @@
 #import "GKButton.h"
 
 @protocol studentViewDelegate ;
-@interface GKStudentView : UIView<UIActionSheetDelegate,UIGestureRecognizerDelegate>
+@interface GKStudentView : UIView<UIActionSheetDelegate,UIGestureRecognizerDelegate,UIScrollViewDelegate>
 {
     NSMutableArray *studentArr;
     

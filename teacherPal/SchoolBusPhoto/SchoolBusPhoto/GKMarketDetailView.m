@@ -68,7 +68,11 @@
     CreditLable.text=[NSString stringWithFormat:@"积分:%@",market.marketCredits];
     textView.text=[NSString stringWithFormat:@"积分:\n%@",market.marketIntro];
     
-    [imageView setImageWithURL:[NSURL URLWithString:market.marketUrl] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+//    [imageView setImageWithURL:[NSURL URLWithString:market.marketUrl] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+//        
+//    }];
+    
+    [imageView setImageWithURL:[NSURL URLWithString:market.marketUrl] placeholderImage:nil options:SDWebImageRefreshCached completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
         
     }];
 }

@@ -111,7 +111,10 @@
             [tap release];
             NSString *imagestr=[NSString stringWithFormat:@"%@.small.jpg",letter.letterContent];
             
-            [imageView setImageWithURL:[NSURL URLWithString:imagestr] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            [imageView setImageWithURL:[NSURL URLWithString:imagestr] placeholderImage:nil options:SDWebImageRefreshCached completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                
+//            }];
+//            [imageView setImageWithURL:[NSURL URLWithString:imagestr] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 imageView.userInteractionEnabled=YES;
                 
                 CGSize size=image.size;
@@ -185,7 +188,11 @@
             imageView.backgroundColor=[UIColor clearColor];
             imageView.tag=PICTAG;
              NSString *imagestr=[NSString stringWithFormat:@"%@.small.jpg",letter.letterContent];
-            [imageView setImageWithURL:[NSURL URLWithString:imagestr] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            
+            [imageView setImageWithURL:[NSURL URLWithString:imagestr] placeholderImage:nil options:SDWebImageRefreshCached completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+//                
+//            }];
+//            [imageView setImageWithURL:[NSURL URLWithString:imagestr] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 imageView.userInteractionEnabled=YES;
                 
                 CGSize size=image.size;

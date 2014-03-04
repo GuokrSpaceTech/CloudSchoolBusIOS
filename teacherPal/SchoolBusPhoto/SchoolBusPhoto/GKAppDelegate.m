@@ -83,9 +83,6 @@
         NSLog(@"Failed to start background task!");
         return;
     }
-    NSLog(@"Starting background task with %f seconds remaining", app.backgroundTimeRemaining);
-
-    NSLog(@"Finishing background task with %f seconds remaining",app.backgroundTimeRemaining);
     //告诉系统我们完成了
     [app endBackgroundTask:taskID];
 }

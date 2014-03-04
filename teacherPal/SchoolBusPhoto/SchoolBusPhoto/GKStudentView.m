@@ -30,7 +30,9 @@
         scroller=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         scroller.showsHorizontalScrollIndicator=NO;
         scroller.showsVerticalScrollIndicator=NO;
+        scroller.delegate=self;
         //scroller.pagingEnabled = YES;
+     
         scroller.backgroundColor=[UIColor clearColor];
         [self addSubview:scroller];
         [scroller release];
@@ -39,7 +41,14 @@
     return self;
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
 
+    if(scrollView.contentOffset.y<=0)
+    {
+        scrollView.contentOffset=CGPointMake(0, 0);
+    }
+}
 -(void)setStudentArr:(NSMutableArray *)_studentArr
 {
     [studentArr release];
@@ -154,6 +163,7 @@
 //    }
     
 }
+
 -(void)setAlreadyStudent:(NSMutableArray *)arr
 {
     for (int i=0; i<[arr count]; i++) {

@@ -90,7 +90,11 @@
     jifenlabel.text=[NSString stringWithFormat:@"%@x%@积分",market.num,market.marketCredits];
     stateLabel.text=[self stateStr:[market.status integerValue]];
     
-    [goodsImageView setImageWithURL:[NSURL URLWithString:market.marketUrl] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+//    [goodsImageView setImageWithURL:[NSURL URLWithString:market.marketUrl] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType)  {
+//        
+//    }];
+    
+    [goodsImageView setImageWithURL:[NSURL URLWithString:market.marketUrl] placeholderImage:nil options:SDWebImageRefreshCached completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
         
     }];
     

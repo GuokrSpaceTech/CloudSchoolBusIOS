@@ -134,7 +134,10 @@
     goodsLabel.text=market.marketName;
     jifenLabel.text=market.marketCredits;
     goodsDesc.text=market.marketIntro;
-    [goodsImageView setImageWithURL:[NSURL URLWithString:market.marketUrl] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+//    [goodsImageView setImageWithURL:[NSURL URLWithString:market.marketUrl] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+//        
+//    }];
+    [goodsImageView setImageWithURL:[NSURL URLWithString:market.marketUrl] placeholderImage:nil options:SDWebImageRefreshCached completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
         
     }];
     CGSize size=[market.marketIntro sizeWithFont:[UIFont systemFontOfSize:10] constrainedToSize:CGSizeMake(200, 1000) lineBreakMode:NSLineBreakByWordWrapping];

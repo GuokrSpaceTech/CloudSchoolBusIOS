@@ -893,7 +893,6 @@
             bytesRead = [representation getBytes:buffer fromOffset:offset length:131072 error:&error];
             if(error || bytesRead==0) // 如果写文件出错 跳出改讯黄
             {
-                NSLog(@"？？？？？？？？？？？？？？？？？？？？写文件失败");
                 break;
             }
             [outPutStream write:buffer maxLength:bytesRead];
@@ -986,7 +985,7 @@
         } entityName:@"UpLoader" success:^{
             
             
-            NSLog(@"cccccfggggg");
+            NSLog(@"写数据库成功 ----------------------上传数据");
             
         [manager addWraperToArr:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:tagcontent];
 

@@ -116,16 +116,20 @@
     if(status==ReachableViaWiFi)
     {
 
-        if([[GKUpQueue creatQueue] isLoading] == NO)
-        {
-            [[GKLoaderManager createLoaderManager] setQueueStart];
-        }
+        
+            if([[[GKUpQueue creatQueue] asiQueue] operationCount]==0)
+            {
+                [[GKLoaderManager createLoaderManager] setQueueStart];
+            }
+            
+           // [[GKLoaderManager createLoaderManager] setQueueStart];
+        
         
     }
     if(status==ReachableViaWWAN)
     {
         
-        if([[GKUpQueue creatQueue] isLoading] == NO)
+        if([[[GKUpQueue creatQueue] asiQueue] operationCount]==0)
         {
             [[GKLoaderManager createLoaderManager] setQueueStart];
         }

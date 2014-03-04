@@ -350,15 +350,32 @@
 
     NSString *pathID=obj.nameID;
     GKUpWraper *wraper=[GKFindWraper getBookWrapper:pathID];
+    
     cell.upwraper=wraper;
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   if([[GKUpQueue creatQueue] operationCount ] == 0)
-   {
-        [[GKLoaderManager createLoaderManager] setQueueStart];
-   }
+    
+//   if([[GKUpQueue creatQueue].queue operationCount ] == 0)
+//   {
+//        [[GKLoaderManager createLoaderManager] setQueueStart];
+//   }
+    GKAppDelegate *delegate=APPDELEGATE;
+    if([delegate connectedToNetWork])
+    {
+        if([[[GKUpQueue creatQueue] asiQueue] operationCount]==0)
+        {
+            [[GKLoaderManager createLoaderManager] setQueueStart];
+        }
+    }
+    else
+    {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"network", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
+
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -273,7 +273,7 @@ static GKLoaderManager *manager=nil;
 }
 -(void)setQueueStop
 {
-    [[[GKUpQueue creatQueue] queue] cancelAllOperations];
+    [[[GKUpQueue creatQueue] asiQueue] cancelAllOperations];
 }
 -(void)setQueueStart
 {

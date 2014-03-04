@@ -17,23 +17,23 @@
 
 static GKUpQueue *gkqueue=nil;
 @implementation GKUpQueue
-@synthesize queue;
+@synthesize asiQueue;
 @synthesize isLoading;
 -(id)init
 {
     if(self=[super init])
     {
     
-        queue=[[ASINetworkQueue alloc]init];
-        [queue cancelAllOperations];
-        [queue setShouldCancelAllRequestsOnFailure:NO];
-        queue.maxConcurrentOperationCount=1;
-        queue.showAccurateProgress=YES;
-        queue.delegate=self;
-        [queue setRequestDidFailSelector:@selector(queueFail:)];
-        [queue setRequestDidFinishSelector:@selector(queueFinished:)];
+        asiQueue=[[ASINetworkQueue alloc]init];
+        [asiQueue cancelAllOperations];
+        [asiQueue setShouldCancelAllRequestsOnFailure:NO];
+        asiQueue.maxConcurrentOperationCount=1;
+        asiQueue.showAccurateProgress=YES;
+        asiQueue.delegate=self;
+        [asiQueue setRequestDidFailSelector:@selector(queueFail:)];
+        [asiQueue setRequestDidFinishSelector:@selector(queueFinished:)];
         isLoading=NO;
-        [queue go];
+        [asiQueue go];
 
         
     }
@@ -50,7 +50,7 @@ static GKUpQueue *gkqueue=nil;
 }
 -(void)removeQueueAqueuest:(NSString *)nameid
 {
-    for (ASIHTTPRequest *request in [queue operations]) {
+    for (ASIHTTPRequest *request in [asiQueue operations]) {
         
         NSString *picId=[[request userInfo] objectForKey:@"nameid"];
         if([picId isEqualToString:nameid])
@@ -98,7 +98,7 @@ static GKUpQueue *gkqueue=nil;
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:nameId,@"nameid",path,@"path", name,@"filename",@"",@"",nil]];
     [request addPostValue:[self fileName] forKey:@"pickey"];
     
-    [queue addOperation:request];
+    [asiQueue addOperation:request];
 
     
     
@@ -336,7 +336,7 @@ static GKUpQueue *gkqueue=nil;
 }
 -(void)dealloc
 {
-    self.queue=nil;
+    self.asiQueue=nil;
     [super dealloc];
 }
 @end

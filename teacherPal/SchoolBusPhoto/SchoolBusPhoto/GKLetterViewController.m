@@ -189,6 +189,7 @@
     {
         if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
             [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionLeft];
+            [inputField resignFirstResponder];
         }
     }
     else

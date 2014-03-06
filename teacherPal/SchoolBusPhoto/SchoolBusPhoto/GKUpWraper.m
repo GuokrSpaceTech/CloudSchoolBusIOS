@@ -7,12 +7,10 @@
 //
 
 #import "GKUpWraper.h"
+
 #import "GKUserLogin.h"
 #import "GTMBase64.h"
 #import "GKLoaderManager.h"
-#import "TestFlight.h"
-
-#define NSLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
 @implementation GKUpWraper
 @synthesize path,isUploading,name;
@@ -21,14 +19,14 @@
 @synthesize tid,time,fize,classid;
 @synthesize _progressView;
 @synthesize intro;
-@synthesize imageData,tag;
+@synthesize imageData;
 -(void)dealloc
 {
     self.path=nil;
     self.isUploading=nil;
     self.name=nil;
     self.nameid=nil;
-  //  self.request=nil;
+    //  self.request=nil;
     self.time=nil;
     self.fize=nil;
     self.classid=nil;
@@ -36,7 +34,6 @@
     [_progressView release];
     self.intro=nil;
     self.imageData=nil;
-    self.tag = nil;
     [super dealloc];
 }
 -(id)init
@@ -44,7 +41,6 @@
     if(self=[super init])
     {
         _progressView=[[myProgressView alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
-    
     }
     return self;
 }

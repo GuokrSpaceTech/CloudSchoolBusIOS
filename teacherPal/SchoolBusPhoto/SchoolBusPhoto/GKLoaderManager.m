@@ -101,34 +101,39 @@ static GKLoaderManager *manager=nil;
     //[request release];
     
     [[DBManager shareInstance]retriveObject:request success:^(NSArray *array) {
-        for (int i=0; i<[array count]; i++) {
-            UpLoader *loader=[array objectAtIndex:i];
-            
-            GKUpWraper *wraper=[[GKUpWraper alloc]init];
-            
-            wraper.tag = loader.tag;
-            wraper.name=loader.name;
-            wraper.isUploading=loader.isUploading;
-            wraper.path=loader.image;
-            wraper.nameid=loader.nameID;
-            wraper.tid=loader.studentId;
-            wraper.intro=loader.introduce;
-            wraper.time=loader.ftime;
-            wraper.fize=loader.fsize;
-            wraper.classid=loader.classUid;
-            wraper.imageData=loader.smallImage;
-            [upArr addObject:wraper];
-            [GKFindWraper addUpWrapper:wraper Key:loader.nameID];
-            
-            
-            //
-            //
-            //        [[GKUpQueue creatQueue] addRequestToQueue:loader.image name:loader.name nameid:loader.nameID studentid:loader.studentId time:loader.ftime fize:loader.fsize classID:loader.classUid];
-            
-            
-            [[GKUpQueue creatQueue]addRequestToQueue:wraper.path name:wraper.name nameid:wraper.nameid studentid:wraper.tid time:wraper.time fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag];
-            [wraper release];
-        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            for (int i=0; i<[array count]; i++) {
+                UpLoader *loader=[array objectAtIndex:i];
+                
+                GKUpWraper *wraper=[[GKUpWraper alloc]init];
+                
+                wraper.tag = loader.tag;
+                wraper.name=loader.name;
+                wraper.isUploading=loader.isUploading;
+                wraper.path=loader.image;
+                wraper.nameid=loader.nameID;
+                wraper.tid=loader.studentId;
+                wraper.intro=loader.introduce;
+                wraper.time=loader.ftime;
+                wraper.fize=loader.fsize;
+                wraper.classid=loader.classUid;
+                wraper.imageData=loader.smallImage;
+                [upArr addObject:wraper];
+                [GKFindWraper addUpWrapper:wraper Key:loader.nameID];
+                
+                
+                //
+                //
+                //        [[GKUpQueue creatQueue] addRequestToQueue:loader.image name:loader.name nameid:loader.nameID studentid:loader.studentId time:loader.ftime fize:loader.fsize classID:loader.classUid];
+                
+                
+                [[GKUpQueue creatQueue]addRequestToQueue:wraper.path name:wraper.name nameid:wraper.nameid studentid:wraper.tid time:wraper.time fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag];
+                [wraper release];
+            }
+        });
+        
+
     } failed:^(NSError *err) {
         
     }];
@@ -159,11 +164,11 @@ static GKLoaderManager *manager=nil;
 {
     if([GKFindWraper getBookWrapper:nameId]==nil)
     {
-        GKUserLogin *user=[GKUserLogin currentLogin];
-        NSString *imageName=[NSString stringWithFormat:@"%@_%@_%@",user.classInfo.uid,time,fize];
+        //GKUserLogin *user=[GKUserLogin currentLogin];
+        //NSString *imageName=[NSString stringWithFormat:@"%@_%@_%@",user.classInfo.uid,time,fize];
         
         GKUpWraper *wraper=[[GKUpWraper alloc]init];
-        wraper.name=imageName;
+        wraper.name=name;
         wraper.isUploading=isUploading;
         wraper.path=path;
         wraper.nameid=nameId;

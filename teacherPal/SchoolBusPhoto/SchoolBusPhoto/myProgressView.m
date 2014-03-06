@@ -18,11 +18,17 @@
     if (self) {
         // Initialization code
         
+        
+        
+        
+        self.progress=0.0;
+        
+        
         processView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
         [self addSubview:processView];
         processView.progress=0;
         processView.backgroundColor=[UIColor clearColor];
-    
+        
         [processView release];
         
         processLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 10, 40, 20)];
@@ -32,30 +38,32 @@
         processLabel.textAlignment=UITextAlignmentCenter;
         processLabel.text=@"0%";
         [self addSubview:processLabel];
-        [self setProgress:0];
         
         
-        self.backgroundColor = [UIColor redColor];
+        
         
     }
     return self;
 }
 
+/*
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ // Drawing code
+ }
+ */
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
     
-    NSLog(@"111");
-}
 
 -(void)setProgress:(CGFloat)progress
 {
     progress_=progress;
     
-  
+    processView.progress=progress;
     if( progress_==0 )
     {
         
@@ -66,19 +74,19 @@
         
         processLabel.text=[NSString stringWithFormat:@"%.0f%%",100.0];
         
-    }    
+    }
     else if( progress_>0&&progress_<1 )
     {
-     
-       
+        
+        
         processLabel.text=[NSString stringWithFormat:@"%.0f%%",progress_*100];
     }
-    processView.progress=progress;
+    
 }
 
 -(void)dealloc
 {
     [processLabel release];
-       [super dealloc];
+    [super dealloc];
 }
 @end

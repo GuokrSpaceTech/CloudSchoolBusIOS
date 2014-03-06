@@ -18,12 +18,6 @@
     if (self) {
         // Initialization code
         
-    
-        
-
-        
-        
-        
         processView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
         [self addSubview:processView];
         processView.progress=0;
@@ -40,18 +34,23 @@
         [self addSubview:processLabel];
         [self setProgress:0];
         
+        
+        self.backgroundColor = [UIColor redColor];
+        
     }
     return self;
 }
 
-/*
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
+    
+    NSLog(@"111");
 }
-*/
+
 -(void)setProgress:(CGFloat)progress
 {
     progress_=progress;

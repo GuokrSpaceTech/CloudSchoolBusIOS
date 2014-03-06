@@ -159,11 +159,11 @@ static GKLoaderManager *manager=nil;
 {
     if([GKFindWraper getBookWrapper:nameId]==nil)
     {
-        GKUserLogin *user=[GKUserLogin currentLogin];
-        NSString *imageName=[NSString stringWithFormat:@"%@_%@_%@",user.classInfo.uid,time,fize];
+        //GKUserLogin *user=[GKUserLogin currentLogin];
+        //NSString *imageName=[NSString stringWithFormat:@"%@_%@_%@",user.classInfo.uid,time,fize];
         
         GKUpWraper *wraper=[[GKUpWraper alloc]init];
-        wraper.name=imageName;
+        wraper.name=name;
         wraper.isUploading=isUploading;
         wraper.path=path;
         wraper.nameid=nameId;

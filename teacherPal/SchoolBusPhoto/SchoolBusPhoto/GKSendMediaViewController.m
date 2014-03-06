@@ -376,7 +376,16 @@
     
     NSLog(@"students %@ , photo tag : %@",students,(photoTag == nil ? @"" : photoTag));
     
-     NSString *imageName=[NSString stringWithFormat:@"%@_%@_%@",user.classInfo.uid,[NSNumber numberWithInt:[timestamp intValue]],[NSNumber numberWithInt:fise]];
+    
+    NSDate *createDate = [NSDate dateWithTimeIntervalSince1970:[timestamp intValue]];
+    NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
+    [format setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+   // textLabel.text = [format stringFromDate:createDate];
+    
+   // NSDateFormatter *data
+    
+    NSString *imageName=[format stringFromDate:createDate];//[NSString stringWithFormat:@"%@",[NSNumber numberWithInt:[timestamp intValue]]];
     
     [[DBManager shareInstance]insertObject:^(NSManagedObject *object) {
         UpLoader *aa=(UpLoader *)object;
@@ -396,7 +405,7 @@
         
         NSLog(@"cccccfggggg");
         
-        [manager addWraperToArr:filePath name:@"" iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:([contentTV.text isEqualToString:@"描述......"] ? @"" : contentTV.text) data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"":photoTag)];
+        [manager addWraperToArr:filePath name:imageName iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:([contentTV.text isEqualToString:@"描述......"] ? @"" : contentTV.text) data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"":photoTag)];
         
         
     } failed:^(NSError *err) {

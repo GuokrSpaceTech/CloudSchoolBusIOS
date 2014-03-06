@@ -35,7 +35,7 @@
 "Product"="商品积分";
 "Photo"="拍照积分";
 "Sharing"="推广积分";
-"year"="岁";
+"year"="年";
 "notice"="noticeNormal.png";
 
 "about"="aboutNormal.png";
@@ -232,3 +232,5 @@
 
 "shipinjiaruduilie" = "视频已加入到上传队列";
 "privacyPhoto"="无法读取相册图片，请打开设备\"设置\"-\"隐私\"-\"照片\"，开启\"教师助手\"访问权限。";
+
+"oldyear"="岁";

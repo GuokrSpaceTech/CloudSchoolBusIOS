@@ -235,7 +235,7 @@
 "ignoreAlert"="Choose \"Ignore\", the photos will no longer display. This will not delete any data.You can still  view the photos on your phone";
 "ignoresuccess"="Ignore Successed";
 
-"shipinjiaruduilie" = "视频提交成功，正在上传";
+"shipinjiaruduilie" = "Video is uploading";
 
 "privacyPhoto"="Cannot access photo album, please enter the \"Setting\"-\"Privacy\"-\"Photos\",  grant the access permit for \"TeacherPal\" in there.";
 "oldyear"="";

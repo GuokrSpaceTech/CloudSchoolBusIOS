@@ -838,9 +838,9 @@
         disappearView.backgroundColor=[UIColor clearColor];
         disappearView.textLabel.text=NSLocalizedString(@"processing", @"");
         
-        [[[[UIApplication sharedApplication] windows] lastObject]  addSubview:disappearView];
+       // [[[[UIApplication sharedApplication] windows] lastObject]  addSubview:disappearView];
          //[[[UIApplication sharedApplication] keyWindow]  addSubview:disappearView];
-    
+        [[[UIApplication sharedApplication].delegate window] addSubview:disappearView];
         [disappearView release];
     }
     [disappearView setactiveStop:NO];

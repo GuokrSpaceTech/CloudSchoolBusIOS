@@ -231,6 +231,7 @@
 "ignoresuccess"="忽略成功";
 
 "shipinjiaruduilie" = "视频提交成功，正在上传";
+"zhaopianpinjiaruduilie"="照片提交成功，正在上传";
 "privacyPhoto"="无法读取相册图片，请打开设备\"设置\"-\"隐私\"-\"照片\"，开启\"教师助手\"访问权限。";
 
 "oldyear"="岁";

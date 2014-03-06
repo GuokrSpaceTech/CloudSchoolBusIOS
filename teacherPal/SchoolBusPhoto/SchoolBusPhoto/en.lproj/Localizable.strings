@@ -236,7 +236,8 @@
 "ignoresuccess"="Ignore Successed";
 
 "shipinjiaruduilie" = "Video is uploading";
-
+"zhaopianpinjiaruduilie"="Photo is uploading";
 "privacyPhoto"="Cannot access photo album, please enter the \"Setting\"-\"Privacy\"-\"Photos\",  grant the access permit for \"TeacherPal\" in there.";
 "oldyear"="";
+
 

@@ -53,7 +53,7 @@
     
     //GKUpWraper *wra= [GKFindWraper getBookWrapper:_upwraper.nameid];
     
-      upwraper._progressView.frame=CGRectMake(270, 10, 40, 40);
+    upwraper._progressView.frame=CGRectMake(270, 10, 40, 40);
     //        [cell addSubview:wraper._progressView];
     
     [self.contentView addSubview:upwraper._progressView];
@@ -65,16 +65,16 @@
     
     
     sizeLabel.text=[NSString stringWithFormat:@"%.3fM",[upwraper.fize integerValue]/1024/1024.0];
-//    DACircularProgressView *processView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(200, 10, 20, 20)];
-//    [self addSubview:processView];
-//    [processView release];
-//    processView.progress=upwraper._progressView.progress;
-
+    //    DACircularProgressView *processView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(200, 10, 20, 20)];
+    //    [self addSubview:processView];
+    //    [processView release];
+    //    processView.progress=upwraper._progressView.progress;
+    
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 -(void)dealloc

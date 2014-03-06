@@ -110,14 +110,14 @@
         [cell.contentView addSubview:imageView];
         [imageView release];
     
-        UILabel *nameLabel=[[UILabel alloc]initWithFrame:CGRectMake(75, 15, 70, 20)];
+        UILabel *nameLabel=[[UILabel alloc]initWithFrame:CGRectMake(75, 15, 90, 20)];
         nameLabel.backgroundColor=[UIColor clearColor];
         nameLabel.tag=CELLTAG+1;
         nameLabel.font=[UIFont systemFontOfSize:15];
         [cell.contentView addSubview:nameLabel];
         [nameLabel release];
         
-        UILabel *ageLabel=[[UILabel alloc]initWithFrame:CGRectMake(150 , 15, 60, 20)];
+        UILabel *ageLabel=[[UILabel alloc]initWithFrame:CGRectMake(170 , 15, 60, 20)];
         ageLabel.backgroundColor=[UIColor clearColor];
         ageLabel.font=[UIFont systemFontOfSize:14];
         if(IOSVERSION>=6.0)
@@ -128,7 +128,7 @@
         [cell.contentView addSubview:ageLabel];
         [ageLabel release];
         
-        UILabel *priceLabel=[[UILabel alloc]initWithFrame:CGRectMake(230, 15, 70, 20)];
+        UILabel *priceLabel=[[UILabel alloc]initWithFrame:CGRectMake(240, 15, 70, 20)];
         priceLabel.backgroundColor=[UIColor clearColor];
         priceLabel.tag=CELLTAG+3;
         priceLabel.font=[UIFont systemFontOfSize:14];
@@ -150,7 +150,7 @@
     
     [imageView setImageWithURL:[NSURL URLWithString:st.avatar] placeholderImage:nil options:SDWebImageRefreshCached];
     UILabel *nameLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+1];
-    nameLabel.text=st.cnname;;
+    nameLabel.text=st.enname;;
    
     UILabel *ageLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+2];
     if([st.uid integerValue]==0)

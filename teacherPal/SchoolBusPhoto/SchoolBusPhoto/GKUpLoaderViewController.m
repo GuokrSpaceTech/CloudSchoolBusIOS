@@ -219,40 +219,44 @@
     [request setEntity:entity];
     [request setPredicate:pred];
     [[DBManager shareInstance]retriveObject:request success:^(NSArray *array) {
-        for (int i=0; i<[array count]; i++) {
-            UpLoader *loader=[array objectAtIndex:i];
-            
-            GKUpObject *wraper=[[GKUpObject alloc]init];
-            
-            
-            wraper.name=loader.name;
-            
-            wraper.image=loader.image;
-            wraper.nameID=loader.nameID;
-            wraper.name=loader.name;
-            wraper.ftime=loader.ftime;
-            
-            
-            [upArr addObject:wraper];
-            
-            [wraper release];
-            
-        }
         
+        dispatch_async(dispatch_get_main_queue(), ^{
+            for (int i=0; i<[array count]; i++) {
+                UpLoader *loader=[array objectAtIndex:i];
+                
+                GKUpObject *wraper=[[GKUpObject alloc]init];
+                
+                
+                wraper.name=loader.name;
+                
+                wraper.image=loader.image;
+                wraper.nameID=loader.nameID;
+                wraper.name=loader.name;
+                wraper.ftime=loader.ftime;
+                
+                
+                [upArr addObject:wraper];
+                
+                [wraper release];
+                
+            }
+            
+            
+            if([upArr count]==0)
+            {
+                [self setNOView:NO];
+                editButton.hidden=YES;
+            }
+            else
+            {
+                [self setNOView:YES];
+                editButton.hidden=NO;
+                
+            }
+            
+            [_tableView reloadData];
+        });
         
-        if([upArr count]==0)
-        {
-            [self setNOView:NO];
-            editButton.hidden=YES;
-        }
-        else
-        {
-            [self setNOView:YES];
-            editButton.hidden=NO;
-        
-        }
-        
-        [_tableView reloadData];
 
     } failed:^(NSError *err) {
         

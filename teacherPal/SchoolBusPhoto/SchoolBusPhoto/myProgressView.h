@@ -12,7 +12,7 @@
 {
     UILabel *processLabel;
     CGFloat progress_;
-   
+    
     
     DACircularProgressView *processView;
 }

@@ -159,7 +159,7 @@
     }
     else
     {
-        ageLabel.text=[NSString stringWithFormat:@"%@ %@",st.age,NSLocalizedString(@"year", @"")];
+        ageLabel.text=[NSString stringWithFormat:@"%@ %@",st.age,NSLocalizedString(@"oldyear", @"")];
     }
     UILabel *priceLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+3];
     

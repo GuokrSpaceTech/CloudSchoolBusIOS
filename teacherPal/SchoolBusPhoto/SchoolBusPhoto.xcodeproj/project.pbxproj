@@ -388,6 +388,8 @@
 		788C7C2D188FCC3800BA9BD0 /* movieplay.png in Resources */ = {isa = PBXBuildFile; fileRef = 788C7C2C188FCC3800BA9BD0 /* movieplay.png */; };
 		788C7C2F188FCC9200BA9BD0 /* moviepresetplay.png in Resources */ = {isa = PBXBuildFile; fileRef = 788C7C2E188FCC9200BA9BD0 /* moviepresetplay.png */; };
 		78A0FF7018AB267C00E6A3D5 /* 云中校车视频相册封面.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A0FF6F18AB267C00E6A3D5 /* 云中校车视频相册封面.png */; };
+		78A9393F18C886D700722B12 /* thelp_notice_568.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A9393D18C886D700722B12 /* thelp_notice_568.png */; };
+		78A9394018C886D700722B12 /* thelp_notice.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A9393E18C886D700722B12 /* thelp_notice.png */; };
 		78BE433218B7657B003ADCB8 /* 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78BE432918B7657B003ADCB8 /* 2@2x.png */; };
 		78BE433318B7657B003ADCB8 /* 班级积分@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78BE432A18B7657B003ADCB8 /* 班级积分@2x.png */; };
 		78BE433418B7657B003ADCB8 /* 班级学生@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78BE432B18B7657B003ADCB8 /* 班级学生@2x.png */; };
@@ -397,12 +399,10 @@
 		78BE433818B7657B003ADCB8 /* 上传列表@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78BE432F18B7657B003ADCB8 /* 上传列表@2x.png */; };
 		78BE433918B7657B003ADCB8 /* 消息@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78BE433018B7657B003ADCB8 /* 消息@2x.png */; };
 		78BE433A18B7657B003ADCB8 /* 修改密码@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78BE433118B7657B003ADCB8 /* 修改密码@2x.png */; };
-		78D8D10E18C05C6A008860AB /* thelp_notice.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D10A18C05C6A008860AB /* thelp_notice.png */; };
 		78D8D10F18C05C6A008860AB /* thelp_send.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D10B18C05C6A008860AB /* thelp_send.png */; };
 		78D8D11018C05C6A008860AB /* thelp_upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D10C18C05C6A008860AB /* thelp_upload.png */; };
 		78D8D11118C05C6A008860AB /* thelp_zhuye.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D10D18C05C6A008860AB /* thelp_zhuye.png */; };
 		78D8D11418C05CA9008860AB /* GKCommonClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D8D11318C05CA9008860AB /* GKCommonClass.m */; };
-		78D8D11918C07ABC008860AB /* thelp_notice_568.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D11518C07ABC008860AB /* thelp_notice_568.png */; };
 		78D8D11A18C07ABC008860AB /* thelp_upload_568.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D11618C07ABC008860AB /* thelp_upload_568.png */; };
 		78D8D11B18C07ABC008860AB /* thelp_zhuye_568.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D11718C07ABC008860AB /* thelp_zhuye_568.png */; };
 		78D8D11C18C07ABC008860AB /* thelp_send_568.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D11818C07ABC008860AB /* thelp_send_568.png */; };
@@ -942,6 +942,8 @@
 		788C7C2C188FCC3800BA9BD0 /* movieplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movieplay.png; sourceTree = "<group>"; };
 		788C7C2E188FCC9200BA9BD0 /* moviepresetplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moviepresetplay.png; sourceTree = "<group>"; };
 		78A0FF6F18AB267C00E6A3D5 /* 云中校车视频相册封面.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "云中校车视频相册封面.png"; sourceTree = "<group>"; };
+		78A9393D18C886D700722B12 /* thelp_notice_568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_notice_568.png; sourceTree = "<group>"; };
+		78A9393E18C886D700722B12 /* thelp_notice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_notice.png; sourceTree = "<group>"; };
 		78BE432918B7657B003ADCB8 /* 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2@2x.png"; sourceTree = "<group>"; };
 		78BE432A18B7657B003ADCB8 /* 班级积分@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "班级积分@2x.png"; sourceTree = "<group>"; };
 		78BE432B18B7657B003ADCB8 /* 班级学生@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "班级学生@2x.png"; sourceTree = "<group>"; };
@@ -951,13 +953,11 @@
 		78BE432F18B7657B003ADCB8 /* 上传列表@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "上传列表@2x.png"; sourceTree = "<group>"; };
 		78BE433018B7657B003ADCB8 /* 消息@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "消息@2x.png"; sourceTree = "<group>"; };
 		78BE433118B7657B003ADCB8 /* 修改密码@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "修改密码@2x.png"; sourceTree = "<group>"; };
-		78D8D10A18C05C6A008860AB /* thelp_notice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_notice.png; sourceTree = "<group>"; };
 		78D8D10B18C05C6A008860AB /* thelp_send.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_send.png; sourceTree = "<group>"; };
 		78D8D10C18C05C6A008860AB /* thelp_upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_upload.png; sourceTree = "<group>"; };
 		78D8D10D18C05C6A008860AB /* thelp_zhuye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_zhuye.png; sourceTree = "<group>"; };
 		78D8D11218C05CA9008860AB /* GKCommonClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCommonClass.h; sourceTree = "<group>"; };
 		78D8D11318C05CA9008860AB /* GKCommonClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCommonClass.m; sourceTree = "<group>"; };
-		78D8D11518C07ABC008860AB /* thelp_notice_568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_notice_568.png; sourceTree = "<group>"; };
 		78D8D11618C07ABC008860AB /* thelp_upload_568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_upload_568.png; sourceTree = "<group>"; };
 		78D8D11718C07ABC008860AB /* thelp_zhuye_568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_zhuye_568.png; sourceTree = "<group>"; };
 		78D8D11818C07ABC008860AB /* thelp_send_568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_send_568.png; sourceTree = "<group>"; };
@@ -1343,12 +1343,12 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				78A9393D18C886D700722B12 /* thelp_notice_568.png */,
+				78A9393E18C886D700722B12 /* thelp_notice.png */,
 				11B8492D18C058DD00D9205C /* corners@2x.png */,
-				78D8D11518C07ABC008860AB /* thelp_notice_568.png */,
 				78D8D11618C07ABC008860AB /* thelp_upload_568.png */,
 				78D8D11718C07ABC008860AB /* thelp_zhuye_568.png */,
 				78D8D11818C07ABC008860AB /* thelp_send_568.png */,
-				78D8D10A18C05C6A008860AB /* thelp_notice.png */,
 				78D8D10B18C05C6A008860AB /* thelp_send.png */,
 				78D8D10C18C05C6A008860AB /* thelp_upload.png */,
 				78D8D10D18C05C6A008860AB /* thelp_zhuye.png */,
@@ -1947,7 +1947,6 @@
 				78709C15187D1733009250FB /* edit-tray-background.png in Resources */,
 				78BE433618B7657B003ADCB8 /* 草稿箱.png in Resources */,
 				11E27F8F183C6AAC00CAE0BB /* shareBtn3.0.png in Resources */,
-				78D8D11918C07ABC008860AB /* thelp_notice_568.png in Resources */,
 				11BF89711836329C008E72F0 /* tiao.png in Resources */,
 				11B852A2183221CF005FA5B9 /* ETNicknameViewController.xib in Resources */,
 				7870A0F2187D4637009250FB /* navbar-button-blue-active@2x.png in Resources */,
@@ -1964,6 +1963,7 @@
 				11BF898518363F5C008E72F0 /* sendNoticeH.png in Resources */,
 				1194023218235F6100F21FB8 /* box-1.png in Resources */,
 				11A5A88C187B988B00EA22CD /* grade.png in Resources */,
+				78A9394018C886D700722B12 /* thelp_notice.png in Resources */,
 				7870A106187E97EE009250FB /* settingH.png in Resources */,
 				2A32A57518122C02007CAA8E /* Default-568h@2x.png in Resources */,
 				788C7C2D188FCC3800BA9BD0 /* movieplay.png in Resources */,
@@ -2038,7 +2038,6 @@
 				11A5A895187B9E5100EA22CD /* settingE.png in Resources */,
 				119F0CB8181A2D9600A5910C /* backH.png in Resources */,
 				11D40E3518618700003009D0 /* alterPassword.png in Resources */,
-				78D8D10E18C05C6A008860AB /* thelp_notice.png in Resources */,
 				1102A7E2181A4ABD00E6295C /* paizhao-1-2.png in Resources */,
 				788C7C2B188FCBBE00BA9BD0 /* X.png in Resources */,
 				11AF3B1618168F3400B36176 /* login_sel.png in Resources */,
@@ -2130,6 +2129,7 @@
 				11FC0F44182C9F4C00442EF6 /* FZZYJW.TTF in Resources */,
 				78709C08187D1733009250FB /* camera-library-overlay-active.png in Resources */,
 				78709C19187D1733009250FB /* navbar-button-back-black-alt-active.png in Resources */,
+				78A9393F18C886D700722B12 /* thelp_notice_568.png in Resources */,
 				1102A7E9181A4E2000E6295C /* GKAboutViewController.xib in Resources */,
 				119366D3184C3283008D2FA2 /* leftUpN.png in Resources */,
 				1193A6D7182C87CC004011BC /* helper.png in Resources */,

@@ -354,7 +354,6 @@
 
     NSString *pathID=obj.nameID;
     GKUpWraper *wraper=[GKFindWraper getBookWrapper:pathID];
-    
     cell.upwraper=wraper;
     return cell;
 }

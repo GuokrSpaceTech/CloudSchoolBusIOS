@@ -58,6 +58,8 @@
     
     [self.contentView addSubview:upwraper._progressView];
     
+    NSLog(@"%d,%@",upwraper._progressView.hidden,self.contentView.subviews);
+    
     imageView.image=[UIImage imageWithData:upwraper.imageData];
     
     

@@ -339,7 +339,7 @@
 "btm_about" = "关于我们";
 "btm_logout" = "退出登录";
 
-"usernameplaceholder" = "手机号/学号";
+"usernameplaceholder" = "手机号/云中校车账号";
 "passwordplaceholder" = "密码";
 
 "minutesago" = "分钟前";

@@ -352,26 +352,8 @@
 		B566B0E9171D52E500704AA7 /* SVHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B566B0E6171D52E500704AA7 /* SVHTTPClient.m */; };
 		B566B0EA171D52E500704AA7 /* SVHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B566B0E8171D52E500704AA7 /* SVHTTPRequest.m */; };
 		B566B0ED171D859700704AA7 /* EKRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B566B0EC171D859700704AA7 /* EKRequest.m */; };
-		B5A2781C17356D72005A0B86 /* tab_Seting_Select.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A2781A17356D72005A0B86 /* tab_Seting_Select.png */; };
-		B5A2781D17356D72005A0B86 /* tab_Seting.png in Resources */ = {isa = PBXBuildFile; fileRef = B5A2781B17356D72005A0B86 /* tab_Seting.png */; };
 		B5A341881717B739000382D6 /* ETReStudentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A341861717B739000382D6 /* ETReStudentInfoViewController.m */; };
 		B5A341891717B739000382D6 /* ETReStudentInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A341871717B739000382D6 /* ETReStudentInfoViewController.xib */; };
-		B5D2D21B17185B900012BA0D /* bendidenglu.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D21317185B900012BA0D /* bendidenglu.png */; };
-		B5D2D21C17185B900012BA0D /* bendidenglu1.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D21417185B900012BA0D /* bendidenglu1.png */; };
-		B5D2D21D17185B900012BA0D /* denglu.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D21517185B900012BA0D /* denglu.png */; };
-		B5D2D21E17185B910012BA0D /* denglu1.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D21617185B900012BA0D /* denglu1.png */; };
-		B5D2D21F17185B910012BA0D /* login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D21717185B900012BA0D /* login.jpg */; };
-		B5D2D22017185B910012BA0D /* iPhone家校通登录.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D21817185B900012BA0D /* iPhone家校通登录.jpg */; };
-		B5D2D22117185B910012BA0D /* loginBack.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D21917185B900012BA0D /* loginBack.png */; };
-		B5D2D22217185B910012BA0D /* loginInput.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D21A17185B900012BA0D /* loginInput.png */; };
-		B5D2D23817185F2D0012BA0D /* SetingBG.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D22917185F2D0012BA0D /* SetingBG.png */; };
-		B5D2D23A17185F2D0012BA0D /* SetingTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D22B17185F2D0012BA0D /* SetingTitle.png */; };
-		B5D2D23B17185F2D0012BA0D /* SetingContent.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D22C17185F2D0012BA0D /* SetingContent.png */; };
-		B5D2D23C17185F2D0012BA0D /* SetingEmail.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D22D17185F2D0012BA0D /* SetingEmail.png */; };
-		B5D2D23D17185F2D0012BA0D /* SetingSend1.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D22E17185F2D0012BA0D /* SetingSend1.png */; };
-		B5D2D23E17185F2D0012BA0D /* SetingSend.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D22F17185F2D0012BA0D /* SetingSend.png */; };
-		B5D2D23F17185F2D0012BA0D /* SetingCancel1.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D23017185F2D0012BA0D /* SetingCancel1.png */; };
-		B5D2D24017185F2D0012BA0D /* SetingCancel.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D2D23117185F2D0012BA0D /* SetingCancel.png */; };
 		B5F7FADC1726E1CA00F5AD13 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F7FAA61726E1CA00F5AD13 /* ASIAuthenticationDialog.m */; };
 		B5F7FADD1726E1CA00F5AD13 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F7FAA91726E1CA00F5AD13 /* ASIDataCompressor.m */; };
 		B5F7FADE1726E1CA00F5AD13 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F7FAAB1726E1CA00F5AD13 /* ASIDataDecompressor.m */; };
@@ -1018,27 +1000,9 @@
 		B566B0E8171D52E500704AA7 /* SVHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVHTTPRequest.m; sourceTree = "<group>"; };
 		B566B0EB171D859700704AA7 /* EKRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRequest.h; sourceTree = "<group>"; };
 		B566B0EC171D859700704AA7 /* EKRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRequest.m; sourceTree = "<group>"; };
-		B5A2781A17356D72005A0B86 /* tab_Seting_Select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_Seting_Select.png; sourceTree = "<group>"; };
-		B5A2781B17356D72005A0B86 /* tab_Seting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_Seting.png; sourceTree = "<group>"; };
 		B5A341851717B739000382D6 /* ETReStudentInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETReStudentInfoViewController.h; sourceTree = "<group>"; };
 		B5A341861717B739000382D6 /* ETReStudentInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETReStudentInfoViewController.m; sourceTree = "<group>"; };
 		B5A341871717B739000382D6 /* ETReStudentInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ETReStudentInfoViewController.xib; sourceTree = "<group>"; };
-		B5D2D21317185B900012BA0D /* bendidenglu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bendidenglu.png; sourceTree = "<group>"; };
-		B5D2D21417185B900012BA0D /* bendidenglu1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bendidenglu1.png; sourceTree = "<group>"; };
-		B5D2D21517185B900012BA0D /* denglu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = denglu.png; sourceTree = "<group>"; };
-		B5D2D21617185B900012BA0D /* denglu1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = denglu1.png; sourceTree = "<group>"; };
-		B5D2D21717185B900012BA0D /* login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login.jpg; sourceTree = "<group>"; };
-		B5D2D21817185B900012BA0D /* iPhone家校通登录.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iPhone家校通登录.jpg"; sourceTree = "<group>"; };
-		B5D2D21917185B900012BA0D /* loginBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginBack.png; sourceTree = "<group>"; };
-		B5D2D21A17185B900012BA0D /* loginInput.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginInput.png; sourceTree = "<group>"; };
-		B5D2D22917185F2D0012BA0D /* SetingBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SetingBG.png; sourceTree = "<group>"; };
-		B5D2D22B17185F2D0012BA0D /* SetingTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SetingTitle.png; sourceTree = "<group>"; };
-		B5D2D22C17185F2D0012BA0D /* SetingContent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SetingContent.png; sourceTree = "<group>"; };
-		B5D2D22D17185F2D0012BA0D /* SetingEmail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SetingEmail.png; sourceTree = "<group>"; };
-		B5D2D22E17185F2D0012BA0D /* SetingSend1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SetingSend1.png; sourceTree = "<group>"; };
-		B5D2D22F17185F2D0012BA0D /* SetingSend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SetingSend.png; sourceTree = "<group>"; };
-		B5D2D23017185F2D0012BA0D /* SetingCancel1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SetingCancel1.png; sourceTree = "<group>"; };
-		B5D2D23117185F2D0012BA0D /* SetingCancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SetingCancel.png; sourceTree = "<group>"; };
 		B5F7FAA51726E1CA00F5AD13 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		B5F7FAA61726E1CA00F5AD13 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		B5F7FAA71726E1CA00F5AD13 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -1818,40 +1782,6 @@
 			name = package;
 			sourceTree = "<group>";
 		};
-		B5D2D21217185B900012BA0D /* 登录 */ = {
-			isa = PBXGroup;
-			children = (
-				B5D2D21317185B900012BA0D /* bendidenglu.png */,
-				B5D2D21417185B900012BA0D /* bendidenglu1.png */,
-				B5D2D21517185B900012BA0D /* denglu.png */,
-				B5D2D21617185B900012BA0D /* denglu1.png */,
-				B5D2D21717185B900012BA0D /* login.jpg */,
-				B5D2D21817185B900012BA0D /* iPhone家校通登录.jpg */,
-				B5D2D21917185B900012BA0D /* loginBack.png */,
-				B5D2D21A17185B900012BA0D /* loginInput.png */,
-			);
-			name = "登录";
-			path = "0登录";
-			sourceTree = "<group>";
-		};
-		B5D2D22317185F2C0012BA0D /* 管理设置模块 */ = {
-			isa = PBXGroup;
-			children = (
-				B5A2781A17356D72005A0B86 /* tab_Seting_Select.png */,
-				B5A2781B17356D72005A0B86 /* tab_Seting.png */,
-				B5D2D22917185F2D0012BA0D /* SetingBG.png */,
-				B5D2D22B17185F2D0012BA0D /* SetingTitle.png */,
-				B5D2D22C17185F2D0012BA0D /* SetingContent.png */,
-				B5D2D22D17185F2D0012BA0D /* SetingEmail.png */,
-				B5D2D22E17185F2D0012BA0D /* SetingSend1.png */,
-				B5D2D22F17185F2D0012BA0D /* SetingSend.png */,
-				B5D2D23017185F2D0012BA0D /* SetingCancel1.png */,
-				B5D2D23117185F2D0012BA0D /* SetingCancel.png */,
-			);
-			name = "管理设置模块";
-			path = "4管理设置模块";
-			sourceTree = "<group>";
-		};
 		B5F7FA9D1726AD6500F5AD13 /* Base64 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2068,8 +1998,6 @@
 				78DFD28B17B0B4DE0069B8CC /* share */,
 				73B9CDBE17ABBAD600E8AD36 /* 背景图 */,
 				11A3F3C51795248200C37EA1 /* alert.png */,
-				B5D2D22317185F2C0012BA0D /* 管理设置模块 */,
-				B5D2D21217185B900012BA0D /* 登录 */,
 				F99196D316BD0F9B005FF6CA /* greenPoint.png */,
 				F91AE3B916BB69C300BF3E5C /* bluePoint.png */,
 			);
@@ -2806,32 +2734,14 @@
 				789EAA3E1834BE1C0029D4B0 /* 1登录_10 (2).png in Resources */,
 				78E892FD182A1DB200025EB5 /* 纪念品.png in Resources */,
 				B5A341891717B739000382D6 /* ETReStudentInfoViewController.xib in Resources */,
-				B5D2D21B17185B900012BA0D /* bendidenglu.png in Resources */,
-				B5D2D21C17185B900012BA0D /* bendidenglu1.png in Resources */,
-				B5D2D21D17185B900012BA0D /* denglu.png in Resources */,
-				B5D2D21E17185B910012BA0D /* denglu1.png in Resources */,
-				B5D2D21F17185B910012BA0D /* login.jpg in Resources */,
-				B5D2D22017185B910012BA0D /* iPhone家校通登录.jpg in Resources */,
 				789DC83D183B04A6006B7FF8 /* nodata.png in Resources */,
-				B5D2D22117185B910012BA0D /* loginBack.png in Resources */,
 				78A2D255184DB5D80064D40C /* cellComment_disable.png in Resources */,
-				B5D2D22217185B910012BA0D /* loginInput.png in Resources */,
 				78F841F3181A87C8007722AE /* 005.png in Resources */,
-				B5D2D23817185F2D0012BA0D /* SetingBG.png in Resources */,
-				B5D2D23A17185F2D0012BA0D /* SetingTitle.png in Resources */,
 				789CC762182CEF0500E81510 /* growBack.png in Resources */,
 				78A41FFB182102F000D0DE50 /* 我的孩子.png in Resources */,
 				78F841E2181A8160007722AE /* otherKids.png in Resources */,
 				78F841D7181A234F007722AE /* noticeTabBtnBack.png in Resources */,
-				B5D2D23B17185F2D0012BA0D /* SetingContent.png in Resources */,
-				B5D2D23C17185F2D0012BA0D /* SetingEmail.png in Resources */,
-				B5D2D23D17185F2D0012BA0D /* SetingSend1.png in Resources */,
-				B5D2D23E17185F2D0012BA0D /* SetingSend.png in Resources */,
-				B5D2D23F17185F2D0012BA0D /* SetingCancel1.png in Resources */,
 				78A4200118210AAA00D0DE50 /* myaccount1.png in Resources */,
-				B5D2D24017185F2D0012BA0D /* SetingCancel.png in Resources */,
-				B5A2781C17356D72005A0B86 /* tab_Seting_Select.png in Resources */,
-				B5A2781D17356D72005A0B86 /* tab_Seting.png in Resources */,
 				78F841F1181A87C8007722AE /* 003.png in Resources */,
 				789DC83F183B1A7D006B7FF8 /* Default.png in Resources */,
 				785DE1BA180FB3E6001B0EB3 /* bottomNewVersionDef.png in Resources */,
@@ -3327,8 +3237,8 @@
 		E3EA3AFE169E9491000DF7EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -3352,8 +3262,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A9FE79AF-C8D8-4E9C-9EEA-0603D413E36A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A9FE79AF-C8D8-4E9C-9EEA-0603D413E36A";
+				PROVISIONING_PROFILE = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
@@ -3364,8 +3274,8 @@
 		E3EA3AFF169E9491000DF7EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -3389,8 +3299,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A9FE79AF-C8D8-4E9C-9EEA-0603D413E36A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A9FE79AF-C8D8-4E9C-9EEA-0603D413E36A";
+				PROVISIONING_PROFILE = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";

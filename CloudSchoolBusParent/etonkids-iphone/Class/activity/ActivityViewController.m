@@ -260,32 +260,38 @@
     if (currentType == MyActivityType)
     {
         self.dataList = self.myActivityList;
-        
         if (self.dataList.count < 15) {
             isMoreMyAct = NO;
         }
         
         isMore = isMoreMyAct;
+        
+        
     }
     else if (currentType == NoStartActivity)
     {
         self.dataList = self.noStartActivityList;
-        
         if (self.dataList.count < 15) {
             isMoreNoStart = NO;
         }
         
         isMore = isMoreNoStart;
+        
+        
     }
     else
     {
         self.dataList = self.activityList;
-        
         if (self.dataList.count < 15) {
             isMoreAllAct = NO;
+        }else
+        {
+            isMoreAllAct = YES;
         }
         
         isMore = isMoreAllAct;
+        
+        
     }
     
     
@@ -636,13 +642,13 @@
             
             ETEvents *event = self.dataList.lastObject;
             
-            NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
-            format.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+//            NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
+//            format.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+//            
+//            NSDate *d = [format dateFromString:event.addtime];
+//            int t = [d timeIntervalSince1970];
             
-            NSDate *d = [format dateFromString:event.addtime];
-            int t = [d timeIntervalSince1970];
-            
-            NSString *lastTime = [NSString stringWithFormat:@"%d",t];
+            NSString *lastTime = [NSString stringWithFormat:@"%@",event.events_id];
             
             isLoading = YES;
             
@@ -690,6 +696,13 @@
 {
     isLoading = NO;
     [_slimeView endRefresh];
+    
+    if(_refreshFooterView)
+    {
+        [_refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
+//        [self removeFooterView];
+    }
+    
     ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"busy", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
     [alert show];
 }

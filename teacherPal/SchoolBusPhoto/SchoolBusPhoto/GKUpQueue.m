@@ -64,7 +64,17 @@ static GKUpQueue *gkqueue=nil;
 -(void)addRequestToQueue:(NSString *)path name:(NSString *)name nameid:(NSString *)nameId studentid:(NSString *)std time:(NSNumber *)time fize:(NSNumber *)fsize classID:(NSNumber *)classid intro:(NSString *)intro tag:(NSString *)tag
 {
     
-
+    // 因为沙盒Documents 路径会变更当升级的时候
+    // 取出沙盒Documents路径 动态拼接路径
+    NSArray *arr=[path componentsSeparatedByString:@"/"];
+    NSString *pathForName= [arr lastObject];
+    
+    NSArray *searchPathArr= NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentpath=[searchPathArr objectAtIndex:0];
+    NSString* filenamePath = [documentpath stringByAppendingPathComponent:pathForName];
+    //
+    
+    
     isLoading=YES;
     GKUserLogin *user=[GKUserLogin currentLogin];
     NSLog(@"------%@",classid);
@@ -86,7 +96,7 @@ static GKUpQueue *gkqueue=nil;
     //[request setdid];
     [request setDidFinishSelector:@selector(requestDidSuccess:)];
 
-   [request setFile:path forKey:@"fbody"];
+   [request setFile:filenamePath forKey:@"fbody"];
     [request addPostValue:@"article" forKey:@"pictype"];
     //[request addPostValue:@"jpg" forKey:@"fext"];
     [request addPostValue:name forKey:@"fname"];
@@ -95,7 +105,7 @@ static GKUpQueue *gkqueue=nil;
     [request addPostValue:classid forKey:@"uid"];
     [request addPostValue:intro forKey:@"intro"];
     [request addPostValue:tag forKey:@"tag"];
-    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:nameId,@"nameid",path,@"path", name,@"filename",@"",@"",nil]];
+    [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:nameId,@"nameid",filenamePath,@"path", name,@"filename",@"",@"",nil]];
     [request addPostValue:[self fileName] forKey:@"pickey"];
     
     [asiQueue addOperation:request];
@@ -296,9 +306,9 @@ static GKUpQueue *gkqueue=nil;
         request.predicate=pred;
 
         [[DBManager shareInstance]deleteObject:request success:^{
-            
+            NSLog(@"cg");
         } failed:^(NSError *err) {
-            
+            NSLog(@"sb%@",err.description);
         }];
         // 删除 manager 数组第一条数据
         [manager removeWraperFromArr:picId];
@@ -324,13 +334,13 @@ static GKUpQueue *gkqueue=nil;
     NSLog(@"%@",_request.error.description);
     NSLog(@"上传失败 ：： %@",_request.error.description);
      NSLog(@"%@",_request.responseString);
-    if(_request.error.code==6) // 改文件不存在
-    {
-        NSString *picId=[[_request userInfo] objectForKey:@"nameid"];
-        NSString *picPath=[[_request userInfo] objectForKey:@"path"];
-        [self ChageCoreDataDeleteOrUoloadingAlter:NO picId:picId picPath:picPath];
-        
-    }
+//    if(_request.error.code==6) // 改文件不存在
+//    {
+//        NSString *picId=[[_request userInfo] objectForKey:@"nameid"];
+//        NSString *picPath=[[_request userInfo] objectForKey:@"path"];
+//        [self ChageCoreDataDeleteOrUoloadingAlter:NO picId:picId picPath:picPath];
+//        
+//    }
 
     
 }

@@ -15,7 +15,7 @@
 @property (nonatomic, retain) NSNumber * classUid;
 @property (nonatomic, retain) NSNumber * fsize;
 @property (nonatomic, retain) NSNumber * ftime;
-@property (nonatomic, retain) NSString * image;
+@property (nonatomic, retain) NSString * image;// 路径
 @property (nonatomic, retain) NSString * introduce;
 @property (nonatomic, retain) NSNumber * isUploading;
 @property (nonatomic, retain) NSString * name;

@@ -870,9 +870,9 @@
         
         ETPhoto *photo=[assetArr objectAtIndex:i];
         ALAssetRepresentation *representation = [photo.asset defaultRepresentation];
-        NSString* filename = [documentpath stringByAppendingPathComponent:[representation filename]];
+        NSString* filenamePath = [documentpath stringByAppendingPathComponent:[representation filename]];
         UIImage *thumbiamge=[UIImage imageWithCGImage:photo.asset.thumbnail];
-        BOOL cureateSuccess= [[NSFileManager defaultManager] createFileAtPath:filename contents:nil attributes:nil];
+        BOOL cureateSuccess= [[NSFileManager defaultManager] createFileAtPath:filenamePath contents:nil attributes:nil];
         if(!cureateSuccess)
         {
             NSLog(@"----------------------------创建文件失败");
@@ -880,7 +880,7 @@
         }
         
         NSLog(@"----------------------------创建文件成功");
-        NSOutputStream *outPutStream = [NSOutputStream outputStreamToFileAtPath:filename append:YES];
+        NSOutputStream *outPutStream = [NSOutputStream outputStreamToFileAtPath:filenamePath append:YES];
         [outPutStream open];
         long long offset = 0;
         long long bytesRead = 0;
@@ -970,7 +970,7 @@
         
         [[DBManager shareInstance]insertObject:^(NSManagedObject *object) {
             UpLoader *aa=(UpLoader *)object;
-            aa.image=filename;
+            aa.image=filenamePath; //路径
             aa.nameID=photo.nameId;
             aa.classUid=[NSNumber numberWithInt:[user.classInfo.uid integerValue]];
             aa.name=representation.filename;
@@ -987,7 +987,7 @@
             
             NSLog(@"写数据库成功 ----------------------上传数据");
             
-        [manager addWraperToArr:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:tagcontent];
+        [manager addWraperToArr:filenamePath name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:tagcontent];
 
             
         } failed:^(NSError *err) {

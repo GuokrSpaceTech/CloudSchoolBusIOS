@@ -2358,8 +2358,12 @@
 		2A32A57C18122C02007CAA8E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ARCHS = (
+					armv7,
+					armv7s,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchoolBusPhoto/SchoolBusPhoto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2375,8 +2379,9 @@
 					"${SRCROOT}/TestFlightSDK2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
+				PROVISIONING_PROFILE = "F570C2E8-7204-4125-8AC4-8E405C5ECBF6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F570C2E8-7204-4125-8AC4-8E405C5ECBF6";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2384,8 +2389,12 @@
 		2A32A57D18122C02007CAA8E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ARCHS = (
+					armv7,
+					armv7s,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchoolBusPhoto/SchoolBusPhoto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2401,8 +2410,9 @@
 					"$(SRCROOT)/TestFlightSDK2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
+				PROVISIONING_PROFILE = "F570C2E8-7204-4125-8AC4-8E405C5ECBF6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F570C2E8-7204-4125-8AC4-8E405C5ECBF6";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

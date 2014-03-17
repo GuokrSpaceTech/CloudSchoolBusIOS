@@ -339,7 +339,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    NSString *cellIdentifier=[NSString stringWithFormat:@"cell%d",indexPath.row];
+    NSString *cellIdentifier=@"cell";//;[NSString stringWithFormat:@"cell%d",indexPath.row];
     GKUploaderCell *cell=(GKUploaderCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(cell==nil)
     {

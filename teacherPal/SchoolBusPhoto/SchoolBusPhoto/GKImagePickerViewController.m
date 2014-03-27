@@ -44,7 +44,7 @@
     
     // 增加监听 ，当相册相片改变时 执行
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(LoadPhotoIfDeviceActive:) name:ALAssetsLibraryChangedNotification object:nil];
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(LoadPhotoIfDeviceActive:) name:ALAssetsLibraryChangedNotification object:nil];
     //ALAssetsLibraryChangedNotification
     if(imageArr==nil)
         imageArr=[[NSMutableArray alloc]init];
@@ -351,12 +351,12 @@
 //   // }
 //}
 
--(void)LoadPhotoIfDeviceActive:(NSNotification *)no
-{
-    [self loadPhoto];
-  
-
-}
+//-(void)LoadPhotoIfDeviceActive:(NSNotification *)no
+//{
+//    [self loadPhoto];
+//  
+//
+//}
 -(void)refreashPickViewController:(NSArray *)arr
 {
     
@@ -478,6 +478,8 @@
                 
                 photo.date=[result valueForProperty:ALAssetPropertyDate];
                 photo.nameId= [NSString stringWithFormat:@"%@",[result defaultRepresentation].url];
+                
+                //
                 if(photo.nameId)  // 如果图片删除，判断该照片是否为空 ，如果为空就不加入到数组
                     [imageArr insertObject:photo atIndex:0];
                 [photo release];
@@ -501,20 +503,11 @@
                 
                 [[DBManager shareInstance]retriveObject:request success:^(NSArray *array) {
                     for (NSObject *obj in array) {
-                        //for (int i=0; i<[arr count]; i++) {
-                        // UpLoader *loader=[arr objectAtIndex:i];
+                   
                         UpLoader *loader=(UpLoader *)obj;
                         //NSLog(@"??????%@",loader.nameID);
                         for (int j=0; j<[imageArr count]; j++) {
                             ETPhoto *photo=[imageArr objectAtIndex:j];
-                            //NSLog(@"~~~~~~~~~~~%@",photo.nameId);
-                            
-                            //NSLog(@"????%@",[photo.asset valueForProperty:ALAssetPropertyRepresentations]);
-                            
-                            //                        NSArray *keydd=[photo.asset valueForProperty:ALAssetPropertyRepresentations];
-                            //                        NSDictionary *dic=[photo.asset valueForProperty:ALAssetPropertyURLs];
-                            //                        NSString *pid= [NSString stringWithFormat:@"%@",[dic objectForKey:[keydd objectAtIndex:0]]];
-                            
                             if([loader.nameID isEqualToString:photo.nameId])
                             {
                                 [imageArr removeObject:photo];

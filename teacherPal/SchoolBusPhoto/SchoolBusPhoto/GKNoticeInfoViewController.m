@@ -199,7 +199,7 @@
         timelagelabel.textAlignment=UITextAlignmentRight;
     timelagelabel.textColor=[UIColor colorWithRed:123/255.0 green:123/255.0 blue:123/255.0 alpha:1];
     [headView addSubview:timelagelabel];
-    [titlelabel release];
+    [timelagelabel release];
     height+=20+5;
     
     headView.frame=CGRectMake(0, 0, 320,10+height);

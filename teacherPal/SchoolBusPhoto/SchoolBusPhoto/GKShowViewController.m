@@ -20,7 +20,7 @@
 #import "DBManager.h"
 #define TAG 1000
 
-#define STUDENTCELLHEIGHT 50
+#define STUDENTCELLHEIGHT 55
 @interface GKShowViewController ()
 
 @end
@@ -55,7 +55,7 @@
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
     
-    [GKCommonClass createHelpWithTag:1004 image:[UIImage imageNamed:iphone5 ? @"thelp_upload_568.png" : @"thelp_upload.png"]];
+    //[GKCommonClass createHelpWithTag:1004 image:[UIImage imageNamed:iphone5 ? @"thelp_upload_568.png" : @"thelp_upload.png"]];
     
     whichView=1;
     self.tag=@"";

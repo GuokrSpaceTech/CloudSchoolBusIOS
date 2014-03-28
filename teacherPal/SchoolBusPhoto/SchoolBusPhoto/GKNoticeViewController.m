@@ -192,7 +192,7 @@
     //int row=([user.studentArr count] )%4;
     int y = MIN(col+1, 4);
     if (studentView == nil) {
-        studentView=[[GKStudentView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-( y*50), 320,( y*50))];
+        studentView=[[GKStudentView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-( y*55), 320,( y*55))];
         
         studentView.backgroundColor=[UIColor whiteColor];
         studentView.delegate=self;
@@ -288,7 +288,7 @@
             theImage = [info objectForKey:UIImagePickerControllerOriginalImage];
             
         }
-        NSData *data= UIImageJPEGRepresentation(theImage, 0.3);
+        NSData *data= UIImageJPEGRepresentation(theImage, 0.5);
         
         self.upData=data;
         selectImageView.image=[UIImage imageWithData:data];
@@ -551,7 +551,7 @@
             return;
         }
         
-        UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"该通知需要家长确认吗？" delegate:self cancelButtonTitle:NSLocalizedString(@"no", @"") otherButtonTitles:NSLocalizedString(@"yes", @""), nil];
+        UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"noticeConfirm", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"no", @"") otherButtonTitles:NSLocalizedString(@"yes", @""), nil];
         [alertView show];
         [alertView release];
         
@@ -601,6 +601,8 @@
         [HUD removeFromSuperview];
         HUD=nil;
     }
+    
+    NSLog(@"超时");
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"network", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
     [alert show];
     [alert release];

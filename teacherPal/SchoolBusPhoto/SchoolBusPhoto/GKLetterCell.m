@@ -141,7 +141,7 @@
                // imageView.frame=CGRectMake(22, 15, size.width, size.height);
                 
                 UIImageView *bgView=(UIImageView *)[self.contentView viewWithTag:BGTAG];
-                bgView.frame=CGRectMake(10, 10, width+20, height+10);
+                bgView.frame=CGRectMake(12, 10, width+20, height+10);
                 bgView.backgroundColor=[UIColor colorWithRed:250/255.0 green:249/255.0 blue:243/255.0 alpha:1];
                 //UIImage *iamge=[[UIImage imageNamed:@"qipao1.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 10, 8, 8)];
                // bgView.image=iamge;
@@ -221,7 +221,7 @@
                 
                 
                 UIImageView *bgView=(UIImageView *)[self.contentView viewWithTag:BGTAG];
-                bgView.frame=CGRectMake(320-width-28, 10, width +20, height+10);
+                bgView.frame=CGRectMake(320-width-30, 10, width +20, height+10);
                 bgView.backgroundColor=[UIColor colorWithRed:173/255.0 green:219/255.0 blue:68/255.0 alpha:1];
                 bgView.backgroundColor=[UIColor colorWithRed:173/255.0 green:219/255.0 blue:68/255.0 alpha:1];
 

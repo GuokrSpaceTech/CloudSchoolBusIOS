@@ -62,7 +62,7 @@
     
     [UIView animateWithDuration:0.2 animations:^{
         inputView.frame=CGRectMake(0, self.view.frame.size.height-57, 320, 57);
-        _tableView.frame=CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y-57);
+        _tableView.frame=CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y-58);
     }];
     
 }
@@ -108,7 +108,7 @@
     [self.view addSubview:bgView];
     [bgView release];
     
-    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y-57) style:UITableViewStylePlain];
+    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y-58) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
   

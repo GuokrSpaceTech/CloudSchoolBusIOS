@@ -352,7 +352,15 @@
 //{
 //    return UIInterfaceOrientationLandscapeLeft | UIInterfaceOrientationLandscapeRight | UIInterfaceOrientationPortrait;
 //}
-
+-(void)textViewDidBeginEditing:(UITextField *)textField
+{
+    
+    if(!textField.window.isKeyWindow)
+    {
+        [textField.window makeKeyAndVisible];
+    }
+    
+}
 - (IBAction)clearText:(id)sender {
     
     self.nicknametextfield.text = @"";

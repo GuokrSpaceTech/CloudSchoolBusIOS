@@ -211,7 +211,15 @@
         
     }
 }
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    
+    if(!textView.window.isKeyWindow)
+    {
+        [textView.window makeKeyAndVisible];
+    }
 
+}
 - (void)didSelectPhotoTag:(NSString *)tag
 {
     UIButton *button = (UIButton *)[self viewWithTag:333];

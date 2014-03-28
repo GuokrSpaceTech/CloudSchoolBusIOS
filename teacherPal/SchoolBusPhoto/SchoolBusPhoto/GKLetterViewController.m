@@ -291,7 +291,14 @@
 {
     
 
-    @autoreleasepool {
+    //@autoreleasepool {
+        if(HUD==nil)
+        {
+            HUD=[[MBProgressHUD alloc]initWithView:self.view];
+            [self.view addSubview:HUD];
+            [HUD release];
+            [HUD show:YES];
+        }
 
         UIImage *theImage;
         if ([picker allowsEditing]){
@@ -312,22 +319,26 @@
             
         }];
 
-    }
+    
     
 
 }
 - (void)selectPhoto:(UIImage *)img
 {
-    NSData *data= UIImageJPEGRepresentation(img, 0.5);
     
-    UIImage *image=[UIImage imageWithData:data];
-    NSData *dataqq=UIImageJPEGRepresentation(image, 1);
-    NSString *base64=[[[NSString alloc]initWithData:[GTMBase64 encodeData:dataqq] encoding:NSUTF8StringEncoding] autorelease];
+    @autoreleasepool {
+        NSData *data= UIImageJPEGRepresentation(img, 0.5);
+        
+        UIImage *image=[UIImage imageWithData:data];
+        NSData *dataqq=UIImageJPEGRepresentation(image, 1);
+        NSString *base64=[[[NSString alloc]initWithData:[GTMBase64 encodeData:dataqq] encoding:NSUTF8StringEncoding] autorelease];
+        
+        int ftime=[[NSDate date]timeIntervalSince1970];
+        
+        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"img",@"lettertype",base64,@"fbody",[NSNumber numberWithInt:ftime],@"ftime",[NSNumber numberWithInt:[base64 length]],@"fsize",@"jpg",@"fext", nil];
+        [[EKRequest Instance]EKHTTPRequest:LetterF parameters:dic requestMethod:POST forDelegate:self];
+    }
     
-    int ftime=[[NSDate date]timeIntervalSince1970];
-    
-    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"img",@"lettertype",base64,@"fbody",[NSNumber numberWithInt:ftime],@"ftime",[NSNumber numberWithInt:[base64 length]],@"fsize",@"jpg",@"fext", nil];
-    [[EKRequest Instance]EKHTTPRequest:LetterF parameters:dic requestMethod:POST forDelegate:self];
 }
 
 //- (UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size{
@@ -361,7 +372,11 @@
 //    [alert release];
 //    
 //    return;
-    
+    if(HUD)
+    {
+        [HUD removeFromSuperview];
+        HUD=nil;
+    }
     if(method==LetterF && code==1)
     {
  
@@ -506,6 +521,11 @@
 }
 -(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
 {
+    if(HUD)
+    {
+        [HUD removeFromSuperview];
+        HUD=nil;
+    }
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"network", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
     [alert show];
     [alert release];

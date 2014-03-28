@@ -245,6 +245,10 @@
 }
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    if(!textField.window.isKeyWindow)
+    {
+        [textField.window makeKeyAndVisible];
+    }
     studentView.hidden=YES;
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField
@@ -253,6 +257,11 @@
 }
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
+  
+    if(!textView.window.isKeyWindow)
+    {
+        [textView.window makeKeyAndVisible];
+    }
      studentView.hidden=YES;
 }
 -(void)textViewDidEndEditing:(UITextView *)textView
@@ -279,7 +288,7 @@
             theImage = [info objectForKey:UIImagePickerControllerOriginalImage];
             
         }
-        NSData *data= UIImageJPEGRepresentation(theImage, 0.2);
+        NSData *data= UIImageJPEGRepresentation(theImage, 0.3);
         
         self.upData=data;
         selectImageView.image=[UIImage imageWithData:data];
@@ -503,10 +512,11 @@
 }
 -(void)buttonClick:(UIButton *)btn
 {
+    [_textView resignFirstResponder];
+    [_titleField resignFirstResponder];
     if(btn.tag==100)
     {
-        [_textView resignFirstResponder];
-        [_titleField resignFirstResponder];
+       
     }
     if(btn.tag==101)
     {
@@ -523,7 +533,9 @@
     if(btn.tag==102)
     {
         //发送
-       
+//        [_textView resignFirstResponder];
+//        [_titleField resignFirstResponder];
+
         if([_textView.text isEqualToString:@""])
         {
             UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"neironginput", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
@@ -589,7 +601,7 @@
         [HUD removeFromSuperview];
         HUD=nil;
     }
-    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"sendfailed", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"network", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
     [alert show];
     [alert release];
 }

@@ -178,7 +178,15 @@
     }
     return YES;
 }
-
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    
+    if(!textView.window.isKeyWindow)
+    {
+        [textView.window makeKeyAndVisible];
+    }
+    
+}
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
     if ([textView.text isEqualToString:@"描述......"]) {

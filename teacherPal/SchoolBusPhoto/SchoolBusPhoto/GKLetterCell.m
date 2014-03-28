@@ -96,9 +96,9 @@
             UIImageView *bgView=(UIImageView *)[self.contentView viewWithTag:BGTAG];
             bgView.frame=CGRectMake(10, 10, size.width+20, labelcontent.frame.origin.y + labelcontent.frame.size.height);
             //(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right)
-            bgView.backgroundColor=[UIColor clearColor];
-            UIImage *iamge=[[UIImage imageNamed:@"qipao1.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 10, 8, 8)];
-            bgView.image=iamge;
+            bgView.backgroundColor=[UIColor colorWithRed:250/255.0 green:249/255.0 blue:243/255.0 alpha:1];
+            //UIImage *iamge=[[UIImage imageNamed:@"qipao1.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 10, 8, 8)];
+            //bgView.image=iamge;
         }
         else
         {
@@ -141,10 +141,10 @@
                // imageView.frame=CGRectMake(22, 15, size.width, size.height);
                 
                 UIImageView *bgView=(UIImageView *)[self.contentView viewWithTag:BGTAG];
-                bgView.frame=CGRectMake(10, 10, width+20, height+10);
-                bgView.backgroundColor=[UIColor clearColor];
-                UIImage *iamge=[[UIImage imageNamed:@"qipao1.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 10, 8, 8)];
-                bgView.image=iamge;
+                bgView.frame=CGRectMake(12, 10, width+20, height+10);
+                bgView.backgroundColor=[UIColor colorWithRed:250/255.0 green:249/255.0 blue:243/255.0 alpha:1];
+                //UIImage *iamge=[[UIImage imageNamed:@"qipao1.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 10, 8, 8)];
+               // bgView.image=iamge;
 
                 
         
@@ -177,9 +177,12 @@
            // 5 8 12  10
             UIImageView *bgView=(UIImageView *)[self.contentView viewWithTag:BGTAG];
             bgView.frame=CGRectMake(320-size.width-30, 10, size.width +20, labelcontent.frame.origin.y + labelcontent.frame.size.height);
-            UIImage *iamge=[[UIImage imageNamed:@"qipao22.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(3, 4, 12, 11)];
+            
+            bgView.backgroundColor=[UIColor colorWithRed:173/255.0 green:219/255.0 blue:68/255.0 alpha:1];
+
+           // UIImage *iamge=[[UIImage imageNamed:@"qipao22.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(3, 4, 12, 11)];
              //UIImage *iamge=[UIImage imageNamed:@"qipao22.png"];
-            bgView.image=iamge;
+           // bgView.image=iamge;
 
         }
         else
@@ -218,10 +221,13 @@
                 
                 
                 UIImageView *bgView=(UIImageView *)[self.contentView viewWithTag:BGTAG];
-                bgView.frame=CGRectMake(320-width-28, 10, width +20, height+10);
-                UIImage *iamge=[[UIImage imageNamed:@"qipao22.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(3, 4, 12, 11)];
+                bgView.frame=CGRectMake(320-width-30, 10, width +20, height+10);
+                bgView.backgroundColor=[UIColor colorWithRed:173/255.0 green:219/255.0 blue:68/255.0 alpha:1];
+                bgView.backgroundColor=[UIColor colorWithRed:173/255.0 green:219/255.0 blue:68/255.0 alpha:1];
+
+               // UIImage *iamge=[[UIImage imageNamed:@"qipao22.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(3, 4, 12, 11)];
                 // UIImage *iamge=[UIImage imageNamed:@"qipao22.png"];
-                bgView.image=iamge;
+                //bgView.image=iamge;
 
                 
             }];

@@ -89,6 +89,10 @@
 }
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    if(!textField.window.isKeyWindow)
+    {
+        [textField.window makeKeyAndVisible];
+    }
     CGRect frame = self.view.frame;
     //    NSLog(@"%f",frame.origin.y);
     if (_passWord==textField || _userName == textField)

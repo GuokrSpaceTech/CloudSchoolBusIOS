@@ -102,7 +102,7 @@
 //    [inputView addSubview:inputBtn];
     
     contentTV = [[UITextView alloc] initWithFrame:CGRectMake(thumbImgV.frame.origin.x + thumbImgV.frame.size.width + 10, thumbImgV.frame.origin.y - 7, 200, 90)];
-    contentTV.text = @"描述......";
+    contentTV.text = NSLocalizedString(@"descripe", @"");
     contentTV.delegate = self;
     contentTV.font = [UIFont systemFontOfSize:15];
     contentTV.textColor = [UIColor grayColor];
@@ -122,15 +122,61 @@
     [self.view addSubview:calWordsLab];
     
     
-    GKPhotoTagScrollView *tagView = [[GKPhotoTagScrollView alloc] initWithFrame:CGRectMake(boardImageView.frame.origin.x - 5, boardImageView.frame.origin.y + boardImageView.frame.size.height + 5, boardImageView.frame.size.width + 10, iphone5 ? boardImageView.frame.size.height : 85)];
+      GKUserLogin *user=[GKUserLogin currentLogin];
+    
+//    GKPhotoTagScrollView *tagView = [[GKPhotoTagScrollView alloc] initWithFrame:CGRectMake(boardImageView.frame.origin.x - 5, boardImageView.frame.origin.y + boardImageView.frame.size.height + 5, boardImageView.frame.size.width + 10, iphone5 ? boardImageView.frame.size.height : 85)];
+//    tagView.backgroundColor = [UIColor clearColor];
+//    tagView.tagDelegate = self;
+//    [self.view addSubview:tagView];
+//    [tagView release];
+//    
+//    
+//  
+//    
+//    NSString* strLanguage = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
+//    //        NSLog(@"%@",strLanguage);
+//    if ([strLanguage isEqualToString:@"zh-Hans"])
+//    {
+//        if (nil != [user.photoTagArray objectAtIndex:0] && [[user.photoTagArray objectAtIndex:0] isKindOfClass:[NSArray class]])
+//        {
+//            [tagView setPhotoTags:[user.photoTagArray objectAtIndex:0]];
+//        }
+//    }
+//    else
+//    {
+//        if (nil != [user.photoTagArray objectAtIndex:1] && [[user.photoTagArray objectAtIndex:1] isKindOfClass:[NSArray class]])
+//        {
+//            [tagView setPhotoTags:[user.photoTagArray objectAtIndex:1]];
+//        }
+//        
+//    }
+    
+    int col=([user.studentArr count] )/4; //行
+    //int row=([user.studentArr count] )%4;
+    int y = MIN(col+1, 4);
+    
+    
+    GKStudentView *studentView=[[GKStudentView alloc]initWithFrame:CGRectMake(0, (iphone5 ? 548 : 460) + (ios7 ? 20 : 0) - (y*55), 320,( y*55))];
+    studentView.backgroundColor=[UIColor whiteColor];
+    studentView.delegate=self;
+    studentView.studentArr=user.studentArr;
+    [self.view addSubview:studentView];
+    [studentView release];
+    
+    
+//    NSLog(@"%f--%f--%f---%f",self.view.frame.size.height,studentView.frame.size.height,boardImageView.frame.size.height,boardImageView.frame.origin.y);
+    
+//    NSLog(@"%f",self.view.frame.size.height-studentView.frame.size.height-boardImageView.frame.size.height-boardImageView.frame.origin.y);
+    
+    GKPhotoTagScrollView *tagView = [[GKPhotoTagScrollView alloc] initWithFrame:CGRectMake(boardImageView.frame.origin.x - 5, boardImageView.frame.origin.y + boardImageView.frame.size.height + 5, boardImageView.frame.size.width + 10,(iphone5 ? 548 : 460) + (ios7 ? 20 : 0)-studentView.frame.size.height-boardImageView.frame.size.height-boardImageView.frame.origin.y-5)];
     tagView.backgroundColor = [UIColor clearColor];
     tagView.tagDelegate = self;
     [self.view addSubview:tagView];
     [tagView release];
-    
-    
-    GKUserLogin *user=[GKUserLogin currentLogin];
-    
+
+
+
+
     NSString* strLanguage = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
     //        NSLog(@"%@",strLanguage);
     if ([strLanguage isEqualToString:@"zh-Hans"])
@@ -148,18 +194,6 @@
         }
         
     }
-    
-    int col=([user.studentArr count] )/4; //行
-    //int row=([user.studentArr count] )%4;
-    int y = MIN(col+1, 4);
-    
-    
-    GKStudentView *studentView=[[GKStudentView alloc]initWithFrame:CGRectMake(0, (iphone5 ? 548 : 460) + (ios7 ? 20 : 0) - (y*50), 320,( y*50))];
-    studentView.backgroundColor=[UIColor whiteColor];
-    studentView.delegate=self;
-    studentView.studentArr=user.studentArr;
-    [self.view addSubview:studentView];
-    [studentView release];
     
     self.stuList = [NSMutableArray array];
     
@@ -181,7 +215,7 @@
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    if ([textView.text isEqualToString:@"描述......"]) {
+    if ([textView.text isEqualToString:NSLocalizedString(@"descripe", @"")]) {
         textView.text = @"";
         textView.textColor = [UIColor blackColor];
     }
@@ -190,7 +224,7 @@
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView
 {
     if ([textView.text isEqualToString:@""]) {
-        textView.text = @"描述......";
+        textView.text = NSLocalizedString(@"descripe", @"");
         textView.textColor = [UIColor grayColor];
     }
     return YES;
@@ -396,7 +430,7 @@
         aa.studentId=students;
         aa.fsize=[NSNumber numberWithInt:fise];
         aa.ftime=[NSNumber numberWithInt:[timestamp intValue]];
-        aa.introduce = ([contentTV.text isEqualToString:@"描述......"] ? @"" : contentTV.text);
+        aa.introduce = ([contentTV.text isEqualToString:NSLocalizedString(@"descripe", @"")] ? @"" : contentTV.text);
         aa.tag=(photoTag == nil ? @"" : photoTag);
         aa.isUploading=[NSNumber numberWithInt:1];
         aa.smallImage=UIImageJPEGRepresentation(thumbImgV.image, 0.1);
@@ -405,7 +439,7 @@
         
         NSLog(@"cccccfggggg");
         
-        [manager addWraperToArr:filePath name:imageName iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:([contentTV.text isEqualToString:@"描述......"] ? @"" : contentTV.text) data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"":photoTag)];
+        [manager addWraperToArr:filePath name:imageName iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:([contentTV.text isEqualToString:NSLocalizedString(@"descripe", @"")] ? @"" : contentTV.text) data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"":photoTag)];
         
         
     } failed:^(NSError *err) {
@@ -457,7 +491,7 @@
     
     if (self.isPresent) {  //从视频草稿箱 推入界面
         
-        if (![contentTV.text isEqualToString:@""] && ![contentTV.text isEqualToString:@"描述......"]) {
+        if (![contentTV.text isEqualToString:@""] && ![contentTV.text isEqualToString:NSLocalizedString(@"descripe", @"")]) {
             UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"shifoutuichu",@"") delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") otherButtonTitles:NSLocalizedString(@"OK", @""), nil] autorelease];
             [alert show];
             return;

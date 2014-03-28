@@ -156,8 +156,8 @@
 "noticeQ"="Notice";
 "noticeDetail"="Detail";
 
-"sendWho"="发给了谁";
-"huizhi"="谁回执了你";
+"sendWho"="Receiver";
+"huizhi"="Confirmed";
 "load"="loading...";
 
 
@@ -179,7 +179,7 @@
 "realName"="Name";
 "wrong"="Student information is wrong, please contact customer service";
 
-"student"="Student";
+"student"="Students";
 "detail"="Detail";
 "class"="Class";
 
@@ -240,4 +240,7 @@
 "privacyPhoto"="Cannot access photo album, please enter the \"Setting\"-\"Privacy\"-\"Photos\",  grant the access permit for \"TeacherPal\" in there.";
 "oldyear"="";
 
-
+"privacyVideo"="Do not record video，Please open \"Setting\"-\"Privacy\"-\"Microphone\"-\"TeacherPal\"!";
+"noticeConfirm"="The notice requires parents to confirm it?";
+"descripe"="描述......";
+"studentCount"="Students：";

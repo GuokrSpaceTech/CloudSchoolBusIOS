@@ -218,5 +218,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if(!textField.window.isKeyWindow)
+    {
+        [textField.window makeKeyAndVisible];
+    }
+}
 @end

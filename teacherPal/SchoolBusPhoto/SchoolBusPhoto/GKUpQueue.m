@@ -63,6 +63,7 @@ static GKUpQueue *gkqueue=nil;
 }
 -(void)addRequestToQueue:(NSString *)path name:(NSString *)name nameid:(NSString *)nameId studentid:(NSString *)std time:(NSNumber *)time fize:(NSNumber *)fsize classID:(NSNumber *)classid intro:(NSString *)intro tag:(NSString *)tag
 {
+    //NSLog(@"%@",tag);
     
     // 因为沙盒Documents 路径会变更当升级的时候
     // 取出沙盒Documents路径 动态拼接路径

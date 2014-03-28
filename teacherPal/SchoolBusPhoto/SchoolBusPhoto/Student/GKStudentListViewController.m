@@ -71,8 +71,10 @@
     else
         numLabel.textAlignment=UITextAlignmentCenter;
     numLabel.font=[UIFont systemFontOfSize:14];
-    numLabel.text=[NSString stringWithFormat:@"%d位学生",self.studentArr.count];
+    numLabel.text=[NSString stringWithFormat:@"%@%d",NSLocalizedString(@"studentCount", @""),self.studentArr.count];
     [bottomView addSubview:numLabel];
+    
+   // studentCount
     
     [self.view addSubview:bottomView];
     [numLabel release];

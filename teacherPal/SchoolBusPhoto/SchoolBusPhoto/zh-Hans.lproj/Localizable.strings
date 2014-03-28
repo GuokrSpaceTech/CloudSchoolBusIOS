@@ -157,7 +157,7 @@
 "noticeQ"="通知";
 "noticeDetail"="通知详情";
 
-"sendWho"="发给了谁";
+"sendWho"="谁已经确认";
 "huizhi"="谁回执了你";
 "load"="加载中";
 
@@ -234,4 +234,9 @@
 "zhaopianpinjiaruduilie"="照片提交成功，正在上传";
 "privacyPhoto"="无法读取相册图片，请打开设备\"设置\"-\"隐私\"-\"照片\"，开启\"教师助手\"访问权限。";
 
+"privacyVideo"="不能录制视频，请打开设备\"设置\"-\"隐私\"-\"麦克风\"，开启\"教师助手\"访问权限。";
+
 "oldyear"="岁";
+"noticeConfirm"="该通知需要家长确认吗?";
+"descripe"="Say Something";
+"studentCount"="学生:";

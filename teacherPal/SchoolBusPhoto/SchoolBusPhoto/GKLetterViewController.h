@@ -14,14 +14,14 @@
 #import "Letter.h"
 #import "GKMainViewController.h"
 #import "SRRefreshView.h"
-
+#import "MBProgressHUD.h"
 @interface GKLetterViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate,EKProtocol,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,SRRefreshDelegate,letterCellDelegate>
 {
     UITableView *_tableView;
     
     UITextField *inputField;
     UIView  *inputView;
-    
+    MBProgressHUD *HUD;
  
 }
 @property (nonatomic,retain)UITableView *_tableView;

@@ -63,7 +63,12 @@ static GKCameraManager *cameraManager;
 
 - (void)setup
 {
-    if (nil == _session) {
+    if (nil != _session)
+    {
+        [_session release];
+        _session=nil;
+    }
+  
         
         _session = [[AVCaptureSession alloc] init];
         [_session setSessionPreset:AVCaptureSessionPreset640x480];
@@ -87,6 +92,7 @@ static GKCameraManager *cameraManager;
         if (error)
         {
             NSLog(@"%@",error);
+            
         }
         if ([_session canAddInput:videoDeviceInput])
         {
@@ -99,7 +105,14 @@ static GKCameraManager *cameraManager;
         
         if (error)
         {
-            NSLog(@"%@", error);
+            //NSLog(@"%@", error);
+            if(error.code==-11852)
+            {
+                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"privacyVideo", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+                [alert show];
+                [alert release];
+            }
+    
         }
         
         if ([_session canAddInput:audioDeviceInput])
@@ -156,7 +169,7 @@ static GKCameraManager *cameraManager;
         
         //        });
         
-    }
+ 
 }
 
 
@@ -453,9 +466,11 @@ static GKCameraManager *cameraManager;
 
 - (void) startRecord
 {
+    
     @synchronized(self)
     {
         NSLog(@"~~~~~~~ %d",self.isCapturing);
+
         if (!self.isCapturing)
         {
             NSLog(@"starting capture");

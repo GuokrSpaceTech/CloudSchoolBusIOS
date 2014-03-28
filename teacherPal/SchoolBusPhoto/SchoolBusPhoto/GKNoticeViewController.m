@@ -192,7 +192,7 @@
     //int row=([user.studentArr count] )%4;
     int y = MIN(col+1, 4);
     if (studentView == nil) {
-        studentView=[[GKStudentView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-( y*50), 320,( y*50))];
+        studentView=[[GKStudentView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-( y*55), 320,( y*55))];
         
         studentView.backgroundColor=[UIColor whiteColor];
         studentView.delegate=self;
@@ -245,6 +245,10 @@
 }
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    if(!textField.window.isKeyWindow)
+    {
+        [textField.window makeKeyAndVisible];
+    }
     studentView.hidden=YES;
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField
@@ -253,6 +257,11 @@
 }
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
+  
+    if(!textView.window.isKeyWindow)
+    {
+        [textView.window makeKeyAndVisible];
+    }
      studentView.hidden=YES;
 }
 -(void)textViewDidEndEditing:(UITextView *)textView
@@ -279,7 +288,7 @@
             theImage = [info objectForKey:UIImagePickerControllerOriginalImage];
             
         }
-        NSData *data= UIImageJPEGRepresentation(theImage, 0.2);
+        NSData *data= UIImageJPEGRepresentation(theImage, 0.5);
         
         self.upData=data;
         selectImageView.image=[UIImage imageWithData:data];
@@ -503,10 +512,11 @@
 }
 -(void)buttonClick:(UIButton *)btn
 {
+    [_textView resignFirstResponder];
+    [_titleField resignFirstResponder];
     if(btn.tag==100)
     {
-        [_textView resignFirstResponder];
-        [_titleField resignFirstResponder];
+       
     }
     if(btn.tag==101)
     {
@@ -523,7 +533,9 @@
     if(btn.tag==102)
     {
         //发送
-       
+//        [_textView resignFirstResponder];
+//        [_titleField resignFirstResponder];
+
         if([_textView.text isEqualToString:@""])
         {
             UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"neironginput", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
@@ -539,7 +551,7 @@
             return;
         }
         
-        UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"该通知需要家长确认吗？" delegate:self cancelButtonTitle:NSLocalizedString(@"no", @"") otherButtonTitles:NSLocalizedString(@"yes", @""), nil];
+        UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"noticeConfirm", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"no", @"") otherButtonTitles:NSLocalizedString(@"yes", @""), nil];
         [alertView show];
         [alertView release];
         
@@ -589,7 +601,9 @@
         [HUD removeFromSuperview];
         HUD=nil;
     }
-    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"sendfailed", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+    
+    NSLog(@"超时");
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"network", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
     [alert show];
     [alert release];
 }

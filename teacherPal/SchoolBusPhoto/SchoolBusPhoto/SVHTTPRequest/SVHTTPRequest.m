@@ -227,6 +227,9 @@ static NSTimeInterval SVHTTPRequestTimeoutInterval = 20;
     
     self.operationRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
     
+
+    
+   // self.operationRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:120];
     // pipeline all but POST and downloads
     if(method != SVHTTPRequestMethodPOST && !savePath)
         self.operationRequest.HTTPShouldUsePipelining = YES;
@@ -234,7 +237,12 @@ static NSTimeInterval SVHTTPRequestTimeoutInterval = 20;
     if(method == SVHTTPRequestMethodGET)
         [self.operationRequest setHTTPMethod:@"GET"];
     else if(method == SVHTTPRequestMethodPOST)
+    {
         [self.operationRequest setHTTPMethod:@"POST"];
+        //self.operationRequest.timeoutInterval=120;
+        
+        //NSLog(@"%f",self.operationRequest.timeoutInterval);
+    }
     else if(method == SVHTTPRequestMethodPUT)
         [self.operationRequest setHTTPMethod:@"PUT"];
     else if(method == SVHTTPRequestMethodDELETE)

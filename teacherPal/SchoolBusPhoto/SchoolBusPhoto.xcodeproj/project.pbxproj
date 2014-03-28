@@ -2358,10 +2358,6 @@
 		2A32A57C18122C02007CAA8E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7,
-					armv7s,
-				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2379,8 +2375,8 @@
 					"${SRCROOT}/TestFlightSDK2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9EEAAC63-A04B-4B1A-90B3-2DA325B3B5AC";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9EEAAC63-A04B-4B1A-90B3-2DA325B3B5AC";
+				PROVISIONING_PROFILE = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2389,10 +2385,6 @@
 		2A32A57D18122C02007CAA8E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7,
-					armv7s,
-				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2410,8 +2402,8 @@
 					"$(SRCROOT)/TestFlightSDK2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9EEAAC63-A04B-4B1A-90B3-2DA325B3B5AC";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9EEAAC63-A04B-4B1A-90B3-2DA325B3B5AC";
+				PROVISIONING_PROFILE = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

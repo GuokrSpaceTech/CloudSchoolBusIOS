@@ -240,4 +240,4 @@
 "privacyPhoto"="Cannot access photo album, please enter the \"Setting\"-\"Privacy\"-\"Photos\",  grant the access permit for \"TeacherPal\" in there.";
 "oldyear"="";
 
-
+"privacyVideo"="Do not record video，Please open \"Setting\"-\"Privacy\"-\"Microphone\"-\"TeacherPal\"!";

@@ -568,7 +568,15 @@ static GKCameraManager *cameraManager;
                     _encoder = nil;
                     
                     NSString *oFilename = [NSString stringWithFormat:@"output%d.mp4",(int)[[NSDate date] timeIntervalSince1970]];
-                    NSString *oPath = [NSTemporaryDirectory() stringByAppendingPathComponent:oFilename];
+                    
+                    NSArray *arr= NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                    NSString *documentpath=[arr objectAtIndex:0];
+                    
+                    
+                     NSString* oPath = [documentpath stringByAppendingPathComponent:oFilename];
+                    
+                    
+                   // NSString *oPath = [NSTemporaryDirectory() stringByAppendingPathComponent:oFilename];
                     NSURL *outputURL = [NSURL fileURLWithPath:oPath];
                     
                     [self lowQuailtyWithInputURL:url outputURL:outputURL blockHandler:^(AVAssetExportSession *session) {

@@ -57,7 +57,7 @@
     while (YES) 
     {
         
-        NSLog(@"yesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyes");
+        //NSLog(@"yesyesyesyesyesyesyesyesyesyesyesyesyesyesyesyes");
         [syCondition lockWhenCondition:LOCK_CONDITION_HAVEDATA];
         
         

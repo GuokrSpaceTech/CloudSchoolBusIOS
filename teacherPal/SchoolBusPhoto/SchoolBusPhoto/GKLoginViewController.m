@@ -270,11 +270,20 @@
 
     
     
-    GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
-    [manager getLoadingPicFromCoreData];
+ 
     
+//    dispatch_sync(dispatch_get_global_queue(<#dispatch_queue_priority_t priority#>, <#unsigned long flags#>)(), ^{
+//       
+//        GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
+//        [manager getLoadingPicFromCoreData];
+//    });
+//
     
-    
+    dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        GKLoaderManager *manager=[GKLoaderManager createLoaderManager];
+      [ manager getLoadingPicFromCoreData];
+        
+    });
     
     [BPush bindChannel];
     

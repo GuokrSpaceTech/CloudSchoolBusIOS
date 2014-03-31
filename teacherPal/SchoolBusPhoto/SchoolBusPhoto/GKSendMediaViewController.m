@@ -288,7 +288,16 @@
     else
     {
         //播放视频
-        fvc.moviePath = self.moviePath;
+        
+        NSArray *arr=[self.moviePath componentsSeparatedByString:@"/"];
+        NSString *pathForName= [arr lastObject];
+        
+        NSArray *searchPathArr= NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentpath=[searchPathArr objectAtIndex:0];
+        NSString* filenamePath = [documentpath stringByAppendingPathComponent:pathForName];
+
+        
+        fvc.moviePath = filenamePath;
     }
     [self presentModalViewController:fvc animated:YES];
     [fvc release];

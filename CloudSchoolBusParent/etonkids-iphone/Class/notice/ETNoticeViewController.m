@@ -815,20 +815,19 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         cell.noticeTitleLabel.frame = CGRectMake(cell.noticeTitleLabel.frame.origin.x,
                                                  cell.noticeTitleLabel.frame.origin.y,
                                                  tSize.width,
-                                                 tSize.height);
+                                                  tSize.height);
     }
     
     calculateHeight += tSize.height + cell.noticeTitleLabel.frame.origin.y;
     
     
-    CGSize ctntSize = [info.noticeContent sizeWithFont:cell.noticeContentLabel.font constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:NSLineBreakByWordWrapping];
-    
+    CGSize ctntSize = [info.noticeContent sizeWithFont:cell.noticeContentLabel.font constrainedToSize:CGSizeMake(250, 10000) lineBreakMode:NSLineBreakByWordWrapping];
     if (ctntSize.height > cell.noticeContentLabel.font.lineHeight * 3 && !info.isMore)  //如果超过三行 只显示三行
     {
         cell.noticeContentLabel.text = info.noticeContent;
         cell.noticeContentLabel.frame = CGRectMake(50,
                                                    calculateHeight + 25,
-                                                   ctntSize.width,
+                                                   250,
                                                    cell.noticeContentLabel.font.lineHeight * 3);
         
         calculateHeight = calculateHeight + 25 + cell.noticeContentLabel.font.lineHeight * 3;
@@ -840,7 +839,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         cell.noticeContentLabel.text = info.noticeContent;
         cell.noticeContentLabel.frame = CGRectMake(50,
                                                    calculateHeight + 25,
-                                                   ctntSize.width,
+                                                   250,
                                                    ctntSize.height);
         calculateHeight = calculateHeight + 25 + ctntSize.height;
     }

@@ -309,7 +309,6 @@
 		78F841A918192083007722AE /* aboutBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F841A818192083007722AE /* aboutBack.png */; };
 		78F841AB181921C2007722AE /* aboutBack1.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F841AA181921C2007722AE /* aboutBack1.png */; };
 		78F841AD181922A1007722AE /* aboutlogo_EN.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F841AC181922A1007722AE /* aboutlogo_EN.png */; };
-		78F841B01819254B007722AE /* aboutBack2.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F841AE1819254B007722AE /* aboutBack2.png */; };
 		78F841B41819280D007722AE /* ETPrivateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F841B31819280D007722AE /* ETPrivateViewController.m */; };
 		78F841B7181943FB007722AE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F841B5181943FB007722AE /* Default-568h@2x.png */; };
 		78F841B8181943FB007722AE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F841B6181943FB007722AE /* Default@2x.png */; };
@@ -2586,7 +2585,7 @@
 		E3EA3AD6169E9490000DF7EE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = wpf;
 				TargetAttributes = {
 					E3EA3ADE169E9490000DF7EE = {
@@ -2899,7 +2898,6 @@
 				784086AE17F8087300BCDAFD /* ageBack.png in Resources */,
 				78E892F21828F34D00025EB5 /* 012.png in Resources */,
 				78FA83131803E65D009E9176 /* ETPasswordManagerViewController.xib in Resources */,
-				78F841B01819254B007722AE /* aboutBack2.png in Resources */,
 				789EAA4D183A07160029D4B0 /* navigationNoText.png in Resources */,
 				788C4C951896123800AEB513 /* yellowPoint.png in Resources */,
 				78FA831B18064E10009E9176 /* ETChangeGestureViewController.xib in Resources */,
@@ -3264,6 +3262,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
@@ -3301,6 +3300,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";

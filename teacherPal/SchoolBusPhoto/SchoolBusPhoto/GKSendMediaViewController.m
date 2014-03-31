@@ -39,11 +39,11 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     if (self.moviePath != nil)
     {
-        self.titlelabel.text = @"上传视频";
+        self.titlelabel.text =NSLocalizedString(@"MovieUp", @""); //@"上传视频";
     }
     else if (self.sourcePicture != nil)
     {
-        self.titlelabel.text = @"上传图片";
+        self.titlelabel.text = NSLocalizedString(@"UpPic", @"");
     }
     
     

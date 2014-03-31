@@ -288,7 +288,7 @@
             theImage = [info objectForKey:UIImagePickerControllerOriginalImage];
             
         }
-        NSData *data= UIImageJPEGRepresentation(theImage, 0.5);
+        NSData *data= UIImageJPEGRepresentation(theImage, 0.3);
         
         self.upData=data;
         selectImageView.image=[UIImage imageWithData:data];

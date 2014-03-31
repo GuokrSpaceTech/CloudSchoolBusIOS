@@ -242,5 +242,6 @@
 
 "privacyVideo"="Do not record video，Please open \"Setting\"-\"Privacy\"-\"Microphone\"-\"TeacherPal\"!";
 "noticeConfirm"="The notice requires parents to confirm it?";
-"descripe"="描述......";
+"descripe"="Say something......";
 "studentCount"="Students：";
+"MovieUp"="Upload";

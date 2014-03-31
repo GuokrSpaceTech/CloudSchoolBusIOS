@@ -39,11 +39,11 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     if (self.moviePath != nil)
     {
-        self.titlelabel.text = @"上传视频";
+        self.titlelabel.text =NSLocalizedString(@"MovieUp", @""); //@"上传视频";
     }
     else if (self.sourcePicture != nil)
     {
-        self.titlelabel.text = @"上传图片";
+        self.titlelabel.text = NSLocalizedString(@"UpPic", @"");
     }
     
     
@@ -288,7 +288,16 @@
     else
     {
         //播放视频
-        fvc.moviePath = self.moviePath;
+        
+        NSArray *arr=[self.moviePath componentsSeparatedByString:@"/"];
+        NSString *pathForName= [arr lastObject];
+        
+        NSArray *searchPathArr= NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentpath=[searchPathArr objectAtIndex:0];
+        NSString* filenamePath = [documentpath stringByAppendingPathComponent:pathForName];
+
+        
+        fvc.moviePath = filenamePath;
     }
     [self presentModalViewController:fvc animated:YES];
     [fvc release];

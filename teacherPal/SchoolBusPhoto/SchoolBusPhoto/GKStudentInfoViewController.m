@@ -11,10 +11,13 @@
 #import "ETNicknameViewController.h"
 #import "GTMBase64.h"
 #import "UIImageView+WebCache.h"
-
+#import "GKUserLogin.h"
 #define TAGCELL 500
 
 #define ACTIONTAG 600
+
+#define ALERTPASSWORD 101
+#define ALERTCLASS 100
 @interface GKStudentInfoViewController ()
 
 @end
@@ -48,6 +51,18 @@
     [buttonBack addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     
     
+    UIButton* photobutton=[UIButton buttonWithType:UIButtonTypeCustom];
+    photobutton.frame=CGRectMake(240, 8, 70, 30);
+    [photobutton setTitle:NSLocalizedString(@"leave", @"") forState:UIControlStateNormal];
+    photobutton.titleLabel.font=[UIFont systemFontOfSize:15];
+    [photobutton setBackgroundImage:[UIImage imageNamed:@"inclass.png"] forState:UIControlStateNormal];
+    [photobutton setBackgroundImage:[UIImage imageNamed:@"inclassed.png"] forState:UIControlStateHighlighted];
+    
+    //[photobutton setImage:[UIImage imageNamed:@"upNormal.png"] forState:UIControlStateNormal];
+    //[photobutton setImage:[UIImage imageNamed:@"upHight.png"] forState:UIControlStateHighlighted];
+    [photobutton addTarget:self action:@selector(leftClass:) forControlEvents:UIControlEventTouchUpInside];
+    [navigationView addSubview:photobutton];
+    
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, navigationView.frame.size.height+navigationView.frame.origin.y, 320, self.view.frame.size.height-( navigationView.frame.size.height+navigationView.frame.origin.y)) style:UITableViewStyleGrouped];
     _tableView.backgroundColor=[UIColor clearColor];
     _tableView.backgroundColor=[UIColor colorWithRed:232/255.0 green:229/255.0 blue:220/255.0 alpha:1];
@@ -61,12 +76,25 @@
     
 	// Do any additional setup after loading the view.
 }
+-(void)leftClass:(UIButton *)btn
+{
+//    "hasleave"="是否";
+//    "xleftcass"="移除班级？";
+    NSString *string=[NSString stringWithFormat:@"%@ %@ %@",NSLocalizedString(@"hasleave", @""),st.cnname,NSLocalizedString(@"xleftcass", @"")];
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:string delegate:self cancelButtonTitle:NSLocalizedString(@"yes", @"") otherButtonTitles:NSLocalizedString(@"no", @""), nil];
+    alert.tag=ALERTCLASS;
+    [alert show];
+    [alert release];
+
+}
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
 }
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 2;
@@ -74,9 +102,9 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(section==0)
-        return 2;
+        return 3;
     else
-        return 4;
+        return 5;
 }
  -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -124,11 +152,34 @@
         }
         
         
+        if(indexPath.section==0)
+        {
+            if(indexPath.row==1)
+            {
+                UILabel *passbtn=[[UILabel alloc]initWithFrame:CGRectMake(240, 11, 50, 20)];
+                passbtn.userInteractionEnabled=YES;
+                passbtn.backgroundColor=[UIColor clearColor];
+                passbtn.text=NSLocalizedString(@"resetpass", @"");
+                passbtn.textColor=[UIColor blueColor];
+                [cell.contentView addSubview:passbtn];
+                passbtn.tag=TAGCELL+3;
+                
+                UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(passwordReset:)];
+                tap.numberOfTapsRequired=1;
+                [passbtn addGestureRecognizer:tap];
+                [tap release];
+         
+                
+            }
+        }
+
+        
+        
     }
     
     UILabel *nameLabel=(UILabel *)[cell.contentView viewWithTag:TAGCELL];
     UILabel *realLabel=(UILabel *)[cell.contentView viewWithTag:TAGCELL+1];
-
+   // UIButton *resetBtn=(UIButton *)[cell.contentView viewWithTag:TAGCELL+3];
     UIImageView *imageView=(UIImageView*)[cell.contentView viewWithTag:TAGCELL+2];
 
 
@@ -138,38 +189,48 @@
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
         if(indexPath.row==0)
         {
-            nameLabel.text=NSLocalizedString(@"realName", @"");
-            realLabel.text=st.cnname;
+            nameLabel.text=NSLocalizedString(@"parentaccount", @"");//NSLocalizedString(@"realName", @"");
+            realLabel.text=st.username;
         }
-        else
+        else if(indexPath.row==1)
         {
+            nameLabel.text=NSLocalizedString(@"passwordlogin", @"");//NSLocalizedString(@"realName", @"");
+            realLabel.text=@"******";
+            
+            realLabel.frame=CGRectMake(100, 11, 100, 20);
+            
+            
+        }
+        else{
+            nameLabel.text=NSLocalizedString(@"phone", @"");
+            realLabel.text=[NSString stringWithFormat:@"%@",st.mobile];
 //            "state"="服务状态";
 //            "Notservice"="尚未开通";
 //            "Inservice"="已开通";
-//            "renewal"="服务过期";
-            nameLabel.text=NSLocalizedString(@"state", @"");
-            
-            if(st.orderendtime==nil)
-            {
-                realLabel.text=NSLocalizedString(@"Notservice", @"");
-                realLabel.textColor=[UIColor redColor];
-                
-            }
-            else
-            {
-                int time=[[NSDate date] timeIntervalSinceNow];
-                if(time<[[st orderendtime] integerValue])
-                {
-                    realLabel.text=NSLocalizedString(@"Inservice", @"");
-                    realLabel.textColor=[UIColor blackColor];
-                }
-                else
-                {
-                    realLabel.text=NSLocalizedString(@"renewal", @"");
-                    realLabel.textColor=[UIColor redColor];
-                }
-                
-            }
+////            "renewal"="服务过期";
+//            nameLabel.text=NSLocalizedString(@"state", @"");
+//            
+//            if(st.orderendtime==nil)
+//            {
+//                realLabel.text=NSLocalizedString(@"Notservice", @"");
+//                realLabel.textColor=[UIColor redColor];
+//                
+//            }
+//            else
+//            {
+//                int time=[[NSDate date] timeIntervalSinceNow];
+//                if(time<[[st orderendtime] integerValue])
+//                {
+//                    realLabel.text=NSLocalizedString(@"Inservice", @"");
+//                    realLabel.textColor=[UIColor blackColor];
+//                }
+//                else
+//                {
+//                    realLabel.text=NSLocalizedString(@"renewal", @"");
+//                    realLabel.textColor=[UIColor redColor];
+//                }
+//                
+//            }
 
             
         }
@@ -192,11 +253,16 @@
                 
                 break;
             case 1:
+                nameLabel.text=NSLocalizedString(@"realName", @"");
+                realLabel.text=st.cnname;
+                break;
+
+            case 2:
                
                 nameLabel.text=NSLocalizedString(@"nickName1", @"");
                 realLabel.text=st.enname;
                 break;
-            case 2:
+            case 3:
                 nameLabel.text=NSLocalizedString(@"Gender", @"");
                 
                 switch ([st.sex intValue]) {
@@ -211,7 +277,7 @@
                         break;
                 }
                 break;
-            case 3:
+            case 4:
                 
                 nameLabel.text=NSLocalizedString(@"birthday", @"");
                 realLabel.text=st.birthday;
@@ -228,12 +294,24 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
    if(indexPath.section==1)
    {
-       if(indexPath.row==1)
+       if(indexPath.row==2)
        {
            //修改昵称
            ETNicknameViewController *nickVC=[[ETNicknameViewController alloc]initWithNibName:@"ETNicknameViewController" bundle:nil];
            nickVC.cstudent=self.st;
            nickVC.delegate=self;
+           nickVC.type=2;
+           [self.navigationController pushViewController:nickVC animated:YES];
+           [nickVC release];
+       }
+       if(indexPath.row==1)
+       {
+           //修改名称
+           
+           ETNicknameViewController *nickVC=[[ETNicknameViewController alloc]initWithNibName:@"ETNicknameViewController" bundle:nil];
+           nickVC.cstudent=self.st;
+           nickVC.delegate=self;
+           nickVC.type=1;
            [self.navigationController pushViewController:nickVC animated:YES];
            [nickVC release];
        }
@@ -245,7 +323,7 @@
            action.tag=ACTIONTAG;
            [action release];
        }
-       if(indexPath.row==2)
+       if(indexPath.row==3)
        {
            //修改性别
 //           "Princess"="女孩";
@@ -259,7 +337,7 @@
            
            
        }
-       if(indexPath.row==3)
+       if(indexPath.row==4)
        {
            //修改生日
            
@@ -286,7 +364,55 @@
     return 44;
 }
 
-
+-(void)passwordReset:(UITapGestureRecognizer *)tap
+{
+    if(tap.state==UIGestureRecognizerStateEnded)
+    {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"提示") message:NSLocalizedString(@"passwordalert", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"确定") otherButtonTitles:NSLocalizedString(@"cancel", @"确定"), nil];
+        alert.tag=ALERTPASSWORD;
+        [alert show];
+        [alert release];
+    }
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(alertView.tag==ALERTCLASS)
+    {
+        if(buttonIndex==0)
+        {
+            if(HUD==nil)
+            {
+                HUD=[[MBProgressHUD alloc]initWithView:self.view];
+                HUD.labelText=NSLocalizedString(@"load", @"");
+                [HUD show:YES];
+                [self.view addSubview:HUD];
+                [HUD release];
+            }
+            
+            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:st.studentid,@"studentid",st.uid,@"studentuid",@"1",@"type",nil];
+            [[EKRequest Instance]EKHTTPRequest:inclass parameters:dic requestMethod:GET forDelegate:self];
+        }
+       
+    }
+    else if(alertView.tag==ALERTPASSWORD)
+    {
+        if(buttonIndex==0)
+        {
+            //重置
+            if(HUD==nil)
+            {
+                HUD=[[MBProgressHUD alloc]initWithView:self.view];
+                HUD.labelText=NSLocalizedString(@"load", @"");
+                [HUD show:YES];
+                [self.view addSubview:HUD];
+                [HUD release];
+            }
+            
+            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:st.parentid,@"pid", nil];
+            [[EKRequest Instance]EKHTTPRequest:resetpassword parameters:dic requestMethod:POST forDelegate:self];
+        }
+    }
+}
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (actionSheet.tag == ACTIONTAG)
@@ -337,6 +463,14 @@
             if([st.sex integerValue]==2 || [st.sex integerValue]==0)//如果学生是女
             {
                 //修改为男
+                if(HUD==nil)
+                {
+                    HUD=[[MBProgressHUD alloc]initWithView:self.view];
+                    HUD.labelText=NSLocalizedString(@"load", @"");
+                    [HUD show:YES];
+                    [self.view addSubview:HUD];
+                    [HUD release];
+                }
                 NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"sex",st.studentid,@"studentid",st.uid,@"uid" , nil];
              
                 [[EKRequest Instance] EKHTTPRequest:student parameters:param requestMethod:POST forDelegate:self];
@@ -347,6 +481,14 @@
         else if(buttonIndex==1)
         {
             //女
+            if(HUD==nil)
+            {
+                HUD=[[MBProgressHUD alloc]initWithView:self.view];
+                HUD.labelText=NSLocalizedString(@"load", @"");
+                [HUD show:YES];
+                [self.view addSubview:HUD];
+                [HUD release];
+            }
             if([st.sex integerValue]==1|| [st.sex integerValue]==0)
             {
                 NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"sex",st.studentid,@"studentid",st.uid,@"uid" ,nil];
@@ -385,7 +527,14 @@
         if ([st.birthday isEqualToString:birStr]) {
             return;
         }
-        
+        if(HUD==nil)
+        {
+            HUD=[[MBProgressHUD alloc]initWithView:self.view];
+            HUD.labelText=NSLocalizedString(@"load", @"");
+            [HUD show:YES];
+            [self.view addSubview:HUD];
+            [HUD release];
+        }
             NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:birStr,@"birthday",st.studentid,@"studentid",st.uid,@"uid" ,nil];
             [[EKRequest Instance] EKHTTPRequest:student parameters:param requestMethod:POST forDelegate:self];
     }
@@ -406,7 +555,14 @@
 {
 //     param = [NSDictionary dictionaryWithObjectsAndKeys:base64,@"fbody",[NSString stringWithFormat:@"%d",CurrentStudentID],@"id",@"1",@"isstudent", nil];
     
-    
+    if(HUD==nil)
+    {
+        HUD=[[MBProgressHUD alloc]initWithView:self.view];
+        HUD.labelText=NSLocalizedString(@"load", @"");
+        [HUD show:YES];
+        [self.view addSubview:HUD];
+        [HUD release];
+    }
     NSData *mydata=UIImageJPEGRepresentation(image, 0.5);
     
     NSString * base64 = [[NSString alloc] initWithData:[GTMBase64 encodeData:mydata] encoding:NSUTF8StringEncoding];
@@ -419,6 +575,49 @@
 - (void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
 {
     NSLog(@"error code : %d",code);
+    
+    if(HUD)
+    {
+        [HUD removeFromSuperview];
+        HUD=nil;
+    }
+    if(method==resetpassword)
+    {
+        if(code==1)
+        {
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"passwordresetsuccess", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+
+        }
+        else if (code==-4)
+        {
+            // 不是老师
+        }
+        else if(code==-2)
+        {
+            //传入参数为空
+        }
+        else if (code==-3)
+        {
+            //家长不存在
+        }
+    }
+    if(method==inclass)
+    {
+        if(code==1)
+        {
+            
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"leaveclass", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+            GKUserLogin *user=[GKUserLogin currentLogin];
+            [user.studentArr removeObject:self.st];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
+    
     if (method == avatar)
     {
         if(code == 1)
@@ -426,7 +625,7 @@
             
             NSString *result = [[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] autorelease];
             
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"avatorsuccess", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"avatorsuccess", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
             [alert show];
             [alert release];
             
@@ -495,6 +694,12 @@
 }
 - (void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
 {
+    
+    if(HUD)
+    {
+        [HUD removeFromSuperview];
+        HUD=nil;
+    }
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"network", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
     [alert show];
     [alert release];

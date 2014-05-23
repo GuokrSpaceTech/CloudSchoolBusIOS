@@ -967,11 +967,12 @@
         NSLog(@"introduce:??????????????????????????????????%@",introduce);
         
 
-        
+        NSNumber *teacherid=[NSNumber numberWithInt:[user.teacher.teacherid integerValue]];
         [[DBManager shareInstance]insertObject:^(NSManagedObject *object) {
             UpLoader *aa=(UpLoader *)object;
             aa.image=filenamePath; //路径
             aa.nameID=photo.nameId;
+            aa.teacherid=teacherid;
             aa.classUid=[NSNumber numberWithInt:[user.classInfo.uid integerValue]];
             aa.name=representation.filename;
             aa.studentId=studentId;
@@ -987,7 +988,7 @@
             
             NSLog(@"写数据库成功 ----------------------上传数据");
             
-        [manager addWraperToArr:filenamePath name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:tagcontent];
+        [manager addWraperToArr:filenamePath name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:tagcontent teacherid:teacherid];
 
             
         } failed:^(NSError *err) {

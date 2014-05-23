@@ -10,9 +10,9 @@
 #import "KKNavigationController.h"
 #import "GKLoaderManager.h"
 #import "GKUpQueue.h"
-#import "TestFlight.h"
+
 #import "DBManager.h"
-#define NSLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#import "GKMainViewController.h"
 
 @interface GKUpLoaderViewController ()
 
@@ -32,7 +32,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
+    [(KKNavigationController *)self.navigationController setNavigationTouch:NO];
 }
 -(void)removieFinished:(NSNotification *)no
 {
@@ -60,10 +60,23 @@
 
 }
 
--(void)back:(UIButton *)btn
+-(void)leftClick:(UIButton *)btn
 {
     
-    [self.navigationController popViewControllerAnimated:YES];
+    GKMainViewController *main=[GKMainViewController share];
+    if(main.state==0)
+    {
+        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
+            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionLeft];
+        }
+    }
+    else
+    {
+        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
+            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionNone];
+        }
+    }
+    
 }
 - (void)viewDidLoad
 {
@@ -84,7 +97,7 @@
     [buttonBack setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     [buttonBack setBackgroundImage:[UIImage imageNamed:@"backH.png"] forState:UIControlStateHighlighted];
     [navigationView addSubview:buttonBack];
-    [buttonBack addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [buttonBack addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
     
     
 

@@ -159,7 +159,7 @@
 
 "sendWho"="谁已经确认";
 "huizhi"="谁回执了你";
-"load"="加载中";
+"load"="加载中...";
 
 "grade"="grade.png";
 "gradeH"="gradeH.png";
@@ -242,3 +242,39 @@
 "studentCount"="学生:";
 
 "MovieUp"="上传视频";
+
+
+
+"add"="增加";
+"addstudent"="增加学生";
+"studentinput"="请输入学生全名和家长手机号";
+"nameinput"="请输入学生全名";
+"telinput"="请输入家长手机号";
+"telformat"="请输入正确的手机号";
+"selectstudentcorrect"="下列信息中有您需要的学生吗？请选择";
+"telhelp"="若需要帮助，请致电客服400";
+"studentnew"="新建学生";
+"joinclass"="将该学生加入班级";
+"allreadystudent"="该学生已在班级里了";
+"successjoinclass"="学生已成功加入班级";
+"parentaccount"="家长账号";
+"phone"="家长手机";
+"Relationship"="与学生关系";
+"father"="爸爸";
+"mother"="妈妈";
+"Grandpa"="爷爷/姥爷";
+"Grandma"="奶奶/姥姥";
+"other"="其他";
+"confirmrelation"="家长手机已存在，请确认是否为同一家长";
+"theirkids"="已关联学生";
+"LinkParent"="同一家长关联";
+"telhelpdiffient"="若不是同一家长，请致电客服:404-606-3996";
+"resetpass"="重置";
+"passwordalert"="确认将家长密码重置为111111";
+"leave"="离班";
+"passwordresetsuccess"="密码已重置为111111";
+"modifyname"="修改姓名";
+"leaveclass"="离班成功";
+
+"hasleave"="是否";
+"xleftcass"="移除班级？";

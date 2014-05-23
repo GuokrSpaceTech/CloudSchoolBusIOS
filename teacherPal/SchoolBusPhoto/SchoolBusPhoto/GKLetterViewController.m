@@ -364,8 +364,7 @@
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
 {
     NSLog(@"%d",code);
-//    NSString *str=[[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding] autorelease];
-//    NSLog(@"%@",str);
+  
        [_slimeView endRefresh];
 //    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"code %d",code] message:str delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
 //    [alert show];

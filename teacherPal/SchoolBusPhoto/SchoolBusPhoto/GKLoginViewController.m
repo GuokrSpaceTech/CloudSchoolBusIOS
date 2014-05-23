@@ -311,8 +311,8 @@
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
 {
   
-    NSString *str=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",str);
+    NSString *st=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",st);
     NSDictionary *dic= [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
     GKUserLogin *user=[GKUserLogin currentLogin];
     if(method==tsignin && code==1)
@@ -370,6 +370,18 @@
         [info release];
 
         
+        NSDictionary *teacherInfo=[dic objectForKey:@"teacher"];
+        GKTeacher *teacher=[[GKTeacher alloc]init];
+        teacher.avatar=[teacherInfo objectForKey:@"avatar"];
+        teacher.ismainid=[NSString stringWithFormat:@"%@",[teacherInfo objectForKey:@"ismainid"]];
+        teacher.mobile=[NSString stringWithFormat:@"%@",[teacherInfo objectForKey:@"mobile"]];
+        teacher.sex=[NSString stringWithFormat:@"%@",[teacherInfo objectForKey:@"sex"]];
+        teacher.teacherid=[NSString stringWithFormat:@"%@",[teacherInfo objectForKey:@"teacherid"]];
+        teacher.nikename=[teacherInfo objectForKey:@"nikename"];
+        teacher.teachername=[teacherInfo objectForKey:@"teachername"];
+        user.teacher=teacher;
+        [teacher release];
+        
         NSMutableArray *studentArr=[[NSMutableArray alloc]init];
         NSArray *_studentArr=[dic objectForKey:@"studentinfo"];
         for (int i=0; i<[_studentArr count]; i++) {
@@ -392,9 +404,11 @@
             student.studentno=[studentInfo objectForKey:@"studentno"];
             student.isinstalled=[studentInfo objectForKey:@"isinstalled"];
             student.online=[studentInfo objectForKey:@"online"];
-            student.uid=[studentInfo objectForKey:@"uid"];
+            student.uid=[studentInfo objectForKey:@"uid_student"];
             student.stunumber=[studentInfo objectForKey:@"studentno"];
             student.orderendtime=[studentInfo objectForKey:@"orderendtime"];
+            student.username=[NSString stringWithFormat:@"%@",[studentInfo objectForKey:@"username"]];
+            student.parentid=[NSNumber numberWithInt:[[studentInfo objectForKey:@"parentid"] integerValue]];
             [studentArr addObject:student];
             [student release];
             

@@ -3235,6 +3235,7 @@
 		E3EA3AFE169E9491000DF7EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3249,7 +3250,7 @@
 					"${SDK_DIR}/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "etonkids-iphone/etonkids-iphone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/\"/**",
 					"\"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/weixin/\"/**",
@@ -3266,6 +3267,7 @@
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3273,6 +3275,7 @@
 		E3EA3AFF169E9491000DF7EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3287,7 +3290,7 @@
 					"${SDK_DIR}/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "etonkids-iphone/etonkids-iphone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/\"/**",
 					"\"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/weixin/\"/**",
@@ -3304,6 +3307,7 @@
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

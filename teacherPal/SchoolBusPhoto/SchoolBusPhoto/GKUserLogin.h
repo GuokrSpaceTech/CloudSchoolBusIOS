@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ClassInfo.h"
+#import "GKTeacher.h"
 typedef enum {LOGINSERVER,LOGINOFF} LoginState;
 
 /**
@@ -30,6 +31,7 @@ typedef enum {LOGINSERVER,LOGINOFF} LoginState;
 @property (nonatomic,copy) NSString *_sid;
 
 @property (nonatomic,retain) ClassInfo *classInfo;
+@property (nonatomic,retain)GKTeacher *teacher;
 @property (nonatomic,retain)NSMutableArray *studentArr;
 @property (nonatomic,retain)NSString *upIP;
 

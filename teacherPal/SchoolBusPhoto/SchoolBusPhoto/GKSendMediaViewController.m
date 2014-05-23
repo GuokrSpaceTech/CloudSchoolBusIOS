@@ -429,7 +429,7 @@
    // NSDateFormatter *data
     
     NSString *imageName=[format stringFromDate:createDate];//[NSString stringWithFormat:@"%@",[NSNumber numberWithInt:[timestamp intValue]]];
-    
+    NSNumber *teacherid=[NSNumber numberWithInt:[user.teacher.teacherid integerValue]];
     [[DBManager shareInstance]insertObject:^(NSManagedObject *object) {
         UpLoader *aa=(UpLoader *)object;
         aa.image=filePath;
@@ -442,13 +442,14 @@
         aa.introduce = ([contentTV.text isEqualToString:NSLocalizedString(@"descripe", @"")] ? @"" : contentTV.text);
         aa.tag=(photoTag == nil ? @"" : photoTag);
         aa.isUploading=[NSNumber numberWithInt:1];
+        aa.teacherid=teacherid;
         aa.smallImage=UIImageJPEGRepresentation(thumbImgV.image, 0.1);
         
     } entityName:@"UpLoader" success:^{
         
         NSLog(@"cccccfggggg");
         
-        [manager addWraperToArr:filePath name:imageName iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:([contentTV.text isEqualToString:NSLocalizedString(@"descripe", @"")] ? @"" : contentTV.text) data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"":photoTag)];
+        [manager addWraperToArr:filePath name:imageName iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:([contentTV.text isEqualToString:NSLocalizedString(@"descripe", @"")] ? @"" : contentTV.text) data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"":photoTag) teacherid:teacherid];
         
         
     } failed:^(NSError *err) {

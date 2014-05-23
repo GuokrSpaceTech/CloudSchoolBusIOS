@@ -8,8 +8,8 @@
 //#import "JSONKit.h"
 //#import "SBJSON.h"
 
-//#define SERVERURL @"http://192.168.1.67:8004/"
-#define SERVERURL @"http://v33.service.yunxiaoche.com/"
+#define SERVERURL @"http://apitest.yunxiaoche.com/"
+//#define SERVERURL @"http://v33.service.yunxiaoche.com/"
 //#define SERVERURL @"http://rest.rayeu.com/"
 
 
@@ -126,6 +126,18 @@ static EKRequest * instance = nil;
             return @"test";
         case uploadimg:
             return @"uploadimg";
+        case addStudent:
+            return @"addStudent";
+        case searchStudent:
+            return @"searchStudent";
+        case inclass:
+            return @"inclass";
+        case mobileStudent:
+            return @"mobileStudent";
+        case relationship:
+            return @"relationship";
+        case resetpassword:
+            return @"resetpassword";
         default:
             return nil;
     }

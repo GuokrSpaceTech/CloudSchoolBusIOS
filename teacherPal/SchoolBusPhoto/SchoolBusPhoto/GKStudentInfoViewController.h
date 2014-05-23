@@ -12,8 +12,12 @@
 #import "ETNicknameViewController.h"
 #import "EKRequest.h"
 #import "MTCustomActionSheet.h"
-@interface GKStudentInfoViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate,ETNicknameViewControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EKProtocol,MTCustomActionSheetDelegate>
-
+#import "MBProgressHUD.h"
+@interface GKStudentInfoViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate,ETNicknameViewControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EKProtocol,MTCustomActionSheetDelegate,UIAlertViewDelegate>
+{
+    
+    MBProgressHUD *HUD;
+}
 @property (nonatomic,retain)Student *st;
 @property (nonatomic,retain)UITableView *_tableView;
 //@property (nonatomic,retain)NSArray *arr;

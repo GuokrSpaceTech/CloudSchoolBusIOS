@@ -26,7 +26,7 @@
 +(GKLoaderManager *)createLoaderManager;
 -(void)getLoadingPicFromCoreData;
 //-(BOOL)addNewPicToCoreData:(NSString *)path name:(NSString *)name iSloading:(NSNumber *)isUploading nameId:(NSString *)nameId studentId:(NSString *)std time:(NSNumber *)time fsize:(NSNumber *)fize classID:(NSNumber *)classid intro:(NSString *)intro data:(NSData *)imageData tag:(NSString *)tag;
--(void)addWraperToArr:(NSString *)path name:(NSString *)name iSloading:(NSNumber *)isUploading nameId:(NSString *)nameId studentId:(NSString *)tid time:(NSNumber *)time fsize:(NSNumber *)fize classID:(NSNumber *)classid intro:(NSString *)intro data:(NSData *)imageData tag:(NSString *)tag;
+-(void)addWraperToArr:(NSString *)path name:(NSString *)name iSloading:(NSNumber *)isUploading nameId:(NSString *)nameId studentId:(NSString *)tid time:(NSNumber *)time fsize:(NSNumber *)fize classID:(NSNumber *)classid intro:(NSString *)intro data:(NSData *)imageData tag:(NSString *)tag teacherid:(NSNumber*)teacherid;
 -(void)removeWraperFromArr:(NSString *)key;
 //-(void)changeCoreDataLoadingState:(NSString *)nameid;
 //-(BOOL)deleteCoreDataLoadingState:(NSString *)nameid;

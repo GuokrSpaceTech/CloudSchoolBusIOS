@@ -34,6 +34,7 @@
     [_progressView release];
     self.intro=nil;
     self.imageData=nil;
+    self.teacherid=nil;
     [super dealloc];
 }
 -(id)init

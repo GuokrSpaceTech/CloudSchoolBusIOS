@@ -9,8 +9,9 @@
 
 //#define SERVERURL @"http://api.yunxiaoche.com/"
 //#define SERVERURL @"http://apitest.yunxiaoche.com/"
-//#define SERVERURL @"http://rest.rayeu.com/"
-#define SERVERURL @"http://v33.service.yunxiaoche.com/"
+//#define SERVERURL @"http://apitest.yunxiaoche.com/"
+#define SERVERURL @"http://192.168.1.18:81/"
+//#define SERVERURL @"http://v33.service.yunxiaoche.com/"
 
 @interface EKRequest()
 

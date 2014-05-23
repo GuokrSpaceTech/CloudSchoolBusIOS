@@ -562,6 +562,8 @@
 
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
 {
+    //NSString *str=[[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding] autorelease];
+    //NSLog(@"%@",str);
     if(HUD)
     {
         [HUD removeFromSuperview];

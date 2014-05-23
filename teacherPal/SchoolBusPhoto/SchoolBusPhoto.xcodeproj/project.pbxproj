@@ -20,6 +20,7 @@
 		1102A7FB181A5E1200E6295C /* guanlianbottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 1102A7FA181A5E1200E6295C /* guanlianbottom.png */; };
 		1102A7FE181A715D00E6295C /* guanlian-B-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1102A7FC181A715D00E6295C /* guanlian-B-1.png */; };
 		1102A7FF181A715D00E6295C /* guanlian-B-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1102A7FD181A715D00E6295C /* guanlian-B-2.png */; };
+		110AFD5B192DCD1D00CEFECE /* inclass.png in Resources */ = {isa = PBXBuildFile; fileRef = 110AFD59192DCD1D00CEFECE /* inclass.png */; };
 		111E8CDE181E532400234014 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E8CC2181E532400234014 /* MKAnnotationView+WebCache.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		111E8CDF181E532400234014 /* NSData+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E8CC4181E532400234014 /* NSData+GIF.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		111E8CE0181E532400234014 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E8CC6181E532400234014 /* SDImageCache.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -43,6 +44,10 @@
 		113BCAC6182B5F8E0079E9AD /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = 113BCAC5182B5F8E0079E9AD /* line.png */; };
 		114B58FF1820AD5500163A4A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114B58FE1820AD5500163A4A /* ImageIO.framework */; };
 		114B59021821220E00163A4A /* GKShowBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B59011821220E00163A4A /* GKShowBigImageViewController.m */; };
+		114D85371920773A00428711 /* searchCellContent.png in Resources */ = {isa = PBXBuildFile; fileRef = 114D85361920773A00428711 /* searchCellContent.png */; };
+		114D853A1920792C00428711 /* searchselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 114D85381920792C00428711 /* searchselected.png */; };
+		114D853B1920792C00428711 /* searchselect.png in Resources */ = {isa = PBXBuildFile; fileRef = 114D85391920792C00428711 /* searchselect.png */; };
+		114DEFA7190A73B3008413DE /* GKAddStudentSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114DEFA6190A73B3008413DE /* GKAddStudentSearchViewController.m */; };
 		114F66A71887C16E0071D2AE /* kuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 114F66A61887C16E0071D2AE /* kuang.png */; };
 		1155E92B1856BC75005D09C1 /* KKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1155E9291856BC74005D09C1 /* KKNavigationController.m */; };
 		1165E27C182CFCE000B60A81 /* pic-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1165E278182CFCE000B60A81 /* pic-2.png */; };
@@ -203,6 +208,15 @@
 		11AF3B1718168F3400B36176 /* login_selBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3B1518168F3400B36176 /* login_selBtn.png */; };
 		11AF3B1918168FC400B36176 /* loginBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3B1818168FC400B36176 /* loginBtn@2x.png */; };
 		11B218171835C624002825FA /* GKNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B218161835C624002825FA /* GKNoticeViewController.m */; };
+		11B364BA191CB62C003E087E /* GKTeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B364B9191CB62C003E087E /* GKTeacher.m */; };
+		11B364BE191CBF1F003E087E /* UpLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B364BD191CBF1F003E087E /* UpLoader.m */; };
+		11B405141918C82400E56A59 /* GKAddStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B405131918C82400E56A59 /* GKAddStudentViewController.m */; };
+		11B405171918C85400E56A59 /* GKSearchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B405161918C85400E56A59 /* GKSearchListViewController.m */; };
+		11B4051A1918CC4400E56A59 /* GKSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B405191918CC4400E56A59 /* GKSearchCell.m */; };
+		11B4051B1918CE3700E56A59 /* GKAddStudentSearchViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 114DEFA5190A73B3008413DE /* GKAddStudentSearchViewController.h */; };
+		11B4051E1918D09E00E56A59 /* GKStudentAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B4051D1918D09E00E56A59 /* GKStudentAdd.m */; };
+		11B470D81925CB5300CFFEC3 /* headplaceholder_big.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B470D71925CB5300CFFEC3 /* headplaceholder_big.png */; };
+		11B470DA1925CDFC00CFFEC3 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B470D91925CDFC00CFFEC3 /* photo.png */; };
 		11B7D684188F6DD70036B7AA /* GKSaySomethingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B7D683188F6DD70036B7AA /* GKSaySomethingView.m */; };
 		11B8492E18C058DD00D9205C /* corners@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B8492D18C058DD00D9205C /* corners@2x.png */; };
 		11B852A1183221CF005FA5B9 /* ETNicknameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B85296183221CF005FA5B9 /* ETNicknameViewController.m */; };
@@ -219,7 +233,12 @@
 		11B852BF18334D52005FA5B9 /* upbuttonH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B852BB18334D52005FA5B9 /* upbuttonH.png */; };
 		11B852CA18335275005FA5B9 /* GKShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B852C618335275005FA5B9 /* GKShowViewController.m */; };
 		11B852D4183368A0005FA5B9 /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B852D3183368A0005FA5B9 /* mail.png */; };
+		11BA02B5192B05DF00124DC1 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BA02B2192B05DF00124DC1 /* libMobClickLibrary.a */; };
+		11BA02B6192B05DF00124DC1 /* libMobClickLibrary_armv6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BA02B3192B05DF00124DC1 /* libMobClickLibrary_armv6.a */; };
+		11BA02B8192B060C00124DC1 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BA02B7192B060C00124DC1 /* libz.dylib */; };
+		11BB579F192353A900DE826A /* GKRelationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BB579E192353A900DE826A /* GKRelationViewController.m */; };
 		11BB992118AB15B9006273A7 /* qipao22@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BB992018AB15B9006273A7 /* qipao22@2x.png */; };
+		11BBA70B19249E3700637BED /* inclass.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BBA70919249E3700637BED /* inclass.png */; };
 		11BF896B18363221008E72F0 /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF896818363221008E72F0 /* 114.png */; };
 		11BF896D18363221008E72F0 /* ICON.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF896A18363221008E72F0 /* ICON.png */; };
 		11BF896F1836325F008E72F0 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF896E1836325F008E72F0 /* 120.png */; };
@@ -368,7 +387,6 @@
 		78709C32187D2F4A009250FB /* GKPhotoTagScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78709C31187D2F4A009250FB /* GKPhotoTagScrollView.m */; };
 		7870A0F1187D4637009250FB /* navbar-button-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A0EF187D4636009250FB /* navbar-button-blue@2x.png */; };
 		7870A0F2187D4637009250FB /* navbar-button-blue-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A0F0187D4636009250FB /* navbar-button-blue-active@2x.png */; };
-		7870A0F5187D54C1009250FB /* UpLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7870A0F4187D54C1009250FB /* UpLoader.m */; };
 		7870A0FC187E44A2009250FB /* save_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A0FA187E44A2009250FB /* save_default.png */; };
 		7870A0FD187E44A2009250FB /* save_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A0FB187E44A2009250FB /* save_active.png */; };
 		7870A106187E97EE009250FB /* settingH.png in Resources */ = {isa = PBXBuildFile; fileRef = 7870A105187E97EE009250FB /* settingH.png */; };
@@ -408,9 +426,6 @@
 		78D8D11C18C07ABC008860AB /* thelp_send_568.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D8D11818C07ABC008860AB /* thelp_send_568.png */; };
 		78DB7FB818A5CF7C00421D0D /* 视频1.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DB7FB618A5CF7C00421D0D /* 视频1.png */; };
 		78DB7FB918A5CF7C00421D0D /* 视频2.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DB7FB718A5CF7C00421D0D /* 视频2.png */; };
-		E797189A18798BAB00353BAF /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E797189418798BAB00353BAF /* libTestFlight.a */; };
-		E797189B18798BAB00353BAF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E797189518798BAB00353BAF /* README.md */; };
-		E797189C18798BAB00353BAF /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = E797189618798BAB00353BAF /* release_notes.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -428,6 +443,7 @@
 		1102A7FA181A5E1200E6295C /* guanlianbottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guanlianbottom.png; sourceTree = "<group>"; };
 		1102A7FC181A715D00E6295C /* guanlian-B-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanlian-B-1.png"; sourceTree = "<group>"; };
 		1102A7FD181A715D00E6295C /* guanlian-B-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanlian-B-2.png"; sourceTree = "<group>"; };
+		110AFD59192DCD1D00CEFECE /* inclass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inclass.png; sourceTree = "<group>"; };
 		111E8CC1181E532400234014 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		111E8CC2181E532400234014 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		111E8CC3181E532400234014 /* NSData+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+GIF.h"; sourceTree = "<group>"; };
@@ -468,6 +484,11 @@
 		114B58FE1820AD5500163A4A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		114B59001821220E00163A4A /* GKShowBigImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKShowBigImageViewController.h; sourceTree = "<group>"; };
 		114B59011821220E00163A4A /* GKShowBigImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKShowBigImageViewController.m; sourceTree = "<group>"; };
+		114D85361920773A00428711 /* searchCellContent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchCellContent.png; sourceTree = "<group>"; };
+		114D85381920792C00428711 /* searchselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchselected.png; sourceTree = "<group>"; };
+		114D85391920792C00428711 /* searchselect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchselect.png; sourceTree = "<group>"; };
+		114DEFA5190A73B3008413DE /* GKAddStudentSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAddStudentSearchViewController.h; sourceTree = "<group>"; };
+		114DEFA6190A73B3008413DE /* GKAddStudentSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAddStudentSearchViewController.m; sourceTree = "<group>"; };
 		114F66A61887C16E0071D2AE /* kuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kuang.png; sourceTree = "<group>"; };
 		1155E9291856BC74005D09C1 /* KKNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKNavigationController.m; sourceTree = "<group>"; };
 		1155E92A1856BC74005D09C1 /* KKNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKNavigationController.h; sourceTree = "<group>"; };
@@ -709,6 +730,21 @@
 		11AF3B1818168FC400B36176 /* loginBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginBtn@2x.png"; sourceTree = "<group>"; };
 		11B218151835C624002825FA /* GKNoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKNoticeViewController.h; sourceTree = "<group>"; };
 		11B218161835C624002825FA /* GKNoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNoticeViewController.m; sourceTree = "<group>"; };
+		11B364B8191CB62C003E087E /* GKTeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKTeacher.h; sourceTree = "<group>"; };
+		11B364B9191CB62C003E087E /* GKTeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKTeacher.m; sourceTree = "<group>"; };
+		11B364BB191CBD05003E087E /* SchoolBusPhoto 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 5.xcdatamodel"; sourceTree = "<group>"; };
+		11B364BC191CBF1F003E087E /* UpLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpLoader.h; sourceTree = "<group>"; };
+		11B364BD191CBF1F003E087E /* UpLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpLoader.m; sourceTree = "<group>"; };
+		11B405121918C82400E56A59 /* GKAddStudentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAddStudentViewController.h; sourceTree = "<group>"; };
+		11B405131918C82400E56A59 /* GKAddStudentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAddStudentViewController.m; sourceTree = "<group>"; };
+		11B405151918C85400E56A59 /* GKSearchListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSearchListViewController.h; sourceTree = "<group>"; };
+		11B405161918C85400E56A59 /* GKSearchListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSearchListViewController.m; sourceTree = "<group>"; };
+		11B405181918CC4400E56A59 /* GKSearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSearchCell.h; sourceTree = "<group>"; };
+		11B405191918CC4400E56A59 /* GKSearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSearchCell.m; sourceTree = "<group>"; };
+		11B4051C1918D09E00E56A59 /* GKStudentAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKStudentAdd.h; sourceTree = "<group>"; };
+		11B4051D1918D09E00E56A59 /* GKStudentAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKStudentAdd.m; sourceTree = "<group>"; };
+		11B470D71925CB5300CFFEC3 /* headplaceholder_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headplaceholder_big.png; sourceTree = "<group>"; };
+		11B470D91925CDFC00CFFEC3 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
 		11B7D682188F6DD70036B7AA /* GKSaySomethingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSaySomethingView.h; sourceTree = "<group>"; };
 		11B7D683188F6DD70036B7AA /* GKSaySomethingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSaySomethingView.m; sourceTree = "<group>"; };
 		11B8492D18C058DD00D9205C /* corners@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "corners@2x.png"; sourceTree = "<group>"; };
@@ -730,7 +766,14 @@
 		11B852C618335275005FA5B9 /* GKShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKShowViewController.m; sourceTree = "<group>"; };
 		11B852CB183352AE005FA5B9 /* GKShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKShowViewController.h; sourceTree = "<group>"; };
 		11B852D3183368A0005FA5B9 /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail.png; sourceTree = "<group>"; };
+		11BA02B2192B05DF00124DC1 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		11BA02B3192B05DF00124DC1 /* libMobClickLibrary_armv6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary_armv6.a; sourceTree = "<group>"; };
+		11BA02B4192B05DF00124DC1 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		11BA02B7192B060C00124DC1 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		11BB579D192353A900DE826A /* GKRelationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKRelationViewController.h; sourceTree = "<group>"; };
+		11BB579E192353A900DE826A /* GKRelationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKRelationViewController.m; sourceTree = "<group>"; };
 		11BB992018AB15B9006273A7 /* qipao22@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qipao22@2x.png"; sourceTree = "<group>"; };
+		11BBA70919249E3700637BED /* inclass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inclass.png; sourceTree = "<group>"; };
 		11BF896818363221008E72F0 /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
 		11BF896A18363221008E72F0 /* ICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ICON.png; sourceTree = "<group>"; };
 		11BF896E1836325F008E72F0 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
@@ -918,8 +961,6 @@
 		78709C31187D2F4A009250FB /* GKPhotoTagScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKPhotoTagScrollView.m; sourceTree = "<group>"; };
 		7870A0EF187D4636009250FB /* navbar-button-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-blue@2x.png"; sourceTree = "<group>"; };
 		7870A0F0187D4636009250FB /* navbar-button-blue-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-button-blue-active@2x.png"; sourceTree = "<group>"; };
-		7870A0F3187D54C1009250FB /* UpLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpLoader.h; sourceTree = "<group>"; };
-		7870A0F4187D54C1009250FB /* UpLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpLoader.m; sourceTree = "<group>"; };
 		7870A0FA187E44A2009250FB /* save_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_default.png; sourceTree = "<group>"; };
 		7870A0FB187E44A2009250FB /* save_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_active.png; sourceTree = "<group>"; };
 		7870A0FE187E454F009250FB /* SchoolBusPhoto 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 4.xcdatamodel"; sourceTree = "<group>"; };
@@ -963,12 +1004,6 @@
 		78D8D11818C07ABC008860AB /* thelp_send_568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thelp_send_568.png; sourceTree = "<group>"; };
 		78DB7FB618A5CF7C00421D0D /* 视频1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "视频1.png"; sourceTree = "<group>"; };
 		78DB7FB718A5CF7C00421D0D /* 视频2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "视频2.png"; sourceTree = "<group>"; };
-		E797189418798BAB00353BAF /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		E797189518798BAB00353BAF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		E797189618798BAB00353BAF /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
-		E797189718798BAB00353BAF /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
-		E797189818798BAB00353BAF /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
-		E797189918798BAB00353BAF /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -976,16 +1011,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11BA02B8192B060C00124DC1 /* libz.dylib in Frameworks */,
+				11BA02B6192B05DF00124DC1 /* libMobClickLibrary_armv6.a in Frameworks */,
 				78709C2F187D1A43009250FB /* MediaPlayer.framework in Frameworks */,
 				78709C2D187D1A3B009250FB /* CoreMedia.framework in Frameworks */,
 				78709C2B187D1A30009250FB /* CoreVideo.framework in Frameworks */,
-				E797189A18798BAB00353BAF /* libTestFlight.a in Frameworks */,
 				11A30EF81862E73500DEB58B /* CoreMotion.framework in Frameworks */,
 				11EFE1D71817ACA3009CE69F /* QuartzCore.framework in Frameworks */,
 				11E27F92183C709700CAE0BB /* MessageUI.framework in Frameworks */,
 				114B58FF1820AD5500163A4A /* ImageIO.framework in Frameworks */,
 				111E8CF1181E540900234014 /* MapKit.framework in Frameworks */,
 				1192B7721829E8900082D37B /* libBPush.a in Frameworks */,
+				11BA02B5192B05DF00124DC1 /* libMobClickLibrary.a in Frameworks */,
 				119E96371814C71000866DE8 /* libz.1.2.5.dylib in Frameworks */,
 				119E96351814C5F200866DE8 /* MobileCoreServices.framework in Frameworks */,
 				119E96331814C5E800866DE8 /* CFNetwork.framework in Frameworks */,
@@ -1152,6 +1189,7 @@
 		119E5FD31818FB4D00726761 /* third */ = {
 			isa = PBXGroup;
 			children = (
+				11BA02B1192B05DF00124DC1 /* Umeng */,
 				11CE2A981880091E00742001 /* MBProgressHUD */,
 				11CE2A91187FF8EA00742001 /* EGORefreshTableHeaderView.h */,
 				11CE2A92187FF8EA00742001 /* EGORefreshTableHeaderView.m */,
@@ -1213,14 +1251,18 @@
 				11B852AD1833243E005FA5B9 /* GKUpObject.m */,
 				11AA3386187CEDC6002FE2D4 /* GKNotice.h */,
 				11AA3387187CEDC6002FE2D4 /* GKNotice.m */,
-				7870A0F3187D54C1009250FB /* UpLoader.h */,
-				7870A0F4187D54C1009250FB /* UpLoader.m */,
 				78881914187F9E0B00D0A851 /* MovieDraft.h */,
 				78881915187F9E0B00D0A851 /* MovieDraft.m */,
 				118AE7EC188E69840034AE63 /* DBManager.h */,
 				118AE7ED188E69840034AE63 /* DBManager.m */,
 				11DB43EB18AB41F600F77C1A /* GKCustomButton.h */,
 				11DB43EC18AB41F600F77C1A /* GKCustomButton.m */,
+				11B4051C1918D09E00E56A59 /* GKStudentAdd.h */,
+				11B4051D1918D09E00E56A59 /* GKStudentAdd.m */,
+				11B364B8191CB62C003E087E /* GKTeacher.h */,
+				11B364B9191CB62C003E087E /* GKTeacher.m */,
+				11B364BC191CBF1F003E087E /* UpLoader.h */,
+				11B364BD191CBF1F003E087E /* UpLoader.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1537,6 +1579,7 @@
 		11A3BF421875678A0032BA07 /* Student */ = {
 			isa = PBXGroup;
 			children = (
+				11B470D91925CDFC00CFFEC3 /* photo.png */,
 				11A5A896187BBC9F00EA22CD /* MTCustomActionSheet.m */,
 				11A5A897187BBC9F00EA22CD /* MTCustomActionSheet.h */,
 				11A3BF46187567E20032BA07 /* GKStudentListViewController.h */,
@@ -1548,6 +1591,22 @@
 				7888190F187F9A2600D0A851 /* GKDraftViewController.h */,
 				78881910187F9A2600D0A851 /* GKDraftViewController.m */,
 				78881911187F9A2600D0A851 /* GKDraftViewController.xib */,
+				114DEFA5190A73B3008413DE /* GKAddStudentSearchViewController.h */,
+				114DEFA6190A73B3008413DE /* GKAddStudentSearchViewController.m */,
+				11B405121918C82400E56A59 /* GKAddStudentViewController.h */,
+				11B405131918C82400E56A59 /* GKAddStudentViewController.m */,
+				11B405151918C85400E56A59 /* GKSearchListViewController.h */,
+				11B405161918C85400E56A59 /* GKSearchListViewController.m */,
+				11B470D71925CB5300CFFEC3 /* headplaceholder_big.png */,
+				11B405181918CC4400E56A59 /* GKSearchCell.h */,
+				11B405191918CC4400E56A59 /* GKSearchCell.m */,
+				114D85381920792C00428711 /* searchselected.png */,
+				114D85391920792C00428711 /* searchselect.png */,
+				114D85361920773A00428711 /* searchCellContent.png */,
+				11BB579D192353A900DE826A /* GKRelationViewController.h */,
+				11BB579E192353A900DE826A /* GKRelationViewController.m */,
+				11BBA70919249E3700637BED /* inclass.png */,
+				110AFD59192DCD1D00CEFECE /* inclass.png */,
 			);
 			name = Student;
 			sourceTree = "<group>";
@@ -1605,6 +1664,16 @@
 				11CE2A87187FAF8E00742001 /* GKNoticeInfoViewController.m */,
 			);
 			name = notice;
+			sourceTree = "<group>";
+		};
+		11BA02B1192B05DF00124DC1 /* Umeng */ = {
+			isa = PBXGroup;
+			children = (
+				11BA02B2192B05DF00124DC1 /* libMobClickLibrary.a */,
+				11BA02B3192B05DF00124DC1 /* libMobClickLibrary_armv6.a */,
+				11BA02B4192B05DF00124DC1 /* MobClick.h */,
+			);
+			path = Umeng;
 			sourceTree = "<group>";
 		};
 		11C75D9E1812725600A3AA89 /* SVHTTPRequest */ = {
@@ -1676,7 +1745,6 @@
 		2A32A55018122C01007CAA8E = {
 			isa = PBXGroup;
 			children = (
-				E797189318798BAB00353BAF /* TestFlightSDK2 */,
 				2A32A56418122C01007CAA8E /* SchoolBusPhoto */,
 				2A32A55B18122C01007CAA8E /* Frameworks */,
 				2A32A55A18122C01007CAA8E /* Products */,
@@ -1694,6 +1762,7 @@
 		2A32A55B18122C01007CAA8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				11BA02B7192B060C00124DC1 /* libz.dylib */,
 				78709C2E187D1A43009250FB /* MediaPlayer.framework */,
 				78709C2C187D1A3B009250FB /* CoreMedia.framework */,
 				78709C2A187D1A30009250FB /* CoreVideo.framework */,
@@ -1811,19 +1880,6 @@
 			name = tempResource;
 			sourceTree = "<group>";
 		};
-		E797189318798BAB00353BAF /* TestFlightSDK2 */ = {
-			isa = PBXGroup;
-			children = (
-				E797189418798BAB00353BAF /* libTestFlight.a */,
-				E797189518798BAB00353BAF /* README.md */,
-				E797189618798BAB00353BAF /* release_notes.md */,
-				E797189718798BAB00353BAF /* TestFlight+AsyncLogging.h */,
-				E797189818798BAB00353BAF /* TestFlight+ManualSessions.h */,
-				E797189918798BAB00353BAF /* TestFlight.h */,
-			);
-			path = TestFlightSDK2;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1889,6 +1945,7 @@
 				11BF897818363CF7008E72F0 /* homeNoticeH.png in Resources */,
 				1193A6C6182C785B004011BC /* 谁在照片里_09.png in Resources */,
 				11D42953187E4BE60002810E /* studentIcon@2x.png in Resources */,
+				114D85371920773A00428711 /* searchCellContent.png in Resources */,
 				1193A6C7182C785B004011BC /* 谁在照片里_03.png in Resources */,
 				11A5A891187B9E2500EA22CD /* gradeE.png in Resources */,
 				11AF3AE91816655B00B36176 /* navBarImage.png in Resources */,
@@ -1897,6 +1954,7 @@
 				788C7C23188FCAEF00BA9BD0 /* camera-backspace-confirm-active@2x.png in Resources */,
 				78709C05187D1733009250FB /* camera-glyph-flash-on.png in Resources */,
 				788C7C26188FCAEF00BA9BD0 /* camera-shutter-active.png in Resources */,
+				11B470D81925CB5300CFFEC3 /* headplaceholder_big.png in Resources */,
 				11AF3B0B18168C0200B36176 /* loginback3.0.png in Resources */,
 				78709C1A187D1733009250FB /* navbar-button-back-black-alt-active@2x.png in Resources */,
 				119F0CA3181A216100A5910C /* about.png in Resources */,
@@ -1905,7 +1963,6 @@
 				11AA5B4B188D277D001EA8B2 /* noticeEmail.png in Resources */,
 				11AF3AF018166ECB00B36176 /* upHight@2x.png in Resources */,
 				78709C25187D1733009250FB /* play.png in Resources */,
-				E797189B18798BAB00353BAF /* README.md in Resources */,
 				11BF896B18363221008E72F0 /* 114.png in Resources */,
 				111E8CF3181E6E9F00234014 /* input.png in Resources */,
 				78BE433718B7657B003ADCB8 /* 关于我们@2x.png in Resources */,
@@ -1924,7 +1981,6 @@
 				1102A7DE181A48FB00E6295C /* guanyu-2.png in Resources */,
 				119F0CA4181A216100A5910C /* aboutNormal.png in Resources */,
 				1193B39E1827847C00660CB1 /* 积分.png in Resources */,
-				E797189C18798BAB00353BAF /* release_notes.md in Resources */,
 				1102A7FF181A715D00E6295C /* guanlian-B-2.png in Resources */,
 				11B8492E18C058DD00D9205C /* corners@2x.png in Resources */,
 				78709C11187D1733009250FB /* camera-tray-cover.png in Resources */,
@@ -1935,6 +1991,7 @@
 				11DB02E2183379AF007981C6 /* send_24.png in Resources */,
 				78709C07187D1733009250FB /* camera-handle-video.png in Resources */,
 				1102A7EE181A4FF500E6295C /* guanyu-4.png in Resources */,
+				114D853B1920792C00428711 /* searchselect.png in Resources */,
 				11DB02D218337240007981C6 /* Localizable.strings in Resources */,
 				78709C22187D1733009250FB /* navbar-button-green-disabled@2x.png in Resources */,
 				1193A6AB182B6BA0004011BC /* countInput.png in Resources */,
@@ -1984,6 +2041,7 @@
 				1102A7E1181A4ABD00E6295C /* paizhao-1-1.png in Resources */,
 				1195719B183B0DFB00CE9F1B /* photocount.png in Resources */,
 				78D8D10F18C05C6A008860AB /* thelp_send.png in Resources */,
+				11BBA70B19249E3700637BED /* inclass.png in Resources */,
 				1193A6C4182C785B004011BC /* 谁在照片里_10_01.png in Resources */,
 				1193A6A8182B69A9004011BC /* minus.png in Resources */,
 				78709C03187D1733009250FB /* camera-glyph-flash-auto.png in Resources */,
@@ -2013,6 +2071,7 @@
 				1194023A182360EB00F21FB8 /* M-1.png in Resources */,
 				788C7C25188FCAEF00BA9BD0 /* camera-backspace-default-default@2x.png in Resources */,
 				119366D5184C34AB008D2FA2 /* leftUpHE.png in Resources */,
+				11B470DA1925CDFC00CFFEC3 /* photo.png in Resources */,
 				78DB7FB918A5CF7C00421D0D /* 视频2.png in Resources */,
 				788C7C27188FCAEF00BA9BD0 /* camera-shutter-default.png in Resources */,
 				78709C1D187D1733009250FB /* navbar-button-back.png in Resources */,
@@ -2052,6 +2111,7 @@
 				119F0CB6181A2D5B00A5910C /* back.png in Resources */,
 				1165E27C182CFCE000B60A81 /* pic-2.png in Resources */,
 				11DB02F81833A0AA007981C6 /* noticeE.png in Resources */,
+				114D853A1920792C00428711 /* searchselected.png in Resources */,
 				119366D2184C3283008D2FA2 /* leftupH.png in Resources */,
 				11AA5B4A188D277D001EA8B2 /* noticeStar.png in Resources */,
 				11E27F90183C6AAC00CAE0BB /* shareBtnSel3.0.png in Resources */,
@@ -2059,6 +2119,7 @@
 				1193A6B4182B9150004011BC /* duihao.png in Resources */,
 				78709C0A187D1733009250FB /* camera-progress-background.png in Resources */,
 				11BF896D18363221008E72F0 /* ICON.png in Resources */,
+				110AFD5B192DCD1D00CEFECE /* inclass.png in Resources */,
 				78A0FF7018AB267C00E6A3D5 /* 云中校车视频相册封面.png in Resources */,
 				1165E27E182CFCE000B60A81 /* pic-1.png in Resources */,
 				11AF3B1918168FC400B36176 /* loginBtn@2x.png in Resources */,
@@ -2144,6 +2205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11B4051B1918CE3700E56A59 /* GKAddStudentSearchViewController.h in Sources */,
 				2A32A56B18122C02007CAA8E /* main.m in Sources */,
 				78D8D11418C05CA9008860AB /* GKCommonClass.m in Sources */,
 				11BF898E183646DF008E72F0 /* GKBadgeView.m in Sources */,
@@ -2156,6 +2218,7 @@
 				11C75DAB1812728500A3AA89 /* GKUserLogin.m in Sources */,
 				78709BCE187D16CA009250FB /* GKRecordProgressView.m in Sources */,
 				119E96231814C5A300866DE8 /* ASICloudFilesContainerRequest.m in Sources */,
+				11B364BA191CB62C003E087E /* GKTeacher.m in Sources */,
 				119EA9C118161D800070DBF1 /* ETPhoto.m in Sources */,
 				119973461822456D0017E99A /* GKMarketDetailView.m in Sources */,
 				11C75DA81812725600A3AA89 /* SVHTTPRequest.m in Sources */,
@@ -2169,6 +2232,7 @@
 				11C75DBA181273E600A3AA89 /* NSDataAdditions.m in Sources */,
 				119AC2771839C63500ED19D3 /* GKUploaderCell.m in Sources */,
 				111E8CE7181E532400234014 /* UIButton+WebCache.m in Sources */,
+				11B4051A1918CC4400E56A59 /* GKSearchCell.m in Sources */,
 				119AC2731839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodeld in Sources */,
 				11C75DA71812725600A3AA89 /* SVHTTPClient.m in Sources */,
 				119E962B1814C5A300866DE8 /* ASIS3BucketObject.m in Sources */,
@@ -2177,6 +2241,7 @@
 				11A212A818697B8800A2D909 /* GKAlumbViewController.m in Sources */,
 				119E962A1814C5A300866DE8 /* ASIS3Bucket.m in Sources */,
 				11A3BF4B18756A3A0032BA07 /* GKStudentInfoViewController.m in Sources */,
+				11B4051E1918D09E00E56A59 /* GKStudentAdd.m in Sources */,
 				11A30EFB1862FB9500DEB58B /* GKDisapperView.m in Sources */,
 				119566B6181E09A000366B13 /* Letter.m in Sources */,
 				1193A6CE182C78E9004011BC /* ETScoreView.m in Sources */,
@@ -2185,6 +2250,7 @@
 				119E963A1814C8BE00866DE8 /* GKLoaderManager.m in Sources */,
 				119E961F1814C5A300866DE8 /* ASINetworkQueue.m in Sources */,
 				119E5FCB1818C65100726761 /* ClassInfo.m in Sources */,
+				11B405171918C85400E56A59 /* GKSearchListViewController.m in Sources */,
 				111E8CDE181E532400234014 /* MKAnnotationView+WebCache.m in Sources */,
 				119973401821FAB40017E99A /* GKMarket.m in Sources */,
 				11C75DBB181273E600A3AA89 /* NSStringAdditions.m in Sources */,
@@ -2192,7 +2258,6 @@
 				11EFE1F11817EEF7009CE69F /* SRRefreshView.m in Sources */,
 				11CE2A88187FAF8E00742001 /* GKNoticeInfoViewController.m in Sources */,
 				119E96251814C5A300866DE8 /* ASICloudFilesObject.m in Sources */,
-				7870A0F5187D54C1009250FB /* UpLoader.m in Sources */,
 				111E8CE2181E532400234014 /* SDWebImageDecoder.m in Sources */,
 				11B852CA18335275005FA5B9 /* GKShowViewController.m in Sources */,
 				114B59021821220E00163A4A /* GKShowBigImageViewController.m in Sources */,
@@ -2210,6 +2275,7 @@
 				1199733D1821FA700017E99A /* GKMarketGird.m in Sources */,
 				111E8CDF181E532400234014 /* NSData+GIF.m in Sources */,
 				111E8CE6181E532400234014 /* SDWebImagePrefetcher.m in Sources */,
+				114DEFA7190A73B3008413DE /* GKAddStudentSearchViewController.m in Sources */,
 				119E96191814C5A300866DE8 /* ASIDataCompressor.m in Sources */,
 				11EFE1F21817EEF7009CE69F /* SRSlimeView.m in Sources */,
 				119E962E1814C5A300866DE8 /* ASIS3Request.m in Sources */,
@@ -2235,8 +2301,10 @@
 				1193B3921827843800660CB1 /* GKScoreCell.m in Sources */,
 				111E8CE1181E532400234014 /* SDWebImageCompat.m in Sources */,
 				11AA3388187CEDC6002FE2D4 /* GKNotice.m in Sources */,
+				11B405141918C82400E56A59 /* GKAddStudentViewController.m in Sources */,
 				2A32A58118122C25007CAA8E /* GKLoginViewController.m in Sources */,
 				78709C32187D2F4A009250FB /* GKPhotoTagScrollView.m in Sources */,
+				11B364BE191CBF1F003E087E /* UpLoader.m in Sources */,
 				119EA9CF181649C20070DBF1 /* GKInfoViewController.m in Sources */,
 				119E963D1814E2C800866DE8 /* GKUpWraper.m in Sources */,
 				119E96291814C5A300866DE8 /* Reachability.m in Sources */,
@@ -2269,6 +2337,7 @@
 				11A5A898187BBC9F00EA22CD /* MTCustomActionSheet.m in Sources */,
 				119EA9BA18160F170070DBF1 /* GKLeftViewController.m in Sources */,
 				118AE7EE188E69840034AE63 /* DBManager.m in Sources */,
+				11BB579F192353A900DE826A /* GKRelationViewController.m in Sources */,
 				11A3BF48187567E20032BA07 /* GKStudentListViewController.m in Sources */,
 				2AFFF35318122D8B0045BFD0 /* GKMainViewController.m in Sources */,
 				119E96241814C5A300866DE8 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
@@ -2373,10 +2442,12 @@
 					"$(inherited)",
 					"SchoolBusPhoto/**",
 					"${SRCROOT}/TestFlightSDK2",
+					"$(PROJECT_DIR)/SchoolBusPhoto/Umeng",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F570C2E8-7204-4125-8AC4-8E405C5ECBF6";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F570C2E8-7204-4125-8AC4-8E405C5ECBF6";
+				PROVISIONING_PROFILE = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2400,10 +2471,12 @@
 					"$(inherited)",
 					"SchoolBusPhoto/**",
 					"$(SRCROOT)/TestFlightSDK2",
+					"$(PROJECT_DIR)/SchoolBusPhoto/Umeng",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F570C2E8-7204-4125-8AC4-8E405C5ECBF6";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F570C2E8-7204-4125-8AC4-8E405C5ECBF6";
+				PROVISIONING_PROFILE = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B10756F6-117E-4CA2-86D7-65460A34A6BF";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2436,12 +2509,13 @@
 		119AC2711839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				11B364BB191CBD05003E087E /* SchoolBusPhoto 5.xcdatamodel */,
 				7870A0FE187E454F009250FB /* SchoolBusPhoto 4.xcdatamodel */,
 				11AC07F4186A8BD70080FCC4 /* SchoolBusPhoto 3.xcdatamodel */,
 				119AC2741839C39300ED19D3 /* SchoolBusPhoto 2.xcdatamodel */,
 				119AC2721839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodel */,
 			);
-			currentVersion = 7870A0FE187E454F009250FB /* SchoolBusPhoto 4.xcdatamodel */;
+			currentVersion = 11B364BB191CBD05003E087E /* SchoolBusPhoto 5.xcdatamodel */;
 			path = SchoolBusPhoto.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -9,11 +9,12 @@
 #import "GKLeftViewController.h"
 
 #import "GKAppDelegate.h"
-#import "GKClassViewController.h"
+#import "GKStudentListViewController.h"
 #import "GKLetterViewController.h"
 #import "KKNavigationController.h"
 #import "GKAlumbViewController.h"
 #import "GKLoaderManager.h"
+#import "GKUpLoaderViewController.h"
 #import "GKNoticeListViewController.h"
 @interface GKLeftViewController ()
 
@@ -95,9 +96,10 @@
 //    classLeft.png
     //NSLog(@"????? %@",NSLocalizedString(@"classLeft", @""));
      //NSLog(@"????? %@",  NSLocalizedString(@"classLeftH", @""));
-  
-    NSArray *defArr = [NSArray arrayWithObjects:NSLocalizedString(@"notice", @""),NSLocalizedString(@"grade", @""), NSLocalizedString(@"home", @""),NSLocalizedString(@"setting", @""),nil];
-    NSArray *selArr = [NSArray arrayWithObjects:NSLocalizedString(@"noticeH", @""),NSLocalizedString(@"gradeH", @""),NSLocalizedString(@"homeH", @""), NSLocalizedString(@"settingH", @""),  nil];
+//    "leftUpN"="leftUpNE.png";
+//    "leftUpH"="leftupHE.png";
+    NSArray *defArr = [NSArray arrayWithObjects:NSLocalizedString(@"notice", @""),NSLocalizedString(@"grade", @""), NSLocalizedString(@"home", @""),NSLocalizedString(@"leftUpN", @""),NSLocalizedString(@"setting", @""),nil];
+    NSArray *selArr = [NSArray arrayWithObjects:NSLocalizedString(@"noticeH", @""),NSLocalizedString(@"gradeH", @""),NSLocalizedString(@"homeH", @""), NSLocalizedString(@"leftUpH", @""),NSLocalizedString(@"settingH", @""),  nil];
     totle=[defArr count];
     for (int i=0; i<[defArr count]; i++) {
         UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -276,7 +278,7 @@
     }
     if(index==2)
     {
-        GKClassViewController *classVC=[[GKClassViewController alloc]init];
+        GKStudentListViewController *classVC=[[GKStudentListViewController alloc]init];
         KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:classVC];
         [classVC release];
         
@@ -290,38 +292,40 @@
         [noticeVC release];
         
         return [nav autorelease];
-//        GKUpLoaderViewController *aboutVC=[[GKUpLoaderViewController alloc]init];
-//        UINavigationController *nav= [[UINavigationController alloc] initWithRootViewController:aboutVC];
-//        [aboutVC release];
-//
-//        return [nav autorelease];
+
 
     }
     if(index==4)
     {
 
 
-        GKSettingViewController *settingVC=[[GKSettingViewController alloc]init];
-        settingVC.delegate=self;
-        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:settingVC];
-        [settingVC release];
+        GKUpLoaderViewController *uploadq=[[GKUpLoaderViewController alloc]init];
+        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:uploadq];
+        [uploadq release];
 
         return [nav autorelease];
         
     }
-//    if(index==5)
-//    {
-//        
+    if(index==5)
+    {
+        
+        GKSettingViewController *settingVC=[[GKSettingViewController alloc]init];
+        settingVC.delegate=self;
+        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:settingVC];
+        [settingVC release];
+        return [nav autorelease];
+        
+//        return [nav autorelease];
 //        GKRePasswordViewController *repass=[[GKRePasswordViewController alloc]init];
 //        repass.delegate=self;
 //        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:repass];
 //        [repass release];
 //        
 //        return [nav autorelease];
-//        
-//    
-//        
-//    }
+        
+    
+        
+    }
 //    if(index==6)
 //    {
 //        GKAboutViewController *aboutVC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];

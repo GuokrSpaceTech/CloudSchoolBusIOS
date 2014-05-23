@@ -50,7 +50,7 @@
 @property (nonatomic, assign) id<ETNicknameViewControllerDelegate> delegate;
 @property (nonatomic, retain) NSString *originName;
 @property (nonatomic, retain) Student *cstudent;
-
+@property (nonatomic,assign) int type;// 1为修改名称  2为修改昵称
 - (IBAction)clearText:(id)sender;
 
 @end

@@ -212,6 +212,9 @@
 }
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
 {
+    
+    //NSString *str=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
+    //NSLog(@"%@",str);
     if(code==1&&method==tnotice)
     {
         NSArray *arr=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];

@@ -52,6 +52,8 @@ stunumber;
     self.uid=nil;
     self.stunumber=nil;
     self.orderendtime=nil;
+    self.username=nil;
+    self.parentid=nil;
     [super dealloc];
 }
 @end

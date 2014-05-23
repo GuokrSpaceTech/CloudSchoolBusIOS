@@ -93,7 +93,9 @@
 @property (nonatomic,copy)NSNumber *online;
 @property (nonatomic,copy)NSNumber *uid;
 
-@property (nonatomic,copy)NSNumber *orderendtime;
+@property (nonatomic,copy)NSString *orderendtime;
+@property (nonatomic,copy)NSNumber *parentid;
+@property (nonatomic,copy)NSString *username;
 
 //
 //isinstalled = 1;

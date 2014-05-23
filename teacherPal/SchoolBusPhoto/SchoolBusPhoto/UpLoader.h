@@ -2,7 +2,7 @@
 //  UpLoader.h
 //  SchoolBusPhoto
 //
-//  Created by CaiJingPeng on 14-1-8.
+//  Created by wen peifang on 14-5-9.
 //  Copyright (c) 2014年 mactop. All rights reserved.
 //
 
@@ -15,7 +15,7 @@
 @property (nonatomic, retain) NSNumber * classUid;
 @property (nonatomic, retain) NSNumber * fsize;
 @property (nonatomic, retain) NSNumber * ftime;
-@property (nonatomic, retain) NSString * image;// 路径
+@property (nonatomic, retain) NSString * image;
 @property (nonatomic, retain) NSString * introduce;
 @property (nonatomic, retain) NSNumber * isUploading;
 @property (nonatomic, retain) NSString * name;
@@ -23,5 +23,6 @@
 @property (nonatomic, retain) NSData * smallImage;
 @property (nonatomic, retain) NSString * studentId;
 @property (nonatomic, retain) NSString * tag;
+@property (nonatomic, retain) NSNumber * teacherid;
 
 @end

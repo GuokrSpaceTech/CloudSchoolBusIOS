@@ -45,8 +45,15 @@
     [navigationView addSubview:leftButton];
     
 
-  
-    titlelabel.text=NSLocalizedString(@"NickName", @"");
+    if(self.type==1)
+    {
+        titlelabel.text=NSLocalizedString(@"modifyname", "");
+    }
+    else
+    {
+           titlelabel.text=NSLocalizedString(@"NickName", @"");
+    }
+ 
     
     rightButton =[UIButton buttonWithType:UIButtonTypeCustom];
     [rightButton setFrame:CGRectMake(270, 5, 50, 35)];
@@ -232,9 +239,19 @@
         return;
         
     }
-    
+    if(self.type==2)
+    {
         NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:nicknametextfield.text,@"enname",self.cstudent.studentid,@"studentid",cstudent.uid,@"uid" ,nil];
         [[EKRequest Instance] EKHTTPRequest:student parameters:param requestMethod:POST forDelegate:self];
+    }
+    if(self.type==1)
+    {
+        NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:nicknametextfield.text,@"cnname",self.cstudent.studentid,@"studentid",cstudent.uid,@"uid" ,nil];
+        [[EKRequest Instance] EKHTTPRequest:student parameters:param requestMethod:POST forDelegate:self];
+
+    }
+    
+
     
     
     
@@ -259,27 +276,53 @@
     {
         if(code == 1)
         {
-            //更新孩子信息
-            
             GKUserLogin *user=[GKUserLogin currentLogin];
-            for (Student *s in user.studentArr) {
-                if (s.studentid.intValue == cstudent.studentid.intValue) {
-                    s.enname = [NSString stringWithFormat:@"%@",[parm objectForKey:@"enname"]];
-                    break;
+            //更新孩子信息
+            if([[parm allKeys] containsObject:@"enname"])
+            {
+                
+                for (Student *s in user.studentArr) {
+                    if (s.studentid.intValue == cstudent.studentid.intValue) {
+                        s.enname = [NSString stringWithFormat:@"%@",[parm objectForKey:@"enname"]];
+                        break;
+                    }
                 }
+                
+                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"success", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+                [alert show];
+                
+                //            [self.view setNeedsLayout];
+                
+                if (delegate && [delegate respondsToSelector:@selector(changeNicknameSuccess)]) {
+                    cstudent.enname=[NSString stringWithFormat:@"%@",[parm objectForKey:@"enname"]];
+                    [delegate changeNicknameSuccess];
+                }
+                
+                [self.navigationController popViewControllerAnimated:YES];
+
             }
-    
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"success", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
-            [alert show];
-            
-//            [self.view setNeedsLayout];
-            
-            if (delegate && [delegate respondsToSelector:@selector(changeNicknameSuccess)]) {
-                cstudent.enname=[NSString stringWithFormat:@"%@",[parm objectForKey:@"enname"]];
-                [delegate changeNicknameSuccess];
+            else if([[parm allKeys] containsObject:@"cnname"])
+            {
+                for (Student *s in user.studentArr) {
+                    if (s.studentid.intValue == cstudent.studentid.intValue) {
+                        s.cnname = [NSString stringWithFormat:@"%@",[parm objectForKey:@"cnname"]];
+                        break;
+                    }
+                }
+                
+                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"success", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
+                [alert show];
+                
+                //            [self.view setNeedsLayout];
+                
+                if (delegate && [delegate respondsToSelector:@selector(changeNicknameSuccess)]) {
+                    cstudent.cnname=[NSString stringWithFormat:@"%@",[parm objectForKey:@"cnname"]];
+                    [delegate changeNicknameSuccess];
+                }
+                
+                [self.navigationController popViewControllerAnimated:YES];
+
             }
-            
-            [self.navigationController popViewControllerAnimated:YES];
         }
         else
         {

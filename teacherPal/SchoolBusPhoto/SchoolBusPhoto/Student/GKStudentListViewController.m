@@ -12,6 +12,8 @@
 #import "KKNavigationController.h"
 #import "GKStudentInfoViewController.h"
 #import "UIImageView+WebCache.h"
+#import "GKAddStudentSearchViewController.h"
+#import "GKMainViewController.h"
 #define CELLTAG 100
 @interface GKStudentListViewController ()
 
@@ -31,7 +33,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
+    [(KKNavigationController *)self.navigationController setNavigationTouch:NO];
+    
     
     [_tableView reloadData];
 }
@@ -44,9 +47,19 @@
     [buttonBack setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     [buttonBack setBackgroundImage:[UIImage imageNamed:@"backH.png"] forState:UIControlStateHighlighted];
     [navigationView addSubview:buttonBack];
-    [buttonBack addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
-    
+    [buttonBack addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
+    // 139 56
 
+    UIButton *buttonRight=[UIButton buttonWithType:UIButtonTypeCustom];
+    buttonRight.frame=CGRectMake(240, 8, 70, 30);
+    NSString * addstr=NSLocalizedString(@"add", "");
+    [buttonRight setTitle:addstr forState:UIControlStateNormal];
+    [buttonRight setBackgroundImage:[UIImage imageNamed:@"inclass.png"] forState:UIControlStateNormal];
+    [buttonRight setBackgroundImage:[UIImage imageNamed:@"inclassed.png"] forState:UIControlStateHighlighted];
+    [navigationView addSubview:buttonRight];
+    buttonRight.titleLabel.font=[UIFont systemFontOfSize:15];
+    [buttonRight addTarget:self action:@selector(addStudent:) forControlEvents:UIControlEventTouchUpInside];
+    
     titlelabel.text=NSLocalizedString(@"student", @"");
     GKUserLogin *user=[GKUserLogin currentLogin];
     
@@ -83,13 +96,31 @@
 	// Do any additional setup after loading the view.
 }
 
+-(void)addStudent:(UIButton *)btn
+{
+    GKAddStudentSearchViewController *addStudentVC=[[GKAddStudentSearchViewController alloc]init];
+    [self.navigationController pushViewController:addStudentVC animated:YES];
+    [addStudentVC release];
+}
 
 
-
--(void)back:(UIButton *)btn
+-(void)leftClick:(UIButton *)btn
 {
     
-    [self.navigationController popViewControllerAnimated:YES];
+    GKMainViewController *main=[GKMainViewController share];
+    if(main.state==0)
+    {
+        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
+            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionLeft];
+        }
+    }
+    else
+    {
+        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
+            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionNone];
+        }
+    }
+    
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -119,7 +150,7 @@
         [cell.contentView addSubview:nameLabel];
         [nameLabel release];
         
-        UILabel *ageLabel=[[UILabel alloc]initWithFrame:CGRectMake(170 , 15, 60, 20)];
+        UILabel *ageLabel=[[UILabel alloc]initWithFrame:CGRectMake(150 , 15, 60, 20)];
         ageLabel.backgroundColor=[UIColor clearColor];
         ageLabel.font=[UIFont systemFontOfSize:14];
         if(IOSVERSION>=6.0)
@@ -130,7 +161,7 @@
         [cell.contentView addSubview:ageLabel];
         [ageLabel release];
         
-        UILabel *priceLabel=[[UILabel alloc]initWithFrame:CGRectMake(240, 15, 70, 20)];
+        UILabel *priceLabel=[[UILabel alloc]initWithFrame:CGRectMake(220, 15, 70, 20)];
         priceLabel.backgroundColor=[UIColor clearColor];
         priceLabel.tag=CELLTAG+3;
         priceLabel.font=[UIFont systemFontOfSize:14];
@@ -165,7 +196,7 @@
     }
     UILabel *priceLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+3];
     
-    if(st.orderendtime==nil)
+    if(st.orderendtime==nil  || [st.orderendtime isKindOfClass:[NSNull class]]  || [st.orderendtime isEqualToString:@""])
     {
         priceLabel.text=NSLocalizedString(@"Notservice", @"");
         priceLabel.textColor=[UIColor redColor];

@@ -245,3 +245,38 @@
 "descripe"="Say something......";
 "studentCount"="Students：";
 "MovieUp"="Upload";
+
+
+"add"="Add";
+"addstudent"="Add Student";
+"studentinput"="Please enter the student's name and phone";
+"nameinput"="Enter the student's name";
+"telinput"="Enter the parents' phone";
+"telformat"="Please enter a valid phone number";
+"selectstudentcorrect"="Please select the corrert one";
+"telhelp"="If you need help ,please call 400-606-3996";
+"studentnew"="Add Student";
+"joinclass"="Join to my class";
+"allreadystudent"="The student already exists";
+"successjoinclass"="Add Successfully";
+"parentaccount"="Account";
+"phone"="Phone";
+"Relationship"="Relationship";
+
+"father"="Father";
+"mother"="Mother";
+"Grandpa"="Grandpa";
+"Grandma"="Grandma";
+"other"="Other";
+"confirmrelation"="Please confirm they are the same parents";
+"theirkids"="Their kids";
+"LinkParent"="Link to this parent";
+"telhelpdiffient"="If they aren't same parent,please call 404-606-3996";
+"resetpass"="Reset";
+"passwordalert"="Reset the parent's password to 111111";
+"leave"="Leave";
+"passwordresetsuccess"="Password has been reset to 111111";
+"modifyname"="Modify name";
+"leaveclass"="Successful";
+"hasleave"="Has";
+"xleftcass"="left the class?";

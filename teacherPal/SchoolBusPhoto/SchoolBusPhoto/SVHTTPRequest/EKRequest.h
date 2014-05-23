@@ -44,7 +44,13 @@ enum RequestFunction
     Credit,
     source,
     test,
-    uploadimg
+    uploadimg,
+    addStudent,
+    searchStudent,
+    inclass,
+    mobileStudent,
+    relationship,
+    resetpassword,
 };
 typedef NSUInteger RequestFunction;
 

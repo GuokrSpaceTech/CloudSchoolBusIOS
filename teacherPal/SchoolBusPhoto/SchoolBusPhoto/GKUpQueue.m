@@ -10,10 +10,9 @@
 #import "GKUserLogin.h"
 #import "GKLoaderManager.h"
 #import "GKFindWraper.h"
-#import "TestFlight.h"
+
 #import "DBManager.h"
 #import "GKAppDelegate.h"
-#define NSLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
 static GKUpQueue *gkqueue=nil;
 @implementation GKUpQueue
@@ -61,7 +60,7 @@ static GKUpQueue *gkqueue=nil;
 
     }
 }
--(void)addRequestToQueue:(NSString *)path name:(NSString *)name nameid:(NSString *)nameId studentid:(NSString *)std time:(NSNumber *)time fize:(NSNumber *)fsize classID:(NSNumber *)classid intro:(NSString *)intro tag:(NSString *)tag
+-(void)addRequestToQueue:(NSString *)path name:(NSString *)name nameid:(NSString *)nameId studentid:(NSString *)std time:(NSNumber *)time fize:(NSNumber *)fsize classID:(NSNumber *)classid intro:(NSString *)intro tag:(NSString *)tag teacherid:(NSNumber *)teacherid
 {
     //NSLog(@"%@",tag);
     
@@ -82,7 +81,8 @@ static GKUpQueue *gkqueue=nil;
     //source
     GKUpWraper *wrapper=[GKFindWraper getBookWrapper:nameId];
 
-   NSString *url=[NSString stringWithFormat:@"http://%@/source",user.upIP];
+   //NSString *url=[NSString stringWithFormat:@"http://%@/source",user.upIP];
+    NSString *url=@"http://client.yunxiaoche.com:8000/source";
     ASIFormDataRequest * request=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:url]];
     [request addRequestHeader:@"sid" value:user._sid];
     [request addRequestHeader:@"apikey" value:@"mactoprest"];
@@ -106,6 +106,7 @@ static GKUpQueue *gkqueue=nil;
     [request addPostValue:classid forKey:@"uid"];
     [request addPostValue:intro forKey:@"intro"];
     [request addPostValue:tag forKey:@"tag"];
+    [request addPostValue:teacherid forKey:@"teacherid"];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:nameId,@"nameid",path,@"path",nil]];
     [request addPostValue:[self fileName] forKey:@"pickey"];
     

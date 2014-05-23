@@ -10,8 +10,8 @@
 #import "GKUserLogin.h"
 #import "GKUpQueue.h"
 #import "GKLoaderManager.h"
-#import "TestFlight.h"
 
+#import "MobClick.h"
 @implementation GKAppDelegate
 
 - (void)dealloc
@@ -31,12 +31,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    [TestFlight takeOff:@"d4bc9035-d1e2-4759-b915-1bd09236dc63"];
+    
 
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
+    [MobClick startWithAppkey:@"537436b256240ba278017fc3" reportPolicy:SEND_INTERVAL   channelId:@""];
+    
+//    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [MobClick setAppVersion:CURRENTVERSION];
     loginVC=[[GKLoginViewController alloc]initWithNibName:@"GKLoginViewController" bundle:nil];
     self.window.rootViewController=loginVC;
 

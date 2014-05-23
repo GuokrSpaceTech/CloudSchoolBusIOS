@@ -10,9 +10,9 @@
 #import "GKAppDelegate.h"
 #import "GKUserLogin.h"
 #import "GKFindWraper.h"
-#import "TestFlight.h"
+
 #import "DBManager.h"
-#define NSLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+
 
 
 static GKLoaderManager *manager=nil;
@@ -118,6 +118,7 @@ static GKLoaderManager *manager=nil;
                 wraper.time=loader.ftime;
                 wraper.fize=loader.fsize;
                 wraper.classid=loader.classUid;
+                wraper.teacherid=loader.teacherid;
                 wraper.imageData=loader.smallImage;
                 [upArr addObject:wraper];
                 [GKFindWraper addUpWrapper:wraper Key:loader.nameID];
@@ -128,7 +129,7 @@ static GKLoaderManager *manager=nil;
                 //        [[GKUpQueue creatQueue] addRequestToQueue:loader.image name:loader.name nameid:loader.nameID studentid:loader.studentId time:loader.ftime fize:loader.fsize classID:loader.classUid];
                 
                 
-                [[GKUpQueue creatQueue]addRequestToQueue:wraper.path name:wraper.name nameid:wraper.nameid studentid:wraper.tid time:wraper.time fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag];
+                [[GKUpQueue creatQueue]addRequestToQueue:wraper.path name:wraper.name nameid:wraper.nameid studentid:wraper.tid time:wraper.time fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag teacherid:wraper.teacherid];
                 [wraper release];
             }
         });
@@ -160,7 +161,7 @@ static GKLoaderManager *manager=nil;
     return [arr objectAtIndex:0];
 
 }
--(void)addWraperToArr:(NSString *)path name:(NSString *)name iSloading:(NSNumber *)isUploading nameId:(NSString *)nameId studentId:(NSString *)tid time:(NSNumber *)time fsize:(NSNumber *)fize classID:(NSNumber *)classid intro:(NSString *)intro data:(NSData *)imageData tag:(NSString *)tag
+-(void)addWraperToArr:(NSString *)path name:(NSString *)name iSloading:(NSNumber *)isUploading nameId:(NSString *)nameId studentId:(NSString *)tid time:(NSNumber *)time fsize:(NSNumber *)fize classID:(NSNumber *)classid intro:(NSString *)intro data:(NSData *)imageData tag:(NSString *)tag teacherid:(NSNumber*)teacherid
 {
     if([GKFindWraper getBookWrapper:nameId]==nil)
     {
@@ -179,12 +180,13 @@ static GKLoaderManager *manager=nil;
         wraper.intro=intro;
         wraper.imageData=imageData;
         wraper.tag = tag;
+        wraper.teacherid=teacherid;
         [upArr addObject:wraper];
         [wraper release];
         [GKFindWraper addUpWrapper:wraper Key:nameId];
         
 
-        [[GKUpQueue creatQueue]addRequestToQueue:wraper.path name:wraper.name nameid:wraper.nameid studentid:wraper.tid time:wraper.time fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag];
+        [[GKUpQueue creatQueue]addRequestToQueue:wraper.path name:wraper.name nameid:wraper.nameid studentid:wraper.tid time:wraper.time fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag teacherid:teacherid];
        // [[GKUpQueue creatQueue] addRequestToQueue:path name:imageName nameid:nameId studentid:tid time:time fize:fize classID:classid];
         
         
@@ -286,7 +288,7 @@ static GKLoaderManager *manager=nil;
     
     for (int i=0; i<[upArr count]; i++) {
         GKUpWraper *wraper=[upArr objectAtIndex:i];
-        [[GKUpQueue creatQueue]   addRequestToQueue:wraper.path name:wraper.name   nameid:wraper.nameid studentid:wraper.tid time:wraper.time   fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag];
+        [[GKUpQueue creatQueue]   addRequestToQueue:wraper.path name:wraper.name   nameid:wraper.nameid studentid:wraper.tid time:wraper.time   fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag teacherid:wraper.teacherid];
 
     }
     
@@ -320,7 +322,7 @@ static GKLoaderManager *manager=nil;
     if([wraper.isUploading integerValue]!=10)
     {
         wraper.isUploading=[NSNumber numberWithInt:10];
-        [[GKUpQueue creatQueue]   addRequestToQueue:wraper.path name:wraper.name   nameid:wraper.nameid studentid:wraper.tid time:wraper.time   fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag];
+        [[GKUpQueue creatQueue]   addRequestToQueue:wraper.path name:wraper.name   nameid:wraper.nameid studentid:wraper.tid time:wraper.time   fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag teacherid:wraper.teacherid];
     }
     
     

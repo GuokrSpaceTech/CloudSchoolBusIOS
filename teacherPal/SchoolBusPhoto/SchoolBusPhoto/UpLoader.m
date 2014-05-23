@@ -2,7 +2,7 @@
 //  UpLoader.m
 //  SchoolBusPhoto
 //
-//  Created by CaiJingPeng on 14-1-8.
+//  Created by wen peifang on 14-5-9.
 //  Copyright (c) 2014年 mactop. All rights reserved.
 //
 
@@ -22,5 +22,6 @@
 @dynamic smallImage;
 @dynamic studentId;
 @dynamic tag;
+@dynamic teacherid;
 
 @end

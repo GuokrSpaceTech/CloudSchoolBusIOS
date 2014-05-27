@@ -491,6 +491,7 @@
             ETNicknameViewController *nickVC = [[ETNicknameViewController alloc] init];
             nickVC.cstudent = self.tempStu;
             nickVC.delegate = self;
+            nickVC.type=2;
             [self.navigationController pushViewController:nickVC animated:YES];
             [nickVC release];
         }

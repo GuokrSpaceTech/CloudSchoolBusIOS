@@ -10,7 +10,7 @@
 #import "GKBaseViewController.h"
 @interface GKStudentListViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate>
 {
-    
+    UILabel *numLabel;
 }
 @property (nonatomic,retain)UITableView *_tableView;
 @property (nonatomic,retain)NSMutableArray *studentArr;

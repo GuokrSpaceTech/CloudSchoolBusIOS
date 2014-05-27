@@ -35,7 +35,7 @@
     [super viewWillAppear:animated];
     [(KKNavigationController *)self.navigationController setNavigationTouch:NO];
     
-    
+     numLabel.text=[NSString stringWithFormat:@"%@%d",NSLocalizedString(@"studentCount", @""),self.studentArr.count];
     [_tableView reloadData];
 }
 - (void)viewDidLoad
@@ -76,7 +76,7 @@
    // NSLog(@"%@",self.view.frame.size.height);
     UIView *bottomView=[[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-20, 320, 20)];
     bottomView.backgroundColor=[UIColor colorWithRed:103/255.0 green:183/255.0 blue:204/255.0 alpha:1];
-    UILabel *numLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
+    numLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
     numLabel.backgroundColor=[UIColor clearColor];
     numLabel.textColor=[UIColor whiteColor];
     if(IOSVERSION>=6.0)

@@ -93,8 +93,8 @@
     }
     
     [self endEditing:YES];
-    
-    NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"", @"email", feedbackTV.text, @"content",nil];
+    UserLogin *user=[UserLogin currentLogin];
+    NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"", @"email", feedbackTV.text, @"content",user.studentId,@"studentid",nil];
     [[EKRequest Instance] EKHTTPRequest:feedback parameters:param requestMethod:POST forDelegate:self];
     
 }

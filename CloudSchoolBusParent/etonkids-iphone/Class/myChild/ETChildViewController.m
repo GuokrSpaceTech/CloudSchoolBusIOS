@@ -45,10 +45,12 @@
     
     
     //section 2
-    NSArray *array = [NSArray arrayWithObjects:LOCAL(@"vip", @""),/*LOCAL(@"daijinquan", @""),*/LOCAL(@"chengzhangdangan", @""),LOCAL(@"kewaikeyouhui", @""), nil];
+   // NSArray *array = [NSArray arrayWithObjects:LOCAL(@"vip", @""),/*LOCAL(@"daijinquan", @""),*/LOCAL(@"chengzhangdangan", @""),LOCAL(@"kewaikeyouhui", @""), nil];
     
-    NSArray *imgArr = [NSArray arrayWithObjects:@"-vip.png",@"成长档案.png",@"优惠.png", nil];
+        NSArray *array = [NSArray arrayWithObjects:@"晨检与考勤", nil];
     
+    //NSArray *imgArr = [NSArray arrayWithObjects:@"-vip.png",@"成长档案.png",@"优惠.png", nil];
+      NSArray *imgArr = [NSArray arrayWithObjects:@"-vip.png", nil];
     self.titleArr = array;
     self.tImageArr = imgArr;
     
@@ -94,7 +96,7 @@
     }
     else
     {
-        return 3;
+        return 1;
     }
 }
 
@@ -189,7 +191,7 @@
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
         label.text = [titleArr objectAtIndex:indexPath.row];
         label.font = [UIFont systemFontOfSize:16];
-        label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
+        //label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
         label.backgroundColor = [UIColor clearColor];
         [cell.contentView addSubview:label];
         [label release];

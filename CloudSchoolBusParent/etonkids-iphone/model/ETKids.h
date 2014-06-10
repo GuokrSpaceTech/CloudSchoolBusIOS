@@ -9,7 +9,7 @@
 #define iphone5     ([UIScreen instancesRespondToSelector:@selector(currentMode)]?CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size):NO)
 
 #define ios7  [[[UIDevice currentDevice] systemVersion] floatValue] >= 7
-
+#define IOSVERSION [[[UIDevice currentDevice]systemVersion]floatValue]
 #define REMEMBERPSAAWORD @"rememberpassword"  // 记住密码 key
 #define AUTOLOGIN @"auto_login"                //自动登陆key
 

@@ -36,7 +36,7 @@
     if (ios7)
     {
         _imageView11=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
-        _imageView11.backgroundColor=[UIColor colorWithRed:103/255.0 green:183/255.0 blue:204/255.0 alpha:1];
+        _imageView11.backgroundColor=[UIColor blackColor];
         [self.view addSubview:_imageView11];
         [_imageView11 release];
 
@@ -70,6 +70,7 @@
     titlelabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 46)];
     titlelabel.backgroundColor=[UIColor clearColor];
     titlelabel.text=@"";
+    titlelabel.userInteractionEnabled=NO;
     titlelabel.textColor=[UIColor whiteColor];
     [navigationView addSubview:titlelabel];
 

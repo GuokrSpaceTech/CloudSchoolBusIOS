@@ -19,6 +19,8 @@
     NSArray *shipArr;
     MBProgressHUD *HUD;
     int sex;
+    
+    
 }
 @property(nonatomic,retain)NSString *name;
 @property(nonatomic,retain)NSData *imagedata;
@@ -30,5 +32,5 @@
 
 @property (nonatomic,retain)NSArray *shipArr;
 @property(nonatomic,retain)UILabel *sexlabel;
-
+@property (nonatomic,retain)NSString *photoString;
 @end

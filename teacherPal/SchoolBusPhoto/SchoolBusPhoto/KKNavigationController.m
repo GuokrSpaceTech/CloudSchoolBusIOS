@@ -44,7 +44,9 @@
     }
     return self;
 }
-
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 - (void)dealloc
 {
     self.screenShotsList = nil;
@@ -58,6 +60,10 @@
 {
     [super viewDidLoad];
 
+    if (ios7) {
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
+    
 //    UIImageView *shadowImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"leftside_shadow_bg"]];
 //    shadowImageView.frame = CGRectMake(-10, 0, 10, self.view.frame.size.height);
 //    [self.view addSubview:shadowImageView];

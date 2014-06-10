@@ -167,9 +167,20 @@
             [self.view addSubview:HUD];
             [HUD release];
         }
-        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:self.name,@"name",self.tel,@"tel",[NSNumber numberWithInt:self.sex],@"sex",self.birthday,@"birthday",self.parentid,@"parentid", nil]; //关联孩子
     
-    [[EKRequest Instance]EKHTTPRequest:relationship parameters:dic requestMethod:POST forDelegate:self];
+    if(self.photoString==nil)
+    {
+        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:self.name,@"name",self.tel,@"tel",[NSNumber numberWithInt:self.sex],@"sex",self.birthday,@"birthday",self.parentid,@"parentid", nil]; //关联孩子
+        [[EKRequest Instance]EKHTTPRequest:relationship parameters:dic requestMethod:POST forDelegate:self];
+
+    }
+    else
+    {
+          NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:self.name,@"name",self.tel,@"tel",[NSNumber numberWithInt:self.sex],@"sex",self.birthday,@"birthday",self.parentid,@"parentid",self.photoString,@"fbody", nil]; //关联孩子
+        [[EKRequest Instance]EKHTTPRequest:relationship parameters:dic requestMethod:POST forDelegate:self];
+
+    }
+    
     
 }
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
@@ -282,7 +293,7 @@
 {
     self.student=nil;
     self.parentid=nil;
-
+    self.photoString=nil;
     self.tel=nil;
     self.name=nil;
     self.birthday=nil;

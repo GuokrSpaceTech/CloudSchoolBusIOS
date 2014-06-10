@@ -222,7 +222,8 @@
         [HUD removeFromSuperview];
         HUD=nil;
     }
-    
+    NSString *aaa=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
+    NSLog(@"aaaa %@",aaa);
     NSLog(@"error code : %d",code);
     
     if(method == forgetpwd || method == bindTel)

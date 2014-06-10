@@ -9,8 +9,8 @@
 
 //#define SERVERURL @"http://api.yunxiaoche.com/"
 //#define SERVERURL @"http://apitest.yunxiaoche.com/"
-//#define SERVERURL @"http://apitest.yunxiaoche.com/"
-#define SERVERURL @"http://192.168.1.18:81/"
+#define SERVERURL @"http://apitest.yunxiaoche.com/"
+//#define SERVERURL @"http://192.168.1.18:81/"
 //#define SERVERURL @"http://v33.service.yunxiaoche.com/"
 
 @interface EKRequest()
@@ -127,6 +127,8 @@ static EKRequest * instance = nil;
             return @"bindreplace";
         case skinid:
             return @"skinid";
+        case attendancemanager:
+            return @"attendancemanager";
         default:
             
             return nil;

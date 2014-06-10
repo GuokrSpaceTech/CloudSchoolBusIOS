@@ -40,7 +40,8 @@ enum RequestFunction
     bindTel,
     forgetpwd,
     bindreplace,
-    skinid
+    skinid,
+    attendancemanager
     
 };
 typedef NSUInteger RequestFunction;

@@ -199,7 +199,7 @@
             if (compareResult == NSOrderedSame)
             {
                 // Here ret don't need to autorelease since we need to return it
-                ret = [[[NSString alloc] initWithBytes:resultArray+26 length:string_length - 26 encoding:NSUTF8StringEncoding] autorelease];
+                ret = [[NSString alloc] initWithBytes:resultArray+26 length:string_length - 26 encoding:NSUTF8StringEncoding];
             }
             else
             {

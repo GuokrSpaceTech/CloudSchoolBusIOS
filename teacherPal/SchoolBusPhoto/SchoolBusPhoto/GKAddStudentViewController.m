@@ -408,7 +408,7 @@
     UILabel *labelbir=(UILabel *)[contentView viewWithTag:LABELTAG+2];
     NSString * base64 = [[NSString alloc] initWithData:[GTMBase64 encodeData:self.imagedata] encoding:NSUTF8StringEncoding];
 
-    
+    self.photoString=base64;
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:labelship.text,@"relationship",nameField.text,@"name",self.telField.text,@"tel",[NSNumber numberWithInt:sex],@"sex",labelbir.text,@"birthday",base64,@"fbody", nil]; //增加孩子
     
     
@@ -451,7 +451,7 @@
                 relationVC.tel=telField.text;
                 relationVC.name=nameField.text;
                 relationVC.sex=sex;
-                
+                relationVC.photoString=self.photoString;
                 relationVC.birthday=labelbir.text;
                 [self.navigationController pushViewController:relationVC animated:YES];
                 [relationVC release];
@@ -544,6 +544,7 @@
     self.telField=nil;
     self.nickNameField=nil;
     self.shipArr=nil;
+    self.photoString=nil;
     self.imagedata=nil;
     [super dealloc];
 }

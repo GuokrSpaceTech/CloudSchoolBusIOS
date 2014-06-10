@@ -53,11 +53,16 @@ static  GKMainViewController*rootViewCon;
 //-(void) getErrorInfo:(NSError *) error forMethod:(RequestFunction) method
 //{
 //}
-
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 - (void)viewDidLoad
 {
     
     [super viewDidLoad];
+    if (ios7) {
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
     
     sideBarShowing=NO;
     currentTranslate=0;

@@ -19,7 +19,7 @@
 @class MTCustomActionSheet;
 
 @protocol MTCustomActionSheetDelegate <NSObject>
-
+@optional
 - (void)actionSheet:(MTCustomActionSheet *)actionSheet didClickButtonByIndex:(int)index;
 - (void)actionSheet:(MTCustomActionSheet *)actionSheet didClickButtonByIndex:(int)index selectDate:(NSDate *)date;
 

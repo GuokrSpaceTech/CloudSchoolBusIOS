@@ -31,10 +31,16 @@
     }
     return self;
 }
-
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (ios7) {
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
     
     [GKCommonClass createHelpWithTag:1001 image:[UIImage imageNamed:iphone5 ? @"thelp_zhuye_568.png" : @"thelp_zhuye.png"]];
  

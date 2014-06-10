@@ -21,4 +21,6 @@
 @property (nonatomic,retain)NSString *name;
 @property (nonatomic,retain)NSString *birthday;
 @property (nonatomic,assign)int sex;
+
+@property (nonatomic,retain)NSString *photoString;
 @end

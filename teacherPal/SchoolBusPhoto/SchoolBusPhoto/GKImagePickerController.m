@@ -55,10 +55,17 @@
 {
     return YES;
 }
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (ios7) {
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
     self.navigationController.navigationBarHidden = YES;
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES];

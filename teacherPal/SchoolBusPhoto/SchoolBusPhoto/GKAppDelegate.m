@@ -66,6 +66,13 @@
     
     [reachability startNotifier];
     
+ 
+       
+  
+    
+    
+
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

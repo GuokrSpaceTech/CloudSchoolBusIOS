@@ -31,6 +31,9 @@
 		11A0554C17968ACB005C062A /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A0553D17968ACB005C062A /* UIImage+WebP.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		11A0554D17968ACB005C062A /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A0553F17968ACB005C062A /* UIImageView+WebCache.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		11A3F3C61795248300C37EA1 /* alert.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A3F3C51795248200C37EA1 /* alert.png */; };
+		11B3E225193ED7FC00A96ACF /* ETSendRecevieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B3E224193ED7FC00A96ACF /* ETSendRecevieViewController.m */; };
+		11B3E228193F058500A96ACF /* ETSendReceiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B3E227193F058500A96ACF /* ETSendReceiveView.m */; };
+		11EC2860193F15AA002FF46E /* ETAddSendReceiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EC285F193F15AA002FF46E /* ETAddSendReceiveViewController.m */; };
 		730FFA7F17BB7871004032C2 /* WriteCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730FFA7D17BB7870004032C2 /* WriteCommentsViewController.m */; };
 		730FFA8317BB7C3E004032C2 /* CommentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730FFA8217BB7C3E004032C2 /* CommentDetailViewController.m */; };
 		73200DF117B34828008015AB /* backgroundkeyselect.png in Resources */ = {isa = PBXBuildFile; fileRef = 73200DF017B34827008015AB /* backgroundkeyselect.png */; };
@@ -594,6 +597,12 @@
 		11A0553E17968ACB005C062A /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		11A0553F17968ACB005C062A /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		11A3F3C51795248200C37EA1 /* alert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alert.png; sourceTree = "<group>"; };
+		11B3E223193ED7FC00A96ACF /* ETSendRecevieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETSendRecevieViewController.h; sourceTree = "<group>"; };
+		11B3E224193ED7FC00A96ACF /* ETSendRecevieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSendRecevieViewController.m; sourceTree = "<group>"; };
+		11B3E226193F058500A96ACF /* ETSendReceiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETSendReceiveView.h; sourceTree = "<group>"; };
+		11B3E227193F058500A96ACF /* ETSendReceiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSendReceiveView.m; sourceTree = "<group>"; };
+		11EC285E193F15AA002FF46E /* ETAddSendReceiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETAddSendReceiveViewController.h; sourceTree = "<group>"; };
+		11EC285F193F15AA002FF46E /* ETAddSendReceiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETAddSendReceiveViewController.m; sourceTree = "<group>"; };
 		730FFA7C17BB7870004032C2 /* WriteCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteCommentsViewController.h; sourceTree = "<group>"; };
 		730FFA7D17BB7870004032C2 /* WriteCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteCommentsViewController.m; sourceTree = "<group>"; };
 		730FFA8117BB7C3E004032C2 /* CommentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailViewController.h; sourceTree = "<group>"; };
@@ -2141,6 +2150,12 @@
 				789CC757182CEE6600E81510 /* ETGrowViewController.xib */,
 				789EAA311834ABC40029D4B0 /* ETGrowRecordViewController.h */,
 				789EAA321834ABC40029D4B0 /* ETGrowRecordViewController.m */,
+				11B3E223193ED7FC00A96ACF /* ETSendRecevieViewController.h */,
+				11B3E224193ED7FC00A96ACF /* ETSendRecevieViewController.m */,
+				11B3E226193F058500A96ACF /* ETSendReceiveView.h */,
+				11B3E227193F058500A96ACF /* ETSendReceiveView.m */,
+				11EC285E193F15AA002FF46E /* ETAddSendReceiveViewController.h */,
+				11EC285F193F15AA002FF46E /* ETAddSendReceiveViewController.m */,
 			);
 			path = myChild;
 			sourceTree = "<group>";
@@ -3093,8 +3108,10 @@
 				7860CB2B188686EC00DD0E80 /* MDRadialProgressTheme.m in Sources */,
 				1112BB4D1797C4E500337CB4 /* NSStringAdditions.m in Sources */,
 				73545DD817A79B9C000E39FC /* ETNicknameViewController.m in Sources */,
+				11B3E228193F058500A96ACF /* ETSendReceiveView.m in Sources */,
 				73545DDD17A79BDA000E39FC /* ETBackgroundViewController.m in Sources */,
 				73545DE217A79C04000E39FC /* AboutOursViewController.m in Sources */,
+				11EC2860193F15AA002FF46E /* ETAddSendReceiveViewController.m in Sources */,
 				73B9CDBC17ABAE2E00E8AD36 /* ETdefaultViewController.m in Sources */,
 				78DFD28717AF43970069B8CC /* ETShowBigImageViewController.m in Sources */,
 				78DFD28A17B0ACFA0069B8CC /* MTCustomActionSheet.m in Sources */,
@@ -3120,6 +3137,7 @@
 				78BC611B17E85E0C0063B68A /* ETZoomScrollView.m in Sources */,
 				7814B5A917EEE173008826C2 /* ContentUpCell.m in Sources */,
 				788BE6AE17F00B610076D920 /* ETCalendarViewController.m in Sources */,
+				11B3E225193ED7FC00A96ACF /* ETSendRecevieViewController.m in Sources */,
 				7897DF7917F2AB4000DB8B21 /* ETEducationViewController.m in Sources */,
 				78F841A718190E87007722AE /* ETImportantNotice.m in Sources */,
 				7897DF7D17F2BDFA00DB8B21 /* OrderBlock.m in Sources */,

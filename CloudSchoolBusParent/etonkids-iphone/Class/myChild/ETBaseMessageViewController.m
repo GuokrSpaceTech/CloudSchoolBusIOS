@@ -114,7 +114,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 4;
+        return 5;
     }
     return 4;
 }
@@ -219,6 +219,25 @@
             birthdaylabel.text = user.birthday;
             //            self.originDate = [NSString stringWithFormat:@"%@",self.birthdaylabel.text];
             [birthdaylabel release];
+            
+        }
+        else if(indexPath.row==4)
+        {
+            cell.textLabel.backgroundColor=[UIColor clearColor];
+            cell.textLabel.text=@"日常接送人";
+            cell.backgroundColor=[UIColor whiteColor];
+            cell.selectionStyle=UITableViewCellSelectionStyleBlue;
+            
+            
+            UILabel *countlabel=[[UILabel alloc]initWithFrame:CGRectMake(100,10,170,20)];
+           
+            countlabel.textAlignment=UITextAlignmentRight;
+            [cell.contentView addSubview:countlabel];
+            countlabel.backgroundColor=[UIColor clearColor];
+            countlabel.font=[UIFont systemFontOfSize:15];
+            countlabel.text=@"0位";
+            [countlabel release];
+
             
         }
 
@@ -352,6 +371,14 @@
             //            }
             //            [datepick.locale release];
             //
+        }
+        else if (indexPath.row==4)
+        {
+            ETSendRecevieViewController  *sendcontroller=[[ETSendRecevieViewController alloc]init];
+            //nicknameviewcontroller.delegate = self;
+            AppDelegate *appDel = SHARED_APP_DELEGATE;
+            [appDel.bottomNav pushViewController:sendcontroller animated:YES];
+            [sendcontroller release];
         }
     }
 

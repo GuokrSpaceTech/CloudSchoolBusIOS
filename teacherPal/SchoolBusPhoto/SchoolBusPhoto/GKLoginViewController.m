@@ -31,10 +31,17 @@
 //-(UIStatusBarStyle)preferredStatusBarStyle{
 //    return UIStatusBarStyleLightContent;
 //}
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    if (ios7) {
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
     UIImage *helper= IMAGENAME(IMAGEWITHPATH(NSLocalizedString(@"jiaoshiLogin", @"")));
     
     [_jiaoshiLogin setImage:helper];
@@ -219,9 +226,15 @@
     user._userName=_userName.text;
     user._passWord=_passWord.text;
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:_userName.text,@"username",[MTAuthCode authEncode:_passWord.text authKey:@"mactop" expiryPeriod:0],@"password",@"",@"token", nil];
+    NSString *sss=[MTAuthCode authEncode:_passWord.text authKey:@"mactop" expiryPeriod:0];
     
+    NSString * jimi=[MTAuthCode authDecode:sss authKey:@"mactop" expiryPeriod:0];
+
+    NSLog(@"mima:%@---%@",sss,jimi);
+    //NSLog(@"%@",[MTAuthCode authDecode:sss authKey:@"mactop" expiryPeriod:0]);
     [[EKRequest Instance] EKHTTPRequest:tsignin parameters:dic requestMethod:POST forDelegate:self];
-    _loginBtn.enabled=NO;
+    
+       _loginBtn.enabled=NO;
 
 
 

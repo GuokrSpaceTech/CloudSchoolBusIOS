@@ -566,6 +566,16 @@
     NSData *mydata=UIImageJPEGRepresentation(image, 0.5);
     
     NSString * base64 = [[NSString alloc] initWithData:[GTMBase64 encodeData:mydata] encoding:NSUTF8StringEncoding];
+    //
+//    NSDate *date=[NSDate date];
+//    NSTimeInterval time= [date timeIntervalSince1970];
+//    
+//    NSString *string=[NSString stringWithFormat:@"%f",time];
+//    string=[string substringToIndex:10];
+//    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"11111111",@"smartid",string,@"createtime",@"36.5",@"temperature",@"红豆饭",@"healthstate",base64,@"fbody", nil];
+//    [[EKRequest Instance] EKHTTPRequest:smartcard parameters:dic requestMethod:POST forDelegate:self];
+    
+    
     NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:base64,@"fbody",@"2",@"isstudent",st.studentid,@"id",nil];
     [[EKRequest Instance] EKHTTPRequest:avatar parameters:param requestMethod:POST forDelegate:self];
     [base64 release];
@@ -575,7 +585,8 @@
 - (void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
 {
     NSLog(@"error code : %d",code);
-    
+    NSString *ssss=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",ssss);
     if(HUD)
     {
         [HUD removeFromSuperview];
@@ -607,6 +618,7 @@
     {
         if(code==1)
         {
+            
             
             UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"leaveclass", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
             [alert show];

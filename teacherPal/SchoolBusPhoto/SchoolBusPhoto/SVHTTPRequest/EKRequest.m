@@ -140,6 +140,10 @@ static EKRequest * instance = nil;
             return @"relationship";
         case resetpassword:
             return @"resetpassword";
+        case smartcard:
+            return @"smartcard";
+        case attendancemanager:
+            return @"attendancemanager";
         default:
             return nil;
     }
@@ -154,6 +158,10 @@ static EKRequest * instance = nil;
     if(function == tsignin && param != nil)
     {
         header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactoprest",@"apikey",CURRENTVERSION,@"Version", nil], nil];
+    }
+    else if (function==smartcard && param != nil)
+    {
+        header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactopattendance",@"apikey",CURRENTVERSION,@"Version", nil], nil];
     }
     else
     {

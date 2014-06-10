@@ -16,6 +16,8 @@
 #import "GKLoaderManager.h"
 #import "GKUpLoaderViewController.h"
 #import "GKNoticeListViewController.h"
+#import "GKHealthViewController.h"
+#import "GKAttentanceViewController.h"
 @interface GKLeftViewController ()
 
 @end
@@ -43,6 +45,14 @@
     [super viewDidLoad];
     NSLog(@"%f",self.view.frame.size.height);
     self.view.backgroundColor=[UIColor colorWithRed:103/255.0 green:183/255.0 blue:204/255.0 alpha:1];
+    if (ios7)
+    {
+        UIImageView * _imageView11=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
+        _imageView11.backgroundColor=[UIColor blackColor];
+        [self.view addSubview:_imageView11];
+        [_imageView11 release];
+        
+    }
     UIView *backView=nil;
     if(ios7)
         backView=[[UIView alloc]initWithFrame:CGRectMake(0, 0 + IOS7OFFSET, 320, self.view.frame.size.height)];
@@ -98,8 +108,8 @@
      //NSLog(@"????? %@",  NSLocalizedString(@"classLeftH", @""));
 //    "leftUpN"="leftUpNE.png";
 //    "leftUpH"="leftupHE.png";
-    NSArray *defArr = [NSArray arrayWithObjects:NSLocalizedString(@"notice", @""),NSLocalizedString(@"grade", @""), NSLocalizedString(@"home", @""),NSLocalizedString(@"leftUpN", @""),NSLocalizedString(@"setting", @""),nil];
-    NSArray *selArr = [NSArray arrayWithObjects:NSLocalizedString(@"noticeH", @""),NSLocalizedString(@"gradeH", @""),NSLocalizedString(@"homeH", @""), NSLocalizedString(@"leftUpH", @""),NSLocalizedString(@"settingH", @""),  nil];
+    NSArray *defArr = [NSArray arrayWithObjects:NSLocalizedString(@"notice", @""),NSLocalizedString(@"notice", @""),NSLocalizedString(@"notice", @""),NSLocalizedString(@"grade", @""), NSLocalizedString(@"home", @""),NSLocalizedString(@"leftUpN", @""),NSLocalizedString(@"setting", @""),nil];
+    NSArray *selArr = [NSArray arrayWithObjects:NSLocalizedString(@"notice", @""),NSLocalizedString(@"notice", @""),NSLocalizedString(@"noticeH", @""),NSLocalizedString(@"gradeH", @""),NSLocalizedString(@"homeH", @""), NSLocalizedString(@"leftUpH", @""),NSLocalizedString(@"settingH", @""),  nil];
     totle=[defArr count];
     for (int i=0; i<[defArr count]; i++) {
         UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -140,7 +150,7 @@
         _selectIdnex = 0;
     }
     
-    badgeView=[[GKBadgeView alloc]initWithFrame:CGRectMake(150, (iOS7?75:55), 16, 16)];
+    badgeView=[[GKBadgeView alloc]initWithFrame:CGRectMake(150, (iOS7?75+2*50:55+2*50), 16, 16)];
     badgeView.backgroundColor=[UIColor clearColor];
     badgeView.bagde=0;
     [self.view addSubview:badgeView];
@@ -151,6 +161,7 @@
     
     [usr addObserver:self forKeyPath:@"badgeNumber" options:NSKeyValueObservingOptionNew context:NULL];
     usr=[GKUserLogin currentLogin];
+  //  usr.badgeNumber=[NSNumber numberWithInt:1];
     badgeView.bagde=[usr.badgeNumber integerValue];
     
 
@@ -261,6 +272,31 @@
     }
     if(index==1)
     {
+        // 每日晨检
+        
+        GKHealthViewController *health=[[GKHealthViewController alloc]init];
+        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:health];
+        [health release];
+        
+        return [nav autorelease];
+        
+        
+
+    }
+    if(index==2)
+    {
+        
+        // 考勤
+        GKAttentanceViewController *attentance=[[GKAttentanceViewController alloc]init];
+        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:attentance];
+        [attentance release];
+        
+        return [nav autorelease];
+        
+    }
+    if(index==3)
+    {
+        //系统消息
         
         NSUserDefaults *defaultuser=[NSUserDefaults standardUserDefaults];
         [defaultuser setObject:[NSNumber numberWithInt:0]forKey:@"BADGE"];
@@ -273,68 +309,62 @@
         [letterVC release];
         
         return [nav autorelease];
-        
+
+
 
     }
-    if(index==2)
+    if(index==4)
     {
+        //班级学生
+        
         GKStudentListViewController *classVC=[[GKStudentListViewController alloc]init];
         KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:classVC];
         [classVC release];
         
         return [nav autorelease];
-    }
-    if(index==3)
-    {
+
         
+    }
+    if(index==5)
+    {
+        //家长通知
+  
         GKNoticeListViewController *noticeVC=[[GKNoticeListViewController alloc]init];
         KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:noticeVC];
         [noticeVC release];
         
         return [nav autorelease];
 
-
+        
+    
+        
     }
-    if(index==4)
+    if(index==6)
     {
-
-
+        // 上传列表
+//        GKAboutViewController *aboutVC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];
+//        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:aboutVC];
+//        [aboutVC release];
+//        
+//        return [nav autorelease];
+        
         GKUpLoaderViewController *uploadq=[[GKUpLoaderViewController alloc]init];
         KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:uploadq];
         [uploadq release];
-
-        return [nav autorelease];
         
+        return [nav autorelease];
+//
     }
-    if(index==5)
+    if(index==7)
     {
+        //设置
         
         GKSettingViewController *settingVC=[[GKSettingViewController alloc]init];
         settingVC.delegate=self;
         KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:settingVC];
         [settingVC release];
         return [nav autorelease];
-        
-//        return [nav autorelease];
-//        GKRePasswordViewController *repass=[[GKRePasswordViewController alloc]init];
-//        repass.delegate=self;
-//        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:repass];
-//        [repass release];
-//        
-//        return [nav autorelease];
-        
-    
-        
     }
-//    if(index==6)
-//    {
-//        GKAboutViewController *aboutVC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];
-//        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:aboutVC];
-//        [aboutVC release];
-//        
-//        return [nav autorelease];
-//
-//    }
     return nil;
 
 

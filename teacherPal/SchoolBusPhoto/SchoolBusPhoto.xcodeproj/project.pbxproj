@@ -208,8 +208,12 @@
 		11AF3B1718168F3400B36176 /* login_selBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3B1518168F3400B36176 /* login_selBtn.png */; };
 		11AF3B1918168FC400B36176 /* loginBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3B1818168FC400B36176 /* loginBtn@2x.png */; };
 		11B218171835C624002825FA /* GKNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B218161835C624002825FA /* GKNoticeViewController.m */; };
+		11B269BB193DB40C00E5369E /* GKHealthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B269BA193DB40C00E5369E /* GKHealthViewController.m */; };
+		11B269BF193DB61500E5369E /* GKAttentanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B269BE193DB61500E5369E /* GKAttentanceViewController.m */; };
+		11B269C2193DC94600E5369E /* GKAttentance.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B269C1193DC94600E5369E /* GKAttentance.m */; };
 		11B364BA191CB62C003E087E /* GKTeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B364B9191CB62C003E087E /* GKTeacher.m */; };
 		11B364BE191CBF1F003E087E /* UpLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B364BD191CBF1F003E087E /* UpLoader.m */; };
+		11B3E222193EC21500A96ACF /* GKTempature.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B3E221193EC21500A96ACF /* GKTempature.m */; };
 		11B405141918C82400E56A59 /* GKAddStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B405131918C82400E56A59 /* GKAddStudentViewController.m */; };
 		11B405171918C85400E56A59 /* GKSearchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B405161918C85400E56A59 /* GKSearchListViewController.m */; };
 		11B4051A1918CC4400E56A59 /* GKSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B405191918CC4400E56A59 /* GKSearchCell.m */; };
@@ -730,11 +734,19 @@
 		11AF3B1818168FC400B36176 /* loginBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginBtn@2x.png"; sourceTree = "<group>"; };
 		11B218151835C624002825FA /* GKNoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKNoticeViewController.h; sourceTree = "<group>"; };
 		11B218161835C624002825FA /* GKNoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNoticeViewController.m; sourceTree = "<group>"; };
+		11B269B9193DB40C00E5369E /* GKHealthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHealthViewController.h; sourceTree = "<group>"; };
+		11B269BA193DB40C00E5369E /* GKHealthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKHealthViewController.m; sourceTree = "<group>"; };
+		11B269BD193DB61500E5369E /* GKAttentanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAttentanceViewController.h; sourceTree = "<group>"; };
+		11B269BE193DB61500E5369E /* GKAttentanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAttentanceViewController.m; sourceTree = "<group>"; };
+		11B269C0193DC94600E5369E /* GKAttentance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAttentance.h; sourceTree = "<group>"; };
+		11B269C1193DC94600E5369E /* GKAttentance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAttentance.m; sourceTree = "<group>"; };
 		11B364B8191CB62C003E087E /* GKTeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKTeacher.h; sourceTree = "<group>"; };
 		11B364B9191CB62C003E087E /* GKTeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKTeacher.m; sourceTree = "<group>"; };
 		11B364BB191CBD05003E087E /* SchoolBusPhoto 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 5.xcdatamodel"; sourceTree = "<group>"; };
 		11B364BC191CBF1F003E087E /* UpLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpLoader.h; sourceTree = "<group>"; };
 		11B364BD191CBF1F003E087E /* UpLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpLoader.m; sourceTree = "<group>"; };
+		11B3E220193EC21400A96ACF /* GKTempature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKTempature.h; sourceTree = "<group>"; };
+		11B3E221193EC21500A96ACF /* GKTempature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKTempature.m; sourceTree = "<group>"; };
 		11B405121918C82400E56A59 /* GKAddStudentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAddStudentViewController.h; sourceTree = "<group>"; };
 		11B405131918C82400E56A59 /* GKAddStudentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAddStudentViewController.m; sourceTree = "<group>"; };
 		11B405151918C85400E56A59 /* GKSearchListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSearchListViewController.h; sourceTree = "<group>"; };
@@ -1263,6 +1275,10 @@
 				11B364B9191CB62C003E087E /* GKTeacher.m */,
 				11B364BC191CBF1F003E087E /* UpLoader.h */,
 				11B364BD191CBF1F003E087E /* UpLoader.m */,
+				11B269C0193DC94600E5369E /* GKAttentance.h */,
+				11B269C1193DC94600E5369E /* GKAttentance.m */,
+				11B3E220193EC21400A96ACF /* GKTempature.h */,
+				11B3E221193EC21500A96ACF /* GKTempature.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -1666,6 +1682,24 @@
 			name = notice;
 			sourceTree = "<group>";
 		};
+		11B269B8193DB3F100E5369E /* healthy */ = {
+			isa = PBXGroup;
+			children = (
+				11B269B9193DB40C00E5369E /* GKHealthViewController.h */,
+				11B269BA193DB40C00E5369E /* GKHealthViewController.m */,
+			);
+			path = healthy;
+			sourceTree = "<group>";
+		};
+		11B269BC193DB5FE00E5369E /* Attentance */ = {
+			isa = PBXGroup;
+			children = (
+				11B269BD193DB61500E5369E /* GKAttentanceViewController.h */,
+				11B269BE193DB61500E5369E /* GKAttentanceViewController.m */,
+			);
+			path = Attentance;
+			sourceTree = "<group>";
+		};
 		11BA02B1192B05DF00124DC1 /* Umeng */ = {
 			isa = PBXGroup;
 			children = (
@@ -1791,6 +1825,8 @@
 		2A32A56418122C01007CAA8E /* SchoolBusPhoto */ = {
 			isa = PBXGroup;
 			children = (
+				11B269BC193DB5FE00E5369E /* Attentance */,
+				11B269B8193DB3F100E5369E /* healthy */,
 				78709BD1187D1715009250FB /* tempResource */,
 				11A3BF421875678A0032BA07 /* Student */,
 				11A5AE621863E045008794C0 /* setting */,
@@ -2207,6 +2243,7 @@
 			files = (
 				11B4051B1918CE3700E56A59 /* GKAddStudentSearchViewController.h in Sources */,
 				2A32A56B18122C02007CAA8E /* main.m in Sources */,
+				11B269BB193DB40C00E5369E /* GKHealthViewController.m in Sources */,
 				78D8D11418C05CA9008860AB /* GKCommonClass.m in Sources */,
 				11BF898E183646DF008E72F0 /* GKBadgeView.m in Sources */,
 				119E96221814C5A300866DE8 /* ASICloudFilesContainer.m in Sources */,
@@ -2223,6 +2260,7 @@
 				119973461822456D0017E99A /* GKMarketDetailView.m in Sources */,
 				11C75DA81812725600A3AA89 /* SVHTTPRequest.m in Sources */,
 				119E96271814C5A300866DE8 /* ASICloudFilesRequest.m in Sources */,
+				11B269BF193DB61500E5369E /* GKAttentanceViewController.m in Sources */,
 				119E5FDE181923B100726761 /* GKUpQueue.m in Sources */,
 				111E8CEB181E532400234014 /* UIImageView+WebCache.m in Sources */,
 				1193A6A3182B68B3004011BC /* GKBuyCountView.m in Sources */,
@@ -2250,6 +2288,7 @@
 				119E963A1814C8BE00866DE8 /* GKLoaderManager.m in Sources */,
 				119E961F1814C5A300866DE8 /* ASINetworkQueue.m in Sources */,
 				119E5FCB1818C65100726761 /* ClassInfo.m in Sources */,
+				11B3E222193EC21500A96ACF /* GKTempature.m in Sources */,
 				11B405171918C85400E56A59 /* GKSearchListViewController.m in Sources */,
 				111E8CDE181E532400234014 /* MKAnnotationView+WebCache.m in Sources */,
 				119973401821FAB40017E99A /* GKMarket.m in Sources */,
@@ -2323,6 +2362,7 @@
 				111E8CE9181E532400234014 /* UIImage+MultiFormat.m in Sources */,
 				1192B7771829EB8D0082D37B /* JSONKit.m in Sources */,
 				11B852A1183221CF005FA5B9 /* ETNicknameViewController.m in Sources */,
+				11B269C2193DC94600E5369E /* GKAttentance.m in Sources */,
 				11A5A89B187BF2FE00EA22CD /* GKNoticeListViewController.m in Sources */,
 				119E5FD21818EE8D00726761 /* GKBaseViewController.m in Sources */,
 				119E5FF21819470400726761 /* Student.m in Sources */,

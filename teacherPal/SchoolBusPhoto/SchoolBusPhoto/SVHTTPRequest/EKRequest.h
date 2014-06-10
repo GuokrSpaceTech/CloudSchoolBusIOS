@@ -51,6 +51,8 @@ enum RequestFunction
     mobileStudent,
     relationship,
     resetpassword,
+    smartcard,
+    attendancemanager
 };
 typedef NSUInteger RequestFunction;
 

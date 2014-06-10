@@ -186,6 +186,9 @@
 
 - (void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
 {
+    
+    NSString *aa=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",aa);
     if(method == attendance && code == 1)
     {
         id result =[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
@@ -506,36 +509,39 @@
     NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:pStr,@"month",nil];
 
     
-    if ([calendarView.currentMonth month] == [[NSDate date] month])
-    {
-        ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
-        [com requestLoginWithComplete:^(NSError *err){
-            [[EKRequest Instance] EKHTTPRequest:attendance parameters:param requestMethod:GET forDelegate:self];
-        }];
-        
-    }
-    else
-    {
-        NSArray *result = [ETCoreDataManager searchAttendanceByMonth:pStr];
-        
-        if (result == nil || result.count == 0) {
-            
-            ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
-            [com requestLoginWithComplete:^(NSError *err){
-                [[EKRequest Instance] EKHTTPRequest:attendance parameters:param requestMethod:GET forDelegate:self];
-            }];
-            
-        }
-        else
-        {
-            self.attArr = [NSMutableArray arrayWithArray:[ETCoreDataManager searchAttendanceByMonth:pStr]];
-            self.fesArr = [NSMutableArray arrayWithArray:[ETCoreDataManager searchCalendarByMonth:pStr]];
-            NSLog(@"%@ , %@",self.attArr,self.fesArr);
-            
-            [self updateCalendarView];
-        }
-    }
+    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"2014-06",@"month", nil];
+    [[EKRequest Instance] EKHTTPRequest:attendancemanager parameters:dic requestMethod:GET forDelegate:self];
     
+//    if ([calendarView.currentMonth month] == [[NSDate date] month])
+//    {
+//        ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
+//        [com requestLoginWithComplete:^(NSError *err){
+//            [[EKRequest Instance] EKHTTPRequest:attendance parameters:param requestMethod:GET forDelegate:self];
+//        }];
+//        
+//    }
+//    else
+//    {
+//        NSArray *result = [ETCoreDataManager searchAttendanceByMonth:pStr];
+//        
+//        if (result == nil || result.count == 0) {
+//            
+//            ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
+//            [com requestLoginWithComplete:^(NSError *err){
+//                [[EKRequest Instance] EKHTTPRequest:attendance parameters:param requestMethod:GET forDelegate:self];
+//            }];
+//            
+//        }
+//        else
+//        {
+//            self.attArr = [NSMutableArray arrayWithArray:[ETCoreDataManager searchAttendanceByMonth:pStr]];
+//            self.fesArr = [NSMutableArray arrayWithArray:[ETCoreDataManager searchCalendarByMonth:pStr]];
+//            NSLog(@"%@ , %@",self.attArr,self.fesArr);
+//            
+//            [self updateCalendarView];
+//        }
+//    }
+//    
     
     
 }

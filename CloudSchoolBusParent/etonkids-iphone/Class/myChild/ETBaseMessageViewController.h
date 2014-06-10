@@ -10,7 +10,7 @@
 #import "MTCustomActionSheet.h"
 #import "ETNicknameViewController.h"
 #import "EKRequest.h"
-
+#import "ETSendRecevieViewController.h"
 @protocol ETBaseMessageViewControllerDelegate <NSObject>
 @optional
 - (void)reloadChildMessage;

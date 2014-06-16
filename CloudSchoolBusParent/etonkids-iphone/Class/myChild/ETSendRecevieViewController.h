@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ETCustomAlertView.h"
 #import "ETSendReceiveView.h"
-@interface ETSendRecevieViewController : UIViewController<ETSendReceiveViewDelegate>
+#import "EKRequest.h"
+#import "MBProgressHUD.h"
+@interface ETSendRecevieViewController : UIViewController<ETSendReceiveViewDelegate,ETCustomAlertViewDelegate,EKProtocol>
+{
+    MBProgressHUD *HUD;
+}
 @property (nonatomic,retain)UIScrollView *scrollerView_;
+@property (nonatomic,retain)NSMutableArray *receiverArr;
+
+@property (nonatomic,retain)GKChildReceiver * wantDelete;
 @end

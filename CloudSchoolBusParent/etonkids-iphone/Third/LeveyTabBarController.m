@@ -82,7 +82,7 @@ static LeveyTabBarController *leveyTabBarController;
         [_tabBar setBadgeNumber:result];
     }
 }
-- (void)getErrorInfo:(NSError *)error
+- (void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
 {
     
 }

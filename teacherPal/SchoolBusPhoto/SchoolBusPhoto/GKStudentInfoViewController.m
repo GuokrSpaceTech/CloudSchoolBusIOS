@@ -572,7 +572,7 @@
 //    
 //    NSString *string=[NSString stringWithFormat:@"%f",time];
 //    string=[string substringToIndex:10];
-//    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"11111111",@"smartid",string,@"createtime",@"36.5",@"temperature",@"红豆饭",@"healthstate",base64,@"fbody", nil];
+//    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"11111111",@"smartid",string,@"createtime",@"36.5",@"temperature",@"红豆饭",@"healthstate",base64,@"fbody",@"1",@"machine", nil];
 //    [[EKRequest Instance] EKHTTPRequest:smartcard parameters:dic requestMethod:POST forDelegate:self];
     
     

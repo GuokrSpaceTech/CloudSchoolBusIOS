@@ -86,7 +86,7 @@
 "setSelect"="selectagin.png";
 
 "checkin" ="Check In";
-"checkout" ="Check Out";
+"checkout" ="Leave";
 "allDay" = " School days this month:";
 "day" = "day";
 "normalDuty" ="Check in on time";
@@ -505,3 +505,18 @@
 
 "privacy"="Cannot access photo album, please enter the \"Setting\"-\"Privacy\"-\"Photos\",  grant the access permit for \"Cloud SchoolBus\" in there.";
 "nofinished"="Loading,Please save the video later";
+"receiver"="Take and Send";
+"add"="Add";
+"add1"="Add";
+"relationshipchild"="Relations with child";
+
+"normal"="Normal";
+"heighter"="Higher";
+"none"="none";
+"temperature"="Temperature";
+
+"firstimage"="Please upload pictures first！";
+"morefour"="Limited to 4 people";
+"receiverfailed"="Failed,please try again";
+"receiversuccess"="Successfully";
+"loadfailed"="Failed";

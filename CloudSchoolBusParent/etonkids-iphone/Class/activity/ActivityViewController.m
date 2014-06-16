@@ -692,7 +692,7 @@
 //    
 //}
 
-- (void)getErrorInfo:(NSError *)error
+- (void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
 {
     isLoading = NO;
     [_slimeView endRefresh];

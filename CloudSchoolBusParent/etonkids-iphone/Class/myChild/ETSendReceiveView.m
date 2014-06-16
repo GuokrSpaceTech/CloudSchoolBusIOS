@@ -18,7 +18,7 @@
         // Initialization code
         [self setType:1];
         photoImageView=[[UIImageView alloc]initWithFrame:CGRectMake(5, 5, self.frame.size.width-10, self.frame.size.height-10-25)];
-        photoImageView.backgroundColor=[UIColor redColor];
+        photoImageView.backgroundColor=[UIColor clearColor];
     
         [self addSubview:photoImageView];
         
@@ -30,6 +30,9 @@
             namelabel.textAlignment=UITextAlignmentCenter;
    
         
+        
+
+       // deleteBtn.hidden=YES;
         [self addSubview:namelabel];
         
         self.userInteractionEnabled=YES;
@@ -46,8 +49,29 @@
         
       //  [tap requireGestureRecognizerToFail：longtap]
         [tap requireGestureRecognizerToFail:longtap];
+        
+        
+        
+        
+        deleteBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+        [deleteBtn setBackgroundImage:[UIImage imageNamed:@"deleteTag.png"] forState:UIControlStateNormal];
+        [deleteBtn addTarget:self action:@selector(deleteOnRelation:) forControlEvents:UIControlEventTouchUpInside];
+        deleteBtn.frame=CGRectMake(photoImageView.frame.size.width+photoImageView.frame.origin.x-20,photoImageView.frame.origin.y, 20, 20);
+        [self addSubview:deleteBtn];
+        [self deleteBtnHidden:YES];
     }
     return self;
+}
+-(void)deleteBtnHidden:(BOOL)an
+{
+    deleteBtn.hidden=an;
+}
+-(void)deleteOnRelation:(UIButton *)btn
+{
+    if(delegate && [delegate respondsToSelector:@selector(deleteRelation:)])
+    {
+        [delegate deleteRelation:self.receiver];
+    }
 }
 -(void)tapClick:(UIGestureRecognizer *)tapGest
 {
@@ -55,6 +79,11 @@
     {
         if(self.type==1)
         {
+            if(delegate && [delegate respondsToSelector:@selector(tapSendReceiver)])
+            {
+                [delegate tapSendReceiver];
+            }
+            
             return;
         }
         else
@@ -76,6 +105,10 @@
          {
              //长按
              NSLog(@"edit");
+             if(delegate&& [delegate respondsToSelector:@selector(longPressView)])
+             {
+                 [delegate longPressView];
+             }
          }
          else
          {
@@ -88,6 +121,9 @@
 {
     self.photoImageView=nil;
     self.namelabel=nil;
+    //self.receiverid=nil;
+
+    self.receiver=nil;
     [super dealloc];
 }
 

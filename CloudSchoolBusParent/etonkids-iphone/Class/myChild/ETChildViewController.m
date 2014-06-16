@@ -8,7 +8,7 @@
 #import "ETCoreDataManager.h"
 #import "UIImageView+WebCache.h"
 #import "ETGrowViewController.h"
-
+#import "ETGCalendarViewController.h"
 
 #define VIEWHEIGHT 110
 #define VIEWHEIGHT5 128
@@ -43,11 +43,11 @@
 {
     [super viewDidLoad];
     
-    
+     NSLog(@"%f",self.view.frame.size.height);
     //section 2
    // NSArray *array = [NSArray arrayWithObjects:LOCAL(@"vip", @""),/*LOCAL(@"daijinquan", @""),*/LOCAL(@"chengzhangdangan", @""),LOCAL(@"kewaikeyouhui", @""), nil];
     
-        NSArray *array = [NSArray arrayWithObjects:@"晨检与考勤", nil];
+        NSArray *array = [NSArray arrayWithObjects:LOCAL(@"checkAndCalendar", @""), nil];
     
     //NSArray *imgArr = [NSArray arrayWithObjects:@"-vip.png",@"成长档案.png",@"优惠.png", nil];
       NSArray *imgArr = [NSArray arrayWithObjects:@"-vip.png", nil];
@@ -230,20 +230,19 @@
     }
     else if (indexPath.section == 2)
     {
+        ETGCalendarViewController *VC=[[ETGCalendarViewController alloc]init];
+        AppDelegate *appDel=SHARED_APP_DELEGATE;
+        [appDel.bottomNav pushViewController:VC animated:YES];
+        [VC release];
         
-        ETCustomAlertView  *alertview=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"comingsoon",@"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
-        [alertview show];
+        
+//        ETCalendarViewController *cal = [[ETCalendarViewController alloc] initWithNibName:nil bundle:nil];
+//        AppDelegate *appDel = SHARED_APP_DELEGATE;
+//        [appDel.bottomNav pushViewController:cal animated:YES];
+//        [cal release];
+
         return;
         
-//        if (indexPath.row == 0) {
-//            
-//        }
-//        else if (indexPath.row == 1){
-//            ETGrowViewController *gVC = [[ETGrowViewController alloc] init];
-//            AppDelegate *appDel = SHARED_APP_DELEGATE;
-//            [appDel.bottomNav pushViewController:gVC animated:YES];
-//            [gVC release];
-//        }
     }
 }
 

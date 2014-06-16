@@ -52,7 +52,10 @@ enum RequestFunction
     relationship,
     resetpassword,
     smartcard,
-    attendancemanager
+    attendancemanager,
+    schoolstudent,
+    schoolcheck,
+    schoolad,
 };
 typedef NSUInteger RequestFunction;
 

@@ -12,6 +12,8 @@
 #import "GKUserLogin.h"
 #import "Student.h"
 #import "UIImageView+WebCache.h"
+#import "GKShowBigImageViewController.h"
+#import "GKImageView.h"
 #define TAGNAME 6256
 #define TAGINLABEL 6257
 #define TAGOUTLABEL 6258
@@ -41,12 +43,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    attenceArr=[[NSMutableArray alloc]init];
     UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeCustom];
     buttonBack.frame=CGRectMake(10, 5, 34, 35);
     [buttonBack setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     [buttonBack setBackgroundImage:[UIImage imageNamed:@"backH.png"] forState:UIControlStateHighlighted];
     [navigationView addSubview:buttonBack];
     [buttonBack addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    todayBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    todayBtn.frame=CGRectMake(240, 8, 70, 30);
+    [todayBtn setTitle:NSLocalizedString(@"today", @"") forState:UIControlStateNormal];
+    todayBtn.titleLabel.font=[UIFont systemFontOfSize:15];
+    [todayBtn setBackgroundImage:[UIImage imageNamed:@"inclass.png"] forState:UIControlStateNormal];
+    [todayBtn setBackgroundImage:[UIImage imageNamed:@"inclassed.png"] forState:UIControlStateHighlighted];
+    todayBtn.hidden=YES;
+    //[photobutton setImage:[UIImage imageNamed:@"upNormal.png"] forState:UIControlStateNormal];
+    //[photobutton setImage:[UIImage imageNamed:@"upHight.png"] forState:UIControlStateHighlighted];
+    [todayBtn addTarget:self action:@selector(rightClick:) forControlEvents:UIControlEventTouchUpInside];
+    [navigationView addSubview:todayBtn];
     
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y-20) style:UITableViewStylePlain];
     _tableView.delegate=self;
@@ -82,49 +98,75 @@
     [formatter setDateFormat:@"YYYY-MM-dd"];
     NSString *today = [formatter stringFromDate:date];
     self.titlelabel.text=today;
+    
     [formatter release];
+    
+
     titlelabel.userInteractionEnabled=YES;
     
-    
+    [self loaddatebyDate:today];
     UITapGestureRecognizer *tapG=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dateClick:)];
     tapG.numberOfTapsRequired=1;
     [titlelabel addGestureRecognizer:tapG];
     [tapG release];
     
-    attenceArr=[[NSMutableArray alloc]init];
-//    for (int i=0; i<10; i++) {
-//        GKAttentance *attence=[[GKAttentance alloc]init];
-//        
-//       int a= arc4random()%2;
-//        attence.studentName=@"小米";
-//        if(a==0)
-//        {
-//            attence.isAttence=NO;
-//            attence.intime=@"";
-//            attence.outtime=@"";
-//            
-//        }
-//        else
-//        {
-//            attence.isAttence=YES;
-//            attence.intime=@"08:25";
-//            attence.outtime=@"16:50";
-//        }
-//        
-//        [self.attenceArr addObject:attence];
-//        [attence release];
-    //}
+ 
+
     
-    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"1",@"type",@"2014-06-05",@"date", nil];
+       // Do any additional setup after loading the view.
+}
+-(void)rightClick:(UIButton *)btn
+{
+    NSDate *date=[NSDate date];
+    
+    NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:@"YYYY-MM-dd"];
+    NSString *today = [formatter stringFromDate:date];
+    [formatter release];
+    
+    titlelabel.text=today;
+    [self loaddatebyDate:today];
+
+}
+-(void)loaddatebyDate:(NSString *)date
+{
+    if(HUD==nil)
+    {
+        HUD=[[MBProgressHUD alloc]initWithView:self.view];
+        HUD.labelText=NSLocalizedString(@"load", @"");
+        [HUD show:YES];
+        [self.view addSubview:HUD];
+        [HUD release];
+    }
+
+    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"1",@"type",date,@"date", nil];
     [[EKRequest Instance] EKHTTPRequest:attendancemanager parameters:dic requestMethod:GET forDelegate:self];
-    // Do any additional setup after loading the view.
+
+}
+-(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
+{
+    if(HUD)
+    {
+        [HUD removeFromSuperview];
+        HUD=nil;
+    }
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"network", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+    [alert show];
+    [alert release];
 }
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
 {
+    if(HUD)
+    {
+        [HUD removeFromSuperview];
+        HUD=nil;
+    }
     if(method==attendancemanager)
     {
         if(code==1)
         {
+            [attenceArr removeAllObjects];
             NSArray *arr=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
             
             for (int i=0; i<[arr count]; i++) {
@@ -139,7 +181,7 @@
                 [attenceArr addObject:attence];
 
             }
-            numLabel.text=[NSString stringWithFormat:@"考勤学生数量：%d",[arr count]];
+            numLabel.text=[NSString stringWithFormat:@"%d %@",[arr count],NSLocalizedString(@"alreadyattendance", @"")];
             
             //计算出未考勤孩子
             GKUserLogin *user=[GKUserLogin currentLogin];
@@ -221,9 +263,38 @@
         
         self.titlelabel.text=str;
         
+        [self loaddatebyDate:str];
+        
+        
+        
+
+        
+        NSString *today = [formatter stringFromDate:[NSDate date]];
+        if([today isEqualToString:str])
+        {
+            todayBtn.hidden=YES;
+        }
+        else
+        {
+            todayBtn.hidden=NO;
+        }
+
+        
   
     }
     
+}
+-(void)tapInClick:(UIGestureRecognizer *)tap
+{
+    GKShowBigImageViewController *show=[[GKShowBigImageViewController alloc]init];
+
+    
+    GKImageView *iamgeView=(GKImageView *)tap.view;
+    show.path=iamgeView.urlPath;
+    [self.navigationController presentViewController:show animated:YES completion:^{
+        
+    }];
+    [show release];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -242,7 +313,7 @@
         UILabel * namelabel =[[UILabel alloc]initWithFrame:CGRectMake(10, 15, 70, 20)];
         namelabel.backgroundColor=[UIColor clearColor];
         namelabel.font=[UIFont systemFontOfSize:15];
-        namelabel.text=@"温培方";
+        //namelabel.text=@"温培方";
         namelabel.tag=TAGNAME;
         [cell.contentView addSubview:namelabel];
         [namelabel release];
@@ -252,7 +323,7 @@
         UILabel * inlabel =[[UILabel alloc]initWithFrame:CGRectMake(80, 5, 150, 18)];
         inlabel.backgroundColor=[UIColor clearColor];
         inlabel.font=[UIFont systemFontOfSize:14];
-        inlabel.text=@"入园时间：";
+        //inlabel.text=@"入园时间：";
         inlabel.tag=TAGINLABEL;
         [cell.contentView addSubview:inlabel];
         [inlabel release];
@@ -260,40 +331,36 @@
         UILabel * outlabel =[[UILabel alloc]initWithFrame:CGRectMake(80, 25, 150, 18)];
         outlabel.backgroundColor=[UIColor clearColor];
         outlabel.font=[UIFont systemFontOfSize:14];
-        outlabel.text=@"离园时间：";
+        //outlabel.text=@"离园时间：";
         outlabel.tag=TAGOUTLABEL;
         [cell.contentView addSubview:outlabel];
         [outlabel release];
         
-//        
-//        UILabel * inlabelR =[[UILabel alloc]initWithFrame:CGRectMake(170, 5, 50, 20)];
-//        inlabelR.backgroundColor=[UIColor clearColor];
-//        inlabelR.font=[UIFont systemFontOfSize:14];
-//        inlabelR.text=@"09:34";
-//        inlabelR.tag=TAGINTIME;
-//        [cell.contentView addSubview:inlabelR];
-//        [inlabelR release];
-//        
-//        UILabel * outlabelR =[[UILabel alloc]initWithFrame:CGRectMake(170, 30, 50, 20)];
-//        outlabelR.backgroundColor=[UIColor clearColor];
-//        outlabelR.font=[UIFont systemFontOfSize:14];
-//        outlabelR.text=@"17:30";
-//        outlabelR.tag=TAGOUTTIME;
-//        [cell.contentView addSubview:outlabelR];
-//        [outlabelR release];
         
         
-        UIImageView *imageViewIn=[[UIImageView alloc]initWithFrame:CGRectMake(220, 5, 40, 40)];
+        GKImageView *imageViewIn=[[GKImageView alloc]initWithFrame:CGRectMake(220, 5, 40, 40)];
         imageViewIn.backgroundColor=[UIColor clearColor];
+        imageViewIn.userInteractionEnabled=YES;
         [cell.contentView addSubview:imageViewIn];
         imageViewIn.tag=TAGINIMAGE;
         [imageViewIn release];
         
-        UIImageView *imageViewout=[[UIImageView alloc]initWithFrame:CGRectMake(265, 5, 40, 40)];
+        UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapInClick:)];
+        tap.numberOfTapsRequired=1;
+        [imageViewIn addGestureRecognizer:tap];
+        [tap release];
+        
+        GKImageView *imageViewout=[[GKImageView alloc]initWithFrame:CGRectMake(265, 5, 40, 40)];
         imageViewout.backgroundColor=[UIColor clearColor];
         imageViewout.tag=TAGOUTIMAGE;
+        imageViewout.userInteractionEnabled=YES;
         [cell.contentView addSubview:imageViewout];
         [imageViewout release];
+        UITapGestureRecognizer *tap1=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapInClick:)];
+        tap1.numberOfTapsRequired=1;
+        [imageViewout addGestureRecognizer:tap1];
+        [tap1 release];
+        
     }
     
     GKAttentance *attence=[attenceArr objectAtIndex:indexPath.row];
@@ -310,29 +377,37 @@
 //    UILabel *outtime=(UILabel *)[cell.contentView viewWithTag:TAGOUTTIME];
 //    outtime.text=@"";
     
+    inlabel.textColor=[UIColor blackColor];
+    GKImageView *inImageView=(GKImageView *)[cell.contentView viewWithTag:TAGINIMAGE];
     
-    UIImageView *inImageView=(UIImageView *)[cell.contentView viewWithTag:TAGINIMAGE];
-    
-    UIImageView *outImageView=(UIImageView *)[cell.contentView viewWithTag:TAGOUTIMAGE];
+    GKImageView *outImageView=(GKImageView *)[cell.contentView viewWithTag:TAGOUTIMAGE];
     inImageView.image=nil;
     outImageView.image=nil;
     
     if(attence.isAttence==NO)
     {
         inlabel.frame=CGRectMake(80, 15, 100, 18);
-        inlabel.text=@"无记录";
+        inlabel.text=NSLocalizedString(@"nodate", @"");
+        inlabel.textColor=[UIColor grayColor];
         inImageView.image=nil;
         outImageView.image=nil;
     }
     else
     {
         inlabel.frame=CGRectMake(80, 5, 150, 18);
-        inlabel.text=[NSString stringWithFormat:@"%@%@",@"入园时间：",attence.intime];
-        outlabel.text=[NSString stringWithFormat:@"%@%@",@"离园时间：",attence.outtime];
+
+        inlabel.text=[NSString stringWithFormat:@"%@%@",NSLocalizedString(@"inclasstime", @""),attence.intime];
+        outlabel.text=[NSString stringWithFormat:@"%@%@",NSLocalizedString(@"outclasstime", @""),attence.outtime];
         
+        inImageView.urlPath=attence.inavater;
+        if(![attence.outavater isEqualToString:@""])
+        {
+            outImageView.urlPath=attence.outavater;
+            [outImageView setImageWithURL:[NSURL URLWithString:attence.outavater] placeholderImage:nil];
+
+        }
         [inImageView setImageWithURL:[NSURL URLWithString:attence.inavater] placeholderImage:nil];
-        [outImageView setImageWithURL:[NSURL URLWithString:attence.outavater] placeholderImage:nil];
-//        intime.text=attence.intime;
+        //        intime.text=attence.intime;
 //        outtime.text=attence.outtime;
     }
     

@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MTCustomActionSheet.h"
+#import "EKRequest.h"
+#import "MBProgressHUD.h"
 
-@interface ETAddSendReceiveViewController : UIViewController
+typedef void (^CompleteBlock)(NSDictionary *dic);
+@interface ETAddSendReceiveViewController : UIViewController<MTCustomActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,EKProtocol,UIActionSheetDelegate,UITextFieldDelegate>
+{
+    MBProgressHUD *HUD;
+    CompleteBlock completeBlack;
+}
+@property(nonatomic,copy) CompleteBlock completeBlack;
 @property (nonatomic,retain)UITextField *textField;
+@property (nonatomic,retain)NSString *base64str;
+
+@property(nonatomic,retain)UIImageView *photoImageView;
+-(void)successAddReceiver:(CompleteBlock)black;
 @end

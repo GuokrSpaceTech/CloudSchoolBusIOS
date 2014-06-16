@@ -277,4 +277,14 @@
 "leaveclass"="离班成功";
 
 "hasleave"="是否";
-"xleftcass"="移除班级？";
+"xleftcass"="移出班级？";
+"today"="回今天";
+"nodate"="无记录";
+"nodatetemperature"="无晨检";
+"temperature"="体温";
+"normal"="体温正常";
+"heighter"="体温过高";
+"alreadyHealth"="位学生有考勤";
+"inclasstime"="入园时间：";
+"outclasstime"="离园时间：";
+"alreadyattendance"="位学生有考勤";

@@ -280,3 +280,13 @@
 "leaveclass"="Successful";
 "hasleave"="Has";
 "xleftcass"="left the class?";
+"today"="Today";
+"nodate"="No Data";
+"nodatetemperature"="No Data";
+"temperature"="TEM";
+"normal"="Normal";
+"heighter"="Higher";
+"alreadyHealth"="students have attendance record";
+"inclasstime"="Check in：";
+"outclasstime"="Leave：";
+"alreadyattendance"="students have attendance record";

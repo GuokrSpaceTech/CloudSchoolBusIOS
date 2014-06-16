@@ -33,7 +33,12 @@
 		11A3F3C61795248300C37EA1 /* alert.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A3F3C51795248200C37EA1 /* alert.png */; };
 		11B3E225193ED7FC00A96ACF /* ETSendRecevieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B3E224193ED7FC00A96ACF /* ETSendRecevieViewController.m */; };
 		11B3E228193F058500A96ACF /* ETSendReceiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B3E227193F058500A96ACF /* ETSendReceiveView.m */; };
+		11D937CE1947F72000215842 /* UIScrollView+UITouchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D937CD1947F72000215842 /* UIScrollView+UITouchEvent.m */; };
+		11D937D21947FA3D00215842 /* deleteTag.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D937D11947FA3D00215842 /* deleteTag.png */; };
+		11E82B85194957200048F0DB /* ETGCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E82B84194957200048F0DB /* ETGCalendarViewController.m */; };
 		11EC2860193F15AA002FF46E /* ETAddSendReceiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EC285F193F15AA002FF46E /* ETAddSendReceiveViewController.m */; };
+		11ECEDD31946EFE200BFB85A /* GKChildReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 11ECEDD21946EFE200BFB85A /* GKChildReceiver.m */; };
+		11F440B51949959600DCA343 /* MyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F440B41949959600DCA343 /* MyImageView.m */; };
 		730FFA7F17BB7871004032C2 /* WriteCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730FFA7D17BB7870004032C2 /* WriteCommentsViewController.m */; };
 		730FFA8317BB7C3E004032C2 /* CommentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730FFA8217BB7C3E004032C2 /* CommentDetailViewController.m */; };
 		73200DF117B34828008015AB /* backgroundkeyselect.png in Resources */ = {isa = PBXBuildFile; fileRef = 73200DF017B34827008015AB /* backgroundkeyselect.png */; };
@@ -120,8 +125,6 @@
 		788BE6A117EFDBE70076D920 /* textBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 788BE6A017EFDBE70076D920 /* textBack.png */; };
 		788BE6A417EFDC860076D920 /* upBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 788BE6A217EFDC860076D920 /* upBtn.png */; };
 		788BE6A517EFDC860076D920 /* upBtnSel.png in Resources */ = {isa = PBXBuildFile; fileRef = 788BE6A317EFDC860076D920 /* upBtnSel.png */; };
-		788BE6AE17F00B610076D920 /* ETCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 788BE6AC17F00B610076D920 /* ETCalendarViewController.m */; };
-		788BE6AF17F00B610076D920 /* ETCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788BE6AD17F00B610076D920 /* ETCalendarViewController.xib */; };
 		788C4C951896123800AEB513 /* yellowPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 788C4C941896123800AEB513 /* yellowPoint.png */; };
 		788F8CFA17F40C9B00342A5C /* ETSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 788F8CF917F40C9B00342A5C /* ETSettingView.m */; };
 		78930525187A4D4300628928 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7893051F187A4D4300628928 /* libTestFlight.a */; };
@@ -601,8 +604,17 @@
 		11B3E224193ED7FC00A96ACF /* ETSendRecevieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSendRecevieViewController.m; sourceTree = "<group>"; };
 		11B3E226193F058500A96ACF /* ETSendReceiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETSendReceiveView.h; sourceTree = "<group>"; };
 		11B3E227193F058500A96ACF /* ETSendReceiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSendReceiveView.m; sourceTree = "<group>"; };
+		11D937CC1947F72000215842 /* UIScrollView+UITouchEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+UITouchEvent.h"; sourceTree = "<group>"; };
+		11D937CD1947F72000215842 /* UIScrollView+UITouchEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+UITouchEvent.m"; sourceTree = "<group>"; };
+		11D937D11947FA3D00215842 /* deleteTag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteTag.png; sourceTree = "<group>"; };
+		11E82B811949561C0048F0DB /* ETGCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETGCalendarViewController.h; sourceTree = "<group>"; };
+		11E82B84194957200048F0DB /* ETGCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETGCalendarViewController.m; sourceTree = "<group>"; };
 		11EC285E193F15AA002FF46E /* ETAddSendReceiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETAddSendReceiveViewController.h; sourceTree = "<group>"; };
 		11EC285F193F15AA002FF46E /* ETAddSendReceiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETAddSendReceiveViewController.m; sourceTree = "<group>"; };
+		11ECEDD11946EFE200BFB85A /* GKChildReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKChildReceiver.h; sourceTree = "<group>"; };
+		11ECEDD21946EFE200BFB85A /* GKChildReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKChildReceiver.m; sourceTree = "<group>"; };
+		11F440B31949959600DCA343 /* MyImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImageView.h; sourceTree = "<group>"; };
+		11F440B41949959600DCA343 /* MyImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImageView.m; sourceTree = "<group>"; };
 		730FFA7C17BB7870004032C2 /* WriteCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteCommentsViewController.h; sourceTree = "<group>"; };
 		730FFA7D17BB7870004032C2 /* WriteCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteCommentsViewController.m; sourceTree = "<group>"; };
 		730FFA8117BB7C3E004032C2 /* CommentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailViewController.h; sourceTree = "<group>"; };
@@ -722,9 +734,6 @@
 		788BE6A017EFDBE70076D920 /* textBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textBack.png; sourceTree = "<group>"; };
 		788BE6A217EFDC860076D920 /* upBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upBtn.png; sourceTree = "<group>"; };
 		788BE6A317EFDC860076D920 /* upBtnSel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upBtnSel.png; sourceTree = "<group>"; };
-		788BE6AB17F00B610076D920 /* ETCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETCalendarViewController.h; sourceTree = "<group>"; };
-		788BE6AC17F00B610076D920 /* ETCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETCalendarViewController.m; sourceTree = "<group>"; };
-		788BE6AD17F00B610076D920 /* ETCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ETCalendarViewController.xib; sourceTree = "<group>"; };
 		788C4C941896123800AEB513 /* yellowPoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowPoint.png; sourceTree = "<group>"; };
 		788F8CF817F40C9B00342A5C /* ETSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETSettingView.h; sourceTree = "<group>"; };
 		788F8CF917F40C9B00342A5C /* ETSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSettingView.m; sourceTree = "<group>"; };
@@ -1467,9 +1476,10 @@
 		788BE6AA17F00B1C0076D920 /* broadside */ = {
 			isa = PBXGroup;
 			children = (
-				788BE6AB17F00B610076D920 /* ETCalendarViewController.h */,
-				788BE6AC17F00B610076D920 /* ETCalendarViewController.m */,
-				788BE6AD17F00B610076D920 /* ETCalendarViewController.xib */,
+				11E82B811949561C0048F0DB /* ETGCalendarViewController.h */,
+				11E82B84194957200048F0DB /* ETGCalendarViewController.m */,
+				11F440B31949959600DCA343 /* MyImageView.h */,
+				11F440B41949959600DCA343 /* MyImageView.m */,
 			);
 			path = broadside;
 			sourceTree = "<group>";
@@ -1490,6 +1500,7 @@
 		78C2ADB617E06F2900E6A5CD /* V3.0 */ = {
 			isa = PBXGroup;
 			children = (
+				11D937D11947FA3D00215842 /* deleteTag.png */,
 				78D8D10418C03B26008860AB /* help_cela_568.png */,
 				78D8D10518C03B26008860AB /* help_zhuye_568.png */,
 				78D8D10618C03B26008860AB /* help_detail_568.png */,
@@ -2124,6 +2135,8 @@
 		E3F2AA6316AD0A2E006936A5 /* myChild */ = {
 			isa = PBXGroup;
 			children = (
+				11D937CC1947F72000215842 /* UIScrollView+UITouchEvent.h */,
+				11D937CD1947F72000215842 /* UIScrollView+UITouchEvent.m */,
 				E3F2AACD16AD2BB9006936A5 /* ETChildViewController.h */,
 				F950216C16DC8B090079A05E /* ETChildViewController.m */,
 				E3F4F39316B8D14200CB8E31 /* ETFoodView.h */,
@@ -2156,6 +2169,8 @@
 				11B3E227193F058500A96ACF /* ETSendReceiveView.m */,
 				11EC285E193F15AA002FF46E /* ETAddSendReceiveViewController.h */,
 				11EC285F193F15AA002FF46E /* ETAddSendReceiveViewController.m */,
+				11ECEDD11946EFE200BFB85A /* GKChildReceiver.h */,
+				11ECEDD21946EFE200BFB85A /* GKChildReceiver.m */,
 			);
 			path = myChild;
 			sourceTree = "<group>";
@@ -2727,6 +2742,7 @@
 				F95023FB16DCB61B0079A05E /* composevideo_pic@2x.png in Resources */,
 				F95023FC16DCB61B0079A05E /* composeWords.png in Resources */,
 				F95023FD16DCB61B0079A05E /* composeWords@2x.png in Resources */,
+				11D937D21947FA3D00215842 /* deleteTag.png in Resources */,
 				F95023FE16DCB61B0079A05E /* friendPortrait.png in Resources */,
 				F95023FF16DCB61B0079A05E /* friendPortrait@2x.png in Resources */,
 				785DE1BF180FB3E6001B0EB3 /* bottomSettingSel.png in Resources */,
@@ -2871,7 +2887,6 @@
 				788BE6A417EFDC860076D920 /* upBtn.png in Resources */,
 				78611EF61890FCC800BB60F4 /* aboutlogo_EN(1).png in Resources */,
 				788BE6A517EFDC860076D920 /* upBtnSel.png in Resources */,
-				788BE6AF17F00B610076D920 /* ETCalendarViewController.xib in Resources */,
 				7897DF7A17F2AB4000DB8B21 /* ETEducationViewController.xib in Resources */,
 				7897DF7F17F2C38000DB8B21 /* order.png in Resources */,
 				7897DF8117F2C38500DB8B21 /* myCollect.png in Resources */,
@@ -3016,6 +3031,7 @@
 				F950240916DCB61B0079A05E /* TCWBRepeatViewController.m in Sources */,
 				F950240A16DCB61B0079A05E /* AttachedPictureCtrlView.m in Sources */,
 				F950240B16DCB61B0079A05E /* AttachedPictureView.m in Sources */,
+				11E82B85194957200048F0DB /* ETGCalendarViewController.m in Sources */,
 				789CC758182CEE6600E81510 /* ETGrowViewController.m in Sources */,
 				78F841951817CCC5007722AE /* ETNoStartActivity.m in Sources */,
 				F950240C16DCB61B0079A05E /* contractibleImageView.m in Sources */,
@@ -3044,6 +3060,7 @@
 				F950242316DCB61B0079A05E /* TCWBEngine.m in Sources */,
 				F950242416DCB61B0079A05E /* TCWBRequest.m in Sources */,
 				78F841CD181947A0007722AE /* ETSettingsViewController.m in Sources */,
+				11F440B51949959600DCA343 /* MyImageView.m in Sources */,
 				F9DB03F016E46F930094A679 /* ETShareViewController.m in Sources */,
 				F90EA65016E9D9280074BCC3 /* ETApi.m in Sources */,
 				F96B77CD16EF055E0062B1AA /* Food.m in Sources */,
@@ -3112,6 +3129,7 @@
 				73545DDD17A79BDA000E39FC /* ETBackgroundViewController.m in Sources */,
 				73545DE217A79C04000E39FC /* AboutOursViewController.m in Sources */,
 				11EC2860193F15AA002FF46E /* ETAddSendReceiveViewController.m in Sources */,
+				11ECEDD31946EFE200BFB85A /* GKChildReceiver.m in Sources */,
 				73B9CDBC17ABAE2E00E8AD36 /* ETdefaultViewController.m in Sources */,
 				78DFD28717AF43970069B8CC /* ETShowBigImageViewController.m in Sources */,
 				78DFD28A17B0ACFA0069B8CC /* MTCustomActionSheet.m in Sources */,
@@ -3136,7 +3154,6 @@
 				78DCCF3517E7093F009C9D26 /* MyActivity.m in Sources */,
 				78BC611B17E85E0C0063B68A /* ETZoomScrollView.m in Sources */,
 				7814B5A917EEE173008826C2 /* ContentUpCell.m in Sources */,
-				788BE6AE17F00B610076D920 /* ETCalendarViewController.m in Sources */,
 				11B3E225193ED7FC00A96ACF /* ETSendRecevieViewController.m in Sources */,
 				7897DF7917F2AB4000DB8B21 /* ETEducationViewController.m in Sources */,
 				78F841A718190E87007722AE /* ETImportantNotice.m in Sources */,
@@ -3155,6 +3172,7 @@
 				78FA831E18064FDC009E9176 /* ETImageView.m in Sources */,
 				78ED81591806888700A98C7F /* ETGestureCheckViewController.m in Sources */,
 				78ED815D1807E48600A98C7F /* ETBottomNavigationController.m in Sources */,
+				11D937CE1947F72000215842 /* UIScrollView+UITouchEvent.m in Sources */,
 				7818DEAB180CE1E0005781DF /* ETAttendance.m in Sources */,
 				7818DEAE180CEB05005781DF /* ETCalendar.m in Sources */,
 				7818DEBC180E39BA005781DF /* ETSchedule.m in Sources */,

@@ -129,6 +129,10 @@ static EKRequest * instance = nil;
             return @"skinid";
         case attendancemanager:
             return @"attendancemanager";
+        case childreceiver:
+            return @"childreceiver";
+        case deletereceiver:
+            return @"deletereceiver";
         default:
             
             return nil;
@@ -158,7 +162,7 @@ static EKRequest * instance = nil;
          {
              if(error != nil)
              {
-                 [delegate getErrorInfo:error];
+                 [delegate getErrorInfo:error forMethod:function];
                  return;
              }
              
@@ -183,7 +187,7 @@ static EKRequest * instance = nil;
              if(error != nil)
              {
                    NSLog(@"%@",error);
-                 [delegate getErrorInfo:error];
+                 [delegate getErrorInfo:error forMethod:function];
                  return;
              }
              
@@ -217,7 +221,7 @@ static EKRequest * instance = nil;
          {
              if(error != nil)
              {
-                 [delegate getErrorInfo:error];
+                 [delegate getErrorInfo:error forMethod:function];
                  return;
              }
              NSDictionary * allHeaderInfo = [urlResponse allHeaderFields];

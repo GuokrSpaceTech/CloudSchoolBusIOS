@@ -42,14 +42,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    _tempatureArr=[[NSMutableArray alloc]init];
     UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeCustom];
     buttonBack.frame=CGRectMake(10, 5, 34, 35);
     [buttonBack setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     [buttonBack setBackgroundImage:[UIImage imageNamed:@"backH.png"] forState:UIControlStateHighlighted];
     [navigationView addSubview:buttonBack];
     [buttonBack addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
-    
+    todayBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    todayBtn.frame=CGRectMake(240, 8, 70, 30);
+    [todayBtn setTitle:NSLocalizedString(@"today", @"") forState:UIControlStateNormal];
+    todayBtn.titleLabel.font=[UIFont systemFontOfSize:15];
+    [todayBtn setBackgroundImage:[UIImage imageNamed:@"inclass.png"] forState:UIControlStateNormal];
+    [todayBtn setBackgroundImage:[UIImage imageNamed:@"inclassed.png"] forState:UIControlStateHighlighted];
+    todayBtn.hidden=YES;
+    //[photobutton setImage:[UIImage imageNamed:@"upNormal.png"] forState:UIControlStateNormal];
+    //[photobutton setImage:[UIImage imageNamed:@"upHight.png"] forState:UIControlStateHighlighted];
+    [todayBtn addTarget:self action:@selector(rightClick:) forControlEvents:UIControlEventTouchUpInside];
+    [navigationView addSubview:todayBtn];
+
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y-20) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
@@ -86,59 +97,73 @@
     self.titlelabel.text=today;
     [formatter release];
     titlelabel.userInteractionEnabled=YES;
-    
+    [self loaddatebyDate:today];
     
     UITapGestureRecognizer *tapG=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dateClick:)];
     tapG.numberOfTapsRequired=1;
     [titlelabel addGestureRecognizer:tapG];
     [tapG release];
     
-    _tempatureArr=[[NSMutableArray alloc]init];
-//    for (int i=0; i<10; i++) {
-//        GKTempature *tempature=[[GKTempature alloc]init];
-//        
-//        int a= arc4random()%2;
-//        tempature.name=@"小米";
-//        if(a==0)
-//        {
-//            tempature.isTempature=NO;
-//            tempature.tempature=@"";
-//            tempature.state=@"";
-//            tempature.otherstate=@"";
-//            
-//        }
-//        else
-//        {
-//            tempature.isTempature=YES;
-//            tempature.tempature=@"38.2";
-//            tempature.state=@"温度过高";
-//               int b= arc4random()%2;
-//            if(b==0)
-//            {
-//                tempature.otherstate=@"异常状态：发热，流涕";
-//            }
-//            else
-//            {
-//                tempature.otherstate=@"";
-//            }
-//            
-//        }
-//        
-//        [self.tempatureArr addObject:tempature];
-//        [tempature release];
-    //}
-    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"2",@"type",@"2014-06-05",@"date", nil];
-    [[EKRequest Instance] EKHTTPRequest:attendancemanager parameters:dic requestMethod:GET forDelegate:self];
+
+
+//    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"2",@"type",@"2014-06-05",@"date", nil];
+//    [[EKRequest Instance] EKHTTPRequest:attendancemanager parameters:dic requestMethod:GET forDelegate:self];
 
 //
     // Do any additional setup after loading the view.
 }
+-(void)rightClick:(UIButton *)btn
+{
+    NSDate *date=[NSDate date];
+    
+    NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+    
+    [formatter setDateFormat:@"YYYY-MM-dd"];
+    NSString *today = [formatter stringFromDate:date];
+    [formatter release];
+    
+    titlelabel.text=today;
+    [self loaddatebyDate:today];
+    
+}
+-(void)loaddatebyDate:(NSString *)date
+{
+    if(HUD==nil)
+    {
+        HUD=[[MBProgressHUD alloc]initWithView:self.view];
+        HUD.labelText=NSLocalizedString(@"load", @"");
+        [HUD show:YES];
+        [self.view addSubview:HUD];
+        [HUD release];
+    }
+    
+    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"2",@"type",date,@"date", nil];
+    [[EKRequest Instance] EKHTTPRequest:attendancemanager parameters:dic requestMethod:GET forDelegate:self];
+    
+}
+-(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
+{
+    if(HUD)
+    {
+        [HUD removeFromSuperview];
+        HUD=nil;
+    }
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"network", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+    [alert show];
+    [alert release];
+}
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
 {
+    if(HUD)
+    {
+        [HUD removeFromSuperview];
+        HUD=nil;
+    }
     if(method==attendancemanager)
     {
         if(code==1)
         {
+            [_tempatureArr removeAllObjects];
             NSArray *arr=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
             
             for (int i=0; i<[arr count]; i++) {
@@ -148,19 +173,21 @@
                 temperature.tempature=[[arr objectAtIndex:i] objectForKey:@"temperature"];
                 if([temperature.tempature floatValue]>36.5 && [temperature.tempature floatValue]<=37.5)
                 {
-                    temperature.state=@"体温正常";
+                    temperature.state=NSLocalizedString(@"normal", @"");
+
+                    
                 }
                 else
                 {
-                    temperature.state=@"体温异常";
+                    temperature.state=NSLocalizedString(@"heighter", @"");
                 }
                 temperature.otherstate=[[arr objectAtIndex:i] objectForKey:@"state"];
                 temperature.isTempature=YES;
                 [_tempatureArr addObject:temperature];
                 
             }
-            numLabel.text=[NSString stringWithFormat:@"考勤学生数量：%d",[arr count]];
-            
+            numLabel.text=[NSString stringWithFormat:@"%d %@",[arr count],NSLocalizedString(@"alreadyHealth", @"")];
+           // alreadyHealth
             //计算出未考勤孩子
             GKUserLogin *user=[GKUserLogin currentLogin];
             for (int i=0; i<[user.studentArr count]; i++) {
@@ -241,6 +268,22 @@
         self.titlelabel.text=str;
         
         
+        [self loaddatebyDate:str];
+        
+        
+        
+        
+        
+        NSString *today = [formatter stringFromDate:[NSDate date]];
+        if([today isEqualToString:str])
+        {
+            todayBtn.hidden=YES;
+        }
+        else
+        {
+            todayBtn.hidden=NO;
+        }
+
     }
     
 }
@@ -302,11 +345,21 @@
     UILabel *tempature=(UILabel *)[cell.contentView viewWithTag:TEMPATURETAGLABELTAG];
     UILabel *statelabel=(UILabel *)[cell.contentView viewWithTag:STATETAG];
     UILabel *otherLabel=(UILabel *)[cell.contentView viewWithTag:OTHERLABELTAG];
+    tempature.textColor=[UIColor blackColor];
     GKTempature *temp=[self.tempatureArr objectAtIndex:indexPath.row];
     nameLabel.text=temp.name;
     statelabel.text=temp.state;
-    tempature.text=[NSString stringWithFormat:@"%@℃",temp.tempature];
+    if([statelabel.text isEqualToString:NSLocalizedString(@"normal", @"")])
+    {
+        statelabel.textColor=[UIColor blackColor];
+    }
+    else
+    {
+        statelabel.textColor=[UIColor redColor];
+    }
+    tempature.text=[NSString stringWithFormat:@"%@：%@℃",NSLocalizedString(@"temperature",@""),temp.tempature];
     otherLabel.text=[NSString stringWithFormat:@"异常状态：%@",temp.otherstate];
+    otherLabel.textColor=[UIColor redColor];
     if(temp.isTempature)
     {
         //if([temp.otherstate isEqualToString:@""])
@@ -332,7 +385,8 @@
     {
         nameLabel.frame=CGRectMake(10, 10, 80, 20);
         tempature.frame=CGRectMake(150, 10, 100, 18);
-        tempature.text=@"无晨检";
+        tempature.text=NSLocalizedString(@"nodatetemperature", @"");
+        tempature.textColor=[UIColor grayColor];
         statelabel.frame=CGRectZero;
         otherLabel.frame=CGRectZero;
 

@@ -167,7 +167,7 @@
     [alert show];
     
 }
--(void) getErrorInfo:(NSError *)error
+-(void) getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
 {
     [self performSelectorOnMainThread:@selector(LoginFailedresult:) withObject:LOCAL(@"busy",  @"网络故障,稍后请重试") waitUntilDone:NO];
 }

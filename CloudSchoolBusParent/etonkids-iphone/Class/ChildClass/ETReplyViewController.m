@@ -7,7 +7,7 @@
 //
 
 #import "ETReplyViewController.h"
-#define NAVIHEIGHT 44
+//#define NAVIHEIGHT 44
 #import "ETKids.h"
 #import "NetWork.h"
 #import "UserLogin.h"
@@ -209,7 +209,7 @@
     [alert show];
     
 }
--(void) getErrorInfo:(NSError *)error
+-(void) getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
 {
     [self performSelectorOnMainThread:@selector(LoginFailedresult:) withObject:LOCAL(@"busy", @"网络故障，请稍后重试") waitUntilDone:NO];
 }

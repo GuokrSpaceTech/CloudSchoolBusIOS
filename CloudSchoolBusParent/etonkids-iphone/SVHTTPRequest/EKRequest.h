@@ -41,7 +41,9 @@ enum RequestFunction
     forgetpwd,
     bindreplace,
     skinid,
-    attendancemanager
+    attendancemanager,
+    childreceiver,
+    deletereceiver
     
 };
 typedef NSUInteger RequestFunction;
@@ -72,7 +74,8 @@ typedef NSUInteger RequestFunction;
 @required
 
 -(void) getEKResponse:(id) response forMethod:(RequestFunction) method resultCode:(int) code withParam:(NSDictionary *)param;
--(void) getErrorInfo:(NSError *) error;
+-(void) getErrorInfo:(NSError *) error forMethod:(RequestFunction) method;
+
 
 @end
 

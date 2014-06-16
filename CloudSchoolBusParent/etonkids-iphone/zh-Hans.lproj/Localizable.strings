@@ -75,8 +75,8 @@
 "set" = "tab_Seting.png";
 "setSelect"="tab_Seting_Select.png";
 
-"checkin" ="入园时间";
-"checkout" ="离园时间";
+"checkin" ="入园";
+"checkout" ="离园";
 "allDay" = " 本月出勤总数:";
 "day" = "天";
 "normalDuty" ="正常出勤";
@@ -295,7 +295,7 @@
 "CommentPlaceholder" = "评论";
 
 
-"checkAndCalendar" = "考勤与校历";
+"checkAndCalendar" = "晨检与考勤";
 
 "checkversion"="http://itunes.apple.com/lookup?id=600478283&country=cn";
 
@@ -475,4 +475,19 @@
 
 "privacy"="无法保存到相册，请打开设备\"设置\"--\"隐私\"--\"照片\"，开启\"云中校车\"访问权限。";
 "nofinished"="视频缓冲中，请稍后进行保存";
+"receiver"="日常接送人";
+"add"="增加";
+"add1"="增加";
+"relationshipchild"="请输入与孩子的关系";
 
+"normal"="体温正常";
+"heighter"="体温过高";
+"none"="无";
+"temperature"="体温";
+
+"firstimage"="请先上传图片！";
+"morefour"="最多上传四位联系人";
+
+"receiverfailed"="上传失败，请重试";
+"receiversuccess"="上传成功";
+"loadfailed"="加载失败";

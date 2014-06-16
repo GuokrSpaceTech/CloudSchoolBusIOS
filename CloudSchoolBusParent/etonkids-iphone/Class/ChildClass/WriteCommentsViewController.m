@@ -7,7 +7,7 @@
 //
 
 #import "WriteCommentsViewController.h"
-#define NAVIHEIGHT 44
+//#define NAVIHEIGHT 44
 #import "ETKids.h"
 #import "NetWork.h"
 #import "UserLogin.h"

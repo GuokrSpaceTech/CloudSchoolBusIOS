@@ -312,6 +312,7 @@
 		11E27F92183C709700CAE0BB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E27F91183C709700CAE0BB /* MessageUI.framework */; };
 		11E27F94183C72FC00CAE0BB /* clean.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E27F93183C72FC00CAE0BB /* clean.png */; };
 		11E27F96183C731F00CAE0BB /* textfield123.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E27F95183C731F00CAE0BB /* textfield123.png */; };
+		11ECEDD01946E3AC00BFB85A /* GKImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11ECEDCF1946E3AC00BFB85A /* GKImageView.m */; };
 		11EFE1D71817ACA3009CE69F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11EFE1D61817ACA3009CE69F /* QuartzCore.framework */; };
 		11EFE1DA1817C08C009CE69F /* GKStudentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFE1D91817C08C009CE69F /* GKStudentView.m */; };
 		11EFE1EF1817EEF7009CE69F /* sr_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 11EFE1E81817EEF7009CE69F /* sr_refresh.png */; };
@@ -875,6 +876,8 @@
 		11E27F91183C709700CAE0BB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		11E27F93183C72FC00CAE0BB /* clean.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clean.png; sourceTree = "<group>"; };
 		11E27F95183C731F00CAE0BB /* textfield123.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textfield123.png; sourceTree = "<group>"; };
+		11ECEDCE1946E3AC00BFB85A /* GKImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKImageView.h; sourceTree = "<group>"; };
+		11ECEDCF1946E3AC00BFB85A /* GKImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKImageView.m; sourceTree = "<group>"; };
 		11EFE1D61817ACA3009CE69F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		11EFE1D81817C08C009CE69F /* GKStudentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKStudentView.h; sourceTree = "<group>"; };
 		11EFE1D91817C08C009CE69F /* GKStudentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKStudentView.m; sourceTree = "<group>"; };
@@ -1696,6 +1699,8 @@
 			children = (
 				11B269BD193DB61500E5369E /* GKAttentanceViewController.h */,
 				11B269BE193DB61500E5369E /* GKAttentanceViewController.m */,
+				11ECEDCE1946E3AC00BFB85A /* GKImageView.h */,
+				11ECEDCF1946E3AC00BFB85A /* GKImageView.m */,
 			);
 			path = Attentance;
 			sourceTree = "<group>";
@@ -2351,6 +2356,7 @@
 				119EA9BE181616990070DBF1 /* GKImagePickerViewController.m in Sources */,
 				119E96261814C5A300866DE8 /* ASICloudFilesObjectRequest.m in Sources */,
 				119973431822094F0017E99A /* GKMarketCell.m in Sources */,
+				11ECEDD01946E3AC00BFB85A /* GKImageView.m in Sources */,
 				111E8CE3181E532400234014 /* SDWebImageDownloader.m in Sources */,
 				111E8CE0181E532400234014 /* SDImageCache.m in Sources */,
 				11D40E3818618D1B003009D0 /* GKRePasswordViewController.m in Sources */,

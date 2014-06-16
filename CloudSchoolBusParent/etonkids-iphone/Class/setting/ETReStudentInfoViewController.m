@@ -253,7 +253,7 @@
     [alert show];
     
 }
--(void) getErrorInfo:(NSError *)error
+-(void) getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
 {
     if(HUD)
     {

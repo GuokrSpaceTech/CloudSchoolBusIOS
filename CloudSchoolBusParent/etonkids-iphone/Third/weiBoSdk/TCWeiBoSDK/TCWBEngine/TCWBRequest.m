@@ -109,13 +109,13 @@
 				if ([dataParam isKindOfClass:[UIImage class]]) {
 					NSData* imageData = UIImagePNGRepresentation((UIImage *)dataParam);
 					[TCWBRequest appendUTF8Body:body dataString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\";filename=\"%@\"\r\n", key,dataParam]];
-					[TCWBRequest appendUTF8Body:body dataString:[NSString stringWithString:@"Content-Type:\"image/jpeg\"\r\n\r\n"]];
+					[TCWBRequest appendUTF8Body:body dataString:@"Content-Type:\"image/jpeg\"\r\n\r\n"];
 					[body appendData:imageData];
 
 				} 
 				else if ([dataParam isKindOfClass:[NSData class]]) {
                     [TCWBRequest appendUTF8Body:body dataString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\";filename=\"%@\"\r\n", key,dataParam]];
-                    [TCWBRequest appendUTF8Body:body dataString:[NSString stringWithString:@"Content-Type:\"image/jpeg\"\r\n\r\n"]];
+                    [TCWBRequest appendUTF8Body:body dataString:@"Content-Type:\"image/jpeg\"\r\n\r\n"];
 					[body appendData:(NSData*)dataParam];
 				}
 				[TCWBRequest appendUTF8Body:body dataString:bodySuffixString];

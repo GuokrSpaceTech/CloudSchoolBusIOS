@@ -10,7 +10,7 @@
 #import "ETKids.h"
 #import "UserLogin.h"
 #import "AppDelegate.h"
-
+#import "GKChildReceiver.h"
 #import "UIImageView+WebCache.h"
 #import "ETCommonClass.h"
 #import "ETCoreDataManager.h"
@@ -34,7 +34,13 @@
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    
+    countlabel.text=[NSString stringWithFormat:@"%d",[self.receiveArr count]];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -49,7 +55,7 @@
         [statusbar release];
         
     }
-    
+    _receiveArr=[[NSMutableArray alloc]init];
     UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, (ios7 ? 20 : 0) + NAVIHEIGHT, 320, self.view.frame.size.height - NAVIHEIGHT - (ios7 ? 20 : 0))];
     backView.backgroundColor = CELLCOLOR;
     [self.view insertSubview:backView atIndex:0];
@@ -89,6 +95,12 @@
     [mainVC release];
     
     self.mainTV = mainVC;
+    
+    
+    
+
+    
+    
     
 }
 - (void)doClickCancel:(id)sender
@@ -224,19 +236,40 @@
         else if(indexPath.row==4)
         {
             cell.textLabel.backgroundColor=[UIColor clearColor];
-            cell.textLabel.text=@"日常接送人";
+            cell.textLabel.text= NSLocalizedString(@"receiver", @"");
             cell.backgroundColor=[UIColor whiteColor];
             cell.selectionStyle=UITableViewCellSelectionStyleBlue;
             
             
-            UILabel *countlabel=[[UILabel alloc]initWithFrame:CGRectMake(100,10,170,20)];
-           
+            countlabel=[[UILabel alloc]initWithFrame:CGRectMake(100,10,170,20)];
             countlabel.textAlignment=UITextAlignmentRight;
             [cell.contentView addSubview:countlabel];
             countlabel.backgroundColor=[UIColor clearColor];
             countlabel.font=[UIFont systemFontOfSize:15];
-            countlabel.text=@"0位";
+           // countlabel.text=@"0位";
             [countlabel release];
+            
+            countlabel.text=[NSString stringWithFormat:@"%d",[self.receiveArr count]];
+            if([self.receiveArr count]==0)
+            {
+                
+                activeView=[[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+                activeView.center=CGPointMake(280, 20);
+                activeView.hidesWhenStopped=YES;
+                [cell.contentView addSubview:activeView];
+                [activeView release];
+                [activeView startAnimating];
+                countlabel.text=@"";
+                ETCommonClass *com = [[[ETCommonClass alloc] init]autorelease];
+                
+                [com requestLoginWithComplete:^(NSError *err){
+                    
+                    receiverType=1;
+                    [[EKRequest Instance]EKHTTPRequest:childreceiver parameters:nil requestMethod:GET forDelegate:self];
+                }];
+
+            }
+           
 
             
         }
@@ -374,11 +407,16 @@
         }
         else if (indexPath.row==4)
         {
-            ETSendRecevieViewController  *sendcontroller=[[ETSendRecevieViewController alloc]init];
-            //nicknameviewcontroller.delegate = self;
-            AppDelegate *appDel = SHARED_APP_DELEGATE;
-            [appDel.bottomNav pushViewController:sendcontroller animated:YES];
-            [sendcontroller release];
+            if(receiverType==2)
+            {
+                ETSendRecevieViewController  *sendcontroller=[[ETSendRecevieViewController alloc]init];
+                //nicknameviewcontroller.delegate = self;
+                sendcontroller.receiverArr=self.receiveArr;
+                AppDelegate *appDel = SHARED_APP_DELEGATE;
+                [appDel.bottomNav pushViewController:sendcontroller animated:YES];
+                [sendcontroller release];
+            }
+ 
         }
     }
 
@@ -465,7 +503,30 @@
         [HUD removeFromSuperview];
         HUD=nil;
     }
-    
+    if(method==childreceiver)
+    {
+        if(code==1)
+        {
+             receiverType=2;
+            [_receiveArr removeAllObjects];
+            NSArray *arr=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
+            
+            for (int i=0; i<[arr count]; i++) {
+                GKChildReceiver *receiver=[[GKChildReceiver alloc]init];
+                receiver.receiverid=[NSString stringWithFormat:@"%@",[[arr objectAtIndex:i] objectForKey:@"id"]];
+                receiver.pid=[NSString stringWithFormat:@"%@",[[arr objectAtIndex:i] objectForKey:@"pid"]];
+                receiver.relationship=[[arr objectAtIndex:i] objectForKey:@"relationship"];
+                receiver.filepath=[NSString stringWithFormat:@"http://%@",[[arr objectAtIndex:i] objectForKey:@"filepath"]];
+                [_receiveArr addObject:receiver];
+                [receiver release];
+            }
+            
+            countlabel.text=[NSString stringWithFormat:@"%d",[arr count]];
+            [activeView stopAnimating];
+            
+
+        }
+    }
     UserLogin *user = [UserLogin currentLogin];
     
     NSLog(@"error code   %d,%@",code,[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding]);
@@ -586,7 +647,7 @@
     
     
 }
-- (void)getErrorInfo:(NSError *)error
+- (void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
 {
     //    secure.userInteractionEnabled = YES;
     
@@ -596,9 +657,16 @@
         HUD=nil;
     }
     
+ 
+    //[activeView stopAnimating];
+    if(method==childreceiver)
+    {
+        countlabel.text=NSLocalizedString(@"loadfailed", @"加载失败");
+        [activeView stopAnimating];
+    }
     ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"fail", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
     [alert show];
-    [self.mainTV reloadData];
+   // [self.mainTV reloadData];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -617,6 +685,10 @@
     [self saveImage:image];
     
     
+}
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissModalViewControllerAnimated:YES];
 }
 - (void)saveImage:(UIImage *)image
 {
@@ -672,7 +744,12 @@
     }
     
 }
-
+-(void)dealloc
+{
+    self.receiveArr=nil;
+    self.mainTV=nil;
+    [super dealloc];
+}
 #pragma mark --------- ETNickNameViewController Delegate ----------
 - (void)changeNicknameSuccess
 {

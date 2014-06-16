@@ -144,6 +144,12 @@ static EKRequest * instance = nil;
             return @"smartcard";
         case attendancemanager:
             return @"attendancemanager";
+        case schoolstudent:
+            return @"schoolstudent";
+        case schoolcheck:
+            return @"schoolcheck";
+        case schoolad:
+            return @"schoolad";
         default:
             return nil;
     }
@@ -159,7 +165,7 @@ static EKRequest * instance = nil;
     {
         header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactoprest",@"apikey",CURRENTVERSION,@"Version", nil], nil];
     }
-    else if (function==smartcard && param != nil)
+    else if ((function==smartcard || function==schoolstudent || function==schoolcheck ||function== schoolad) && param != nil)
     {
         header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactopattendance",@"apikey",CURRENTVERSION,@"Version", nil], nil];
     }

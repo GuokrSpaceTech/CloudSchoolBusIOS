@@ -1046,7 +1046,7 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     
 }
 
--(void) getErrorInfo:(NSError *) error
+-(void) getErrorInfo:(NSError *) error forMethod:(RequestFunction)method
 {
     [self performSelectorOnMainThread:@selector(requestFailedresult:) withObject:LOCAL(@"busy", @"网络故障，请稍后重试") waitUntilDone:NO];
     [upAI stopAnimating];

@@ -21,9 +21,15 @@
 {
     UILabel *birthdaylabel;
     MBProgressHUD *HUD;
+    UILabel *countlabel;
+    UIActivityIndicatorView *activeView;
+    
+    
+    int receiverType;
 }
 
 @property (nonatomic, retain)UITableView *mainTV;
+@property (nonatomic, retain)NSMutableArray*receiveArr;
 @property (nonatomic, assign)id<ETBaseMessageViewControllerDelegate> delegate;
 
 @end

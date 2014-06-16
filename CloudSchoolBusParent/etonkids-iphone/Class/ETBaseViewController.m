@@ -33,7 +33,7 @@
     self.weiboEngine = engine;
     [engine release];
     
-    
+      
     self.view.backgroundColor = CELLCOLOR;
     
     UIView *topBack = [[UIView alloc] initWithFrame:CGRectMake(0, -10, 320, 220)];

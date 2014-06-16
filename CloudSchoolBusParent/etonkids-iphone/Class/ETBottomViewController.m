@@ -8,7 +8,7 @@
 
 #import "ETBottomViewController.h"
 #import "ActivityViewController.h"
-#import "ETCalendarViewController.h"
+//#import "ETCalendarViewController.h"
 #import "ETEducationViewController.h"
 
 
@@ -534,15 +534,15 @@
         }];
     }
 }
-- (void)doClickRightBtn:(id)sender
-{
-    
-    ETCalendarViewController *cal = [[ETCalendarViewController alloc] init];
-    AppDelegate *appDel = SHARED_APP_DELEGATE;
-    [appDel.bottomNav pushViewController:cal animated:YES];
-    [cal release];
-    
-}
+//- (void)doClickRightBtn:(id)sender
+//{
+//    
+//    ETCalendarViewController *cal = [[ETCalendarViewController alloc] init];
+//    AppDelegate *appDel = SHARED_APP_DELEGATE;
+//    [appDel.bottomNav pushViewController:cal animated:YES];
+//    [cal release];
+//    
+//}
 
 
 - (void)createMainViewByPresent:(BOOL)isPresent
@@ -561,7 +561,7 @@
     [navigationView addSubview:topBackImgV];
     [topBackImgV release];
     
-    for (int i = 0 ; i < 2; i++) {
+    for (int i = 0 ; i <1; i++) {
         
         UIButton *navBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         if (i == 0) {
@@ -569,9 +569,9 @@
             [navBtn setImage:[UIImage imageNamed:@"navLeftBtn_selected.png"] forState:UIControlStateHighlighted];
             [navBtn addTarget:self action:@selector(doClickLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
         }else{
-            [navBtn setImage:[UIImage imageNamed:@"navRightBtn_default.png"] forState:UIControlStateNormal];
-            [navBtn setImage:[UIImage imageNamed:@"navRightBtn_selected.png"] forState:UIControlStateHighlighted];
-            [navBtn addTarget:self action:@selector(doClickRightBtn:) forControlEvents:UIControlEventTouchUpInside];
+//            [navBtn setImage:[UIImage imageNamed:@"navRightBtn_default.png"] forState:UIControlStateNormal];
+//            [navBtn setImage:[UIImage imageNamed:@"navRightBtn_selected.png"] forState:UIControlStateHighlighted];
+//            [navBtn addTarget:self action:@selector(doClickRightBtn:) forControlEvents:UIControlEventTouchUpInside];
         }
         [navBtn setFrame:CGRectMake(0, 0, 50, 35)];
         [navBtn setCenter:CGPointMake(10 + 34/2 + 266 *i, navigationView.frame.size.height/2)];
@@ -935,7 +935,7 @@
     NSLog(@"%@",[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding]);
     
 }
-- (void)getErrorInfo:(NSError *)error
+- (void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
 {
     if(HUD)
     {

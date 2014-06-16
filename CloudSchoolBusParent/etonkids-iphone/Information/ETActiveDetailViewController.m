@@ -554,7 +554,7 @@
     
     
 }
--(void) getErrorInfo:(NSError *) error
+-(void) getErrorInfo:(NSError *) error forMethod:(RequestFunction)method
 {
     
     ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"busy", @"网络故障，请稍后重试") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];

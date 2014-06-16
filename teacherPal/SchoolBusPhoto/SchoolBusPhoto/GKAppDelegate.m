@@ -68,14 +68,16 @@
     
  
        
-  
+// [[EKRequest Instance]EKHTTPRequest:schoolstudent parameters:[NSDictionary dictionaryWithObjectsAndKeys:@"1",@"machine", nil] requestMethod:GET forDelegate:self];
     
-    
+[[EKRequest Instance]EKHTTPRequest:schoolcheck parameters:[NSDictionary dictionaryWithObjectsAndKeys:@"1",@"machine", nil] requestMethod:GET forDelegate:self];
 
+     // [[EKRequest Instance]EKHTTPRequest:schoolad parameters:nil requestMethod:GET forDelegate:self];
     
     [self.window makeKeyAndVisible];
     return YES;
 }
+
 -(void)applicationDidEnterBackground{
     NSLog(@"%@",NSStringFromSelector(_cmd));
     
@@ -226,7 +228,12 @@
     
 }
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
-{}
+{
+    NSLog(@"%@",[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding]);
+    
+    NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
+    NSLog(@"%@",dic);
+}
 -(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
 {}
 

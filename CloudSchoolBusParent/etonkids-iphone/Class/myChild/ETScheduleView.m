@@ -270,7 +270,7 @@
         NSMutableArray *result = r;
         
         
-        NSLog(@"%@,%@",[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding],result);
+       // NSLog(@"%@,%@",[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding],result);
         
 //        if (![resultDic objectForKey:@"schedule"]) {
 //            

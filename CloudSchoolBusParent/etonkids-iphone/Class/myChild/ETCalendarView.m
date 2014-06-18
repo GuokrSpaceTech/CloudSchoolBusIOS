@@ -361,7 +361,7 @@
         }
     }
     
-    NSDateFormatter *tempFormate = [[NSDateFormatter alloc] init];
+    NSDateFormatter *tempFormate = [[[NSDateFormatter alloc] init] autorelease];
     [tempFormate setDateFormat:@"yyyy-MM-dd"];
     NSString * str = [tempFormate stringFromDate:date];
     

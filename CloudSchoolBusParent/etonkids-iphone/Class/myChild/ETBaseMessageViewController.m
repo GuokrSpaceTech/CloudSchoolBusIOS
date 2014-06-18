@@ -529,7 +529,7 @@
     }
     UserLogin *user = [UserLogin currentLogin];
     
-    NSLog(@"error code   %d,%@",code,[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding]);
+    //NSLog(@"error code   %d,%@",code,[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding]);
     
     if (code == -1113)
     {
@@ -627,6 +627,7 @@
             [alert show];
             
             user.avatar = result;
+            [result release];
             
             [ETCoreDataManager saveUser];
             

@@ -100,7 +100,10 @@
     [self.view addSubview:photoImageView];
   
     
-    
+    imagePhoto=[[UIImageView alloc]initWithFrame:CGRectMake(75, 80, 25, 20)];
+    imagePhoto.image=[UIImage imageNamed:@"photo.png"];
+    [photoImageView addSubview:imagePhoto];
+    [imagePhoto release];
     
     _textField=[[UITextField alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2.0-80, photoImageView.frame.size.height+photoImageView.frame.origin.y+10, 160, 30)];
     _textField.font=[UIFont systemFontOfSize:14];

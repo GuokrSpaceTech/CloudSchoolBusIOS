@@ -289,7 +289,7 @@
 
 - (void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
 {
-    NSLog(@"%@",[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding]);
+   // NSLog(@"%@",[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding]);
     
     if(HUD)
     {

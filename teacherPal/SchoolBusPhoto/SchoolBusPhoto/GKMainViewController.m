@@ -56,14 +56,19 @@ static  GKMainViewController*rootViewCon;
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
 - (void)viewDidLoad
 {
     
-    [super viewDidLoad];
+     [super viewDidLoad];
     if (ios7) {
         [self setNeedsStatusBarAppearanceUpdate];
+  
     }
-    
+   
     sideBarShowing=NO;
     currentTranslate=0;
     state=0;

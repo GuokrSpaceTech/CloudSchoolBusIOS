@@ -157,8 +157,8 @@
 "noticeQ"="通知";
 "noticeDetail"="通知详情";
 
-"sendWho"="谁已经确认";
-"huizhi"="谁回执了你";
+"sendWho"="发给了谁";
+"huizhi"="已确认回执";
 "load"="加载中...";
 
 "grade"="grade.png";
@@ -284,7 +284,13 @@
 "temperature"="体温";
 "normal"="体温正常";
 "heighter"="体温过高";
-"alreadyHealth"="位学生有考勤";
+"alreadyHealth"="位学生已晨检";
 "inclasstime"="入园时间：";
 "outclasstime"="离园时间：";
 "alreadyattendance"="位学生有考勤";
+
+"attendanceleftN"="attendanceN-cn.png";
+"attendanceleftH"="attendanceH-cn.png";
+
+"morningleftN"="morningN-cn.png";
+"morningleftH"="morningH-cn.png";

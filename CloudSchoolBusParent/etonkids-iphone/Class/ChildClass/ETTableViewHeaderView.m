@@ -339,7 +339,7 @@
             
             
             user.avatar = result;
-            
+            [result release];
             [ETCoreDataManager saveUser];
             
             [[NSNotificationCenter defaultCenter] postNotificationName:@"CHILDINFO" object:nil];

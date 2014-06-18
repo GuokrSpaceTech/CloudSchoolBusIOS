@@ -54,7 +54,7 @@
         
         
         deleteBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-        [deleteBtn setBackgroundImage:[UIImage imageNamed:@"deleteTag.png"] forState:UIControlStateNormal];
+        [deleteBtn setBackgroundImage:[UIImage imageNamed:@"deletereceiver.png"] forState:UIControlStateNormal];
         [deleteBtn addTarget:self action:@selector(deleteOnRelation:) forControlEvents:UIControlEventTouchUpInside];
         deleteBtn.frame=CGRectMake(photoImageView.frame.size.width+photoImageView.frame.origin.x-20,photoImageView.frame.origin.y, 20, 20);
         [self addSubview:deleteBtn];

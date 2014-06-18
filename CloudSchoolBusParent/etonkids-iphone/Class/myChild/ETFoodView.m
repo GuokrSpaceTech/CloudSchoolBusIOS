@@ -148,7 +148,7 @@
     FoodCell *cell=[tableView dequeueReusableCellWithIdentifier:string];
     if (cell==nil)
     {
-        cell=[[FoodCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:string];
+        cell=[[[FoodCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:string] autorelease];
     }
     cell.selectionStyle=UITableViewCellEditingStyleNone;
     

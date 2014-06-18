@@ -11,6 +11,7 @@
 #import "EKRequest.h"
 #import "ETCommonClass.h"
 #import "MBProgressHUD.h"
+#import "MyImageView.h"
 @interface ETGCalendarViewController : UIViewController<VRGCalendarViewDelegate,EKProtocol>
 {
     VRGCalendarView *myCalendar;
@@ -24,8 +25,8 @@
     
     UILabel *fesLabel;
     
-    UIImageView *inImageView;
-    UIImageView *outImageView;
+    MyImageView *inImageView;
+    MyImageView *outImageView;
     UIImageView *circleImageView4;
     UIImageView *circleImageView3;
     UIImageView *line3;

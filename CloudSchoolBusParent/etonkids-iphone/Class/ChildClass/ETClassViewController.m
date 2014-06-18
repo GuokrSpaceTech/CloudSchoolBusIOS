@@ -414,7 +414,7 @@
 //            ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"praiseSuccess",@"赞成功") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
 //            [alert show];
             
-            NSString *key = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+            NSString *key = [[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] autorelease];
             
             NSString *shareId = [param objectForKey:@"itemid"];
             

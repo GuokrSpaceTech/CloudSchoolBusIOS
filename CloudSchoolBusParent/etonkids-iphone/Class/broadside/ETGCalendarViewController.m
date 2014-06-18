@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "NSDate+convenience.h"
 #import "ETCoreDataManager.h"
+#import "GKShowReceiveBigImageViewController.h"
 #import "UIImageView+WebCache.h"
 @interface ETGCalendarViewController ()
 
@@ -101,11 +102,13 @@
     [myCalendar release];
     
     
-    float positiony=iphone5 ? (548-97) : (460-97);
+  //  float positiony=iphone5 ? (548-97) : (460-97);
 
-    positiony=(ios7?(positiony+20):positiony);
+   // positiony=(ios7?(positiony+20):positiony);
     
 //    float positiony = 460-97;
+
+    
 
     
     scroller=[[UIScrollView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height, 320, 0)];
@@ -114,7 +117,8 @@
    
     
     UIImageView *circleImageView1=[[UIImageView alloc]initWithFrame:CGRectMake(10, 15, 10, 10)];
-    circleImageView1.backgroundColor=[UIColor redColor];
+    circleImageView1.backgroundColor=[UIColor clearColor];
+    [circleImageView1 setImage:[UIImage imageNamed:@"point_attendance.png"]];
     [scroller addSubview:circleImageView1];
     [circleImageView1 release];
     
@@ -135,7 +139,7 @@
     
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick:)];
     tap.numberOfTapsRequired=1;
-    inImageView=[[UIImageView alloc]initWithFrame:CGRectMake(200, 2, 40, 40)];
+    inImageView=[[MyImageView alloc]initWithFrame:CGRectMake(200, 2, 40, 40)];
     inImageView.backgroundColor=[UIColor clearColor];
     
     [scroller addSubview:inImageView];
@@ -146,7 +150,7 @@
     UITapGestureRecognizer *tap2=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick:)];
     tap2.numberOfTapsRequired=1;
     
-    outImageView=[[UIImageView alloc]initWithFrame:CGRectMake(250, 2, 40, 40)];
+    outImageView=[[MyImageView alloc]initWithFrame:CGRectMake(250, 2, 40, 40)];
     outImageView.backgroundColor=[UIColor clearColor];
     [scroller addSubview:outImageView];
   
@@ -162,7 +166,8 @@
     [line1 release];
     
     UIImageView *circleImageView2=[[UIImageView alloc]initWithFrame:CGRectMake(10, 55, 10, 10)];
-    circleImageView2.backgroundColor=[UIColor redColor];
+    circleImageView2.backgroundColor=[UIColor clearColor];
+     [circleImageView2 setImage:[UIImage imageNamed:@"point_attendance.png"]];
     [scroller addSubview:circleImageView2];
     [circleImageView2 release];
     
@@ -186,7 +191,8 @@
     [line2 release];
     
     circleImageView3=[[UIImageView alloc]initWithFrame:CGRectMake(10, 85, 10, 10)];
-    circleImageView3.backgroundColor=[UIColor redColor];
+    circleImageView3.backgroundColor=[UIColor clearColor];
+     [circleImageView3 setImage:[UIImage imageNamed:@"point_attendance.png"]];
     [scroller addSubview:circleImageView3];
     [circleImageView3 release];
     
@@ -207,7 +213,8 @@
     
     
     circleImageView4=[[UIImageView alloc]initWithFrame:CGRectMake(10, 115, 10, 10)];
-    circleImageView4.backgroundColor=[UIColor redColor];
+    circleImageView4.backgroundColor=[UIColor clearColor];
+     [circleImageView4 setImage:[UIImage imageNamed:@"point_attendance.png"]];
     [scroller addSubview:circleImageView4];
     [circleImageView4 release];
     
@@ -244,6 +251,11 @@
 -(void)tapClick:(UIGestureRecognizer *)tap
 {
     
+    MyImageView *iamgeView=(MyImageView *)tap.view;
+    GKShowReceiveBigImageViewController *showVC=[[GKShowReceiveBigImageViewController alloc]init];
+    showVC.path=iamgeView.path;
+    [self presentModalViewController:showVC animated:YES];
+    [showVC release];
 }
 - (void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
 {
@@ -252,8 +264,8 @@
         [HUD removeFromSuperview];
         HUD=nil;
     }
-    NSString *aa=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",aa);
+   // NSString *aa=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
+   // NSLog(@"%@",aa);
     if(method == attendancemanager && code == 1)
     {
         id result =[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
@@ -384,7 +396,7 @@
             else
             {
                 tempatureLabel.text=[NSString stringWithFormat:@"%@：%@%@",LOCAL(@"temperature",@""),tempature,@"℃"];
-                if([tempature floatValue]>36.8 && [tempature floatValue]<37.5)
+                if([tempature floatValue]>=36.0 && [tempature floatValue]<=37.5)
                 {
 //                    "normal"="体温正常";
 //                    "heighter"="体温过高";
@@ -405,6 +417,7 @@
             {
                 inImageView.userInteractionEnabled=YES;
                 [inImageView setImageWithURL:[NSURL URLWithString:inpath] placeholderImage:nil];
+                inImageView.path=inpath;
             }
             else
             {
@@ -415,6 +428,7 @@
             {
                 outImageView.userInteractionEnabled=YES;
                  [outImageView setImageWithURL:[NSURL URLWithString:outPath] placeholderImage:nil];
+                   outImageView.path=outPath;
             }
             else
             {
@@ -435,7 +449,7 @@
         
     }
     
-    NSDateFormatter *tempFormate = [[NSDateFormatter alloc] init];
+    NSDateFormatter *tempFormate = [[[NSDateFormatter alloc] init] autorelease];
     [tempFormate setDateFormat:@"yyyy-MM-dd"];
     NSString * str = [tempFormate stringFromDate:date];
     

@@ -129,6 +129,7 @@
             }
             ETSendReceiveView *sendView=[[ETSendReceiveView alloc]initWithFrame:CGRectMake(10+col*(140+20),row*(140+25+10), 140, 140+25)];
             sendView.namelabel.text=NSLocalizedString(@"add1", @"");
+            sendView.photoImageView.image=[UIImage imageNamed:@"addreceiver.png"];
             sendView.delegate=self;
             sendView.type=2;
             [_scrollerView_ addSubview:sendView];

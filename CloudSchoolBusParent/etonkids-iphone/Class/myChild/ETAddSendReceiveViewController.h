@@ -16,6 +16,8 @@ typedef void (^CompleteBlock)(NSDictionary *dic);
 {
     MBProgressHUD *HUD;
     CompleteBlock completeBlack;
+    
+    UIImageView *imagePhoto;
 }
 @property(nonatomic,copy) CompleteBlock completeBlack;
 @property (nonatomic,retain)UITextField *textField;

@@ -1127,7 +1127,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }
     */
     
-    return header;
+    return [header autorelease];
     
 }
 

@@ -74,7 +74,7 @@
     [secView addGestureRecognizer:tap];
     [tap release];
     
-    return secView;
+    return [secView autorelease];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

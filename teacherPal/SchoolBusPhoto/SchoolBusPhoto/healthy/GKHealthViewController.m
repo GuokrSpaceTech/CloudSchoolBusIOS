@@ -171,7 +171,7 @@
                 temperature.studentid=[NSString stringWithFormat:@"%@",[[arr objectAtIndex:i] objectForKey:@"studentid"]];
                 temperature.name=[[arr objectAtIndex:i] objectForKey:@"enname"];
                 temperature.tempature=[[arr objectAtIndex:i] objectForKey:@"temperature"];
-                if([temperature.tempature floatValue]>36.5 && [temperature.tempature floatValue]<=37.5)
+                if([temperature.tempature floatValue]>=36.0 && [temperature.tempature floatValue]<=37.5)
                 {
                     temperature.state=NSLocalizedString(@"normal", @"");
 

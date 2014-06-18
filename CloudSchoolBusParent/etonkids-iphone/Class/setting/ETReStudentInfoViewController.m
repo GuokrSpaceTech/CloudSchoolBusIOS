@@ -139,7 +139,7 @@
 }
 -(void)BIRTHDAY:(NSNotification*)sender
 {
-    NSDateFormatter  *formatter=[[NSDateFormatter alloc]init];
+    NSDateFormatter  *formatter=[[[NSDateFormatter alloc]init] autorelease];
     [formatter setDateFormat:@"YYYY-MM-dd"];
     NSString  *datastring=[formatter stringFromDate:datepick.date];
     self.age.text=datastring;

@@ -286,7 +286,14 @@
 "temperature"="TEM";
 "normal"="Normal";
 "heighter"="Higher";
-"alreadyHealth"="students have attendance record";
+"alreadyHealth"=" students have morning check";
 "inclasstime"="Check in：";
 "outclasstime"="Leave：";
 "alreadyattendance"="students have attendance record";
+
+
+"attendanceleftN"="attendanceN-en.png";
+"attendanceleftH"="attendanceH-en.png";
+
+"morningleftN"="morningN-en.png";
+"morningleftH"="morningH-en.png";

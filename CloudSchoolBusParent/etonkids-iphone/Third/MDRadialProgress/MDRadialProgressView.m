@@ -70,7 +70,7 @@
 	self.theme = theme;
 	
 	// Init the progress label, even if not visible.
-	self.label = [[MDRadialProgressLabel alloc] initWithFrame:CGRectMake(self.bounds.origin.x + 5, 20, self.bounds.size.width - 10, 30) andTheme:self.theme];
+	self.label = [[[MDRadialProgressLabel alloc] initWithFrame:CGRectMake(self.bounds.origin.x + 5, 20, self.bounds.size.width - 10, 30) andTheme:self.theme] autorelease];
 	[self addSubview:self.label];
 	
 	// Private properties

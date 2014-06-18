@@ -62,8 +62,8 @@
     imageView.userInteractionEnabled=YES;
     imageView.layer.borderColor = [UIColor whiteColor].CGColor;
     imageView.layer.borderWidth = 2;
-    imageView.image=[UIImage imageNamed:@"headplaceholder_big.png"];
-    imageView.layer.cornerRadius = 20.0f;
+   // imageView.image=[UIImage imageNamed:@"headplaceholder_big.png"];
+   // imageView.layer.cornerRadius = 20.0f;
     imageView.userInteractionEnabled=YES;
     imageView.layer.shouldRasterize = YES;
     imageView.layer.masksToBounds = YES;

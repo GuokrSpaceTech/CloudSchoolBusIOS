@@ -161,8 +161,6 @@
 		119F0CA3181A216100A5910C /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 119F0CA1181A216100A5910C /* about.png */; };
 		119F0CA4181A216100A5910C /* aboutNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 119F0CA2181A216100A5910C /* aboutNormal.png */; };
 		119F0CA6181A216600A5910C /* bottom_logout_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 119F0CA5181A216600A5910C /* bottom_logout_default.png */; };
-		119F0CA9181A242200A5910C /* home-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 119F0CA7181A242200A5910C /* home-1.png */; };
-		119F0CAA181A242200A5910C /* home-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 119F0CA8181A242200A5910C /* home-2.png */; };
 		119F0CAD181A297300A5910C /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = 119F0CAB181A297300A5910C /* left.png */; };
 		119F0CAE181A297300A5910C /* leftN.png in Resources */ = {isa = PBXBuildFile; fileRef = 119F0CAC181A297300A5910C /* leftN.png */; };
 		119F0CB6181A2D5B00A5910C /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 119F0CB5181A2D5B00A5910C /* back.png */; };
@@ -176,10 +174,6 @@
 		11A3BF48187567E20032BA07 /* GKStudentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A3BF47187567E20032BA07 /* GKStudentListViewController.m */; };
 		11A3BF4B18756A3A0032BA07 /* GKStudentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A3BF4A18756A3A0032BA07 /* GKStudentInfoViewController.m */; };
 		11A5A888187B986600EA22CD /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A886187B986600EA22CD /* setting.png */; };
-		11A5A88C187B988B00EA22CD /* grade.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A88A187B988B00EA22CD /* grade.png */; };
-		11A5A88D187B988B00EA22CD /* gradeH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A88B187B988B00EA22CD /* gradeH.png */; };
-		11A5A890187B9E2500EA22CD /* gradeEH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A88E187B9E2500EA22CD /* gradeEH.png */; };
-		11A5A891187B9E2500EA22CD /* gradeE.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A88F187B9E2500EA22CD /* gradeE.png */; };
 		11A5A894187B9E5100EA22CD /* settingEH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A892187B9E5100EA22CD /* settingEH.png */; };
 		11A5A895187B9E5100EA22CD /* settingE.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A5A893187B9E5100EA22CD /* settingE.png */; };
 		11A5A898187BBC9F00EA22CD /* MTCustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A5A896187BBC9F00EA22CD /* MTCustomActionSheet.m */; };
@@ -240,6 +234,10 @@
 		11BA02B5192B05DF00124DC1 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BA02B2192B05DF00124DC1 /* libMobClickLibrary.a */; };
 		11BA02B6192B05DF00124DC1 /* libMobClickLibrary_armv6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BA02B3192B05DF00124DC1 /* libMobClickLibrary_armv6.a */; };
 		11BA02B8192B060C00124DC1 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BA02B7192B060C00124DC1 /* libz.dylib */; };
+		11BAA76A195142F6006DA9AA /* grade.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BAA766195142F6006DA9AA /* grade.png */; };
+		11BAA76B195142F6006DA9AA /* gradeE.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BAA767195142F6006DA9AA /* gradeE.png */; };
+		11BAA76C195142F6006DA9AA /* gradeEH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BAA768195142F6006DA9AA /* gradeEH.png */; };
+		11BAA76D195142F6006DA9AA /* gradeH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BAA769195142F6006DA9AA /* gradeH.png */; };
 		11BB579F192353A900DE826A /* GKRelationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BB579E192353A900DE826A /* GKRelationViewController.m */; };
 		11BB992118AB15B9006273A7 /* qipao22@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BB992018AB15B9006273A7 /* qipao22@2x.png */; };
 		11BBA70B19249E3700637BED /* inclass.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BBA70919249E3700637BED /* inclass.png */; };
@@ -261,6 +259,14 @@
 		11BF8989183641E2008E72F0 /* noticeNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF8987183641E2008E72F0 /* noticeNormal.png */; };
 		11BF898B18364594008E72F0 /* tishi.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF898A18364594008E72F0 /* tishi.png */; };
 		11BF898E183646DF008E72F0 /* GKBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BF898D183646DF008E72F0 /* GKBadgeView.m */; };
+		11C4326D19501BDF0096778C /* attendanceH-cn.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4326919501BDF0096778C /* attendanceH-cn.png */; };
+		11C4326E19501BDF0096778C /* attendanceH-en.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4326A19501BDF0096778C /* attendanceH-en.png */; };
+		11C4326F19501BDF0096778C /* attendanceN-cn.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4326B19501BDF0096778C /* attendanceN-cn.png */; };
+		11C4327019501BDF0096778C /* attendanceN-en.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4326C19501BDF0096778C /* attendanceN-en.png */; };
+		11C4327519501CF50096778C /* morningH-cn.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4327119501CF50096778C /* morningH-cn.png */; };
+		11C4327619501CF50096778C /* morningH-en.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4327219501CF50096778C /* morningH-en.png */; };
+		11C4327719501CF50096778C /* morningN-cn.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4327319501CF50096778C /* morningN-cn.png */; };
+		11C4327819501CF50096778C /* morningN-en.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4327419501CF50096778C /* morningN-en.png */; };
 		11C75DA61812725600A3AA89 /* EKRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DA01812725600A3AA89 /* EKRequest.m */; };
 		11C75DA71812725600A3AA89 /* SVHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DA31812725600A3AA89 /* SVHTTPClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		11C75DA81812725600A3AA89 /* SVHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DA51812725600A3AA89 /* SVHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -675,8 +681,6 @@
 		119F0CA1181A216100A5910C /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
 		119F0CA2181A216100A5910C /* aboutNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aboutNormal.png; sourceTree = "<group>"; };
 		119F0CA5181A216600A5910C /* bottom_logout_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom_logout_default.png; sourceTree = "<group>"; };
-		119F0CA7181A242200A5910C /* home-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-1.png"; sourceTree = "<group>"; };
-		119F0CA8181A242200A5910C /* home-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-2.png"; sourceTree = "<group>"; };
 		119F0CAB181A297300A5910C /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
 		119F0CAC181A297300A5910C /* leftN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftN.png; sourceTree = "<group>"; };
 		119F0CB5181A2D5B00A5910C /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
@@ -696,10 +700,6 @@
 		11A3BF4918756A3A0032BA07 /* GKStudentInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKStudentInfoViewController.h; sourceTree = "<group>"; };
 		11A3BF4A18756A3A0032BA07 /* GKStudentInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKStudentInfoViewController.m; sourceTree = "<group>"; };
 		11A5A886187B986600EA22CD /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
-		11A5A88A187B988B00EA22CD /* grade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grade.png; sourceTree = "<group>"; };
-		11A5A88B187B988B00EA22CD /* gradeH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradeH.png; sourceTree = "<group>"; };
-		11A5A88E187B9E2500EA22CD /* gradeEH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradeEH.png; sourceTree = "<group>"; };
-		11A5A88F187B9E2500EA22CD /* gradeE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradeE.png; sourceTree = "<group>"; };
 		11A5A892187B9E5100EA22CD /* settingEH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingEH.png; sourceTree = "<group>"; };
 		11A5A893187B9E5100EA22CD /* settingE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingE.png; sourceTree = "<group>"; };
 		11A5A896187BBC9F00EA22CD /* MTCustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCustomActionSheet.m; sourceTree = "<group>"; };
@@ -783,6 +783,10 @@
 		11BA02B3192B05DF00124DC1 /* libMobClickLibrary_armv6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary_armv6.a; sourceTree = "<group>"; };
 		11BA02B4192B05DF00124DC1 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		11BA02B7192B060C00124DC1 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		11BAA766195142F6006DA9AA /* grade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grade.png; sourceTree = "<group>"; };
+		11BAA767195142F6006DA9AA /* gradeE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradeE.png; sourceTree = "<group>"; };
+		11BAA768195142F6006DA9AA /* gradeEH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradeEH.png; sourceTree = "<group>"; };
+		11BAA769195142F6006DA9AA /* gradeH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradeH.png; sourceTree = "<group>"; };
 		11BB579D192353A900DE826A /* GKRelationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKRelationViewController.h; sourceTree = "<group>"; };
 		11BB579E192353A900DE826A /* GKRelationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKRelationViewController.m; sourceTree = "<group>"; };
 		11BB992018AB15B9006273A7 /* qipao22@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qipao22@2x.png"; sourceTree = "<group>"; };
@@ -806,6 +810,14 @@
 		11BF898A18364594008E72F0 /* tishi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tishi.png; sourceTree = "<group>"; };
 		11BF898C183646DF008E72F0 /* GKBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBadgeView.h; sourceTree = "<group>"; };
 		11BF898D183646DF008E72F0 /* GKBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBadgeView.m; sourceTree = "<group>"; };
+		11C4326919501BDF0096778C /* attendanceH-cn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attendanceH-cn.png"; sourceTree = "<group>"; };
+		11C4326A19501BDF0096778C /* attendanceH-en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attendanceH-en.png"; sourceTree = "<group>"; };
+		11C4326B19501BDF0096778C /* attendanceN-cn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attendanceN-cn.png"; sourceTree = "<group>"; };
+		11C4326C19501BDF0096778C /* attendanceN-en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attendanceN-en.png"; sourceTree = "<group>"; };
+		11C4327119501CF50096778C /* morningH-cn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "morningH-cn.png"; sourceTree = "<group>"; };
+		11C4327219501CF50096778C /* morningH-en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "morningH-en.png"; sourceTree = "<group>"; };
+		11C4327319501CF50096778C /* morningN-cn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "morningN-cn.png"; sourceTree = "<group>"; };
+		11C4327419501CF50096778C /* morningN-en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "morningN-en.png"; sourceTree = "<group>"; };
 		11C75D9F1812725600A3AA89 /* EKRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRequest.h; sourceTree = "<group>"; };
 		11C75DA01812725600A3AA89 /* EKRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRequest.m; sourceTree = "<group>"; };
 		11C75DA21812725600A3AA89 /* SVHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVHTTPClient.h; sourceTree = "<group>"; };
@@ -1404,6 +1416,18 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				11BAA766195142F6006DA9AA /* grade.png */,
+				11BAA767195142F6006DA9AA /* gradeE.png */,
+				11BAA768195142F6006DA9AA /* gradeEH.png */,
+				11BAA769195142F6006DA9AA /* gradeH.png */,
+				11C4327119501CF50096778C /* morningH-cn.png */,
+				11C4327219501CF50096778C /* morningH-en.png */,
+				11C4327319501CF50096778C /* morningN-cn.png */,
+				11C4327419501CF50096778C /* morningN-en.png */,
+				11C4326919501BDF0096778C /* attendanceH-cn.png */,
+				11C4326A19501BDF0096778C /* attendanceH-en.png */,
+				11C4326B19501BDF0096778C /* attendanceN-cn.png */,
+				11C4326C19501BDF0096778C /* attendanceN-en.png */,
 				78A9393D18C886D700722B12 /* thelp_notice_568.png */,
 				78A9393E18C886D700722B12 /* thelp_notice.png */,
 				11B8492D18C058DD00D9205C /* corners@2x.png */,
@@ -1460,10 +1484,6 @@
 				11D42950187E4BE60002810E /* studentIcon@2x.png */,
 				11A5A892187B9E5100EA22CD /* settingEH.png */,
 				11A5A893187B9E5100EA22CD /* settingE.png */,
-				11A5A88E187B9E2500EA22CD /* gradeEH.png */,
-				11A5A88F187B9E2500EA22CD /* gradeE.png */,
-				11A5A88A187B988B00EA22CD /* grade.png */,
-				11A5A88B187B988B00EA22CD /* gradeH.png */,
 				11A5A886187B986600EA22CD /* setting.png */,
 				11A5AE63186438FA008794C0 /* applyAll.png */,
 				11D40E2E18618700003009D0 /* alterPasswordE.png */,
@@ -1563,8 +1583,6 @@
 				119F0CB5181A2D5B00A5910C /* back.png */,
 				119F0CAB181A297300A5910C /* left.png */,
 				119F0CAC181A297300A5910C /* leftN.png */,
-				119F0CA7181A242200A5910C /* home-1.png */,
-				119F0CA8181A242200A5910C /* home-2.png */,
 				119F0CA5181A216600A5910C /* bottom_logout_default.png */,
 				119F0CA1181A216100A5910C /* about.png */,
 				119F0CA2181A216100A5910C /* aboutNormal.png */,
@@ -1988,7 +2006,6 @@
 				11D42953187E4BE60002810E /* studentIcon@2x.png in Resources */,
 				114D85371920773A00428711 /* searchCellContent.png in Resources */,
 				1193A6C7182C785B004011BC /* 谁在照片里_03.png in Resources */,
-				11A5A891187B9E2500EA22CD /* gradeE.png in Resources */,
 				11AF3AE91816655B00B36176 /* navBarImage.png in Resources */,
 				78BE433918B7657B003ADCB8 /* 消息@2x.png in Resources */,
 				113BCAC6182B5F8E0079E9AD /* line.png in Resources */,
@@ -2002,6 +2019,7 @@
 				1193A6D2182C8653004011BC /* loginBG.png in Resources */,
 				11AF3B1118168D5C00B36176 /* aa.png in Resources */,
 				11AA5B4B188D277D001EA8B2 /* noticeEmail.png in Resources */,
+				11C4326E19501BDF0096778C /* attendanceH-en.png in Resources */,
 				11AF3AF018166ECB00B36176 /* upHight@2x.png in Resources */,
 				78709C25187D1733009250FB /* play.png in Resources */,
 				11BF896B18363221008E72F0 /* 114.png in Resources */,
@@ -2013,9 +2031,7 @@
 				11BF896F1836325F008E72F0 /* 120.png in Resources */,
 				78D8D11C18C07ABC008860AB /* thelp_send_568.png in Resources */,
 				2A32A56918122C02007CAA8E /* InfoPlist.strings in Resources */,
-				11A5A890187B9E2500EA22CD /* gradeEH.png in Resources */,
 				2A32A57118122C02007CAA8E /* Default.png in Resources */,
-				11A5A88D187B988B00EA22CD /* gradeH.png in Resources */,
 				11A5AE64186438FA008794C0 /* applyAll.png in Resources */,
 				11DB02ED18337F40007981C6 /* buyButtonEnable.png in Resources */,
 				78709C14187D1733009250FB /* edit-filters-overlay-selected-short.png in Resources */,
@@ -2060,7 +2076,6 @@
 				11BF898118363E58008E72F0 /* addPer.png in Resources */,
 				11BF898518363F5C008E72F0 /* sendNoticeH.png in Resources */,
 				1194023218235F6100F21FB8 /* box-1.png in Resources */,
-				11A5A88C187B988B00EA22CD /* grade.png in Resources */,
 				78A9394018C886D700722B12 /* thelp_notice.png in Resources */,
 				7870A106187E97EE009250FB /* settingH.png in Resources */,
 				2A32A57518122C02007CAA8E /* Default-568h@2x.png in Resources */,
@@ -2073,6 +2088,7 @@
 				1193A6B8182B9225004011BC /* photoBtn.png in Resources */,
 				78709BCC187D16CA009250FB /* GKSendMediaViewController.xib in Resources */,
 				78709C06187D1733009250FB /* camera-handle-photo.png in Resources */,
+				11BAA76D195142F6006DA9AA /* gradeH.png in Resources */,
 				1193A6C5182C785B004011BC /* 谁在照片里_05.png in Resources */,
 				78709C09187D1733009250FB /* camera-library-overlay.png in Resources */,
 				78BE433318B7657B003ADCB8 /* 班级积分@2x.png in Resources */,
@@ -2099,9 +2115,9 @@
 				1193B39D1827847C00660CB1 /* markScore.png in Resources */,
 				11E27F8C183C64E100CAE0BB /* aboutlogo_EN1.png in Resources */,
 				11B852BF18334D52005FA5B9 /* upbuttonH.png in Resources */,
+				11C4327819501CF50096778C /* morningN-en.png in Resources */,
 				11CE2A8D187FEE3500742001 /* writeRizhiH.png in Resources */,
 				119F0CA6181A216600A5910C /* bottom_logout_default.png in Resources */,
-				119F0CA9181A242200A5910C /* home-1.png in Resources */,
 				11DB02DF18337725007981C6 /* zhushi.png in Resources */,
 				11BF897E18363E58008E72F0 /* addPic.png in Resources */,
 				11BF8989183641E2008E72F0 /* noticeNormal.png in Resources */,
@@ -2131,6 +2147,8 @@
 				1102A7FB181A5E1200E6295C /* guanlianbottom.png in Resources */,
 				78DB7FB818A5CF7C00421D0D /* 视频1.png in Resources */,
 				11E27F8A183C643600CAE0BB /* helperE.png in Resources */,
+				11BAA76B195142F6006DA9AA /* gradeE.png in Resources */,
+				11C4326F19501BDF0096778C /* attendanceN-cn.png in Resources */,
 				1193A6B7182B9225004011BC /* photoBtnH.png in Resources */,
 				78BE433A18B7657B003ADCB8 /* 修改密码@2x.png in Resources */,
 				11BF897F18363E58008E72F0 /* addPerH.png in Resources */,
@@ -2165,15 +2183,16 @@
 				1165E27E182CFCE000B60A81 /* pic-1.png in Resources */,
 				11AF3B1918168FC400B36176 /* loginBtn@2x.png in Resources */,
 				11BF898018363E58008E72F0 /* addPicH.png in Resources */,
-				119F0CAA181A242200A5910C /* home-2.png in Resources */,
 				11B852BD18334D52005FA5B9 /* inputBG.png in Resources */,
 				11EFE1F01817EEF7009CE69F /* sr_refresh@2X.png in Resources */,
 				113BCABE182B41280079E9AD /* topImage.png in Resources */,
 				788C7C2F188FCC9200BA9BD0 /* moviepresetplay.png in Resources */,
 				11D40E3218618700003009D0 /* alterPasswordE.png in Resources */,
+				11C4327719501CF50096778C /* morningN-cn.png in Resources */,
 				113BCAC0182B46450079E9AD /* select.png in Resources */,
 				1193A6BF182BAF0C004011BC /* letterLine.png in Resources */,
 				119F0CBA181A2FA700A5910C /* guanyu-1.png in Resources */,
+				11BAA76C195142F6006DA9AA /* gradeEH.png in Resources */,
 				11B852A5183221CF005FA5B9 /* navBar.png in Resources */,
 				7870A108187E9852009250FB /* Tophoto.png in Resources */,
 				78709C04187D1733009250FB /* camera-glyph-flash-off.png in Resources */,
@@ -2181,12 +2200,14 @@
 				78709C21187D1733009250FB /* navbar-button-green-disabled.png in Resources */,
 				1192B7741829E8A70082D37B /* BPushConfig.plist in Resources */,
 				1193A6DA182C87CC004011BC /* login_pwd.png in Resources */,
+				11C4327519501CF50096778C /* morningH-cn.png in Resources */,
 				119E96281814C5A300866DE8 /* README-GHUnit in Resources */,
 				78709C27187D174E009250FB /* 视频框(1).png in Resources */,
 				11DB02F71833A0AA007981C6 /* noticeNormalE.png in Resources */,
 				7888190E187F996500D0A851 /* 草稿箱@2x.png in Resources */,
 				11FC0F40182C9ECC00442EF6 /* scoreBack_new.png in Resources */,
 				78BE433818B7657B003ADCB8 /* 上传列表@2x.png in Resources */,
+				11C4327619501CF50096778C /* morningH-en.png in Resources */,
 				11FC0F42182C9ECC00442EF6 /* scoreBtn_selected.png in Resources */,
 				78709C24187D1733009250FB /* navbar-button-green@2x.png in Resources */,
 				78709C16187D1733009250FB /* logo-flat-dark.png in Resources */,
@@ -2207,6 +2228,7 @@
 				78709C01187D1733009250FB /* camera-blind-top-simple@2x.png in Resources */,
 				11AF3B091816851900B36176 /* navLeftBtn_selected.png in Resources */,
 				1194023318235F6100F21FB8 /* box-2.png in Resources */,
+				11C4326D19501BDF0096778C /* attendanceH-cn.png in Resources */,
 				119F0CAE181A297300A5910C /* leftN.png in Resources */,
 				11CBB31718B1BBA100614FF0 /* delphoto.png in Resources */,
 				11D42952187E4BE60002810E /* uploadIcon@2x.png in Resources */,
@@ -2227,11 +2249,13 @@
 				1102A7EF181A4FF500E6295C /* guanyu-5.png in Resources */,
 				11CE2A90187FF5AD00742001 /* imageerror.png in Resources */,
 				78709C00187D1733009250FB /* camera-blind-top-simple.png in Resources */,
+				11C4327019501BDF0096778C /* attendanceN-en.png in Resources */,
 				78BE433418B7657B003ADCB8 /* 班级学生@2x.png in Resources */,
 				11FC0F44182C9F4C00442EF6 /* FZZYJW.TTF in Resources */,
 				78709C08187D1733009250FB /* camera-library-overlay-active.png in Resources */,
 				78709C19187D1733009250FB /* navbar-button-back-black-alt-active.png in Resources */,
 				78A9393F18C886D700722B12 /* thelp_notice_568.png in Resources */,
+				11BAA76A195142F6006DA9AA /* grade.png in Resources */,
 				1102A7E9181A4E2000E6295C /* GKAboutViewController.xib in Resources */,
 				119366D3184C3283008D2FA2 /* leftUpN.png in Resources */,
 				1193A6D7182C87CC004011BC /* helper.png in Resources */,
@@ -2487,13 +2511,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"SchoolBusPhoto/**",
-					"${SRCROOT}/TestFlightSDK2",
 					"$(PROJECT_DIR)/SchoolBusPhoto/Umeng",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6AA2851B-BFD1-4505-A71A-9D58B463C4E9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6AA2851B-BFD1-4505-A71A-9D58B463C4E9";
+				PROVISIONING_PROFILE = "B8A5F81F-3928-41FD-870E-F3A39E71CB22";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B8A5F81F-3928-41FD-870E-F3A39E71CB22";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2516,13 +2539,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"SchoolBusPhoto/**",
-					"$(SRCROOT)/TestFlightSDK2",
 					"$(PROJECT_DIR)/SchoolBusPhoto/Umeng",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6AA2851B-BFD1-4505-A71A-9D58B463C4E9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6AA2851B-BFD1-4505-A71A-9D58B463C4E9";
+				PROVISIONING_PROFILE = "B8A5F81F-3928-41FD-870E-F3A39E71CB22";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B8A5F81F-3928-41FD-870E-F3A39E71CB22";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

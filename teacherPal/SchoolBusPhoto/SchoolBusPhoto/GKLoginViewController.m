@@ -34,7 +34,10 @@
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
-
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

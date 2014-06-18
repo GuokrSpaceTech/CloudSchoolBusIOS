@@ -211,6 +211,14 @@
     [inputField resignFirstResponder];
     return YES;
 }
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if(!textField.window.isKeyWindow)
+    {
+        [textField.window makeKeyAndVisible];
+    }
+}
 -(void)picClick:(UIButton *)btn
 {
     

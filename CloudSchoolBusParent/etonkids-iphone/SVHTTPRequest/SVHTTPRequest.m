@@ -218,7 +218,7 @@ static NSString *defaultUserAgent;
     self.saveDataDispatchGroup = dispatch_group_create();
     self.saveDataDispatchQueue = dispatch_queue_create("com.samvermette.SVHTTPRequest", DISPATCH_QUEUE_SERIAL);
     
-    self.operationRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
+    self.operationRequest = [[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]] autorelease];
     
     // pipeline all but POST and downloads
     if(method != SVHTTPRequestMethodPOST && !savePath)
@@ -435,7 +435,7 @@ static NSString *defaultUserAgent;
         [[NSFileManager defaultManager] createFileAtPath:self.operationSavePath contents:nil attributes:nil];
         self.operationFileHandle = [NSFileHandle fileHandleForWritingAtPath:self.operationSavePath];
     } else {
-        self.operationData = [[NSMutableData alloc] init];
+        self.operationData = [[[NSMutableData alloc] init] autorelease];
         self.timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:self.timeoutInterval target:self selector:@selector(requestTimeout) userInfo:nil repeats:NO];
         [self.operationRequest setTimeoutInterval:self.timeoutInterval];
     }
@@ -644,12 +644,12 @@ static NSString *defaultUserAgent;
 @implementation NSString (SVHTTPRequest)
 
 - (NSString*)encodedURLParameterString {
-    NSString *result = (__bridge_transfer NSString*)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+    NSString *result = ( NSString*)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
                                                                                             (__bridge CFStringRef)self,
                                                                                             NULL,
                                                                                             CFSTR(":/=,!$&'()*+;[]@#?^%\"`<>{}\\|~ "),
                                                                                             kCFStringEncodingUTF8);
-	return result;
+	return [result autorelease];
 }
 
 @end

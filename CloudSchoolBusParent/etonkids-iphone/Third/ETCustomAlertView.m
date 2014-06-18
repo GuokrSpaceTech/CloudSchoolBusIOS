@@ -133,7 +133,7 @@
         
         
         self.buttonTitles = arrays;
-        
+        [arrays release];
         
 //        NSLog(@"$$$ %@",self.buttonTitles);
         

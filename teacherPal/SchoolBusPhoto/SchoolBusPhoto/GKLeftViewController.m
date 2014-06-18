@@ -39,7 +39,9 @@
     [usr removeObserver:self forKeyPath:@"badgeNumber" context:NULL];
     [super dealloc];
 }
-
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -88,9 +90,13 @@
     [_imageView release];
     
   
-    UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(23, 5, 34, 34)];
-    [buttom setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"home-1"))forState:UIControlStateNormal];
-     [buttom setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"home-2")) forState:UIControlStateHighlighted];
+    UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(20, 5, 50, 34)];
+    [buttom setTitle:@"主页" forState:UIControlStateNormal];
+    
+    buttom.titleLabel.font=[UIFont boldSystemFontOfSize:15];
+    [buttom setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+   // [buttom setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"home-1"))forState:UIControlStateNormal];
+    // [buttom setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"home-2")) forState:UIControlStateHighlighted];
     buttom.tag=0;
     [buttom addTarget:self action:@selector(doClickBottomBtn:) forControlEvents:UIControlEventTouchUpInside];
     [_imageView addSubview:buttom];
@@ -108,8 +114,13 @@
      //NSLog(@"????? %@",  NSLocalizedString(@"classLeftH", @""));
 //    "leftUpN"="leftUpNE.png";
 //    "leftUpH"="leftupHE.png";
-    NSArray *defArr = [NSArray arrayWithObjects:NSLocalizedString(@"notice", @""),NSLocalizedString(@"notice", @""),NSLocalizedString(@"notice", @""),NSLocalizedString(@"grade", @""), NSLocalizedString(@"home", @""),NSLocalizedString(@"leftUpN", @""),NSLocalizedString(@"setting", @""),nil];
-    NSArray *selArr = [NSArray arrayWithObjects:NSLocalizedString(@"notice", @""),NSLocalizedString(@"notice", @""),NSLocalizedString(@"noticeH", @""),NSLocalizedString(@"gradeH", @""),NSLocalizedString(@"homeH", @""), NSLocalizedString(@"leftUpH", @""),NSLocalizedString(@"settingH", @""),  nil];
+    
+   // "attendanceleftN"="attendanceN-cn.png";
+  //  "attendanceleftH"="attendanceH-cn.png";
+//    "morningleftN"="morningN-cn.png";
+//    "morningleftH"="morningH-cn.png";
+    NSArray *defArr = [NSArray arrayWithObjects:NSLocalizedString(@"morningleftN", @""),NSLocalizedString(@"attendanceleftN", @""),NSLocalizedString(@"notice", @""),NSLocalizedString(@"grade", @""), NSLocalizedString(@"home", @""),NSLocalizedString(@"leftUpN", @""),NSLocalizedString(@"setting", @""),nil];
+    NSArray *selArr = [NSArray arrayWithObjects:NSLocalizedString(@"morningleftH", @""),NSLocalizedString(@"attendanceleftH", @""),NSLocalizedString(@"noticeH", @""),NSLocalizedString(@"gradeH", @""),NSLocalizedString(@"homeH", @""), NSLocalizedString(@"leftUpH", @""),NSLocalizedString(@"settingH", @""),  nil];
     totle=[defArr count];
     for (int i=0; i<[defArr count]; i++) {
         UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -127,7 +138,7 @@
     }
     
    
-    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(30, self.view.frame.size.height-48, 26, 26)];
+    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(25, self.view.frame.size.height-40, 26, 26)];
     imageView.image=IMAGENAME(IMAGEWITHPATH(@"loginOUt"));
     [self.view addSubview:imageView];
     [imageView release];
@@ -138,8 +149,8 @@
     [outButton setTitle:NSLocalizedString(@"out", @"") forState:UIControlStateNormal];
     outButton.titleLabel.textColor=[UIColor colorWithRed:236/255.0 green:203/255.0 blue:108/255.0 alpha:1];
     [outButton setTitleColor:[UIColor colorWithRed:236/255.0 green:203/255.0 blue:108/255.0 alpha:1] forState:UIControlStateNormal];
-    outButton.frame = CGRectMake(20, self.view.frame.size.height-48-10, 536/2-50, 48);
-   
+    outButton.frame = CGRectMake(20, self.view.frame.size.height-48-3, 536/2-100, 48);
+   // outButton.titleLabel.textAlignment=NSTextAlignmentLeft;
     outButton.tag=[defArr count]+1;
     [outButton addTarget:self action:@selector(doClickBottomBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:outButton];

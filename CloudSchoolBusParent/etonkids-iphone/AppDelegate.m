@@ -12,7 +12,7 @@
 #import "ETGestureCheckViewController.h"
 #import "ETLoginViewController.h"
 #import "ETCustomAlertView.h"
-#import "TestFlight.h"
+#import "MobClick.h"
 
 @implementation AppDelegate
 
@@ -84,8 +84,7 @@
     
 //    int a = 3; int b = 5; int c= a^b;
 //    NSLog(@"%d",c);
-    
-    [TestFlight takeOff:@"0dc70c2c-7827-4489-835b-2486c0601baa"];
+
 //    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
 //        self.window.frame =  CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
 //    }    
@@ -97,7 +96,11 @@
     reachabiltiy=[[Reachability reachabilityWithHostName:@"www.yunxiaoche.com"] retain];
     [reachabiltiy startNotifier];
     
+    [MobClick startWithAppkey:@"53a150c056240b8a53094d52" reportPolicy:SEND_INTERVAL   channelId:@""];
     
+    //    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [MobClick setAppVersion:@"3.3.0"];
+
     
     NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
     if (![userdefault objectForKey:SWITHGESTURE]) { // 设置页面手势密码开关   默认关闭
@@ -313,7 +316,7 @@
         NSString *channelid = [res valueForKey:BPushRequestChannelIdKey];
 //        NSString *requestid = [res valueForKey:BPushRequestRequestIdKey];
         int returnCode = [[res valueForKey:BPushRequestErrorCodeKey] intValue];
-        
+     
         if (returnCode == BPushErrorCode_Success) {
             //            self.viewController.appidText.text = appid;
             //            self.viewController.useridText.text = userid;
@@ -337,6 +340,8 @@
             //            self.viewController.channelidText.text = nil;
         }
     }
+    
+    [res release];
     
 }
 -(void) getErrorInfo:(NSError *)error forMethod:(RequestFunction)method

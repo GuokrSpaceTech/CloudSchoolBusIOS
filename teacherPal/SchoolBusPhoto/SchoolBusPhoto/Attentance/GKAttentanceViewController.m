@@ -174,8 +174,8 @@
                 attence.studentId=[[arr objectAtIndex:i] objectForKey:@"studentid"];
                 attence.intime=[[arr objectAtIndex:i] objectForKey:@"start_time"];
                 attence.outtime=[[arr objectAtIndex:i] objectForKey:@"end_time"];
-                attence.inavater=[NSString stringWithFormat:@"http://%@",[[arr objectAtIndex:i] objectForKey:@"startpath"]];
-                attence.outavater=[NSString stringWithFormat:@"http://%@",[[arr objectAtIndex:i] objectForKey:@"endpath"]];
+                attence.inavater=[NSString stringWithFormat:@"%@",[[arr objectAtIndex:i] objectForKey:@"startpath"]];
+                attence.outavater=[NSString stringWithFormat:@"%@",[[arr objectAtIndex:i] objectForKey:@"endpath"]];
                 attence.studentName=[[arr objectAtIndex:i] objectForKey:@"enname"];
                 attence.isAttence=YES;
                 [attenceArr addObject:attence];
@@ -386,9 +386,11 @@
     
     if(attence.isAttence==NO)
     {
-        inlabel.frame=CGRectMake(80, 15, 100, 18);
+        inlabel.frame=CGRectMake(150, 15, 100, 18);
         inlabel.text=NSLocalizedString(@"nodate", @"");
         inlabel.textColor=[UIColor grayColor];
+        outImageView.userInteractionEnabled=NO;
+        inImageView.userInteractionEnabled=NO;
         inImageView.image=nil;
         outImageView.image=nil;
     }
@@ -400,15 +402,31 @@
         outlabel.text=[NSString stringWithFormat:@"%@%@",NSLocalizedString(@"outclasstime", @""),attence.outtime];
         
         inImageView.urlPath=attence.inavater;
-        if(![attence.outavater isEqualToString:@""])
+        if(![attence.outavater isEqualToString:@"<null>"])
         {
-            outImageView.urlPath=attence.outavater;
-            [outImageView setImageWithURL:[NSURL URLWithString:attence.outavater] placeholderImage:nil];
+            outImageView.urlPath=[NSString stringWithFormat:@"http://%@",attence.outavater];
+            [outImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",attence.outavater]] placeholderImage:nil];
+            outImageView.userInteractionEnabled=YES;
 
         }
-        [inImageView setImageWithURL:[NSURL URLWithString:attence.inavater] placeholderImage:nil];
-        //        intime.text=attence.intime;
-//        outtime.text=attence.outtime;
+        else
+        {
+            outImageView.userInteractionEnabled=NO;
+        }
+        
+       // NSURL
+        if(![attence.inavater isEqualToString:@"<null>"])
+        {
+            inImageView.urlPath=[NSString stringWithFormat:@"http://%@",attence.inavater];
+            [inImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",attence.inavater]] placeholderImage:nil];
+            inImageView.userInteractionEnabled=YES;
+        }
+        else
+        {
+            inImageView.userInteractionEnabled=NO;
+        }
+        
+
     }
     
     return cell;

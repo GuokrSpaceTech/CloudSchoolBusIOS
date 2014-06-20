@@ -39,6 +39,11 @@
     
     [MobClick startWithAppkey:@"537436b256240ba278017fc3" reportPolicy:SEND_INTERVAL   channelId:@""];
     
+     if(ios7) {
+             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    }
+    
+
 //    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     [MobClick setAppVersion:CURRENTVERSION];
     loginVC=[[GKLoginViewController alloc]initWithNibName:@"GKLoginViewController" bundle:nil];
@@ -56,6 +61,11 @@
                                              selector:@selector(reachabilityChanged:)
                                                  name: kReachabilityChangedNotification
                                                object: nil];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    
+    
+
 //    _hostReach = [[Reachability reachabilityWithHostName:@"www.google.com"] retain];
 //    [_hostReach startNotifier];
 
@@ -70,7 +80,7 @@
        
 // [[EKRequest Instance]EKHTTPRequest:schoolstudent parameters:[NSDictionary dictionaryWithObjectsAndKeys:@"1",@"machine", nil] requestMethod:GET forDelegate:self];
     
-[[EKRequest Instance]EKHTTPRequest:schoolcheck parameters:[NSDictionary dictionaryWithObjectsAndKeys:@"1",@"machine", nil] requestMethod:GET forDelegate:self];
+//[[EKRequest Instance]EKHTTPRequest:schoolcheck parameters:[NSDictionary dictionaryWithObjectsAndKeys:@"1",@"machine", nil] requestMethod:GET forDelegate:self];
 
      // [[EKRequest Instance]EKHTTPRequest:schoolad parameters:nil requestMethod:GET forDelegate:self];
     

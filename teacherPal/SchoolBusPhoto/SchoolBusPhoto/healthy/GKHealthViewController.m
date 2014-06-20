@@ -189,6 +189,8 @@
             numLabel.text=[NSString stringWithFormat:@"%d %@",[arr count],NSLocalizedString(@"alreadyHealth", @"")];
            // alreadyHealth
             //计算出未考勤孩子
+            NSMutableArray *arrtemp=[[NSMutableArray alloc]init];
+            
             GKUserLogin *user=[GKUserLogin currentLogin];
             for (int i=0; i<[user.studentArr count]; i++) {
                 Student *st=[user.studentArr objectAtIndex:i];
@@ -210,10 +212,13 @@
                     attence.name=st.enname;
                     attence.state=@"";
                     attence.otherstate=@"";
-                    [_tempatureArr addObject:attence];
+                  //  [_tempatureArr addObject:attence];
+                    [arrtemp addObject:attence];
                     [attence release];
                 }
             }
+            [_tempatureArr addObjectsFromArray:arrtemp];
+            [arrtemp release];
             NSLog(@"-------%d",[_tempatureArr count]);
             [self._tableView reloadData];
 //

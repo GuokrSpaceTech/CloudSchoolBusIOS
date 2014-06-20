@@ -25,7 +25,9 @@
         orgFrame=frame;
         
         imageView=[[UIImageView alloc]initWithFrame:CGRectMake(frame.size.width/2-150 , frame.size.height/2-25, 300, 100)];
-        imageView.backgroundColor=[UIColor colorWithRed:147/255.0f green:222/255.0f blue:239/255.0f alpha:1.0f];
+       // imageView.backgroundColor=[UIColor colorWithRed:147/255.0f green:222/255.0f blue:239/255.0f alpha:1.0f];
+        imageView.backgroundColor=[UIColor blackColor];
+        imageView.alpha=0.9;
         [self addSubview:imageView];
         [imageView release];
         
@@ -40,6 +42,7 @@
         textLabel.numberOfLines=0;
     
         textLabel.font=[UIFont systemFontOfSize:15];
+        textLabel.textColor=[UIColor whiteColor];
         if(IOSVERSION>=6.0)
             textLabel.textAlignment=NSTextAlignmentCenter;
         else

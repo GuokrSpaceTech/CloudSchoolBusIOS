@@ -500,20 +500,28 @@
                 
 
 
+                  __block  NSMutableArray * Temparr=[[NSMutableArray alloc]init];
                 
                 [[DBManager shareInstance]retriveObject:request success:^(NSArray *array) {
                     for (NSObject *obj in array) {
                    
                         UpLoader *loader=(UpLoader *)obj;
                         //NSLog(@"??????%@",loader.nameID);
+                        
+                   
+                        
                         for (int j=0; j<[imageArr count]; j++) {
                             ETPhoto *photo=[imageArr objectAtIndex:j];
                             if([loader.nameID isEqualToString:photo.nameId])
                             {
-                                [imageArr removeObject:photo];
+                               // [imageArr removeObject:photo];
+                                [Temparr addObject:photo];
                             }
                         }
                     }
+                    
+                    
+                    [imageArr removeObjectsInArray:Temparr];
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
                         

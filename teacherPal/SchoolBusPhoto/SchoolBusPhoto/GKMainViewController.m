@@ -65,6 +65,8 @@ static  GKMainViewController*rootViewCon;
     
      [super viewDidLoad];
     if (ios7) {
+        
+    
         [self setNeedsStatusBarAppearanceUpdate];
   
     }

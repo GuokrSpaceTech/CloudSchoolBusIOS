@@ -838,7 +838,7 @@
         disappearView=[[GKDisapperView alloc]initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
         disappearView.backgroundColor=[UIColor clearColor];
         disappearView.textLabel.text=NSLocalizedString(@"processing", @"");
-        
+        disappearView.layer.cornerRadius=5;
        // [[[[UIApplication sharedApplication] windows] lastObject]  addSubview:disappearView];
          //[[[UIApplication sharedApplication] keyWindow]  addSubview:disappearView];
         [[[UIApplication sharedApplication].delegate window] addSubview:disappearView];
@@ -847,8 +847,7 @@
     [disappearView setactiveStop:NO];
     
     
-    
-    
+
  
     
     [self performSelectorInBackground:@selector(startUpLoaderInBackground) withObject:nil];

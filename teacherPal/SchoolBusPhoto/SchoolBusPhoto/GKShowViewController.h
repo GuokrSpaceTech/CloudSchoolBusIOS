@@ -14,6 +14,7 @@
 #import "GKDisapperView.h"
 #import "GKShowBigImageViewController.h"
 #import "GKSaySomethingView.h"
+
 @protocol showViewController;
 @interface GKShowViewController : GKBaseViewController<UIScrollViewDelegate,studentViewDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,EKProtocol,ETNicknameViewControllerDelegate,UIAlertViewDelegate,GKSaySomethingViewDelegate,GKShowBigImageViewControllerDelegate>
 {
@@ -48,6 +49,8 @@
     
     
     GKSaySomethingView *sayView;
+    
+
     
     int whichView; // 1 为照片view  2为 说点什么view
    // NSMutableArray *alreadyArr;

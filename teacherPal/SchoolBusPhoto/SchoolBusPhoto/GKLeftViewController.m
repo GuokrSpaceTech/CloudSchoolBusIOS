@@ -39,6 +39,10 @@
     [usr removeObserver:self forKeyPath:@"badgeNumber" context:NULL];
     [super dealloc];
 }
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
@@ -49,11 +53,12 @@
     self.view.backgroundColor=[UIColor colorWithRed:103/255.0 green:183/255.0 blue:204/255.0 alpha:1];
     if (ios7)
     {
+                [self setNeedsStatusBarAppearanceUpdate];
         UIImageView * _imageView11=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
         _imageView11.backgroundColor=[UIColor blackColor];
         [self.view addSubview:_imageView11];
         [_imageView11 release];
-        
+
     }
     UIView *backView=nil;
     if(ios7)
@@ -65,8 +70,7 @@
     [self.view addSubview:backView];
     [backView release];
     
-    
-   // self.view.backgroundColor = [UIColor colorWithRed:44/255.0 green:57/255.0 blue:66/255.0 alpha:1.0f];
+
     UIImageView *_imageView=nil;
     if (ios7)
         _imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0+IOS7OFFSET, 320, 46)];
@@ -76,27 +80,21 @@
     _imageView.userInteractionEnabled=YES;
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(home:)];
     tap.numberOfTapsRequired=1;
-
     [_imageView addGestureRecognizer:tap];
     [tap release];
     
-    
-
     _imageView.image=IMAGENAME(IMAGEWITHPATH(@"tou"));
     _imageView.userInteractionEnabled=YES;
     [self.view addSubview:_imageView];
-    
-
     [_imageView release];
     
-  
-    UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(20, 5, 50, 34)];
-    [buttom setTitle:@"主页" forState:UIControlStateNormal];
+    UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(20, 5, 65, 35)];
+    [buttom setTitle:NSLocalizedString(@"homefont", @"") forState:UIControlStateNormal];
     
     buttom.titleLabel.font=[UIFont boldSystemFontOfSize:15];
     [buttom setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-   // [buttom setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"home-1"))forState:UIControlStateNormal];
-    // [buttom setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"home-2")) forState:UIControlStateHighlighted];
+    [buttom setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"home1"))forState:UIControlStateNormal];
+     [buttom setBackgroundImage:IMAGENAME(IMAGEWITHPATH(@"home2")) forState:UIControlStateHighlighted];
     buttom.tag=0;
     [buttom addTarget:self action:@selector(doClickBottomBtn:) forControlEvents:UIControlEventTouchUpInside];
     [_imageView addSubview:buttom];
@@ -104,21 +102,6 @@
     self.navigationController.navigationBarHidden=YES;
 
     
-//    "grade"="grade.png";
-//    "gradeH"="gradeH.png";
-//    "setting"="setting.png";
-//    "settingH"="settingH.png";
-    
-//    classLeft.png
-    //NSLog(@"????? %@",NSLocalizedString(@"classLeft", @""));
-     //NSLog(@"????? %@",  NSLocalizedString(@"classLeftH", @""));
-//    "leftUpN"="leftUpNE.png";
-//    "leftUpH"="leftupHE.png";
-    
-   // "attendanceleftN"="attendanceN-cn.png";
-  //  "attendanceleftH"="attendanceH-cn.png";
-//    "morningleftN"="morningN-cn.png";
-//    "morningleftH"="morningH-cn.png";
     NSArray *defArr = [NSArray arrayWithObjects:NSLocalizedString(@"morningleftN", @""),NSLocalizedString(@"attendanceleftN", @""),NSLocalizedString(@"notice", @""),NSLocalizedString(@"grade", @""), NSLocalizedString(@"home", @""),NSLocalizedString(@"leftUpN", @""),NSLocalizedString(@"setting", @""),nil];
     NSArray *selArr = [NSArray arrayWithObjects:NSLocalizedString(@"morningleftH", @""),NSLocalizedString(@"attendanceleftH", @""),NSLocalizedString(@"noticeH", @""),NSLocalizedString(@"gradeH", @""),NSLocalizedString(@"homeH", @""), NSLocalizedString(@"leftUpH", @""),NSLocalizedString(@"settingH", @""),  nil];
     totle=[defArr count];

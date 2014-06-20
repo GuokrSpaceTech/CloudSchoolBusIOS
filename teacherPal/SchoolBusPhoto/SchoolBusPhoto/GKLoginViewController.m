@@ -308,12 +308,9 @@
     [BPush bindChannel];
     
     GKMainViewController *mainVC=[[GKMainViewController alloc]initWithNibName:@"GKMainViewController" bundle:nil];
-   // UINavigationController *navigationVC=[[UINavigationController alloc]initWithRootViewController:mainVC];
-   
-    //[self presentModalViewController:<#(UIViewController *)#> animated:<#(BOOL)#>];
     [self presentViewController:mainVC animated:YES completion:^{
-            
-            
+    
+        
     }];
     
     [mainVC release];

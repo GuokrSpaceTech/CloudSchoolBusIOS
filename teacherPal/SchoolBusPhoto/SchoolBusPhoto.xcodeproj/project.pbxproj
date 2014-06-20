@@ -42,6 +42,8 @@
 		113BCAC2182B5BDF0079E9AD /* goodsImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 113BCAC1182B5BDF0079E9AD /* goodsImage.png */; };
 		113BCAC4182B5E900079E9AD /* jifen.png in Resources */ = {isa = PBXBuildFile; fileRef = 113BCAC3182B5E900079E9AD /* jifen.png */; };
 		113BCAC6182B5F8E0079E9AD /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = 113BCAC5182B5F8E0079E9AD /* line.png */; };
+		11497AE71952BC43003F169A /* home1.png in Resources */ = {isa = PBXBuildFile; fileRef = 11497AE51952BC43003F169A /* home1.png */; };
+		11497AE81952BC43003F169A /* home2.png in Resources */ = {isa = PBXBuildFile; fileRef = 11497AE61952BC43003F169A /* home2.png */; };
 		114B58FF1820AD5500163A4A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114B58FE1820AD5500163A4A /* ImageIO.framework */; };
 		114B59021821220E00163A4A /* GKShowBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114B59011821220E00163A4A /* GKShowBigImageViewController.m */; };
 		114D85371920773A00428711 /* searchCellContent.png in Resources */ = {isa = PBXBuildFile; fileRef = 114D85361920773A00428711 /* searchCellContent.png */; };
@@ -492,6 +494,8 @@
 		113BCAC1182B5BDF0079E9AD /* goodsImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goodsImage.png; sourceTree = "<group>"; };
 		113BCAC3182B5E900079E9AD /* jifen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jifen.png; sourceTree = "<group>"; };
 		113BCAC5182B5F8E0079E9AD /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
+		11497AE51952BC43003F169A /* home1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home1.png; sourceTree = "<group>"; };
+		11497AE61952BC43003F169A /* home2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home2.png; sourceTree = "<group>"; };
 		114B58FE1820AD5500163A4A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		114B59001821220E00163A4A /* GKShowBigImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKShowBigImageViewController.h; sourceTree = "<group>"; };
 		114B59011821220E00163A4A /* GKShowBigImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKShowBigImageViewController.m; sourceTree = "<group>"; };
@@ -1416,6 +1420,8 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				11497AE51952BC43003F169A /* home1.png */,
+				11497AE61952BC43003F169A /* home2.png */,
 				11BAA766195142F6006DA9AA /* grade.png */,
 				11BAA767195142F6006DA9AA /* gradeE.png */,
 				11BAA768195142F6006DA9AA /* gradeEH.png */,
@@ -2241,6 +2247,7 @@
 				78709C1F187D1733009250FB /* navbar-button-green-active.png in Resources */,
 				11DB02EC18337F40007981C6 /* buyButtonS.png in Resources */,
 				1194023E182360EB00F21FB8 /* M-5.png in Resources */,
+				11497AE81952BC43003F169A /* home2.png in Resources */,
 				11BF897618363CF7008E72F0 /* homeNoticeEN.png in Resources */,
 				11D40E3318618700003009D0 /* alterPasswordSE.png in Resources */,
 				11BB992118AB15B9006273A7 /* qipao22@2x.png in Resources */,
@@ -2259,6 +2266,7 @@
 				1102A7E9181A4E2000E6295C /* GKAboutViewController.xib in Resources */,
 				119366D3184C3283008D2FA2 /* leftUpN.png in Resources */,
 				1193A6D7182C87CC004011BC /* helper.png in Resources */,
+				11497AE71952BC43003F169A /* home1.png in Resources */,
 				11DB02FB1833A0AA007981C6 /* aboutNormalE.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2515,8 +2523,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B8A5F81F-3928-41FD-870E-F3A39E71CB22";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B8A5F81F-3928-41FD-870E-F3A39E71CB22";
+				PROVISIONING_PROFILE = "C4055662-D7AE-420C-A625-A068854FA10D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "83E56D26-A6DE-4818-B9EE-107EF7E5896F";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2543,8 +2551,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B8A5F81F-3928-41FD-870E-F3A39E71CB22";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B8A5F81F-3928-41FD-870E-F3A39E71CB22";
+				PROVISIONING_PROFILE = "C4055662-D7AE-420C-A625-A068854FA10D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C4055662-D7AE-420C-A625-A068854FA10D";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

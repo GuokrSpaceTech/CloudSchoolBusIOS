@@ -40,7 +40,7 @@ tableview,
 sImgArr,
 PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mPlayer;
 
-
+@synthesize delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -1509,6 +1509,10 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
 
 -(void)leftButtonClick:(UIButton*)Sender
 {
+    if(delegate&& [delegate respondsToSelector:@selector(setisVisiblebecomeYES)])
+    {
+        [delegate setisVisiblebecomeYES];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

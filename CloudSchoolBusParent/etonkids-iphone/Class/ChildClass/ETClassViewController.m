@@ -9,7 +9,7 @@
 #import "ETKids.h"
 #import "GTMBase64.h"
 #import "Modify.h"
-#import "CommentDetailViewController.h"
+
 #import "WriteCommentsViewController.h"
 #import "ETCommonClass.h"
 #import "ETCoreDataManager.h"
@@ -1429,6 +1429,7 @@
     ShareContent *_shareContent=[self.list objectAtIndex:indexPath.row];
     CommentDetailViewController *detailviewcontroller=[[CommentDetailViewController alloc]init];
     detailviewcontroller.shareContent = _shareContent;
+    detailviewcontroller.delegate=self;
     detailviewcontroller.shareContent.isMore = YES;
 //    [self.navigationController pushViewController:detailviewcontroller animated:YES];
     AppDelegate *appDel = SHARED_APP_DELEGATE;
@@ -1437,7 +1438,10 @@
     [detailviewcontroller release];
 }
 
-
+-(void)setisVisiblebecomeYES
+{
+    isVisible=YES;
+}
 
 #pragma mark - Table view delegate
 

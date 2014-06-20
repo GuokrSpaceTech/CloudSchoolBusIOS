@@ -12,6 +12,8 @@
 		1112BB4D1797C4E500337CB4 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1112BB4B1797C4E500337CB4 /* NSStringAdditions.m */; };
 		112330A2195189B5001B585F /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1123309F195189B5001B585F /* libMobClickLibrary.a */; };
 		112330A3195189B5001B585F /* libMobClickLibrary_armv6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 112330A0195189B5001B585F /* libMobClickLibrary_armv6.a */; };
+		113320FC1953EB140088E226 /* GKHealthListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113320FB1953EB140088E226 /* GKHealthListViewController.m */; };
+		113320FF195412C80088E226 /* GKHealthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 113320FE195412C80088E226 /* GKHealthCell.m */; };
 		118A1A4A18B6F3B70002BF18 /* HTCopyableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 118A1A4918B6F3B70002BF18 /* HTCopyableLabel.m */; };
 		118CBC17178D7B64006AA633 /* ETActiveDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CBC16178D7B64006AA633 /* ETActiveDetailViewController.m */; };
 		1192A608178E52BA00BDA5BD /* ETEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 1192A607178E52BA00BDA5BD /* ETEvents.m */; };
@@ -566,6 +568,10 @@
 		1123309F195189B5001B585F /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		112330A0195189B5001B585F /* libMobClickLibrary_armv6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary_armv6.a; sourceTree = "<group>"; };
 		112330A1195189B5001B585F /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		113320FA1953EB140088E226 /* GKHealthListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHealthListViewController.h; sourceTree = "<group>"; };
+		113320FB1953EB140088E226 /* GKHealthListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKHealthListViewController.m; sourceTree = "<group>"; };
+		113320FD195412C80088E226 /* GKHealthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHealthCell.h; sourceTree = "<group>"; };
+		113320FE195412C80088E226 /* GKHealthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKHealthCell.m; sourceTree = "<group>"; };
 		118A1A4818B6F3B70002BF18 /* HTCopyableLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTCopyableLabel.h; sourceTree = "<group>"; };
 		118A1A4918B6F3B70002BF18 /* HTCopyableLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTCopyableLabel.m; sourceTree = "<group>"; };
 		118CBC15178D7B64006AA633 /* ETActiveDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETActiveDetailViewController.h; sourceTree = "<group>"; };
@@ -1394,6 +1400,17 @@
 			path = Umeng;
 			sourceTree = "<group>";
 		};
+		113320F91953EAB50088E226 /* Health */ = {
+			isa = PBXGroup;
+			children = (
+				113320FA1953EB140088E226 /* GKHealthListViewController.h */,
+				113320FB1953EB140088E226 /* GKHealthListViewController.m */,
+				113320FD195412C80088E226 /* GKHealthCell.h */,
+				113320FE195412C80088E226 /* GKHealthCell.m */,
+			);
+			path = Health;
+			sourceTree = "<group>";
+		};
 		118CBBF2178D5812006AA633 /* Information */ = {
 			isa = PBXGroup;
 			children = (
@@ -1989,6 +2006,7 @@
 		E3EA3B00169E94C5000DF7EE /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				113320F91953EAB50088E226 /* Health */,
 				788BE6AA17F00B1C0076D920 /* broadside */,
 				7841CF5417DF2E14003E0DB2 /* activity */,
 				E3F2AA6516AD0A2E006936A5 /* setting */,
@@ -3039,6 +3057,7 @@
 				F95021D216DCAF640079A05E /* WeiboSignInViewController.m in Sources */,
 				789EAA52183A0CE70029D4B0 /* ETNavigationController.m in Sources */,
 				F95021DA16DCB1640079A05E /* JSONKit.m in Sources */,
+				113320FC1953EB140088E226 /* GKHealthListViewController.m in Sources */,
 				F95023D016DCB61B0079A05E /* GetIPAddress.m in Sources */,
 				F950240816DCB61B0079A05E /* ImageDownloader.m in Sources */,
 				78952FE7184C6488001C30D2 /* ETFood.m in Sources */,
@@ -3051,6 +3070,7 @@
 				F950240C16DCB61B0079A05E /* contractibleImageView.m in Sources */,
 				F950240D16DCB61B0079A05E /* FileStreame.m in Sources */,
 				F950240E16DCB61B0079A05E /* pinyin.c in Sources */,
+				113320FF195412C80088E226 /* GKHealthCell.m in Sources */,
 				F950241016DCB61B0079A05E /* RegexKitLite.m in Sources */,
 				F950241116DCB61B0079A05E /* TCWBFriendViewController.m in Sources */,
 				F950241216DCB61B0079A05E /* TCWBRebroadcastMsgViewController.m in Sources */,

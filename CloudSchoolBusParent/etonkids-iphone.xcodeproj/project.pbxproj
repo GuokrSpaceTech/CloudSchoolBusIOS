@@ -41,6 +41,7 @@
 		11C4327C19501FAF0096778C /* point_attendance.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4327B19501FAF0096778C /* point_attendance.png */; };
 		11C4327E195020840096778C /* deletereceiver.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4327D195020840096778C /* deletereceiver.png */; };
 		11C43280195020FF0096778C /* addreceiver.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4327F195020FF0096778C /* addreceiver.png */; };
+		11C701FD1957F99F001C7D37 /* GKWriteHealthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C701FC1957F99F001C7D37 /* GKWriteHealthViewController.m */; };
 		11D937CE1947F72000215842 /* UIScrollView+UITouchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D937CD1947F72000215842 /* UIScrollView+UITouchEvent.m */; };
 		11D937D21947FA3D00215842 /* deleteTag.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D937D11947FA3D00215842 /* deleteTag.png */; };
 		11E46367194F05510039C0A0 /* GKShowReceiveBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E46366194F05510039C0A0 /* GKShowReceiveBigImageViewController.m */; };
@@ -621,6 +622,8 @@
 		11C4327B19501FAF0096778C /* point_attendance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = point_attendance.png; sourceTree = "<group>"; };
 		11C4327D195020840096778C /* deletereceiver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deletereceiver.png; sourceTree = "<group>"; };
 		11C4327F195020FF0096778C /* addreceiver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addreceiver.png; sourceTree = "<group>"; };
+		11C701FB1957F99F001C7D37 /* GKWriteHealthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKWriteHealthViewController.h; sourceTree = "<group>"; };
+		11C701FC1957F99F001C7D37 /* GKWriteHealthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKWriteHealthViewController.m; sourceTree = "<group>"; };
 		11D937CC1947F72000215842 /* UIScrollView+UITouchEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+UITouchEvent.h"; sourceTree = "<group>"; };
 		11D937CD1947F72000215842 /* UIScrollView+UITouchEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+UITouchEvent.m"; sourceTree = "<group>"; };
 		11D937D11947FA3D00215842 /* deleteTag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteTag.png; sourceTree = "<group>"; };
@@ -1407,6 +1410,8 @@
 				113320FB1953EB140088E226 /* GKHealthListViewController.m */,
 				113320FD195412C80088E226 /* GKHealthCell.h */,
 				113320FE195412C80088E226 /* GKHealthCell.m */,
+				11C701FB1957F99F001C7D37 /* GKWriteHealthViewController.h */,
+				11C701FC1957F99F001C7D37 /* GKWriteHealthViewController.m */,
 			);
 			path = Health;
 			sourceTree = "<group>";
@@ -3077,6 +3082,7 @@
 				F950241316DCB61B0079A05E /* TCWBTopicViewController.m in Sources */,
 				F950241416DCB61B0079A05E /* UIImage+rotate.m in Sources */,
 				F950241516DCB61B0079A05E /* UINoteView.m in Sources */,
+				11C701FD1957F99F001C7D37 /* GKWriteHealthViewController.m in Sources */,
 				F950241616DCB61B0079A05E /* UITableViewFriendCell.m in Sources */,
 				F950241716DCB61B0079A05E /* UIWaitingView.m in Sources */,
 				F950241816DCB61B0079A05E /* WordsLeftView.m in Sources */,

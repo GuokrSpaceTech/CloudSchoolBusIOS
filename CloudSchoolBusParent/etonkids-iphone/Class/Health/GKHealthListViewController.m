@@ -8,7 +8,10 @@
 
 #import "GKHealthListViewController.h"
 #import "ETKids.h"
+#import "GKHealthCell.h"
 #import <CommonCrypto/CommonDigest.h>
+#import "GKWriteHealthViewController.h"
+#import "AppDelegate.h"
 @interface GKHealthListViewController ()
 
 @end
@@ -92,48 +95,50 @@
     _tableView.backgroundColor = CELLCOLOR;
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
 
     
-    int time= [[NSDate date] timeIntervalSince1970];
-    
-    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,@"13581804688",@"testchunyu"];
-    
-    NSString *sign=[self md5:string];
-    NSLog(@"%@",sign);
-    
-    
-    
-    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"text",@"type",@"我的病情是这样的",@"text", nil];
-     NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:@"patient_meta",@"type",@"15",@"age",@"男",@"sex", nil];
-    
-    NSArray *arr=[NSArray arrayWithObjects:dic,dic1, nil];
-    NSData *jsondate=[NSJSONSerialization dataWithJSONObject:arr options:NSJSONWritingPrettyPrinted error:nil];
-    NSString *jsonstr=[[NSString alloc]initWithData:jsondate encoding:NSUTF8StringEncoding];
-    
-    NSLog(@"%@",jsonstr);
-    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://yzxc.summer2.chunyu.me/partner/yzxc/create_vip"]];
-    [request setHTTPMethod:@"POST"];
-    
-    [request setValue:@"13581804688" forHTTPHeaderField:@"phone"];
-   // [request setValue:jsonstr forHTTPHeaderField:@"content"];
-    [request setValue:@"30" forHTTPHeaderField:@"days"];
-    
-    [request setValue:sign forHTTPHeaderField:@"sign"];
-    [request setValue:[NSString stringWithFormat:@"%d",time] forHTTPHeaderField:@"atime"];
-    NSError *error=nil;
-    NSData *data= [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
-    if(error)
-    {
-        NSLog(@"%@",error.description);
-    }
-  
-
-    NSString *resstring=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    
-    NSLog(@"%@",resstring);
+//    int time= [[NSDate date] timeIntervalSince1970];
+//    
+//    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,@"13581804688",@"testchunyu"];
+//    
+//    NSString *sign=[self md5:string];
+//    NSLog(@"%@",sign);
+//    
+//    
+//    
+//    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"text",@"type",@"我的病情是这样的",@"text", nil];
+//     NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:@"patient_meta",@"type",@"15",@"age",@"男",@"sex", nil];
+//    
+//    NSArray *arr=[NSArray arrayWithObjects:dic,dic1, nil];
+//    NSData *jsondate=[NSJSONSerialization dataWithJSONObject:arr options:NSJSONWritingPrettyPrinted error:nil];
+//    NSString *jsonstr=[[NSString alloc]initWithData:jsondate encoding:NSUTF8StringEncoding];
+//    
+//    NSLog(@"%@",jsonstr);
+//    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://yzxc.summer2.chunyu.me/partner/yzxc/create_vip"]];
+//    [request setHTTPMethod:@"POST"];
+//    
+//    [request setValue:@"13581804688" forHTTPHeaderField:@"phone"];
+//   // [request setValue:jsonstr forHTTPHeaderField:@"content"];
+//    [request setValue:@"30" forHTTPHeaderField:@"days"];
+//    
+//    [request setValue:sign forHTTPHeaderField:@"sign"];
+//    [request setValue:[NSString stringWithFormat:@"%d",time] forHTTPHeaderField:@"atime"];
+//    NSError *error=nil;
+//    NSData *data= [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+//    if(error)
+//    {
+//        NSLog(@"%@",error.description);
+//    }
+//  
+//
+//    NSString *resstring=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+//    
+//    NSLog(@"%@",resstring);
     // Do any additional setup after loading the view.
 }
+
 - (NSString *)md5:(NSString *)str
 {
     const char *cStr = [str UTF8String];
@@ -150,7 +155,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    
-    return 40;
+    return 137+20;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -159,15 +164,18 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 3;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellidentifer=@"cell";
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellidentifer];
+    GKHealthCell *cell=(GKHealthCell *)[tableView dequeueReusableCellWithIdentifier:cellidentifer];
     if(cell==nil)
     {
-        cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellidentifer] autorelease];
+        cell=[[[GKHealthCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellidentifer] autorelease];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        cell.backgroundColor=[UIColor clearColor];
+        cell.backgroundView=nil;
     }
     
     return cell;
@@ -186,6 +194,12 @@
 
 -(void)rightButtonClick:(UIButton *)btn
 {
+    GKWriteHealthViewController * writeHealthVC=[[GKWriteHealthViewController alloc]init];
+    
+ 
+    AppDelegate *appDel=SHARED_APP_DELEGATE;
+    [appDel.bottomNav pushViewController:writeHealthVC animated:YES];
+    [writeHealthVC release];
     
 }
 - (void)leftButtonClick:(id)sender

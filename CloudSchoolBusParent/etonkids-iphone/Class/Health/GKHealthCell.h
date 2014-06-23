@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface GKHealthCell : UITableViewCell
+@property (nonatomic,retain)UILabel *titleLatel;
+@property (nonatomic,retain)UILabel *contentLatel;
 
+@property (nonatomic,retain)UILabel *timeLatel;
+
+@property (nonatomic,retain)UILabel *stateLatel;
+
+@property (nonatomic,retain)UIImageView *pointImageView;
 @end

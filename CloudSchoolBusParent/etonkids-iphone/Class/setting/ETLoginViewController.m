@@ -348,19 +348,7 @@
     
     if(method == signin && code == 1)
     {
-        
-//        NSString *pid = [NSString stringWithFormat:@"%@",[dic objectForKey:@"pid"]];
-//        user.pid = pid;
-//        
-//        NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:pid,@"parentid", nil];
-        
-//        [[EKRequest Instance] EKHTTPRequest:unit parameters:param requestMethod:GET forDelegate:self];
-//        [[EKRequest Instance] EKHTTPRequest:student parameters:nil requestMethod:GET forDelegate:self];
-        
         id result = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
-        
-//        NSLog(@"%@",self.resultSelectChild);
-        
         if ([result isKindOfClass:[NSDictionary class]])
         {
             [[EKRequest Instance] EKHTTPRequest:student parameters:nil requestMethod:GET forDelegate:self];
@@ -417,59 +405,7 @@
         }
         
       
-    }/*
-    else if (method == unit && code == 1 && [param objectForKey:@"parentid"])
-    {
-        self.resultSelectChild = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
-        
-        [ETCoreDataManager saveUserChildren:self.resultSelectChild ByAccount:userNameField.text];
-        
-        if (resultSelectChild.count <= 0)
-        {
-            if(HUD)
-            {
-                [HUD removeFromSuperview];
-                HUD=nil;
-            }
-            
-            // 提示 为空
-        }
-        else if (resultSelectChild.count == 1)
-        {
-            NSDictionary *dic = [resultSelectChild objectAtIndex:0];
-            NSString *cid = [NSString stringWithFormat:@"%@",[dic objectForKey:@"uid_class"]];
-            NSString *stuid = [NSString stringWithFormat:@"%@",[dic objectForKey:@"uid_student"]];
-            NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:cid, @"uid_class", stuid, @"uid_student", nil];
-            
-            user.uid_class = cid;
-            user.uid_student = stuid;
-            
-            [[EKRequest Instance] EKHTTPRequest:unit parameters:param requestMethod:POST forDelegate:self];
-        }
-        else
-        {
-            
-            if(HUD)
-            {
-                [HUD removeFromSuperview];
-                HUD=nil;
-            }
-            
-            NSMutableArray *titleArr = [NSMutableArray array];
-            for (int i = 0; i < resultSelectChild.count; i++) {
-                NSDictionary *dic = [resultSelectChild objectAtIndex:i];
-                NSString *str = [NSString stringWithFormat:@"%@   %@",[dic objectForKey:@"nikename"],[dic objectForKey:@"classname"]];
-                [titleArr addObject:str];
-            }
-            
-            
-            ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"selectchild", @"") delegate:self cancelButtonTitle:LOCAL(@"cancel", @"") otherButtonTitlesArray:titleArr];
-            alert.tag = 3333;
-            [alert show];
-        }
-        
-    }*/
-    else if (method == unit && code == 1)
+    }    else if (method == unit && code == 1)
     {
 //        NSString *s = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
         
@@ -576,53 +512,6 @@
         
         [self loginBackground];
         
-    }
-
-    else if(method == attendance && code == 1)
-    {
-        //
-        
-        NSLog(@"%@",dic);
-        
-        [self loginBackground];
-    }
-    else if(method == pull && code ==1)
-    {
-        
-       NSArray * arr=[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
-        
-        //NSArray * arr = (NSArray *)response;
-        if(isExcute && arr != nil && arr.count > 0)
-        {
-            ETCustomAlertView *alertForCancel = [[ETCustomAlertView alloc] initWithTitle: @"最新消息:"
-                message:nil
-                delegate: self
-            cancelButtonTitle: LOCAL(@"ok", @"确定")
-            otherButtonTitles:nil];
-
-            UITextView *textView = [[UITextView alloc] initWithFrame: CGRectMake(12.0, 45.0, 260.0, 210.0)];
-            textView.font = [UIFont boldSystemFontOfSize:12];
-            textView.textColor = [UIColor whiteColor];
-            textView.layer.cornerRadius = 6;
-            textView.delegate = self;
-            textView.backgroundColor = [UIColor clearColor];
-            textView.layer.masksToBounds = YES;
-            [alertForCancel setTransform: CGAffineTransformMakeTranslation(0.0, -100)];
-            
-            NSMutableString * mutStr = [NSMutableString stringWithCapacity:10];
-            for(int i=0;i<arr.count;i++)
-            {
-                [mutStr appendString:[arr objectAtIndex:i]];
-                [mutStr appendString:@"\n"];
-            }
-            textView.text = mutStr;
-            
-            [alertForCancel addSubview: textView];
-            [alertForCancel show];
-
-            [textView release];
-            
-        }
     }
     else
     {
@@ -787,25 +676,14 @@
     if (![defaultUser objectForKey:@"AutoPlay"]) {
         [defaultUser setObject:@"0" forKey:@"AutoPlay"];
     }
-//    [defaultUser setObject:@"1" forKey:@"AutoPlay"];
+
     [ETCoreDataManager saveUser];
-//    }
+
     
     
-    //判定是否设定了记住密码
-//    if(remImgV.hidden)
-//    {
-//        [defaultUser removeObjectForKey:REMEMBERPSAAWORD];
-//    }
-//    else
-//    {
-//        [defaultUser setObject:REMEMBERPSAAWORDVALUE forKey:REMEMBERPSAAWORD];
-//    }
-//    if ([user.skinid isEqualToString:@"-1"]) {
-//        [defaultUser setObject:@"0" forKey:@"HEADERBACKGROUND"];
-//    }else{
+
         [defaultUser setObject:user.skinid forKey:@"HEADERBACKGROUND"];
-//    }
+
     
     
     

@@ -154,11 +154,7 @@
     self.window.rootViewController = loginViewController;
     [loginViewController release];
     
-//    bottomVC = [[ETBottomViewController alloc] init];
-//    bottomNav = [[UINavigationController alloc] initWithRootViewController:bottomVC];
-//    self.window.rootViewController = bottomNav;
-//    [bottomVC release];
-//    [bottomNav release];
+
     
     
     NSUserDefaults *defaultUser=[NSUserDefaults standardUserDefaults];

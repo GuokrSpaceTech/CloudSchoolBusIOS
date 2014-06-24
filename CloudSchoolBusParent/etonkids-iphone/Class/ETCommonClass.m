@@ -187,16 +187,6 @@
         user.attendancetype = attendance_type;
         
         cBlock(nil);
-//        NSString *pStr = [NSString stringWithFormat:@"1310"];
-//        NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:pStr,@"month",nil];
-//        
-//        [[EKRequest Instance] EKHTTPRequest:attendance parameters:nil requestMethod:GET forDelegate:self];
-    }
-    else if(method == attendance && code == 1)
-    {
-        NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
-        NSLog(@"%@",dic);
-        cBlock(nil);
     }
     else if (code == -1115)
     {

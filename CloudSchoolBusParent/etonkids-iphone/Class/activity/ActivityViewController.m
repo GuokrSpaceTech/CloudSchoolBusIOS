@@ -113,9 +113,7 @@
 
 - (void)reloadTableData:(ETEvents *)event
 {
-//    if (currentType == MyActivityType) {
-//        self.myActivityList = [NSMutableArray arrayWithArray:[ETCoreDataManager searchAllMyActivity]];
-//    }
+
     
 //    [self._tableView reloadData];
     if (self.myActivityList.count == 0)

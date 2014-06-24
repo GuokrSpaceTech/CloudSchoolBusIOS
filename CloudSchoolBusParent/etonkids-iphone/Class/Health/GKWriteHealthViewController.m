@@ -8,6 +8,8 @@
 
 #import "GKWriteHealthViewController.h"
 #import "ETKids.h"
+#import "ASIFormDataRequest.h"
+#import <CommonCrypto/CommonDigest.h>
 @interface GKWriteHealthViewController ()
 
 @end
@@ -100,10 +102,62 @@
     
 
 }
+- (NSString *)md5:(NSString *)str
+{
+    const char *cStr = [str UTF8String];
+    unsigned char result[16];
+    CC_MD5(cStr, strlen(cStr), result); // This is the md5 call
+    return [NSString stringWithFormat:
+            @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
+            result[0], result[1], result[2], result[3],
+            result[4], result[5], result[6], result[7],
+            result[8], result[9], result[10], result[11],
+            result[12], result[13], result[14], result[15]
+            ];
+}
 -(void)rightButtonClick:(UIButton *)btn
 {
- 
     
+    int time= [[NSDate date] timeIntervalSince1970];
+    
+    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,@"13581804688",@"testchunyu"];
+    
+    NSString *sign=[self md5:string];
+    NSLog(@"%@",sign);
+    
+    
+    
+    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"text",@"type",@"我的病情是这样的",@"text", nil];
+    NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:@"patient_meta",@"type",@"15",@"age",@"男",@"sex", nil];
+    
+    NSArray *arr=[NSArray arrayWithObjects:dic,dic1, nil];
+    NSData *jsondate=[NSJSONSerialization dataWithJSONObject:arr options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonstr=[[NSString alloc]initWithData:jsondate encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"%@",jsonstr);
+
+    ASIFormDataRequest *resuest=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://yzxc.summer2.chunyu.me/partner/yzxc/problem/create"]];
+    [resuest setPostValue:@"13581804688" forKey:@"phone"];
+    
+    [resuest setPostValue:jsonstr forKey:@"content"];
+    [resuest setPostValue:sign forKey:@"sign"];
+    
+    [resuest setPostValue:[NSString stringWithFormat:@"%d",time] forKey:@"atime"];
+    
+    [resuest setDelegate:self];
+    //配置代理为本类
+    [resuest setTimeOutSeconds:10];
+    //设置超时
+    [resuest setDidFailSelector:@selector(urlRequestFailed:)];
+    [resuest setDidFinishSelector:@selector(urlRequestSucceeded:)];
+    
+    [resuest startAsynchronous];
+    
+}
+-(void)urlRequestSucceeded:(ASIFormDataRequest *)request
+{
+  //  NSLog(@"%@",request.responseData);
+    NSLog(@"%@",request.responseString);
 }
 - (void)leftButtonClick:(id)sender
 {

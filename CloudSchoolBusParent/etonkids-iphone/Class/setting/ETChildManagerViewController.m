@@ -131,6 +131,8 @@
     
     ETUser *u = [arr objectAtIndex:indexPath.row];
     
+    NSLog(@"%@",u.nikename);
+    
     UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
     imgV.center = CGPointMake(26, 22);
     [cell.contentView addSubview:imgV];

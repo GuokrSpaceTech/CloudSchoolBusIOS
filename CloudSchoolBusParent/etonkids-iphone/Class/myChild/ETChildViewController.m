@@ -19,7 +19,7 @@
 @end
 
 @implementation ETChildViewController
-@synthesize titleArr,tImageArr;
+//@synthesize titleArr,tImageArr;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,26 +33,13 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"CHILDINFO" object:nil];
 
-    self.tImageArr = nil;
-    self.titleArr = nil;
-    
+
     [super dealloc];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-     NSLog(@"%f",self.view.frame.size.height);
-    //section 2
-   // NSArray *array = [NSArray arrayWithObjects:LOCAL(@"vip", @""),/*LOCAL(@"daijinquan", @""),*/LOCAL(@"chengzhangdangan", @""),LOCAL(@"kewaikeyouhui", @""), nil];
-    
-        NSArray *array = [NSArray arrayWithObjects:LOCAL(@"checkAndCalendar", @""), nil];
-    
-    //NSArray *imgArr = [NSArray arrayWithObjects:@"-vip.png",@"成长档案.png",@"优惠.png", nil];
-      NSArray *imgArr = [NSArray arrayWithObjects:@"-vip.png", nil];
-    self.titleArr = array;
-    self.tImageArr = imgArr;
     
     mainTV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, (iphone5 ? 548 : 460) - 46 - 57) style:UITableViewStyleGrouped];
     mainTV.backgroundView = nil;
@@ -61,12 +48,7 @@
     mainTV.dataSource = self;
     [self.view addSubview:mainTV];
     [mainTV release];
-    
-//    NSLog(@"################# %d",table.retainCount);
-//    NSLog(@"################# %d",self.mainTV.retainCount);
-    
-    
-//    NSLog(@"################# %d",self.mainTV.retainCount);
+
     
 }
 
@@ -181,15 +163,18 @@
     else if (indexPath.section == 2)
     {
         
+        //section 2
+
+        
         UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
         imgV.center = CGPointMake(26, 20);
-        imgV.image = [UIImage imageNamed:[self.tImageArr objectAtIndex:indexPath.row]];
+        imgV.image = [UIImage imageNamed:@"-vip.png"];
         [cell.contentView addSubview:imgV];
         [imgV release];
         
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
-        label.text = [titleArr objectAtIndex:indexPath.row];
+        label.text = LOCAL(@"checkAndCalendar", @"");
         label.font = [UIFont systemFontOfSize:16];
         //label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
         label.backgroundColor = [UIColor clearColor];

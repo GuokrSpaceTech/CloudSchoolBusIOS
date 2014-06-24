@@ -12,8 +12,8 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "GKWriteHealthViewController.h"
 #import "AppDelegate.h"
-
 #import "ASIFormDataRequest.h"
+#import "UserLogin.h"
 @interface GKHealthListViewController ()
 
 @end
@@ -102,34 +102,36 @@
 
     
     
-    
+     UserLogin *user=[UserLogin currentLogin];
     int time= [[NSDate date] timeIntervalSince1970];
     
-    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,@"13581804688",@"testchunyu"];
+    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,user.username,@"testchunyu"];
     
     NSString *sign=[self md5:string];
     NSLog(@"%@",sign);
     
     
+    NSLog(@"%d",time);
     
-    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"text",@"type",@"我的病情是这样的",@"text", nil];
-     NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:@"patient_meta",@"type",@"15",@"age",@"男",@"sex", nil];
+    NSDate *date=[NSDate dateWithTimeIntervalSince1970:time];
     
-    NSArray *arr=[NSArray arrayWithObjects:dic,dic1, nil];
-    NSData *jsondate=[NSJSONSerialization dataWithJSONObject:arr options:NSJSONWritingPrettyPrinted error:nil];
-    NSString *jsonstr=[[NSString alloc]initWithData:jsondate encoding:NSUTF8StringEncoding];
+    NSDateFormatter *fomart=[[NSDateFormatter alloc]init];
     
-    NSLog(@"%@",jsonstr);
-    //NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://yzxc.summer2.chunyu.me/partner/yzxc/create_vip"]];
+  
+    [fomart setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *addDate = [fomart stringFromDate:date];
+
+    NSLog(@"%@",addDate);
     
+   
     ASIFormDataRequest *resuest=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://yzxc.summer2.chunyu.me/partner/yzxc/create_vip"]];
-    [resuest setPostValue:@"13581804688" forKey:@"phone"];
+    [resuest setPostValue:@"15652200986" forKey:@"phone"];
     
     [resuest setPostValue:@"30" forKey:@"days"];
     [resuest setPostValue:sign forKey:@"sign"];
     
     [resuest setPostValue:[NSString stringWithFormat:@"%d",time] forKey:@"atime"];
-    
+    [resuest setPostValue:[NSString stringWithFormat:@"%@",user.username] forKey:@"user_id"];
     [resuest setDelegate:self];
     //配置代理为本类
     [resuest setTimeOutSeconds:10];
@@ -138,27 +140,7 @@
     [resuest setDidFinishSelector:@selector(urlRequestSucceeded:)];
     
     [resuest startAsynchronous];
-   // [resuest sta]
-    //[request setHTTPMethod:@"POST"];
-    
-//    [request setValue:@"13581804688" forHTTPHeaderField:@"phone"];
-//   // [request setValue:jsonstr forHTTPHeaderField:@"content"];
-//    [request setValue:@"30" forHTTPHeaderField:@"days"];
-//    
-//    [request setValue:sign forHTTPHeaderField:@"sign"];
-//    [request setValue:[NSString stringWithFormat:@"%d",time] forHTTPHeaderField:@"atime"];
-//    NSError *error=nil;
-//    NSData *data= [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
-//    if(error)
-//    {
-//        NSLog(@"%@",error.description);
-//    }
-  
 
- //   NSString *resstring=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    
-//    NSLog(@"%@",resstring);
-    // Do any additional setup after loading the view.
 }
 -(void)urlRequestSucceeded:(ASIFormDataRequest *)request
 {

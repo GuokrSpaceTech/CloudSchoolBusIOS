@@ -146,12 +146,12 @@ static EKRequest * instance = nil;
     //登录方法不加入Sid
     if((function == signin || function == unit) && param != nil)
     {
-        header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactoprestphone",@"apikey",@"3.2.0",@"Version", nil], nil];
+        header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactoprestphone",@"apikey",@"3.3.0",@"Version", nil], nil];
     }
     else
     {
         NSString * sid = [userDefault objectForKey:@"sid"];
-        header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactoprestphone",@"apikey",sid,@"sid",@"3.2.0",@"Version",nil], nil];
+        header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactoprestphone",@"apikey",sid,@"sid",@"3.3.0",@"Version",nil], nil];
     }
     
     NSString * address = [SERVERURL stringByAppendingFormat:@"%@",[self getFunction:function]];

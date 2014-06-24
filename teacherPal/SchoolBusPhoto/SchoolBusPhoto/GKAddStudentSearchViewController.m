@@ -195,8 +195,8 @@
 }
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
 {
-    NSString *aa=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",aa);
+//    NSString *aa=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",aa);
     if(HUD)
     {
         [HUD removeFromSuperview];
@@ -222,8 +222,8 @@
             student.studentUID=[[arr objectAtIndex:i] objectForKey:@"student_uid"];
             student.parentTel=[[arr objectAtIndex:i] objectForKey:@"mobile"];
             student.birthday=[[arr objectAtIndex:i] objectForKey:@"birthday"];
-            student.sex=[[[arr objectAtIndex:i] objectForKey:@"sex"] intValue];
-            student.age=[self getAge:student.birthday];
+            student.sex= [[[arr objectAtIndex:i] objectForKey:@"sex"] intValue];
+            student.age=[[[arr objectAtIndex:i] objectForKey:@"age"] intValue];//[self getAge:student.birthday];
             student.studentName=[[arr objectAtIndex:i] objectForKey:@"cnname"];
             
             [list addObject:student];

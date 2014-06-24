@@ -57,7 +57,7 @@
         _versionLabel.textAlignment=NSTextAlignmentCenter;
     else
         _versionLabel.textAlignment=UITextAlignmentCenter;
-    _versionLabel.text=[NSString stringWithFormat:@"V%@",@"1.2.2"];
+    _versionLabel.text=[NSString stringWithFormat:@"V%@",@"3.3.0"];
     [_iconImageView addSubview:_versionLabel];
     [_versionLabel release];
     

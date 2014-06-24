@@ -84,7 +84,7 @@
     
     
     
-    _scrollerView_=[[UIScrollView alloc]initWithFrame:CGRectMake(0, NAVIHEIGHT+ (ios7 ? 20 : 0), self.view.frame.size.height, self.view.frame.size.height-NAVIHEIGHT-(ios7 ? 20 : 0))];
+    _scrollerView_=[[UIScrollView alloc]initWithFrame:CGRectMake(0, NAVIHEIGHT+ (ios7 ? 20 : 0), self.view.frame.size.height, self.view.frame.size.height-NAVIHEIGHT-(ios7 ? 20 : 0)-10)];
     _scrollerView_.backgroundColor=[UIColor clearColor];
     _scrollerView_.showsHorizontalScrollIndicator=NO;
     _scrollerView_.showsVerticalScrollIndicator=NO;
@@ -124,9 +124,9 @@
         }
         else
         {
-            if ([self.receiverArr count]==4) {
-                return;
-            }
+//            if ([self.receiverArr count]==4) {
+//                return;
+//            }
             ETSendReceiveView *sendView=[[ETSendReceiveView alloc]initWithFrame:CGRectMake(10+col*(140+20),row*(140+25+10), 140, 140+25)];
             sendView.namelabel.text=NSLocalizedString(@"add1", @"");
             sendView.photoImageView.image=[UIImage imageNamed:@"addreceiver.png"];
@@ -138,9 +138,13 @@
         
 
     }
+ 
      int row=([self.receiverArr count]+1)/2;
+    int col=([self.receiverArr count]+1)%2;
     
-    _scrollerView_.contentSize=CGSizeMake(_scrollerView_.frame.size.width, row *(140+25+10));
+    int real=row + ((col==0)?0:1);
+
+    _scrollerView_.contentSize=CGSizeMake(_scrollerView_.frame.size.width, real *(140+25+10));
     
 }
 - (void)leftButtonClick:(id)sender

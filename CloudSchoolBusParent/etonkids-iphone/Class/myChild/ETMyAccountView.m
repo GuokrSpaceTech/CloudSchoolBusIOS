@@ -65,24 +65,33 @@
     if(cell==nil)
     {
         cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    
     }
+    
+
+
+    [[cell.contentView viewWithTag:111] removeFromSuperview];
+    [[cell.contentView viewWithTag:222] removeFromSuperview];
+    [[cell.contentView viewWithTag:333] removeFromSuperview];
+    [[cell.contentView viewWithTag:444] removeFromSuperview];
     
     UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 16, 16)];
     imgV.center = CGPointMake(26, 30);
+    imgV.tag=333;
     [cell.contentView addSubview:imgV];
     [imgV release];
-    
     
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 15, 200, 30)];
     label.font = [UIFont systemFontOfSize:TITLEFONTSIZE - 3];
     label.backgroundColor = [UIColor clearColor];
+    label.tag=444;
+    label.text=@"";
     [cell.contentView addSubview:label];
     [label release];
     
     
-    [[cell.contentView viewWithTag:111] removeFromSuperview];
-    [[cell.contentView viewWithTag:222] removeFromSuperview];
+
     
     UILabel *msgLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     msgLabel.font = [UIFont systemFontOfSize:TITLEFONTSIZE - 3];

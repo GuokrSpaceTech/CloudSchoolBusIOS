@@ -33,7 +33,7 @@ static GKMovieManager *mm ;
     if (self.playingCell && ![self.playingCell isEqual:cell]) {
         
         NSLog(@"暂停之前正在播放的cell %@",self.playingCell);
-        [self.playingCell.mPlayer pause];
+//        /[self.playingCell.mPlayer pause];
         [self.playingCell.mPlayer stop];
     }
     

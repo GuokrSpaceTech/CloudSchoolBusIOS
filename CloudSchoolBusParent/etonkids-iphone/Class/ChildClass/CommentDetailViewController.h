@@ -24,7 +24,7 @@
 #import "GKMovieDownloader.h"
 #import "MDRadialProgressView.h"
 #import "MDRadialProgressTheme.h"
-
+@protocol classdetailViewControllderdelegate;
 
 @interface CommentDetailViewController : UIViewController<EKProtocol,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,DetailContentCellDelegate,UIActionSheetDelegate,UITextViewDelegate,WriteCommentsViewControllerDelegate,MTCustomActionSheetDelegate,GKMovieDownloaderDelegate>
 {
@@ -58,6 +58,7 @@
     RequestType reqType;
     
 }
+@property (nonatomic,assign)id<classdetailViewControllderdelegate>delegate;
 @property(nonatomic,retain)NSString  *titilestring;
 @property(nonatomic,retain)NSString  *timestring;
 @property(nonatomic,retain)NSString  *connetstring;
@@ -85,5 +86,11 @@
 @property (nonatomic, retain) GKMovieDownloader *downloader;
 @property (nonatomic, retain) MPMoviePlayerController *mPlayer;
 
+
+@end
+@protocol classdetailViewControllderdelegate;
+@protocol classdetailViewControllderdelegate <NSObject>
+
+-(void)setisVisiblebecomeYES;
 
 @end

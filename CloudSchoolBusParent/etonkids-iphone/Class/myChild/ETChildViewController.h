@@ -23,7 +23,7 @@
     UITableView *mainTV;
 }
 
-@property (nonatomic, retain)NSArray *titleArr;
-@property (nonatomic, retain)NSArray *tImageArr;
+//@property (nonatomic, retain)NSArray *titleArr;
+//@property (nonatomic, retain)NSArray *tImageArr;
 
 @end

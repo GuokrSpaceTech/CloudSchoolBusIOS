@@ -27,8 +27,9 @@
 #import "ClassShareCell.h"
 #import "SDWebImageManager.h"
 
+#import "CommentDetailViewController.h"
 
-@interface ETClassViewController : ETBaseViewController<WeiboSignInDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,ETCustomAlertViewDelegate,UIActionSheetDelegate,UIGestureRecognizerDelegate,EKProtocol,ClassShareCellDelegate>
+@interface ETClassViewController : ETBaseViewController<WeiboSignInDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,ETCustomAlertViewDelegate,UIActionSheetDelegate,UIGestureRecognizerDelegate,EKProtocol,ClassShareCellDelegate,classdetailViewControllderdelegate>
 {
     MBProgressHUD *HUD;
     int  currentIndex;
@@ -48,6 +49,7 @@
     BOOL isVisible; // 判断当前页面是否可见
     
 }
+@property (nonatomic,assign)id<ClassShareCellDelegate>delegate;
 @property(nonatomic,retain)ShareContent *shareContent;
 //@property(nonatomic,retain)ShareContent *sharec;
 @property BOOL isLoading;
@@ -64,3 +66,6 @@
 
 
 @end
+
+
+

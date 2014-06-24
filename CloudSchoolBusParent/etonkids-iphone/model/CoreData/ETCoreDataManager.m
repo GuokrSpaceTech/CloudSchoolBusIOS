@@ -25,6 +25,9 @@
     
     AppDelegate *delegate = SHARED_APP_DELEGATE;
     
+    
+    NSLog(@"%@---%@",login.uid_class,login.uid_student);
+    
     NSFetchRequest* request = [[[NSFetchRequest alloc] init] autorelease];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"ETUser" inManagedObjectContext:delegate.managedObjectContext];
     NSPredicate* pred = [NSPredicate predicateWithFormat:@"(account = %@ and uid_student = %@ and uid_class = %@)", login.regName, login.uid_student, login.uid_class];
@@ -33,7 +36,12 @@
     
     NSError* error;
     NSArray* users = [delegate.managedObjectContext executeFetchRequest:request error:&error];
+    for (int i=0 ;i<users.count; i++) {
     
+         ETUser *test = (ETUser *)[users objectAtIndex:i];
+        NSLog(@"%@",test.nikename);
+        
+    }
     ETUser *user;
     if (users == nil)
     {

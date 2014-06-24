@@ -127,6 +127,8 @@
     
     titlelabel.text=today;
     [self loaddatebyDate:today];
+    
+    todayBtn.hidden=YES;
 
 }
 -(void)loaddatebyDate:(NSString *)date
@@ -315,7 +317,7 @@
         cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier] autorelease];
         //cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         cell.backgroundColor=[UIColor clearColor];
-        
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
         UILabel * namelabel =[[UILabel alloc]initWithFrame:CGRectMake(10, 15, 70, 20)];
         namelabel.backgroundColor=[UIColor clearColor];
         namelabel.font=[UIFont systemFontOfSize:15];

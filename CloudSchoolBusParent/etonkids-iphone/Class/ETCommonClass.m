@@ -121,6 +121,22 @@
         NSDictionary *dic = result;
         NSLog(@"%@",dic);
         
+//        user.studentId = [NSString stringWithFormat:@"%@",[dic objectForKey:@"studentid"]];
+//        user.age=[NSString stringWithFormat:@"%@",[dic objectForKey:@"age"]];
+//        user.birthday=[NSString stringWithFormat:@"%@",[dic objectForKey:@"birthday"]];
+//        user.cnname=[NSString stringWithFormat:@"%@",[dic objectForKey:@"cnname"]];
+//        user.enname=[NSString stringWithFormat:@"%@",[dic objectForKey:@"enname"]];
+//        user.mobile=[NSString stringWithFormat:@"%@",[dic objectForKey:@"mobile"]];
+//        user.nickname=[NSString stringWithFormat:@"%@",[dic objectForKey:@"nikename"]];
+//        user.parent=[NSString stringWithFormat:@"%@",[dic objectForKey:@"parent"]];
+//        user.sex=[NSString stringWithFormat:@"%@",[dic objectForKey:@"sex"]];
+//        user.className = [NSString stringWithFormat:@"%@",[dic objectForKey:@"classname"]];
+//        user.avatar = [NSString stringWithFormat:@"%@",[dic objectForKey:@"avatar"]];
+//        user.allowmutionline = [NSString stringWithFormat:@"%@",[dic objectForKey:@"allow_muti_online"]];
+//        user.uid_student = [NSString stringWithFormat:@"%@",[dic objectForKey:@"studentid"]];
+        
+        
+        
         user.studentId = [NSString stringWithFormat:@"%@",[dic objectForKey:@"studentid"]];
         user.age=[NSString stringWithFormat:@"%@",[dic objectForKey:@"age"]];
         user.birthday=[NSString stringWithFormat:@"%@",[dic objectForKey:@"birthday"]];
@@ -133,7 +149,11 @@
         user.className = [NSString stringWithFormat:@"%@",[dic objectForKey:@"classname"]];
         user.avatar = [NSString stringWithFormat:@"%@",[dic objectForKey:@"avatar"]];
         user.allowmutionline = [NSString stringWithFormat:@"%@",[dic objectForKey:@"allow_muti_online"]];
-        user.uid_student = [NSString stringWithFormat:@"%@",[dic objectForKey:@"studentid"]];
+        user.ischeck_mobile = [NSString stringWithFormat:@"%@",[dic objectForKey:@"ischeck_mobile"]];
+        user.skinid = [NSString stringWithFormat:@"%@",[dic objectForKey:@"skinid"]];
+        user.username = [NSString stringWithFormat:@"%@",[dic objectForKey:@"username"]];
+        user.orderTitle = [NSString stringWithFormat:@"%@",[dic objectForKey:@"ordertitle"]];
+        user.orderEndTime = [NSString stringWithFormat:@"%@",[dic objectForKey:@"orderendtime"]];
         [[EKRequest Instance] EKHTTPRequest:classinfo parameters:nil requestMethod:GET forDelegate:self];
         
         

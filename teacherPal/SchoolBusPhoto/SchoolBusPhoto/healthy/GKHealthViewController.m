@@ -125,6 +125,9 @@
     titlelabel.text=today;
     [self loaddatebyDate:today];
     
+
+    todayBtn.hidden=YES;
+
 }
 -(void)loaddatebyDate:(NSString *)date
 {
@@ -171,17 +174,29 @@
                 temperature.studentid=[NSString stringWithFormat:@"%@",[[arr objectAtIndex:i] objectForKey:@"studentid"]];
                 temperature.name=[[arr objectAtIndex:i] objectForKey:@"enname"];
                 temperature.tempature=[[arr objectAtIndex:i] objectForKey:@"temperature"];
-                if([temperature.tempature floatValue]>=36.0 && [temperature.tempature floatValue]<=37.5)
+                if([temperature.tempature isKindOfClass:[NSNull class]])
                 {
-                    temperature.state=NSLocalizedString(@"normal", @"");
-
-                    
+                    temperature.tempature=@"";
                 }
-                else
+                if(![temperature.tempature isKindOfClass:[NSNull class]])
                 {
-                    temperature.state=NSLocalizedString(@"heighter", @"");
+                    if([temperature.tempature floatValue]>=36.0 && [temperature.tempature floatValue]<=37.5)
+                    {
+                        temperature.state=NSLocalizedString(@"normal", @"");
+                        
+                        
+                    }
+                    else
+                    {
+                        temperature.state=NSLocalizedString(@"heighter", @"");
+                    }
+
                 }
                 temperature.otherstate=[[arr objectAtIndex:i] objectForKey:@"state"];
+                if([temperature.otherstate isKindOfClass:[NSNull class]])
+                {
+                    temperature.otherstate=@"";
+                }
                 temperature.isTempature=YES;
                 [_tempatureArr addObject:temperature];
                 
@@ -303,7 +318,7 @@
     if(cell==nil)
     {
         cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier] autorelease];
-      //  cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+          cell.selectionStyle=UITableViewCellSelectionStyleNone;
         cell.backgroundColor=[UIColor clearColor];
         
         
@@ -362,6 +377,7 @@
     {
         statelabel.textColor=[UIColor redColor];
     }
+  //  if(tem.tempature)
     tempature.text=[NSString stringWithFormat:@"%@：%@℃",NSLocalizedString(@"temperature",@""),temp.tempature];
     otherLabel.text=[NSString stringWithFormat:@"异常状态：%@",temp.otherstate];
     otherLabel.textColor=[UIColor redColor];

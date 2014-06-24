@@ -186,14 +186,14 @@
     nameLabel.text=st.enname;;
    
     UILabel *ageLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+2];
-    if([st.uid integerValue]==0)
-    {
-        ageLabel.text=[NSString stringWithFormat:@"%@",@"未激活"];
-    }
+
+    if([st.age intValue]<=0)
+     ageLabel.text=[NSString stringWithFormat:@"%d %@",0,NSLocalizedString(@"oldyear", @"")];
     else
-    {
-        ageLabel.text=[NSString stringWithFormat:@"%@ %@",st.age,NSLocalizedString(@"oldyear", @"")];
-    }
+    ageLabel.text=[NSString stringWithFormat:@"%@ %@",st.age,NSLocalizedString(@"oldyear", @"")];
+
+    
+    
     UILabel *priceLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+3];
     
     if(st.orderendtime==nil  || [st.orderendtime isKindOfClass:[NSNull class]]  || [st.orderendtime isEqualToString:@""])

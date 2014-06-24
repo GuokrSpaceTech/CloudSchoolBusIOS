@@ -90,7 +90,7 @@
     _tableView.tableFooterView=[backViewHfotter autorelease];
     
     NSString *joinstr=NSLocalizedString(@"joinclass", @"");
-    addStudentToClass=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    addStudentToClass=[UIButton buttonWithType:UIButtonTypeCustom];
     addStudentToClass.frame=CGRectMake(40, self.view.frame.size.height-10-40-50, 240, 40);
     [addStudentToClass setTitle:joinstr forState:UIControlStateNormal];
     [addStudentToClass setTintColor:[UIColor whiteColor]];
@@ -106,7 +106,7 @@
     if(![result isEqualToString:@"3"])
     {
         NSString *string=NSLocalizedString(@"studentnew", @"");
-        UIButton *addStudentBtn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+        UIButton *addStudentBtn=[UIButton buttonWithType:UIButtonTypeCustom];
         addStudentBtn.frame=CGRectMake(40, self.view.frame.size.height-10-40, 240, 40);
         [addStudentBtn setTitle:string forState:UIControlStateNormal];
         [addStudentBtn setTintColor:[UIColor whiteColor]];

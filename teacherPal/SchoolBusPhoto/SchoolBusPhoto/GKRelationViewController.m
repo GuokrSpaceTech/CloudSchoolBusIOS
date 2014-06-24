@@ -101,7 +101,7 @@
     [studentL release];
     
     
-    UIButton *addStudentBtn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *addStudentBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     addStudentBtn.frame=CGRectMake(40,self.view.frame.size.height-90, 240, 40);
     [addStudentBtn setTitle:NSLocalizedString(@"LinkParent", @"") forState:UIControlStateNormal];
     [addStudentBtn setTintColor:[UIColor whiteColor]];

@@ -313,6 +313,11 @@
             ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"nosendmsg", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
             [alert show];
         }
+        else if (code == -10)
+        {//不发送短信
+            ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:@"该手机号码已经绑定过" delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
+            [alert show];
+        }
         
         
         else
@@ -406,6 +411,17 @@
     {
         if (![self checkMobile]) return;
         
+        
+        if (self.key == nil || ![self.key isEqualToString:verifyTF.text]) {
+            
+            ETCustomAlertView  *alertview=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"verifyerror",@"") delegate:self cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
+            [alertview show];
+            
+            
+            
+            return;
+            
+        }
         if(HUD==nil)
         {
             HUD=[[MBProgressHUD alloc]initWithView:self.view];

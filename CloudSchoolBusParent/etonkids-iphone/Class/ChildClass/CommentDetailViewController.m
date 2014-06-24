@@ -656,12 +656,16 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     UITextView *t = (UITextView *)[commentTF.inputAccessoryView viewWithTag:457];
     
     
+    //stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]
     
+    NSString *str=[t.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
-    
-    if ([t.text isEqualToString:@""])
+    if ([str isEqualToString:@""] )
     {
         NSLog(@"发送内容为空");
+        ETCustomAlertView *alert = [[ETCustomAlertView alloc] initWithTitle:nil message:LOCAL(@"empty", @"发送内容为空") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
+        [alert show];
+        
         return;
     }
     
@@ -1520,11 +1524,11 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
 
 - (void)downloadMovie:(NSString *)url
 {
-    GKMovieManager *man = [GKMovieManager shareManager];
-    if ([man downloadListContainsURL:url])
-    {
-        return;
-    }
+//    GKMovieManager *man = [GKMovieManager shareManager];
+//    if ([man downloadListContainsURL:url])
+//    {
+//        return;
+//    }
     
     
     [[GKMovieManager shareManager] downloadMovieWithURL:url progress:^(unsigned long long size, unsigned long long total, NSString *downloadingPath)
@@ -1536,9 +1540,13 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     }
     complete:^(NSString *path, NSError *error)
     {
+        UIButton *b = (UIButton *)[self.movieBackView viewWithTag:BUTTONTAG];
+        [b setImage:nil forState:UIControlStateNormal];
+        self.mPlayer.view.hidden = NO;
         self.radial.hidden = YES;
         self.mPlayer.contentURL = [NSURL fileURLWithPath:path];
         [self.mPlayer play];
+
     }];
     
 }

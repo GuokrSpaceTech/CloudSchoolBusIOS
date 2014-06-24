@@ -159,7 +159,7 @@
     }
     
      NSString *nextstr=NSLocalizedString(@"next", @"");
-    UIButton *addStudentBtn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *addStudentBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     addStudentBtn.frame=CGRectMake(40,contentView.frame.size.height+contentView.frame.origin.y+10, 240, 40);
     [addStudentBtn setTitle:nextstr forState:UIControlStateNormal];
     [addStudentBtn setTintColor:[UIColor whiteColor]];

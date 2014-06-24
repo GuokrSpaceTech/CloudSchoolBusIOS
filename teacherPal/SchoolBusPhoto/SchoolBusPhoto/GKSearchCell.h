@@ -16,7 +16,7 @@
 -(void)cell:(GKSearchCell *)_cell  student:(GKStudentAdd *)st;
 
 @end
-@interface GKSearchCell : UITableViewCell<EKProtocol>
+@interface GKSearchCell : UITableViewCell
 {
     UIButton *seleBtn;
 }

@@ -137,7 +137,7 @@
     
 //    if(cell==nil)
 //    {
-        cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
+        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
 //    }
     
 //    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

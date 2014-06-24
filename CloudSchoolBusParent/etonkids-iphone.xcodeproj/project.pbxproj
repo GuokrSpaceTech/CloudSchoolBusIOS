@@ -225,7 +225,7 @@
 		78A41FFF18210AAA00D0DE50 /* myaccount3.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A41FFC18210AAA00D0DE50 /* myaccount3.png */; };
 		78A4200018210AAA00D0DE50 /* myaccount2.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A41FFD18210AAA00D0DE50 /* myaccount2.png */; };
 		78A4200118210AAA00D0DE50 /* myaccount1.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A41FFE18210AAA00D0DE50 /* myaccount1.png */; };
-		78A4200318211A7100D0DE50 /* bindTextBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A4200218211A7100D0DE50 /* bindTextBack.png */; };
+		78A4200318211A7100D0DE50 /* bindTextBack1.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A4200218211A7100D0DE50 /* bindTextBack1.png */; };
 		78A420051821245E00D0DE50 /* infoBack1.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A420041821245E00D0DE50 /* infoBack1.png */; };
 		78A4200D182239F300D0DE50 /* infoBack2.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A4200C182239F300D0DE50 /* infoBack2.png */; };
 		78A4201018223A5200D0DE50 /* fesimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A4200E18223A5200D0DE50 /* fesimg.png */; };
@@ -852,7 +852,7 @@
 		78A41FFC18210AAA00D0DE50 /* myaccount3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myaccount3.png; sourceTree = "<group>"; };
 		78A41FFD18210AAA00D0DE50 /* myaccount2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myaccount2.png; sourceTree = "<group>"; };
 		78A41FFE18210AAA00D0DE50 /* myaccount1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myaccount1.png; sourceTree = "<group>"; };
-		78A4200218211A7100D0DE50 /* bindTextBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bindTextBack.png; sourceTree = "<group>"; };
+		78A4200218211A7100D0DE50 /* bindTextBack1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bindTextBack1.png; sourceTree = "<group>"; };
 		78A420041821245E00D0DE50 /* infoBack1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoBack1.png; sourceTree = "<group>"; };
 		78A4200C182239F300D0DE50 /* infoBack2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoBack2.png; sourceTree = "<group>"; };
 		78A4200E18223A5200D0DE50 /* fesimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fesimg.png; sourceTree = "<group>"; };
@@ -1575,7 +1575,7 @@
 				78A4200F18223A5200D0DE50 /* attimg.png */,
 				78A4200C182239F300D0DE50 /* infoBack2.png */,
 				78A420041821245E00D0DE50 /* infoBack1.png */,
-				78A4200218211A7100D0DE50 /* bindTextBack.png */,
+				78A4200218211A7100D0DE50 /* bindTextBack1.png */,
 				78A41FFC18210AAA00D0DE50 /* myaccount3.png */,
 				78A41FFD18210AAA00D0DE50 /* myaccount2.png */,
 				78A41FFE18210AAA00D0DE50 /* myaccount1.png */,
@@ -2869,7 +2869,7 @@
 				78C2ADE617E0830500E6A5CD /* bottom_newversion_selected.png in Resources */,
 				78C2ADE717E0830500E6A5CD /* bottom_schedule_default.png in Resources */,
 				78709BB9187CFE51009250FB /* 引导页-EN.png in Resources */,
-				78A4200318211A7100D0DE50 /* bindTextBack.png in Resources */,
+				78A4200318211A7100D0DE50 /* bindTextBack1.png in Resources */,
 				78C2ADE817E0830500E6A5CD /* bottom_schedule_selected.png in Resources */,
 				78C2ADE917E0830500E6A5CD /* bottom_score_default.png in Resources */,
 				78C2ADEA17E0830500E6A5CD /* bottom_score_selected.png in Resources */,
@@ -3312,8 +3312,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "663DDC60-0110-48C5-B142-F4B930E475BB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "663DDC60-0110-48C5-B142-F4B930E475BB";
+				PROVISIONING_PROFILE = "6AA2851B-BFD1-4505-A71A-9D58B463C4E9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6AA2851B-BFD1-4505-A71A-9D58B463C4E9";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3353,8 +3353,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "663DDC60-0110-48C5-B142-F4B930E475BB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "663DDC60-0110-48C5-B142-F4B930E475BB";
+				PROVISIONING_PROFILE = "6AA2851B-BFD1-4505-A71A-9D58B463C4E9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6AA2851B-BFD1-4505-A71A-9D58B463C4E9";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;

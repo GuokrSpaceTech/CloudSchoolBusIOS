@@ -1599,64 +1599,31 @@
     }];
     
 }
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    
-    [super scrollViewDidScroll:scrollView];
-    /*
-    int y = scrollView.contentOffset.y;
-    if (y <= 0)
-    {
-        if (ABS(y) >= 30)
-        {
-            topBackImgView.transform = CGAffineTransformMakeScale(1 + (ABS(y)-30) * 0.2f/30.0f, 1 + (ABS(y)-30) * 0.2f/30.0f);
-        }
-        else
-        {
-            //            topBackImgView.transform = CGAffineTransformMakeTranslation(0, ABS(y)*0.2);
-            topBackImgView.frame = CGRectMake(topBackImgView.frame.origin.x,
-                                                   -10 + ABS(y)*0.3f,
-                                                   topBackImgView.frame.size.width,
-                                                   topBackImgView.frame.size.height);
-        }
-    }
-    else
-    {
-        topBackImgView.frame = CGRectMake(topBackImgView.frame.origin.x,
-                                               -10 - y,
-                                               topBackImgView.frame.size.width,
-                                               topBackImgView.frame.size.height);
-    }
-    
-    
-    if (_slimeView) {
-        [_slimeView scrollViewDidScroll];
-    }
-    
-    
-    if(_refreshFooterView)
-    {
-        [_refreshFooterView egoRefreshScrollViewDidScroll:scrollView];
-    }
-    */
+    //[super scrollViewDidEndDecelerating:scrollView];
     
     NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
     if ([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"1"] || [[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"2"])
     {//如果设置自动播放
         
         
-            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(controlVisibleCellPlay) object:nil];
-            [self performSelector:@selector(controlVisibleCellPlay) withObject:nil afterDelay:0.1f];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(controlVisibleCellPlay) object:nil];
+        [self performSelector:@selector(controlVisibleCellPlay) withObject:nil afterDelay:0.1f];
         
         
         
     }
-    
-    
-    
-    
 }
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    
+//
+//    
+//    
+//    
+//    
+//}
 
 
 
@@ -1690,44 +1657,12 @@
                 minDis = dis;
                 cell = tempCell;
             }
-//            NSLog(@"%f,%f",tempCell.frame.origin.y,self._tableView.contentOffset.y );
-            
-            
-//            if ([mm downloadListContainsURL:tempCell.currentURL])   //建立一个临时的正在下载的数组 删除可见cell的下载，剩下的就是不可见cell的下载 并吧不可见cell 的下载 cancel掉
-//            {
-//                for (int i = 0; i < tempDownloadingArray.count; i++) {
-//                    GKMovieDownloader *d = [tempDownloadingArray objectAtIndex:i];
-//                    if ([d.movieURL isEqualToString:tempCell.currentURL]) {
-//                        [tempDownloadingArray removeObject:d];
-//                        break;
-//                    }
-//                }
-//            }
-            
-            
+
         }
         
     }
     
-//    if (tempDownloadingArray.count != 0) { //cancel不可见cell 的下载
-//        
-//        for (int i = 0; i < tempDownloadingArray.count; i++) {
-//            
-//            GKMovieDownloader *td = [tempDownloadingArray objectAtIndex:i];
-//            
-//            for (int j = 0; j < mm.downloadList.count; j++) {
-//                GKMovieDownloader *rd = [mm.downloadList objectAtIndex:j];//真实下载数组
-//                if ([td.movieURL isEqualToString:rd.movieURL]) {
-//                    NSLog(@"rd %@",rd);
-//                    [rd cancelRequest];
-//                    break;
-//                }
-//            }
-//        }
-//        
-//    }
-    
-    
+
     
     if (minDis != 1000)
     {

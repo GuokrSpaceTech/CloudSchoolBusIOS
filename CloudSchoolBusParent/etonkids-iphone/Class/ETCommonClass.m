@@ -154,6 +154,7 @@
         user.username = [NSString stringWithFormat:@"%@",[dic objectForKey:@"username"]];
         user.orderTitle = [NSString stringWithFormat:@"%@",[dic objectForKey:@"ordertitle"]];
         user.orderEndTime = [NSString stringWithFormat:@"%@",[dic objectForKey:@"orderendtime"]];
+        user.uid_student = [NSString stringWithFormat:@"%@",[dic objectForKey:@"student_uid"]];
         [[EKRequest Instance] EKHTTPRequest:classinfo parameters:nil requestMethod:GET forDelegate:self];
         
         

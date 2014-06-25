@@ -167,6 +167,9 @@
     UserLogin *user = [UserLogin currentLogin];
     NSArray * arr = [ETCoreDataManager getUsers:user.regName];
     ETUser *u = [arr objectAtIndex:indexPath.row];
+    NSLog(@"%@",u.nikename);
+    
+      NSLog(@"%@---%@",u.uid_class,u.uid_student);
     
     if ([user.nickname isEqualToString:u.nikename] && [user.uid_class isEqualToString:u.uid_class])
     {

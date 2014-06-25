@@ -303,7 +303,7 @@
         NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
         [format setDateFormat:@"MM"];
 //        NSLog(@"%@,%@",[m substringFromIndex:2],[format stringFromDate:[NSDate date]]);
-        if([[m substringFromIndex:2] isEqualToString:[format stringFromDate:[NSDate date]]])
+        if([[m substringFromIndex:5] isEqualToString:[format stringFromDate:[NSDate date]]])
         {
             [self makeStatus:[NSDate date]];
         }
@@ -364,15 +364,15 @@
             NSString *inschoolstr=[dateDic objectForKey:@"start_time"];
             NSString *outschoolstr=[dateDic objectForKey:@"end_time"];
             NSString *tempature=[NSString stringWithFormat:@"%@",[dateDic objectForKey:@"temperature"]];
-            NSString *inpath=[NSString stringWithFormat:@"http://%@",[dateDic objectForKey:@"startpath"]];
-            NSString *outPath=[NSString stringWithFormat:@"http://%@",[dateDic objectForKey:@"endpath"]];
+            NSString *inpath=[NSString stringWithFormat:@"%@",[dateDic objectForKey:@"startpath"]];
+            NSString *outPath=[NSString stringWithFormat:@"%@",[dateDic objectForKey:@"endpath"]];
             
             NSString *otherstate=[dateDic objectForKey:@"state"];
             
            // "checkin" ="Check In";
             //"checkout" ="Leave";
             
-            if([inschoolstr isEqualToString:@"<null>"])
+            if([inschoolstr isKindOfClass:[NSNull class]])
             {
                 inLabel.text=[NSString stringWithFormat:@"%@：%@",NSLocalizedString(@"checkin",@""),NSLocalizedString(@"none",@"")];
             }
@@ -380,7 +380,7 @@
             {
                 inLabel.text=[NSString stringWithFormat:@"%@：%@",NSLocalizedString(@"checkin",@""),inschoolstr];
             }
-            if([outschoolstr isEqualToString:@"<null>"])
+            if([outschoolstr isKindOfClass:[NSNull class]])
             {
                 outlable.text=[NSString stringWithFormat:@"%@：%@",NSLocalizedString(@"checkout",@""),NSLocalizedString(@"none",@"")];
             }
@@ -416,8 +416,8 @@
             if(![inpath isEqualToString:@"<null>"])
             {
                 inImageView.userInteractionEnabled=YES;
-                [inImageView setImageWithURL:[NSURL URLWithString:inpath] placeholderImage:nil];
-                inImageView.path=inpath;
+                [inImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",inpath]] placeholderImage:nil];
+                inImageView.path=[NSString stringWithFormat:@"http://%@",inpath];
             }
             else
             {
@@ -427,15 +427,15 @@
             if(![outPath isEqualToString:@"<null>"])
             {
                 outImageView.userInteractionEnabled=YES;
-                 [outImageView setImageWithURL:[NSURL URLWithString:outPath] placeholderImage:nil];
-                   outImageView.path=outPath;
+                 [outImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",outPath]] placeholderImage:nil];
+                   outImageView.path=[NSString stringWithFormat:@"http://%@",outPath];
             }
             else
             {
                 outImageView.userInteractionEnabled=NO;
             }
            
-            if([otherstate isEqualToString:@"<null>"])
+            if([otherstate isKindOfClass:[NSNull class]])
             {
                 otherStateLabel.frame=CGRectZero;
             }

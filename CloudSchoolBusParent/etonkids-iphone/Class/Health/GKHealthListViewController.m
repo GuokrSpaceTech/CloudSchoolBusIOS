@@ -14,6 +14,8 @@
 #import "AppDelegate.h"
 #import "ASIFormDataRequest.h"
 #import "UserLogin.h"
+
+#import "GKHealthDetaiViewController.h"
 @interface GKHealthListViewController ()
 
 @end
@@ -201,6 +203,11 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
+    GKHealthDetaiViewController *healthDetailVC=[[GKHealthDetaiViewController alloc]init];
+    
+    AppDelegate *appDel=SHARED_APP_DELEGATE;
+    [appDel.bottomNav pushViewController:healthDetailVC animated:YES];
+    [healthDetailVC release];
     
 }
 

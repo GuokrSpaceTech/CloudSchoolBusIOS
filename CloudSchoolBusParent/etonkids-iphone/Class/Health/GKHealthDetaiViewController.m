@@ -12,6 +12,7 @@
 #import "ASIFormDataRequest.h"
 #import "UserLogin.h"
 #import <CommonCrypto/CommonDigest.h>
+#import "ETPraiseViewController.h"
 @interface GKHealthDetaiViewController ()
 
 @end
@@ -216,14 +217,14 @@
     
     [inputField resignFirstResponder];
     
-//    UIActionSheet *aa=[[UIActionSheet alloc]initWithTitle:LOCAL(@"changeavadar",@"") delegate:self cancelButtonTitle:LOCAL(@"cancel",@"") destructiveButtonTitle:nil otherButtonTitles:LOCAL(@"takePhoto", @"拍照"),LOCAL(@"choosePhoto",@"从手机相册中选择") , nil];
-//    [aa showInView:self.view];
-//
-//    [aa release];
+
+    ETPraiseViewController * PraiseVC=[[ETPraiseViewController alloc]init];
+    [self.navigationController pushViewController:PraiseVC animated:YES];
+    [PraiseVC release];
     
-    UIActionSheet *sheet=[[UIActionSheet alloc]initWithTitle:NSLocalizedString(@"changeavadar", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") destructiveButtonTitle:NSLocalizedString(@"takePhoto", @"") otherButtonTitles:NSLocalizedString(@"choosePhoto", @""), nil];
-    [sheet showInView:self.view];
-    [sheet release];
+//    UIActionSheet *sheet=[[UIActionSheet alloc]initWithTitle:NSLocalizedString(@"changeavadar", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") destructiveButtonTitle:NSLocalizedString(@"takePhoto", @"") otherButtonTitles:NSLocalizedString(@"choosePhoto", @""), nil];
+//    [sheet showInView:self.view];
+//    [sheet release];
 }
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -493,7 +494,10 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)dealloc
-{
+{    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     self._tableView=nil;
     self.photoImage=nil;
     [super dealloc];

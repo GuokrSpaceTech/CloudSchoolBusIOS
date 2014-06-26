@@ -104,68 +104,68 @@
 
     
     
-     UserLogin *user=[UserLogin currentLogin];
-    int time= [[NSDate date] timeIntervalSince1970];
-    
-    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,user.username,@"testchunyu"];
-    
-    NSString *sign=[self md5:string];
-    NSLog(@"%@",sign);
-    
-    
-    NSLog(@"%d",time);
-    
-    NSDate *date=[NSDate dateWithTimeIntervalSince1970:time];
-    
-    NSDateFormatter *fomart=[[NSDateFormatter alloc]init];
-    
-  
-    [fomart setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSString *addDate = [fomart stringFromDate:date];
-
-    NSLog(@"%@",addDate);
+//     UserLogin *user=[UserLogin currentLogin];
+//    int time= [[NSDate date] timeIntervalSince1970];
+//    
+//    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,user.username,@"testchunyu"];
+//    
+//    NSString *sign=[self md5:string];
+//    NSLog(@"%@",sign);
+//    
+//    
+//    NSLog(@"%d",time);
+//    
+//    NSDate *date=[NSDate dateWithTimeIntervalSince1970:time];
+//    
+//    NSDateFormatter *fomart=[[NSDateFormatter alloc]init];
+//    
+//  
+//    [fomart setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//    NSString *addDate = [fomart stringFromDate:date];
+//
+//    NSLog(@"%@",addDate);
     
    
-    ASIFormDataRequest *resuest=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://yzxc.summer2.chunyu.me/partner/yzxc/create_vip"]];
-    [resuest setPostValue:@"15652200986" forKey:@"phone"];
-    
-    [resuest setPostValue:@"30" forKey:@"days"];
-    [resuest setPostValue:sign forKey:@"sign"];
-    
-    [resuest setPostValue:[NSString stringWithFormat:@"%d",time] forKey:@"atime"];
-    [resuest setPostValue:[NSString stringWithFormat:@"%@",user.username] forKey:@"user_id"];
-    [resuest setDelegate:self];
-    //配置代理为本类
-    [resuest setTimeOutSeconds:10];
-    //设置超时
-    [resuest setDidFailSelector:@selector(urlRequestFailed:)];
-    [resuest setDidFinishSelector:@selector(urlRequestSucceeded:)];
-    
-    [resuest startAsynchronous];
+//    ASIFormDataRequest *resuest=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://yzxc.summer2.chunyu.me/partner/yzxc/create_vip"]];
+//    [resuest setPostValue:@"15652200986" forKey:@"phone"];
+//    
+//    [resuest setPostValue:@"30" forKey:@"days"];
+//    [resuest setPostValue:sign forKey:@"sign"];
+//    
+//    [resuest setPostValue:[NSString stringWithFormat:@"%d",time] forKey:@"atime"];
+//    [resuest setPostValue:[NSString stringWithFormat:@"%@",user.username] forKey:@"user_id"];
+//    [resuest setDelegate:self];
+//    //配置代理为本类
+//    [resuest setTimeOutSeconds:10];
+//    //设置超时
+//    [resuest setDidFailSelector:@selector(urlRequestFailed:)];
+//    [resuest setDidFinishSelector:@selector(urlRequestSucceeded:)];
+//    
+//    [resuest startAsynchronous];
 
 }
--(void)urlRequestSucceeded:(ASIFormDataRequest *)request
-{
-    //NSLog(@"%@",request.responseData);
-    NSLog(@"%@",request.responseString);
-}
--(void)urlRequestFailed:(ASIFormDataRequest *)request
-{
-    
-}
-- (NSString *)md5:(NSString *)str
-{
-    const char *cStr = [str UTF8String];
-    unsigned char result[16];
-    CC_MD5(cStr, strlen(cStr), result); // This is the md5 call
-    return [NSString stringWithFormat:
-            @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
-            result[0], result[1], result[2], result[3],
-            result[4], result[5], result[6], result[7],
-            result[8], result[9], result[10], result[11],
-            result[12], result[13], result[14], result[15]
-            ]; 
-}
+//-(void)urlRequestSucceeded:(ASIFormDataRequest *)request
+//{
+//    //NSLog(@"%@",request.responseData);
+//    NSLog(@"%@",request.responseString);
+//}
+//-(void)urlRequestFailed:(ASIFormDataRequest *)request
+//{
+//    
+//}
+//- (NSString *)md5:(NSString *)str
+//{
+//    const char *cStr = [str UTF8String];
+//    unsigned char result[16];
+//    CC_MD5(cStr, strlen(cStr), result); // This is the md5 call
+//    return [NSString stringWithFormat:
+//            @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
+//            result[0], result[1], result[2], result[3],
+//            result[4], result[5], result[6], result[7],
+//            result[8], result[9], result[10], result[11],
+//            result[12], result[13], result[14], result[15]
+//            ]; 
+//}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    

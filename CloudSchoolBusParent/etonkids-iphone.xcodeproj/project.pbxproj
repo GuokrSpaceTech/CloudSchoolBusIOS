@@ -38,6 +38,9 @@
 		11A3F3C61795248300C37EA1 /* alert.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A3F3C51795248200C37EA1 /* alert.png */; };
 		11B3E225193ED7FC00A96ACF /* ETSendRecevieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B3E224193ED7FC00A96ACF /* ETSendRecevieViewController.m */; };
 		11B3E228193F058500A96ACF /* ETSendReceiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B3E227193F058500A96ACF /* ETSendReceiveView.m */; };
+		11BD8C46195BB93E0098C1BA /* ETPraiseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BD8C45195BB93E0098C1BA /* ETPraiseViewController.m */; };
+		11BD8C49195BC7A90098C1BA /* user_subscribe_favor_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BD8C47195BC7A90098C1BA /* user_subscribe_favor_normal.png */; };
+		11BD8C4A195BC7A90098C1BA /* user_subscribe_favor_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BD8C48195BC7A90098C1BA /* user_subscribe_favor_sel.png */; };
 		11BF1295195AA6A9003ABFF6 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BF1294195AA6A9003ABFF6 /* AssetsLibrary.framework */; };
 		11BF1298195AD0D9003ABFF6 /* GKHealthDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BF1297195AD0D9003ABFF6 /* GKHealthDetaiViewController.m */; };
 		11BF129D195AD865003ABFF6 /* inputBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF129C195AD865003ABFF6 /* inputBG.png */; };
@@ -626,6 +629,10 @@
 		11B3E224193ED7FC00A96ACF /* ETSendRecevieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSendRecevieViewController.m; sourceTree = "<group>"; };
 		11B3E226193F058500A96ACF /* ETSendReceiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETSendReceiveView.h; sourceTree = "<group>"; };
 		11B3E227193F058500A96ACF /* ETSendReceiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSendReceiveView.m; sourceTree = "<group>"; };
+		11BD8C44195BB93E0098C1BA /* ETPraiseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETPraiseViewController.h; sourceTree = "<group>"; };
+		11BD8C45195BB93E0098C1BA /* ETPraiseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETPraiseViewController.m; sourceTree = "<group>"; };
+		11BD8C47195BC7A90098C1BA /* user_subscribe_favor_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_subscribe_favor_normal.png; sourceTree = "<group>"; };
+		11BD8C48195BC7A90098C1BA /* user_subscribe_favor_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_subscribe_favor_sel.png; sourceTree = "<group>"; };
 		11BF1294195AA6A9003ABFF6 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		11BF1296195AD0D9003ABFF6 /* GKHealthDetaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHealthDetaiViewController.h; sourceTree = "<group>"; };
 		11BF1297195AD0D9003ABFF6 /* GKHealthDetaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKHealthDetaiViewController.m; sourceTree = "<group>"; };
@@ -1430,6 +1437,8 @@
 				11C701FC1957F99F001C7D37 /* GKWriteHealthViewController.m */,
 				11BF1296195AD0D9003ABFF6 /* GKHealthDetaiViewController.h */,
 				11BF1297195AD0D9003ABFF6 /* GKHealthDetaiViewController.m */,
+				11BD8C44195BB93E0098C1BA /* ETPraiseViewController.h */,
+				11BD8C45195BB93E0098C1BA /* ETPraiseViewController.m */,
 			);
 			path = Health;
 			sourceTree = "<group>";
@@ -1545,6 +1554,8 @@
 		78C2ADB617E06F2900E6A5CD /* V3.0 */ = {
 			isa = PBXGroup;
 			children = (
+				11BD8C47195BC7A90098C1BA /* user_subscribe_favor_normal.png */,
+				11BD8C48195BC7A90098C1BA /* user_subscribe_favor_sel.png */,
 				11BF129E195AD87C003ABFF6 /* pic-1.png */,
 				11BF12A2195AD88B003ABFF6 /* send_23.png */,
 				11BF12A3195AD88B003ABFF6 /* send_24.png */,
@@ -2904,6 +2915,7 @@
 				78C2ADC217E0711700E6A5CD /* tbBtn_notic.png in Resources */,
 				78C2ADC417E0720B00E6A5CD /* navBackGround.png in Resources */,
 				78A41FDC1820B80300D0DE50 /* ETChangeBindViewController.xib in Resources */,
+				11BD8C4A195BC7A90098C1BA /* user_subscribe_favor_sel.png in Resources */,
 				78E892FB182A1DB200025EB5 /* 成长档案.png in Resources */,
 				78C2ADDD17E0830500E6A5CD /* bottom_about_default.png in Resources */,
 				78C2ADDE17E0830500E6A5CD /* bottom_about_selected.png in Resources */,
@@ -2959,6 +2971,7 @@
 				7897DF8117F2C38500DB8B21 /* myCollect.png in Resources */,
 				78F841D3181A1398007722AE /* tbBtn_setting.png in Resources */,
 				7897DF8517F2D38300DB8B21 /* activeTab1.png in Resources */,
+				11BD8C49195BC7A90098C1BA /* user_subscribe_favor_normal.png in Resources */,
 				789DC88E183C4CAD006B7FF8 /* 1登录_02 (2)_EN.png in Resources */,
 				7897DF8617F2D38300DB8B21 /* activeTab2.png in Resources */,
 				7897DF8717F2D38300DB8B21 /* activeTab3.png in Resources */,
@@ -3170,6 +3183,7 @@
 				73F3B90B178166C5004A7C23 /* CustomActionSheet.m in Sources */,
 				7860CB2018862A5200DD0E80 /* GKMovieCell.m in Sources */,
 				7860CB341888F6E300DD0E80 /* GKMovieManager.m in Sources */,
+				11BD8C46195BB93E0098C1BA /* ETPraiseViewController.m in Sources */,
 				735282B41783F6D700A62EF5 /* ScheduleCell.m in Sources */,
 				735282B71784067700A62EF5 /* FoodCell.m in Sources */,
 				78A41FD71820B14900D0DE50 /* ETMyAccountView.m in Sources */,

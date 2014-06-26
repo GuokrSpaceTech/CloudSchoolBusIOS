@@ -135,7 +135,7 @@
     [scroller release];
     
     
-    UIView * topView=[[UIView alloc]initWithFrame:CGRectMake(6, 5, self.view.frame.size.width-12, 140)];
+    topView=[[UIView alloc]initWithFrame:CGRectMake(6, 5, self.view.frame.size.width-12, 140)];
     topView.backgroundColor=[UIColor whiteColor];
     [scroller addSubview:topView];
     [topView release];
@@ -153,7 +153,12 @@
         
         
         UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame=CGRectMake(70, 0, 30, 20);
+        btn.frame=CGRectMake((self.view.frame.size.width-12)/2.0-75+30*i, label.frame.size.height+label.frame.origin.y+10, 30, 20);
+        [btn addTarget:self action:@selector(praiseBtn:) forControlEvents:UIControlEventTouchUpInside];
+        btn.tag=i;
+        [btn setBackgroundImage:[UIImage imageNamed:@"user_subscribe_favor_normal.png"] forState:UIControlStateNormal];
+         [btn setBackgroundImage:[UIImage imageNamed:@"user_subscribe_favor_sel.png"] forState:UIControlStateSelected];
+        [topView addSubview:btn];
     }
     
 
@@ -169,6 +174,27 @@
     [scroller addSubview:bottomView];
     [bottomView release];
     // Do any additional setup after loading the view.
+}
+-(void)praiseBtn:(UIButton *)btn
+{
+    int tag=btn.tag;
+    for (UIView *view in topView.subviews) {
+        if([view isKindOfClass:[UIButton class]])
+        {
+            UIButton *btn=(UIButton *)view;
+            
+            if(btn.tag<=tag)
+            {
+                btn.selected=YES;
+            }
+            else
+            {
+                btn.selected=NO;
+            }
+            
+        }
+        
+    }
 }
 -(void)rightButtonClick:(UIButton *)btn
 {

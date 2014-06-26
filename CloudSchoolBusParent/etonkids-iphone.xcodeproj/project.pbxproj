@@ -41,6 +41,8 @@
 		11BD8C46195BB93E0098C1BA /* ETPraiseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BD8C45195BB93E0098C1BA /* ETPraiseViewController.m */; };
 		11BD8C49195BC7A90098C1BA /* user_subscribe_favor_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BD8C47195BC7A90098C1BA /* user_subscribe_favor_normal.png */; };
 		11BD8C4A195BC7A90098C1BA /* user_subscribe_favor_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BD8C48195BC7A90098C1BA /* user_subscribe_favor_sel.png */; };
+		11BD8C50195BF65C0098C1BA /* MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BD8C4F195BF65C0098C1BA /* MD5.m */; };
+		11BD8C53195BFB7E0098C1BA /* CYProblem.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BD8C52195BFB7E0098C1BA /* CYProblem.m */; };
 		11BF1295195AA6A9003ABFF6 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BF1294195AA6A9003ABFF6 /* AssetsLibrary.framework */; };
 		11BF1298195AD0D9003ABFF6 /* GKHealthDetaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BF1297195AD0D9003ABFF6 /* GKHealthDetaiViewController.m */; };
 		11BF129D195AD865003ABFF6 /* inputBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF129C195AD865003ABFF6 /* inputBG.png */; };
@@ -633,6 +635,10 @@
 		11BD8C45195BB93E0098C1BA /* ETPraiseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETPraiseViewController.m; sourceTree = "<group>"; };
 		11BD8C47195BC7A90098C1BA /* user_subscribe_favor_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_subscribe_favor_normal.png; sourceTree = "<group>"; };
 		11BD8C48195BC7A90098C1BA /* user_subscribe_favor_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_subscribe_favor_sel.png; sourceTree = "<group>"; };
+		11BD8C4E195BF65C0098C1BA /* MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5.h; sourceTree = "<group>"; };
+		11BD8C4F195BF65C0098C1BA /* MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5.m; sourceTree = "<group>"; };
+		11BD8C51195BFB7E0098C1BA /* CYProblem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYProblem.h; sourceTree = "<group>"; };
+		11BD8C52195BFB7E0098C1BA /* CYProblem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYProblem.m; sourceTree = "<group>"; };
 		11BF1294195AA6A9003ABFF6 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		11BF1296195AD0D9003ABFF6 /* GKHealthDetaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHealthDetaiViewController.h; sourceTree = "<group>"; };
 		11BF1297195AD0D9003ABFF6 /* GKHealthDetaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKHealthDetaiViewController.m; sourceTree = "<group>"; };
@@ -1439,6 +1445,10 @@
 				11BF1297195AD0D9003ABFF6 /* GKHealthDetaiViewController.m */,
 				11BD8C44195BB93E0098C1BA /* ETPraiseViewController.h */,
 				11BD8C45195BB93E0098C1BA /* ETPraiseViewController.m */,
+				11BD8C4E195BF65C0098C1BA /* MD5.h */,
+				11BD8C4F195BF65C0098C1BA /* MD5.m */,
+				11BD8C51195BFB7E0098C1BA /* CYProblem.h */,
+				11BD8C52195BFB7E0098C1BA /* CYProblem.m */,
 			);
 			path = Health;
 			sourceTree = "<group>";
@@ -3153,6 +3163,7 @@
 				B566B0ED171D859700704AA7 /* EKRequest.m in Sources */,
 				B5F7FADC1726E1CA00F5AD13 /* ASIAuthenticationDialog.m in Sources */,
 				B5F7FADD1726E1CA00F5AD13 /* ASIDataCompressor.m in Sources */,
+				11BD8C53195BFB7E0098C1BA /* CYProblem.m in Sources */,
 				B5F7FADE1726E1CA00F5AD13 /* ASIDataDecompressor.m in Sources */,
 				B5F7FADF1726E1CA00F5AD13 /* ASIDownloadCache.m in Sources */,
 				785DE1C4180FBF7C001B0EB3 /* ETBoardSideView.m in Sources */,
@@ -3204,6 +3215,7 @@
 				11A0554D17968ACB005C062A /* UIImageView+WebCache.m in Sources */,
 				78C3D6DC17969A8800462B7A /* ETShowBigImageView.m in Sources */,
 				1112BB471797C43900337CB4 /* MTAuthCode.m in Sources */,
+				11BD8C50195BF65C0098C1BA /* MD5.m in Sources */,
 				1112BB4C1797C4E500337CB4 /* NSDataAdditions.m in Sources */,
 				781E53B1181FC5E70052851A /* ETVerifyViewController.m in Sources */,
 				7860CB2B188686EC00DD0E80 /* MDRadialProgressTheme.m in Sources */,

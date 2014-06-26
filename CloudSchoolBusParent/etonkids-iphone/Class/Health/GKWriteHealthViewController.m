@@ -55,6 +55,8 @@
     
     
     self.sex=@"男";
+    keshinumber=2;
+    self.keshi=@"儿科";
     
     UIImageView *navigationBackView=[[UIImageView alloc]initWithFrame:CGRectMake(0, (ios7 ? 20 : 0), 320, NAVIHEIGHT)];
     navigationBackView.image=[UIImage imageNamed:@"navigationNoText.png"];
@@ -238,10 +240,9 @@
     
     [resuest setPostValue:jsonstr forKey:@"content"];
     [resuest setPostValue:sign forKey:@"sign"];
-    if(self.keshi)
-    {
-         [resuest setPostValue:[NSString stringWithFormat:@"%d",keshinumber] forKey:@"clinic_no"];
-    }
+ 
+    [resuest setPostValue:[NSString stringWithFormat:@"%d",keshinumber] forKey:@"clinic_no"];
+   
     [resuest setPostValue:[NSString stringWithFormat:@"%d",time] forKey:@"atime"];
     [resuest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"nopic",@"pic", nil]];
     [resuest setDelegate:self];

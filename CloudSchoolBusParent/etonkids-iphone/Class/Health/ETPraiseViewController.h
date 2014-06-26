@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ETPraiseViewController : UIViewController
-
+{
+    UIView * topView;
+}
 @end

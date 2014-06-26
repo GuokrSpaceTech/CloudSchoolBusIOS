@@ -40,6 +40,7 @@ static UserLogin *current=nil;
 //website,
             schoolname,
             orderTitle,
+            inactive,
             orderEndTime;
 
 
@@ -143,7 +144,7 @@ static UserLogin *current=nil;
     self.uid_class = nil;
     self.orderEndTime = nil;
     self.orderTitle = nil;
-
+    self.inactive=nil;
 //    self.pull_rate = nil;
 //    self.company = nil;
 //    self.copyright = nil;

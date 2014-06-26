@@ -36,6 +36,7 @@
 		11A3F3C61795248300C37EA1 /* alert.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A3F3C51795248200C37EA1 /* alert.png */; };
 		11B3E225193ED7FC00A96ACF /* ETSendRecevieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B3E224193ED7FC00A96ACF /* ETSendRecevieViewController.m */; };
 		11B3E228193F058500A96ACF /* ETSendReceiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B3E227193F058500A96ACF /* ETSendReceiveView.m */; };
+		11BD8C56195C046F0098C1BA /* ETUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BD8C55195C046F0098C1BA /* ETUser.m */; };
 		11C4327A19501E070096778C /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4327919501E070096778C /* photo.png */; };
 		11C4327C19501FAF0096778C /* point_attendance.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4327B19501FAF0096778C /* point_attendance.png */; };
 		11C4327E195020840096778C /* deletereceiver.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4327D195020840096778C /* deletereceiver.png */; };
@@ -231,7 +232,6 @@
 		78A4201018223A5200D0DE50 /* fesimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A4200E18223A5200D0DE50 /* fesimg.png */; };
 		78A4201118223A5200D0DE50 /* attimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 78A4200F18223A5200D0DE50 /* attimg.png */; };
 		78AD8541186593540082E082 /* ETHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AD8540186593540082E082 /* ETHelpViewController.m */; };
-		78B06D8918AC64A10071EEF1 /* ETUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B06D8818AC64A10071EEF1 /* ETUser.m */; };
 		78BC611B17E85E0C0063B68A /* ETZoomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BC611A17E85E0C0063B68A /* ETZoomScrollView.m */; };
 		78C2ADB817E06F4E00E6A5CD /* tabbarBackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C2ADB717E06F4E00E6A5CD /* tabbarBackGround.png */; };
 		78C2ADBA17E06FEC00E6A5CD /* tabbarSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C2ADB917E06FEC00E6A5CD /* tabbarSelected.png */; };
@@ -612,6 +612,8 @@
 		11B3E224193ED7FC00A96ACF /* ETSendRecevieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSendRecevieViewController.m; sourceTree = "<group>"; };
 		11B3E226193F058500A96ACF /* ETSendReceiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETSendReceiveView.h; sourceTree = "<group>"; };
 		11B3E227193F058500A96ACF /* ETSendReceiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSendReceiveView.m; sourceTree = "<group>"; };
+		11BD8C54195C046F0098C1BA /* ETUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETUser.h; sourceTree = "<group>"; };
+		11BD8C55195C046F0098C1BA /* ETUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETUser.m; sourceTree = "<group>"; };
 		11C4327919501E070096778C /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
 		11C4327B19501FAF0096778C /* point_attendance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = point_attendance.png; sourceTree = "<group>"; };
 		11C4327D195020840096778C /* deletereceiver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deletereceiver.png; sourceTree = "<group>"; };
@@ -859,8 +861,6 @@
 		78A4200F18223A5200D0DE50 /* attimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attimg.png; sourceTree = "<group>"; };
 		78AD853F186593540082E082 /* ETHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETHelpViewController.h; sourceTree = "<group>"; };
 		78AD8540186593540082E082 /* ETHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETHelpViewController.m; sourceTree = "<group>"; };
-		78B06D8718AC64A10071EEF1 /* ETUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETUser.h; sourceTree = "<group>"; };
-		78B06D8818AC64A10071EEF1 /* ETUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETUser.m; sourceTree = "<group>"; };
 		78BC611917E85E0C0063B68A /* ETZoomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETZoomScrollView.h; sourceTree = "<group>"; };
 		78BC611A17E85E0C0063B68A /* ETZoomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETZoomScrollView.m; sourceTree = "<group>"; };
 		78C2ADB717E06F4E00E6A5CD /* tabbarBackGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbarBackGround.png; sourceTree = "<group>"; };
@@ -1738,8 +1738,8 @@
 				789EAA4A1839C02A0029D4B0 /* ETtest.m */,
 				78952FE5184C6488001C30D2 /* ETFood.h */,
 				78952FE6184C6488001C30D2 /* ETFood.m */,
-				78B06D8718AC64A10071EEF1 /* ETUser.h */,
-				78B06D8818AC64A10071EEF1 /* ETUser.m */,
+				11BD8C54195C046F0098C1BA /* ETUser.h */,
+				11BD8C55195C046F0098C1BA /* ETUser.m */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -3031,7 +3031,6 @@
 				F95021CD16DCAF640079A05E /* TimelineQuery.m in Sources */,
 				F95021CE16DCAF640079A05E /* UserQuery.m in Sources */,
 				F95021CF16DCAF640079A05E /* WeiboQuery.m in Sources */,
-				78B06D8918AC64A10071EEF1 /* ETUser.m in Sources */,
 				F95021D016DCAF640079A05E /* WeiboRequest.m in Sources */,
 				F95021D116DCAF640079A05E /* WeiboSignIn.m in Sources */,
 				11E46367194F05510039C0A0 /* GKShowReceiveBigImageViewController.m in Sources */,
@@ -3054,6 +3053,7 @@
 				F950241016DCB61B0079A05E /* RegexKitLite.m in Sources */,
 				F950241116DCB61B0079A05E /* TCWBFriendViewController.m in Sources */,
 				F950241216DCB61B0079A05E /* TCWBRebroadcastMsgViewController.m in Sources */,
+				11BD8C56195C046F0098C1BA /* ETUser.m in Sources */,
 				F950241316DCB61B0079A05E /* TCWBTopicViewController.m in Sources */,
 				F950241416DCB61B0079A05E /* UIImage+rotate.m in Sources */,
 				F950241516DCB61B0079A05E /* UINoteView.m in Sources */,

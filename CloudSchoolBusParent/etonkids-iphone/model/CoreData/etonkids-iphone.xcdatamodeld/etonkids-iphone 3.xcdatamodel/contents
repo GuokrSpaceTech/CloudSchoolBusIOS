@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F37" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="ETActicalPicture" representedClassName="ETActicalPicture" syncable="YES">
         <attribute name="articalid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="num" optional="YES" attributeType="String" syncable="YES"/>
@@ -130,6 +130,7 @@
         <attribute name="classname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cnname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="enname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inactive" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ischeck_mobile" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nikename" optional="YES" attributeType="String" syncable="YES"/>
@@ -163,21 +164,21 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ETActicalPicture" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ETActivity" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ETAttendance" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ETAttendanceType" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ETCalendar" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ETClass" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ETClassShare" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ETFood" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ETImportantNotice" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ETNoStartActivity" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ETNotice" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ETNoticPicture" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ETSchedule" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ETtest" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ETUser" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="MyActivity" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ETActicalPicture" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="ETActivity" positionX="0" positionY="0" width="128" height="270"/>
+        <element name="ETAttendance" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="ETAttendanceType" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="ETCalendar" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="ETClass" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="ETClassShare" positionX="0" positionY="0" width="128" height="180"/>
+        <element name="ETFood" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="ETImportantNotice" positionX="0" positionY="0" width="128" height="180"/>
+        <element name="ETNoStartActivity" positionX="0" positionY="0" width="128" height="270"/>
+        <element name="ETNotice" positionX="0" positionY="0" width="128" height="180"/>
+        <element name="ETNoticPicture" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="ETSchedule" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="ETtest" positionX="0" positionY="0" width="128" height="60"/>
+        <element name="ETUser" positionX="-324" positionY="18" width="128" height="418"/>
+        <element name="MyActivity" positionX="0" positionY="0" width="128" height="270"/>
     </elements>
 </model>

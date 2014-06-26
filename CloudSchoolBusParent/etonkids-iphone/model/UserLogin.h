@@ -52,7 +52,7 @@ typedef enum {LOGIN_SERVER,LOGIN_OFF} LoginStatus;
 @property (nonatomic, retain)NSString *can_comment_action;  //是否可以赞
 @property (nonatomic, retain)NSString *orderTitle;
 @property (nonatomic, retain)NSString *orderEndTime;
-
+@property (nonatomic,retain)NSString *inactive;
 
 //@property(nonatomic,retain)NSString *pull_rate;
 //@property(nonatomic,retain)NSString *company;

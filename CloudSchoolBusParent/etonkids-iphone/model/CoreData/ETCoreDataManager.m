@@ -247,6 +247,7 @@
 //            user.pid = login.pid;
             user.uid_class = [NSString stringWithFormat:@"%@",[dic objectForKey:@"uid_class"]];
             user.uid_student = [NSString stringWithFormat:@"%@",[dic objectForKey:@"uid_student"]];
+            user.inactive=[NSString stringWithFormat:@"%@",[dic objectForKey:@"inactive"]];
             
         }
     }

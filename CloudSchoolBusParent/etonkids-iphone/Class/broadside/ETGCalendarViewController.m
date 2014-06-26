@@ -364,15 +364,15 @@
             NSString *inschoolstr=[dateDic objectForKey:@"start_time"];
             NSString *outschoolstr=[dateDic objectForKey:@"end_time"];
             NSString *tempature=[NSString stringWithFormat:@"%@",[dateDic objectForKey:@"temperature"]];
-            NSString *inpath=[NSString stringWithFormat:@"http://%@",[dateDic objectForKey:@"startpath"]];
-            NSString *outPath=[NSString stringWithFormat:@"http://%@",[dateDic objectForKey:@"endpath"]];
+            NSString *inpath=[NSString stringWithFormat:@"%@",[dateDic objectForKey:@"startpath"]];
+            NSString *outPath=[NSString stringWithFormat:@"%@",[dateDic objectForKey:@"endpath"]];
             
             NSString *otherstate=[dateDic objectForKey:@"state"];
             
-           // "checkin" ="Check In";
+            // "checkin" ="Check In";
             //"checkout" ="Leave";
             
-            if([inschoolstr isEqualToString:@"<null>"])
+            if([inschoolstr isEqualToString:@""])
             {
                 inLabel.text=[NSString stringWithFormat:@"%@：%@",NSLocalizedString(@"checkin",@""),NSLocalizedString(@"none",@"")];
             }
@@ -380,7 +380,7 @@
             {
                 inLabel.text=[NSString stringWithFormat:@"%@：%@",NSLocalizedString(@"checkin",@""),inschoolstr];
             }
-            if([outschoolstr isEqualToString:@"<null>"])
+            if([outschoolstr isEqualToString:@""])
             {
                 outlable.text=[NSString stringWithFormat:@"%@：%@",NSLocalizedString(@"checkout",@""),NSLocalizedString(@"none",@"")];
             }
@@ -388,7 +388,7 @@
             {
                 outlable.text=[NSString stringWithFormat:@"%@：%@",NSLocalizedString(@"checkout",@""),outschoolstr];
             }
-            if([tempature isEqualToString:@"<null>"])
+            if([tempature isEqualToString:@""])
             {
                 tempatureLabel.text=[NSString stringWithFormat:@"%@：%@",LOCAL(@"temperature",@""),NSLocalizedString(@"none",@"")];
                 tempatureStateLabel.text=@"";
@@ -398,8 +398,8 @@
                 tempatureLabel.text=[NSString stringWithFormat:@"%@：%@%@",LOCAL(@"temperature",@""),tempature,@"℃"];
                 if([tempature floatValue]>=36.0 && [tempature floatValue]<=37.5)
                 {
-//                    "normal"="体温正常";
-//                    "heighter"="体温过高";
+                    //                    "normal"="体温正常";
+                    //                    "heighter"="体温过高";
                     
                     tempatureStateLabel.text=NSLocalizedString(@"normal", @"");
                     tempatureStateLabel.textColor=[UIColor blackColor];
@@ -413,29 +413,29 @@
             inImageView.userInteractionEnabled=NO;
             outImageView.userInteractionEnabled=NO;
             
-            if(![inpath isEqualToString:@"<null>"])
+            if(![inpath isEqualToString:@""])
             {
                 inImageView.userInteractionEnabled=YES;
-                [inImageView setImageWithURL:[NSURL URLWithString:inpath] placeholderImage:nil];
-                inImageView.path=inpath;
+                [inImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",inpath]] placeholderImage:nil];
+                inImageView.path=[NSString stringWithFormat:@"http://%@",inpath];
             }
             else
             {
                 inImageView.userInteractionEnabled=NO;
             }
             
-            if(![outPath isEqualToString:@"<null>"])
+            if(![outPath isEqualToString:@""])
             {
                 outImageView.userInteractionEnabled=YES;
-                 [outImageView setImageWithURL:[NSURL URLWithString:outPath] placeholderImage:nil];
-                   outImageView.path=outPath;
+                [outImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",outPath]] placeholderImage:nil];
+                outImageView.path=[NSString stringWithFormat:@"http://%@",outPath];
             }
             else
             {
                 outImageView.userInteractionEnabled=NO;
             }
-           
-            if([otherstate isEqualToString:@"<null>"])
+            
+            if([otherstate isEqualToString:@""])
             {
                 otherStateLabel.frame=CGRectZero;
             }
@@ -453,9 +453,9 @@
     [tempFormate setDateFormat:@"yyyy-MM-dd"];
     NSString * str = [tempFormate stringFromDate:date];
     
-//    NSArray *festivalsKey = [NSArray arrayWithObjects:@"New_Year_Day",@"Spring_Festival",@"Tomb_Sweeping_Day",@"May_Holiday",@"Dragon_Boat_Festival",@"Professional_Devlopment_Day",@"Moon_Festival",@"National_Day",@"Summer_Holiday",@"prodevtime", nil];
+    //    NSArray *festivalsKey = [NSArray arrayWithObjects:@"New_Year_Day",@"Spring_Festival",@"Tomb_Sweeping_Day",@"May_Holiday",@"Dragon_Boat_Festival",@"Professional_Devlopment_Day",@"Moon_Festival",@"National_Day",@"Summer_Holiday",@"prodevtime", nil];
     
-   // fesLabel.text = LOCAL(@"noMsgFes", @"");
+    // fesLabel.text = LOCAL(@"noMsgFes", @"");
     fesLabel.text = @"";
     fesImgV.hidden = YES;
     
@@ -477,7 +477,7 @@
             
         }
         
-
+        
     }
     NSLog(@"%@-----%@",fesLabel.text,otherStateLabel.text);
     if([fesLabel.text isEqualToString:@""] && [otherStateLabel.text isEqualToString:@""])
@@ -490,19 +490,19 @@
         fesLabel.hidden=YES;
         otherStateLabel.hidden=YES;
         
-         scroller.contentSize=CGSizeMake(300, 80);
-      
+        scroller.contentSize=CGSizeMake(300, 80);
+        
     }
     else if([fesLabel.text isEqualToString:@""] && ![otherStateLabel.text isEqualToString:@""])
     {
         otherStateLabel.frame=CGRectMake(30, 80, 150, 20);
         otherStateLabel.hidden=NO;
-         circleImageView3.hidden=NO;
-         line2.hidden=NO;
+        circleImageView3.hidden=NO;
+        line2.hidden=NO;
         circleImageView4.hidden=YES;
         line3.hidden=YES;
         fesLabel.hidden=YES;
-         scroller.contentSize=CGSizeMake(300, 100);
+        scroller.contentSize=CGSizeMake(300, 100);
         
     }
     else if(![fesLabel.text isEqualToString:@""] && [otherStateLabel.text isEqualToString:@""])
@@ -516,8 +516,8 @@
         line3.hidden=YES;
         fesLabel.hidden=NO;
         otherStateLabel.hidden=YES;
-         scroller.contentSize=CGSizeMake(300, 100);
-
+        scroller.contentSize=CGSizeMake(300, 100);
+        
     }
     else
     {
@@ -529,7 +529,7 @@
         fesLabel.hidden=NO;
         otherStateLabel.hidden=NO;
         fesLabel.frame=CGRectMake(30, 110, 250, 20);
-         scroller.contentSize=CGSizeMake(300, 130);
+        scroller.contentSize=CGSizeMake(300, 130);
     }
     
    // otherStateLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 80, 150, 20)];

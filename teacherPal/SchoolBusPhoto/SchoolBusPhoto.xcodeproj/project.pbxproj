@@ -217,6 +217,7 @@
 		11B4051E1918D09E00E56A59 /* GKStudentAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B4051D1918D09E00E56A59 /* GKStudentAdd.m */; };
 		11B470D81925CB5300CFFEC3 /* headplaceholder_big.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B470D71925CB5300CFFEC3 /* headplaceholder_big.png */; };
 		11B470DA1925CDFC00CFFEC3 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B470D91925CDFC00CFFEC3 /* photo.png */; };
+		11B50758195D5DAF00FE1D04 /* arrowdown.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B50757195D5DAF00FE1D04 /* arrowdown.png */; };
 		11B7D684188F6DD70036B7AA /* GKSaySomethingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B7D683188F6DD70036B7AA /* GKSaySomethingView.m */; };
 		11B8492E18C058DD00D9205C /* corners@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B8492D18C058DD00D9205C /* corners@2x.png */; };
 		11B852A1183221CF005FA5B9 /* ETNicknameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B85296183221CF005FA5B9 /* ETNicknameViewController.m */; };
@@ -762,6 +763,7 @@
 		11B4051D1918D09E00E56A59 /* GKStudentAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKStudentAdd.m; sourceTree = "<group>"; };
 		11B470D71925CB5300CFFEC3 /* headplaceholder_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headplaceholder_big.png; sourceTree = "<group>"; };
 		11B470D91925CDFC00CFFEC3 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
+		11B50757195D5DAF00FE1D04 /* arrowdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowdown.png; sourceTree = "<group>"; };
 		11B7D682188F6DD70036B7AA /* GKSaySomethingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSaySomethingView.h; sourceTree = "<group>"; };
 		11B7D683188F6DD70036B7AA /* GKSaySomethingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSaySomethingView.m; sourceTree = "<group>"; };
 		11B8492D18C058DD00D9205C /* corners@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "corners@2x.png"; sourceTree = "<group>"; };
@@ -1420,6 +1422,7 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				11B50757195D5DAF00FE1D04 /* arrowdown.png */,
 				11497AE51952BC43003F169A /* home1.png */,
 				11497AE61952BC43003F169A /* home2.png */,
 				11BAA766195142F6006DA9AA /* grade.png */,
@@ -1976,7 +1979,7 @@
 				ORGANIZATIONNAME = mactop;
 				TargetAttributes = {
 					2A32A55818122C01007CAA8E = {
-						DevelopmentTeam = 6Q77HKGB24;
+						DevelopmentTeam = 24QP873G9R;
 					};
 				};
 			};
@@ -2118,6 +2121,7 @@
 				11AF3AF118166ECB00B36176 /* upNormal@2x.png in Resources */,
 				11AF3AED18166D9A00B36176 /* bottomView.png in Resources */,
 				78709C13187D1733009250FB /* edit-filters-overlay-default-short.png in Resources */,
+				11B50758195D5DAF00FE1D04 /* arrowdown.png in Resources */,
 				1193B39D1827847C00660CB1 /* markScore.png in Resources */,
 				11E27F8C183C64E100CAE0BB /* aboutlogo_EN1.png in Resources */,
 				11B852BF18334D52005FA5B9 /* upbuttonH.png in Resources */,
@@ -2505,8 +2509,8 @@
 		2A32A57C18122C02007CAA8E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchoolBusPhoto/SchoolBusPhoto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2523,8 +2527,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C4055662-D7AE-420C-A625-A068854FA10D";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "83E56D26-A6DE-4818-B9EE-107EF7E5896F";
+				PROVISIONING_PROFILE = "89D2F4C5-5483-4C84-8033-31455DC7B779";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "89D2F4C5-5483-4C84-8033-31455DC7B779";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2533,8 +2537,8 @@
 		2A32A57D18122C02007CAA8E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchoolBusPhoto/SchoolBusPhoto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2551,8 +2555,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C4055662-D7AE-420C-A625-A068854FA10D";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C4055662-D7AE-420C-A625-A068854FA10D";
+				PROVISIONING_PROFILE = "89D2F4C5-5483-4C84-8033-31455DC7B779";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "89D2F4C5-5483-4C84-8033-31455DC7B779";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

@@ -55,7 +55,12 @@
     _passWord.placeholder=NSLocalizedString(@"passwordlogin", @"");
     [_loginBtn setTitle:NSLocalizedString(@"login", @"") forState:UIControlStateNormal];
     GKUserLogin *user=[GKUserLogin currentLogin];
-    _forgetpass.frame=CGRectMake(10, _loginBtn.frame.size.height+_loginBtn.frame.origin.y, 300, 20);
+    
+   // _forgetpass.frame=CGRectMake(10,self.view.frame.size.height-5, 300, 20);
+    
+
+    
+    NSLog(@"%f",self.view.frame.size.height);
     //记住密码*******************************
     NSUserDefaults *Default=[NSUserDefaults standardUserDefaults];
     //判定是否设定了记住密码

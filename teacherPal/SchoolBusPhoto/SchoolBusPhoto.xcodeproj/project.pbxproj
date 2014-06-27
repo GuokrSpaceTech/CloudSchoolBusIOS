@@ -2509,8 +2509,8 @@
 		2A32A57C18122C02007CAA8E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchoolBusPhoto/SchoolBusPhoto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2527,8 +2527,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "89D2F4C5-5483-4C84-8033-31455DC7B779";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "89D2F4C5-5483-4C84-8033-31455DC7B779";
+				PROVISIONING_PROFILE = "76E8C3D3-588C-4109-87E5-5DF13FA2D9D5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "76E8C3D3-588C-4109-87E5-5DF13FA2D9D5";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2537,8 +2537,8 @@
 		2A32A57D18122C02007CAA8E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchoolBusPhoto/SchoolBusPhoto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2555,8 +2555,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "89D2F4C5-5483-4C84-8033-31455DC7B779";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "89D2F4C5-5483-4C84-8033-31455DC7B779";
+				PROVISIONING_PROFILE = "76E8C3D3-588C-4109-87E5-5DF13FA2D9D5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "76E8C3D3-588C-4109-87E5-5DF13FA2D9D5";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

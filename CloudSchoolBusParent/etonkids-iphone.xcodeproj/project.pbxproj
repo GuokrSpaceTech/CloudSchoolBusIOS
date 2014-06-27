@@ -3286,8 +3286,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: kai yang (E76KEG2YY8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kai yang (E76KEG2YY8)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -3312,8 +3312,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A5FFEDA5-528E-4B22-8DF1-3E9243354F7A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A5FFEDA5-528E-4B22-8DF1-3E9243354F7A";
+				PROVISIONING_PROFILE = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3327,8 +3327,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: kai yang (E76KEG2YY8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kai yang (E76KEG2YY8)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -3353,8 +3353,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A5FFEDA5-528E-4B22-8DF1-3E9243354F7A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A5FFEDA5-528E-4B22-8DF1-3E9243354F7A";
+				PROVISIONING_PROFILE = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;

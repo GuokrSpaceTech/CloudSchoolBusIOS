@@ -17,15 +17,18 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
-            self.frame = CGRectMake(0, 0, (iphone5 ? 568 : 480), 300);
-        }else{
+        //if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
+           // self.frame = CGRectMake(0, 0, (iphone5 ? 568 : 480), 300);
+       // }else{
             self.frame = CGRectMake(0, 0, 320, (iphone5 ? 548 : 460) + (ios7 ? 20 : 0));
-        }
+       // }
         
         self.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.0f];
         
         
+        NSLog(@"%f",self.frame.size.width);
+        
+        self.backgroundColor=[UIColor clearColor];
         mainView = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height, self.frame.size.width, 275)];
         mainView.backgroundColor = [UIColor whiteColor];
         [self addSubview:mainView];
@@ -278,32 +281,32 @@
 
 - (void)reloadFrame:(UIInterfaceOrientation)orientation
 {
-    if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
-        self.frame = CGRectMake(0, 0, (iphone5 ? 568 : 480), 300);
-        mainView.frame = CGRectMake(0, self.frame.size.height - 275, self.frame.size.width, 275);
-        
-        
-        //     [button setFrame:CGRectMake(i%3*96 + 35, 30 + i/3 * 100, 58, 58)];
-        //  UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(button.center.x - 29, button.frame.origin.y + button.frame.size.height, 58, 30)];
-        
-        for (int i=0; i<count; i++) {
-            UIButton *button=(UIButton *)[mainView viewWithTag:i+777];
-            
-            UILabel *label=(UILabel *)[mainView viewWithTag:i+888];
-            
-            
-            if(iphone5)
-                button.frame=CGRectMake(i%3*96 +150, 30 + i/3 * 100, 58, 58);
-            else
-                button.frame=CGRectMake(i%3*96 +110, 30 + i/3 * 100, 58, 58);
-            
-            label.frame=CGRectMake(button.center.x - 29, button.frame.origin.y + button.frame.size.height, 58, 30);
-            
-        }
-        
-        [cancelBtn setCenter:CGPointMake((iphone5 ? 568 : 480) / 2,240)];
-        
-    }else{
+//    if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
+//        self.frame = CGRectMake(0, 0, (iphone5 ? 568 : 480), 300);
+//        mainView.frame = CGRectMake(0, self.frame.size.height - 275, self.frame.size.width, 275);
+//        
+//        
+//        //     [button setFrame:CGRectMake(i%3*96 + 35, 30 + i/3 * 100, 58, 58)];
+//        //  UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(button.center.x - 29, button.frame.origin.y + button.frame.size.height, 58, 30)];
+//        
+//        for (int i=0; i<count; i++) {
+//            UIButton *button=(UIButton *)[mainView viewWithTag:i+777];
+//            
+//            UILabel *label=(UILabel *)[mainView viewWithTag:i+888];
+//            
+//            
+//            if(iphone5)
+//                button.frame=CGRectMake(i%3*96 +150, 30 + i/3 * 100, 58, 58);
+//            else
+//                button.frame=CGRectMake(i%3*96 +110, 30 + i/3 * 100, 58, 58);
+//            
+//            label.frame=CGRectMake(button.center.x - 29, button.frame.origin.y + button.frame.size.height, 58, 30);
+//            
+//        }
+//        
+//        [cancelBtn setCenter:CGPointMake((iphone5 ? 568 : 480) / 2,240)];
+//        
+  //  }else{
         self.frame = CGRectMake(0, 0, 320, (iphone5 ? 548 : 460));
         mainView.frame = CGRectMake(0, self.frame.size.height - 275, self.frame.size.width, 275);
         
@@ -315,7 +318,7 @@
         }
         
         [cancelBtn setCenter:CGPointMake(160,240)];
-    }
+    //}
 }
 
 

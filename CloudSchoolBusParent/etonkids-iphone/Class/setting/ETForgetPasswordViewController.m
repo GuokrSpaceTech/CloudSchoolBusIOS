@@ -502,21 +502,21 @@
     }
 }
 
-- (BOOL)shouldAutorotate
-{
-    return NO;
-}
-
-//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+//- (BOOL)shouldAutorotate
 //{
-//    
-//    return YES;
-//    
+//    return NO;
 //}
-- (NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskPortrait;
-}
+//
+////- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+////{
+////    
+////    return YES;
+////    
+////}
+//- (NSUInteger)supportedInterfaceOrientations
+//{
+//    return UIInterfaceOrientationMaskPortrait;
+//}
 
 
 

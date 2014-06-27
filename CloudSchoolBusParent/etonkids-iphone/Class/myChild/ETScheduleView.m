@@ -147,7 +147,7 @@
         return;
     }
     
-    NSDictionary *dateDic = [NSDictionary dictionaryWithObjectsAndKeys:paraStr,@"day", nil];
+    NSDictionary *dateDic = [NSDictionary dictionaryWithObjectsAndKeys:btnStr,@"day", nil];
     
     NSLog(@"%@",dateDic);
     [[EKRequest Instance] EKHTTPRequest:schedule parameters:dateDic requestMethod:GET forDelegate:self];
@@ -282,18 +282,30 @@
 //        NSMutableArray *result = [resultDic objectForKey:@"schedule"];
         
         NSString *paramDay = [param objectForKey:@"day"];
+        
+        
+        NSArray *dateArr = [paramDay componentsSeparatedByString:@"-"];
+        NSString *tempStr = [NSString stringWithFormat:@"%@%@%@",[dateArr objectAtIndex:0],[dateArr objectAtIndex:1],[dateArr objectAtIndex:2]];
+        NSString *paraStr = [tempStr substringFromIndex:2];
+        
+
+        
         NSString *t = [datebutton titleForState:UIControlStateNormal];
         NSString *t1 = [t stringByReplacingOccurrencesOfString:@"-" withString:@""];
         
-        if (![paramDay isEqualToString:[t1 substringFromIndex:2]])
+        if (![paraStr isEqualToString:[t1 substringFromIndex:2]])
         {
             return;
         }
         self.dataArray = result;
         
+        
+        
+        
+        
 //        NSString *paramDay = [param objectForKey:@"day"];
-        [ETCoreDataManager removeScheduleByDate:paramDay];
-        [ETCoreDataManager addSchedule:self.dataArray withDate:paramDay];
+        [ETCoreDataManager removeScheduleByDate:paraStr];
+        [ETCoreDataManager addSchedule:self.dataArray withDate:paraStr];
         
         
         if (self.dataArray.count == 0)

@@ -634,25 +634,25 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 }
 
 
-- (BOOL)shouldAutorotate
-{
-    //    if ([self isKindOfClass:[ETShowBigImageViewController class]]) { // 如果是这个 vc 则支持自动旋转
-    //        return YES;
-    //    }
-    return NO;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-
-{
-    
-    //    if([[self selectedViewController] isKindOfClass:[子类 class]])
-    return NO;
-    
-}
-- (NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationLandscapeLeft | UIInterfaceOrientationLandscapeRight | UIInterfaceOrientationPortrait;
-}
+//- (BOOL)shouldAutorotate
+//{
+//    //    if ([self isKindOfClass:[ETShowBigImageViewController class]]) { // 如果是这个 vc 则支持自动旋转
+//    //        return YES;
+//    //    }
+//    return NO;
+//}
+//
+//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+//
+//{
+//    
+//    //    if([[self selectedViewController] isKindOfClass:[子类 class]])
+//    return NO;
+//    
+//}
+//- (NSUInteger)supportedInterfaceOrientations
+//{
+//    return UIInterfaceOrientationLandscapeLeft | UIInterfaceOrientationLandscapeRight | UIInterfaceOrientationPortrait;
+//}
 
 @end

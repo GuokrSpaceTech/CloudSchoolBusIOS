@@ -302,6 +302,8 @@
         
         NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
         [format setDateFormat:@"MM"];
+        
+        //NSString *str=[format stringFromDate:[NSDate date]];
 //        NSLog(@"%@,%@",[m substringFromIndex:2],[format stringFromDate:[NSDate date]]);
         if([[m substringFromIndex:5] isEqualToString:[format stringFromDate:[NSDate date]]])
         {

@@ -222,7 +222,7 @@
 {
     self.wantDelete=child;
     
-    ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:@"delete" message:@"确认删除" delegate:self cancelButtonTitle:LOCAL(@"cancel", @"取消") otherButtonTitles:LOCAL(@"ok", @"确定"), nil];
+    ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"delete", @"") delegate:self cancelButtonTitle:LOCAL(@"cancel", @"取消") otherButtonTitles:LOCAL(@"ok", @"确定"), nil];
     [alert show];
     
 

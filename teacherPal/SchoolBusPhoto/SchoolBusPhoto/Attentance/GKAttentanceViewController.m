@@ -64,6 +64,12 @@
     [todayBtn addTarget:self action:@selector(rightClick:) forControlEvents:UIControlEventTouchUpInside];
     [navigationView addSubview:todayBtn];
     
+    UIImageView *arrowImageView=[[UIImageView alloc]initWithFrame:CGRectMake(210,titlelabel.frame.origin.y+18, 10, 10)];
+    arrowImageView.image=[UIImage imageNamed:@"arrowdown.png"];
+    [navigationView addSubview:arrowImageView];
+    [arrowImageView release];
+
+    
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y-20) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
@@ -410,7 +416,7 @@
         outlabel.text=[NSString stringWithFormat:@"%@%@",NSLocalizedString(@"outclasstime", @""),attence.outtime];
         
         inImageView.urlPath=attence.inavater;
-        if(![attence.outavater isEqualToString:@"<null>"])
+        if(![attence.outavater isEqualToString:@""])
         {
             outImageView.urlPath=[NSString stringWithFormat:@"http://%@",attence.outavater];
             [outImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",attence.outavater]] placeholderImage:nil];
@@ -423,7 +429,7 @@
         }
         
        // NSURL
-        if(![attence.inavater isEqualToString:@"<null>"])
+        if(![attence.inavater isEqualToString:@""])
         {
             inImageView.urlPath=[NSString stringWithFormat:@"http://%@",attence.inavater];
             [inImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",attence.inavater]] placeholderImage:nil];

@@ -13,7 +13,7 @@
 @property (retain, nonatomic) IBOutlet UITextField *passWord;
 
 @property (retain, nonatomic) IBOutlet UIButton *loginBtn;
-
+@property (nonatomic,retain) IBOutlet UILabel *forgetpass;
 
 //
 //@property (retain, nonatomic) IBOutlet UIImageView *remImgV;

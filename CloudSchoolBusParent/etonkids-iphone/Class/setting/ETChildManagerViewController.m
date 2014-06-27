@@ -148,7 +148,7 @@
         imgV.image = [UIImage imageNamed:@"otherKids.png"];
     }
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 7, 200, 30)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 7, 190, 30)];
     label.text = [NSString stringWithFormat:@"%@   %@",u.nikename,u.classname];
     label.backgroundColor = [UIColor clearColor];
     label.font = [UIFont systemFontOfSize:16];
@@ -156,6 +156,27 @@
     [cell.contentView addSubview:label];
     [label release];
 
+    
+    UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(240, 7, 50, 30)];
+    if([u.inactive intValue]==0)
+    {
+    
+        label1.text =LOCAL(@"inclass", @"");
+        label1.textColor=[UIColor blackColor];
+    }
+    else
+    {
+        label1.text =LOCAL(@"outclass", @"");
+        label1.textColor=[UIColor grayColor];
+
+    }
+   
+    label1.backgroundColor = [UIColor clearColor];
+    label1.font = [UIFont systemFontOfSize:16];
+    
+    [cell.contentView addSubview:label1];
+    [label1 release];
+    
     cell.selectionStyle=UITableViewCellSelectionStyleBlue;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     

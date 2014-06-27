@@ -61,6 +61,13 @@
     [todayBtn addTarget:self action:@selector(rightClick:) forControlEvents:UIControlEventTouchUpInside];
     [navigationView addSubview:todayBtn];
 
+    
+    UIImageView *arrowImageView=[[UIImageView alloc]initWithFrame:CGRectMake(210,titlelabel.frame.origin.y+18, 10, 10)];
+    arrowImageView.image=[UIImage imageNamed:@"arrowdown.png"];
+    [navigationView addSubview:arrowImageView];
+    [arrowImageView release];
+
+    
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y-20) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
@@ -78,7 +85,7 @@
     else
         numLabel.textAlignment=UITextAlignmentCenter;
     numLabel.font=[UIFont systemFontOfSize:14];
-    numLabel.text=@"数量";
+    numLabel.text=@"";
     [bottomView addSubview:numLabel];
     
     // studentCount
@@ -106,7 +113,7 @@
     
 
 
-//    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"2",@"type",@"2014-06-05",@"date", nil];
+    //    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"2",@"type",@"2014-06-05",@"date", nil];
 //    [[EKRequest Instance] EKHTTPRequest:attendancemanager parameters:dic requestMethod:GET forDelegate:self];
 
 //

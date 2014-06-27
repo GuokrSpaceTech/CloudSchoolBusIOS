@@ -49,30 +49,18 @@
     
     [_jiaoshiLogin setImage:helper];
     
-
+    _forgetpass.text=NSLocalizedString(@"forgetpass", @"");
+   
     _userName.placeholder=NSLocalizedString(@"classaccount", @"");
     _passWord.placeholder=NSLocalizedString(@"passwordlogin", @"");
     [_loginBtn setTitle:NSLocalizedString(@"login", @"") forState:UIControlStateNormal];
     GKUserLogin *user=[GKUserLogin currentLogin];
     
-    //[self setNeedsStatusBarAppearanceUpdate];
-   // NSUserDefaults *defaultUser=[NSUserDefaults standardUserDefaults];
-    //判定是否设定了自动登录
-//    if([defaultUser objectForKey:AUTOLOGIN])
-//    {
-//        //remImgV.hidden = NO;
-//        //autoImgV.hidden = NO;
-//        //判定最后一次登录的状态是否成功，及判定帐号和密码是否存在
-//        if ([user getLastLogin])
-//        {
-//            _userName.text=user._userName;
-//            _passWord.text=user._passWord;
-//        }
-//    }
-//    else
-//    {
-//        //autoImgV.hidden = YES;
-//    }
+   // _forgetpass.frame=CGRectMake(10,self.view.frame.size.height-5, 300, 20);
+    
+
+    
+    NSLog(@"%f",self.view.frame.size.height);
     //记住密码*******************************
     NSUserDefaults *Default=[NSUserDefaults standardUserDefaults];
     //判定是否设定了记住密码
@@ -176,6 +164,7 @@
     [_loginBtn release];
     [_userName release];
     [_passWord release];
+    self.forgetpass=nil;
 //    self.remImgV=nil;
 //    self.autoImgV=nil;
     [_jiaoshiLogin release];
@@ -481,6 +470,7 @@
 - (void)viewDidUnload {
     [self setUserName:nil];
     [self setPassWord:nil];
+    [self setForgetpass:nil];
     [self setJiaoshiLogin:nil];
     [_loginBtn release];
 //    self.remImgV=nil;

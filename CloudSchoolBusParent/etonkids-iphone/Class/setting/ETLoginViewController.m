@@ -378,7 +378,7 @@
                 
                 user.uid_class = cid;
                 user.uid_student = stuid;
-                
+                user.inactive=[NSString stringWithFormat:@"%@",[dic objectForKey:@"inactive"]];
                 [[EKRequest Instance] EKHTTPRequest:unit parameters:param requestMethod:POST forDelegate:self];
             }
             else    // 多个学生
@@ -434,7 +434,7 @@
         user.username = [NSString stringWithFormat:@"%@",[dic objectForKey:@"username"]];
         user.orderTitle = [NSString stringWithFormat:@"%@",[dic objectForKey:@"ordertitle"]];
         user.orderEndTime = [NSString stringWithFormat:@"%@",[dic objectForKey:@"orderendtime"]];
-
+        user.inactive=[NSString stringWithFormat:@"%@",[dic objectForKey:@"inactive"]];
         [[EKRequest Instance] EKHTTPRequest:classinfo parameters:nil requestMethod:GET forDelegate:self];
         
         
@@ -767,7 +767,7 @@
             
             user.uid_class = cid;
             user.uid_student = stuid;
-            
+             user.inactive=[NSString stringWithFormat:@"%@",[dic objectForKey:@"inactive"]];
             [[EKRequest Instance] EKHTTPRequest:unit parameters:param requestMethod:POST forDelegate:self];
         }
     }
@@ -873,10 +873,10 @@
 //    return NO;
 //    
 //}
-- (NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskPortrait;
-}
+//- (NSUInteger)supportedInterfaceOrientations
+//{
+//    return UIInterfaceOrientationMaskPortrait;
+//}
 
 
 @end

@@ -135,40 +135,40 @@
     NSLog(@"%d",originShowNum);
     
     int temp = originShowNum;
-    if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight)
-    {
-        navigationBackView.frame = CGRectMake(0, 0, iphone5 ? 568 : 480, NAVIHEIGHT);
-        item.center = CGPointMake((iphone5 ? 568 : 480)/2, NAVIHEIGHT/2);
-        rightButton.frame = CGRectMake((iphone5 ? 568 : 480) - 10 - 40, (NAVIHEIGHT - 35)/2.0f, 50, 35);
-        scrollV.frame = CGRectMake(0, 0, iphone5 ? 568 : 480, 300);
-        scrollV.contentOffset = CGPointMake((iphone5 ? 568 : 480) * temp, 0);
-        
-        scrollV.contentSize = CGSizeMake(scrollV.frame.size.width * self.imgUrlArr.count, scrollV.frame.size.height);
-        
-        for (id obj in scrollV.subviews) {
-            
-            if ([obj isKindOfClass:[ETZoomScrollView class]]) {
-                ETZoomScrollView *imgV = (ETZoomScrollView *)obj;
-                if (imgV.tag >= 777) {
-                    imgV.frame = CGRectMake(scrollV.frame.size.width*(imgV.tag % 777), 0, scrollV.frame.size.width, scrollV.frame.size.height);
-                    imgV.zoomScale = 1;
-                    imgV.imageView.frame = CGRectMake(0,
-                                                      0,
-                                                      scrollV.frame.size.width,
-                                                      scrollV.frame.size.height);
-                }
-            }
-            
-        }
-        
-        
+   // if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight)
+    //{
+//        navigationBackView.frame = CGRectMake(0, 0, iphone5 ? 568 : 480, NAVIHEIGHT);
+//        item.center = CGPointMake((iphone5 ? 568 : 480)/2, NAVIHEIGHT/2);
+//        rightButton.frame = CGRectMake((iphone5 ? 568 : 480) - 10 - 40, (NAVIHEIGHT - 35)/2.0f, 50, 35);
+//        scrollV.frame = CGRectMake(0, 0, iphone5 ? 568 : 480, 300);
+//        scrollV.contentOffset = CGPointMake((iphone5 ? 568 : 480) * temp, 0);
+//        
+//        scrollV.contentSize = CGSizeMake(scrollV.frame.size.width * self.imgUrlArr.count, scrollV.frame.size.height);
+//        
+//        for (id obj in scrollV.subviews) {
+//            
+//            if ([obj isKindOfClass:[ETZoomScrollView class]]) {
+//                ETZoomScrollView *imgV = (ETZoomScrollView *)obj;
+//                if (imgV.tag >= 777) {
+//                    imgV.frame = CGRectMake(scrollV.frame.size.width*(imgV.tag % 777), 0, scrollV.frame.size.width, scrollV.frame.size.height);
+//                    imgV.zoomScale = 1;
+//                    imgV.imageView.frame = CGRectMake(0,
+//                                                      0,
+//                                                      scrollV.frame.size.width,
+//                                                      scrollV.frame.size.height);
+//                }
+//            }
+//            
+//        }
         
         
         
         
-    }
-    else
-    {
+        
+        
+    //}
+    //else
+    //{
         navigationBackView.frame = CGRectMake(0, 0, 320, NAVIHEIGHT);
         item.center = CGPointMake(320/2, NAVIHEIGHT/2);
         rightButton.frame=CGRectMake(320 - 10 - 40, (NAVIHEIGHT - 35)/2.0f,50, 35);
@@ -194,7 +194,7 @@
         
         NSLog(@"%d",originShowNum);
         
-    }
+    //}
 
     originShowNum = temp;
     
@@ -257,7 +257,10 @@
     
     NSArray *imgArr = [NSArray arrayWithObjects:@"保存.png",@"logo_sinaweibo.png",@"腾讯微博.png",@"logo_wechat.png",@"logo_wechatmoments(1).png",@"email.png", nil];
     NSArray *nameArr = [NSArray arrayWithObjects:LOCAL(@"savePhoto", @""),LOCAL(@"sina", @""),LOCAL(@"tencent", @""),LOCAL(@"wechat", @""),LOCAL(@"friend", @"分享到微信朋友圈"),LOCAL(@"mail",@""), nil];
-    MTCustomActionSheet *actionSheet = [[MTCustomActionSheet alloc] initWithFrame:CGRectZero andImageArr:imgArr nameArray:nameArr orientation:[UIDevice currentDevice].orientation];
+    
+    
+    
+    MTCustomActionSheet *actionSheet = [[MTCustomActionSheet alloc] initWithFrame:CGRectZero andImageArr:imgArr nameArray:nameArr orientation:UIDeviceOrientationPortrait];
     actionSheet.delegate = self;
     actionSheet.tag = 555;
     [actionSheet showInView:vc.view];

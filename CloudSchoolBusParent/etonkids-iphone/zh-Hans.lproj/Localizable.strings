@@ -491,3 +491,6 @@
 "receiverfailed"="上传失败，请重试";
 "receiversuccess"="上传成功";
 "loadfailed"="加载失败";
+
+"inclass"="在班";
+"outclass"="已离班";

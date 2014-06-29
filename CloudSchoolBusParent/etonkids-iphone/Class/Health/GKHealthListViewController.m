@@ -103,11 +103,60 @@
     [self.view addSubview:_tableView];
 
     dateArr=[[NSMutableArray alloc]init];
-    [self loadData];
+ //   [self loadData];
     
 
-   
+   //测试评价接口
 
+    
+//    UserLogin *user=[UserLogin currentLogin];
+//    
+//    
+//    int time= [[NSDate date] timeIntervalSince1970];
+//    
+//    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,@"12621049",@"testchunyu"];
+//    
+//    NSString *sign=[MD5 md5:string];
+//    
+//
+//    ASIFormDataRequest *resuest=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://yzxc.summer2.chunyu.me/partner/yzxc/problem/assess"]];
+//    [resuest setPostValue:user.username forKey:@"user_id"];
+//    
+//    [resuest setPostValue:@"12621049" forKey:@"problem_id"];
+//     [resuest setPostValue:@"哈哈哈测试" forKey:@"content"];
+//      [resuest setPostValue:@"5" forKey:@"star"];
+//    [resuest setPostValue:sign forKey:@"sign"];
+//    
+// 
+//    
+//    [resuest setPostValue:[NSString stringWithFormat:@"%d",time] forKey:@"atime"];
+//    [resuest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"nopic",@"pic", nil]];
+//    [resuest setDelegate:self];
+//    //配置代理为本类
+//    [resuest setTimeOutSeconds:10];
+//    //设置超时
+//    [resuest setDidFailSelector:@selector(urlRequestFailed:)];
+//    [resuest setDidFinishSelector:@selector(urlRequestSucceeded:)];
+//    
+//    [resuest startAsynchronous];
+    
+    
+    
+    //测试问题详情
+     UserLogin *user=[UserLogin currentLogin];
+    ASIFormDataRequest *resuest=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://yzxc.summer2.chunyu.me/partner/yzxc/problem/12621049/detail"]];
+    [resuest setPostValue:user.username forKey:@"user_id"];
+
+       [resuest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"nopic",@"pic", nil]];
+    [resuest setDelegate:self];
+    //配置代理为本类
+    [resuest setTimeOutSeconds:10];
+    //设置超时
+    [resuest setDidFailSelector:@selector(urlRequestFailed:)];
+    [resuest setDidFinishSelector:@selector(urlRequestSucceeded:)];
+    
+    [resuest startAsynchronous];
+    
 
 }
 

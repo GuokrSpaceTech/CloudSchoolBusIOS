@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
+#import "CYProblem.h"
+#import "CYDoctor.h"
+
 @interface GKHealthDetaiViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
        UITextField *inputField;
@@ -17,4 +20,8 @@
 }
 @property (nonatomic,retain)UITableView *_tableView;
 @property (nonatomic,retain)NSData * photoImage;
+@property (nonatomic,retain) CYProblem *problem;
+@property (nonatomic,retain)NSMutableArray *answerList;
+@property (nonatomic,retain) CYDoctor *doctor;
+
 @end

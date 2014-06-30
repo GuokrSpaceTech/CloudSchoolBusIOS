@@ -13,6 +13,8 @@
 #import "UserLogin.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "ETPraiseViewController.h"
+#import "ProblemDetail.h"
+#import "ProblemContent.h"
 @interface GKHealthDetaiViewController ()
 
 @end
@@ -159,7 +161,7 @@
     [middleLabel release];
     
 
-    
+    _answerList=[[NSMutableArray alloc]init];
     
     __tableView= [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), 320, (iphone5 ? 548 : 460) - NAVIHEIGHT - (ios7 ? 20 : 0)) style:UITableViewStylePlain];
     __tableView.backgroundView = nil;
@@ -207,24 +209,61 @@
     [inputView release];
     
     
+    
+    [self loadAnswer];
+    
     // [imageView];
   
 
+}
+
+-(void)loadAnswer
+{
+   // clinic_erke_lihuiling
+    
+    //测试问题详情
+    
+    if(HUD==nil)
+    {
+        HUD=[[MBProgressHUD alloc]initWithView:self.view];
+        HUD.labelText=@"加载中";
+        [self.view addSubview:HUD];
+        [HUD release];
+        [HUD show:YES];
+    }
+    
+    
+    NSString *urlstr=[NSString stringWithFormat:@"http://yzxc.summer2.chunyu.me/partner/yzxc/problem/%@/detail",self.problem.problemId];
+    
+  //  NSString *urlstr=[NSString stringWithFormat:@"http://yzxc.summer2.chunyu.me/partner/yzxc/doctor/%@/detail",@"clinic_erke_lihuiling"];
+  //  UserLogin *user=[UserLogin currentLogin];
+    ASIFormDataRequest *resuest=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlstr]];
+   // [resuest setPostValue:user.username forKey:@"user_id"];
+    // [resuest set];
+    [resuest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"data",@"pic", nil]];
+    [resuest setDelegate:self];
+    //配置代理为本类
+    [resuest setTimeOutSeconds:10];
+    //设置超时
+    [resuest setDidFailSelector:@selector(urlRequestFailed:)];
+    [resuest setDidFinishSelector:@selector(urlRequestSucceeded:)];
+    
+    [resuest startAsynchronous];
 }
 -(void)picClick:(UIButton *)btn
 {
     
     
-    [inputField resignFirstResponder];
+//    [inputField resignFirstResponder];
+//    
+//
+//    ETPraiseViewController * PraiseVC=[[ETPraiseViewController alloc]init];
+//    [self.navigationController pushViewController:PraiseVC animated:YES];
+//    [PraiseVC release];
     
-
-    ETPraiseViewController * PraiseVC=[[ETPraiseViewController alloc]init];
-    [self.navigationController pushViewController:PraiseVC animated:YES];
-    [PraiseVC release];
-    
-//    UIActionSheet *sheet=[[UIActionSheet alloc]initWithTitle:NSLocalizedString(@"changeavadar", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") destructiveButtonTitle:NSLocalizedString(@"takePhoto", @"") otherButtonTitles:NSLocalizedString(@"choosePhoto", @""), nil];
-//    [sheet showInView:self.view];
-//    [sheet release];
+    UIActionSheet *sheet=[[UIActionSheet alloc]initWithTitle:NSLocalizedString(@"changeavadar", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") destructiveButtonTitle:NSLocalizedString(@"takePhoto", @"") otherButtonTitles:NSLocalizedString(@"choosePhoto", @""), nil];
+    [sheet showInView:self.view];
+    [sheet release];
 }
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -287,6 +326,14 @@
     self.photoImage=dataa;
     
   //  [_ reloadData];
+    if(HUD==nil)
+    {
+        HUD=[[MBProgressHUD alloc]initWithView:self.view];
+        HUD.labelText=@"加载中";
+        [self.view addSubview:HUD];
+        [HUD release];
+        [HUD show:YES];
+    }
     
    
         //NSLog(@"%@",jsonstr);
@@ -413,7 +460,7 @@
 -(void)urlRequestSucceeded:(ASIFormDataRequest *)request
 {
     //  NSLog(@"%@",request.responseData);
-    
+        NSLog(@"%@",request.responseString);
     NSString * key=[[request userInfo] objectForKey:@"pic"];
     if([key isEqualToString:@"pic"])
     {
@@ -423,7 +470,7 @@
         
         [self createProblem:url];
     }
-    else
+    else if([key isEqualToString:@"nopic"])
     {
         if(HUD)
         {
@@ -447,6 +494,52 @@
             [alert release];
         }
     }
+    else if([key isEqualToString:@"data"])
+    {
+        if(HUD)
+        {
+            [HUD removeFromSuperview];
+            HUD=nil;
+        }
+        NSDictionary *dic= [NSJSONSerialization  JSONObjectWithData:request.responseData options:0 error:nil];
+        NSArray *contentDic=[dic objectForKey:@"content"];
+        NSDictionary *doctorDic=[dic objectForKey:@"doctor"];
+        CYDoctor *doc=[[CYDoctor alloc]init];
+        doc.clinic=[doctorDic objectForKey:@"clinic"];
+        doc.hospital=[doctorDic objectForKey:@"hospital"];
+        doc.docid=[doctorDic objectForKey:@"id"];
+        doc.image=[doctorDic objectForKey:@"image"];
+        doc.level_title=[doctorDic objectForKey:@"level_title"];
+        doc.name=[doctorDic objectForKey:@"name"];
+        doc.title=[doctorDic objectForKey:@"title"];
+        self.doctor=doc;
+        [doc release];
+        for (int i=0; i<[contentDic count]; i++) {
+            NSDictionary *dic=[contentDic objectAtIndex:i];
+            ProblemDetail *detail=[[ProblemDetail alloc]init];
+            detail.contentid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"id"]];
+            detail.type=[NSString stringWithFormat:@"%@",[dic objectForKey:@"type"]];
+            detail.created_time_ms=[[NSString stringWithFormat:@"%@",[dic objectForKey:@"created_time_ms"]] substringToIndex:10];
+            NSString  *content=[dic objectForKey:@"content"];
+            NSData *data=[content dataUsingEncoding:NSUTF8StringEncoding];
+            NSArray *contentarr=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            for (int j=0; j<[contentarr count]; j++) {
+                ProblemContent *content=[[ProblemContent alloc]init];
+                NSString *text=[[contentarr objectAtIndex:j] objectForKey:@"text"];
+                NSString *type=[[contentarr objectAtIndex:j] objectForKey:@"type"];
+                content.type=type;
+                content.text=text;
+                [detail.contentArr addObject:content];
+                [content release];
+            }
+            [_answerList addObject:detail];
+            [detail release];
+        }
+        
+        [self._tableView reloadData];
+        
+        
+    }
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -461,7 +554,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return [self.answerList count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -474,6 +567,10 @@
         cell.backgroundColor=[UIColor clearColor];
         cell.backgroundView=nil;
     }
+
+    ProblemDetail *detail=[self.answerList objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text=detail.created_time_ms;
     
     return cell;
     
@@ -500,6 +597,9 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     self._tableView=nil;
     self.photoImage=nil;
+    self.problem=nil;
+    self.answerList=nil;
+    self.doctor=nil;
     [super dealloc];
 }
 /*

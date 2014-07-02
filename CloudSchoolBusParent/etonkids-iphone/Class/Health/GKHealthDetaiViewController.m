@@ -15,12 +15,15 @@
 #import "ETPraiseViewController.h"
 #import "ProblemDetail.h"
 #import "ProblemContent.h"
+#import "CYDoctorViewController.h"
+#import "UIImageView+WebCache.h"
+#import "ETPraiseViewController.h"
 @interface GKHealthDetaiViewController ()
 
 @end
 
 @implementation GKHealthDetaiViewController
-
+@synthesize _slimeView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -49,10 +52,10 @@
     
     [UIView animateWithDuration:0.2 animations:^{
         inputView.frame=CGRectMake(0, self.view.frame.size.height-rect.size.height-57, rect.size.width, rect.size.height);
-//        if(ios7)
-//            __tableView.frame=CGRectMake(0, -rect.size.height, rect.size.width,self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y+20);
-//        else
-//            __tableView.frame=CGRectMake(0, -rect.size.height, rect.size.width,self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y);
+        __tableView.frame= CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), 320, (iphone5 ? 548 : 460) - NAVIHEIGHT - (ios7 ? 20 : 0)-40-rect.size.height);
+
+        if([_answerList count]>0)
+            [__tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[_answerList count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
         
         
     }];
@@ -64,7 +67,9 @@
     
     [UIView animateWithDuration:0.2 animations:^{
         inputView.frame=CGRectMake(0, self.view.frame.size.height-57, 320, 57);
-//        __tableView.frame=CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y-58);
+        __tableView.frame= CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), 320, (iphone5 ? 548 : 460) - NAVIHEIGHT - (ios7 ? 20 : 0)-40);
+        if([_answerList count]>0)
+            [__tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[_answerList count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
     }];
     
 }
@@ -76,10 +81,11 @@
     
     [UIView animateWithDuration:0.2 animations:^{
         inputView.frame=CGRectMake(0, self.view.frame.size.height-rect.size.height-57, rect.size.width, rect.size.height);
-//        if(ios7)
-//            __tableView.frame=CGRectMake(0, -rect.size.height, rect.size.width,self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y+10);
-//        else
-//            __tableView.frame=CGRectMake(0, -rect.size.height, rect.size.width,self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y);
+
+        __tableView.frame= CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), 320, (iphone5 ? 548 : 460) - NAVIHEIGHT - (ios7 ? 20 : 0)-40-rect.size.height);
+        if([_answerList count]>0)
+            [__tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[_answerList count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+
     }];
     
     
@@ -163,7 +169,7 @@
 
     _answerList=[[NSMutableArray alloc]init];
     
-    __tableView= [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), 320, (iphone5 ? 548 : 460) - NAVIHEIGHT - (ios7 ? 20 : 0)) style:UITableViewStylePlain];
+    __tableView= [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), 320, (iphone5 ? 548 : 460) - NAVIHEIGHT - (ios7 ? 20 : 0)-40) style:UITableViewStylePlain];
     __tableView.backgroundView = nil;
     __tableView.backgroundColor = CELLCOLOR;
     __tableView.delegate = self;
@@ -171,44 +177,20 @@
     __tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:__tableView];
     
+
     
+    _slimeView = [[SRRefreshView alloc] init];
+    _slimeView.delegate = self;
+    _slimeView.upInset = 0;
+    _slimeView.slimeMissWhenGoingBack = YES;
+    _slimeView.slime.bodyColor = [UIColor blackColor];
+    _slimeView.slime.skinColor = [UIColor blackColor];
+    _slimeView.slime.lineWith = 1;
+    _slimeView.slime.shadowBlur = 4;
+    _slimeView.slime.shadowColor = [UIColor blackColor];
     
-    inputView=[[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-57, 320, 57)];
-    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 57)];
-    imageView.image=[UIImage imageNamed:@"inputBG.png"];
-    [inputView addSubview:imageView];
-    [imageView release];
-    
-    
-    
-    
-    inputField=[[UITextField alloc]initWithFrame:CGRectMake(57, 15, 180, 27)];
-    inputField.borderStyle=UITextBorderStyleRoundedRect;
-    inputField.delegate=self;
-    inputField.placeholder=NSLocalizedString(@"ask", @"");
-    [inputView addSubview:inputField];
-    
-    UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame=CGRectMake(15, 13, 32, 32);
-    [button setBackgroundImage:[UIImage imageNamed:@"pic-1.png"]forState:UIControlStateNormal];
-    [button setBackgroundImage:[UIImage imageNamed:@"pic-1.png"] forState:UIControlStateHighlighted];
-    button.titleLabel.font=[UIFont systemFontOfSize:12];
-    [button addTarget:self action:@selector(picClick:) forControlEvents:UIControlEventTouchUpInside];
-    [inputView addSubview:button];
-    
-    UIButton *upbutton=[UIButton buttonWithType:UIButtonTypeCustom];
-    upbutton.frame=CGRectMake(250, 13, 64, 30);
-    [upbutton setTitle:NSLocalizedString(@"send", @"") forState:UIControlStateNormal];
-    upbutton.titleLabel.font=[UIFont systemFontOfSize:12];
-    [upbutton setBackgroundImage:[UIImage imageNamed:@"send_23.png"] forState:UIControlStateNormal];
-    [upbutton setBackgroundImage:[UIImage imageNamed:@"send_24.png"] forState:UIControlStateHighlighted];
-    [upbutton addTarget:self action:@selector(upClick:) forControlEvents:UIControlEventTouchUpInside];
-    [inputView addSubview:upbutton];
-    
-    [self.view addSubview:inputView];
-    [inputView release];
-    
-    
+    [__tableView addSubview:self._slimeView];
+
     
     [self loadAnswer];
     
@@ -216,7 +198,134 @@
   
 
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    
+    [__tableView reloadData];
+}
+-(void)loadUI
+{
 
+    if(inputView==nil)
+    {
+        
+        
+        
+        if(![_problem.status isEqualToString:@"n"] && ![_problem.status isEqualToString:@"d"] && ![_problem.status isEqualToString:@"c"])
+        {
+            UIView *footView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
+            footView.backgroundColor=[UIColor clearColor];
+            UILabel *pingjialabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 5, 300, 20)];
+            pingjialabel.text=@"问题已解决，请评价>>";
+            pingjialabel.font=[UIFont systemFontOfSize:12];
+            pingjialabel.backgroundColor=[UIColor clearColor];
+            pingjialabel.textColor=[UIColor blueColor];
+            [footView addSubview:pingjialabel];
+            [pingjialabel release];
+            
+            
+            UITapGestureRecognizer *tapClick=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(praiseClick:)];
+            tapClick.numberOfTapsRequired=1;
+            pingjialabel.userInteractionEnabled=YES;
+            [pingjialabel addGestureRecognizer:tapClick];
+            [tapClick release];
+            
+            
+            UIView *contentView=[[UIView alloc]initWithFrame:CGRectMake(10, 35, 300, 40)];
+            contentView.backgroundColor=[UIColor whiteColor];
+            [footView addSubview:contentView];
+            [contentView release];
+            
+            UILabel *contentLabel=[[UILabel alloc]initWithFrame:CGRectMake(15, 35, 290, 40)];
+            contentLabel.text=@"医生利用休息时间给您解答问题，如未及时回复请见谅。医生的回复仅为建议，具体诊疗请前往医院进行";
+            contentLabel.font=[UIFont systemFontOfSize:12];
+            contentLabel.numberOfLines=0;
+            contentLabel.backgroundColor=[UIColor clearColor];
+            contentLabel.textColor=[UIColor grayColor];
+            [footView addSubview:contentLabel];
+            [contentLabel release];
+            __tableView.tableFooterView=footView;
+            [footView release];
+        }
+        
+        
+        
+        inputView=[[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-57, 320, 57)];
+        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 57)];
+        imageView.image=[UIImage imageNamed:@"inputBG.png"];
+        [inputView addSubview:imageView];
+        [imageView release];
+        
+        if([_problem.status isEqualToString:@"c"])
+        {
+            UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 57)];
+            label.text=@"已关闭";
+            label.textColor=[UIColor whiteColor];
+            if([[[UIDevice currentDevice] systemVersion] floatValue]>=6.0)
+                label.textAlignment=NSTextAlignmentCenter;
+            else
+                label.textAlignment=UITextAlignmentCenter;
+            [inputView addSubview:label];
+            [label release];
+            
+        }
+        else if([_problem.status isEqualToString:@"d"])
+        {
+            UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 57)];
+            label.text=@"已评价";
+            label.textColor=[UIColor whiteColor];
+            if([[[UIDevice currentDevice] systemVersion] floatValue]>=6.0)
+                label.textAlignment=NSTextAlignmentCenter;
+            else
+                label.textAlignment=UITextAlignmentCenter;
+            [inputView addSubview:label];
+            [label release];
+        }
+        else
+        {
+            inputField=[[UITextField alloc]initWithFrame:CGRectMake(57, 15, 180, 27)];
+            inputField.borderStyle=UITextBorderStyleRoundedRect;
+            inputField.delegate=self;
+            inputField.placeholder=NSLocalizedString(@"ask", @"");
+            [inputView addSubview:inputField];
+            
+            UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
+            button.frame=CGRectMake(15, 13, 32, 32);
+            [button setBackgroundImage:[UIImage imageNamed:@"pic-1.png"]forState:UIControlStateNormal];
+            [button setBackgroundImage:[UIImage imageNamed:@"pic-1.png"] forState:UIControlStateHighlighted];
+            button.titleLabel.font=[UIFont systemFontOfSize:12];
+            [button addTarget:self action:@selector(picClick:) forControlEvents:UIControlEventTouchUpInside];
+            [inputView addSubview:button];
+            
+            UIButton *upbutton=[UIButton buttonWithType:UIButtonTypeCustom];
+            upbutton.frame=CGRectMake(250, 13, 64, 30);
+            [upbutton setTitle:NSLocalizedString(@"send", @"") forState:UIControlStateNormal];
+            upbutton.titleLabel.font=[UIFont systemFontOfSize:12];
+            [upbutton setBackgroundImage:[UIImage imageNamed:@"send_23.png"] forState:UIControlStateNormal];
+            [upbutton setBackgroundImage:[UIImage imageNamed:@"send_24.png"] forState:UIControlStateHighlighted];
+            [upbutton addTarget:self action:@selector(upClick:) forControlEvents:UIControlEventTouchUpInside];
+            [inputView addSubview:upbutton];
+            
+        }
+        
+        
+        
+        
+        
+        [self.view addSubview:inputView];
+        [inputView release];
+
+    }
+}
+-(void)praiseClick:(UIGestureRecognizer *)tap
+{
+    ETPraiseViewController *praiseVC=[[ETPraiseViewController alloc]init];
+    praiseVC.problem=self.problem;
+    [self.navigationController pushViewController:praiseVC animated:YES];
+    [praiseVC release];
+}
 -(void)loadAnswer
 {
    // clinic_erke_lihuiling
@@ -254,7 +363,7 @@
 {
     
     
-//    [inputField resignFirstResponder];
+    [inputField resignFirstResponder];
 //    
 //
 //    ETPraiseViewController * PraiseVC=[[ETPraiseViewController alloc]init];
@@ -376,7 +485,8 @@
         [HUD release];
         [HUD show:YES];
     }
-    [self createProblem:inputField.text];
+    [inputField resignFirstResponder];
+    [self createProblem:@""];
     
     
 }
@@ -400,7 +510,7 @@
     
     int time= [[NSDate date] timeIntervalSince1970];
     
-    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,@"12621049",@"testchunyu"];
+    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,_problem.problemId,@"testchunyu"];
     
     NSString *sign=[self md5:string];
     
@@ -408,7 +518,7 @@
   //  NSDictionary *dic1=[NSDictionary dictionaryWithObjectsAndKeys:@"patient_meta",@"type",_textField.text,@"age",self.sex,@"sex", nil];
     
     NSArray *arr=nil;
-    if(![url isEqualToString:@""])
+    if([url isEqualToString:@""])
     {
         NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"text",@"type",inputField.text,@"text", nil];
       
@@ -425,7 +535,7 @@
     NSLog(@"%@",jsonstr);
     ASIFormDataRequest *resuest=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://yzxc.summer2.chunyu.me/partner/yzxc/problem_content/create"]];
     [resuest setPostValue:user.username forKey:@"user_id"];
-    [resuest setPostValue:@"12621049" forKey:@"problem_id"];
+    [resuest setPostValue:_problem.problemId forKey:@"problem_id"];
     [resuest setPostValue:jsonstr forKey:@"content"];
     [resuest setPostValue:sign forKey:@"sign"];
 
@@ -481,26 +591,28 @@
         NSString *error=[NSString stringWithFormat:@"%@",[dic objectForKey:@"error"]];
         if([error integerValue]==0)
         {
-            
-            //NSLog(@"%@",[dic objectForKey:@"problem_id"]);
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:@"创建成功" delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
-            [alert show];
-            [alert release];
+
+            [self loadAnswer];
+            inputField.text=@"";
         }
         else
         {
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"创建失败" message:[dic objectForKey:@"error_msg"] delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:[dic objectForKey:@"error_msg"] delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
             [alert show];
             [alert release];
         }
+        
+  
     }
     else if([key isEqualToString:@"data"])
     {
+           [_slimeView endRefresh];
         if(HUD)
         {
             [HUD removeFromSuperview];
             HUD=nil;
         }
+        [_answerList removeAllObjects];
         NSDictionary *dic= [NSJSONSerialization  JSONObjectWithData:request.responseData options:0 error:nil];
         NSArray *contentDic=[dic objectForKey:@"content"];
         NSDictionary *doctorDic=[dic objectForKey:@"doctor"];
@@ -527,6 +639,7 @@
                 ProblemContent *content=[[ProblemContent alloc]init];
                 NSString *text=[[contentarr objectAtIndex:j] objectForKey:@"text"];
                 NSString *type=[[contentarr objectAtIndex:j] objectForKey:@"type"];
+                //NSString *type=@"image";
                 content.type=type;
                 content.text=text;
                 [detail.contentArr addObject:content];
@@ -535,9 +648,10 @@
             [_answerList addObject:detail];
             [detail release];
         }
-        
+        [self loadUI];
         [self._tableView reloadData];
-        
+        if([_answerList count]>0)
+        [__tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[_answerList count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
         
     }
     
@@ -545,7 +659,56 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return 137+20;
+    ProblemDetail *_detail=[self.answerList objectAtIndex:indexPath.row];
+    float cellheight=30;
+    if([_detail.type isEqualToString:@"p"])
+    {
+        // 左气泡
+        for (int i=0; i<[_detail.contentArr count]; i++) {
+            ProblemContent *pro=[_detail.contentArr objectAtIndex:i];
+      
+            if([pro.type isEqualToString:@"text"])
+            {
+                CGSize size=[pro.text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:NSLineBreakByWordWrapping];
+                cellheight+=(size.height+20+10);
+ 
+            }
+            else if([pro.type isEqualToString:@"image"])
+            {
+                cellheight+=(90+20);
+            }
+            
+        }
+
+        
+    }
+    else if ([_detail.type isEqualToString:@"d"])
+    {
+        for (int i=0; i<[_detail.contentArr count]; i++)
+        {
+            ProblemContent *pro=[_detail.contentArr objectAtIndex:i];
+            if([pro.type isEqualToString:@"text"])
+            {
+                CGSize size=[pro.text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:NSLineBreakByWordWrapping];
+
+                cellheight+=(size.height + 20 + 10);
+
+                
+                
+                
+            }
+            else if([pro.type isEqualToString:@"image"])
+            {
+                cellheight+=(90+20);
+            }
+            
+            
+        }
+     
+    }
+
+    return cellheight;
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -559,25 +722,43 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellidentifer=@"cell";
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellidentifer];
+    CYDetailCell *cell=(CYDetailCell *)[tableView dequeueReusableCellWithIdentifier:cellidentifer];
     if(cell==nil)
     {
-        cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellidentifer] autorelease];
+        cell=[[[CYDetailCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellidentifer] autorelease];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
         cell.backgroundColor=[UIColor clearColor];
         cell.backgroundView=nil;
+        cell.delegate=self;
     }
 
     ProblemDetail *detail=[self.answerList objectAtIndex:indexPath.row];
+    cell.detail=detail;
+    if(self.doctor)
+    {
+        //[cell.photoImageView setImageWithURL:[NSURL URLWithString:_doctor.image] placeholderImage:nil];
+        [cell.photoImageView setImageWithURL:[NSURL URLWithString:_doctor.image] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            cell.photoImageView.userInteractionEnabled=YES;
+        }];
+        cell.namelabel.text=_doctor.name;
+        cell.levelLabel.text=_doctor.title;
     
-    cell.textLabel.text=detail.created_time_ms;
+    }
+   
+   // cell.textLabel.text=detail.created_time_ms;
     
     return cell;
     
     
     
 }
-
+-(void)clickToDoctorDetailController
+{
+    CYDoctorViewController *doctVC=[[CYDoctorViewController alloc]init];
+    doctVC.doctor=self.doctor;
+    [self.navigationController pushViewController:doctVC animated:YES];
+    [doctVC release];
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -590,6 +771,32 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)slimeRefreshStartRefresh:(SRRefreshView *)refreshView
+{
+
+    [self loadAnswer];
+
+    //  [self loadNotice:param];
+    //theRefreshPos = EGORefreshHeader;
+    //[self requestNoticeData:nil];
+}
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+    if (self._slimeView) {
+        [self._slimeView scrollViewDidScroll];
+    }
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (self._slimeView) {
+        [self._slimeView scrollViewDidEndDraging];
+    }
+    
+    
+}
 -(void)dealloc
 {    
     [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
@@ -600,6 +807,7 @@
     self.problem=nil;
     self.answerList=nil;
     self.doctor=nil;
+    self._slimeView=nil;
     [super dealloc];
 }
 /*

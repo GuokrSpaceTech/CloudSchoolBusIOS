@@ -8,6 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "ProblemDetail.h"
+@protocol DetailCellDelegate;
 @interface CYDetailCell : UITableViewCell
 @property (nonatomic,retain)ProblemDetail *detail;
+@property (nonatomic,retain)UILabel *labelcontent;
+
+@property (nonatomic,retain)UILabel *timelabel;
+@property (nonatomic,assign)id<DetailCellDelegate>delegate;
+
+@property (nonatomic,retain)UIImageView *photoImageView;
+@property (nonatomic,retain)UILabel *namelabel;
+@property (nonatomic,retain)UILabel *levelLabel;
+@end
+
+@protocol DetailCellDelegate <NSObject>
+
+-(void)clickToDoctorDetailController;
+
 @end

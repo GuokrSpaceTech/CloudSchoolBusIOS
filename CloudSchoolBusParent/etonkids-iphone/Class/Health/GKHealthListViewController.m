@@ -37,7 +37,13 @@
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    
+    [_tableView reloadData];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -97,7 +103,7 @@
     [self.view addSubview:rightButton];
     
     
-    _tableView= [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), 320, (iphone5 ? 548 : 460) - NAVIHEIGHT - (ios7 ? 20 : 0)) style:UITableViewStylePlain];
+    _tableView= [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), 320, (iphone5 ? 548 : 460) - NAVIHEIGHT) style:UITableViewStylePlain];
     _tableView.backgroundView = nil;
     _tableView.backgroundColor = CELLCOLOR;
     _tableView.delegate = self;
@@ -123,48 +129,6 @@
     [self loadData:currentnumber];
     
 
-   //测试评价接口
-
-    
-    
-   // /partner/yzxc/doctor/<doctor_id>/detail
-    
-    
-//    UserLogin *user=[UserLogin currentLogin];
-//    
-//    
-//    int time= [[NSDate date] timeIntervalSince1970];
-//    
-//    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,@"12621049",@"testchunyu"];
-//    
-//    NSString *sign=[MD5 md5:string];
-//    
-//
-//    ASIFormDataRequest *resuest=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://yzxc.summer2.chunyu.me/partner/yzxc/problem/assess"]];
-//    [resuest setPostValue:user.username forKey:@"user_id"];
-//    
-//    [resuest setPostValue:@"12621049" forKey:@"problem_id"];
-//     [resuest setPostValue:@"哈哈哈测试" forKey:@"content"];
-//      [resuest setPostValue:@"5" forKey:@"star"];
-//    [resuest setPostValue:sign forKey:@"sign"];
-//    
-// 
-//    
-//    [resuest setPostValue:[NSString stringWithFormat:@"%d",time] forKey:@"atime"];
-//    [resuest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"nopic",@"pic", nil]];
-//    [resuest setDelegate:self];
-//    //配置代理为本类
-//    [resuest setTimeOutSeconds:10];
-//    //设置超时
-//    [resuest setDidFailSelector:@selector(urlRequestFailed:)];
-//    [resuest setDidFinishSelector:@selector(urlRequestSucceeded:)];
-//    
-//    [resuest startAsynchronous];
-    
-    
-    
-
-    
 
 }
 -(void)setFooterView
@@ -258,9 +222,13 @@
         {
             NSLog(@"%@",[dic objectForKey:@"error_msg"]);
             
+  
             
-            ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:[dic objectForKey:@"error_msg"] delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:[dic objectForKey:@"error_msg"]  delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
             [alert show];
+            [alert release];
+
+            
         
         }
     }
@@ -315,6 +283,10 @@
         [HUD removeFromSuperview];
         HUD=nil;
     }
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"busy", @"提示") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
+    [alert show];
+    [alert release];
+
     NSLog(@"%@",request.error.description);
     isLoading=NO;
 }
@@ -391,7 +363,7 @@
     
     if([problem.status isEqualToString:@"i"])
     {
-        cell.stateLatel.text=@"初始化，空白问题或未付款问题---空白问题";
+        cell.stateLatel.text=@"空白问题";
     }
     if([problem.status isEqualToString:@"n"])
     {
@@ -399,7 +371,7 @@
     }
     if([problem.status isEqualToString:@"a"])
     {
-        cell.stateLatel.text=@"已认领---医生认领，等待医生回答";
+        cell.stateLatel.text=@"已认领";
     }
     if([problem.status isEqualToString:@"s"])
     {
@@ -411,11 +383,11 @@
     }
     if([problem.status isEqualToString:@"v"])
     {
-        cell.stateLatel.text=@"回复已查看---用户看过医生的回复";
+        cell.stateLatel.text=@"回复已查看";
     }
     if([problem.status isEqualToString:@"p"])
     {
-        cell.stateLatel.text=@"系统举报---因为含有违禁词等原因被举报";
+        cell.stateLatel.text=@"系统举报";
     }
     if([problem.status isEqualToString:@"d"])
     {

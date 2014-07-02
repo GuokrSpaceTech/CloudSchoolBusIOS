@@ -10,8 +10,9 @@
 #import "MBProgressHUD.h"
 #import "CYProblem.h"
 #import "CYDoctor.h"
-
-@interface GKHealthDetaiViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+#import "SRRefreshView.h"
+#import "CYDetailCell.h"
+@interface GKHealthDetaiViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,SRRefreshDelegate,DetailCellDelegate>
 {
        UITextField *inputField;
         UIView  *inputView;
@@ -23,5 +24,7 @@
 @property (nonatomic,retain) CYProblem *problem;
 @property (nonatomic,retain)NSMutableArray *answerList;
 @property (nonatomic,retain) CYDoctor *doctor;
+
+@property (nonatomic, retain)SRRefreshView   *_slimeView;
 
 @end

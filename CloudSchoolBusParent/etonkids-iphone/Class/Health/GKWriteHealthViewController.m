@@ -88,7 +88,9 @@
     [rightButton setFrame:CGRectMake(0, 0, 50, 35)];
     [rightButton setCenter:CGPointMake(320 - 10 - 34/2, navigationBackView.frame.size.height/2 + (ios7 ? 20 : 0))];
     [rightButton addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [rightButton setTitle:@"对号" forState:UIControlStateNormal];
+  //  [rightButton setTitle:@"对号" forState:UIControlStateNormal];
+    [rightButton setImage:[UIImage imageNamed:@"OKBtn.png"] forState:UIControlStateNormal];
+    [rightButton setImage:[UIImage imageNamed:@"OKBtn_sel.png"] forState:UIControlStateHighlighted];
     [self.view addSubview:rightButton];
     
     

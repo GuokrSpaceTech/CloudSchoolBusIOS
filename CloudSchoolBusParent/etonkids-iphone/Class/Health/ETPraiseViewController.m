@@ -8,12 +8,16 @@
 
 #import "ETPraiseViewController.h"
 #import "ETKids.h"
+#import "UserLogin.h"
+#import "MD5.h"
+#import "ASIFormDataRequest.h"
 @interface ETPraiseViewController ()
 
 @end
 
 @implementation ETPraiseViewController
-
+@synthesize contentView;
+@synthesize problem;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -124,20 +128,22 @@
     [rightButton setFrame:CGRectMake(0, 0, 50, 35)];
     [rightButton setCenter:CGPointMake(320 - 10 - 34/2, navigationBackView.frame.size.height/2 + (ios7 ? 20 : 0))];
     [rightButton addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [rightButton setTitle:@"评价" forState:UIControlStateNormal];
+  //  [rightButton setTitle:@"评价" forState:UIControlStateNormal];
+    [rightButton setImage:[UIImage imageNamed:@"OKBtn.png"] forState:UIControlStateNormal];
+    [rightButton setImage:[UIImage imageNamed:@"OKBtn_sel.png"] forState:UIControlStateHighlighted];
     [self.view addSubview:rightButton];
 
 
     
-    UIScrollView *scroller=[[UIScrollView alloc]initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height - NAVIHEIGHT - (ios7 ? 20 : 0))];
-    [self.view addSubview:scroller];
-    scroller.backgroundColor=[UIColor clearColor];
-    [scroller release];
+//    UIScrollView *scroller=[[UIScrollView alloc]initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height - NAVIHEIGHT - (ios7 ? 20 : 0))];
+//    [self.view addSubview:scroller];
+//    scroller.backgroundColor=[UIColor clearColor];
+//    [scroller release];
     
     
-    topView=[[UIView alloc]initWithFrame:CGRectMake(6, 5, self.view.frame.size.width-12, 140)];
+    topView=[[UIView alloc]initWithFrame:CGRectMake(6, NAVIHEIGHT + (ios7 ? 20 : 0)+5, self.view.frame.size.width-12, 100)];
     topView.backgroundColor=[UIColor whiteColor];
-    [scroller addSubview:topView];
+    [self.view addSubview:topView];
     [topView release];
     
     UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake((self.view.frame.size.width-12)/2.0-30, 8, 60, 20)];
@@ -147,11 +153,7 @@
     [topView addSubview:label];
     [label release];
     
-    
     for (int i=0; i<5; i++) {
-        
-        
-        
         UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame=CGRectMake((self.view.frame.size.width-12)/2.0-75+30*i, label.frame.size.height+label.frame.origin.y+10, 30, 20);
         [btn addTarget:self action:@selector(praiseBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -160,24 +162,39 @@
          [btn setBackgroundImage:[UIImage imageNamed:@"user_subscribe_favor_sel.png"] forState:UIControlStateSelected];
         [topView addSubview:btn];
     }
-    
+    UILabel *startlabl=[[UILabel alloc]initWithFrame:CGRectMake(0 ,label.frame.size.height+label.frame.origin.y+10 + 30,320,20)];
+    startlabl.text=@"按星级评价";
+    startlabl.font=[UIFont systemFontOfSize:14];
+    if(IOSVERSION>=6.0)
+    {
+        startlabl.textAlignment=NSTextAlignmentCenter;
+    }
+    else
+    {
+        startlabl.textAlignment=UITextAlignmentCenter;
+    }
+    startlabl.backgroundColor=[UIColor clearColor];
+    startlabl.textColor=[UIColor grayColor];
+    [topView addSubview:startlabl];
+    [startlabl release];
 
-    UIView *middleView=[[UIView alloc]initWithFrame:CGRectMake(6, topView.frame.size.height+topView.frame.origin.y+10, 308, 220)];
-    middleView.backgroundColor=[UIColor whiteColor];
-    [scroller addSubview:middleView];
-    [middleView release];
+
     
     
-    
-    UIView *bottomView=[[UIView alloc]initWithFrame:CGRectMake(6, middleView.frame.size.height+middleView.frame.origin.y+20, 308, 78)];
+    UIView *bottomView=[[UIView alloc]initWithFrame:CGRectMake(6, topView.frame.size.height+topView.frame.origin.y+20, 308, 100)];
     bottomView.backgroundColor=[UIColor whiteColor];
-    [scroller addSubview:bottomView];
+    [self.view addSubview:bottomView];
     [bottomView release];
+    
+    
+    contentView=[[UITextView alloc]initWithFrame:CGRectMake(5, 5, 290, 90)];
+    [bottomView addSubview:contentView];
     // Do any additional setup after loading the view.
 }
 -(void)praiseBtn:(UIButton *)btn
 {
     int tag=btn.tag;
+    star=tag+1;
     for (UIView *view in topView.subviews) {
         if([view isKindOfClass:[UIButton class]])
         {
@@ -196,16 +213,115 @@
         
     }
 }
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
 -(void)rightButtonClick:(UIButton *)btn
 {
+    if(star==0)
+    {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:@"请选择评分" delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
+    
+    if(HUD==nil)
+    {
+        HUD=[[MBProgressHUD alloc]initWithView:self.view];
+        HUD.labelText=NSLocalizedString(@"load", @"");
+        [self.view addSubview:HUD];
+        [HUD release];
+        [HUD show:YES];
+    }
+    
+    UserLogin *user=[UserLogin currentLogin];
+
+
+    int time= [[NSDate date] timeIntervalSince1970];
+
+    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,self.problem.problemId,@"testchunyu"];
+
+    NSString *sign=[MD5 md5:string];
+
+
+    ASIFormDataRequest *resuest=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://yzxc.summer2.chunyu.me/partner/yzxc/problem/assess"]];
+    [resuest setPostValue:user.username forKey:@"user_id"];
+
+    [resuest setPostValue:self.problem.problemId forKey:@"problem_id"];
+     [resuest setPostValue:contentView.text forKey:@"content"];
+      [resuest setPostValue:[NSNumber numberWithInt:star] forKey:@"star"];
+    [resuest setPostValue:sign forKey:@"sign"];
+
+
+
+    [resuest setPostValue:[NSString stringWithFormat:@"%d",time] forKey:@"atime"];
+    [resuest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"nopic",@"pic", nil]];
+    [resuest setDelegate:self];
+    //配置代理为本类
+    [resuest setTimeOutSeconds:10];
+    //设置超时
+    [resuest setDidFailSelector:@selector(urlRequestFailed:)];
+    [resuest setDidFinishSelector:@selector(urlRequestSucceeded:)];
+    
+    [resuest startAsynchronous];
+    
     
 }
+-(void)urlRequestSucceeded:(ASIFormDataRequest *)request
+{
+        NSLog(@"%@",request.responseString);
+    
+    if(HUD)
+    {
+        [HUD removeFromSuperview];
+        HUD=nil;
+    }
+    NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:request.responseData options:0 error:nil];
+    if(dic)
+    {
+        if([[dic objectForKey:@"error"] integerValue]==0)
+        {
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:@"评价成功" delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
+
+        }
+        else
+        {
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:@"评价失败" delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
+        }
+    }
+    
+}
+-(void)urlRequestFailed:(ASIFormDataRequest *)request
+{
+    if(HUD)
+    {
+        [HUD removeFromSuperview];
+        HUD=nil;
+    }
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"busy", @"提示") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
+    [alert show];
+    [alert release];
+
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)dealloc
+{
+    self.contentView=nil;
+    self.problem=nil;
+    [super dealloc];
+}
 /*
 #pragma mark - Navigation
 

@@ -60,6 +60,11 @@
 		11C701FD1957F99F001C7D37 /* GKWriteHealthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C701FC1957F99F001C7D37 /* GKWriteHealthViewController.m */; };
 		11C848061961756C00E900F2 /* ProblemContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C848051961756C00E900F2 /* ProblemContent.m */; };
 		11C848091961776100E900F2 /* CYDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C848081961776100E900F2 /* CYDetailCell.m */; };
+		11C9F5941963AC5500C65B7A /* CYDoctorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F5931963AC5500C65B7A /* CYDoctorViewController.m */; };
+		11C9F599196419B300C65B7A /* mychild_doctor.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C9F598196419B300C65B7A /* mychild_doctor.png */; };
+		11C9F59B19641B6A00C65B7A /* health_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C9F59A19641B6A00C65B7A /* health_point.png */; };
+		11C9F59D19641BD300C65B7A /* health_cellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C9F59C19641BD300C65B7A /* health_cellBG.png */; };
+		11C9F59F19641C3300C65B7A /* health_topblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C9F59E19641C3300C65B7A /* health_topblue.png */; };
 		11D937CE1947F72000215842 /* UIScrollView+UITouchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D937CD1947F72000215842 /* UIScrollView+UITouchEvent.m */; };
 		11D937D21947FA3D00215842 /* deleteTag.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D937D11947FA3D00215842 /* deleteTag.png */; };
 		11E46367194F05510039C0A0 /* GKShowReceiveBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E46366194F05510039C0A0 /* GKShowReceiveBigImageViewController.m */; };
@@ -667,6 +672,12 @@
 		11C848051961756C00E900F2 /* ProblemContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProblemContent.m; sourceTree = "<group>"; };
 		11C848071961776100E900F2 /* CYDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYDetailCell.h; sourceTree = "<group>"; };
 		11C848081961776100E900F2 /* CYDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYDetailCell.m; sourceTree = "<group>"; };
+		11C9F5921963AC5500C65B7A /* CYDoctorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYDoctorViewController.h; sourceTree = "<group>"; };
+		11C9F5931963AC5500C65B7A /* CYDoctorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYDoctorViewController.m; sourceTree = "<group>"; };
+		11C9F598196419B300C65B7A /* mychild_doctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mychild_doctor.png; sourceTree = "<group>"; };
+		11C9F59A19641B6A00C65B7A /* health_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_point.png; sourceTree = "<group>"; };
+		11C9F59C19641BD300C65B7A /* health_cellBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_cellBG.png; sourceTree = "<group>"; };
+		11C9F59E19641C3300C65B7A /* health_topblue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_topblue.png; sourceTree = "<group>"; };
 		11D937CC1947F72000215842 /* UIScrollView+UITouchEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+UITouchEvent.h"; sourceTree = "<group>"; };
 		11D937CD1947F72000215842 /* UIScrollView+UITouchEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+UITouchEvent.m"; sourceTree = "<group>"; };
 		11D937D11947FA3D00215842 /* deleteTag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteTag.png; sourceTree = "<group>"; };
@@ -1469,6 +1480,8 @@
 				11C848051961756C00E900F2 /* ProblemContent.m */,
 				11C848071961776100E900F2 /* CYDetailCell.h */,
 				11C848081961776100E900F2 /* CYDetailCell.m */,
+				11C9F5921963AC5500C65B7A /* CYDoctorViewController.h */,
+				11C9F5931963AC5500C65B7A /* CYDoctorViewController.m */,
 			);
 			path = Health;
 			sourceTree = "<group>";
@@ -2102,11 +2115,15 @@
 		E3EA3B01169E94C5000DF7EE /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				11C9F59E19641C3300C65B7A /* health_topblue.png */,
+				11C9F598196419B300C65B7A /* mychild_doctor.png */,
 				11C4327F195020FF0096778C /* addreceiver.png */,
 				11C4327D195020840096778C /* deletereceiver.png */,
 				78A0662518A9D61700E3B13B /* redPoint.png */,
 				788C4C941896123800AEB513 /* yellowPoint.png */,
 				78A41FE61820EF6200D0DE50 /* birthdayIcon.png */,
+				11C9F59A19641B6A00C65B7A /* health_point.png */,
+				11C9F59C19641BD300C65B7A /* health_cellBG.png */,
 				783BD305181514C600687D31 /* deleteTag.png */,
 				78C2ADB617E06F2900E6A5CD /* V3.0 */,
 				78A358A217D997A0005D11A2 /* email.png */,
@@ -2894,6 +2911,7 @@
 				789EAA3C1834BE1C0029D4B0 /* 1登录_13.png in Resources */,
 				78A41FDF1820E06B00D0DE50 /* myChild_en.png in Resources */,
 				785DE1B8180FB3E6001B0EB3 /* bottomFoodDef.png in Resources */,
+				11C9F59B19641B6A00C65B7A /* health_point.png in Resources */,
 				789CC763182CEF0500E81510 /* growVertical.png in Resources */,
 				789DC88C183C4C9E006B7FF8 /* 家长版.png in Resources */,
 				789EAA43183631BE0029D4B0 /* mycounticon1.png in Resources */,
@@ -2970,6 +2988,7 @@
 				785DE1A3180FB0E5001B0EB3 /* bottomSel.png in Resources */,
 				78D8D10718C03B26008860AB /* help_cela_568.png in Resources */,
 				78C2ADEB17E0830500E6A5CD /* bottom_setting_default.png in Resources */,
+				11C9F59F19641C3300C65B7A /* health_topblue.png in Resources */,
 				78C2ADEC17E0830500E6A5CD /* bottom_setting_selected.png in Resources */,
 				78C2AE0A17E1C64F00E6A5CD /* car.png in Resources */,
 				789EAA351834BD630029D4B0 /* mycounticon.png in Resources */,
@@ -2995,6 +3014,7 @@
 				788BE6A117EFDBE70076D920 /* textBack.png in Resources */,
 				788BE6A417EFDC860076D920 /* upBtn.png in Resources */,
 				78611EF61890FCC800BB60F4 /* aboutlogo_EN(1).png in Resources */,
+				11C9F599196419B300C65B7A /* mychild_doctor.png in Resources */,
 				788BE6A517EFDC860076D920 /* upBtnSel.png in Resources */,
 				7897DF7A17F2AB4000DB8B21 /* ETEducationViewController.xib in Resources */,
 				7897DF7F17F2C38000DB8B21 /* order.png in Resources */,
@@ -3011,6 +3031,7 @@
 				78F841EF181A87C8007722AE /* 001.png in Resources */,
 				7897DF9117F2D6E000DB8B21 /* font4.png in Resources */,
 				785DE19F180F923F001B0EB3 /* myzan.png in Resources */,
+				11C9F59D19641BD300C65B7A /* health_cellBG.png in Resources */,
 				7897DF9317F2D6E000DB8B21 /* fontSel.png in Resources */,
 				7897DF9517F2D71E00DB8B21 /* fontSelect.png in Resources */,
 				78A420051821245E00D0DE50 /* infoBack1.png in Resources */,
@@ -3214,6 +3235,7 @@
 				B5F7FAF61726E44A00F5AD13 /* GTMBase64.m in Sources */,
 				B5F7FAF91726E45800F5AD13 /* keyedArchiver.m in Sources */,
 				7365F6AD177AF4C9007EAF57 /* Modify.m in Sources */,
+				11C9F5941963AC5500C65B7A /* CYDoctorViewController.m in Sources */,
 				73F3B90B178166C5004A7C23 /* CustomActionSheet.m in Sources */,
 				7860CB2018862A5200DD0E80 /* GKMovieCell.m in Sources */,
 				7860CB341888F6E300DD0E80 /* GKMovieManager.m in Sources */,

@@ -7,9 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MBProgressHUD.h"
+#import "CYProblem.h"
 @interface ETPraiseViewController : UIViewController
 {
     UIView * topView;
+    
+    int star;
+    
+    MBProgressHUD *HUD;
+    
+    
 }
+@property (nonatomic,retain)UITextView *contentView;
+@property (nonatomic,retain)CYProblem  *problem;
 @end

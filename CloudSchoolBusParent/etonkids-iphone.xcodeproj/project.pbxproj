@@ -15,6 +15,24 @@
 		113320FC1953EB140088E226 /* GKHealthListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113320FB1953EB140088E226 /* GKHealthListViewController.m */; };
 		113320FF195412C80088E226 /* GKHealthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 113320FE195412C80088E226 /* GKHealthCell.m */; };
 		1133210119542A260088E226 /* -vip.png in Resources */ = {isa = PBXBuildFile; fileRef = 1133210019542A260088E226 /* -vip.png */; };
+		114142F81964F3CC007267D6 /* health_write_input.png in Resources */ = {isa = PBXBuildFile; fileRef = 114142F71964F3CC007267D6 /* health_write_input.png */; };
+		114142FC1964FA47007267D6 /* health_middle.png in Resources */ = {isa = PBXBuildFile; fileRef = 114142FB1964FA47007267D6 /* health_middle.png */; };
+		114142FE1964FCAB007267D6 /* health_write_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 114142FD1964FCAB007267D6 /* health_write_top.png */; };
+		114143001964FD06007267D6 /* health_write_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 114142FF1964FD06007267D6 /* health_write_bottom.png */; };
+		114143021964FE25007267D6 /* health_write_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 114143011964FE25007267D6 /* health_write_delete.png */; };
+		11414304196502E3007267D6 /* health_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 11414303196502E3007267D6 /* health_arrow.png */; };
+		1141430619650938007267D6 /* health_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 1141430519650938007267D6 /* health_line.png */; };
+		1141430919651D0A007267D6 /* health_star_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 1141430719651D0A007267D6 /* health_star_gray.png */; };
+		1141430A19651D0A007267D6 /* health_star_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1141430819651D0A007267D6 /* health_star_yellow.png */; };
+		1141430D1965409A007267D6 /* health_doctor_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 1141430B1965409A007267D6 /* health_doctor_down.png */; };
+		1141430E1965409A007267D6 /* health_doctor_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 1141430C1965409A007267D6 /* health_doctor_up.png */; };
+		11414310196541D3007267D6 /* health_doctor_content.png in Resources */ = {isa = PBXBuildFile; fileRef = 1141430F196541D3007267D6 /* health_doctor_content.png */; };
+		11414312196543CF007267D6 /* health__top.png in Resources */ = {isa = PBXBuildFile; fileRef = 11414311196543CF007267D6 /* health__top.png */; };
+		114143141965451B007267D6 /* health_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 114143131965451B007267D6 /* health_bottom@2x.png */; };
+		11414317196552F2007267D6 /* health_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 11414315196552F2007267D6 /* health_button.png */; };
+		11414318196552F2007267D6 /* health_buttoned.png in Resources */ = {isa = PBXBuildFile; fileRef = 11414316196552F2007267D6 /* health_buttoned.png */; };
+		1141431A1965548E007267D6 /* health_uppic.png in Resources */ = {isa = PBXBuildFile; fileRef = 114143191965548E007267D6 /* health_uppic.png */; };
+		1141431C19655505007267D6 /* health_doctor.png in Resources */ = {isa = PBXBuildFile; fileRef = 1141431B19655505007267D6 /* health_doctor.png */; };
 		118A1A4A18B6F3B70002BF18 /* HTCopyableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 118A1A4918B6F3B70002BF18 /* HTCopyableLabel.m */; };
 		118CBC17178D7B64006AA633 /* ETActiveDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CBC16178D7B64006AA633 /* ETActiveDetailViewController.m */; };
 		118E62AB1961305A00E24CB8 /* CYDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 118E62AA1961305A00E24CB8 /* CYDoctor.m */; };
@@ -53,6 +71,7 @@
 		11BF12A1195AD87C003ABFF6 /* pic-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF129F195AD87C003ABFF6 /* pic-2.png */; };
 		11BF12A4195AD88B003ABFF6 /* send_23.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF12A2195AD88B003ABFF6 /* send_23.png */; };
 		11BF12A5195AD88B003ABFF6 /* send_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF12A3195AD88B003ABFF6 /* send_24.png */; };
+		11C316AD19667D6C0070E242 /* health_pingjia_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C316AC19667D6C0070E242 /* health_pingjia_btn@2x.png */; };
 		11C4327A19501E070096778C /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4327919501E070096778C /* photo.png */; };
 		11C4327C19501FAF0096778C /* point_attendance.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4327B19501FAF0096778C /* point_attendance.png */; };
 		11C4327E195020840096778C /* deletereceiver.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4327D195020840096778C /* deletereceiver.png */; };
@@ -595,6 +614,24 @@
 		113320FD195412C80088E226 /* GKHealthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHealthCell.h; sourceTree = "<group>"; };
 		113320FE195412C80088E226 /* GKHealthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKHealthCell.m; sourceTree = "<group>"; };
 		1133210019542A260088E226 /* -vip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "-vip.png"; sourceTree = "<group>"; };
+		114142F71964F3CC007267D6 /* health_write_input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_write_input.png; sourceTree = "<group>"; };
+		114142FB1964FA47007267D6 /* health_middle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_middle.png; sourceTree = "<group>"; };
+		114142FD1964FCAB007267D6 /* health_write_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_write_top.png; sourceTree = "<group>"; };
+		114142FF1964FD06007267D6 /* health_write_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_write_bottom.png; sourceTree = "<group>"; };
+		114143011964FE25007267D6 /* health_write_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_write_delete.png; sourceTree = "<group>"; };
+		11414303196502E3007267D6 /* health_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_arrow.png; sourceTree = "<group>"; };
+		1141430519650938007267D6 /* health_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_line.png; sourceTree = "<group>"; };
+		1141430719651D0A007267D6 /* health_star_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_star_gray.png; sourceTree = "<group>"; };
+		1141430819651D0A007267D6 /* health_star_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_star_yellow.png; sourceTree = "<group>"; };
+		1141430B1965409A007267D6 /* health_doctor_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_doctor_down.png; sourceTree = "<group>"; };
+		1141430C1965409A007267D6 /* health_doctor_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_doctor_up.png; sourceTree = "<group>"; };
+		1141430F196541D3007267D6 /* health_doctor_content.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_doctor_content.png; sourceTree = "<group>"; };
+		11414311196543CF007267D6 /* health__top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health__top.png; sourceTree = "<group>"; };
+		114143131965451B007267D6 /* health_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "health_bottom@2x.png"; sourceTree = "<group>"; };
+		11414315196552F2007267D6 /* health_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_button.png; sourceTree = "<group>"; };
+		11414316196552F2007267D6 /* health_buttoned.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_buttoned.png; sourceTree = "<group>"; };
+		114143191965548E007267D6 /* health_uppic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_uppic.png; sourceTree = "<group>"; };
+		1141431B19655505007267D6 /* health_doctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_doctor.png; sourceTree = "<group>"; };
 		118A1A4818B6F3B70002BF18 /* HTCopyableLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTCopyableLabel.h; sourceTree = "<group>"; };
 		118A1A4918B6F3B70002BF18 /* HTCopyableLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTCopyableLabel.m; sourceTree = "<group>"; };
 		118CBC15178D7B64006AA633 /* ETActiveDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETActiveDetailViewController.h; sourceTree = "<group>"; };
@@ -662,6 +699,7 @@
 		11BF129F195AD87C003ABFF6 /* pic-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic-2.png"; sourceTree = "<group>"; };
 		11BF12A2195AD88B003ABFF6 /* send_23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = send_23.png; sourceTree = "<group>"; };
 		11BF12A3195AD88B003ABFF6 /* send_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = send_24.png; sourceTree = "<group>"; };
+		11C316AC19667D6C0070E242 /* health_pingjia_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "health_pingjia_btn@2x.png"; sourceTree = "<group>"; };
 		11C4327919501E070096778C /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
 		11C4327B19501FAF0096778C /* point_attendance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = point_attendance.png; sourceTree = "<group>"; };
 		11C4327D195020840096778C /* deletereceiver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deletereceiver.png; sourceTree = "<group>"; };
@@ -2115,6 +2153,8 @@
 		E3EA3B01169E94C5000DF7EE /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				11414315196552F2007267D6 /* health_button.png */,
+				11414316196552F2007267D6 /* health_buttoned.png */,
 				11C9F59E19641C3300C65B7A /* health_topblue.png */,
 				11C9F598196419B300C65B7A /* mychild_doctor.png */,
 				11C4327F195020FF0096778C /* addreceiver.png */,
@@ -2125,6 +2165,7 @@
 				11C9F59A19641B6A00C65B7A /* health_point.png */,
 				11C9F59C19641BD300C65B7A /* health_cellBG.png */,
 				783BD305181514C600687D31 /* deleteTag.png */,
+				1141430F196541D3007267D6 /* health_doctor_content.png */,
 				78C2ADB617E06F2900E6A5CD /* V3.0 */,
 				78A358A217D997A0005D11A2 /* email.png */,
 				73200DF017B34827008015AB /* backgroundkeyselect.png */,
@@ -2133,6 +2174,22 @@
 				11A3F3C51795248200C37EA1 /* alert.png */,
 				F99196D316BD0F9B005FF6CA /* greenPoint.png */,
 				F91AE3B916BB69C300BF3E5C /* bluePoint.png */,
+				114142F71964F3CC007267D6 /* health_write_input.png */,
+				114142FB1964FA47007267D6 /* health_middle.png */,
+				114142FD1964FCAB007267D6 /* health_write_top.png */,
+				114143011964FE25007267D6 /* health_write_delete.png */,
+				114142FF1964FD06007267D6 /* health_write_bottom.png */,
+				11414303196502E3007267D6 /* health_arrow.png */,
+				1141430519650938007267D6 /* health_line.png */,
+				1141430719651D0A007267D6 /* health_star_gray.png */,
+				1141430819651D0A007267D6 /* health_star_yellow.png */,
+				1141430B1965409A007267D6 /* health_doctor_down.png */,
+				1141430C1965409A007267D6 /* health_doctor_up.png */,
+				11414311196543CF007267D6 /* health__top.png */,
+				114143131965451B007267D6 /* health_bottom@2x.png */,
+				114143191965548E007267D6 /* health_uppic.png */,
+				1141431B19655505007267D6 /* health_doctor.png */,
+				11C316AC19667D6C0070E242 /* health_pingjia_btn@2x.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -2815,6 +2872,7 @@
 				F95023DB16DCB61B0079A05E /* composeCameraEnable@2x.png in Resources */,
 				F95023DC16DCB61B0079A05E /* composeCamerahover.png in Resources */,
 				F95023DD16DCB61B0079A05E /* composeCamerahover@2x.png in Resources */,
+				1141430919651D0A007267D6 /* health_star_gray.png in Resources */,
 				F95023DE16DCB61B0079A05E /* composedingwei.png in Resources */,
 				78A41FE51820E10100D0DE50 /* ETBaseMessageViewController.xib in Resources */,
 				785DE1B3180FB3E6001B0EB3 /* bottomAboutSel.png in Resources */,
@@ -2823,11 +2881,14 @@
 				78F841F6181A87C8007722AE /* 008.png in Resources */,
 				789EAA5C183A1B4C0029D4B0 /* 已报名.png in Resources */,
 				78D8D10218C0348F008860AB /* help_detail.png in Resources */,
+				1141430A19651D0A007267D6 /* health_star_yellow.png in Resources */,
 				F95023E016DCB61B0079A05E /* composedingweihover.png in Resources */,
 				F95023E116DCB61B0079A05E /* composedingweihover@2x.png in Resources */,
 				F95023E216DCB61B0079A05E /* composeEmotionBg.png in Resources */,
+				11414312196543CF007267D6 /* health__top.png in Resources */,
 				789CC761182CEF0500E81510 /* grow03.png in Resources */,
 				F95023E316DCB61B0079A05E /* composeEmotionBg@2x.png in Resources */,
+				1141431A1965548E007267D6 /* health_uppic.png in Resources */,
 				78F841C6181945F9007722AE /* tbBtn_activity_en.png in Resources */,
 				F95023E416DCB61B0079A05E /* composehuatiinput.png in Resources */,
 				781E53B2181FC5E70052851A /* ETVerifyViewController.xib in Resources */,
@@ -2838,6 +2899,7 @@
 				11C4327A19501E070096778C /* photo.png in Resources */,
 				F95023E916DCB61B0079A05E /* composeImageDel@2x.png in Resources */,
 				F95023EA16DCB61B0079A05E /* composeImageFrame.png in Resources */,
+				114142FE1964FCAB007267D6 /* health_write_top.png in Resources */,
 				F95023EB16DCB61B0079A05E /* composeImageFrame@2x.png in Resources */,
 				78952FFA184C718C001C30D2 /* shareBtn3.0.png in Resources */,
 				78F841BD18194420007722AE /* headplaceholder_big.png in Resources */,
@@ -2898,6 +2960,7 @@
 				789DC83F183B1A7D006B7FF8 /* Default.png in Resources */,
 				785DE1BA180FB3E6001B0EB3 /* bottomNewVersionDef.png in Resources */,
 				785DE1B6180FB3E6001B0EB3 /* bottomFeedbackDef.png in Resources */,
+				114142F81964F3CC007267D6 /* health_write_input.png in Resources */,
 				78F073C7183E00CE00C3FC70 /* 更换绑定_10.png in Resources */,
 				78DFFBBA1848301C000BF443 /* 午点.png in Resources */,
 				781E53B7181FD37E0052851A /* ETVerifyPasswordViewController.xib in Resources */,
@@ -2941,6 +3004,7 @@
 				78DFD29517B0B4F40069B8CC /* logo_wechatmoments(1).png in Resources */,
 				78F841C8181945F9007722AE /* tbBtn_notic_en.png in Resources */,
 				1133210119542A260088E226 /* -vip.png in Resources */,
+				11C316AD19667D6C0070E242 /* health_pingjia_btn@2x.png in Resources */,
 				78952FF8184C718C001C30D2 /* OKBtn_sel.png in Resources */,
 				73200DF117B34828008015AB /* backgroundkeyselect.png in Resources */,
 				78952FF2184C718C001C30D2 /* backBtnDefault_3.0.png in Resources */,
@@ -2948,6 +3012,7 @@
 				78F048DE1814E3D60034401D /* textfieldback.png in Resources */,
 				789EAA411836281B0029D4B0 /* btm_black.png in Resources */,
 				785DE19D180F88DE001B0EB3 /* cancelDeep.png in Resources */,
+				11414318196552F2007267D6 /* health_buttoned.png in Resources */,
 				78952FF6184C718C001C30D2 /* navRightBtn_default.png in Resources */,
 				78A358A317D997A0005D11A2 /* email.png in Resources */,
 				7841CF5917DF2E3A003E0DB2 /* ActivityViewController.xib in Resources */,
@@ -2959,7 +3024,9 @@
 				789EAA54183A118B0029D4B0 /* sr_refresh@2X.png in Resources */,
 				78C2ADC017E0711700E6A5CD /* tbBtn_classshare.png in Resources */,
 				78F841F8181A87C8007722AE /* 010.png in Resources */,
+				1141430E1965409A007267D6 /* health_doctor_up.png in Resources */,
 				78C2ADC117E0711700E6A5CD /* tbBtn_education.png in Resources */,
+				1141430619650938007267D6 /* health_line.png in Resources */,
 				78C2ADC217E0711700E6A5CD /* tbBtn_notic.png in Resources */,
 				78C2ADC417E0720B00E6A5CD /* navBackGround.png in Resources */,
 				78A41FDC1820B80300D0DE50 /* ETChangeBindViewController.xib in Resources */,
@@ -2998,11 +3065,13 @@
 				78DBF51017E2CBC800D44108 /* cellline.png in Resources */,
 				78A41FF9182102F000D0DE50 /* 通知消息.png in Resources */,
 				78709BB8187CFE51009250FB /* guide3dot0.png in Resources */,
+				11414304196502E3007267D6 /* health_arrow.png in Resources */,
 				78F841B8181943FB007722AE /* Default@2x.png in Resources */,
 				78DBF51217E2E7B400D44108 /* touxiang_back.png in Resources */,
 				78DFFBBC1848301C000BF443 /* 午餐.png in Resources */,
 				78F841BE18194420007722AE /* headplaceholder_small.png in Resources */,
 				785DE1C1180FBC31001B0EB3 /* bottomLogoutDef.png in Resources */,
+				114143021964FE25007267D6 /* health_write_delete.png in Resources */,
 				78DBF51417E2E92400D44108 /* infoBar.png in Resources */,
 				78F073C3183CA56B00C3FC70 /* icon@120.png in Resources */,
 				78611EF71890FCC800BB60F4 /* aboutlogo.png in Resources */,
@@ -3015,6 +3084,9 @@
 				788BE6A417EFDC860076D920 /* upBtn.png in Resources */,
 				78611EF61890FCC800BB60F4 /* aboutlogo_EN(1).png in Resources */,
 				11C9F599196419B300C65B7A /* mychild_doctor.png in Resources */,
+				114143001964FD06007267D6 /* health_write_bottom.png in Resources */,
+				1141430D1965409A007267D6 /* health_doctor_down.png in Resources */,
+				11414310196541D3007267D6 /* health_doctor_content.png in Resources */,
 				788BE6A517EFDC860076D920 /* upBtnSel.png in Resources */,
 				7897DF7A17F2AB4000DB8B21 /* ETEducationViewController.xib in Resources */,
 				7897DF7F17F2C38000DB8B21 /* order.png in Resources */,
@@ -3033,12 +3105,16 @@
 				785DE19F180F923F001B0EB3 /* myzan.png in Resources */,
 				11C9F59D19641BD300C65B7A /* health_cellBG.png in Resources */,
 				7897DF9317F2D6E000DB8B21 /* fontSel.png in Resources */,
+				114143141965451B007267D6 /* health_bottom@2x.png in Resources */,
 				7897DF9517F2D71E00DB8B21 /* fontSelect.png in Resources */,
 				78A420051821245E00D0DE50 /* infoBack1.png in Resources */,
+				11414317196552F2007267D6 /* health_button.png in Resources */,
 				78378EF417F56F6D00AAAE5A /* AboutOurView.xib in Resources */,
 				78F841C7181945F9007722AE /* tbBtn_classshare_en.png in Resources */,
 				78378EF917F56FBC00AAAE5A /* aboutTextBack.png in Resources */,
 				78378EFA17F56FBC00AAAE5A /* aboutTextBack2.png in Resources */,
+				1141431C19655505007267D6 /* health_doctor.png in Resources */,
+				114142FC1964FA47007267D6 /* health_middle.png in Resources */,
 				789EAA5E183A1C920029D4B0 /* fontBack.png in Resources */,
 				78378EFC17F5726E00AAAE5A /* copyright.png in Resources */,
 				785DE1B2180FB3E6001B0EB3 /* bottomAboutDef.png in Resources */,

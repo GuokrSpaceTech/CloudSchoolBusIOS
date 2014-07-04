@@ -202,18 +202,17 @@
 {
     [super viewWillAppear:animated];
     
-    
+   // [self loadUI];
     [__tableView reloadData];
 }
 -(void)loadUI
 {
 
-    if(inputView==nil)
-    {
-        
-        
-        
-        if(![_problem.status isEqualToString:@"n"] && ![_problem.status isEqualToString:@"d"] && ![_problem.status isEqualToString:@"c"])
+    
+    
+    
+        __tableView.tableFooterView=nil;
+        if(![_problem.status isEqualToString:@"n"] &&![_problem.status isEqualToString:@"d"] && ![_problem.status isEqualToString:@"c"])
         {
             UIView *footView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
             footView.backgroundColor=[UIColor clearColor];
@@ -250,8 +249,10 @@
             [footView release];
         }
         
-        
-        
+    
+    [inputView removeFromSuperview];
+    inputView=nil;
+    
         inputView=[[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-57, 320, 57)];
         UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 57)];
         imageView.image=[UIImage imageNamed:@"inputBG.png"];
@@ -260,21 +261,30 @@
         
         if([_problem.status isEqualToString:@"c"])
         {
-            UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 57)];
-            label.text=@"已关闭";
-            label.textColor=[UIColor whiteColor];
-            if([[[UIDevice currentDevice] systemVersion] floatValue]>=6.0)
-                label.textAlignment=NSTextAlignmentCenter;
-            else
-                label.textAlignment=UITextAlignmentCenter;
-            [inputView addSubview:label];
-            [label release];
+            
+            
+            
+            UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
+            btn.frame=CGRectMake(50, 10, 220, 37);
+            [btn setTitle:@"问题已解决，请评价" forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"health_pingjia_btn.png"] forState:UIControlStateNormal];
+            [btn addTarget:self action:@selector(pingjia:) forControlEvents:UIControlEventTouchUpInside];
+//            UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 57)];
+//            label.text=@"请评论";
+//            label.textColor=[UIColor whiteColor];
+//            if([[[UIDevice currentDevice] systemVersion] floatValue]>=6.0)
+//                label.textAlignment=NSTextAlignmentCenter;
+//            else
+//                label.textAlignment=UITextAlignmentCenter;
+            [inputView addSubview:btn];
+          //  [label release];
             
         }
         else if([_problem.status isEqualToString:@"d"])
         {
             UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 57)];
-            label.text=@"已评价";
+            label.text=@"问题已关闭";
             label.textColor=[UIColor whiteColor];
             if([[[UIDevice currentDevice] systemVersion] floatValue]>=6.0)
                 label.textAlignment=NSTextAlignmentCenter;
@@ -317,14 +327,28 @@
         [self.view addSubview:inputView];
         [inputView release];
 
-    }
+   
 }
 -(void)praiseClick:(UIGestureRecognizer *)tap
 {
     ETPraiseViewController *praiseVC=[[ETPraiseViewController alloc]init];
     praiseVC.problem=self.problem;
+    praiseVC.delegate=self;
     [self.navigationController pushViewController:praiseVC animated:YES];
     [praiseVC release];
+}
+-(void)pingjia:(UIButton *)btn
+{
+    ETPraiseViewController *praiseVC=[[ETPraiseViewController alloc]init];
+    praiseVC.problem=self.problem;
+    praiseVC.delegate=self;
+    [self.navigationController pushViewController:praiseVC animated:YES];
+    [praiseVC release];
+}
+-(void)reloadDetailVC
+{
+    self.problem.status=@"d";
+    [self loadUI];
 }
 -(void)loadAnswer
 {
@@ -345,9 +369,9 @@
     NSString *urlstr=[NSString stringWithFormat:@"http://yzxc.summer2.chunyu.me/partner/yzxc/problem/%@/detail",self.problem.problemId];
     
   //  NSString *urlstr=[NSString stringWithFormat:@"http://yzxc.summer2.chunyu.me/partner/yzxc/doctor/%@/detail",@"clinic_erke_lihuiling"];
-  //  UserLogin *user=[UserLogin currentLogin];
+    UserLogin *user=[UserLogin currentLogin];
     ASIFormDataRequest *resuest=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlstr]];
-   // [resuest setPostValue:user.username forKey:@"user_id"];
+    [resuest setPostValue:user.username forKey:@"user_id"];
     // [resuest set];
     [resuest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"data",@"pic", nil]];
     [resuest setDelegate:self];
@@ -637,11 +661,23 @@
             NSArray *contentarr=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             for (int j=0; j<[contentarr count]; j++) {
                 ProblemContent *content=[[ProblemContent alloc]init];
-                NSString *text=[[contentarr objectAtIndex:j] objectForKey:@"text"];
                 NSString *type=[[contentarr objectAtIndex:j] objectForKey:@"type"];
+                
+                if([type isEqualToString:@"text"])
+                {
+                   NSString *text=[[contentarr objectAtIndex:j] objectForKey:@"text"];
+                    content.text=text;
+                }
+                else
+                {
+                    NSString *text=[[contentarr objectAtIndex:j] objectForKey:@"file"];
+                    content.text=text;
+                }
+                
+             
                 //NSString *type=@"image";
                 content.type=type;
-                content.text=text;
+                
                 [detail.contentArr addObject:content];
                 [content release];
             }
@@ -689,7 +725,7 @@
             ProblemContent *pro=[_detail.contentArr objectAtIndex:i];
             if([pro.type isEqualToString:@"text"])
             {
-                CGSize size=[pro.text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:NSLineBreakByWordWrapping];
+                CGSize size=[pro.text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(150, 1000) lineBreakMode:NSLineBreakByWordWrapping];
 
                 cellheight+=(size.height + 20 + 10);
 
@@ -737,7 +773,7 @@
     if(self.doctor)
     {
         //[cell.photoImageView setImageWithURL:[NSURL URLWithString:_doctor.image] placeholderImage:nil];
-        [cell.photoImageView setImageWithURL:[NSURL URLWithString:_doctor.image] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+        [cell.photoImageView setImageWithURL:[NSURL URLWithString:_doctor.image] placeholderImage:[UIImage imageNamed:@"health_doctor.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
             cell.photoImageView.userInteractionEnabled=YES;
         }];
         cell.namelabel.text=_doctor.name;

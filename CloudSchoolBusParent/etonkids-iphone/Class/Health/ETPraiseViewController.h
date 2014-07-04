@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 #import "CYProblem.h"
-@interface ETPraiseViewController : UIViewController
+
+@protocol praiseVCdelegate;
+@interface ETPraiseViewController : UIViewController<UITextViewDelegate>
 {
     UIView * topView;
     
@@ -19,6 +21,16 @@
     
     
 }
+@property (nonatomic,assign)id<praiseVCdelegate>delegate;
 @property (nonatomic,retain)UITextView *contentView;
 @property (nonatomic,retain)CYProblem  *problem;
+
+@property (nonatomic,retain)NSString  *placeholder;
+@end
+
+
+@protocol praiseVCdelegate <NSObject>
+
+-(void)reloadDetailVC;
+
 @end

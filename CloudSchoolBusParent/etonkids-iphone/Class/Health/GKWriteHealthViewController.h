@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 #import "ETCustomAlertView.h"
-@interface GKWriteHealthViewController : UIViewController<UITextViewDelegate,UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,ETCustomAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
+@protocol writeHealthVCdelegate;
+@interface GKWriteHealthViewController : UIViewController<UITextViewDelegate,UIActionSheetDelegate,ETCustomAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 {
-    UITextView * _textView;
-      UITextField * _textField;
+
     UIButton * deleteImageView;
     UIImageView *photoImageView;
-    UIButton *downBtn;
+    UIScrollView *_scroller;
     
     int keshinumber;
     
@@ -23,11 +23,21 @@
 }
 
 @property (nonatomic,retain)UITableView * tableView;
-@property (nonatomic,retain)NSArray * labelArr;
+//@property (nonatomic,retain)NSArray * labelArr;
+@property (nonatomic,assign)id<writeHealthVCdelegate>delegate;
 @property (nonatomic,retain)NSData * photoImage;
-
+@property (nonatomic,retain) UITextView * _textView;
 @property (nonatomic,retain)NSString *sex;
 @property (nonatomic,assign)NSString *keshi;
 @property (nonatomic,retain)NSString *age;
+@property (nonatomic,retain) UITextField * _textField;
+@property (nonatomic,retain) UILabel * keshilabel;
+@property (nonatomic,retain)UILabel *sexLabel;
+@end
+
+
+@protocol writeHealthVCdelegate <NSObject>
+
+-(void)refreshDetailVC;
 
 @end

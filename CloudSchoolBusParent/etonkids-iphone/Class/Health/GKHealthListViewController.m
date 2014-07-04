@@ -10,7 +10,6 @@
 #import "ETKids.h"
 #import "GKHealthCell.h"
 #import "MD5.h"
-#import "GKWriteHealthViewController.h"
 #import "AppDelegate.h"
 #import "ASIFormDataRequest.h"
 #import "UserLogin.h"
@@ -96,10 +95,12 @@
     [middleLabel release];
     
     UIButton * rightButton =[UIButton buttonWithType:UIButtonTypeCustom];
-    [rightButton setFrame:CGRectMake(0, 0, 50, 35)];
-    [rightButton setCenter:CGPointMake(320 - 10 - 34/2, navigationBackView.frame.size.height/2 + (ios7 ? 20 : 0))];
+    [rightButton setFrame:CGRectMake(0, 0, 70, 28)];
+    [rightButton setCenter:CGPointMake(320 - 10 - 70/2, navigationBackView.frame.size.height/2 + (ios7 ? 20 : 0))];
     [rightButton addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [rightButton setTitle:@"提问" forState:UIControlStateNormal];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"health_button.png"] forState:UIControlStateNormal];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"health_buttoned.png"] forState:UIControlStateHighlighted];
     [self.view addSubview:rightButton];
     
     
@@ -163,7 +164,11 @@
     _refreshFooterView = nil;
 }
 
-
+-(void)refreshDetailVC
+{
+    [self loadData:0];
+    isUpfresh=YES;
+}
 -(void)loadData:(int)number
 {
     if(HUD==nil)
@@ -252,7 +257,7 @@
             CYProblem * problem=[[CYProblem alloc]init];
             NSDictionary *dic=[arr objectAtIndex:i];
             NSDictionary *dicinfo=[dic objectForKey:@"problem"];
-            
+            // problem.status=@"c";
             problem.status=[dicinfo objectForKey:@"status"];
             problem.created_time=[dicinfo objectForKey:@"created_time"];
             problem.ask=[dicinfo objectForKey:@"ask"];
@@ -379,11 +384,11 @@
     }
     if([problem.status isEqualToString:@"c"])
     {
-        cell.stateLatel.text=@"已关闭";
+        cell.stateLatel.text=@"待评价";
     }
     if([problem.status isEqualToString:@"v"])
     {
-        cell.stateLatel.text=@"回复已查看";
+        cell.stateLatel.text=@"已回复";
     }
     if([problem.status isEqualToString:@"p"])
     {
@@ -416,8 +421,8 @@
 {
     GKWriteHealthViewController * writeHealthVC=[[GKWriteHealthViewController alloc]init];
     
- 
-    AppDelegate *appDel=SHARED_APP_DELEGATE;
+    writeHealthVC.delegate=self;
+    AppDelegate *appDel= SHARED_APP_DELEGATE;
     [appDel.bottomNav pushViewController:writeHealthVC animated:YES];
     [writeHealthVC release];
     

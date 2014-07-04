@@ -82,7 +82,7 @@
     __tableView.backgroundColor = CELLCOLOR;
     __tableView.delegate = self;
     __tableView.dataSource = self;
-   // __tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+    __tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:__tableView];
     
     
@@ -98,6 +98,7 @@
     UILabel *nameLabel=[[UILabel alloc]initWithFrame:CGRectMake(90, 10, __tableView.frame.size.width-90, 20)];
     nameLabel.backgroundColor=[UIColor clearColor];
     //nameLabel.text=@"你好吧";
+    nameLabel.textColor=[UIColor grayColor];
     nameLabel.tag=1000;
     [tableViewHeaderView addSubview:nameLabel];
     [nameLabel release];
@@ -105,6 +106,7 @@
     UILabel *levellabel=[[UILabel alloc]initWithFrame:CGRectMake(90, 30, __tableView.frame.size.width-90, 20)];
     levellabel.backgroundColor=[UIColor clearColor];
     //levellabel.text=@"三级医院主治医师";
+    levellabel.textColor=[UIColor grayColor];
     levellabel.tag=1001;
     levellabel.font=[UIFont systemFontOfSize:15];
     [tableViewHeaderView addSubview:levellabel];
@@ -113,19 +115,21 @@
     UILabel *hospatial=[[UILabel alloc]initWithFrame:CGRectMake(90, 50, __tableView.frame.size.width-90, 20)];
     hospatial.backgroundColor=[UIColor clearColor];
     //hospatial.text=@"北京市京坛医院";
+    hospatial.textColor=[UIColor grayColor];
     hospatial.tag=1002;
     hospatial.font=[UIFont systemFontOfSize:15];
     [tableViewHeaderView addSubview:hospatial];
     [hospatial release];
     
     
-    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(5, 85, __tableView.frame.size.width-10, 50)];
-    imageView.backgroundColor=[UIColor whiteColor];
-
+    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(20, 85, 282, 56)];
+    imageView.backgroundColor=[UIColor clearColor];
+    imageView.image=[UIImage imageNamed:@"health_doctor_content.png"];
     [tableViewHeaderView addSubview:imageView];
     [imageView release];
     
-    UILabel *contentlabel=[[UILabel alloc]initWithFrame:CGRectMake(5+10, 85+10, __tableView.frame.size.width-10-20, 30)];
+    UILabel *contentlabel=[[UILabel alloc]initWithFrame:CGRectMake(25, 85+10, 270, 40)];
+    contentlabel.numberOfLines=0;
     contentlabel.backgroundColor=[UIColor clearColor];
    
     contentlabel.tag=1004;
@@ -188,33 +192,25 @@
         UIImageView *iamgeViewp=(UIImageView *)[tableViewHeaderView viewWithTag:1003];
         //hosptatal.text=[dic objectForKey:@"hospital"];
         
-        [iamgeViewp setImageWithURL:[NSURL URLWithString:[dic objectForKey:@"doc_image"]] placeholderImage:nil];
+        [iamgeViewp setImageWithURL:[NSURL URLWithString:[dic objectForKey:@"doc_image"]] placeholderImage:[UIImage imageNamed:@"health_doctor.png"]];
         
         UILabel *content=(UILabel *)[tableViewHeaderView viewWithTag:1004];
         content.text=[dic objectForKey:@"welcome"];
         
         NSArray *arr=[dic objectForKey:@"index"];
         self.tuijianArr=arr;
-//        "index": [
-//                  {
-//                      "trend": false,
-//                      "rate": 86,
-//                      "name": "推荐指数",
-//                      "hint": "低于同行6.6%"
-//                  },
-//                  {
-//                      "trend": false,
-//                      "rate": 80,
-//                      "name": "服务态度",
-//                      "hint": "低于同行11.1%"
-//                  },
-//                  {
-//                      "trend": false,
-//                      "rate": 80,
-//                      "name": "医术水平",
-//                      "hint": "低于同行11.1%"
-//                  }
-//                  ],
+        
+        
+        NSString * desc=[dic objectForKey:@"description"];
+        NSString *gootat=[dic objectForKey:@"good_at"];
+        
+    
+    
+        
+        NSArray *temp=[NSArray arrayWithObjects:desc,gootat, nil];
+        //description
+        self.renzhenArr=temp;
+
     }
     
     [__tableView reloadData];
@@ -243,111 +239,253 @@
 {
     if(section==0)
     return [_tuijianArr count];
-    return 3;
+    return ([_renzhenArr count]==0?0:([_renzhenArr count]+1));
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellidentifer=@"cell";
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellidentifer];
-    if(cell==nil)
-    {
-        cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellidentifer] autorelease];
-        cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        cell.backgroundColor=[UIColor clearColor];
-       // cell.backgroundView=nil;
-
-        UILabel *tuijianlabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 80, 20)];
-        tuijianlabel.backgroundColor=[UIColor clearColor];
-        tuijianlabel.tag=100;
-        
-        [cell.contentView addSubview:tuijianlabel];
-        [tuijianlabel release];
-            
-        UILabel *numlabel=[[UILabel alloc]initWithFrame:CGRectMake(90, 10, 50, 20)];
-        numlabel.backgroundColor=[UIColor clearColor];
-        numlabel.tag=101;
-        numlabel.textColor=[UIColor redColor];
-        [cell.contentView addSubview:numlabel];
-        [numlabel release];
-            
-
-        UIImageView *iamgeView=[[UIImageView alloc]initWithFrame:CGRectMake(190, 10, 10, 20)];
-        iamgeView.backgroundColor=[UIColor redColor];
-        iamgeView.tag=102;
-        [cell.contentView addSubview:iamgeView];
-        [iamgeView release];
-        
-        UILabel *contentlabgel=[[UILabel alloc]initWithFrame:CGRectMake(205, 10, 100, 20)];
-        contentlabgel.backgroundColor=[UIColor clearColor];
-        contentlabgel.tag=103;
-        contentlabgel.font=[UIFont systemFontOfSize:12];
-        [cell.contentView addSubview:contentlabgel];
-        [contentlabgel release];
-        
-     
-    }
-    cell.backgroundColor=[UIColor clearColor];
-    cell.textLabel.text=@"";
-    UILabel * tuijianlabel=(UILabel *) [cell.contentView viewWithTag:100];
-    UILabel * number=(UILabel *) [cell.contentView viewWithTag:101];
-    UIImageView * iamgeVuiew=(UIImageView *) [cell.contentView viewWithTag:102];
-    UILabel * contentlabel=(UILabel *) [cell.contentView viewWithTag:103];
+    
     if(indexPath.section==0)
     {
-        tuijianlabel.text=[[self.tuijianArr objectAtIndex:indexPath.row] objectForKey:@"name"];
-        tuijianlabel.frame=CGRectMake(10, 10, 80, 20);
-    
-        number.text=[NSString stringWithFormat:@"%@",[[self.tuijianArr objectAtIndex:indexPath.row] objectForKey:@"rate"]];
-        number.frame=CGRectMake(90, 10, 50, 20);
+       
+            static NSString *cell1=@"cell1";
+            UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cell1];
+            if(cell==nil)
+            {
+                cell=[[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell1] autorelease];
+                cell.backgroundColor=[UIColor clearColor];
+                cell.selectionStyle=UITableViewCellSelectionStyleNone;
+                cell.backgroundView=nil;
+                
+                if(indexPath.row==0)
+                {
+                    UIImageView *iamgeView=[[UIImageView alloc]initWithFrame:CGRectMake(7, 0, 306, 50)];
+                    iamgeView.backgroundColor=[UIColor clearColor];
+                    iamgeView.image=[UIImage imageNamed:@"health__top.png"];
+                    [cell.contentView addSubview:iamgeView];
+                    [iamgeView release];
+                }
+                else if(indexPath.row==[self.tuijianArr count]-1)
+                {
+                    UIImageView *iamgeView=[[UIImageView alloc]initWithFrame:CGRectMake(7, 0, 306, 50)];
+                    iamgeView.backgroundColor=[UIColor clearColor];
+                    iamgeView.image=[UIImage imageNamed:@"health_bottom.png"];
+                    [cell.contentView addSubview:iamgeView];
+                    [iamgeView release];
+                }
+                else
+                {
+                    UIImageView *iamgeView=[[UIImageView alloc]initWithFrame:CGRectMake(7, 0, 306, 50)];
+                    //iamgeView.backgroundColor=[UIColor redColor];
+                    iamgeView.image=[UIImage imageNamed:@"health_middle"];
+                    [cell.contentView addSubview:iamgeView];
+                    [iamgeView release];
+                }
+                UILabel *tuijianlabel=[[UILabel alloc]initWithFrame:CGRectMake(15, 15, 80, 20)];
+                tuijianlabel.backgroundColor=[UIColor clearColor];
+                tuijianlabel.tag=100;
+                [cell.contentView addSubview:tuijianlabel];
+                [tuijianlabel release];
+                
+                UILabel *numlabel=[[UILabel alloc]initWithFrame:CGRectMake(95, 15, 50, 20)];
+                numlabel.backgroundColor=[UIColor clearColor];
+                numlabel.tag=101;
+                numlabel.textColor=[UIColor redColor];
+                [cell.contentView addSubview:numlabel];
+                [numlabel release];
 
-        iamgeVuiew.frame=CGRectMake(190, 10, 10, 20);
-        NSString *up= [NSString stringWithFormat:@"%@",[[self.tuijianArr objectAtIndex:indexPath.row] objectForKey:@"trend"]];
-        if([up isEqualToString:@"0"])
-        {
-            // false
-            
-        }
-        else
-        {
-            
-        }
 
-        contentlabel.frame=CGRectMake(205, 10, 100, 20);
-        contentlabel.text=[NSString stringWithFormat:@"%@",[[self.tuijianArr objectAtIndex:indexPath.row] objectForKey:@"hint"]];
-        
+                UIImageView *iamgeView=[[UIImageView alloc]initWithFrame:CGRectMake(190, 20, 8, 12)];
+                iamgeView.backgroundColor=[UIColor clearColor];
+                iamgeView.tag=102;
+                [cell.contentView addSubview:iamgeView];
+                [iamgeView release];
+
+                UILabel *contentlabgel=[[UILabel alloc]initWithFrame:CGRectMake(205, 15, 100, 20)];
+                contentlabgel.backgroundColor=[UIColor clearColor];
+                contentlabgel.tag=103;
+                contentlabgel.font=[UIFont systemFontOfSize:12];
+                [cell.contentView addSubview:contentlabgel];
+                [contentlabgel release];
+            }
+                UILabel * tuijianlabel=(UILabel *) [cell.contentView viewWithTag:100];
+                UILabel * number=(UILabel *) [cell.contentView viewWithTag:101];
+                UIImageView * iamgeVuiew=(UIImageView *) [cell.contentView viewWithTag:102];
+                UILabel * contentlabel=(UILabel *) [cell.contentView viewWithTag:103];
+            
+            tuijianlabel.text=[[self.tuijianArr objectAtIndex:indexPath.row] objectForKey:@"name"];
+           // tuijianlabel.frame=CGRectMake(10, 10, 80, 20);
+
+            number.text=[NSString stringWithFormat:@"%@",[[self.tuijianArr objectAtIndex:indexPath.row] objectForKey:@"rate"]];
+            //number.frame=CGRectMake(90, 10, 50, 20);
+
+            //iamgeVuiew.frame=CGRectMake(190, 10, 10, 20);
+            NSString *up= [NSString stringWithFormat:@"%@",[[self.tuijianArr objectAtIndex:indexPath.row] objectForKey:@"trend"]];
+            if([up isEqualToString:@"0"])
+            {
+                // false
+                iamgeVuiew.image=[UIImage imageNamed:@"health_doctor_down.png"];
+
+            }
+            else
+            {
+                 iamgeVuiew.image=[UIImage imageNamed:@"health_doctor_up.png"];
+            }
+
+            //contentlabel.frame=CGRectMake(205, 10, 100, 20);
+            contentlabel.text=[NSString stringWithFormat:@"%@",[[self.tuijianArr objectAtIndex:indexPath.row] objectForKey:@"hint"]];
+            //
+
+              return cell;
     }
     else if(indexPath.section==1)
     {
-        tuijianlabel.frame=CGRectZero;
-        number.frame=CGRectZero;
-        iamgeVuiew.frame=CGRectZero;
-        contentlabel.frame=CGRectZero;
-        
         if(indexPath.row==0)
         {
-            cell.backgroundColor=[UIColor colorWithRed:96/255.0 green:176/255.0 blue:198/255.0 alpha:1];
-            
-            cell.textLabel.text=@"认证信息";
+            static NSString *cell2=@"cell2";
+            UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cell2];
+            if(cell==nil)
+            {
+                cell=[[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell2] autorelease];
+                cell.backgroundColor=[UIColor clearColor];
+                cell.backgroundView=nil;
+                  cell.selectionStyle=UITableViewCellSelectionStyleNone;
+      
+
+                if(indexPath.row==0)
+                {
+                    UIImageView *iamgeView=[[UIImageView alloc]initWithFrame:CGRectMake(7, 0, 306, 36)];
+                    iamgeView.backgroundColor=[UIColor clearColor];
+                    iamgeView.image=[UIImage imageNamed:@"health_topblue.png"];
+                    [cell.contentView addSubview:iamgeView];
+                    [iamgeView release];
+                }
+                
+                UILabel *renzhenLabeel=[[UILabel alloc]initWithFrame:CGRectMake(10, 8, 100, 20)];
+                renzhenLabeel.backgroundColor=[UIColor clearColor];
+                renzhenLabeel.tag=200;
+                renzhenLabeel.textColor=[UIColor whiteColor];
+                renzhenLabeel.font=[UIFont systemFontOfSize:15];
+                [cell.contentView addSubview:renzhenLabeel];
+                [renzhenLabeel release];
+                
+            }
+            UILabel * title=(UILabel *) [cell.contentView viewWithTag:200];
+            title.text=@"认证信息";
+            return cell;
         }
+        else
+        {
+            static NSString *cell3=@"cell3";
+            UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cell3];
+            if(cell==nil)
+            {
+                cell=[[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell3] autorelease];
+                cell.backgroundColor=[UIColor clearColor];
+                cell.backgroundView=nil;
+                  cell.selectionStyle=UITableViewCellSelectionStyleNone;
+                if(indexPath.row==[_renzhenArr count])
+                {
+                    // di
+                    
+                    UIImageView *iamgeView=[[UIImageView alloc]initWithFrame:CGRectMake(7, 0, 306, 50)];
+                    iamgeView.backgroundColor=[UIColor clearColor];
+                  //  iamgeView.image=[UIImage imageNamed:@"health_bottom.png"];
+                    [cell.contentView addSubview:iamgeView];
+                    iamgeView.tag=803;
+                    [iamgeView release];
+               
+                }
+                else
+                {
+                    //mid
+                    
+                    UIImageView *iamgeView=[[UIImageView alloc]initWithFrame:CGRectMake(7, 0, 306, 50)];
+                    //iamgeView.backgroundColor=[UIColor redColor];
+                    iamgeView.image=[UIImage imageNamed:@"health_middle"];
+                     iamgeView.tag=804;
+                    [cell.contentView addSubview:iamgeView];
+                    [iamgeView release];
+                }
+                
+                UILabel *titleLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 5, 100, 20)];
+                titleLabel.backgroundColor=[UIColor clearColor];
+                titleLabel.tag=800;
+                [cell.contentView addSubview:titleLabel];
+                [titleLabel release];
+                
+                UILabel *contentlabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 30, 280, 20)];
+                contentlabel.backgroundColor=[UIColor clearColor];
+                contentlabel.tag=801;
+                contentlabel.numberOfLines=0;
+                contentlabel.lineBreakMode=NSLineBreakByCharWrapping;
+                contentlabel.font=[UIFont systemFontOfSize:15];
+               // contentlabel.textColor=[UIColor clearColor];
+                [cell.contentView addSubview:contentlabel];
+                [contentlabel release];
+
+                
+                
+            }
+            UILabel *titleLabel=(UILabel *)[cell.contentView viewWithTag:800];
+            UILabel *contentlabel=(UILabel *)[cell.contentView viewWithTag:801];
+            
+            UIImageView *bottom=(UIImageView *)[cell.contentView viewWithTag:803];
+            UIImageView *middle=(UIImageView *)[cell.contentView viewWithTag:804];
+            
+            if(indexPath.row==1)
+            {
+                titleLabel.text=@"个人信息:";
+            }
+            else
+            {
+                titleLabel.text=@"擅长领域:";
+            }
+     
+              contentlabel.text=[_renzhenArr objectAtIndex:indexPath.row-1];
+            CGSize size=[[_renzhenArr objectAtIndex:indexPath.row-1] sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(280, 1000) lineBreakMode:NSLineBreakByCharWrapping];
+          
+            contentlabel.frame=CGRectMake(15, 30, 280, size.height);
+            contentlabel.backgroundColor=[UIColor clearColor];
+
+            middle.frame=CGRectMake(7, 0, 306, size.height + 20 +20);
+        
+            UIImage *image=[UIImage imageNamed:@"health_bottom.png"];
+            [image resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 20, 20)];
+            bottom.frame=CGRectMake(7, 0, 306, size.height + 20 +20);
+            bottom.image=image;
+            //iamgeView.frame=
+            //cell.textLabel.text=@"h";
+            return cell;
+
+        }
+        
+
     }
-    
-    // cell.textLabel.text=detail.created_time_ms;
-    
-    return cell;
-    
-    
-    
+    return nil;
+
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section==0)
-        return 40;
+        return 50;
     if(indexPath.section==1)
     {
         if(indexPath.row==0)
-            return 40;
+            return 35;
+        else
+        {
+          //  contentlabel.text=[_renzhenArr objectAtIndex:indexPath.row-1];
+            CGSize size=[[_renzhenArr objectAtIndex:indexPath.row-1] sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(280, 1000) lineBreakMode:NSLineBreakByCharWrapping];
+            
+          //  contentlabel.frame=CGRectMake(10, 30, 280, size.height);
+           // contentlabel.backgroundColor=[UIColor redColor];
+            
+            return size.height+20+20;
+            
+
+        }
     }
-    return 100;
+    return 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -378,6 +516,7 @@
     self.doctor=nil;
     self._tableView=nil;
     self.tuijianArr=nil;
+    self.renzhenArr=nil;
     [super dealloc];
 }
 /*

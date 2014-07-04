@@ -12,7 +12,8 @@
 #import "CYDoctor.h"
 #import "SRRefreshView.h"
 #import "CYDetailCell.h"
-@interface GKHealthDetaiViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,SRRefreshDelegate,DetailCellDelegate>
+#import "ETPraiseViewController.h"
+@interface GKHealthDetaiViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,SRRefreshDelegate,DetailCellDelegate,praiseVCdelegate>
 {
        UITextField *inputField;
         UIView  *inputView;

@@ -11,6 +11,7 @@
 #import "UserLogin.h"
 #import "MD5.h"
 #import "ASIFormDataRequest.h"
+#import <QuartzCore/QuartzCore.h>
 @interface ETPraiseViewController ()
 
 @end
@@ -31,6 +32,7 @@
 }
 - (void)leftButtonClick:(id)sender
 {
+    [contentView resignFirstResponder];
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)keyboarChange:(NSNotification *)noti
@@ -78,9 +80,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboarChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboarHidden:) name:UIKeyboardWillHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboarShow:) name:UIKeyboardWillShowNotification object:nil];
+
     
     self.view.backgroundColor=[UIColor blackColor];
     
@@ -141,12 +141,14 @@
 //    [scroller release];
     
     
-    topView=[[UIView alloc]initWithFrame:CGRectMake(6, NAVIHEIGHT + (ios7 ? 20 : 0)+5, self.view.frame.size.width-12, 100)];
+    topView=[[UIView alloc]initWithFrame:CGRectMake(6, NAVIHEIGHT + (ios7 ? 20 : 0)+5, self.view.frame.size.width-12, 120)];
     topView.backgroundColor=[UIColor whiteColor];
+    topView.layer.cornerRadius=10;
+    
     [self.view addSubview:topView];
     [topView release];
     
-    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake((self.view.frame.size.width-12)/2.0-30, 8, 60, 20)];
+    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake((self.view.frame.size.width-12)/2.0-30, 11, 60, 20)];
     label.text=@"总体评价";
     label.font=[UIFont systemFontOfSize:15];
     label.backgroundColor=[UIColor clearColor];
@@ -155,14 +157,14 @@
     
     for (int i=0; i<5; i++) {
         UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame=CGRectMake((self.view.frame.size.width-12)/2.0-75+30*i, label.frame.size.height+label.frame.origin.y+10, 30, 20);
+        btn.frame=CGRectMake((self.view.frame.size.width-12)/2.0-75+30*i, label.frame.size.height+label.frame.origin.y+20, 25, 24);
         [btn addTarget:self action:@selector(praiseBtn:) forControlEvents:UIControlEventTouchUpInside];
         btn.tag=i;
-        [btn setBackgroundImage:[UIImage imageNamed:@"user_subscribe_favor_normal.png"] forState:UIControlStateNormal];
-         [btn setBackgroundImage:[UIImage imageNamed:@"user_subscribe_favor_sel.png"] forState:UIControlStateSelected];
+        [btn setBackgroundImage:[UIImage imageNamed:@"health_star_gray.png"] forState:UIControlStateNormal];
+         [btn setBackgroundImage:[UIImage imageNamed:@"health_star_yellow.png"] forState:UIControlStateSelected];
         [topView addSubview:btn];
     }
-    UILabel *startlabl=[[UILabel alloc]initWithFrame:CGRectMake(0 ,label.frame.size.height+label.frame.origin.y+10 + 30,320,20)];
+    UILabel *startlabl=[[UILabel alloc]initWithFrame:CGRectMake(0 ,label.frame.size.height+label.frame.origin.y+10 +20 + 30,320,20)];
     startlabl.text=@"按星级评价";
     startlabl.font=[UIFont systemFontOfSize:14];
     if(IOSVERSION>=6.0)
@@ -183,13 +185,41 @@
     
     UIView *bottomView=[[UIView alloc]initWithFrame:CGRectMake(6, topView.frame.size.height+topView.frame.origin.y+20, 308, 100)];
     bottomView.backgroundColor=[UIColor whiteColor];
+    bottomView.layer.cornerRadius=10;
     [self.view addSubview:bottomView];
     [bottomView release];
     
-    
+    self.placeholder=@"请输入评价";
     contentView=[[UITextView alloc]initWithFrame:CGRectMake(5, 5, 290, 90)];
+    contentView.delegate=self;
+    contentView.text=self.placeholder;
+    contentView.textColor=[UIColor grayColor];
     [bottomView addSubview:contentView];
     // Do any additional setup after loading the view.
+}
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if([textView.text isEqualToString:self.placeholder])
+    {
+        contentView.text=@"";
+         contentView.textColor=[UIColor blackColor];
+    }
+    else
+    {
+         contentView.textColor=[UIColor blackColor];
+    }
+}
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if([textView.text isEqualToString:@""] || [textView.text isEqualToString:self.placeholder])
+    {
+        contentView.text=self.placeholder;
+        contentView.textColor=[UIColor grayColor];
+    }
+    else
+    {
+        contentView.textColor=[UIColor blackColor];
+    }
 }
 -(void)praiseBtn:(UIButton *)btn
 {
@@ -286,6 +316,10 @@
             UIAlertView *alert=[[UIAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:@"评价成功" delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
             [alert show];
             [alert release];
+         
+            self.problem.status=@"d";
+            [_delegate reloadDetailVC];
+            [self.navigationController popViewControllerAnimated:YES];
 
         }
         else
@@ -320,6 +354,7 @@
 {
     self.contentView=nil;
     self.problem=nil;
+    self.placeholder=nil;
     [super dealloc];
 }
 /*

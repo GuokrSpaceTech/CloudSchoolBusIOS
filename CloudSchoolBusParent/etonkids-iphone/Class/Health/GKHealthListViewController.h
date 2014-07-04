@@ -10,7 +10,8 @@
 #import "SRRefreshView.h"
 #import "LoadMoreTableFooterView.h"
 #import "MBProgressHUD.h"
-@interface GKHealthListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,SRRefreshDelegate,EGORefreshTableDelegate>
+#import "GKWriteHealthViewController.h"
+@interface GKHealthListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,SRRefreshDelegate,EGORefreshTableDelegate,writeHealthVCdelegate>
 {
     int  currentnumber;
     BOOL hasmore;

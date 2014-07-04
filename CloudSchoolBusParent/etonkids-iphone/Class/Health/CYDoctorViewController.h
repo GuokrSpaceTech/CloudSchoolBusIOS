@@ -19,4 +19,5 @@
 @property (nonatomic,retain)UITableView *_tableView;
 @property (nonatomic,retain) CYDoctor *doctor;
 @property (nonatomic,retain) NSArray *tuijianArr;
+@property (nonatomic,retain) NSArray *renzhenArr;
 @end

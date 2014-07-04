@@ -19,7 +19,11 @@
 @end
 
 @implementation GKWriteHealthViewController
-
+@synthesize _textView;
+@synthesize sexLabel;
+@synthesize _textField;
+@synthesize keshilabel;
+@synthesize delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -95,61 +99,190 @@
     
     
     
-    _tableView= [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), 320, (iphone5 ? 548 : 460) - NAVIHEIGHT - (ios7 ? 20 : 0)) style:UITableViewStyleGrouped];
-    _tableView.backgroundView = nil;
-    _tableView.backgroundColor = CELLCOLOR;
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-   // _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
-    [self.view addSubview:_tableView];
     
-    //UI
+    _scroller=[[UIScrollView alloc]initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), 320, (iphone5 ? 548 : 460) - NAVIHEIGHT)];
+    [self.view addSubview:_scroller];
+    [_scroller release];
+    
+    UIImageView *BGView=[[UIImageView alloc]initWithFrame:CGRectMake(7, 15, 305, 143)];
+    // cell.backgroundView=BGView;
+    BGView.backgroundColor=[UIColor clearColor];
+    BGView.image=[UIImage imageNamed:@"health_write_input.png"];
+    [_scroller addSubview:BGView];
+    [BGView release];
+    
+    _textView=[[UITextView alloc]initWithFrame:CGRectMake(7, 15, 305, 143)];
+    
+    // _textView.text=@"请您尽可能详细的描述";
+    _textView.delegate=self;
+    _textView.backgroundColor=[UIColor clearColor];
+    _textView.tag=100;
+    [_scroller addSubview:_textView];
+
+
+
+    
+    UIImageView *topView=[[UIImageView alloc]initWithFrame:CGRectMake(7, BGView.frame.size.height+BGView.frame.origin.y + 15, 305, 44)];
+    topView.userInteractionEnabled=YES;
+    topView.tag=3000;
+    topView.image=[UIImage imageNamed:@"health_write_top.png"];
+    topView.backgroundColor=[UIColor clearColor];
+    [_scroller addSubview:topView];
+    [topView release];
+    
+    
+    UITapGestureRecognizer *taptop=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick:)];
+    taptop.numberOfTapsRequired=1;
+    [topView addGestureRecognizer:taptop];
+    [taptop release];
+    
+    
+    UILabel *_sexlabel=[[UILabel alloc]initWithFrame:CGRectMake(20, BGView.frame.size.height+BGView.frame.origin.y + 15+12, 100, 20)];
+    _sexlabel.text=@"性别";
+    _sexlabel.backgroundColor=[UIColor clearColor];
+    [_scroller addSubview:_sexlabel];
+    [_sexlabel release];
+
+    sexLabel =[[UILabel alloc]initWithFrame:CGRectMake(200, _sexlabel.frame.origin.y, 100, 20)];
+    sexLabel.text=@"男";
+    sexLabel.backgroundColor=[UIColor clearColor];
+    [_scroller addSubview:sexLabel];
+
+    UIImageView *arrowIamge=[[UIImageView alloc]initWithFrame:CGRectMake(305-19, BGView.frame.size.height+BGView.frame.origin.y + 15 + 15, 9, 15)];
+    arrowIamge.image=[UIImage imageNamed:@"health_arrow.png"];
+    arrowIamge.backgroundColor=[UIColor clearColor];
+    [_scroller addSubview:arrowIamge];
+    [arrowIamge release];
+    
+    
+    NSArray *labelArr=[NSArray arrayWithObjects:@"年龄",@"科室", nil];
+    
+    //health_arrow
+    for (int i=0; i<2; i++) {
+        UIImageView *midile=[[UIImageView alloc]initWithFrame:CGRectMake(7, topView.frame.size.height+topView.frame.origin.y+i*44, 305, 44)];
+        midile.userInteractionEnabled=YES;
+        midile.tag=i+3001;
+        midile.image=[UIImage imageNamed:@"health_middle.png"];
+        midile.backgroundColor=[UIColor clearColor];
+        [_scroller addSubview:midile];
+        [midile release];
+        
+        
+        UITapGestureRecognizer *tapniddle=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick:)];
+        tapniddle.numberOfTapsRequired=1;
+        [midile addGestureRecognizer:tapniddle];
+        [tapniddle release];
+        
+        
+        UIImageView *arrowIamge=[[UIImageView alloc]initWithFrame:CGRectMake(305-19, topView.frame.size.height+topView.frame.origin.y+i*44 + 15, 9, 15)];
+        arrowIamge.image=[UIImage imageNamed:@"health_arrow.png"];
+        arrowIamge.backgroundColor=[UIColor clearColor];
+        [_scroller addSubview:arrowIamge];
+        [arrowIamge release];
+        
+        UILabel *templabel=[[UILabel alloc]initWithFrame:CGRectMake(20, topView.frame.size.height+topView.frame.origin.y+i*44 + 12, 100, 20)];
+        templabel.text=[labelArr objectAtIndex:i];
+        templabel.backgroundColor=[UIColor clearColor];
+        [_scroller addSubview:templabel];
+        [templabel release];
+    }
+    
+    _textField=[[UITextField alloc]initWithFrame:CGRectMake(150, topView.frame.size.height+topView.frame.origin.y +8, 100, 30)];
+    _textField.text=@"";
+    _textField.placeholder=@"年龄";
+    _textField.borderStyle=UITextBorderStyleRoundedRect;
+    _textField.delegate=self;
+    _textField.keyboardType=UIKeyboardTypeNumberPad;
+    [_scroller addSubview:_textField];
+    
+    
+    keshilabel =[[UILabel alloc]initWithFrame:CGRectMake(200, topView.frame.size.height+topView.frame.origin.y+44+12, 100, 20)];
+    keshilabel.text=self.keshi;
+    keshilabel.backgroundColor=[UIColor clearColor];
+    [_scroller addSubview:keshilabel];
     
 
     
-    self.labelArr=[NSArray arrayWithObjects:@"性别",@"年龄",@"科室", nil];
+    UIImageView *bottomView=[[UIImageView alloc]initWithFrame:CGRectMake(7, topView.frame.size.height+topView.frame.origin.y+2*44, 305, 305/2.0f)];
+    bottomView.userInteractionEnabled=YES;
+    bottomView.tag=3003;
+    bottomView.image=[UIImage imageNamed:@"health_write_bottom.png"];
+    bottomView.backgroundColor=[UIColor clearColor];
+    [_scroller addSubview:bottomView];
+    [bottomView release];
+    
+    UITapGestureRecognizer *tapbottom=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick:)];
+    tapbottom.numberOfTapsRequired=1;
+    [bottomView addGestureRecognizer:tapbottom];
+    [tapbottom release];
+    
+    
+    UIImageView *arrowIamgeView=[[UIImageView alloc]initWithFrame:CGRectMake(305-19, bottomView.frame.origin.y + 65, 9, 15)];
+    arrowIamgeView.image=[UIImage imageNamed:@"health_arrow.png"];
+    arrowIamgeView.backgroundColor=[UIColor clearColor];
+    [_scroller addSubview:arrowIamgeView];
+    [arrowIamgeView release];
+    
+    photoImageView=[[UIImageView alloc]initWithFrame:CGRectMake(bottomView.frame.origin.x+20, bottomView.frame.origin.y+10, 110, 125)];
+    photoImageView.image=[UIImage imageNamed:@"health_uppic.png"];
+    //photoImageView.backgroundColor=[UIColor grayColor];
+    [_scroller addSubview:photoImageView];
+    [photoImageView release];
+    
+    
+    deleteImageView=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    deleteImageView.frame=CGRectMake(bottomView.frame.origin.x+20+125+50, bottomView.frame.origin.y+10 + 45 , 34, 34);
+    deleteImageView.hidden=YES;
+    [deleteImageView setBackgroundImage:[UIImage imageNamed:@"health_write_delete.png"] forState:UIControlStateNormal];
+    [deleteImageView addTarget:self action:@selector(deletePhoto:) forControlEvents:UIControlEventTouchUpInside];
+    [_scroller addSubview:deleteImageView];
     
     
     
-    downBtn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [downBtn setTitle:@"下" forState:UIControlStateNormal];
-    [downBtn addTarget:self action:@selector(keyboardDown:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:downBtn];
+    _scroller.contentSize=CGSizeMake(_scroller.frame.size.width, bottomView.frame.size.height+bottomView.frame.origin.y +100);
     
-    
-     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyBoardShow:) name:UIKeyboardDidShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyBoardChange:) name:UIKeyboardDidChangeFrameNotification object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyBoardHidden:) name:UIKeyboardDidHideNotification object:nil];
-//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyBoardChange:) name:UIKeyboardDidChangeFrameNotification object:nil];
 
 }
--(void)keyBoardHidden:(NSNotification *)no
+
+-(void)tapClick:(UITapGestureRecognizer *)tap
 {
-     downBtn.frame=CGRectMake(0,self.view.frame.size.height, 20, 20);
-}
--(void)keyboardDown:(UIButton *)btn
-{
-    [_textView resignFirstResponder];
+    
     [_textField resignFirstResponder];
-}
--(void)keyBoardChange:(NSNotification *)no
-{
-    NSDictionary *info = [no userInfo];
-    NSValue *aValue = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
-    CGSize keyboardSize = [aValue CGRectValue].size;
-
+    [_textView resignFirstResponder];
+    UIImageView *imageView=(UIImageView *)tap.view;
+    int tag=imageView.tag;
     
-    downBtn.frame=CGRectMake(self.view.frame.size.width-30,self.view.frame.size.height-keyboardSize.height-(ios7?20:0), 20, 20);
+    if(tag==3000)
+    {
+        //性别
+        
+        UIActionSheet *aa=[[UIActionSheet alloc]initWithTitle:LOCAL(@"Gender",@"") delegate:self cancelButtonTitle:LOCAL(@"cancel",@"") destructiveButtonTitle:nil otherButtonTitles:LOCAL(@"prince",@""),LOCAL(@"Princess",@""), nil];
+        [aa showInView:self.view];
+        aa.tag = 102;
+        [aa release];
+    }
+    if(tag==3001)
+    {
+        //年龄
+    }
+    if(tag==3002)
+    {
+        //科室
+        UIActionSheet *aa=[[UIActionSheet alloc]initWithTitle:@"科室" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"妇产科",@"儿科",@"内科",@"皮肤性病科",@"内分泌科",@"营养科",@"骨科",@"男性泌尿科",@"外科",@"心血管科脑神经科",@"肿瘤科",@"中医科",@"口腔科",@"耳鼻喉科",@"眼科",@"整形美容科",@"心理科",@"脑神经科", nil];
+        [aa showInView:self.view];
+        aa.tag=103;
+        [aa release];
+    }
+    if(tag==3003)
+    {
+        //图片
+        
+        UIActionSheet *aa=[[UIActionSheet alloc]initWithTitle:LOCAL(@"changeavadar",@"") delegate:self cancelButtonTitle:LOCAL(@"cancel",@"") destructiveButtonTitle:nil otherButtonTitles:LOCAL(@"takePhoto", @"拍照"),LOCAL(@"choosePhoto",@"从手机相册中选择") , nil];
+        [aa showInView:self.view];
+        aa.tag = 101;
+        [aa release];
+    }
 }
--(void)keyBoardShow:(NSNotification *)no
-{
-    NSDictionary *info = [no userInfo];
-    NSValue *aValue = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
-    CGSize keyboardSize = [aValue CGRectValue].size;
-    downBtn.frame=CGRectMake(self.view.frame.size.width-30,self.view.frame.size.height-keyboardSize.height-(ios7?20:0), 20, 20);
-
-}
-
 
 - (NSString *)md5:(NSString *)str
 {
@@ -208,6 +341,11 @@
     }
 
     
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
 }
 -(void)createProblem:(NSString *)url
 {
@@ -302,6 +440,8 @@
             UIAlertView *alert=[[UIAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:@"创建成功" delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
             [alert show];
             [alert release];
+            [delegate refreshDetailVC];
+            [self.navigationController popViewControllerAnimated:YES];
         }
         else
         {
@@ -316,198 +456,15 @@
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
     //[_tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    _scroller.contentOffset=CGPointMake(0, 100);
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 2;
-}
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if(section==0)
-    {
-        return 1;
-    }
-    
-    return 4;
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *cellidentifer=@"cell";
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellidentifer];
-    if(cell==nil)
-    {
-        cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellidentifer] autorelease];
-        cell.selectionStyle=UITableViewCellSelectionStyleNone;
-       // cell.backgroundColor=[UIColor clearColor];
-       // cell.backgroundView=nil;
-        
-        if(indexPath.section==0)
-        {
-             _textView=[[UITextView alloc]initWithFrame:CGRectMake(5, 5, 310, 140)];
 
-           // _textView.text=@"请您尽可能详细的描述";
-            _textView.delegate=self;
-            _textView.backgroundColor=[UIColor redColor];
-            _textView.tag=100;
-            [cell.contentView addSubview:_textView];
-            [_textView release];
-        }
-        if(indexPath.section==1)
-        {
-
-            if(indexPath.row==3)
-            {
-                photoImageView=[[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 110, 125)];
-                photoImageView.backgroundColor=[UIColor grayColor];
-                [cell.contentView addSubview:photoImageView];
-                [photoImageView release];
-                
-                
-                deleteImageView=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-                deleteImageView.frame=CGRectMake(280, 58, 20, 20);
-                //deleteImageView.hidden=YES;
-                [deleteImageView setTitle:@"x" forState:UIControlStateNormal];
-                [deleteImageView addTarget:self action:@selector(deletePhoto:) forControlEvents:UIControlEventTouchUpInside];
-                [cell.contentView addSubview:deleteImageView];
-                
-           
-                
-            }
-            else
-            {
-                UILabel * nameLable=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 100, 20)];
-                nameLable.text=@"";
-                [cell.contentView addSubview:nameLable];
-                nameLable.tag=101;
-                [nameLable release];
-                
-                if(indexPath.row==1)
-                {
-                    _textField=[[UITextField alloc]initWithFrame:CGRectMake(200, 5, 100, 30)];
-                    _textField.text=@"";
-                    _textField.borderStyle=UITextBorderStyleRoundedRect;
-                    _textField.delegate=self;
-                    _textField.keyboardType=UIKeyboardTypeNumberPad;
-                    [cell.contentView addSubview:_textField];
-                    [_textField release];
-                }
-                else
-                {
-                    UILabel * realLabel=[[UILabel alloc]initWithFrame:CGRectMake(250, 10, 60, 20)];
-                    realLabel.text=@"";
-                    [cell.contentView addSubview:realLabel];
-                    realLabel.tag=102;
-                    [realLabel release];
-
-                }
-            }
-            
-            
-        }
-    }
-    
-    if(indexPath.section==1)
-    {
-        if(indexPath.row==3)
-        {
-            if(self.photoImage)
-            {
-                photoImageView.image=[UIImage imageWithData:self.photoImage];
-                deleteImageView.hidden=NO;
-            }
-            else
-            {
-                photoImageView.image=nil;
-                deleteImageView.hidden=YES;
-            }
-        }
-        else
-        {
-            UILabel *label=(UILabel *)[cell.contentView viewWithTag:101];
-            label.text=[self.labelArr objectAtIndex:indexPath.row];
-            
-            UILabel *real=(UILabel *)[cell.contentView viewWithTag:102];
-            if(indexPath.row==0)
-            {
-                real.text=self.sex;
-            }
-            if(indexPath.row==2)
-            {
-                real.text=self.keshi;
-            }
-          //  real.text=[self.labelArr objectAtIndex:indexPath.row];
-            
-        }
-        
-    }
-    
-    
-    return cell;
-    
-    
-    
-}
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if(indexPath.section==0)
-    {
-        return 150;
-    }
-    else if(indexPath.section==1)
-    {
-        if(indexPath.row==3)
-        {
-            return 135;
-        }
-    }
-        return 44;
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [_textField resignFirstResponder];
-    [_textView resignFirstResponder];
-    
-   if(indexPath.section==1)
-   {
-       if(indexPath.row==0)
-       {
-           UIActionSheet *aa=[[UIActionSheet alloc]initWithTitle:LOCAL(@"Gender",@"") delegate:self cancelButtonTitle:LOCAL(@"cancel",@"") destructiveButtonTitle:nil otherButtonTitles:LOCAL(@"prince",@""),LOCAL(@"Princess",@""), nil];
-           [aa showInView:self.view];
-            aa.tag = 102;
-           [aa release];
-           
-       }
-       if(indexPath.row==1)
-       {
-           
-       }
-       if(indexPath.row==2)
-       {
-           UIActionSheet *aa=[[UIActionSheet alloc]initWithTitle:@"科室" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"妇产科",@"儿科",@"内科",@"皮肤性病科",@"内分泌科",@"营养科",@"骨科",@"男性泌尿科",@"外科",@"心血管科脑神经科",@"肿瘤科",@"中医科",@"口腔科",@"耳鼻喉科",@"眼科",@"整形美容科",@"心理科",@"脑神经科", nil];
-           [aa showInView:self.view];
-           aa.tag=103;
-           [aa release];
-       }
-       if(indexPath.row==3)
-       {
-           
-           UIActionSheet *aa=[[UIActionSheet alloc]initWithTitle:LOCAL(@"changeavadar",@"") delegate:self cancelButtonTitle:LOCAL(@"cancel",@"") destructiveButtonTitle:nil otherButtonTitles:LOCAL(@"takePhoto", @"拍照"),LOCAL(@"choosePhoto",@"从手机相册中选择") , nil];
-           [aa showInView:self.view];
-           aa.tag = 101;
-           [aa release];
-       }
-   }
-    
-    
-    
-    
-}
 -(void)deletePhoto:(UIButton *)btn
 {
     self.photoImage=nil;
-    [_tableView reloadData];
+        photoImageView.image=[UIImage imageNamed:@"health_uppic.png"];
+    deleteImageView.hidden=YES;
 }
 - (void)leftButtonClick:(id)sender
 {
@@ -561,12 +518,15 @@
         if(buttonIndex==0)
         {
             self.sex=@"男";
+            sexLabel.text=@"男";
         }
         if(buttonIndex==1)
         {
             self.sex=@"女";
+             sexLabel.text=@"女";
         }
-        [_tableView reloadData];
+    
+      
     }
     else if (actionSheet.tag == 103)
     {
@@ -581,9 +541,10 @@
             self.keshi=[arr objectAtIndex:buttonIndex];
             
             keshinumber=buttonIndex+1;
+            keshilabel.text=[arr objectAtIndex:buttonIndex];
             
         }
-        [_tableView reloadData];
+   
     }
 
 }
@@ -606,7 +567,13 @@
     
     self.photoImage=dataa;
 
-    [_tableView reloadData];
+    photoImageView.image=[UIImage imageWithData:dataa scale:0.5];
+    
+    if(self.photoImage)
+    {
+        deleteImageView.hidden=NO;
+    }
+  //  [_tableView reloadData];
     
     
 }
@@ -626,12 +593,15 @@
      [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardDidHideNotification object:nil];
 
     self.tableView=nil;
-    self.labelArr=nil;
+    //self.labelArr=nil;
     self.photoImage=nil;
     self.sex=nil;
     self.keshi=nil;
     self.age=nil;
-
+    self._textView=nil;
+    self.sexLabel=nil;
+    self._textField=nil;
+    self.keshilabel=nil;
     [super dealloc];
 }
 /*

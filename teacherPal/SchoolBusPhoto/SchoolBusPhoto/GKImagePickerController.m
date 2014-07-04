@@ -55,9 +55,6 @@
 {
     return YES;
 }
--(UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
-}
 
 - (void)viewDidLoad
 {

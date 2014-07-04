@@ -299,8 +299,8 @@
             self.radia.hidden = YES;
             self.mPlayer.contentURL = [NSURL fileURLWithPath:path];
             
-            [self.mPlayer prepareToPlay];
-            [self.mPlayer play];
+           // [self.mPlayer prepareToPlay];
+            //[self.mPlayer play];
 //            self.mPlayer.initialPlaybackTime = -1;
             
             //下载完成后谁优先谁播放

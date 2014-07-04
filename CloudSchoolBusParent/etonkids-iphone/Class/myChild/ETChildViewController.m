@@ -9,7 +9,7 @@
 #import "UIImageView+WebCache.h"
 #import "ETGrowViewController.h"
 #import "ETGCalendarViewController.h"
-
+#import "GKHealthListViewController.h"
 #define VIEWHEIGHT 110
 #define VIEWHEIGHT5 128
 
@@ -63,7 +63,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -188,6 +188,31 @@
         
     }
     
+    else if (indexPath.section == 3)
+    {
+        
+        UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+        imgV.center = CGPointMake(26, 20);
+        imgV.image = [UIImage imageNamed:@"mychild_doctor.png"];
+        [cell.contentView addSubview:imgV];
+        [imgV release];
+        
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
+        label.text = @"医生咨询";
+        label.font = [UIFont systemFontOfSize:16];
+        //label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
+        label.backgroundColor = [UIColor clearColor];
+        [cell.contentView addSubview:label];
+        [label release];
+        
+        
+        //        cell.textLabel.backgroundColor=[UIColor clearColor];
+        //        cell.textLabel.text = [titleArr objectAtIndex:indexPath.row];
+        cell.selectionStyle=UITableViewCellSelectionStyleBlue;
+        
+    }
+
     return cell;
     
 }
@@ -226,6 +251,23 @@
 //        [appDel.bottomNav pushViewController:cal animated:YES];
 //        [cal release];
 
+        return;
+        
+    }
+    
+    else if (indexPath.section == 3)
+    {
+        GKHealthListViewController *VC=[[GKHealthListViewController alloc]init];
+        AppDelegate *appDel=SHARED_APP_DELEGATE;
+        [appDel.bottomNav pushViewController:VC animated:YES];
+        [VC release];
+        
+        
+        //        ETCalendarViewController *cal = [[ETCalendarViewController alloc] initWithNibName:nil bundle:nil];
+        //        AppDelegate *appDel = SHARED_APP_DELEGATE;
+        //        [appDel.bottomNav pushViewController:cal animated:YES];
+        //        [cal release];
+        
         return;
         
     }

@@ -436,7 +436,7 @@
             {
                 outImageView.userInteractionEnabled=NO;
             }
-            
+           
             if([otherstate isEqualToString:@""])
             {
                 otherStateLabel.frame=CGRectZero;

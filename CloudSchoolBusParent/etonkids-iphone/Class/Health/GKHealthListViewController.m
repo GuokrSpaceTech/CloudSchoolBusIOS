@@ -16,6 +16,7 @@
 #import "CYProblem.h"
 #import "NSDate+convenience.h"
 #import "GKHealthDetaiViewController.h"
+#import "HealthFirstView.h"
 @interface GKHealthListViewController ()
 
 @end
@@ -59,6 +60,24 @@
         
     }
     
+    
+    
+    NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+    
+    NSString * health =[user objectForKey:@"Health"];
+    if(health==nil)
+    {
+        CGRect rect=[UIScreen mainScreen].bounds;
+        HealthFirstView *firstView=[[HealthFirstView alloc]initWithFrame:CGRectMake(0, 0,rect.size.width,rect.size.height)];
+        firstView.backgroundColor=[UIColor clearColor];
+        
+        
+        AppDelegate *delegate=SHARED_APP_DELEGATE;
+        
+        [delegate.window addSubview:firstView];
+        [firstView release];
+    }
+    
     UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, (ios7 ? 20 : 0) + NAVIHEIGHT, 320, self.view.frame.size.height - NAVIHEIGHT - (ios7 ? 20 : 0))];
     backView.backgroundColor = CELLCOLOR;
     [self.view insertSubview:backView atIndex:0];
@@ -89,18 +108,19 @@
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
     middleLabel.textAlignment=UITextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
-    middleLabel.text = @"医生咨询";
+    middleLabel.text =  NSLocalizedString(@"doctor_con", @"医生咨询");
     middleLabel.backgroundColor=[UIColor clearColor];
     [self.view addSubview:middleLabel];
     [middleLabel release];
-    
+
     UIButton * rightButton =[UIButton buttonWithType:UIButtonTypeCustom];
     [rightButton setFrame:CGRectMake(0, 0, 70, 28)];
     [rightButton setCenter:CGPointMake(320 - 10 - 70/2, navigationBackView.frame.size.height/2 + (ios7 ? 20 : 0))];
     [rightButton addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [rightButton setTitle:@"提问" forState:UIControlStateNormal];
+    [rightButton setTitle:NSLocalizedString(@"doctor_tiwen", @"提问") forState:UIControlStateNormal];
     [rightButton setBackgroundImage:[UIImage imageNamed:@"health_button.png"] forState:UIControlStateNormal];
     [rightButton setBackgroundImage:[UIImage imageNamed:@"health_buttoned.png"] forState:UIControlStateHighlighted];
+    rightButton.titleLabel.font=[UIFont systemFontOfSize:15];
     [self.view addSubview:rightButton];
     
     
@@ -174,7 +194,7 @@
     if(HUD==nil)
     {
         HUD=[[MBProgressHUD alloc]initWithView:self.view];
-        HUD.labelText=@"加载中";
+        HUD.labelText=NSLocalizedString(@"load", @"");
         [self.view addSubview:HUD];
         [HUD release];
         [HUD show:YES];
@@ -364,6 +384,15 @@
         dateStr = [NSString stringWithFormat:@"error time"];
     }
     
+//    "doctor_new"="新问题";
+//    "doctor_renling"="已认领";
+//    "doctor_newrelpay"="新回复";
+//    "doctor_daichuli"="带处理";
+//    "doctor_yidafu"="已答复";
+//    "doctor_daipingjia"="待评价";
+//    "doctor_yipingja"="已评价";
+//    "doctor_jibao"="系统举报";
+    
     cell.timeLatel.text=dateStr;
     
     if([problem.status isEqualToString:@"i"])
@@ -372,31 +401,32 @@
     }
     if([problem.status isEqualToString:@"n"])
     {
-        cell.stateLatel.text=@"新问题";
+        cell.stateLatel.text=NSLocalizedString(@"doctor_new", @"");
     }
     if([problem.status isEqualToString:@"a"])
     {
-        cell.stateLatel.text=@"已认领";
+        cell.stateLatel.text=NSLocalizedString(@"doctor_renling", @"");
     }
     if([problem.status isEqualToString:@"s"])
     {
-        cell.stateLatel.text=@"已回复";
+        cell.stateLatel.text=NSLocalizedString(@"doctor_yidafu", @"");
     }
     if([problem.status isEqualToString:@"c"])
     {
-        cell.stateLatel.text=@"待评价";
+        cell.stateLatel.text=NSLocalizedString(@"doctor_daipingjia", @"");
     }
     if([problem.status isEqualToString:@"v"])
     {
-        cell.stateLatel.text=@"已回复";
+        cell.stateLatel.text=NSLocalizedString(@"doctor_yidafu", @"");
     }
     if([problem.status isEqualToString:@"p"])
     {
-        cell.stateLatel.text=@"系统举报";
+        cell.stateLatel.text=NSLocalizedString(@"doctor_jibao", @"");
     }
     if([problem.status isEqualToString:@"d"])
     {
-        cell.stateLatel.text=@"已评价";
+        cell.stateLatel.text=NSLocalizedString(@"doctor_yipingja", @"");
+     
     }
     return cell;
 

@@ -197,9 +197,9 @@
         [cell.contentView addSubview:imgV];
         [imgV release];
         
-        
+        //"doctor_con"="医生咨询";
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
-        label.text = @"医生咨询";
+        label.text = NSLocalizedString(@"doctor_con", @"医生咨询");
         label.font = [UIFont systemFontOfSize:16];
         //label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
         label.backgroundColor = [UIColor clearColor];

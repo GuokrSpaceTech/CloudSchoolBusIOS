@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>PRODUCTION_MODE</key>
-	<true/>
+	<false/>
 	<key>DEBUG</key>
 	<false/>
 	<key>API_KEY</key>
-	<string>aIcTMec1tpc7K535FGgUA9GL</string>
+	<string>Gh2BNx5mpL9FqO3WOjuf3SQn</string>
 </dict>
 </plist>

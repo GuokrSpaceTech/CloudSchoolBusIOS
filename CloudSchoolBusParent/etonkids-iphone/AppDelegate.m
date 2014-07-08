@@ -82,14 +82,7 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor blackColor];
     
-//    int a = 3; int b = 5; int c= a^b;
-//    NSLog(@"%d",c);
 
-//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
-//        self.window.frame =  CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height-20);
-//    }    
-//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-//    [[UIView appearance]setTintColor:[UIColor whiteColor]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(netWorkChanged:) name:kReachabilityChangedNotification object:nil];
     
@@ -111,10 +104,12 @@
     [BPush setupChannel:launchOptions];
     [BPush setDelegate:self];
 
-    application.applicationIconBadgeNumber = 0;
+    //application.applicationIconBadgeNumber = 0;
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
     UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
 
+    //[UIApplication sharedApplication].s;
+    
     //application.statusBarStyle = UIStatusBarStyleLightContent;
     
     //向微信注册
@@ -127,7 +122,7 @@
         {
             NSLog(@"---------------------------- %@", dictionary);
         }
-        application.applicationIconBadgeNumber = 0;
+       // application.applicationIconBadgeNumber = 0;
        
         if ([dictionary objectForKey:@"key"])
         {   //如果存在类型 赋值
@@ -138,18 +133,8 @@
             //如果不存在
             self.pushMsg = nil;
         }
-        
-        
-        
-        
-        
     }
-    
-    
-    
-    
-    
-    
+
     loginViewController=[[ETLoginViewController alloc] init];
     self.window.rootViewController = loginViewController;
     [loginViewController release];
@@ -168,31 +153,13 @@
         [ETCoreDataManager cachedUser:user.regName withPass:user.passWord andStudent:user.uid_student];
         [self performSelector:@selector(presentBottom) withObject:nil afterDelay:0.00];
     }
-//    else
-//    {
-//        [self presentLoginViewController];
-        
-//    }
-    
+
 
     [self.window makeKeyAndVisible];
 
     [self CheckVersion];
     
-    
-    
-    
-//    NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
-//    format.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-//    
-//    NSDate *d1 = [format dateFromString:@"2013-12-12 09:00:00"];
-//    NSDate *d2 = [format dateFromString:@"2012-12-12 09:00:00"];
-//    int a =[d2 timeIntervalSinceDate:d1];
-//    NSLog(@"%d",a);
-    
-    
-    
-    
+
     
     return YES;
 }
@@ -262,7 +229,7 @@
     
     NSLog(@"~~~~~~~~~~~~~~~~~~~~%@", userInfo);
     
-    application.applicationIconBadgeNumber = 0;
+ //   application.applicationIconBadgeNumber = 0;
     
     NSString *pushStr = [NSString stringWithFormat:@"%@",[userInfo objectForKey:@"key"]];
     [BPush handleNotification:userInfo];

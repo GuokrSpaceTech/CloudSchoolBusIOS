@@ -120,7 +120,7 @@
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
     middleLabel.textAlignment=UITextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
-    middleLabel.text = @"评价";
+    middleLabel.text = NSLocalizedString(@"evaluation", @"");
     middleLabel.backgroundColor=[UIColor clearColor];
     [self.view addSubview:middleLabel];
     [middleLabel release];
@@ -149,7 +149,7 @@
     [topView release];
     
     UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake((self.view.frame.size.width-12)/2.0-30, 11, 60, 20)];
-    label.text=@"总体评价";
+    label.text=NSLocalizedString(@"Overall_evaluation", @"");
     label.font=[UIFont systemFontOfSize:15];
     label.backgroundColor=[UIColor clearColor];
     [topView addSubview:label];
@@ -164,8 +164,8 @@
          [btn setBackgroundImage:[UIImage imageNamed:@"health_star_yellow.png"] forState:UIControlStateSelected];
         [topView addSubview:btn];
     }
-    UILabel *startlabl=[[UILabel alloc]initWithFrame:CGRectMake(0 ,label.frame.size.height+label.frame.origin.y+10 +20 + 30,320,20)];
-    startlabl.text=@"按星级评价";
+    startlabl=[[UILabel alloc]initWithFrame:CGRectMake(0 ,label.frame.size.height+label.frame.origin.y+10 +20 + 30,320,20)];
+    startlabl.text=NSLocalizedString(@"start_evaluation", @"");
     startlabl.font=[UIFont systemFontOfSize:14];
     if(IOSVERSION>=6.0)
     {
@@ -189,7 +189,7 @@
     [self.view addSubview:bottomView];
     [bottomView release];
     
-    self.placeholder=@"请输入评价";
+    self.placeholder=NSLocalizedString(@"comments_input", @"");
     contentView=[[UITextView alloc]initWithFrame:CGRectMake(5, 5, 290, 90)];
     contentView.delegate=self;
     contentView.text=self.placeholder;
@@ -225,6 +225,33 @@
 {
     int tag=btn.tag;
     star=tag+1;
+
+    
+    if(star==0)
+    {
+        startlabl.text=NSLocalizedString(@"start_evaluation", @"");
+    }
+    else if(star==1)
+    {
+        startlabl.text=NSLocalizedString(@"start_bad", @"");
+    }
+    else if(star==2)
+    {
+        startlabl.text=NSLocalizedString(@"start_Unsatisfied", @"");
+    }
+    else if(star==3)
+    {
+        startlabl.text=NSLocalizedString(@"start_General", @"");
+    }
+    else if(star==4)
+    {
+        startlabl.text=NSLocalizedString(@"start_Satisfied", @"");
+    }
+    else if(star==5)
+    {
+        startlabl.text=NSLocalizedString(@"start_Perfect", @"");
+    }
+    
     for (UIView *view in topView.subviews) {
         if([view isKindOfClass:[UIButton class]])
         {
@@ -313,7 +340,7 @@
     {
         if([[dic objectForKey:@"error"] integerValue]==0)
         {
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:@"评价成功" delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:NSLocalizedString(@"success", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
             [alert show];
             [alert release];
          
@@ -324,7 +351,7 @@
         }
         else
         {
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:@"评价失败" delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:NSLocalizedString(@"fail", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
             [alert show];
             [alert release];
         }

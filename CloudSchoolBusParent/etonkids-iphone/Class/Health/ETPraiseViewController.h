@@ -18,7 +18,7 @@
     int star;
     
     MBProgressHUD *HUD;
-    
+    UILabel *startlabl;
     
 }
 @property (nonatomic,assign)id<praiseVCdelegate>delegate;

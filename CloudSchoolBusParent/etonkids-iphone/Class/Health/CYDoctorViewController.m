@@ -67,11 +67,11 @@
     popGes.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:popGes];
     [popGes release];
-    
+   
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
     middleLabel.textAlignment=UITextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
-    middleLabel.text = @"医生信息";
+    middleLabel.text =NSLocalizedString(@"doctor_infomation", @"");
     middleLabel.backgroundColor=[UIColor clearColor];
     [self.view addSubview:middleLabel];
     [middleLabel release];
@@ -370,7 +370,7 @@
                 
             }
             UILabel * title=(UILabel *) [cell.contentView viewWithTag:200];
-            title.text=@"认证信息";
+            title.text=NSLocalizedString(@"doctor_Authentication", @"");
             return cell;
         }
         else

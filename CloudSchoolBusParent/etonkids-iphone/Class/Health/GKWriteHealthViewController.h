@@ -21,7 +21,7 @@
     
     MBProgressHUD *HUD;
 }
-
+@property (nonatomic,retain)NSString *placeFolder;
 @property (nonatomic,retain)UITableView * tableView;
 //@property (nonatomic,retain)NSArray * labelArr;
 @property (nonatomic,assign)id<writeHealthVCdelegate>delegate;

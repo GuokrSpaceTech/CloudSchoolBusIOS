@@ -158,10 +158,11 @@
     [self.view addGestureRecognizer:popGes];
     [popGes release];
     
+    
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
     middleLabel.textAlignment=UITextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
-    middleLabel.text = @"医生咨询";
+    middleLabel.text = NSLocalizedString(@"doctor_tiwendetail", @"提问详情");
     middleLabel.backgroundColor=[UIColor clearColor];
     [self.view addSubview:middleLabel];
     [middleLabel release];
@@ -217,7 +218,7 @@
             UIView *footView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
             footView.backgroundColor=[UIColor clearColor];
             UILabel *pingjialabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 5, 300, 20)];
-            pingjialabel.text=@"问题已解决，请评价>>";
+            pingjialabel.text=NSLocalizedString(@"doctor_solve", @"");
             pingjialabel.font=[UIFont systemFontOfSize:12];
             pingjialabel.backgroundColor=[UIColor clearColor];
             pingjialabel.textColor=[UIColor blueColor];
@@ -238,7 +239,7 @@
             [contentView release];
             
             UILabel *contentLabel=[[UILabel alloc]initWithFrame:CGRectMake(15, 35, 290, 40)];
-            contentLabel.text=@"医生利用休息时间给您解答问题，如未及时回复请见谅。医生的回复仅为建议，具体诊疗请前往医院进行";
+            contentLabel.text=NSLocalizedString(@"doctor_content", @"");
             contentLabel.font=[UIFont systemFontOfSize:12];
             contentLabel.numberOfLines=0;
             contentLabel.backgroundColor=[UIColor clearColor];
@@ -266,7 +267,7 @@
             
             UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
             btn.frame=CGRectMake(50, 10, 220, 37);
-            [btn setTitle:@"问题已解决，请评价" forState:UIControlStateNormal];
+            [btn setTitle:NSLocalizedString(@"problem_solved", @"") forState:UIControlStateNormal];
             [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [btn setBackgroundImage:[UIImage imageNamed:@"health_pingjia_btn.png"] forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(pingjia:) forControlEvents:UIControlEventTouchUpInside];
@@ -284,7 +285,7 @@
         else if([_problem.status isEqualToString:@"d"])
         {
             UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 57)];
-            label.text=@"问题已关闭";
+            label.text=NSLocalizedString(@"problem_closed", @"");
             label.textColor=[UIColor whiteColor];
             if([[[UIDevice currentDevice] systemVersion] floatValue]>=6.0)
                 label.textAlignment=NSTextAlignmentCenter;
@@ -359,7 +360,7 @@
     if(HUD==nil)
     {
         HUD=[[MBProgressHUD alloc]initWithView:self.view];
-        HUD.labelText=@"加载中";
+        HUD.labelText=NSLocalizedString(@"load", @"");
         [self.view addSubview:HUD];
         [HUD release];
         [HUD show:YES];

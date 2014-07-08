@@ -525,3 +525,66 @@
 "inclass"="Normal";
 "outclass"="Left";
 
+"doctor_con"="Consult Doctor";
+"doctor_tiwen"="Consult";
+
+"doctor_new"="New";
+"doctor_renling"="Claimed";
+"doctor_newrelpay"="New reply";
+"doctor_daichuli"="Waiting";
+"doctor_yidafu"="Have a reply";
+"doctor_daipingjia"="To evaluate";
+"doctor_yipingja"="Close";
+"doctor_jibao"="Reported";
+"doctor_tiwendetail"="Detail";
+"doctor_pic_yinshi"="Olny the doctor who answer your question can view the picture.";
+"doctor_solve"="If problem has been solved, please evaluate >>";
+"doctor_content"="Doctors use the rest time to solve the problem for you, if not reply timely please forgive me.The doctor's reply only for advice,please go to the hospital to treatment.";
+"problem_solved"="Solved,please evaluate.";
+"problem_closed"="Problem has been closed.";
+"doctor_infomation"="Doctor info";
+"doctor_Authentication"="Authentication";
+"evaluation"="Evaluation";
+"Overall_evaluation"="Overall evaluation";
+"start_evaluation"="Evaluation by starts";
+"start_bad"="Bad";
+"start_Unsatisfied"="Unsatisfied";
+"start_General"="General";
+"start_Satisfied"="Satisfied";
+"start_Perfect"="Perfect";
+"comments_input"="Please enter your comments";
+"Choose_department"="Choose department";
+
+"wangtiwen"="Consult";
+"department"="Department";
+"department_fuchanke"="Obstetrics and Gynecology";
+"department_erke"="Pediatrics Dept";
+"department_neike"="Medical Dept";
+"department_pifuke"="Skin and Venereology Dept";
+"department_miniaoke"="Urology Dept";
+"department_zhengxingke"="Plastic Surgery Dept";
+"department_guke"="Orthopedics Dept";
+"department_waike"="Surgery Dept";
+"department_xinlike"="Psychology Dept";
+"department_xueguanke"="Cardiovascular Dept";
+"department_naoke"="Neurology Dept";
+"department_yingyangke"="Nutrition Dept";
+"department_kouqiangke"="Stomatology Dept";
+"department_eyeke"="Ophtalmology Dept";
+"department_erbihouke"="ENT Dept";
+"department_zhongyike"="TCM Dept";
+"department_naoliuke"="Oncology Dept";
+"department_neifenmike"="Endocrinology Dept";
+
+"problem_success"="Submitted successfully, access to accelerate answer road!";
+"problem_input_place"="Please describe your symptoms,disease and health in detaill,in order to get doctor a better answers.";
+
+"problem_age"="Age";
+"problem_nan"="Male";
+"problem_nv"="Female";
+
+
+"health_bg_top"="Click on it to consult doctor online";
+"health_bg_top1"="Public hospital doctors 100% solution";
+"health_bg_content"="Doctor consultation service is the privileged service that ‘Cloud Schoolbus’ is working closely with the most prestige online medical consultant service provider. There are over 15000 certified doctors online to provide you such convenient and helpful service for our children to live a healthy and happy life.";
+"health_uppic"="health_uppic-en.png";

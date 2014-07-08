@@ -60,8 +60,8 @@
     
     self.sex=@"男";
     keshinumber=2;
-    self.keshi=@"儿科";
-    
+    self.keshi=NSLocalizedString(@"department_erke", @"");
+    self.placeFolder=NSLocalizedString(@"problem_input_place", @"");
     UIImageView *navigationBackView=[[UIImageView alloc]initWithFrame:CGRectMake(0, (ios7 ? 20 : 0), 320, NAVIHEIGHT)];
     navigationBackView.image=[UIImage imageNamed:@"navigationNoText.png"];
     [self.view addSubview:navigationBackView];
@@ -83,7 +83,7 @@
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
     middleLabel.textAlignment=UITextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
-    middleLabel.text = @"医生咨询";
+    middleLabel.text = NSLocalizedString(@"wangtiwen", @"");
     middleLabel.backgroundColor=[UIColor clearColor];
     [self.view addSubview:middleLabel];
     [middleLabel release];
@@ -113,8 +113,9 @@
     
     _textView=[[UITextView alloc]initWithFrame:CGRectMake(7, 15, 305, 143)];
     
-    // _textView.text=@"请您尽可能详细的描述";
+    _textView.text=self.placeFolder;
     _textView.delegate=self;
+    _textView.textColor=[UIColor grayColor];
     _textView.backgroundColor=[UIColor clearColor];
     _textView.tag=100;
     [_scroller addSubview:_textView];
@@ -138,13 +139,14 @@
     
     
     UILabel *_sexlabel=[[UILabel alloc]initWithFrame:CGRectMake(20, BGView.frame.size.height+BGView.frame.origin.y + 15+12, 100, 20)];
-    _sexlabel.text=@"性别";
+    _sexlabel.text=LOCAL(@"Gender",@"");
     _sexlabel.backgroundColor=[UIColor clearColor];
     [_scroller addSubview:_sexlabel];
     [_sexlabel release];
 
     sexLabel =[[UILabel alloc]initWithFrame:CGRectMake(200, _sexlabel.frame.origin.y, 100, 20)];
-    sexLabel.text=@"男";
+    sexLabel.text=LOCAL(@"problem_nan",@"");
+    sexLabel.font=[UIFont systemFontOfSize:15];
     sexLabel.backgroundColor=[UIColor clearColor];
     [_scroller addSubview:sexLabel];
 
@@ -154,8 +156,10 @@
     [_scroller addSubview:arrowIamge];
     [arrowIamge release];
     
+
     
-    NSArray *labelArr=[NSArray arrayWithObjects:@"年龄",@"科室", nil];
+    
+    NSArray *labelArr=[NSArray arrayWithObjects:NSLocalizedString(@"problem_age",@""),NSLocalizedString(@"department",@""), nil];
     
     //health_arrow
     for (int i=0; i<2; i++) {
@@ -187,17 +191,18 @@
         [templabel release];
     }
     
-    _textField=[[UITextField alloc]initWithFrame:CGRectMake(150, topView.frame.size.height+topView.frame.origin.y +8, 100, 30)];
+    _textField=[[UITextField alloc]initWithFrame:CGRectMake(180, topView.frame.size.height+topView.frame.origin.y +8, 100, 30)];
     _textField.text=@"";
-    _textField.placeholder=@"年龄";
+    _textField.placeholder=NSLocalizedString(@"problem_age",@"");
     _textField.borderStyle=UITextBorderStyleRoundedRect;
     _textField.delegate=self;
     _textField.keyboardType=UIKeyboardTypeNumberPad;
     [_scroller addSubview:_textField];
     
     
-    keshilabel =[[UILabel alloc]initWithFrame:CGRectMake(200, topView.frame.size.height+topView.frame.origin.y+44+12, 100, 20)];
+    keshilabel =[[UILabel alloc]initWithFrame:CGRectMake(180, topView.frame.size.height+topView.frame.origin.y+44+12, 100, 20)];
     keshilabel.text=self.keshi;
+    keshilabel.font=[UIFont systemFontOfSize:15];
     keshilabel.backgroundColor=[UIColor clearColor];
     [_scroller addSubview:keshilabel];
     
@@ -224,7 +229,7 @@
     [arrowIamgeView release];
     
     photoImageView=[[UIImageView alloc]initWithFrame:CGRectMake(bottomView.frame.origin.x+20, bottomView.frame.origin.y+10, 110, 125)];
-    photoImageView.image=[UIImage imageNamed:@"health_uppic.png"];
+    photoImageView.image=[UIImage imageNamed:NSLocalizedString(@"health_uppic", @"")];
     //photoImageView.backgroundColor=[UIColor grayColor];
     [_scroller addSubview:photoImageView];
     [photoImageView release];
@@ -255,8 +260,9 @@
     if(tag==3000)
     {
         //性别
+
         
-        UIActionSheet *aa=[[UIActionSheet alloc]initWithTitle:LOCAL(@"Gender",@"") delegate:self cancelButtonTitle:LOCAL(@"cancel",@"") destructiveButtonTitle:nil otherButtonTitles:LOCAL(@"prince",@""),LOCAL(@"Princess",@""), nil];
+        UIActionSheet *aa=[[UIActionSheet alloc]initWithTitle:LOCAL(@"Gender",@"") delegate:self cancelButtonTitle:LOCAL(@"cancel",@"") destructiveButtonTitle:nil otherButtonTitles:LOCAL(@"problem_nan",@""),LOCAL(@"problem_nv",@""), nil];
         [aa showInView:self.view];
         aa.tag = 102;
         [aa release];
@@ -268,7 +274,28 @@
     if(tag==3002)
     {
         //科室
-        UIActionSheet *aa=[[UIActionSheet alloc]initWithTitle:@"科室" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"妇产科",@"儿科",@"内科",@"皮肤性病科",@"内分泌科",@"营养科",@"骨科",@"男性泌尿科",@"外科",@"心血管科脑神经科",@"肿瘤科",@"中医科",@"口腔科",@"耳鼻喉科",@"眼科",@"整形美容科",@"心理科",@"脑神经科", nil];
+        
+//        "department"="科室";
+//        "department_fuchanke"="妇产科";
+//        "department_erke"="儿科";
+//        "department_neike"="内科";
+//        "department_pifuke"="皮肤性病科";
+//        "department_miniaoke"="男性泌尿科";
+//        "department_zhengxingke"="整形美容科";
+//        "department_guke"="骨科";
+//        "department_waike"="外科";
+//        "department_xinlike"="心理科";
+//        "department_xueguanke"="心血管科";
+//        "department_naoke"="脑神经科";
+//        "department_yingyangke"="营养科";
+//        "department_kouqiangke"="口腔科";
+//        "department_eyeke"="眼科";
+//        "department_erbihouke"="耳鼻喉科";
+//        "department_zhongyike"="中医科";
+//        "department_naoliuke"="肿瘤科";
+//        "department_neifenmike"="内分泌科";
+        
+        UIActionSheet *aa=[[UIActionSheet alloc]initWithTitle:NSLocalizedString(@"Choose_department", @"") delegate:self cancelButtonTitle:LOCAL(@"cancel",@"") destructiveButtonTitle:nil otherButtonTitles:LOCAL(@"department_fuchanke",@""),LOCAL(@"department_erke",@""),LOCAL(@"department_neike",@""),LOCAL(@"department_pifuke",@""),LOCAL(@"department_neifenmike",@""),LOCAL(@"department_yingyangke",@""),LOCAL(@"department_guke",@""),LOCAL(@"department_miniaoke",@""),LOCAL(@"department_waike",@""),LOCAL(@"department_xueguanke",@""),LOCAL(@"department_naoliuke",@""),LOCAL(@"department_zhongyike",@""),LOCAL(@"department_kouqiangke",@""),LOCAL(@"department_erbihouke",@""),LOCAL(@"department_eyeke",@""),LOCAL(@"department_zhengxingke",@""),LOCAL(@"department_xinlike",@""),LOCAL(@"department_naoke",@""), nil];
         [aa showInView:self.view];
         aa.tag=103;
         [aa release];
@@ -276,8 +303,8 @@
     if(tag==3003)
     {
         //图片
-        
-        UIActionSheet *aa=[[UIActionSheet alloc]initWithTitle:LOCAL(@"changeavadar",@"") delegate:self cancelButtonTitle:LOCAL(@"cancel",@"") destructiveButtonTitle:nil otherButtonTitles:LOCAL(@"takePhoto", @"拍照"),LOCAL(@"choosePhoto",@"从手机相册中选择") , nil];
+
+        UIActionSheet *aa=[[UIActionSheet alloc]initWithTitle:LOCAL(@"doctor_pic_yinshi",@"") delegate:self cancelButtonTitle:LOCAL(@"cancel",@"") destructiveButtonTitle:nil otherButtonTitles:LOCAL(@"takePhoto", @"拍照"),LOCAL(@"choosePhoto",@"从手机相册中选择") , nil];
         [aa showInView:self.view];
         aa.tag = 101;
         [aa release];
@@ -437,7 +464,7 @@
         {
             
             NSLog(@"%@",[dic objectForKey:@"problem_id"]);
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:@"创建成功" delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:NSLocalizedString(@"problem_success", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
             [alert show];
             [alert release];
             [delegate refreshDetailVC];
@@ -445,7 +472,7 @@
         }
         else
         {
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"创建失败" message:[dic objectForKey:@"error_msg"] delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:[dic objectForKey:@"error_msg"] delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
             [alert show];
             [alert release];
         }
@@ -463,7 +490,7 @@
 -(void)deletePhoto:(UIButton *)btn
 {
     self.photoImage=nil;
-        photoImageView.image=[UIImage imageNamed:@"health_uppic.png"];
+        photoImageView.image=[UIImage imageNamed:NSLocalizedString(@"health_uppic", @"")];
     deleteImageView.hidden=YES;
 }
 - (void)leftButtonClick:(id)sender
@@ -517,13 +544,16 @@
     {
         if(buttonIndex==0)
         {
+            //    "problem_age"="年龄";
+            //    "problem_nan"="男";
+            //    "problem_nv"="女";
             self.sex=@"男";
-            sexLabel.text=@"男";
+            sexLabel.text=NSLocalizedString(@"problem_nan", @"");
         }
         if(buttonIndex==1)
         {
             self.sex=@"女";
-             sexLabel.text=@"女";
+             sexLabel.text=NSLocalizedString(@"problem_nv", @"");
         }
     
       
@@ -536,7 +566,7 @@
         }
         else
         {
-            NSArray *arr=[NSArray arrayWithObjects:@"妇产科",@"儿科",@"内科",@"皮肤性病科",@"内分泌科",@"营养科",@"骨科",@"男性泌尿科",@"外科",@"心血管科脑神经科",@"肿瘤科",@"中医科",@"口腔科",@"耳鼻喉科",@"眼科",@"整形美容科",@"心理科",@"脑神经科", nil];
+            NSArray *arr=[NSArray arrayWithObjects:LOCAL(@"department_fuchanke",@""),LOCAL(@"department_erke",@""),LOCAL(@"department_neike",@""),LOCAL(@"department_pifuke",@""),LOCAL(@"department_neifenmike",@""),LOCAL(@"department_yingyangke",@""),LOCAL(@"department_guke",@""),LOCAL(@"department_miniaoke",@""),LOCAL(@"department_waike",@""),LOCAL(@"department_xueguanke",@""),LOCAL(@"department_naoliuke",@""),LOCAL(@"department_zhongyike",@""),LOCAL(@"department_kouqiangke",@""),LOCAL(@"department_erbihouke",@""),LOCAL(@"department_eyeke",@""),LOCAL(@"department_zhengxingke",@""),LOCAL(@"department_xinlike",@""),LOCAL(@"department_naoke",@""), nil];
             
             self.keshi=[arr objectAtIndex:buttonIndex];
             
@@ -582,7 +612,30 @@
     [picker dismissModalViewControllerAnimated:YES];
 }
 
-
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if([textView.text isEqualToString:self.placeFolder])
+    {
+        textView.text=@"";
+        textView.textColor=[UIColor blackColor];
+    }
+    else
+    {
+        textView.textColor=[UIColor blackColor];
+    }
+}
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if([textView.text isEqualToString:@""] || [textView.text isEqualToString:self.placeFolder])
+    {
+        textView.text=self.placeFolder;
+        textView.textColor=[UIColor grayColor];
+    }
+    else
+    {
+        textView.textColor=[UIColor blackColor];
+    }
+}
 
 -(void)dealloc
 {
@@ -594,6 +647,7 @@
 
     self.tableView=nil;
     //self.labelArr=nil;
+    self.placeFolder=nil;
     self.photoImage=nil;
     self.sex=nil;
     self.keshi=nil;

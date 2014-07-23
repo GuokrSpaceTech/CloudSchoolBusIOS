@@ -14,7 +14,7 @@
 @interface ETPraiseViewController : UIViewController<UITextViewDelegate>
 {
     UIView * topView;
-    
+    UIView *bottomView;
     int star;
     
     MBProgressHUD *HUD;

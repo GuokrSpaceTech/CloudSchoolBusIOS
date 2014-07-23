@@ -84,15 +84,7 @@
     
     self.view.backgroundColor=[UIColor blackColor];
     
-    if (ios7) {
-        [self setNeedsStatusBarAppearanceUpdate];
-        
-        UIView *statusbar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
-        statusbar.backgroundColor = [UIColor blackColor];
-        [self.view addSubview:statusbar];
-        [statusbar release];
-        
-    }
+
     
     UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, (ios7 ? 20 : 0) + NAVIHEIGHT, 320, self.view.frame.size.height - NAVIHEIGHT - (ios7 ? 20 : 0))];
     backView.backgroundColor = CELLCOLOR;
@@ -134,6 +126,7 @@
     [self.view addSubview:rightButton];
 
 
+
     
 //    UIScrollView *scroller=[[UIScrollView alloc]initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height - NAVIHEIGHT - (ios7 ? 20 : 0))];
 //    [self.view addSubview:scroller];
@@ -148,9 +141,18 @@
     [self.view addSubview:topView];
     [topView release];
     
-    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake((self.view.frame.size.width-12)/2.0-30, 11, 60, 20)];
+    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(6, 11, self.view.frame.size.width-12, 20)];
     label.text=NSLocalizedString(@"Overall_evaluation", @"");
     label.font=[UIFont systemFontOfSize:15];
+    
+    if(IOSVERSION>=6.0)
+    {
+        label.textAlignment=NSTextAlignmentCenter;
+    }
+    else
+    {
+        label.textAlignment=UITextAlignmentCenter;
+    }
     label.backgroundColor=[UIColor clearColor];
     [topView addSubview:label];
     [label release];
@@ -183,7 +185,7 @@
 
     
     
-    UIView *bottomView=[[UIView alloc]initWithFrame:CGRectMake(6, topView.frame.size.height+topView.frame.origin.y+20, 308, 100)];
+    bottomView=[[UIView alloc]initWithFrame:CGRectMake(6, topView.frame.size.height+topView.frame.origin.y+20, 308, 100)];
     bottomView.backgroundColor=[UIColor whiteColor];
     bottomView.layer.cornerRadius=10;
     [self.view addSubview:bottomView];
@@ -194,11 +196,40 @@
     contentView.delegate=self;
     contentView.text=self.placeholder;
     contentView.textColor=[UIColor grayColor];
+    contentView.font=[UIFont systemFontOfSize:15];
     [bottomView addSubview:contentView];
+    
+    if (ios7) {
+        [self setNeedsStatusBarAppearanceUpdate];
+        
+        UIView *statusbar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+        statusbar.backgroundColor = [UIColor blackColor];
+        [self.view addSubview:statusbar];
+        [statusbar release];
+        
+          [self.view bringSubviewToFront:statusbar];
+        
+    }
+  
+    
+    [self.view bringSubviewToFront:navigationBackView];
+
+    
+       [self.view bringSubviewToFront:leftButton];
+              [self.view bringSubviewToFront:middleLabel];
+        [self.view bringSubviewToFront:rightButton];
     // Do any additional setup after loading the view.
 }
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
+    //self.view.frame=CGRectMake(0, -100, 320, self.view.frame.size.height);
+    
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        topView.frame=CGRectMake(topView.frame.origin.x, topView.frame.origin.y-100, topView.frame.size.width, topView.frame.size.height);
+        bottomView.frame=CGRectMake(bottomView.frame.origin.x, bottomView.frame.origin.y-100, bottomView.frame.size.width, bottomView.frame.size.height);
+    }];
+  
     if([textView.text isEqualToString:self.placeholder])
     {
         contentView.text=@"";
@@ -211,6 +242,11 @@
 }
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
+    [UIView animateWithDuration:0.3 animations:^{
+        topView.frame=CGRectMake(topView.frame.origin.x, topView.frame.origin.y+100, topView.frame.size.width, topView.frame.size.height);
+        bottomView.frame=CGRectMake(bottomView.frame.origin.x, bottomView.frame.origin.y+100, bottomView.frame.size.width, bottomView.frame.size.height);
+    }];
+
     if([textView.text isEqualToString:@""] || [textView.text isEqualToString:self.placeholder])
     {
         contentView.text=self.placeholder;

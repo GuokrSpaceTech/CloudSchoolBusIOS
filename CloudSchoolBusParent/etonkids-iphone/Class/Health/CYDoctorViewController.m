@@ -360,7 +360,7 @@
                     [iamgeView release];
                 }
                 
-                UILabel *renzhenLabeel=[[UILabel alloc]initWithFrame:CGRectMake(10, 8, 100, 20)];
+                UILabel *renzhenLabeel=[[UILabel alloc]initWithFrame:CGRectMake(20, 8, 100, 20)];
                 renzhenLabeel.backgroundColor=[UIColor clearColor];
                 renzhenLabeel.tag=200;
                 renzhenLabeel.textColor=[UIColor whiteColor];

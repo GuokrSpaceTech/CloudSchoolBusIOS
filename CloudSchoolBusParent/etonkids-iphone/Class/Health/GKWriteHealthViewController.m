@@ -177,21 +177,24 @@
         [midile addGestureRecognizer:tapniddle];
         [tapniddle release];
         
+        if(i==1)
+        {
+            UIImageView *arrowIamge=[[UIImageView alloc]initWithFrame:CGRectMake(305-19, topView.frame.size.height+topView.frame.origin.y+i*44 + 15, 9, 15)];
+            arrowIamge.image=[UIImage imageNamed:@"health_arrow.png"];
+            arrowIamge.backgroundColor=[UIColor clearColor];
+            [_scroller addSubview:arrowIamge];
+            [arrowIamge release];
+        }
+            UILabel *templabel=[[UILabel alloc]initWithFrame:CGRectMake(20, topView.frame.size.height+topView.frame.origin.y+i*44 + 12, 100, 20)];
+            templabel.text=[labelArr objectAtIndex:i];
+            templabel.backgroundColor=[UIColor clearColor];
+            [_scroller addSubview:templabel];
+            [templabel release];
         
-        UIImageView *arrowIamge=[[UIImageView alloc]initWithFrame:CGRectMake(305-19, topView.frame.size.height+topView.frame.origin.y+i*44 + 15, 9, 15)];
-        arrowIamge.image=[UIImage imageNamed:@"health_arrow.png"];
-        arrowIamge.backgroundColor=[UIColor clearColor];
-        [_scroller addSubview:arrowIamge];
-        [arrowIamge release];
-        
-        UILabel *templabel=[[UILabel alloc]initWithFrame:CGRectMake(20, topView.frame.size.height+topView.frame.origin.y+i*44 + 12, 100, 20)];
-        templabel.text=[labelArr objectAtIndex:i];
-        templabel.backgroundColor=[UIColor clearColor];
-        [_scroller addSubview:templabel];
-        [templabel release];
+
     }
     
-    _textField=[[UITextField alloc]initWithFrame:CGRectMake(180, topView.frame.size.height+topView.frame.origin.y +8, 100, 30)];
+    _textField=[[UITextField alloc]initWithFrame:CGRectMake(190, topView.frame.size.height+topView.frame.origin.y +8, 100, 30)];
     _textField.text=@"";
     _textField.placeholder=NSLocalizedString(@"problem_age",@"");
     _textField.borderStyle=UITextBorderStyleRoundedRect;

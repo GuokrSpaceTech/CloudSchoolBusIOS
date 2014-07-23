@@ -186,6 +186,7 @@
 
 -(void)refreshDetailVC
 {
+      currentnumber=0;
     [self loadData:0];
     isUpfresh=YES;
 }
@@ -394,6 +395,9 @@
 //    "doctor_jibao"="系统举报";
     
     cell.timeLatel.text=dateStr;
+  //  _pointImageView
+    
+    cell.pointImageView.hidden=YES;
     
     if([problem.status isEqualToString:@"i"])
     {
@@ -402,6 +406,7 @@
     if([problem.status isEqualToString:@"n"])
     {
         cell.stateLatel.text=NSLocalizedString(@"doctor_new", @"");
+        
     }
     if([problem.status isEqualToString:@"a"])
     {
@@ -409,11 +414,13 @@
     }
     if([problem.status isEqualToString:@"s"])
     {
-        cell.stateLatel.text=NSLocalizedString(@"doctor_yidafu", @"");
+        cell.stateLatel.text=NSLocalizedString(@"doctor_newrelpay", @"");
+        cell.pointImageView.hidden=NO;
     }
     if([problem.status isEqualToString:@"c"])
     {
         cell.stateLatel.text=NSLocalizedString(@"doctor_daipingjia", @"");
+         cell.pointImageView.hidden=NO;
     }
     if([problem.status isEqualToString:@"v"])
     {
@@ -422,10 +429,12 @@
     if([problem.status isEqualToString:@"p"])
     {
         cell.stateLatel.text=NSLocalizedString(@"doctor_jibao", @"");
+        
     }
     if([problem.status isEqualToString:@"d"])
     {
         cell.stateLatel.text=NSLocalizedString(@"doctor_yipingja", @"");
+        
      
     }
     return cell;
@@ -461,6 +470,7 @@
 {
     NSLog(@"start refresh");
     //    [self showHUD:YES];
+    currentnumber=0;
     [self loadData:0];
     isUpfresh=YES;
   //  [self loadNotice:param];

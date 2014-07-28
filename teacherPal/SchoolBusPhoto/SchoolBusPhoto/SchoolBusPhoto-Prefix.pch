@@ -25,7 +25,7 @@
 #define FONTSIZE [UIFont systemFontOfSize:14]
 
 
-#define CURRENTVERSION @"3.3.0"
+#define CURRENTVERSION @"3.4.0"
 #define IMAGEWITHPATH(a)  [[NSBundle mainBundle] pathForResource:a ofType:@"png"]
 #define IMAGENAME(b) [UIImage imageWithContentsOfFile:b]
 #define SHARED_APP_DELEGATE ((GKAppDelegate *)[[UIApplication sharedApplication] delegate])

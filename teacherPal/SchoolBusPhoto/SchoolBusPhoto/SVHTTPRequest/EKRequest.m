@@ -8,9 +8,9 @@
 //#import "JSONKit.h"
 //#import "SBJSON.h"
 
-#define SERVERURL @"http://apitest.yunxiaoche.com/"
+//#define SERVERURL @"http://apitest.yunxiaoche.com/"
 
-//#define SERVERURL @"http://192.168.1.18:81/"
+#define SERVERURL @"http://192.168.2.18:81/"
 //#define SERVERURL @"http://v33.service.yunxiaoche.com/"
 //#define SERVERURL @"http://rest.rayeu.com/"
 

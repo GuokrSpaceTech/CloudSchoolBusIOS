@@ -2,11 +2,13 @@
 //  ETClassShare.m
 //  etonkids-iphone
 //
-//  Created by CaiJingPeng on 13-9-12.
-//  Copyright (c) 2013年 wpf. All rights reserved.
+//  Created by wen peifang on 14-7-25.
+//  Copyright (c) 2014年 wpf. All rights reserved.
 //
 
 #import "ETClassShare.h"
+#import "ETActicalPicture.h"
+#import "ETActicalTag.h"
 
 
 @implementation ETClassShare
@@ -20,5 +22,6 @@
 @dynamic title;
 @dynamic upnum;
 @dynamic pictures;
+@dynamic tags;
 
 @end

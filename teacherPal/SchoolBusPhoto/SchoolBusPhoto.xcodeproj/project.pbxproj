@@ -262,6 +262,8 @@
 		11BF8989183641E2008E72F0 /* noticeNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF8987183641E2008E72F0 /* noticeNormal.png */; };
 		11BF898B18364594008E72F0 /* tishi.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF898A18364594008E72F0 /* tishi.png */; };
 		11BF898E183646DF008E72F0 /* GKBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BF898D183646DF008E72F0 /* GKBadgeView.m */; };
+		11C2328F1980F7410079F282 /* GKSchoolTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C2328E1980F7410079F282 /* GKSchoolTag.m */; };
+		11C232921980FF220079F282 /* GKButtonTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C232911980FF220079F282 /* GKButtonTag.m */; };
 		11C4326D19501BDF0096778C /* attendanceH-cn.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4326919501BDF0096778C /* attendanceH-cn.png */; };
 		11C4326E19501BDF0096778C /* attendanceH-en.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4326A19501BDF0096778C /* attendanceH-en.png */; };
 		11C4326F19501BDF0096778C /* attendanceN-cn.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4326B19501BDF0096778C /* attendanceN-cn.png */; };
@@ -816,6 +818,10 @@
 		11BF898A18364594008E72F0 /* tishi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tishi.png; sourceTree = "<group>"; };
 		11BF898C183646DF008E72F0 /* GKBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBadgeView.h; sourceTree = "<group>"; };
 		11BF898D183646DF008E72F0 /* GKBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBadgeView.m; sourceTree = "<group>"; };
+		11C2328D1980F7410079F282 /* GKSchoolTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSchoolTag.h; sourceTree = "<group>"; };
+		11C2328E1980F7410079F282 /* GKSchoolTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSchoolTag.m; sourceTree = "<group>"; };
+		11C232901980FF220079F282 /* GKButtonTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKButtonTag.h; sourceTree = "<group>"; };
+		11C232911980FF220079F282 /* GKButtonTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKButtonTag.m; sourceTree = "<group>"; };
 		11C4326919501BDF0096778C /* attendanceH-cn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attendanceH-cn.png"; sourceTree = "<group>"; };
 		11C4326A19501BDF0096778C /* attendanceH-en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attendanceH-en.png"; sourceTree = "<group>"; };
 		11C4326B19501BDF0096778C /* attendanceN-cn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attendanceN-cn.png"; sourceTree = "<group>"; };
@@ -1184,6 +1190,8 @@
 				78709C31187D2F4A009250FB /* GKPhotoTagScrollView.m */,
 				11B7D682188F6DD70036B7AA /* GKSaySomethingView.h */,
 				11B7D683188F6DD70036B7AA /* GKSaySomethingView.m */,
+				11C232901980FF220079F282 /* GKButtonTag.h */,
+				11C232911980FF220079F282 /* GKButtonTag.m */,
 			);
 			name = PhotoVC;
 			sourceTree = "<group>";
@@ -1300,6 +1308,8 @@
 				11B269C1193DC94600E5369E /* GKAttentance.m */,
 				11B3E220193EC21400A96ACF /* GKTempature.h */,
 				11B3E221193EC21500A96ACF /* GKTempature.m */,
+				11C2328D1980F7410079F282 /* GKSchoolTag.h */,
+				11C2328E1980F7410079F282 /* GKSchoolTag.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -2315,6 +2325,7 @@
 				119AC2731839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodeld in Sources */,
 				11C75DA71812725600A3AA89 /* SVHTTPClient.m in Sources */,
 				119E962B1814C5A300866DE8 /* ASIS3BucketObject.m in Sources */,
+				11C232921980FF220079F282 /* GKButtonTag.m in Sources */,
 				2AFFF376181233580045BFD0 /* GKUpLoaderViewController.m in Sources */,
 				11DB43ED18AB41F600F77C1A /* GKCustomButton.m in Sources */,
 				11A212A818697B8800A2D909 /* GKAlumbViewController.m in Sources */,
@@ -2328,6 +2339,7 @@
 				1193A6B2182B857D004011BC /* GKAlreadyCell.m in Sources */,
 				119E963A1814C8BE00866DE8 /* GKLoaderManager.m in Sources */,
 				119E961F1814C5A300866DE8 /* ASINetworkQueue.m in Sources */,
+				11C2328F1980F7410079F282 /* GKSchoolTag.m in Sources */,
 				119E5FCB1818C65100726761 /* ClassInfo.m in Sources */,
 				11B3E222193EC21500A96ACF /* GKTempature.m in Sources */,
 				11B405171918C85400E56A59 /* GKSearchListViewController.m in Sources */,

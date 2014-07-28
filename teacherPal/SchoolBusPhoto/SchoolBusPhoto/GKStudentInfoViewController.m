@@ -97,196 +97,208 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(section==0)
         return 3;
-    else
+    else if(section==1)
         return 5;
+    return 1;
+    
 }
  -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    static NSString *cellIdentifier=@"cell";
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if(cell==nil)
+    if(indexPath.section==0 || indexPath.section==1)
     {
-        cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
-        cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        UILabel *namelabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 11, 100, 20)];
-        namelabel.backgroundColor=[UIColor clearColor];
-        namelabel.tag=TAGCELL;
-        namelabel.font=[UIFont systemFontOfSize:15];
-        [cell.contentView addSubview:namelabel];
-        [namelabel release];
-        
-        
-        UILabel *reallabel=[[UILabel alloc]initWithFrame:CGRectMake(180, 11, 100, 20)];
-        reallabel.backgroundColor=[UIColor clearColor];
-        reallabel.tag=TAGCELL+1;
-        if(IOSVERSION>=6.0)
-            reallabel.textAlignment=NSTextAlignmentRight;
-        else
-            reallabel.textAlignment=UITextAlignmentRight;
-        if(IOSVERSION<7.0)
+        static NSString *cellIdentifier=@"cell";
+        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if(cell==nil)
         {
-            reallabel.frame=CGRectMake(170, 11, 100, 20);
-        }
-        reallabel.font=[UIFont systemFontOfSize:14];
-        [cell.contentView addSubview:reallabel];
-        [reallabel release];
-        
-        if(indexPath.section==1)
-        {
-            if(indexPath.row==0)
+            cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            UILabel *namelabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 11, 100, 20)];
+            namelabel.backgroundColor=[UIColor clearColor];
+            namelabel.tag=TAGCELL;
+            namelabel.font=[UIFont systemFontOfSize:15];
+            [cell.contentView addSubview:namelabel];
+            [namelabel release];
+            
+            
+            UILabel *reallabel=[[UILabel alloc]initWithFrame:CGRectMake(180, 11, 100, 20)];
+            reallabel.backgroundColor=[UIColor clearColor];
+            reallabel.tag=TAGCELL+1;
+            if(IOSVERSION>=6.0)
+                reallabel.textAlignment=NSTextAlignmentRight;
+            else
+                reallabel.textAlignment=UITextAlignmentRight;
+            if(IOSVERSION<7.0)
             {
-                UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(205, 10, 65, 40)];
-                imageView.backgroundColor=[UIColor clearColor];
-                [cell.contentView addSubview:imageView];
-                imageView.tag=TAGCELL+2;
-                [imageView release];
- 
+                reallabel.frame=CGRectMake(170, 11, 100, 20);
             }
+            reallabel.font=[UIFont systemFontOfSize:14];
+            [cell.contentView addSubview:reallabel];
+            [reallabel release];
+            
+            if(indexPath.section==1)
+            {
+                if(indexPath.row==0)
+                {
+                    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(205, 10, 65, 40)];
+                    imageView.backgroundColor=[UIColor clearColor];
+                    [cell.contentView addSubview:imageView];
+                    imageView.tag=TAGCELL+2;
+                    [imageView release];
+                    
+                }
+            }
+            
+            
+            if(indexPath.section==0)
+            {
+                if(indexPath.row==1)
+                {
+                    UILabel *passbtn=[[UILabel alloc]initWithFrame:CGRectMake(240, 11, 50, 20)];
+                    passbtn.userInteractionEnabled=YES;
+                    passbtn.backgroundColor=[UIColor clearColor];
+                    passbtn.text=NSLocalizedString(@"resetpass", @"");
+                    passbtn.textColor=[UIColor blueColor];
+                    [cell.contentView addSubview:passbtn];
+                    passbtn.tag=TAGCELL+3;
+                    
+                    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(passwordReset:)];
+                    tap.numberOfTapsRequired=1;
+                    [passbtn addGestureRecognizer:tap];
+                    [tap release];
+                    
+                    
+                }
+            }
+            
+            
+            
         }
+        
+        UILabel *nameLabel=(UILabel *)[cell.contentView viewWithTag:TAGCELL];
+        UILabel *realLabel=(UILabel *)[cell.contentView viewWithTag:TAGCELL+1];
+        // UIButton *resetBtn=(UIButton *)[cell.contentView viewWithTag:TAGCELL+3];
+        UIImageView *imageView=(UIImageView*)[cell.contentView viewWithTag:TAGCELL+2];
         
         
         if(indexPath.section==0)
         {
-            if(indexPath.row==1)
+            cell.accessoryType=UITableViewCellAccessoryNone;
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            if(indexPath.row==0)
             {
-                UILabel *passbtn=[[UILabel alloc]initWithFrame:CGRectMake(240, 11, 50, 20)];
-                passbtn.userInteractionEnabled=YES;
-                passbtn.backgroundColor=[UIColor clearColor];
-                passbtn.text=NSLocalizedString(@"resetpass", @"");
-                passbtn.textColor=[UIColor blueColor];
-                [cell.contentView addSubview:passbtn];
-                passbtn.tag=TAGCELL+3;
+                nameLabel.text=NSLocalizedString(@"parentaccount", @"");//NSLocalizedString(@"realName", @"");
+                realLabel.text=st.username;
+            }
+            else if(indexPath.row==1)
+            {
+                nameLabel.text=NSLocalizedString(@"passwordlogin", @"");//NSLocalizedString(@"realName", @"");
+                realLabel.text=@"******";
                 
-                UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(passwordReset:)];
-                tap.numberOfTapsRequired=1;
-                [passbtn addGestureRecognizer:tap];
-                [tap release];
-         
+                realLabel.frame=CGRectMake(100, 11, 100, 20);
+                
                 
             }
+            else{
+                nameLabel.text=NSLocalizedString(@"phone", @"");
+                realLabel.text=[NSString stringWithFormat:@"%@",st.mobile];
+                
+            }
+            
         }
-
-        
-        
-    }
-    
-    UILabel *nameLabel=(UILabel *)[cell.contentView viewWithTag:TAGCELL];
-    UILabel *realLabel=(UILabel *)[cell.contentView viewWithTag:TAGCELL+1];
-   // UIButton *resetBtn=(UIButton *)[cell.contentView viewWithTag:TAGCELL+3];
-    UIImageView *imageView=(UIImageView*)[cell.contentView viewWithTag:TAGCELL+2];
-
-
-    if(indexPath.section==0)
-    {
-        cell.accessoryType=UITableViewCellAccessoryNone;
-        cell.selectionStyle=UITableViewCellSelectionStyleNone;
-        if(indexPath.row==0)
+        else
         {
-            nameLabel.text=NSLocalizedString(@"parentaccount", @"");//NSLocalizedString(@"realName", @"");
-            realLabel.text=st.username;
+            cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+            switch (indexPath.row) {
+                case 0:
+                    nameLabel.text=NSLocalizedString(@"avator", @"");
+                    //(10, 11, 100, 20)];
+                    [imageView setImageWithURL:[NSURL URLWithString:st.avatar] placeholderImage:nil options:SDWebImageRefreshCached];
+                    nameLabel.frame=CGRectMake(10, 20, 100, 20);
+                    
+                    break;
+                case 1:
+                    nameLabel.text=NSLocalizedString(@"realName", @"");
+                    realLabel.text=st.cnname;
+                    break;
+                    
+                case 2:
+                    
+                    nameLabel.text=NSLocalizedString(@"nickName1", @"");
+                    realLabel.text=st.enname;
+                    break;
+                case 3:
+                    nameLabel.text=NSLocalizedString(@"Gender", @"");
+                    
+                    switch ([st.sex intValue]) {
+                        case 2:
+                            realLabel.text=NSLocalizedString(@"Princess", @"");
+                            break;
+                        case 1:
+                            realLabel.text=NSLocalizedString(@"prince", @"");
+                            break;
+                            
+                        default:
+                            break;
+                    }
+                    break;
+                case 4:
+                    
+                    nameLabel.text=NSLocalizedString(@"birthday", @"");
+                    realLabel.text=st.birthday;
+                    break;
+                default:
+                    break;
+            }
         }
-        else if(indexPath.row==1)
-        {
-            nameLabel.text=NSLocalizedString(@"passwordlogin", @"");//NSLocalizedString(@"realName", @"");
-            realLabel.text=@"******";
-            
-            realLabel.frame=CGRectMake(100, 11, 100, 20);
-            
-            
-        }
-        else{
-            nameLabel.text=NSLocalizedString(@"phone", @"");
-            realLabel.text=[NSString stringWithFormat:@"%@",st.mobile];
-//            "state"="服务状态";
-//            "Notservice"="尚未开通";
-//            "Inservice"="已开通";
-////            "renewal"="服务过期";
-//            nameLabel.text=NSLocalizedString(@"state", @"");
-//            
-//            if(st.orderendtime==nil)
-//            {
-//                realLabel.text=NSLocalizedString(@"Notservice", @"");
-//                realLabel.textColor=[UIColor redColor];
-//                
-//            }
-//            else
-//            {
-//                int time=[[NSDate date] timeIntervalSinceNow];
-//                if(time<[[st orderendtime] integerValue])
-//                {
-//                    realLabel.text=NSLocalizedString(@"Inservice", @"");
-//                    realLabel.textColor=[UIColor blackColor];
-//                }
-//                else
-//                {
-//                    realLabel.text=NSLocalizedString(@"renewal", @"");
-//                    realLabel.textColor=[UIColor redColor];
-//                }
-//                
-//            }
+        return cell;
 
-            
-        }
-      
     }
     else
     {
-        
-//        "Princess"="女孩";
-//        "prince"="男孩";
-//        "Gender"="性别";
-        
-          cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-        switch (indexPath.row) {
-            case 0:
-                nameLabel.text=NSLocalizedString(@"avator", @"");
-                //(10, 11, 100, 20)];
-                [imageView setImageWithURL:[NSURL URLWithString:st.avatar] placeholderImage:nil options:SDWebImageRefreshCached];
-                nameLabel.frame=CGRectMake(10, 20, 100, 20);
-                
-                break;
-            case 1:
-                nameLabel.text=NSLocalizedString(@"realName", @"");
-                realLabel.text=st.cnname;
-                break;
-
-            case 2:
-               
-                nameLabel.text=NSLocalizedString(@"nickName1", @"");
-                realLabel.text=st.enname;
-                break;
-            case 3:
-                nameLabel.text=NSLocalizedString(@"Gender", @"");
-                
-                switch ([st.sex intValue]) {
-                    case 2:
-                      realLabel.text=NSLocalizedString(@"Princess", @"");
-                        break;
-                    case 1:
-                      realLabel.text=NSLocalizedString(@"prince", @"");
-                        break;
-                        
-                    default:
-                        break;
-                }
-                break;
-            case 4:
-                
-                nameLabel.text=NSLocalizedString(@"birthday", @"");
-                realLabel.text=st.birthday;
-                break;
-            default:
-                break;
+        static NSString *cellIdentifier=@"cell2";
+        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if(cell==nil)
+        {
+            cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            UILabel *namelabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 11, 300, 20)];
+            namelabel.backgroundColor=[UIColor clearColor];
+            namelabel.tag=TAGCELL+100;
+            namelabel.font=[UIFont systemFontOfSize:15];
+            [cell.contentView addSubview:namelabel];
+            [namelabel release];
+            
+            
+            UILabel *contentLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 35, 300, 20)];
+            contentLabel.backgroundColor=[UIColor clearColor];
+            contentLabel.tag=TAGCELL+101;
+            contentLabel.lineBreakMode=NSLineBreakByCharWrapping;
+            contentLabel.numberOfLines=0;
+            contentLabel.font=[UIFont systemFontOfSize:14];
+            [cell.contentView addSubview:contentLabel];
+            [contentLabel release];
         }
+        
+        UILabel *nameLabel=(UILabel *)[cell.contentView viewWithTag:TAGCELL+100];
+        nameLabel.text=@"过敏等特殊情况";
+        
+        CGSize size=[st.healthstate sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 500) lineBreakMode:NSLineBreakByCharWrapping];
+        UILabel *contentLabel=(UILabel *)[cell.contentView viewWithTag:TAGCELL+101];
+        contentLabel.frame=CGRectMake(10, 35, 300, size.height);
+        contentLabel.text=st.healthstate;
+        return cell;
+        
+            
+
     }
-    return cell;
+    return nil;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -326,10 +338,7 @@
        if(indexPath.row==3)
        {
            //修改性别
-//           "Princess"="女孩";
-//           "prince"="男孩";
-//           "Gender"="性别";
-           
+
            UIActionSheet *action=[[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Gender", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"prince", @""),NSLocalizedString(@"Princess", @""), nil];
            [action showInView:self.view];
            action.tag=ACTIONTAG+1;
@@ -360,8 +369,20 @@
         {
             return 60;
         }
+        else
+            return 44;
+    
     }
+    else if (indexPath.section==0)
     return 44;
+    else
+    {
+        CGSize size=[st.healthstate sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 500) lineBreakMode:NSLineBreakByCharWrapping];
+       
+        return 35+size.height+10;
+        //contentLabel.frame=CGRectMake(10, 35, 300, size.height);
+    }
+    return 0;
 }
 
 -(void)passwordReset:(UITapGestureRecognizer *)tap

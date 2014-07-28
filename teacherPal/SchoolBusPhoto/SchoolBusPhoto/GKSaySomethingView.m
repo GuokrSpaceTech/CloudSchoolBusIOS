@@ -10,7 +10,8 @@
 #import "GKUserLogin.h"
 @implementation GKSaySomethingView
 @synthesize delegate;
-@synthesize tagStr;
+//@synthesize tagStr;
+@synthesize tagidArr;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -83,25 +84,28 @@
         [self addSubview:_tagScrollerView];
 
         
+        
         GKUserLogin *user=[GKUserLogin currentLogin];
         
-        NSString* strLanguage = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
-//        NSLog(@"%@",strLanguage);
-        if ([strLanguage isEqualToString:@"zh-Hans"])
-        {
-            if (nil != [user.photoTagArray objectAtIndex:0] && [[user.photoTagArray objectAtIndex:0] isKindOfClass:[NSArray class]])
-            {
-                [_tagScrollerView setPhotoTags:[user.photoTagArray objectAtIndex:0]];
-            }
-        }
-        else
-        {
-            if (nil != [user.photoTagArray objectAtIndex:1] && [[user.photoTagArray objectAtIndex:1] isKindOfClass:[NSArray class]])
-            {
-                [_tagScrollerView setPhotoTags:[user.photoTagArray objectAtIndex:1]];
-            }
-            
-        }
+         [_tagScrollerView setPhotoTags:user.photoTagArray];
+        
+//        NSString* strLanguage = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
+////        NSLog(@"%@",strLanguage);
+//        if ([strLanguage isEqualToString:@"zh-Hans"])
+//        {
+//            if (nil != [user.photoTagArray objectAtIndex:0] && [[user.photoTagArray objectAtIndex:0] isKindOfClass:[NSArray class]])
+//            {
+//                [_tagScrollerView setPhotoTags:[user.photoTagArray objectAtIndex:0]];
+//            }
+//        }
+//        else
+//        {
+//            if (nil != [user.photoTagArray objectAtIndex:1] && [[user.photoTagArray objectAtIndex:1] isKindOfClass:[NSArray class]])
+//            {
+//                [_tagScrollerView setPhotoTags:[user.photoTagArray objectAtIndex:1]];
+//            }
+//            
+//        }
         
         
         
@@ -147,13 +151,23 @@
     
 
 }
--(void)setTagStr:(NSString *)_tagStr
+//-(void)setTagStr:(NSString *)_tagStr
+//{
+//    [tagStr release];
+//    tagStr=[_tagStr retain];
+//    
+//    //[_tagScrollerView setSelectTag:_tagStr];
+//}
+-(void)setTagidArr:(NSMutableArray *)_tagidArr
 {
-    [tagStr release];
-    tagStr=[_tagStr retain];
+    [tagidArr release];
+    tagidArr=[_tagidArr retain];
     
-    [_tagScrollerView setSelectTag:_tagStr];
+    
+    [_tagScrollerView setAlreadyTag:_tagidArr];
 }
+
+
 - (int)textLength:(NSString *)text//计算字符串长度
 {
     float number = 0.0;
@@ -220,11 +234,11 @@
     }
 
 }
-- (void)didSelectPhotoTag:(NSString *)tag
+- (void)didSelectPhotoTag:(int )tag tagstr:(NSString *)_tagstr
 {
     UIButton *button = (UIButton *)[self viewWithTag:333];
     [button setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];
-    [delegate tag:tag];
+    [delegate tag:_tagstr tagid:tag];
 }
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -234,7 +248,8 @@
 {
     self.contextView=nil;
     self.tagScrollerView=nil;
-    self.tagStr=nil;
+   // self.tagStr=nil;
+    self.tagidArr=nil;
     [super dealloc];
 }
 /*

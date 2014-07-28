@@ -12,6 +12,7 @@
 @synthesize addtime,adduserid,isconfirm,noticecontent,noticeid,noticetitle,plist,slistname;
 @synthesize open;
 @synthesize sisconfirm;
+@synthesize teachername;
 -(id)init
 {
     if(self=[super init])
@@ -44,6 +45,7 @@
     self.noticeid=nil;
     self.sisconfirm=nil;
     self.noticecontent=nil;
+    self.teachername=nil;
     self.slistname=nil;
 
     self.plist=nil;

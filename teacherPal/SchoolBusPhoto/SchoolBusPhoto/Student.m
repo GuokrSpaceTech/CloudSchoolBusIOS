@@ -29,6 +29,7 @@ isinstalled,
 online,
 uid,
 orderendtime,
+healthstate,
 stunumber;
 
 -(void)dealloc
@@ -47,6 +48,7 @@ stunumber;
     self.studentid=nil;
     self.studentno=nil;
     self.isinstalled=nil;
+    self.healthstate=nil;
     self.online=nil;
     self.age=nil;
     self.uid=nil;

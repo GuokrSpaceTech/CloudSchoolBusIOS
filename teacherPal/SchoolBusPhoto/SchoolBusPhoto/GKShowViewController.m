@@ -28,6 +28,7 @@
 @implementation GKShowViewController
 @synthesize assetArr;
 @synthesize tag;
+@synthesize tagid;
 //@synthesize type;
 //alreadyArr@synthesize alreadyArr;
 @synthesize stuList;
@@ -58,7 +59,8 @@
     //[GKCommonClass createHelpWithTag:1004 image:[UIImage imageNamed:iphone5 ? @"thelp_upload_568.png" : @"thelp_upload.png"]];
     
     whichView=1;
-    self.tag=@"";
+    tag=[[NSMutableArray alloc]init];;
+    tagid=[[NSMutableArray alloc]init];
     prePage=0;
     stuList = [[NSMutableArray alloc] init];
     picTextArr = [[NSMutableArray alloc] init];
@@ -257,9 +259,11 @@
 
     [picTextArr removeAllObjects];
     for (int i=0; i<[assetArr count]; i++) {
+        
+        
         NSString *key=[NSString stringWithFormat:@"%d",i];
         
-        NSMutableDictionary *dic= [NSMutableDictionary dictionaryWithObjectsAndKeys:self.tag,@"tag",str,@"text", nil];
+        NSMutableDictionary *dic= [NSMutableDictionary dictionaryWithObjectsAndKeys:self.tag,@"tag",self.tagid,@"tagid",str,@"text", nil];
         
         [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:dic,key, nil]];
     }
@@ -271,11 +275,30 @@
     [picTextArr removeAllObjects];
 }
 
--(void)tag:(NSString *)tagTxt
+-(void)tag:(NSString *)tagTxt tagid:(int)_tagid
 {
-    self.tag=tagTxt;
+   // self.tag=tagTxt;
+   // self.tagid=[NSNumber numberWithInt:_tagid];
     
     
+    
+    if([tag containsObject:tagTxt])
+    {
+        [tag removeObject:tagTxt];
+    }
+    else
+    {
+        [tag addObject:tagTxt];
+    }
+    NSNumber * tagidnumber=[NSNumber numberWithInt:_tagid];
+    if([tagid containsObject:tagidnumber])
+    {
+        [tagid removeObject:tagidnumber];
+    }
+    else
+    {
+        [tagid addObject:tagidnumber];
+    }
     NSString *key=[NSString stringWithFormat:@"%d",currentpage];
     
     for (int i=0; i<[self.picTextArr count]; i++) {
@@ -287,14 +310,41 @@
 
             NSMutableDictionary *tempDic=[dic objectForKey:key];
             
-            [tempDic setObject:tagTxt forKey:@"tag"];
+            NSMutableArray *tagStrArr=[tempDic objectForKey:@"tag"];
+            NSMutableArray *tagIdArr=[tempDic objectForKey:@"tagid"];
+            
+            if([tagIdArr containsObject:[NSNumber numberWithInt:_tagid]])
+            {
+                [tagIdArr removeObject:[NSNumber numberWithInt:_tagid]];
+            }
+            else
+            {
+                [tagIdArr addObject:[NSNumber numberWithInt:_tagid]];
+            }
+            
+            if([tagStrArr containsObject:tagTxt])
+            {
+                [tagStrArr removeObject:tagTxt];
+            }
+            else
+            {
+                [tagStrArr addObject:tagTxt];
+            }
+            
+            [tempDic  setObject:tagIdArr forKey:@"tagid"];
+            [tempDic setObject:tagStrArr forKey:@"tag"];
+            
+            //[tempDic setObject:tagTxt forKey:@"tag"];
+            //[tempDic setObject:[NSNumber numberWithInt:_tagid] forKey:@"tagid"];
             
            // sayView.contextView.text=[[dic objectForKey:key] objectForKey:@"text"];
             break;
         }
          if (i == self.picTextArr.count - 1)
          {
-             NSDictionary *addtag=[NSMutableDictionary dictionaryWithObjectsAndKeys:tagTxt,@"tag", nil];
+             NSMutableArray *tagstrarr=[NSMutableArray arrayWithObjects:tagTxt, nil];
+             NSMutableArray *tagidarr=[NSMutableArray arrayWithObjects:[NSNumber numberWithInt:_tagid], nil];
+             NSDictionary *addtag=[NSMutableDictionary dictionaryWithObjectsAndKeys:tagstrarr,@"tag",tagidarr,@"tagid", nil];
              [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:addtag,key, nil]];
 
              break;
@@ -303,8 +353,13 @@
     }
     if ([picTextArr count]==0)
     {
-        NSDictionary *addtag=[NSMutableDictionary dictionaryWithObjectsAndKeys:tagTxt,@"tag", nil];
+        NSMutableArray *tagstrarr=[NSMutableArray arrayWithObjects:tagTxt, nil];
+        NSMutableArray *tagidarr=[NSMutableArray arrayWithObjects:[NSNumber numberWithInt:_tagid], nil];
+        NSDictionary *addtag=[NSMutableDictionary dictionaryWithObjectsAndKeys:tagstrarr,@"tag",tagidarr,@"tagid", nil];
         [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:addtag,key, nil]];
+        
+//        NSDictionary *addtag=[NSMutableDictionary dictionaryWithObjectsAndKeys:tagTxt,@"tag",[NSNumber numberWithInt:_tagid],@"tagid", nil];
+//        [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:addtag,key, nil]];
         
         
     }
@@ -366,7 +421,9 @@
     
 
        // [picTxtView resignFirstResponder];
-        sayView.tagStr=@"";;
+       // sayView.tagStr=@"";;
+    
+    sayView.tagidArr=[NSMutableArray arrayWithCapacity:0];
         NSString *key=[NSString stringWithFormat:@"%d",currentpage];
         
         for (int i=0; i<[self.picTextArr count]; i++) {
@@ -377,12 +434,32 @@
                 NSString *text=[[dic objectForKey:key] objectForKey:@"text"];
                 sayView.contextView.text=text;
                 // 设置 tag
-                NSString *tagTemp=[[dic objectForKey:key] objectForKey:@"tag"];
-                if(tagTemp==nil)
+                NSString *tagTemp=nil;
+                NSMutableArray *tagstrArr=[[dic objectForKey:key] objectForKey:@"tag"];
+                NSMutableArray *tagidArr=[[dic objectForKey:key] objectForKey:@"tagid"];
+                if([tagstrArr count]==0)
                 {
                     tagTemp=@"";
                 }
-                sayView.tagStr=tagTemp;
+                else
+                {
+                    NSMutableString *temp=[[NSMutableString alloc]init];
+                    for (int i=0; i<[tagstrArr count]; i++) {
+                        [temp appendFormat:@"%@,",[tagstrArr objectAtIndex:i]];
+                    }
+                    [temp deleteCharactersInRange:NSMakeRange([temp length]-1, 1)];
+                    
+                    tagTemp=[temp autorelease];
+                    
+                    
+                }
+             //   NSString *tagTemp=[[dic objectForKey:key] objectForKey:@"tag"];
+//                if(tagTemp==nil)
+//                {
+//                    tagTemp=@"";
+//                }
+               // sayView.tagStr=tagTemp;
+                sayView.tagidArr=tagidArr;
                 UILabel *label=(UILabel *)[textView viewWithTag:9632];
                 NSString *labelstr=[NSString stringWithFormat:@"%@ %@",tagTemp,text];
                 label.text=labelstr;
@@ -415,7 +492,10 @@
         photobutton.hidden = NO;
         titlelabel.text=NSLocalizedString(@"who", @"");
         numView.hidden=NO;
-        self.tag=@"";
+        
+        //
+        [tagid removeAllObjects];
+        [tag removeAllObjects];
     }
     else
     {
@@ -948,17 +1028,34 @@
                     if (txtKey != nil) {
                         
                         NSString *tmptext=[[introduceDic objectForKey:txtKey] objectForKey:@"text"];
-                        NSString *tmptag=[[introduceDic objectForKey:txtKey] objectForKey:@"tag"];
+                        
+                        
+                     //   NSString *tmptag=[[introduceDic objectForKey:txtKey] objectForKey:@"tag"];
+                        
+                        NSMutableArray *tagidArr=[[introduceDic objectForKey:txtKey] objectForKey:@"tagid"];
+                        
                         introduce = [introduceDic objectForKey:txtKey];
                         if(tmptext)
                             introduce=tmptext;
                         else
                             introduce=@"";
                         
-                        if(tmptag)
-                            tagcontent=tmptag;
-                        else
+                        NSMutableString *temp=[[NSMutableString alloc]init];
+                        for (int i=0; i<[tagidArr count]; i++) {
+                            NSString *str=[NSString stringWithFormat:@"%@",[tagidArr objectAtIndex:i]];
+                            [temp appendFormat:@"%@,",str];
+                        }
+                        [temp deleteCharactersInRange:NSMakeRange([temp length]-1, 1)];
+                        
+                        tagcontent=[temp autorelease];
+                        
+                        if(tagcontent==nil)
                             tagcontent=@"";
+                        
+//                        if(tmptag)
+//                            tagcontent=tmptag;
+//                        else
+//                            tagcontent=@"";
                         
                     }
                     break;
@@ -1072,8 +1169,15 @@
                             //picTxtView.text=self.preStr;
                     }
                     NSDictionary *adddic=[NSMutableDictionary dictionaryWithObjectsAndKeys:sayView.contextView.text,@"text", nil];
+                    
+                    
+                    
                     //[self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:sayView.contextView.text,key, nil]];
                     [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:adddic,key, nil]];
+                    
+                    
+                    
+                    
                     break;
                 }
             }
@@ -1202,7 +1306,19 @@
                 //introduce = [introduceDic objectForKey:txtKey];
                 introduce = [[introduceDic objectForKey:txtKey] objectForKey:@"text"];
 
-                tagStr = [[introduceDic objectForKey:txtKey] objectForKey:@"tag"];
+                
+                NSMutableArray *arrtagstr=[[introduceDic objectForKey:txtKey] objectForKey:@"tag"];
+                
+                
+                NSMutableString *temp=[[NSMutableString alloc]init];
+                for (int i=0; i<[arrtagstr count]; i++) {
+                    [temp appendFormat:@"%@,",[arrtagstr objectAtIndex:i]];
+                }
+                [temp deleteCharactersInRange:NSMakeRange([temp length]-1, 1)];
+                
+                tagStr=[temp autorelease];
+                
+               // tagStr = [[introduceDic objectForKey:txtKey] objectForKey:@"tag"];
                 if(tagStr==nil)
                 {
                     tagStr=@"";
@@ -1252,6 +1368,7 @@
     self.assetArr=nil;
     self.stuList=nil;
     self.tag=nil;
+    self.tagid=nil;
     [super dealloc];
 }
 - (void)didReceiveMemoryWarning

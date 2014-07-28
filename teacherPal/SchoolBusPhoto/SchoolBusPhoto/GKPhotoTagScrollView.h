@@ -10,7 +10,7 @@
 
 @protocol GKPhotoTagScrollViewDelegate <NSObject>
 
-- (void)didSelectPhotoTag:(NSString *)tag;
+- (void)didSelectPhotoTag:(int )tag tagstr:(NSString *)tagstr;
 
 @end
 
@@ -20,7 +20,9 @@
 }
 @property (nonatomic, assign)id<GKPhotoTagScrollViewDelegate> tagDelegate;
 @property (nonatomic, retain) NSArray *photoTags;
--(void)setSelectTag:(NSString *) tagstr;
+//-(void)setSelectTag:(NSString *) tagstr;
+-(void)setAlreadyTag:(NSMutableArray *)arr;
+
 - (void)setPhotoTags:(NSArray *)tags;
 
 @end

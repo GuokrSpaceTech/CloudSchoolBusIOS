@@ -20,7 +20,7 @@
 @property (nonatomic,retain)NSString *noticeid;
 @property (nonatomic,retain)NSString *noticetitle;
 @property (nonatomic,retain)NSMutableArray *plist;
-
+@property (nonatomic,retain)NSString *teachername;
 @property (nonatomic,retain)NSMutableArray *sisconfirm;
 @property (nonatomic,retain)NSMutableArray *slistname;
 @property (nonatomic,assign)BOOL open;

@@ -612,6 +612,9 @@
             if(plist != nil && plist.count > 0)
                 share.sharePic=[plist objectForKey:@"source"];
         }
+        
+        NSArray * tagList=[myDic objectForKey:@"taglist"];
+        share.tagArr=tagList;
         share.shareContent=[myDic objectForKey:@"content"];
         share.shareTitle=[myDic objectForKey:@"title"];
         share.upnum=[myDic objectForKey:@"upnum"];

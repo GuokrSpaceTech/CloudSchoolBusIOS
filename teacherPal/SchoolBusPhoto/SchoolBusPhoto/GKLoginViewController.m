@@ -14,6 +14,7 @@
 #import "GKUserLogin.h"
 #import "GKLoaderManager.h"
 #import "Student.h"
+#import "GKSchoolTag.h"
 @interface GKLoginViewController ()
 
 @end
@@ -409,6 +410,7 @@
             student.uid=[studentInfo objectForKey:@"uid_student"];
             student.stunumber=[studentInfo objectForKey:@"studentno"];
             student.orderendtime=[studentInfo objectForKey:@"orderendtime"];
+            student.healthstate=[studentInfo objectForKey:@"healthstate"];
             student.username=[NSString stringWithFormat:@"%@",[studentInfo objectForKey:@"username"]];
             student.parentid=[NSNumber numberWithInt:[[studentInfo objectForKey:@"parentid"] integerValue]];
             [studentArr addObject:student];
@@ -432,24 +434,31 @@
         
         NSLog(@"%@",dic);
         
-        user.upIP=[dic objectForKey:@"clientip"];
+      //  user.upIP=[dic objectForKey:@"clientip"];
         
-        if ([[dic objectForKey:@"photo_tag"] isKindOfClass:[NSArray class]])
-        {
-//            NSMutableArray *arr = [NSMutableArray array];
-//            NSDictionary *tagDic = [dic objectForKey:@"photo_tag"];
-//            for (id key in tagDic.allKeys)
-//            {
-//                [arr addObject:[NSString stringWithFormat:@"%@",[tagDic objectForKey:key]]];
-//            }
-            user.photoTagArray = [dic objectForKey:@"photo_tag"];
-            NSLog(@"photo_tag : %@",user.photoTagArray);
-        }
-        else
-        {
-            NSLog(@"photo_tag type error");
+        NSArray *tagArr=[dic objectForKey:@"tag"];
+        NSMutableArray *tmpArr=[[NSMutableArray alloc]init];
+        for (int i=0; i<[tagArr count]; i++) {
+            GKSchoolTag *tag=[[GKSchoolTag alloc]init];
+            tag.tagid=[NSString stringWithFormat:@"%@",[[tagArr objectAtIndex:i] objectForKey:@"tagid"]];
+            tag.tagname=[[tagArr objectAtIndex:i] objectForKey:@"tagname"];
+            tag.tagname_en=[[tagArr objectAtIndex:i] objectForKey:@"tagname_en"];
+            [tmpArr addObject:tag];
+            [tag release];
         }
         
+        user.photoTagArray=tmpArr;
+        
+//        if ([[dic objectForKey:@"photo_tag"] isKindOfClass:[NSArray class]])
+//        {
+//            user.photoTagArray = [dic objectForKey:@"photo_tag"];
+//            NSLog(@"photo_tag : %@",user.photoTagArray);
+//        }
+//        else
+//        {
+//            NSLog(@"photo_tag type error");
+//        }
+//        
         
         
         [self loginSucess];

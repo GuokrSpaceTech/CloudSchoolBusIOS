@@ -9,7 +9,7 @@
 #import "ETCoreDataManager.h"
 
 #import "ETEvents.h"
-
+#import "ETActicalTag.h"
 #import "ETNoticPicture.h"
 
 
@@ -20,8 +20,8 @@
 {
     UserLogin* login = [UserLogin currentLogin];
     
-    if (login.loginStatus == LOGIN_OFF)
-        return;
+//    if (login.loginStatus == LOGIN_OFF)
+//        return;
     
     AppDelegate *delegate = SHARED_APP_DELEGATE;
     
@@ -81,7 +81,8 @@
         user.can_comment_action = login.can_comment_action;
         user.orderenddate = login.orderEndTime;
         user.ordertitle = login.orderTitle;
-        
+        user.healthstate=login.healtState;
+       
         BOOL success = [delegate.managedObjectContext save:&error];
         NSLog(@"user save success: %d",success);
     }
@@ -108,6 +109,12 @@
     }
     
     ETUser* user = [users objectAtIndex:0];
+    NSLog(@"%@",user.account);
+    NSLog(@"%@",user.classname);
+    NSLog(@"%@",user.healthstate);
+    NSLog(@"%@",user.cnname);
+    
+    NSLog(@"%@",user.password);
     if ([password compare:user.password] != NSOrderedSame)
     {
         return nil;
@@ -142,6 +149,7 @@
     login.can_comment_action = user.can_comment_action;
     login.can_comment = user.can_comment;
     login.orderTitle = user.ordertitle;
+    login.healtState=user.healthstate;
     login.orderEndTime = user.orderenddate;
     
     return login;
@@ -201,7 +209,7 @@
 {
     AppDelegate *delegate = SHARED_APP_DELEGATE;
     NSError* error;
-    
+    UserLogin *userLogin=[UserLogin currentLogin];
     for (int i = 0; i < children.count; i++) {
         NSDictionary *dic = [children objectAtIndex:i];
         NSString *stuid = [dic objectForKey:@"uid_student"];
@@ -231,7 +239,7 @@
         if (user != nil)
         {
             user.account = username;
-//            user.password = login.passWord;
+            user.password = userLogin.passWord;
 //            user.age = login.age;
 //            user.birthday = login.birthday;
 //            user.sex = login.sex;
@@ -300,6 +308,19 @@
             [delegate.managedObjectContext deleteObject:mo];
         }
         
+        
+        
+        NSFetchRequest* request1 = [[[NSFetchRequest alloc] init] autorelease];
+        NSEntityDescription *entity1 = [NSEntityDescription entityForName:@"ETActicalTag" inManagedObjectContext:delegate.managedObjectContext];
+        NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"articleid = %@",obj.articleid];
+        [request1 setPredicate:predicate1];
+        [request1 setEntity:entity1];
+        NSArray *tagArr = [delegate.managedObjectContext executeFetchRequest:request1 error:nil];
+        
+        for (NSManagedObject *mo in tagArr) {
+            [delegate.managedObjectContext deleteObject:mo];
+        }
+        
         [delegate.managedObjectContext deleteObject:obj];
     }
     
@@ -340,6 +361,24 @@
             pic.pictureurl = [NSString stringWithFormat:@"%@",[picDic objectForKey:@"source"]];
             
             [classshare addPicturesObject:pic];
+        }
+        
+        
+        
+        
+        NSArray *tagArr=[infoDic objectForKey:@"taglist"];
+        for (int i=0; i<tagArr.count; i++) {
+            NSDictionary *dic=[tagArr objectAtIndex:i];
+            
+            ETActicalTag *tag=[NSEntityDescription insertNewObjectForEntityForName:@"ETActicalTag" inManagedObjectContext:delegate.managedObjectContext];
+            
+            tag.articleid=classshare.articleid;
+            tag.tagname=[dic objectForKey:@"tagname"];
+            tag.tagname_en=[dic objectForKey:@"tagname_en"];
+            tag.tagnamedesc=[dic objectForKey:@"tagnamedesc"];
+            tag.tagnamedesc_en=[dic objectForKey:@"tagnamedesc_en"];
+            
+            [classshare addTagsObject:tag];
         }
 
     }
@@ -482,7 +521,40 @@
         }
         [dic setObject:tempPic forKey:@"plist"];
 
+      //  [resultArr addObject:dic];
+        
+        
+        
+
+        
+        NSFetchRequest* request1 = [[[NSFetchRequest alloc] init] autorelease];
+        NSEntityDescription *entity1 = [NSEntityDescription entityForName:@"ETActicalTag" inManagedObjectContext:delegate.managedObjectContext];
+        [request1 setEntity:entity1];
+        NSPredicate *searchPre1 = [NSPredicate predicateWithFormat:@"(articleid = %@)",info.articleid];
+        [request1 setPredicate:searchPre1];
+        NSError *error1=nil;
+        NSArray *tagArr = [delegate.managedObjectContext executeFetchRequest:request1 error:&error1];
+
+        if(!tagArr)
+        {
+             NSLog(@"!!!! search pic error : %@",error1);
+        }
+        
+        
+        NSMutableArray *tempTag = [NSMutableArray array];
+        for (int i = 0; i < tagArr.count; i++)
+        {
+            ETActicalTag *ap = [tagArr objectAtIndex:i];
+            NSDictionary *tempDic = [NSDictionary dictionaryWithObjectsAndKeys:ap.tagname,@"tagname",ap.tagname_en,@"tagname_en",ap.tagnamedesc,@"tagnamedesc",ap.tagnamedesc_en,@"tagnamedesc_en", nil];
+            [tempTag addObject:tempDic];
+        }
+        [dic setObject:tempTag forKey:@"taglist"];
+        
         [resultArr addObject:dic];
+
+        
+        
+        
     }
     
     

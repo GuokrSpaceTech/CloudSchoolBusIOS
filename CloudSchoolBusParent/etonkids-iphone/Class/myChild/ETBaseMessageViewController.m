@@ -15,6 +15,7 @@
 #import "ETCommonClass.h"
 #import "ETCoreDataManager.h"
 #import "GTMBase64.h"
+#import "ChildhealthViewController.h"
 @interface ETBaseMessageViewController ()
 
 @end
@@ -38,7 +39,7 @@
 {
     [super viewWillAppear:animated];
     
-    
+    [mainTV reloadData];
     countlabel.text=[NSString stringWithFormat:@"%d",[self.receiveArr count]];
 }
 - (void)viewDidLoad
@@ -126,7 +127,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 5;
+        return 6;
     }
     return 4;
 }
@@ -274,6 +275,35 @@
             
         }
 
+        else if(indexPath.row==5)
+        {
+            cell.textLabel.backgroundColor=[UIColor clearColor];
+            cell.textLabel.text= @"过敏情况";
+            cell.backgroundColor=[UIColor whiteColor];
+            cell.selectionStyle=UITableViewCellSelectionStyleBlue;
+            
+            
+            
+            UILabel *healthlabel=[[UILabel alloc]initWithFrame:CGRectMake(100,10,170,20)];
+            healthlabel.textAlignment=UITextAlignmentRight;
+            
+            healthlabel.tag = 102;
+            [cell.contentView addSubview:healthlabel];
+            healthlabel.backgroundColor=[UIColor clearColor];
+            healthlabel.font=[UIFont systemFontOfSize:15];
+            [healthlabel release];
+            
+            if([user.healtState isEqualToString:@""] || user.healtState==nil)
+            {
+                healthlabel.text=@"未填写";
+            }
+            else
+            {
+                healthlabel.text=user.healtState;
+            }
+            
+            
+        }
         
     }
     else if (indexPath.section == 1) {
@@ -417,6 +447,15 @@
                 [sendcontroller release];
             }
  
+        }
+        else if (indexPath.row==5)
+        {
+            ChildhealthViewController *childVC=[[ChildhealthViewController alloc]init];
+            AppDelegate *appDel = SHARED_APP_DELEGATE;
+            [appDel.bottomNav pushViewController:childVC animated:YES];
+            [childVC release];
+
+            
         }
     }
 

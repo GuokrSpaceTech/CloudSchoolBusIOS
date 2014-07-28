@@ -243,6 +243,8 @@
                 notice.noticetitle=[NSString stringWithFormat:@"%@",[dic objectForKey:@"noticetitle"]];
                 notice.plist=[dic objectForKey:@"plist"];
                 notice.slistname=[dic objectForKey:@"slistname"];
+               // id temp=[dic objectForKey:@"teachername"];
+                notice.teachername=[dic objectForKey:@"teachername"];
                 [noticeList addObject:notice];
                 [notice release];
                 

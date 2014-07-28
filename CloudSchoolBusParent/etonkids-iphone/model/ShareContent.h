@@ -16,6 +16,7 @@
     NSString *sharePic;
     NSString *shareTime;
     NSArray * sharePicArr;
+    NSArray * tagArr;
     
 }
 @property(nonatomic,retain)NSString *audio;
@@ -25,6 +26,7 @@
 @property(nonatomic,retain)NSString *shareContent;
 @property(nonatomic,retain)NSString *sharePic;
 @property(nonatomic,retain)NSArray * sharePicArr;
+@property(nonatomic,retain)NSArray * tagArr;
 @property (nonatomic, retain)NSString *shareKey;
 @property BOOL isMore;
 @property(nonatomic,retain)NSString *shareTime;

@@ -17,6 +17,7 @@
 @synthesize IconImageView;
 @synthesize huizhiLabel;
 @synthesize delegate;
+@synthesize teachreLabel;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -55,6 +56,14 @@
         timeLabel.font=[UIFont systemFontOfSize:10];
         timeLabel.textColor=[UIColor colorWithRed:123/255.0 green:123/255.0 blue:123/255.0 alpha:1];
         [self.contentView addSubview:timeLabel];
+        
+        teachreLabel=[[UILabel alloc]initWithFrame:CGRectZero];
+        teachreLabel.backgroundColor=[UIColor clearColor];
+        teachreLabel.font=[UIFont systemFontOfSize:10];
+        
+        teachreLabel.textColor=[UIColor colorWithRed:123/255.0 green:123/255.0 blue:123/255.0 alpha:1];
+        [self.contentView addSubview:teachreLabel];
+
 
         
         huizhiLabel=[[UILabel alloc]initWithFrame:CGRectZero];
@@ -147,36 +156,9 @@
   //  }
     height+=5;
     //回执
-    
-//     NSMutableString *selectobectStr =[NSMutableString stringWithString:@""];
-//    NSLog(@"~~~~~~~~%@",notice.slistname);
-//    for (int i=0; i<[notice.slistname count]; i++) {
-//         [selectobectStr appendFormat:@"%@    " ,[notice.slistname objectAtIndex:i]];
-//    }
-//    if(![selectobectStr isEqualToString:@""])
-//    {
-//        NSString *huizhiText=[NSString stringWithFormat:@"%@:%@",@"回执",selectobectStr];
-//        
-//        CGSize huizSize=[huizhiText sizeWithFont:FONTSIZE constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:NSLineBreakByWordWrapping];
-//        huizhiLabel.text=huizhiText;
-//        huizhiLabel.frame=CGRectMake(50, 10+height, 250, huizSize.height);
-//        height+=huizSize.height;
-//            height+=5;
-//        
-//        
-//    }
-//    else
-//    {
-//        huizhiLabel.frame=CGRectZero;
-//        height+=0;
-//    }
-//   
-    
+
     // 判断图片
-    
-    
-    
-    
+
     if([notice.plist count]==1)
     {
         UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(110,10+height,100,100)];
@@ -275,7 +257,10 @@
     
     lineImageView.frame=CGRectMake(10, 10+height+5, 300, 1);
     timeLabel.text=[self timeStr:notice.addtime];
-    timeLabel.frame=CGRectMake(50, 10+height+10, 100, 15);
+    timeLabel.frame=CGRectMake(50, 10+height+10, 80, 15);
+    teachreLabel.frame=CGRectMake(130, 10+height+10, 80, 15);
+    teachreLabel.text=notice.teachername;
+    
     if([notice.isconfirm integerValue]==1)
     {
         huizhiLabel.frame=CGRectMake(200, 10+height+10, 100, 15);
@@ -366,6 +351,7 @@
     self.notice=nil;
     self.IconImageView=nil;
     self.huizhiLabel=nil;
+    self.teachreLabel=nil;
     [super dealloc];
 }
 @end

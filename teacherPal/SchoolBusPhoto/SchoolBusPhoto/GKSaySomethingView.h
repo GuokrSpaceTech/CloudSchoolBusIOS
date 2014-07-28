@@ -14,7 +14,8 @@
     UILabel* labelNum;
 }
 
-@property (nonatomic,retain)NSString *tagStr;
+//@property (nonatomic,retain)NSString *tagStr;
+@property (nonatomic,retain)NSMutableArray * tagidArr;
 @property (nonatomic,assign) id<GKSaySomethingViewDelegate>delegate;
 @property (nonatomic,retain)UITextView *contextView;
 @property (nonatomic,retain)GKPhotoTagScrollView *tagScrollerView;
@@ -26,7 +27,7 @@
 @protocol GKSaySomethingViewDelegate <NSObject>
 
 //-(void)textView:(NSString *)contextTxt;
--(void)tag:(NSString *)tagTxt;
+-(void)tag:(NSString *)tagTxt tagid:(int) tagid;
 -(void)applyAll:(NSString *)str;
 - (void)cancelApplyAll;
 

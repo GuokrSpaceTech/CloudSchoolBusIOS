@@ -25,7 +25,7 @@
 @property (nonatomic,retain)  UILabel *titleLable;
 @property (nonatomic,retain)  HTCopyableLabel *contentlabel;
 @property (nonatomic,retain)  UILabel *timeLabel;
-
+@property (nonatomic,retain)  UILabel *teachreLabel;
 @property (nonatomic,retain)  UILabel *huizhiLabel;
 @property (nonatomic,retain)  GKNotice *notice;
 @property (nonatomic,assign) id<noticeCelldelegate>delegate;

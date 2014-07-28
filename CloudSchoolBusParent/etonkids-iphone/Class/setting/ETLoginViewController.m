@@ -308,10 +308,10 @@
     UserLogin *user = [UserLogin currentLogin];
 
 
-        [UserLogin clearLastLogin];
-        [user updateLastLogin];
+    [UserLogin clearLastLogin];
+    [user updateLastLogin];
         //本地信息存储
-
+   
     [self performSelectorOnMainThread:@selector(LoginSuccess) withObject:nil waitUntilDone:YES];
  
     [pool drain];                            
@@ -348,6 +348,7 @@
     
     if(method == signin && code == 1)
     {
+        user.passWord=passWordField.text;
         id result = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
         if ([result isKindOfClass:[NSDictionary class]])
         {
@@ -435,6 +436,10 @@
         user.orderTitle = [NSString stringWithFormat:@"%@",[dic objectForKey:@"ordertitle"]];
         user.orderEndTime = [NSString stringWithFormat:@"%@",[dic objectForKey:@"orderendtime"]];
         user.inactive=[NSString stringWithFormat:@"%@",[dic objectForKey:@"inactive"]];
+        user.healtState=[NSString stringWithFormat:@"%@",[dic objectForKey:@"healthstate"]];
+        
+        
+       [ETCoreDataManager saveUser];
         [[EKRequest Instance] EKHTTPRequest:classinfo parameters:nil requestMethod:GET forDelegate:self];
         
         

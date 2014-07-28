@@ -82,7 +82,9 @@ static GKUpQueue *gkqueue=nil;
     GKUpWraper *wrapper=[GKFindWraper getBookWrapper:nameId];
 
    //NSString *url=[NSString stringWithFormat:@"http://%@/source",user.upIP];
-    NSString *url=@"http://client.yunxiaoche.com/source";
+    //NSString *url=@"http://client.yunxiaoche.com/source";
+    
+    NSString *url=@"http://192.168.2.18:85/source";
     ASIFormDataRequest * request=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:url]];
     [request addRequestHeader:@"sid" value:user._sid];
     [request addRequestHeader:@"apikey" value:@"mactoprest"];

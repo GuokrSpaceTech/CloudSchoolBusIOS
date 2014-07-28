@@ -13,7 +13,7 @@
 #import "ETLoginViewController.h"
 #import "ETCustomAlertView.h"
 #import "MobClick.h"
-
+#import "ETCommonClass.h"
 @implementation AppDelegate
 
 @synthesize token,bottomNav,bottomVC,loginViewController;
@@ -151,6 +151,12 @@
     if ([defaultUser objectForKey:AUTOLOGIN] && [user getLastLogin])
     {
         [ETCoreDataManager cachedUser:user.regName withPass:user.passWord andStudent:user.uid_student];
+        
+        ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
+        [com requestLoginWithComplete:^(NSError *err){
+            //[[EKRequest Instance] EKHTTPRequest:notice parameters:param requestMethod:POST forDelegate:self];
+        }];
+        
         [self performSelector:@selector(presentBottom) withObject:nil afterDelay:0.00];
     }
 

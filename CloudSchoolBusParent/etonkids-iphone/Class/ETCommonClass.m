@@ -156,6 +156,7 @@
         user.orderEndTime = [NSString stringWithFormat:@"%@",[dic objectForKey:@"orderendtime"]];
         user.uid_student = [NSString stringWithFormat:@"%@",[dic objectForKey:@"student_uid"]];
         user.inactive=[NSString stringWithFormat:@"%@",[dic objectForKey:@"inactive"]];
+        user.healtState=[NSString stringWithFormat:@"%@",[dic objectForKey:@"healthstate"]];
         [[EKRequest Instance] EKHTTPRequest:classinfo parameters:nil requestMethod:GET forDelegate:self];
         
         
@@ -187,7 +188,7 @@
         NSDictionary * attendance_type = [dic objectForKey:@"attendance_type"];
         
         user.attendancetype = attendance_type;
-        
+        [ETCoreDataManager saveUser];
         cBlock(nil);
     }
     else if (code == -1115)

@@ -200,6 +200,32 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     [contentLabel release];
     
     
+    
+    float heightorign=contentLabel.frame.origin.y+contentLabel.frame.size.height;
+    
+    int row=[shareContent.tagArr count]/3;
+    int col=[shareContent.tagArr count]%3;
+   
+    
+    int num= ((col==0)?row:(row+1));
+    
+    for (int i=0; i<[shareContent.tagArr count]; i++) {
+        
+        NSDictionary *dic=[shareContent.tagArr objectAtIndex:i];
+        int row=i/3;
+        int col=i%3;
+        
+        UIButton *btn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+        btn.backgroundColor=[UIColor redColor];
+        btn.frame=CGRectMake(25 + col * (90 + 10), heightorign +5 + row *(20 +5) , 90, 20);
+        [btn addTarget:self action:@selector(tagClick:) forControlEvents:UIControlEventTouchUpInside];
+        btn.tag=i+3210;
+        [btn setTitle:[dic objectForKey:@"tagname"] forState:UIControlStateNormal];
+        [contentView addSubview:btn];
+    }
+    
+    
+    int originY=heightorign + 5 + num * 20 + (num-1)*5;
     NSDictionary *fDic = [shareContent.sharePicArr objectAtIndex:0];
     NSString *source = [NSString stringWithFormat:@"%@",[fDic objectForKey:@"source"]];
     //        NSString *source = @"http://yunxiaoche.blob.core.windows.net/article-source/39958_1389601724_644558.mp4";
@@ -208,7 +234,7 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     
     if ([ext isEqualToString:@"mp4"])
     {
-        UIView *ctntView = [[UIView alloc] initWithFrame:CGRectMake(10, contentLabel.frame.origin.y+contentLabel.frame.size.height+5, MOVIESIZE, MOVIESIZE)];
+        UIView *ctntView = [[UIView alloc] initWithFrame:CGRectMake(10, originY+5, MOVIESIZE, MOVIESIZE)];
         ctntView.backgroundColor = [UIColor clearColor];
         [contentView addSubview:ctntView];
         [ctntView release];
@@ -277,8 +303,8 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
         
         
         
-        timeLabel.frame = CGRectMake(30, contentLabel.frame.origin.y + contentLabel.frame.size.height + 10 + MOVIESIZE + 5, 100, 16);
-        contentView.frame=CGRectMake(0, 0, 320, contentLabel.frame.origin.y+contentLabel.frame.size.height+10 +MOVIESIZE+5 + 16 );
+        timeLabel.frame = CGRectMake(30, originY + 10 + MOVIESIZE + 5, 100, 16);
+        contentView.frame=CGRectMake(0, 0, 320, originY+10 +MOVIESIZE+5 + 16 );
         
     }
     else
@@ -291,7 +317,7 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
                 int colom=i%3;
                 NSDictionary * dic = [shareContent.sharePicArr objectAtIndex:i];
                 NSString *path=[NSString stringWithFormat:@"%@.tiny.jpg",[dic objectForKey:@"source"]];
-                UIImageView *imageViewPic=[[UIImageView alloc]initWithFrame:CGRectMake(40 + colom*(75+5), contentLabel.frame.origin.y+contentLabel.frame.size.height+5 + row *(75+5), 75, 75)];
+                UIImageView *imageViewPic=[[UIImageView alloc]initWithFrame:CGRectMake(40 + colom*(75+5), originY+5 + row *(75+5), 75, 75)];
                 
                 [imageViewPic setImageWithURL:[NSURL URLWithString:path] placeholderImage:[UIImage imageNamed:@"imageplaceholder.png"] options:0 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                     
@@ -320,15 +346,15 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
             else if([shareContent.sharePicArr count]<=9)
                 height=75+5+75 + 5 + 75;
             
-            timeLabel.frame = CGRectMake(30, contentLabel.frame.origin.y + contentLabel.frame.size.height + 10 + height + 5, 100, 16);
+            timeLabel.frame = CGRectMake(30, originY + 10 + height + 5, 100, 16);
             
-            contentView.frame=CGRectMake(0, 0, 320, contentLabel.frame.origin.y+contentLabel.frame.size.height+10 +height+5 + 16 );
+            contentView.frame=CGRectMake(0, 0, 320, originY+10 +height+5 + 16 );
         }
         else if ([shareContent.sharePicArr count] > 0 && [shareContent.sharePicArr count]<=1)
         {
             NSDictionary * dic = [shareContent.sharePicArr objectAtIndex:0];
             NSString *path=[NSString stringWithFormat:@"%@.small.jpg",[dic objectForKey:@"source"]];
-            UIImageView *imageViewPic=[[UIImageView alloc]initWithFrame:CGRectMake(40 , contentLabel.frame.origin.y+contentLabel.frame.size.height+5, 150, 150)];
+            UIImageView *imageViewPic=[[UIImageView alloc]initWithFrame:CGRectMake(40 , originY+5, 150, 150)];
             
             [imageViewPic setImageWithURL:[NSURL URLWithString:path] placeholderImage:[UIImage imageNamed:@"imageplaceholder.png"] options:0 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                 
@@ -348,15 +374,15 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
             [imageViewPic addGestureRecognizer:tap];
             [tap release];
             
-            timeLabel.frame = CGRectMake(30, contentLabel.frame.origin.y + contentLabel.frame.size.height + 10 + 150 + 5, 100, 16);
+            timeLabel.frame = CGRectMake(30, originY + 10 + 150 + 5, 100, 16);
             
-            contentView.frame=CGRectMake(0, 0, 320, contentLabel.frame.origin.y+contentLabel.frame.size.height+10 + 150 +5 + 16 );
+            contentView.frame=CGRectMake(0, 0, 320, originY+10 + 150 +5 + 16 );
             
         }
         else
         {
-            timeLabel.frame = CGRectMake(30, contentLabel.frame.origin.y + contentLabel.frame.size.height + 10, 100, 16);
-            contentView.frame=CGRectMake(0, 0, 320, contentLabel.frame.origin.y+contentLabel.frame.size.height+10 + 16);
+            timeLabel.frame = CGRectMake(30, originY + 10, 100, 16);
+            contentView.frame=CGRectMake(0, 0, 320, originY+10 + 16);
         }
     }
     
@@ -495,7 +521,20 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
         
     }
 }
-
+// 点击标签事件
+-(void)tagClick:(UIButton *)btn
+{
+    int i=btn.tag-3210;
+    
+    NSDictionary *dic=[self.shareContent.tagArr objectAtIndex:i];
+    
+    NSString *tagdesc=[dic objectForKey:@"tagnamedesc"];
+    
+    
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:tagdesc delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+    [alert release];
+}
 - (void)endEdit:(id)sender
 {
     UITextView *t = (UITextView *)[commentTF.inputAccessoryView viewWithTag:457];

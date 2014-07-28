@@ -97,6 +97,11 @@
 @property (nonatomic,copy)NSNumber *parentid;
 @property (nonatomic,copy)NSString *username;
 
+/**
+ *	学生健康状态
+ */
+@property (nonatomic,copy) NSString *healthstate;
+
 //
 //isinstalled = 1;
 //islock = 0;

@@ -13,6 +13,7 @@
 @synthesize isMore;
 @synthesize audio;
 @synthesize sharePicArr;
+@synthesize tagArr;
 @synthesize upnum,havezan,commentnum,publishtime,shareKey;
 -(void)dealloc
 {
@@ -29,7 +30,7 @@
     self.commentnum=nil;
     self.publishtime = nil;
     self.shareKey = nil;
-    
+    self.tagArr=nil;
     [super dealloc];
 }
 @end

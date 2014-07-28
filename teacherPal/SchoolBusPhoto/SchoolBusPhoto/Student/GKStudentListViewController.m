@@ -143,14 +143,14 @@
         [cell.contentView addSubview:imageView];
         [imageView release];
     
-        UILabel *nameLabel=[[UILabel alloc]initWithFrame:CGRectMake(75, 15, 90, 20)];
+        UILabel *nameLabel=[[UILabel alloc]initWithFrame:CGRectMake(75, 5, 90, 20)];
         nameLabel.backgroundColor=[UIColor clearColor];
         nameLabel.tag=CELLTAG+1;
         nameLabel.font=[UIFont systemFontOfSize:15];
         [cell.contentView addSubview:nameLabel];
         [nameLabel release];
         
-        UILabel *ageLabel=[[UILabel alloc]initWithFrame:CGRectMake(150 , 15, 60, 20)];
+        UILabel *ageLabel=[[UILabel alloc]initWithFrame:CGRectMake(150 , 5, 60, 20)];
         ageLabel.backgroundColor=[UIColor clearColor];
         ageLabel.font=[UIFont systemFontOfSize:14];
         if(IOSVERSION>=6.0)
@@ -161,12 +161,21 @@
         [cell.contentView addSubview:ageLabel];
         [ageLabel release];
         
-        UILabel *priceLabel=[[UILabel alloc]initWithFrame:CGRectMake(220, 15, 70, 20)];
+        UILabel *priceLabel=[[UILabel alloc]initWithFrame:CGRectMake(220, 5, 70, 20)];
         priceLabel.backgroundColor=[UIColor clearColor];
         priceLabel.tag=CELLTAG+3;
         priceLabel.font=[UIFont systemFontOfSize:14];
         [cell.contentView addSubview:priceLabel];
         [priceLabel release];
+        
+        
+        UILabel *healthLabel=[[UILabel alloc]initWithFrame:CGRectMake(75, 25, 220, 20)];
+        healthLabel.backgroundColor=[UIColor clearColor];
+        healthLabel.tag=CELLTAG+4;
+        healthLabel.textColor=[UIColor grayColor];
+        healthLabel.font=[UIFont systemFontOfSize:14];
+        [cell.contentView addSubview:healthLabel];
+        [healthLabel release];
         
         UIImageView *LineimageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 49, 320, 1)];
         
@@ -180,22 +189,33 @@
     }
      Student *st=[studentArr objectAtIndex:indexPath.row];
     UIImageView *imageView=(UIImageView *)[cell.contentView viewWithTag:CELLTAG];
+    UILabel *nameLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+1];
+    UILabel *ageLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+2];
+    UILabel *priceLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+3];
+    UILabel *healthLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+4];
+    if([st.healthstate isEqualToString:@""])
+    {
+        nameLabel.frame=CGRectMake(75, 15, 90, 20);
+        ageLabel.frame=CGRectMake(150 , 15, 60, 20);
+        priceLabel.frame=CGRectMake(220, 15, 70, 20);
+        healthLabel.frame=CGRectZero;
+    }
+    else
+    {
+        nameLabel.frame=CGRectMake(75, 5, 90, 20);
+        ageLabel.frame=CGRectMake(150 , 5, 60, 20);
+        priceLabel.frame=CGRectMake(220, 5, 70, 20);
+        healthLabel.frame=CGRectMake(75, 25, 220, 20);
+    }
+   
     
     [imageView setImageWithURL:[NSURL URLWithString:st.avatar] placeholderImage:nil options:SDWebImageRefreshCached];
-    UILabel *nameLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+1];
+    
     nameLabel.text=st.enname;;
-   
-    UILabel *ageLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+2];
-
     if([st.age intValue]<=0)
      ageLabel.text=[NSString stringWithFormat:@"%d %@",0,NSLocalizedString(@"oldyear", @"")];
     else
     ageLabel.text=[NSString stringWithFormat:@"%@ %@",st.age,NSLocalizedString(@"oldyear", @"")];
-
-    
-    
-    UILabel *priceLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+3];
-    
     if(st.orderendtime==nil  || [st.orderendtime isKindOfClass:[NSNull class]]  || [st.orderendtime isEqualToString:@""])
     {
         priceLabel.text=NSLocalizedString(@"Notservice", @"");
@@ -218,7 +238,7 @@
         
     }
     
-  
+    healthLabel.text=st.healthstate;
     return cell;
     
 }

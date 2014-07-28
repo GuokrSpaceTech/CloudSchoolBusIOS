@@ -65,7 +65,8 @@
 @property (nonatomic, retain)NSMutableArray *picTextArr;
 @property (nonatomic,retain)NSString *preStr;
 @property (nonatomic,retain)Student * tempStu; // 修改头像时 的 临时变量
-@property (nonatomic,retain)NSString *tag;
+@property (nonatomic,retain)NSMutableArray *tag;
+@property (nonatomic,retain)NSMutableArray *tagid;
 @end
 
 @protocol showViewController <NSObject>

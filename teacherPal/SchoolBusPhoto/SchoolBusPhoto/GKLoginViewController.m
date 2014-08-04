@@ -411,6 +411,7 @@
             student.stunumber=[studentInfo objectForKey:@"studentno"];
             student.orderendtime=[studentInfo objectForKey:@"orderendtime"];
             student.healthstate=[studentInfo objectForKey:@"healthstate"];
+            student.xuefeuTime=[studentInfo objectForKey:@"tuition_time"];
             student.username=[NSString stringWithFormat:@"%@",[studentInfo objectForKey:@"username"]];
             student.parentid=[NSNumber numberWithInt:[[studentInfo objectForKey:@"parentid"] integerValue]];
             [studentArr addObject:student];
@@ -467,6 +468,70 @@
     {
           _loginBtn.enabled=YES;
     }
+    
+}
+// 设置本地推送
+-(void)LocalPush
+{
+
+    GKUserLogin *user=[GKUserLogin currentLogin];
+    NSArray *arr=user.studentArr;
+    
+    
+    for (int i=0; i<[arr count]; i++) {
+        
+        Student *st=[arr objectAtIndex:i];
+        NSString *xuefistr=st.xuefeuTime;
+        
+        NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSDate *date=[dateFormatter dateFromString:xuefistr];
+        [dateFormatter release];
+        
+        NSTimeInterval time=[date timeIntervalSince1970];
+        
+        // 七天前
+        
+        
+        //NSMutableArray *sameStArr=[[NSMutableArray alloc]init];
+        
+  
+        
+        
+     //   NSDate *todayDate=[NSDate date];
+        
+        
+        NSTimeInterval time7ago=time-7*86400;
+        
+
+        
+        NSDate *date7ago=[NSDate dateWithTimeIntervalSince1970:time7ago];
+        UILocalNotification *notification=[[UILocalNotification alloc]init];
+        
+        if(notification!=nil)
+        {
+            // 设置推送时间
+            notification.fireDate = date7ago;
+            // 设置时区
+            notification.timeZone = [NSTimeZone defaultTimeZone];
+            // 设置重复间隔
+            notification.repeatInterval = kCFCalendarUnitDay;
+            // 推送声音
+            notification.soundName = UILocalNotificationDefaultSoundName;
+            // 推送内容
+            notification.alertBody = [NSString stringWithFormat:@"%@ 学费将要到期",st.cnname];
+            //显示在icon上的红色圈中的数子
+            notification.applicationIconBadgeNumber = 1;
+            //设置userinfo 方便在之后需要撤销的时候使用
+            NSDictionary *info = [NSDictionary dictionaryWithObject:st.cnname forKey:@"key"];
+            notification.userInfo = info;
+            //添加推送到UIApplication
+            UIApplication *app = [UIApplication sharedApplication];
+            [app scheduleLocalNotification:notification];
+        }
+        
+    }
+    
     
 }
 -(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method

@@ -55,6 +55,7 @@ enum RequestFunction
     attendancemanager,
     schoolstudent,
     schoolcheck,
+    report,
     schoolad,
 };
 typedef NSUInteger RequestFunction;

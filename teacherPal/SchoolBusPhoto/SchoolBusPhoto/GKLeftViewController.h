@@ -19,7 +19,7 @@
     NSArray *arr;
     int _selectIdnex;
     GKUserLogin * usr;
-    
+    UIScrollView *scroller;
     int totle;
     
 }

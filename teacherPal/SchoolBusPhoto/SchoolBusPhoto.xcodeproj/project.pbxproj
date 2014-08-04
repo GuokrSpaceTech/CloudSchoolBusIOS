@@ -21,6 +21,9 @@
 		1102A7FE181A715D00E6295C /* guanlian-B-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1102A7FC181A715D00E6295C /* guanlian-B-1.png */; };
 		1102A7FF181A715D00E6295C /* guanlian-B-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1102A7FD181A715D00E6295C /* guanlian-B-2.png */; };
 		110AFD5B192DCD1D00CEFECE /* inclass.png in Resources */ = {isa = PBXBuildFile; fileRef = 110AFD59192DCD1D00CEFECE /* inclass.png */; };
+		111E511D1988E0A0007D9C6E /* GKReportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E511C1988E0A0007D9C6E /* GKReportModel.m */; };
+		111E51201988E616007D9C6E /* GKReportQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E511F1988E616007D9C6E /* GKReportQuestion.m */; };
+		111E51231988EC98007D9C6E /* GKWriteReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E51221988EC98007D9C6E /* GKWriteReportViewController.m */; };
 		111E8CDE181E532400234014 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E8CC2181E532400234014 /* MKAnnotationView+WebCache.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		111E8CDF181E532400234014 /* NSData+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E8CC4181E532400234014 /* NSData+GIF.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		111E8CE0181E532400234014 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E8CC6181E532400234014 /* SDImageCache.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -37,6 +40,7 @@
 		111E8CEB181E532400234014 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E8CDD181E532400234014 /* UIImageView+WebCache.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		111E8CF1181E540900234014 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 111E8CF0181E540900234014 /* MapKit.framework */; };
 		111E8CF3181E6E9F00234014 /* input.png in Resources */ = {isa = PBXBuildFile; fileRef = 111E8CF2181E6E9F00234014 /* input.png */; };
+		1138D427198B5D9A008760E1 /* GKReportStudentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1138D426198B5D9A008760E1 /* GKReportStudentView.m */; };
 		113BCABE182B41280079E9AD /* topImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 113BCABD182B41280079E9AD /* topImage.png */; };
 		113BCAC0182B46450079E9AD /* select.png in Resources */ = {isa = PBXBuildFile; fileRef = 113BCABF182B46450079E9AD /* select.png */; };
 		113BCAC2182B5BDF0079E9AD /* goodsImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 113BCAC1182B5BDF0079E9AD /* goodsImage.png */; };
@@ -234,6 +238,8 @@
 		11B852BF18334D52005FA5B9 /* upbuttonH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B852BB18334D52005FA5B9 /* upbuttonH.png */; };
 		11B852CA18335275005FA5B9 /* GKShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B852C618335275005FA5B9 /* GKShowViewController.m */; };
 		11B852D4183368A0005FA5B9 /* mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B852D3183368A0005FA5B9 /* mail.png */; };
+		11B9A2C2198A1EC20083E91E /* GKQuestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B9A2C1198A1EC20083E91E /* GKQuestionView.m */; };
+		11B9A2C4198A36680083E91E /* report_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B9A2C3198A36680083E91E /* report_line.png */; };
 		11BA02B5192B05DF00124DC1 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BA02B2192B05DF00124DC1 /* libMobClickLibrary.a */; };
 		11BA02B6192B05DF00124DC1 /* libMobClickLibrary_armv6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BA02B3192B05DF00124DC1 /* libMobClickLibrary_armv6.a */; };
 		11BA02B8192B060C00124DC1 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BA02B7192B060C00124DC1 /* libz.dylib */; };
@@ -244,6 +250,8 @@
 		11BB579F192353A900DE826A /* GKRelationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BB579E192353A900DE826A /* GKRelationViewController.m */; };
 		11BB992118AB15B9006273A7 /* qipao22@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BB992018AB15B9006273A7 /* qipao22@2x.png */; };
 		11BBA70B19249E3700637BED /* inclass.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BBA70919249E3700637BED /* inclass.png */; };
+		11BBE88E198F38ED0004D8D0 /* GKReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BBE88D198F38ED0004D8D0 /* GKReport.m */; };
+		11BBE894198F6A1D0004D8D0 /* GKReportContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BBE893198F6A1D0004D8D0 /* GKReportContentViewController.m */; };
 		11BF896B18363221008E72F0 /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF896818363221008E72F0 /* 114.png */; };
 		11BF896D18363221008E72F0 /* ICON.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF896A18363221008E72F0 /* ICON.png */; };
 		11BF896F1836325F008E72F0 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF896E1836325F008E72F0 /* 120.png */; };
@@ -282,6 +290,8 @@
 		11C75DBA181273E600A3AA89 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DB6181273E600A3AA89 /* NSDataAdditions.m */; };
 		11C75DBB181273E600A3AA89 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DB8181273E600A3AA89 /* NSStringAdditions.m */; };
 		11C75DBD181276BA00A3AA89 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C75DBC181276BA00A3AA89 /* SystemConfiguration.framework */; };
+		11CB883819877BF400A2A080 /* GKReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CB883719877BF400A2A080 /* GKReportViewController.m */; };
+		11CB883B19878CA400A2A080 /* GKReportHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CB883A19878CA400A2A080 /* GKReportHistoryViewController.m */; };
 		11CBB31718B1BBA100614FF0 /* delphoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CBB31518B1BBA100614FF0 /* delphoto.png */; };
 		11CBB31818B1BBA100614FF0 /* delphotoH.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CBB31618B1BBA100614FF0 /* delphotoH.png */; };
 		11CE2A85187FA18400742001 /* NSDate+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CE2A84187FA18400742001 /* NSDate+convenience.m */; };
@@ -460,6 +470,12 @@
 		1102A7FC181A715D00E6295C /* guanlian-B-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanlian-B-1.png"; sourceTree = "<group>"; };
 		1102A7FD181A715D00E6295C /* guanlian-B-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanlian-B-2.png"; sourceTree = "<group>"; };
 		110AFD59192DCD1D00CEFECE /* inclass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inclass.png; sourceTree = "<group>"; };
+		111E511B1988E0A0007D9C6E /* GKReportModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReportModel.h; sourceTree = "<group>"; };
+		111E511C1988E0A0007D9C6E /* GKReportModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReportModel.m; sourceTree = "<group>"; };
+		111E511E1988E616007D9C6E /* GKReportQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReportQuestion.h; sourceTree = "<group>"; };
+		111E511F1988E616007D9C6E /* GKReportQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReportQuestion.m; sourceTree = "<group>"; };
+		111E51211988EC98007D9C6E /* GKWriteReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKWriteReportViewController.h; sourceTree = "<group>"; };
+		111E51221988EC98007D9C6E /* GKWriteReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKWriteReportViewController.m; sourceTree = "<group>"; };
 		111E8CC1181E532400234014 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		111E8CC2181E532400234014 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		111E8CC3181E532400234014 /* NSData+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+GIF.h"; sourceTree = "<group>"; };
@@ -492,6 +508,8 @@
 		111E8CEC181E53CC00234014 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		111E8CF0181E540900234014 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		111E8CF2181E6E9F00234014 /* input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = input.png; sourceTree = "<group>"; };
+		1138D425198B5D9A008760E1 /* GKReportStudentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReportStudentView.h; sourceTree = "<group>"; };
+		1138D426198B5D9A008760E1 /* GKReportStudentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReportStudentView.m; sourceTree = "<group>"; };
 		113BCABD182B41280079E9AD /* topImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topImage.png; sourceTree = "<group>"; };
 		113BCABF182B46450079E9AD /* select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select.png; sourceTree = "<group>"; };
 		113BCAC1182B5BDF0079E9AD /* goodsImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goodsImage.png; sourceTree = "<group>"; };
@@ -787,6 +805,9 @@
 		11B852C618335275005FA5B9 /* GKShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKShowViewController.m; sourceTree = "<group>"; };
 		11B852CB183352AE005FA5B9 /* GKShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKShowViewController.h; sourceTree = "<group>"; };
 		11B852D3183368A0005FA5B9 /* mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail.png; sourceTree = "<group>"; };
+		11B9A2C0198A1EC20083E91E /* GKQuestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKQuestionView.h; sourceTree = "<group>"; };
+		11B9A2C1198A1EC20083E91E /* GKQuestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKQuestionView.m; sourceTree = "<group>"; };
+		11B9A2C3198A36680083E91E /* report_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = report_line.png; sourceTree = "<group>"; };
 		11BA02B2192B05DF00124DC1 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		11BA02B3192B05DF00124DC1 /* libMobClickLibrary_armv6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary_armv6.a; sourceTree = "<group>"; };
 		11BA02B4192B05DF00124DC1 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
@@ -799,6 +820,10 @@
 		11BB579E192353A900DE826A /* GKRelationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKRelationViewController.m; sourceTree = "<group>"; };
 		11BB992018AB15B9006273A7 /* qipao22@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qipao22@2x.png"; sourceTree = "<group>"; };
 		11BBA70919249E3700637BED /* inclass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inclass.png; sourceTree = "<group>"; };
+		11BBE88C198F38ED0004D8D0 /* GKReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReport.h; sourceTree = "<group>"; };
+		11BBE88D198F38ED0004D8D0 /* GKReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReport.m; sourceTree = "<group>"; };
+		11BBE892198F6A1D0004D8D0 /* GKReportContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReportContentViewController.h; sourceTree = "<group>"; };
+		11BBE893198F6A1D0004D8D0 /* GKReportContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReportContentViewController.m; sourceTree = "<group>"; };
 		11BF896818363221008E72F0 /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
 		11BF896A18363221008E72F0 /* ICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ICON.png; sourceTree = "<group>"; };
 		11BF896E1836325F008E72F0 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
@@ -848,6 +873,10 @@
 		11C75DB7181273E600A3AA89 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		11C75DB8181273E600A3AA89 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
 		11C75DBC181276BA00A3AA89 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		11CB883619877BF400A2A080 /* GKReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReportViewController.h; sourceTree = "<group>"; };
+		11CB883719877BF400A2A080 /* GKReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReportViewController.m; sourceTree = "<group>"; };
+		11CB883919878CA400A2A080 /* GKReportHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReportHistoryViewController.h; sourceTree = "<group>"; };
+		11CB883A19878CA400A2A080 /* GKReportHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReportHistoryViewController.m; sourceTree = "<group>"; };
 		11CBB31518B1BBA100614FF0 /* delphoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delphoto.png; sourceTree = "<group>"; };
 		11CBB31618B1BBA100614FF0 /* delphotoH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delphotoH.png; sourceTree = "<group>"; };
 		11CE2A83187FA18400742001 /* NSDate+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+convenience.h"; sourceTree = "<group>"; };
@@ -1432,6 +1461,7 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				11B9A2C3198A36680083E91E /* report_line.png */,
 				11B50757195D5DAF00FE1D04 /* arrowdown.png */,
 				11497AE51952BC43003F169A /* home1.png */,
 				11497AE61952BC43003F169A /* home2.png */,
@@ -1795,6 +1825,31 @@
 			path = AuthCode;
 			sourceTree = "<group>";
 		};
+		11CB883519877BA100A2A080 /* ClassReport */ = {
+			isa = PBXGroup;
+			children = (
+				11CB883619877BF400A2A080 /* GKReportViewController.h */,
+				11CB883719877BF400A2A080 /* GKReportViewController.m */,
+				11CB883919878CA400A2A080 /* GKReportHistoryViewController.h */,
+				11CB883A19878CA400A2A080 /* GKReportHistoryViewController.m */,
+				111E511B1988E0A0007D9C6E /* GKReportModel.h */,
+				111E511C1988E0A0007D9C6E /* GKReportModel.m */,
+				111E511E1988E616007D9C6E /* GKReportQuestion.h */,
+				111E511F1988E616007D9C6E /* GKReportQuestion.m */,
+				111E51211988EC98007D9C6E /* GKWriteReportViewController.h */,
+				111E51221988EC98007D9C6E /* GKWriteReportViewController.m */,
+				11B9A2C0198A1EC20083E91E /* GKQuestionView.h */,
+				11B9A2C1198A1EC20083E91E /* GKQuestionView.m */,
+				1138D425198B5D9A008760E1 /* GKReportStudentView.h */,
+				1138D426198B5D9A008760E1 /* GKReportStudentView.m */,
+				11BBE88C198F38ED0004D8D0 /* GKReport.h */,
+				11BBE88D198F38ED0004D8D0 /* GKReport.m */,
+				11BBE892198F6A1D0004D8D0 /* GKReportContentViewController.h */,
+				11BBE893198F6A1D0004D8D0 /* GKReportContentViewController.m */,
+			);
+			name = ClassReport;
+			sourceTree = "<group>";
+		};
 		11CE2A981880091E00742001 /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -1867,6 +1922,7 @@
 		2A32A56418122C01007CAA8E /* SchoolBusPhoto */ = {
 			isa = PBXGroup;
 			children = (
+				11CB883519877BA100A2A080 /* ClassReport */,
 				11B269BC193DB5FE00E5369E /* Attentance */,
 				11B269B8193DB3F100E5369E /* healthy */,
 				78709BD1187D1715009250FB /* tempResource */,
@@ -2201,6 +2257,7 @@
 				110AFD5B192DCD1D00CEFECE /* inclass.png in Resources */,
 				78A0FF7018AB267C00E6A3D5 /* 云中校车视频相册封面.png in Resources */,
 				1165E27E182CFCE000B60A81 /* pic-1.png in Resources */,
+				11B9A2C4198A36680083E91E /* report_line.png in Resources */,
 				11AF3B1918168FC400B36176 /* loginBtn@2x.png in Resources */,
 				11BF898018363E58008E72F0 /* addPicH.png in Resources */,
 				11B852BD18334D52005FA5B9 /* inputBG.png in Resources */,
@@ -2317,14 +2374,17 @@
 				1193A6A3182B68B3004011BC /* GKBuyCountView.m in Sources */,
 				11A2BF521876B5AD00E321F3 /* GKSettingViewController.m in Sources */,
 				11B852B318332A33005FA5B9 /* myProgressView.m in Sources */,
+				111E511D1988E0A0007D9C6E /* GKReportModel.m in Sources */,
 				11DA38AF181F55DB00B6A6AC /* UIScrollView+UITouchEvent.m in Sources */,
 				11C75DBA181273E600A3AA89 /* NSDataAdditions.m in Sources */,
 				119AC2771839C63500ED19D3 /* GKUploaderCell.m in Sources */,
 				111E8CE7181E532400234014 /* UIButton+WebCache.m in Sources */,
 				11B4051A1918CC4400E56A59 /* GKSearchCell.m in Sources */,
 				119AC2731839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodeld in Sources */,
+				1138D427198B5D9A008760E1 /* GKReportStudentView.m in Sources */,
 				11C75DA71812725600A3AA89 /* SVHTTPClient.m in Sources */,
 				119E962B1814C5A300866DE8 /* ASIS3BucketObject.m in Sources */,
+				11B9A2C2198A1EC20083E91E /* GKQuestionView.m in Sources */,
 				11C232921980FF220079F282 /* GKButtonTag.m in Sources */,
 				2AFFF376181233580045BFD0 /* GKUpLoaderViewController.m in Sources */,
 				11DB43ED18AB41F600F77C1A /* GKCustomButton.m in Sources */,
@@ -2349,6 +2409,7 @@
 				119E962D1814C5A300866DE8 /* ASIS3ObjectRequest.m in Sources */,
 				11EFE1F11817EEF7009CE69F /* SRRefreshView.m in Sources */,
 				11CE2A88187FAF8E00742001 /* GKNoticeInfoViewController.m in Sources */,
+				111E51231988EC98007D9C6E /* GKWriteReportViewController.m in Sources */,
 				119E96251814C5A300866DE8 /* ASICloudFilesObject.m in Sources */,
 				111E8CE2181E532400234014 /* SDWebImageDecoder.m in Sources */,
 				11B852CA18335275005FA5B9 /* GKShowViewController.m in Sources */,
@@ -2370,10 +2431,12 @@
 				114DEFA7190A73B3008413DE /* GKAddStudentSearchViewController.m in Sources */,
 				119E96191814C5A300866DE8 /* ASIDataCompressor.m in Sources */,
 				11EFE1F21817EEF7009CE69F /* SRSlimeView.m in Sources */,
+				11CB883B19878CA400A2A080 /* GKReportHistoryViewController.m in Sources */,
 				119E962E1814C5A300866DE8 /* ASIS3Request.m in Sources */,
 				119E961A1814C5A300866DE8 /* ASIDataDecompressor.m in Sources */,
 				78881916187F9E0B00D0A851 /* MovieDraft.m in Sources */,
 				119E962C1814C5A300866DE8 /* ASIS3BucketRequest.m in Sources */,
+				11CB883819877BF400A2A080 /* GKReportViewController.m in Sources */,
 				119566B0181E038600366B13 /* GKLetterViewController.m in Sources */,
 				119AC2991839FB3B00ED19D3 /* DACircularProgressView.m in Sources */,
 				11AA338B187CFE9A002FE2D4 /* GKNoticeCell.m in Sources */,
@@ -2394,6 +2457,7 @@
 				111E8CE1181E532400234014 /* SDWebImageCompat.m in Sources */,
 				11AA3388187CEDC6002FE2D4 /* GKNotice.m in Sources */,
 				11B405141918C82400E56A59 /* GKAddStudentViewController.m in Sources */,
+				111E51201988E616007D9C6E /* GKReportQuestion.m in Sources */,
 				2A32A58118122C25007CAA8E /* GKLoginViewController.m in Sources */,
 				78709C32187D2F4A009250FB /* GKPhotoTagScrollView.m in Sources */,
 				11B364BE191CBF1F003E087E /* UpLoader.m in Sources */,
@@ -2416,12 +2480,14 @@
 				111E8CE9181E532400234014 /* UIImage+MultiFormat.m in Sources */,
 				1192B7771829EB8D0082D37B /* JSONKit.m in Sources */,
 				11B852A1183221CF005FA5B9 /* ETNicknameViewController.m in Sources */,
+				11BBE88E198F38ED0004D8D0 /* GKReport.m in Sources */,
 				11B269C2193DC94600E5369E /* GKAttentance.m in Sources */,
 				11A5A89B187BF2FE00EA22CD /* GKNoticeListViewController.m in Sources */,
 				119E5FD21818EE8D00726761 /* GKBaseViewController.m in Sources */,
 				119E5FF21819470400726761 /* Student.m in Sources */,
 				119E5FD91818FD5300726761 /* GKFindWraper.m in Sources */,
 				111E8CE8181E532400234014 /* UIImage+GIF.m in Sources */,
+				11BBE894198F6A1D0004D8D0 /* GKReportContentViewController.m in Sources */,
 				78709BCA187D16CA009250FB /* GKSendMediaViewController.m in Sources */,
 				1193A6D0182C78E9004011BC /* kLineView.m in Sources */,
 				11C75DAF1812729500A3AA89 /* SFHFKeychainUtils.m in Sources */,
@@ -2521,6 +2587,7 @@
 		2A32A57C18122C02007CAA8E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2549,6 +2616,7 @@
 		2A32A57D18122C02007CAA8E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

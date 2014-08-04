@@ -30,7 +30,8 @@ online,
 uid,
 orderendtime,
 healthstate,
-stunumber;
+stunumber,
+xuefeuTime;
 
 -(void)dealloc
 {
@@ -56,6 +57,7 @@ stunumber;
     self.orderendtime=nil;
     self.username=nil;
     self.parentid=nil;
+    self.xuefeuTime=nil;
     [super dealloc];
 }
 @end

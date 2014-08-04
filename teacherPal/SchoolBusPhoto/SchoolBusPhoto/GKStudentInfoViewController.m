@@ -104,7 +104,7 @@
     if(section==0)
         return 3;
     else if(section==1)
-        return 5;
+        return 6;
     return 1;
     
 }
@@ -252,6 +252,12 @@
                     
                     nameLabel.text=NSLocalizedString(@"birthday", @"");
                     realLabel.text=st.birthday;
+                    break;
+                    
+                case 5:
+                    cell.accessoryType=UITableViewCellAccessoryNone;
+                    nameLabel.text=@"学费到期日";
+                    realLabel.text=st.xuefeuTime;
                     break;
                 default:
                     break;

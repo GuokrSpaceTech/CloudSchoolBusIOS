@@ -102,6 +102,12 @@
  */
 @property (nonatomic,copy) NSString *healthstate;
 
+
+/**
+ *	学费到期日
+ */
+@property (nonatomic,copy) NSString *xuefeuTime;
+
 //
 //isinstalled = 1;
 //islock = 0;

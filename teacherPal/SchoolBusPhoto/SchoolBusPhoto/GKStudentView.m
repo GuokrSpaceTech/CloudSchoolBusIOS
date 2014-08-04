@@ -164,7 +164,7 @@
     
 }
 
--(void)setAlreadyStudent:(NSMutableArray *)arr
+-(void)setAlreadyStudent:(NSArray *)arr
 {
     for (int i=0; i<[arr count]; i++) {
         NSString *uid=[arr objectAtIndex:i];

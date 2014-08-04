@@ -60,14 +60,14 @@
     [iamgeBG release];
   
     
-//    UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(0, navigationView.frame.size.height+navigationView.frame.origin.y, 320, self.view.frame.size.height-(navigationView.frame.size.height+navigationView.frame.origin.y))];
+//    UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(0, navigationView.frame.size.height+navigationView.frame.origin.y, 320,  -(navigationView.frame.size.height+navigationView.frame.origin.y))];
 //    bgView.backgroundColor=[UIColor colorWithRed:232/255.0 green:229/255.0 blue:220/255.0 alpha:1];
 //    [self.view addSubview:bgView];
 //    [bgView release];
     
     
     
-    titlelabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 46)];
+    titlelabel=[[UILabel alloc]initWithFrame:CGRectMake(30, 0, 260, 46)];
     titlelabel.backgroundColor=[UIColor clearColor];
     titlelabel.text=@"";
     titlelabel.userInteractionEnabled=NO;

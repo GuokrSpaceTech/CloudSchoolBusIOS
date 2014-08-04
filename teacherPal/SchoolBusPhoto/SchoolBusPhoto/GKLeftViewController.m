@@ -18,6 +18,8 @@
 #import "GKNoticeListViewController.h"
 #import "GKHealthViewController.h"
 #import "GKAttentanceViewController.h"
+
+#import "GKReportViewController.h"
 @interface GKLeftViewController ()
 
 @end
@@ -102,25 +104,38 @@
     self.navigationController.navigationBarHidden=YES;
 
     
-    NSArray *defArr = [NSArray arrayWithObjects:NSLocalizedString(@"morningleftN", @""),NSLocalizedString(@"attendanceleftN", @""),NSLocalizedString(@"notice", @""),NSLocalizedString(@"grade", @""), NSLocalizedString(@"home", @""),NSLocalizedString(@"leftUpN", @""),NSLocalizedString(@"setting", @""),nil];
-    NSArray *selArr = [NSArray arrayWithObjects:NSLocalizedString(@"morningleftH", @""),NSLocalizedString(@"attendanceleftH", @""),NSLocalizedString(@"noticeH", @""),NSLocalizedString(@"gradeH", @""),NSLocalizedString(@"homeH", @""), NSLocalizedString(@"leftUpH", @""),NSLocalizedString(@"settingH", @""),  nil];
+    NSArray *defArr = [NSArray arrayWithObjects:NSLocalizedString(@"morningleftN", @""),NSLocalizedString(@"attendanceleftN", @""),NSLocalizedString(@"notice", @""),NSLocalizedString(@"grade", @""), NSLocalizedString(@"home", @""), NSLocalizedString(@"home", @""),NSLocalizedString(@"leftUpN", @""),NSLocalizedString(@"setting", @""),nil];
+    NSArray *selArr = [NSArray arrayWithObjects:NSLocalizedString(@"morningleftH", @""),NSLocalizedString(@"attendanceleftH", @""),NSLocalizedString(@"noticeH", @""),NSLocalizedString(@"gradeH", @""),NSLocalizedString(@"homeH", @""),NSLocalizedString(@"homeH", @""), NSLocalizedString(@"leftUpH", @""),NSLocalizedString(@"settingH", @""),  nil];
     totle=[defArr count];
+    
+    
+    scroller=[[UIScrollView alloc]initWithFrame:CGRectMake(0, (iOS7?20:0)+46,self.view.frame.size.width , self.view.frame.size.height-46-(iOS7?20:0)-48)];
+    
+    scroller.backgroundColor=[UIColor clearColor];
+    
+    [self.view addSubview:scroller];
+    
+    [scroller release];
+    
+    
     for (int i=0; i<[defArr count]; i++) {
         UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
         [button setImage:[UIImage imageNamed:[defArr objectAtIndex:i]] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:[selArr objectAtIndex:i]] forState:UIControlStateHighlighted];
         [button setImage:[UIImage imageNamed:[selArr objectAtIndex:i]] forState:UIControlStateSelected];
-        if(ios7)
-            button.frame = CGRectMake(0, IOS7OFFSET + 46 + 52*i, 320, 52);
-        else
-            button.frame=CGRectMake(0, 46 + 52*i, 320, 52);
+//        if(ios7)
+//            //button.frame = CGRectMake(0, IOS7OFFSET + 46 + 52*i, 320, 52);
+//        else
+//            //button.frame=CGRectMake(0, 46 + 52*i, 320, 52);
+        button.frame=CGRectMake(0, 52*i, 320, 52);
         button.tag=i+1;
         button.selected=NO;
         [button addTarget:self action:@selector(doClickBottomBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:button];
+        [scroller addSubview:button];
     }
     
-   
+    
+    scroller.contentSize=CGSizeMake(self.view.frame.size.width, 8*52);
     UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(25, self.view.frame.size.height-40, 26, 26)];
     imageView.image=IMAGENAME(IMAGEWITHPATH(@"loginOUt"));
     [self.view addSubview:imageView];
@@ -169,7 +184,7 @@
 }
 -(void)home:(UITapGestureRecognizer *)tap
 {
-    for (id obj in self.view.subviews) {
+    for (id obj in scroller.subviews) {
         if ([obj isKindOfClass:[UIButton class]]) {
             UIButton *btn = (UIButton *)obj;
             if (btn.tag >= 1 && btn.tag <= totle) {
@@ -199,7 +214,7 @@
     
     NSLog(@"click bottom button");
     
-    for (id obj in self.view.subviews) {
+    for (id obj in scroller.subviews) {
         if ([obj isKindOfClass:[UIButton class]]) {
             UIButton *btn = (UIButton *)obj;
             NSLog(@"%d",btn.tag);
@@ -335,6 +350,26 @@
     }
     if(index==6)
     {
+        //报告
+        
+//        GKNoticeListViewController *noticeVC=[[GKNoticeListViewController alloc]init];
+//        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:noticeVC];
+//        [noticeVC release];
+//        
+//        return [nav autorelease];
+        
+        GKReportViewController *noticeVC=[[GKReportViewController alloc]init];
+        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:noticeVC];
+        [noticeVC release];
+        
+        return [nav autorelease];
+//
+        
+        
+        
+    }
+    if(index==7)
+    {
         // 上传列表
 //        GKAboutViewController *aboutVC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];
 //        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:aboutVC];
@@ -349,7 +384,7 @@
         return [nav autorelease];
 //
     }
-    if(index==7)
+    if(index==8)
     {
         //设置
         

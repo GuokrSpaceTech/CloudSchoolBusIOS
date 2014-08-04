@@ -20,7 +20,7 @@
 @property (nonatomic,retain)NSMutableArray *studentArr;
 
 -(void)setAllButtonSelect:(BOOL)isselect;
--(void)setAlreadyStudent:(NSMutableArray *)arr;
+-(void)setAlreadyStudent:(NSArray *)arr;
 @end
 
 @protocol studentViewDelegate <NSObject>

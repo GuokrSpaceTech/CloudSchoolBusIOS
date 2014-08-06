@@ -36,7 +36,7 @@
     [buttonBack addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
     
     
-    titlelabel.text=@"已发布班级报告";
+    titlelabel.text=@"报告详情";
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
@@ -45,9 +45,53 @@
     [self.view addSubview:_tableView];
     
     
+    
+    UIView *headerView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
+    headerView.backgroundColor=[UIColor clearColor];
+    
+    
+    UILabel *timeLabel=[[UILabel alloc]initWithFrame:CGRectMake(30, 0, 100, 40)];
+    
+    NSDateFormatter *dateFormat=[[NSDateFormatter alloc]init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    timeLabel.text=[dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:[self.report.reporttime intValue]]];;
+    [headerView addSubview:timeLabel];
+    [timeLabel release];
+    
+    
+    
+    UILabel *name=[[UILabel alloc]initWithFrame:CGRectMake(190, 0, 100, 40)];
+    name.text=self.report.title;
+    name.userInteractionEnabled=YES;
+    [headerView addSubview:name];
+    [name release];
+    
+    
+    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(TapClick:)];
+    tap.numberOfTapsRequired=1;
+    [name addGestureRecognizer:tap];
+    [tap release];
+    
+    _tableView.tableHeaderView=[headerView autorelease];
+    
 
     
    // list=[[NSMutableArray alloc]init];
+}
+-(void)TapClick:(UITapGestureRecognizer *)tap
+{
+    
+    NSMutableString *str=[[NSMutableString alloc]initWithString:@""];
+    
+    
+    for (int i=0; i<self.report.studentArr.count; i++) {
+        NSString *str1=[self.report.studentArr objectAtIndex:i];
+        [str appendString:[NSString stringWithFormat:@"%@ ",str1]];
+    }
+    
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:str delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alert show];
+    [alert release];
 }
 -(void)leftClick:(id)sender
 {
@@ -64,7 +108,7 @@
     if(cell==nil)
     {
         cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier] autorelease];
-        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+        //cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         cell.backgroundColor=[UIColor clearColor];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
         
@@ -75,12 +119,14 @@
         [cell.contentView addSubview:label];
         [label release];
         
-        UILabel *timeLabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 35, 280,20)];
-        timeLabel.backgroundColor=[UIColor clearColor];
-        timeLabel.tag=101;
-        timeLabel.font=[UIFont systemFontOfSize:15];
-        [cell.contentView addSubview:timeLabel];
-        [timeLabel release];
+        UILabel *contentlabel=[[UILabel alloc]initWithFrame:CGRectMake(20, 35, 280,20)];
+        contentlabel.backgroundColor=[UIColor clearColor];
+        contentlabel.tag=101;
+        contentlabel.numberOfLines=0;
+        contentlabel.lineBreakMode=NSLineBreakByCharWrapping;
+        contentlabel.font=[UIFont systemFontOfSize:15];
+        [cell.contentView addSubview:contentlabel];
+        [contentlabel release];
         
         
         UIImageView * lineImageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 59, self.view.frame.size.width, 1)];
@@ -94,11 +140,18 @@
     
     NSDictionary *dic=[self.report.contentArr objectAtIndex:indexPath.row];
     UILabel *titleLabel=(UILabel *)[cell.contentView viewWithTag:100];
-    UILabel *timelabel=(UILabel *)[cell.contentView viewWithTag:101];
+    UILabel *contentlabel=(UILabel *)[cell.contentView viewWithTag:101];
     ;
     titleLabel.text=[NSString stringWithFormat:@"%d、%@",(indexPath.row+1),[dic objectForKey:@"title"]];
-    timelabel.text=[dic objectForKey:@"answer"];
     
+    
+    NSString *answer=[dic objectForKey:@"answer"];
+    
+    CGSize size=[answer sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(280, 1000) lineBreakMode:NSLineBreakByCharWrapping];
+    
+    contentlabel.text=[dic objectForKey:@"answer"];
+    
+    contentlabel.frame=CGRectMake(20, 35, 280, size.height);
     
     return cell;
     
@@ -109,6 +162,15 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 60;
+    NSDictionary *dic=[self.report.contentArr objectAtIndex:indexPath.row];
+    NSString *answer=[dic objectForKey:@"answer"];
+    
+    CGSize size=[answer sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(280, 1000) lineBreakMode:NSLineBreakByCharWrapping];
+    
+    return size.height + 40;
+   //    contentlabel.frame=CGRectMake(20, 35, 280, size.height);
+
+    
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

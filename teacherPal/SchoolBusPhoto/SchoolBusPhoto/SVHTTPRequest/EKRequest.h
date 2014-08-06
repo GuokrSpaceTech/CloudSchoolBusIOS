@@ -57,6 +57,7 @@ enum RequestFunction
     schoolcheck,
     report,
     schoolad,
+    search,
 };
 typedef NSUInteger RequestFunction;
 

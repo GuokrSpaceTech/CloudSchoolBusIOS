@@ -152,6 +152,8 @@ static EKRequest * instance = nil;
             return @"schoolad";
         case report:
             return @"report";
+        case search:
+            return @"search";
         default:
             return nil;
     }
@@ -192,6 +194,9 @@ static EKRequest * instance = nil;
              }
              
              NSDictionary * allHeaderInfo = [urlResponse allHeaderFields];
+             
+           //  NSLog(@"%@",allHeaderInfo);
+             
              int code = [[allHeaderInfo objectForKey:@"Code"] intValue];
              if(code==-1113)
              {

@@ -337,7 +337,7 @@
         
         UIImageView * lineImageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 59, self.view.frame.size.width, 1)];
         lineImageView.backgroundColor=[UIColor clearColor];
-        lineImageView.image=[UIImage imageNamed:@"line.png"];
+        lineImageView.image=[UIImage imageNamed:@"cellline.png"];
         [cell.contentView addSubview:lineImageView];
         [lineImageView release];
         

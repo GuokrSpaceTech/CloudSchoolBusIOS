@@ -136,6 +136,7 @@
     
     
 //    NSLog(@"%@",aa);
+  
          [_slimeView endRefresh];
     if(HUD)
     {

@@ -43,7 +43,9 @@ enum RequestFunction
     skinid,
     attendancemanager,
     childreceiver,
-    deletereceiver
+    deletereceiver,
+    report,
+    search
     
 };
 typedef NSUInteger RequestFunction;

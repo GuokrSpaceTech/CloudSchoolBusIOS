@@ -1,28 +1,28 @@
 //
-//  GKReportHistoryViewController.m
+//  GKSearchViewController.m
 //  SchoolBusPhoto
 //
-//  Created by wen peifang on 14-7-29.
+//  Created by wen peifang on 14-8-6.
 //  Copyright (c) 2014年 mactop. All rights reserved.
 //
 
-#import "GKReportHistoryViewController.h"
-#import "KKNavigationController.h"
+#import "GKSearchViewController.h"
+#import "ETKids.h"
 #import "GKReport.h"
 #import "NSDate+convenience.h"
 #import "GKReportContentViewController.h"
-#import "GKSearchViewController.h"
-@interface GKReportHistoryViewController ()
+@interface GKSearchViewController ()
 
 @end
 
-@implementation GKReportHistoryViewController
+@implementation GKSearchViewController
 @synthesize _tableView;
-@synthesize _slimeView;;
+
 @synthesize _refreshFooterView;
 @synthesize isLoading;
 @synthesize isMore;
 @synthesize list;
+@synthesize searchcontent;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -31,78 +31,88 @@
     }
     return self;
 }
-- (void)autoDragScrollLoading
-{
-    [_tableView setContentOffset:CGPointMake(0, -50) animated:NO];
-    _slimeView.loading = YES;
-    _slimeView.alpha = 0.0f;
-    _slimeView.broken = YES;
-    
-    [_slimeView scrollViewDidScrollToPoint:CGPointMake(0, -50)];
-    [_slimeView scrollViewDidEndDraging];
-    [_slimeView pullApart];
-}
 -(void)dealloc
 {
     self._tableView=nil;
-    self._slimeView=nil;
+    self.searchcontent=nil;
+
     self.list=nil;
     self._refreshFooterView=nil;
-
+    
     [super dealloc];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
-  
+   
+    
+}
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeCustom];
-    buttonBack.frame=CGRectMake(10, 5, 34, 35);
-    [buttonBack setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [buttonBack setBackgroundImage:[UIImage imageNamed:@"backH.png"] forState:UIControlStateHighlighted];
-    [navigationView addSubview:buttonBack];
-    [buttonBack addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
+    self.view.backgroundColor=[UIColor blackColor];
+    
+    if (ios7) {
+        [self setNeedsStatusBarAppearanceUpdate];
+        
+        UIView *statusbar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+        statusbar.backgroundColor = [UIColor blackColor];
+        [self.view addSubview:statusbar];
+        [statusbar release];
+        
+    }
+    
+    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, (ios7 ? 20 : 0) + NAVIHEIGHT, 320, self.view.frame.size.height - NAVIHEIGHT - (ios7 ? 20 : 0))];
+    backView.backgroundColor = CELLCOLOR;
+    [self.view insertSubview:backView atIndex:0];
+    [backView release];
+    
+    UIImageView *navigationBackView=[[UIImageView alloc]initWithFrame:CGRectMake(0, (ios7 ? 20 : 0), 320, NAVIHEIGHT)];
+    navigationBackView.image=[UIImage imageNamed:@"navigationNoText.png"];
+    [self.view addSubview:navigationBackView];
+    [navigationBackView release];
     
     
-   
+    UIButton *leftButton =[UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton setFrame:CGRectMake(0, 0, 50, 35)];
+    [leftButton setCenter:CGPointMake(10 + 34/2, navigationBackView.frame.size.height/2+ (ios7 ? 20 : 0))];
+    [leftButton setImage:[UIImage imageNamed:@"backBtnDefault_3.0.png"] forState:UIControlStateNormal];
+    [leftButton setImage:[UIImage imageNamed:@"backBtnSel_3.0.png"] forState:UIControlStateHighlighted];
+    [leftButton addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:leftButton];
+    UISwipeGestureRecognizer *popGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftButtonClick:)];
+    popGes.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:popGes];
+    [popGes release];
     
-      titlelabel.text=@"已发布班级报告";
-    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y) style:UITableViewStylePlain];
-    _tableView.delegate=self;
-    _tableView.dataSource=self;
-     _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
-    _tableView.backgroundColor=[UIColor colorWithRed:232/255.0 green:229/255.0 blue:220/255.0 alpha:1];
+    UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
+    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textColor=[UIColor whiteColor];
+    middleLabel.text =@"报告";//  NSLocalizedString(@"doctor_con", @"医生咨询");
+    middleLabel.backgroundColor=[UIColor clearColor];
+    [self.view addSubview:middleLabel];
+    [middleLabel release];
+    
+    _tableView= [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), 320, (iphone5 ? 548 : 460) - NAVIHEIGHT) style:UITableViewStylePlain];
+    _tableView.backgroundView = nil;
+    _tableView.backgroundColor = CELLCOLOR;
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     
-    _searchBar=[[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
-    _searchBar.placeholder=@"输入关键字";
-    _searchBar.delegate=self;
-    _searchBar.showsCancelButton=YES;
-    
-    _tableView.tableHeaderView=[_searchBar autorelease];
     list=[[NSMutableArray alloc]init];
     
-    _slimeView = [[SRRefreshView alloc] init];
-    _slimeView.delegate = self;
-    _slimeView.upInset = 0;
-    _slimeView.slimeMissWhenGoingBack = YES;
-    _slimeView.slime.bodyColor = [UIColor blackColor];
-    _slimeView.slime.skinColor = [UIColor blackColor];
-    _slimeView.slime.lineWith = 1;
-    _slimeView.slime.shadowBlur = 4;
-    _slimeView.slime.shadowColor = [UIColor blackColor];
+ 
     
-    [_tableView addSubview:self._slimeView];
-
     UIView *noView=[[UIView alloc]initWithFrame:CGRectMake(320/2.0-303/4,self.view.frame.size.height/2.0-262/4-30, 303/2, 262/2+30) ];
     noView.tag=232;
     UIImageView *noImage=[[UIImageView alloc]initWithFrame:CGRectMake(0,0, 303/2, 262/2)];
-    noImage.image=IMAGENAME(IMAGEWITHPATH(@"NOData"));
+    noImage.image=[UIImage imageNamed:@"NOData.png"];
     [noView addSubview:noImage];
     [noImage release];
     
@@ -110,13 +120,21 @@
     [noView release];
     
     [self setNOView:YES];
-    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime", nil];
+   // NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime", nil];
+   
+    NSDictionary *dic =[NSDictionary dictionaryWithObjectsAndKeys:self.searchcontent,@"content",@"0",@"starttime",@"0",@"endtime", nil];
+    [self loaddata:dic];
 
-    [self loadNotice:dic];
     
-//    
-//     [[EKRequest Instance]EKHTTPRequest:search parameters:[NSDictionary dictionaryWithObjectsAndKeys:@"温培方",@"content", nil] requestMethod:GET forDelegate:self];
     // Do any additional setup after loading the view.
+    
+    
+   //
+}
+-(void)loaddata:(NSDictionary *)dic
+{
+    isLoading=YES;
+     [[EKRequest Instance]EKHTTPRequest:search parameters:dic requestMethod:GET forDelegate:self];
 }
 -(void)setNOView:(BOOL)an
 {
@@ -124,108 +142,50 @@
     
     view.hidden=an;
 }
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-    [searchBar resignFirstResponder];
-    
-    GKSearchViewController *searchVC=[[GKSearchViewController alloc]init];
-    searchVC.searchcontent=searchBar.text;
-    [self.navigationController pushViewController:searchVC animated:YES];
-    [searchVC release];
-     searchBar.text=@"";
-}
-- (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar
-{
-    [searchBar resignFirstResponder];
-    searchBar.text=@"";
-    
-}
--(void)loadNotice:(NSDictionary *)pram
-{
-    NSLog(@"%@",pram);
-   // [[EKRequest Instance]EKHTTPRequest:tnotice parameters:pram requestMethod:GET forDelegate:self];
-    [[EKRequest Instance]EKHTTPRequest:report parameters:pram requestMethod:GET forDelegate:self];
-}
 -(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
 {
     // 修改提示错误 网络错误11
-    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"network", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"busy", @"提示") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
     [alert show];
     [alert release];
-    isLoading=NO;
+    
+       isLoading=NO;
 }
--(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
+-(void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
 {
-    NSString *aa=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",aa);
+
     isLoading=NO;
-    if(method==report && code==1)
+    
+    if(method==search && code==1)
     {
         NSArray *arr=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
-        
-        
-        if([[parm objectForKey:@"starttime"] isEqualToString:@"0"] && [[parm objectForKey:@"endtime"] isEqualToString:@"0"])
-        {
             // 下拉刷新
-            [list removeAllObjects];
-            if([arr count]<15)
-            {
-                isMore=NO;
-            }
-            else
-                isMore=YES;
-            for (int i=0; i<[arr count]; i++) {
-                NSDictionary *dic=[arr objectAtIndex:i];
-                GKReport *report=[[GKReport alloc]init];
-                report.reportid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"id"]];
-                report.createtime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"createtime"]];
-                report.title=[dic objectForKey:@"title"];
-                report.contentArr=[dic objectForKey:@"content"];
-                report.studentArr=[dic objectForKey:@"studentname"];
-                report.reporttime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"reporttime"]];
-                report.teachername=[dic objectForKey:@"teachername"];
-                report.reportname=[dic objectForKey:@"reportname"];
-                report.type=[NSString stringWithFormat:@"%@",[dic objectForKey:@"type"]];
-                [list addObject:report];
-                [report release];
-                
-            }
-            
-            
+        if([arr count]<15)
+        {
+            isMore=NO;
         }
         else
-        {
-            // 下拉刷新
-            if([arr count]<15)
-            {
-                isMore=NO;
-            }
-            else
-                isMore=YES;
+            isMore=YES;
             isLoading=NO;
             
-            for (int i=0; i<[arr count]; i++) {
-                NSDictionary *dic=[arr objectAtIndex:i];
-            
-                GKReport *report=[[GKReport alloc]init];
-                report.reportid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"id"]];
-                report.createtime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"createtime"]];
-                report.title=[dic objectForKey:@"title"];
-                report.contentArr=[dic objectForKey:@"content"];
-                report.studentArr=[dic objectForKey:@"studentname"];
-                report.reporttime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"reporttime"]];
-                report.teachername=[dic objectForKey:@"teachername"];
-                report.reportname=[dic objectForKey:@"reportname"];
-                report.type=[NSString stringWithFormat:@"%@",[dic objectForKey:@"type"]];
-                [list addObject:report];
-                [report release];
-                
-            }
-
-
-            
+        for (int i=0; i<[arr count]; i++) {
+            NSDictionary *dic=[arr objectAtIndex:i];
+            GKReport *report=[[GKReport alloc]init];
+            report.reportid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"id"]];
+            report.createtime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"createtime"]];
+            report.title=[dic objectForKey:@"title"];
+            report.contentArr=[dic objectForKey:@"content"];
+            report.studentname=[dic objectForKey:@"studentname"];
+            report.reporttime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"reporttime"]];
+            report.teachername=[dic objectForKey:@"teachername"];
+            report.reportname=[dic objectForKey:@"reportname"];
+            report.type=[NSString stringWithFormat:@"%@",[dic objectForKey:@"type"]];
+            [list addObject:report];
+            [report release];
             
         }
+            
+        
         
         //dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
         
@@ -241,18 +201,17 @@
     if(self._refreshFooterView)
     {
         [self._refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
-        [self removeFooterView];
-    }
-    [_slimeView endRefresh];
-    [_tableView reloadData];
 
-        
-        
+    }
+
+    [_tableView reloadData];
+    
+    
+    
     
 }
--(void)leftClick:(UIButton *)btn
+- (void)leftButtonClick:(id)sender
 {
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -302,11 +261,12 @@
     
     NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
     format.dateFormat = @"yyyy-MM-dd";
-   NSString * tmp = [NSString stringWithFormat:@"%@",[format stringFromDate:pdate]];
+    NSString * tmp = [NSString stringWithFormat:@"%@",[format stringFromDate:pdate]];
     
     
     titleLabel.text=[NSString stringWithFormat:@"%@ %@ %@",report.reportname,tmp,report.title];
     timelabel.text=[self timeStr:report.createtime];
+    
     
     if(indexPath.row==[self.list count]-1)
     {
@@ -315,7 +275,6 @@
         else
             [self removeFooterView];
     }
-    
     return cell;
     
 }
@@ -379,18 +338,7 @@
     [self.navigationController pushViewController:contentVC animated:YES];
     [contentVC release];
 }
-- (void)slimeRefreshStartRefresh:(SRRefreshView *)refreshView
-{
-    NSLog(@"start refresh");
-    //    [self showHUD:YES];
-   // NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
-    
-    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime", nil];
 
-    [self loadNotice:dic];
-    //theRefreshPos = EGORefreshHeader;
-    //[self requestNoticeData:nil];
-}
 -(void)setFooterView
 {
     
@@ -431,9 +379,13 @@
     
     GKReport *sc = [self.list lastObject];
     NSString *lastTime = sc.createtime;
-//    
-    NSDictionary* param = [NSDictionary dictionaryWithObjectsAndKeys:lastTime,@"starttime",@"0",@"endtime",nil];
-    [self loadNotice:param];
+    //
+  //  NSDictionary* param = [NSDictionary dictionaryWithObjectsAndKeys:lastTime,@"starttime",@"0",@"endtime",nil];
+    
+    NSDictionary *dic =[NSDictionary dictionaryWithObjectsAndKeys:self.searchcontent,@"content",lastTime,@"starttime",@"0",@"endtime", nil];
+
+    
+    [self loaddata:dic];
     isLoading=YES;
     
 }
@@ -453,12 +405,6 @@
 {
     
     
-    
-    if (self._slimeView) {
-        [self._slimeView scrollViewDidScroll];
-    }
-    
-    
     if(_refreshFooterView)
     {
         [_refreshFooterView egoRefreshScrollViewDidScroll:scrollView];
@@ -467,9 +413,7 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    if (self._slimeView) {
-        [self._slimeView scrollViewDidEndDraging];
-    }
+
     
     if(_refreshFooterView)
     {

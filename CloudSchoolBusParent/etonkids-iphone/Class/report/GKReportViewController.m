@@ -1,28 +1,26 @@
 //
-//  GKReportHistoryViewController.m
-//  SchoolBusPhoto
+//  GKReportViewController.m
+//  etonkids-iphone
 //
-//  Created by wen peifang on 14-7-29.
-//  Copyright (c) 2014年 mactop. All rights reserved.
+//  Created by wen peifang on 14-8-6.
+//  Copyright (c) 2014年 wpf. All rights reserved.
 //
 
-#import "GKReportHistoryViewController.h"
-#import "KKNavigationController.h"
-#import "GKReport.h"
+#import "GKReportViewController.h"
+#import "ETKids.h"
 #import "NSDate+convenience.h"
-#import "GKReportContentViewController.h"
+#import "GKReport.h"
 #import "GKSearchViewController.h"
-@interface GKReportHistoryViewController ()
+#import "GKReportContentViewController.h"
+@interface GKReportViewController ()
 
 @end
 
-@implementation GKReportHistoryViewController
+@implementation GKReportViewController
 @synthesize _tableView;
+@synthesize list;
 @synthesize _slimeView;;
 @synthesize _refreshFooterView;
-@synthesize isLoading;
-@synthesize isMore;
-@synthesize list;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -31,61 +29,82 @@
     }
     return self;
 }
-- (void)autoDragScrollLoading
-{
-    [_tableView setContentOffset:CGPointMake(0, -50) animated:NO];
-    _slimeView.loading = YES;
-    _slimeView.alpha = 0.0f;
-    _slimeView.broken = YES;
-    
-    [_slimeView scrollViewDidScrollToPoint:CGPointMake(0, -50)];
-    [_slimeView scrollViewDidEndDraging];
-    [_slimeView pullApart];
-}
 -(void)dealloc
 {
-    self._tableView=nil;
-    self._slimeView=nil;
-    self.list=nil;
-    self._refreshFooterView=nil;
 
+    self._tableView=nil;
+    self.list=nil;
+    self._slimeView=nil;
+    self._refreshFooterView=nil;
     [super dealloc];
 }
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
-  
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Do any additional setup after loading the view.
+
+    self.view.backgroundColor=[UIColor blackColor];
     
-    UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeCustom];
-    buttonBack.frame=CGRectMake(10, 5, 34, 35);
-    [buttonBack setBackgroundImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [buttonBack setBackgroundImage:[UIImage imageNamed:@"backH.png"] forState:UIControlStateHighlighted];
-    [navigationView addSubview:buttonBack];
-    [buttonBack addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
+    if (ios7) {
+        [self setNeedsStatusBarAppearanceUpdate];
+        
+        UIView *statusbar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+        statusbar.backgroundColor = [UIColor blackColor];
+        [self.view addSubview:statusbar];
+        [statusbar release];
+        
+    }
+    
+    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, (ios7 ? 20 : 0) + NAVIHEIGHT, 320, self.view.frame.size.height - NAVIHEIGHT - (ios7 ? 20 : 0))];
+    backView.backgroundColor = CELLCOLOR;
+    [self.view insertSubview:backView atIndex:0];
+    [backView release];
+    
+    UIImageView *navigationBackView=[[UIImageView alloc]initWithFrame:CGRectMake(0, (ios7 ? 20 : 0), 320, NAVIHEIGHT)];
+    navigationBackView.image=[UIImage imageNamed:@"navigationNoText.png"];
+    [self.view addSubview:navigationBackView];
+    [navigationBackView release];
     
     
-   
+    UIButton *leftButton =[UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton setFrame:CGRectMake(0, 0, 50, 35)];
+    [leftButton setCenter:CGPointMake(10 + 34/2, navigationBackView.frame.size.height/2+ (ios7 ? 20 : 0))];
+    [leftButton setImage:[UIImage imageNamed:@"backBtnDefault_3.0.png"] forState:UIControlStateNormal];
+    [leftButton setImage:[UIImage imageNamed:@"backBtnSel_3.0.png"] forState:UIControlStateHighlighted];
+    [leftButton addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:leftButton];
+    UISwipeGestureRecognizer *popGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftButtonClick:)];
+    popGes.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:popGes];
+    [popGes release];
     
-      titlelabel.text=@"已发布班级报告";
-    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y) style:UITableViewStylePlain];
-    _tableView.delegate=self;
-    _tableView.dataSource=self;
-     _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
-    _tableView.backgroundColor=[UIColor colorWithRed:232/255.0 green:229/255.0 blue:220/255.0 alpha:1];
+    UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
+    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textColor=[UIColor whiteColor];
+    middleLabel.text =@"报告";//  NSLocalizedString(@"doctor_con", @"医生咨询");
+    middleLabel.backgroundColor=[UIColor clearColor];
+    [self.view addSubview:middleLabel];
+    [middleLabel release];
+    
+
+    _tableView= [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), 320, (iphone5 ? 548 : 460) - NAVIHEIGHT) style:UITableViewStylePlain];
+    _tableView.backgroundView = nil;
+    _tableView.backgroundColor = CELLCOLOR;
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
-    
     _searchBar=[[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
     _searchBar.placeholder=@"输入关键字";
     _searchBar.delegate=self;
     _searchBar.showsCancelButton=YES;
     
     _tableView.tableHeaderView=[_searchBar autorelease];
-    list=[[NSMutableArray alloc]init];
+
     
     _slimeView = [[SRRefreshView alloc] init];
     _slimeView.delegate = self;
@@ -98,31 +117,17 @@
     _slimeView.slime.shadowColor = [UIColor blackColor];
     
     [_tableView addSubview:self._slimeView];
+    
+    
+    list=[[NSMutableArray alloc]init];
+  //  currentnumber=0;
+   // [self loadData:currentnumber];
 
-    UIView *noView=[[UIView alloc]initWithFrame:CGRectMake(320/2.0-303/4,self.view.frame.size.height/2.0-262/4-30, 303/2, 262/2+30) ];
-    noView.tag=232;
-    UIImageView *noImage=[[UIImageView alloc]initWithFrame:CGRectMake(0,0, 303/2, 262/2)];
-    noImage.image=IMAGENAME(IMAGEWITHPATH(@"NOData"));
-    [noView addSubview:noImage];
-    [noImage release];
-    
-    [self.view addSubview:noView];
-    [noView release];
-    
-    [self setNOView:YES];
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime", nil];
-
+    
     [self loadNotice:dic];
+
     
-//    
-//     [[EKRequest Instance]EKHTTPRequest:search parameters:[NSDictionary dictionaryWithObjectsAndKeys:@"温培方",@"content", nil] requestMethod:GET forDelegate:self];
-    // Do any additional setup after loading the view.
-}
--(void)setNOView:(BOOL)an
-{
-    UIView *view=[self.view viewWithTag:232];
-    
-    view.hidden=an;
 }
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
@@ -137,24 +142,27 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar
 {
     [searchBar resignFirstResponder];
-    searchBar.text=@"";
     
+    searchBar.text=@"";
 }
+
 -(void)loadNotice:(NSDictionary *)pram
 {
     NSLog(@"%@",pram);
-   // [[EKRequest Instance]EKHTTPRequest:tnotice parameters:pram requestMethod:GET forDelegate:self];
+    isLoading=YES;
+    // [[EKRequest Instance]EKHTTPRequest:tnotice parameters:pram requestMethod:GET forDelegate:self];
     [[EKRequest Instance]EKHTTPRequest:report parameters:pram requestMethod:GET forDelegate:self];
 }
 -(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
 {
     // 修改提示错误 网络错误11
-    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"network", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"busy", @"提示") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
     [alert show];
     [alert release];
+    
     isLoading=NO;
 }
--(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
+-(void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
 {
     NSString *aa=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
     NSLog(@"%@",aa);
@@ -164,7 +172,7 @@
         NSArray *arr=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
         
         
-        if([[parm objectForKey:@"starttime"] isEqualToString:@"0"] && [[parm objectForKey:@"endtime"] isEqualToString:@"0"])
+        if([[param objectForKey:@"starttime"] isEqualToString:@"0"] && [[param objectForKey:@"endtime"] isEqualToString:@"0"])
         {
             // 下拉刷新
             [list removeAllObjects];
@@ -181,7 +189,7 @@
                 report.createtime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"createtime"]];
                 report.title=[dic objectForKey:@"title"];
                 report.contentArr=[dic objectForKey:@"content"];
-                report.studentArr=[dic objectForKey:@"studentname"];
+                report.studentname=[dic objectForKey:@"studentname"];
                 report.reporttime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"reporttime"]];
                 report.teachername=[dic objectForKey:@"teachername"];
                 report.reportname=[dic objectForKey:@"reportname"];
@@ -206,13 +214,13 @@
             
             for (int i=0; i<[arr count]; i++) {
                 NSDictionary *dic=[arr objectAtIndex:i];
-            
+                
                 GKReport *report=[[GKReport alloc]init];
                 report.reportid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"id"]];
                 report.createtime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"createtime"]];
                 report.title=[dic objectForKey:@"title"];
                 report.contentArr=[dic objectForKey:@"content"];
-                report.studentArr=[dic objectForKey:@"studentname"];
+                report.studentname=[dic objectForKey:@"studentname"];
                 report.reporttime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"reporttime"]];
                 report.teachername=[dic objectForKey:@"teachername"];
                 report.reportname=[dic objectForKey:@"reportname"];
@@ -221,8 +229,8 @@
                 [report release];
                 
             }
-
-
+            
+            
             
             
         }
@@ -230,14 +238,14 @@
         //dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
         
     }
-    if([list count]==0)
-    {
-        [self setNOView:NO];
-    }
-    else
-    {
-        [self setNOView:YES];
-    }
+//    if([list count]==0)
+//    {
+//        [self setNOView:NO];
+//    }
+//    else
+//    {
+//        [self setNOView:YES];
+//    }
     if(self._refreshFooterView)
     {
         [self._refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
@@ -245,21 +253,63 @@
     }
     [_slimeView endRefresh];
     [_tableView reloadData];
-
-        
-        
+    
+    
+    
     
 }
--(void)leftClick:(UIButton *)btn
+
+-(void)setFooterView
 {
     
+    CGFloat height = MAX(_tableView.contentSize.height, _tableView.frame.size.height);
+    if(_refreshFooterView && [_refreshFooterView superview])
+    {
+        _refreshFooterView.hidden = NO;
+        _refreshFooterView.frame = CGRectMake(0.0f, height, _tableView.frame.size.width, _tableView.bounds.size.height);
+    }
+    else
+    {
+        LoadMoreTableFooterView *refreshFooterView = [[LoadMoreTableFooterView alloc] initWithFrame:CGRectMake(0.0f, height, _tableView.frame.size.width, _tableView.bounds.size.height)];
+        refreshFooterView.delegate = self;
+        [_tableView addSubview:refreshFooterView];
+        [refreshFooterView release];
+        
+        self._refreshFooterView = refreshFooterView;
+        self._refreshFooterView.backgroundColor=[UIColor clearColor];
+    }
+    
+}
+-(void)removeFooterView
+{
+    //_refreshFooterView.hidden = YES;
+    
+    if(_refreshFooterView && [_refreshFooterView superview])
+    {
+        [_refreshFooterView removeFromSuperview];
+    }
+    _refreshFooterView = nil;
+}
+
+- (void)leftButtonClick:(id)sender
+{
     [self.navigationController popViewControllerAnimated:YES];
 }
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [list count];
+    
+    return 60;
 }
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [list count];;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier=@"cell";
     UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -302,11 +352,12 @@
     
     NSDateFormatter *format = [[[NSDateFormatter alloc] init] autorelease];
     format.dateFormat = @"yyyy-MM-dd";
-   NSString * tmp = [NSString stringWithFormat:@"%@",[format stringFromDate:pdate]];
+    NSString * tmp = [NSString stringWithFormat:@"%@",[format stringFromDate:pdate]];
     
     
-    titleLabel.text=[NSString stringWithFormat:@"%@ %@ %@",report.reportname,tmp,report.title];
+    titleLabel.text=[NSString stringWithFormat:@"%@ %@",report.reportname,tmp];
     timelabel.text=[self timeStr:report.createtime];
+    
     
     if(indexPath.row==[self.list count]-1)
     {
@@ -315,11 +366,10 @@
         else
             [self removeFooterView];
     }
-    
     return cell;
     
+    
 }
-
 -(NSString *)timeStr:(NSString *)_time
 {
     NSString *time = _time;
@@ -364,11 +414,6 @@
     
     return nil;
 }
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 60;
-}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -379,59 +424,21 @@
     [self.navigationController pushViewController:contentVC animated:YES];
     [contentVC release];
 }
+
 - (void)slimeRefreshStartRefresh:(SRRefreshView *)refreshView
 {
     NSLog(@"start refresh");
-    //    [self showHUD:YES];
-   // NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
-    
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime", nil];
-
+    
     [self loadNotice:dic];
-    //theRefreshPos = EGORefreshHeader;
-    //[self requestNoticeData:nil];
 }
--(void)setFooterView
-{
-    
-    CGFloat height = MAX(_tableView.contentSize.height, _tableView.frame.size.height);
-    if(_refreshFooterView && [_refreshFooterView superview])
-    {
-        _refreshFooterView.hidden = NO;
-        _refreshFooterView.frame = CGRectMake(0.0f, height, _tableView.frame.size.width, _tableView.bounds.size.height);
-    }
-    else
-    {
-        LoadMoreTableFooterView *refreshFooterView = [[LoadMoreTableFooterView alloc] initWithFrame:CGRectMake(0.0f, height, _tableView.frame.size.width, _tableView.bounds.size.height)];
-        refreshFooterView.delegate = self;
-        [_tableView addSubview:refreshFooterView];
-        [refreshFooterView release];
-        
-        self._refreshFooterView = refreshFooterView;
-        self._refreshFooterView.backgroundColor=[UIColor clearColor];
-    }
-    
-}
--(void)removeFooterView
-{
-    //_refreshFooterView.hidden = YES;
-    
-    if(_refreshFooterView && [_refreshFooterView superview])
-    {
-        [_refreshFooterView removeFromSuperview];
-    }
-    _refreshFooterView = nil;
-}
-
-
-
 - (void)reloadTableViewDataSource:(EGORefreshPos)aRefreshPos
 {
     //获取信息
     
     GKReport *sc = [self.list lastObject];
     NSString *lastTime = sc.createtime;
-//    
+    //
     NSDictionary* param = [NSDictionary dictionaryWithObjectsAndKeys:lastTime,@"starttime",@"0",@"endtime",nil];
     [self loadNotice:param];
     isLoading=YES;
@@ -483,7 +490,6 @@
 {
 	return [NSDate date]; // should return date data source was last changed
 }
-
 
 
 - (void)didReceiveMemoryWarning

@@ -133,6 +133,10 @@ static EKRequest * instance = nil;
             return @"childreceiver";
         case deletereceiver:
             return @"deletereceiver";
+        case report:
+            return @"report";
+        case search:
+            return @"search";
         default:
             
             return nil;

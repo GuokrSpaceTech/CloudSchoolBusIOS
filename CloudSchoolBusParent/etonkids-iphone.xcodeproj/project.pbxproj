@@ -12,6 +12,8 @@
 		1112BB4D1797C4E500337CB4 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1112BB4B1797C4E500337CB4 /* NSStringAdditions.m */; };
 		112330A2195189B5001B585F /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1123309F195189B5001B585F /* libMobClickLibrary.a */; };
 		112330A3195189B5001B585F /* libMobClickLibrary_armv6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 112330A0195189B5001B585F /* libMobClickLibrary_armv6.a */; };
+		1124C0B919920BC60044485B /* GKReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1124C0B819920BC60044485B /* GKReportViewController.m */; };
+		1124C0BC199213C50044485B /* GKReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 1124C0BB199213C50044485B /* GKReport.m */; };
 		113320FC1953EB140088E226 /* GKHealthListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113320FB1953EB140088E226 /* GKHealthListViewController.m */; };
 		113320FF195412C80088E226 /* GKHealthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 113320FE195412C80088E226 /* GKHealthCell.m */; };
 		1133210119542A260088E226 /* -vip.png in Resources */ = {isa = PBXBuildFile; fileRef = 1133210019542A260088E226 /* -vip.png */; };
@@ -40,6 +42,8 @@
 		1192A608178E52BA00BDA5BD /* ETEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 1192A607178E52BA00BDA5BD /* ETEvents.m */; };
 		1194012C17EE9B4400FA14D4 /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1194012B17EE9B4400FA14D4 /* libBPush.a */; };
 		1194012E17EE9D6500FA14D4 /* BPushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1194012D17EE9D6500FA14D4 /* BPushConfig.plist */; };
+		119DECAE19921CD600BF7362 /* GKReportContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 119DECAD19921CD600BF7362 /* GKReportContentViewController.m */; };
+		119DECB119921F2D00BF7362 /* GKSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 119DECB019921F2D00BF7362 /* GKSearchViewController.m */; };
 		11A054F31796831D005C062A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A054F21796831D005C062A /* ImageIO.framework */; };
 		11A054F51796835F005C062A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A054F41796835F005C062A /* MapKit.framework */; };
 		11A0554017968ACB005C062A /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A0552417968ACB005C062A /* MKAnnotationView+WebCache.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -618,6 +622,10 @@
 		1123309F195189B5001B585F /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		112330A0195189B5001B585F /* libMobClickLibrary_armv6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary_armv6.a; sourceTree = "<group>"; };
 		112330A1195189B5001B585F /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		1124C0B719920BC60044485B /* GKReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReportViewController.h; sourceTree = "<group>"; };
+		1124C0B819920BC60044485B /* GKReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReportViewController.m; sourceTree = "<group>"; };
+		1124C0BA199213C50044485B /* GKReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReport.h; sourceTree = "<group>"; };
+		1124C0BB199213C50044485B /* GKReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReport.m; sourceTree = "<group>"; };
 		113320FA1953EB140088E226 /* GKHealthListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHealthListViewController.h; sourceTree = "<group>"; };
 		113320FB1953EB140088E226 /* GKHealthListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKHealthListViewController.m; sourceTree = "<group>"; };
 		113320FD195412C80088E226 /* GKHealthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHealthCell.h; sourceTree = "<group>"; };
@@ -654,6 +662,10 @@
 		1194012A17EE9B4400FA14D4 /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
 		1194012B17EE9B4400FA14D4 /* libBPush.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBPush.a; sourceTree = "<group>"; };
 		1194012D17EE9D6500FA14D4 /* BPushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BPushConfig.plist; sourceTree = "<group>"; };
+		119DECAC19921CD600BF7362 /* GKReportContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReportContentViewController.h; sourceTree = "<group>"; };
+		119DECAD19921CD600BF7362 /* GKReportContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReportContentViewController.m; sourceTree = "<group>"; };
+		119DECAF19921F2D00BF7362 /* GKSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSearchViewController.h; sourceTree = "<group>"; };
+		119DECB019921F2D00BF7362 /* GKSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSearchViewController.m; sourceTree = "<group>"; };
 		11A054F21796831D005C062A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		11A054F41796835F005C062A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		11A0552317968ACB005C062A /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -1515,6 +1527,21 @@
 			path = Umeng;
 			sourceTree = "<group>";
 		};
+		1124C0B619920BAF0044485B /* report */ = {
+			isa = PBXGroup;
+			children = (
+				119DECAF19921F2D00BF7362 /* GKSearchViewController.h */,
+				119DECB019921F2D00BF7362 /* GKSearchViewController.m */,
+				119DECAC19921CD600BF7362 /* GKReportContentViewController.h */,
+				119DECAD19921CD600BF7362 /* GKReportContentViewController.m */,
+				1124C0BA199213C50044485B /* GKReport.h */,
+				1124C0BB199213C50044485B /* GKReport.m */,
+				1124C0B719920BC60044485B /* GKReportViewController.h */,
+				1124C0B819920BC60044485B /* GKReportViewController.m */,
+			);
+			path = report;
+			sourceTree = "<group>";
+		};
 		113320F91953EAB50088E226 /* Health */ = {
 			isa = PBXGroup;
 			children = (
@@ -2153,6 +2180,7 @@
 		E3EA3B00169E94C5000DF7EE /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				1124C0B619920BAF0044485B /* report */,
 				113320F91953EAB50088E226 /* Health */,
 				788BE6AA17F00B1C0076D920 /* broadside */,
 				7841CF5417DF2E14003E0DB2 /* activity */,
@@ -3251,6 +3279,7 @@
 				F950216D16DC8B090079A05E /* ETChildViewController.m in Sources */,
 				F95021C116DCAF640079A05E /* NSDictionaryAdditions.m in Sources */,
 				F95021C216DCAF640079A05E /* GeoInfo.m in Sources */,
+				119DECAE19921CD600BF7362 /* GKReportContentViewController.m in Sources */,
 				F95021C316DCAF640079A05E /* Province.m in Sources */,
 				F95021C416DCAF640079A05E /* Resources.m in Sources */,
 				118E62AB1961305A00E24CB8 /* CYDoctor.m in Sources */,
@@ -3286,6 +3315,7 @@
 				789CC758182CEE6600E81510 /* ETGrowViewController.m in Sources */,
 				78F841951817CCC5007722AE /* ETNoStartActivity.m in Sources */,
 				F950240C16DCB61B0079A05E /* contractibleImageView.m in Sources */,
+				1124C0B919920BC60044485B /* GKReportViewController.m in Sources */,
 				F950240D16DCB61B0079A05E /* FileStreame.m in Sources */,
 				F950240E16DCB61B0079A05E /* pinyin.c in Sources */,
 				113320FF195412C80088E226 /* GKHealthCell.m in Sources */,
@@ -3341,6 +3371,7 @@
 				B5F7FAEA1726E1CA00F5AD13 /* ASICloudFilesObjectRequest.m in Sources */,
 				B5F7FAEB1726E1CA00F5AD13 /* ASICloudFilesRequest.m in Sources */,
 				B5F7FAEC1726E1CA00F5AD13 /* Reachability.m in Sources */,
+				119DECB119921F2D00BF7362 /* GKSearchViewController.m in Sources */,
 				B5F7FAED1726E1CA00F5AD13 /* ASIS3Bucket.m in Sources */,
 				11C848061961756C00E900F2 /* ProblemContent.m in Sources */,
 				789EAA331834ABC40029D4B0 /* ETGrowRecordViewController.m in Sources */,
@@ -3389,6 +3420,7 @@
 				11B3E228193F058500A96ACF /* ETSendReceiveView.m in Sources */,
 				73545DDD17A79BDA000E39FC /* ETBackgroundViewController.m in Sources */,
 				73545DE217A79C04000E39FC /* AboutOursViewController.m in Sources */,
+				1124C0BC199213C50044485B /* GKReport.m in Sources */,
 				11EC2860193F15AA002FF46E /* ETAddSendReceiveViewController.m in Sources */,
 				11ECEDD31946EFE200BFB85A /* GKChildReceiver.m in Sources */,
 				73B9CDBC17ABAE2E00E8AD36 /* ETdefaultViewController.m in Sources */,

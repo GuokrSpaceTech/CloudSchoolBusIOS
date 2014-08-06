@@ -98,6 +98,7 @@
 }
 -(void)loaddata:(NSDictionary *)dic
 {
+    isLoading=YES;
      [[EKRequest Instance]EKHTTPRequest:search parameters:dic requestMethod:GET forDelegate:self];
 }
 -(void)setNOView:(BOOL)an
@@ -112,12 +113,13 @@
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"network", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
     [alert show];
     [alert release];
+    isLoading=NO;
 }
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
 {
     NSString *aa=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
     NSLog(@"%@",aa);
-    
+    isLoading=NO;
     if(method==search && code==1)
     {
         NSArray *arr=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];

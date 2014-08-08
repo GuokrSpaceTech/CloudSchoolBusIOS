@@ -98,6 +98,13 @@
 		11C9F59B19641B6A00C65B7A /* health_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C9F59A19641B6A00C65B7A /* health_point.png */; };
 		11C9F59D19641BD300C65B7A /* health_cellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C9F59C19641BD300C65B7A /* health_cellBG.png */; };
 		11C9F59F19641C3300C65B7A /* health_topblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C9F59E19641C3300C65B7A /* health_topblue.png */; };
+		11D6C38519936C7C001BBF7E /* Alixpay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 11D6C38319936C7C001BBF7E /* Alixpay.bundle */; };
+		11D6C38619936C7C001BBF7E /* AlixPaylib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D6C38419936C7C001BBF7E /* AlixPaylib.a */; };
+		11D6C38A19936C98001BBF7E /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D6C38719936C98001BBF7E /* AlipayRsaLib.a */; };
+		11D6C38B19936C98001BBF7E /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D6C38819936C98001BBF7E /* libcrypto.a */; };
+		11D6C38C19936C98001BBF7E /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D6C38919936C98001BBF7E /* libssl.a */; };
+		11D6C39119936CDB001BBF7E /* AlixPayOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D6C38E19936CDB001BBF7E /* AlixPayOrder.m */; };
+		11D6C39219936CDB001BBF7E /* AlixPayResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D6C39019936CDB001BBF7E /* AlixPayResult.m */; };
 		11D937CE1947F72000215842 /* UIScrollView+UITouchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D937CD1947F72000215842 /* UIScrollView+UITouchEvent.m */; };
 		11D937D21947FA3D00215842 /* deleteTag.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D937D11947FA3D00215842 /* deleteTag.png */; };
 		11E46367194F05510039C0A0 /* GKShowReceiveBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E46366194F05510039C0A0 /* GKShowReceiveBigImageViewController.m */; };
@@ -752,6 +759,19 @@
 		11C9F59A19641B6A00C65B7A /* health_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_point.png; sourceTree = "<group>"; };
 		11C9F59C19641BD300C65B7A /* health_cellBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_cellBG.png; sourceTree = "<group>"; };
 		11C9F59E19641C3300C65B7A /* health_topblue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_topblue.png; sourceTree = "<group>"; };
+		11D6C37E19936C4D001BBF7E /* PartnerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartnerConfig.h; sourceTree = "<group>"; };
+		11D6C38019936C5A001BBF7E /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
+		11D6C38119936C5A001BBF7E /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
+		11D6C38219936C7C001BBF7E /* AlixLibService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixLibService.h; sourceTree = "<group>"; };
+		11D6C38319936C7C001BBF7E /* Alixpay.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Alixpay.bundle; sourceTree = "<group>"; };
+		11D6C38419936C7C001BBF7E /* AlixPaylib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlixPaylib.a; sourceTree = "<group>"; };
+		11D6C38719936C98001BBF7E /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
+		11D6C38819936C98001BBF7E /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		11D6C38919936C98001BBF7E /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		11D6C38D19936CDB001BBF7E /* AlixPayOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayOrder.h; sourceTree = "<group>"; };
+		11D6C38E19936CDB001BBF7E /* AlixPayOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlixPayOrder.m; sourceTree = "<group>"; };
+		11D6C38F19936CDB001BBF7E /* AlixPayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayResult.h; sourceTree = "<group>"; };
+		11D6C39019936CDB001BBF7E /* AlixPayResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlixPayResult.m; sourceTree = "<group>"; };
 		11D937CC1947F72000215842 /* UIScrollView+UITouchEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+UITouchEvent.h"; sourceTree = "<group>"; };
 		11D937CD1947F72000215842 /* UIScrollView+UITouchEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+UITouchEvent.m"; sourceTree = "<group>"; };
 		11D937D11947FA3D00215842 /* deleteTag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteTag.png; sourceTree = "<group>"; };
@@ -1485,6 +1505,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11D6C38619936C7C001BBF7E /* AlixPaylib.a in Frameworks */,
 				11BF1295195AA6A9003ABFF6 /* AssetsLibrary.framework in Frameworks */,
 				7860CB2218865A6800DD0E80 /* MediaPlayer.framework in Frameworks */,
 				78930529187A4D6E00628928 /* libz.1.2.5.dylib in Frameworks */,
@@ -1493,6 +1514,7 @@
 				112330A3195189B5001B585F /* libMobClickLibrary_armv6.a in Frameworks */,
 				11A054F51796835F005C062A /* MapKit.framework in Frameworks */,
 				11A054F31796831D005C062A /* ImageIO.framework in Frameworks */,
+				11D6C38B19936C98001BBF7E /* libcrypto.a in Frameworks */,
 				F918E18C16F6DF2500F18574 /* CoreMedia.framework in Frameworks */,
 				F918E18A16F6D94C00F18574 /* AVFoundation.framework in Frameworks */,
 				F950242816DCB6830079A05E /* CoreLocation.framework in Frameworks */,
@@ -1502,6 +1524,8 @@
 				F950225A16DCB21F0079A05E /* MobileCoreServices.framework in Frameworks */,
 				F950225816DCB2120079A05E /* libz.dylib in Frameworks */,
 				F96332B816D62A4100BFE8E9 /* SystemConfiguration.framework in Frameworks */,
+				11D6C38A19936C98001BBF7E /* AlipayRsaLib.a in Frameworks */,
+				11D6C38C19936C98001BBF7E /* libssl.a in Frameworks */,
 				F925403A16D3823B008B4BD2 /* CoreData.framework in Frameworks */,
 				F919DB3416C2406100CFEFD0 /* Security.framework in Frameworks */,
 				78F841FD181E1430007722AE /* libWeChatSDK.a in Frameworks */,
@@ -1626,6 +1650,34 @@
 				11A0553F17968ACB005C062A /* UIImageView+WebCache.m */,
 			);
 			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		11D6C37D19936C3B001BBF7E /* alipay */ = {
+			isa = PBXGroup;
+			children = (
+				11D6C38D19936CDB001BBF7E /* AlixPayOrder.h */,
+				11D6C38E19936CDB001BBF7E /* AlixPayOrder.m */,
+				11D6C38F19936CDB001BBF7E /* AlixPayResult.h */,
+				11D6C39019936CDB001BBF7E /* AlixPayResult.m */,
+				11D6C38719936C98001BBF7E /* AlipayRsaLib.a */,
+				11D6C38819936C98001BBF7E /* libcrypto.a */,
+				11D6C38919936C98001BBF7E /* libssl.a */,
+				11D6C38219936C7C001BBF7E /* AlixLibService.h */,
+				11D6C38319936C7C001BBF7E /* Alixpay.bundle */,
+				11D6C38419936C7C001BBF7E /* AlixPaylib.a */,
+				11D6C37F19936C5A001BBF7E /* RSA */,
+				11D6C37E19936C4D001BBF7E /* PartnerConfig.h */,
+			);
+			path = alipay;
+			sourceTree = "<group>";
+		};
+		11D6C37F19936C5A001BBF7E /* RSA */ = {
+			isa = PBXGroup;
+			children = (
+				11D6C38019936C5A001BBF7E /* DataSigner.h */,
+				11D6C38119936C5A001BBF7E /* DataVerifier.h */,
+			);
+			path = RSA;
 			sourceTree = "<group>";
 		};
 		73B9CDBE17ABBAD600E8AD36 /* 背景图 */ = {
@@ -2294,6 +2346,7 @@
 		E3F2AA5B16AD0959006936A5 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				11D6C37D19936C3B001BBF7E /* alipay */,
 				1123309E195189B5001B585F /* Umeng */,
 				7860CB23188686C000DD0E80 /* MDRadialProgress */,
 				78FA831D18064FDC009E9176 /* ETImageView.h */,
@@ -2884,6 +2937,7 @@
 			files = (
 				E3EA3AEE169E9491000DF7EE /* InfoPlist.strings in Resources */,
 				785DE1B5180FB3E6001B0EB3 /* bottomCommentSel.png in Resources */,
+				11D6C38519936C7C001BBF7E /* Alixpay.bundle in Resources */,
 				78F073C6183E00CE00C3FC70 /* 更换绑定_06.png in Resources */,
 				78A41FF4182102F000D0DE50 /* 班级分享-EN.png in Resources */,
 				78A41FEB1820FBCA00D0DE50 /* myChild1_en.png in Resources */,
@@ -3284,6 +3338,7 @@
 				F95021C416DCAF640079A05E /* Resources.m in Sources */,
 				118E62AB1961305A00E24CB8 /* CYDoctor.m in Sources */,
 				F95021C516DCAF640079A05E /* Status.m in Sources */,
+				11D6C39219936CDB001BBF7E /* AlixPayResult.m in Sources */,
 				F95021C616DCAF640079A05E /* User.m in Sources */,
 				F95021C716DCAF640079A05E /* PathHelper.m in Sources */,
 				F95021C816DCAF640079A05E /* WeiboAccount.m in Sources */,
@@ -3449,6 +3504,7 @@
 				11B3E225193ED7FC00A96ACF /* ETSendRecevieViewController.m in Sources */,
 				118E62AE1961311A00E24CB8 /* ProblemDetail.m in Sources */,
 				7897DF7917F2AB4000DB8B21 /* ETEducationViewController.m in Sources */,
+				11D6C39119936CDB001BBF7E /* AlixPayOrder.m in Sources */,
 				78F841A718190E87007722AE /* ETImportantNotice.m in Sources */,
 				7897DF7D17F2BDFA00DB8B21 /* OrderBlock.m in Sources */,
 				7860CB3118877B7F00DD0E80 /* GKMovieCache.m in Sources */,
@@ -3581,10 +3637,11 @@
 				INFOPLIST_FILE = "etonkids-iphone/etonkids-iphone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/\"/**",
-					"\"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/weixin/\"/**",
-					"\"$(SRCROOT)/etonkids-iphone/Third/\"/**",
+					"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/**",
+					"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/weixin/**",
+					"$(SRCROOT)/etonkids-iphone/Third/**",
 					"$(PROJECT_DIR)/etonkids-iphone/Third/Umeng",
+					"$(PROJECT_DIR)/etonkids-iphone/Third/alipay",
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -3622,10 +3679,11 @@
 				INFOPLIST_FILE = "etonkids-iphone/etonkids-iphone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/\"/**",
-					"\"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/weixin/\"/**",
-					"\"$(SRCROOT)/etonkids-iphone/Third/\"/**",
+					"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/**",
+					"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/weixin/**",
+					"$(SRCROOT)/etonkids-iphone/Third/**",
 					"$(PROJECT_DIR)/etonkids-iphone/Third/Umeng",
+					"$(PROJECT_DIR)/etonkids-iphone/Third/alipay",
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",

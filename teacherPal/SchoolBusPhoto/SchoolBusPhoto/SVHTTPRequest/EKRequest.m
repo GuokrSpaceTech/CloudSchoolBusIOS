@@ -12,7 +12,7 @@
 
 //#define SERVERURL @"http://192.168.2.18:81/"
 //#define SERVERURL @"http://v33.service.yunxiaoche.com/"
-#define SERVERURL @"http://123.119.91.72:81/"
+#define SERVERURL @"http://123.119.89.171:81/"
 
 
 @interface EKRequest()

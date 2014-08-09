@@ -129,7 +129,7 @@
     if (section == 0) {
         return 6;
     }
-    return 4;
+    return 5;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -376,6 +376,22 @@
             orderlabel.text = [NSString stringWithFormat:@"%@%@",[f stringFromDate:d],LOCAL(@"daoqi", @"到期")];
             [orderlabel release];
         }
+        
+        else if (indexPath.row == 4)
+        {
+            cell.textLabel.backgroundColor=[UIColor clearColor];
+            cell.textLabel.text=@"学费到期时间";
+            
+                      
+            UILabel  *orderlabel=[[UILabel alloc]initWithFrame:CGRectMake(100,12,180,20)];
+            orderlabel.textAlignment=UITextAlignmentRight;
+            [cell.contentView addSubview:orderlabel];
+            orderlabel.backgroundColor = [UIColor clearColor];
+            orderlabel.font = [UIFont systemFontOfSize:CONTENTFONTSIZE];
+            orderlabel.text =user.tuition_time;
+            [orderlabel release];
+        }
+
         
     }
     

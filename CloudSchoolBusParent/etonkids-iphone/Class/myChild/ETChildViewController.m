@@ -11,6 +11,8 @@
 #import "ETGCalendarViewController.h"
 #import "GKHealthListViewController.h"
 #import "GKReportViewController.h"
+
+#import "AlixLibService.h"
 #define VIEWHEIGHT 110
 #define VIEWHEIGHT5 128
 
@@ -299,16 +301,20 @@
     {
     
         
+        if(0)
+        {
+            // 该用户没有开通春雨  需要购买
+            
+//            [AlixLibService payOrder:orderString AndScheme:appScheme seletor:_result target:self];
+            
+        }
+        
+        
         GKHealthListViewController *VC=[[GKHealthListViewController alloc]init];
         AppDelegate *appDel=SHARED_APP_DELEGATE;
         [appDel.bottomNav pushViewController:VC animated:YES];
         [VC release];
         
-        
-        //        ETCalendarViewController *cal = [[ETCalendarViewController alloc] initWithNibName:nil bundle:nil];
-        //        AppDelegate *appDel = SHARED_APP_DELEGATE;
-        //        [appDel.bottomNav pushViewController:cal animated:YES];
-        //        [cal release];
         
         return;
         

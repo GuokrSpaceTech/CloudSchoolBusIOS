@@ -92,21 +92,6 @@
     else if (method == unit && code == 1)
     {
         user.loginStatus=LOGIN_SERVER;
-        
-        /*
-        if ([param objectForKey:@"uid_class"] && [param objectForKey:@"uid_student"])
-        {
-            user.uid_class = [param objectForKey:@"uid_class"];
-            user.uid_student = [param objectForKey:@"uid_student"];
-        }
-        */
-//        NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
-//
-//        NSLog(@"%@",dic);
-//        if (nil == dic) {
-//            [[EKRequest Instance] clearSid];
-//        }
-        
         [[EKRequest Instance] EKHTTPRequest:student parameters:nil requestMethod:GET forDelegate:self];
     }
     
@@ -120,23 +105,7 @@
         }
         NSDictionary *dic = result;
         NSLog(@"%@",dic);
-        
-//        user.studentId = [NSString stringWithFormat:@"%@",[dic objectForKey:@"studentid"]];
-//        user.age=[NSString stringWithFormat:@"%@",[dic objectForKey:@"age"]];
-//        user.birthday=[NSString stringWithFormat:@"%@",[dic objectForKey:@"birthday"]];
-//        user.cnname=[NSString stringWithFormat:@"%@",[dic objectForKey:@"cnname"]];
-//        user.enname=[NSString stringWithFormat:@"%@",[dic objectForKey:@"enname"]];
-//        user.mobile=[NSString stringWithFormat:@"%@",[dic objectForKey:@"mobile"]];
-//        user.nickname=[NSString stringWithFormat:@"%@",[dic objectForKey:@"nikename"]];
-//        user.parent=[NSString stringWithFormat:@"%@",[dic objectForKey:@"parent"]];
-//        user.sex=[NSString stringWithFormat:@"%@",[dic objectForKey:@"sex"]];
-//        user.className = [NSString stringWithFormat:@"%@",[dic objectForKey:@"classname"]];
-//        user.avatar = [NSString stringWithFormat:@"%@",[dic objectForKey:@"avatar"]];
-//        user.allowmutionline = [NSString stringWithFormat:@"%@",[dic objectForKey:@"allow_muti_online"]];
-//        user.uid_student = [NSString stringWithFormat:@"%@",[dic objectForKey:@"studentid"]];
-        
-        
-        
+
         user.studentId = [NSString stringWithFormat:@"%@",[dic objectForKey:@"studentid"]];
         user.age=[NSString stringWithFormat:@"%@",[dic objectForKey:@"age"]];
         user.birthday=[NSString stringWithFormat:@"%@",[dic objectForKey:@"birthday"]];
@@ -157,6 +126,7 @@
         user.uid_student = [NSString stringWithFormat:@"%@",[dic objectForKey:@"student_uid"]];
         user.inactive=[NSString stringWithFormat:@"%@",[dic objectForKey:@"inactive"]];
         user.healtState=[NSString stringWithFormat:@"%@",[dic objectForKey:@"healthstate"]];
+        user.tuition_time=[NSString stringWithFormat:@"%@",[dic objectForKey:@"tuition_time"]];
         [[EKRequest Instance] EKHTTPRequest:classinfo parameters:nil requestMethod:GET forDelegate:self];
         
         

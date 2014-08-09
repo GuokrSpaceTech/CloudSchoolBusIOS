@@ -437,7 +437,7 @@
         user.orderEndTime = [NSString stringWithFormat:@"%@",[dic objectForKey:@"orderendtime"]];
         user.inactive=[NSString stringWithFormat:@"%@",[dic objectForKey:@"inactive"]];
         user.healtState=[NSString stringWithFormat:@"%@",[dic objectForKey:@"healthstate"]];
-        
+        user.tuition_time=[NSString stringWithFormat:@"%@",[dic objectForKey:@"tuition_time"]];
         
        [ETCoreDataManager saveUser];
         [[EKRequest Instance] EKHTTPRequest:classinfo parameters:nil requestMethod:GET forDelegate:self];

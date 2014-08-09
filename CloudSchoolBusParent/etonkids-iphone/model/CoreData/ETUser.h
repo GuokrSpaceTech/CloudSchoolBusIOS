@@ -2,7 +2,7 @@
 //  ETUser.h
 //  etonkids-iphone
 //
-//  Created by wen peifang on 14-7-28.
+//  Created by WenPeiFang on 14/8/10.
 //  Copyright (c) 2014年 wpf. All rights reserved.
 //
 
@@ -22,6 +22,7 @@
 @property (nonatomic, retain) NSString * classname;
 @property (nonatomic, retain) NSString * cnname;
 @property (nonatomic, retain) NSString * enname;
+@property (nonatomic, retain) NSString * healthstate;
 @property (nonatomic, retain) NSString * inactive;
 @property (nonatomic, retain) NSString * ischeck_mobile;
 @property (nonatomic, retain) NSString * mobile;
@@ -37,6 +38,6 @@
 @property (nonatomic, retain) NSString * uid_class;
 @property (nonatomic, retain) NSString * uid_student;
 @property (nonatomic, retain) NSString * username;
-@property (nonatomic, retain) NSString * healthstate;
+@property (nonatomic, retain) NSString * tuition_time;
 
 @end

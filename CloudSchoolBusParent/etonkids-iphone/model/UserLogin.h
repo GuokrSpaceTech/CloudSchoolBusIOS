@@ -54,7 +54,7 @@ typedef enum {LOGIN_SERVER,LOGIN_OFF} LoginStatus;
 @property (nonatomic, retain)NSString *orderEndTime;
 @property (nonatomic,retain)NSString *inactive;
 @property (nonatomic,retain)NSString *healtState;
-//@property(nonatomic,retain)NSString *pull_rate;
+@property(nonatomic,retain)NSString *tuition_time;
 //@property(nonatomic,retain)NSString *company;
 //@property(nonatomic,retain)NSString *copyright;
 //@property(nonatomic,retain)NSString *phone;

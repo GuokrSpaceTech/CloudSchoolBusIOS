@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="14A238x" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="ETActicalPicture" representedClassName="ETActicalPicture" syncable="YES">
         <attribute name="articalid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="num" optional="YES" attributeType="String" syncable="YES"/>
@@ -153,6 +153,7 @@
         <attribute name="sex" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="skinid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="studentid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tuition_time" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uid_class" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uid_student" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
@@ -190,7 +191,7 @@
         <element name="ETNoticPicture" positionX="367" positionY="204" width="128" height="120"/>
         <element name="ETSchedule" positionX="-153" positionY="372" width="128" height="105"/>
         <element name="ETtest" positionX="-0" positionY="354" width="128" height="60"/>
-        <element name="ETUser" positionX="-324" positionY="18" width="128" height="433"/>
+        <element name="ETUser" positionX="-324" positionY="18" width="128" height="450"/>
         <element name="MyActivity" positionX="142" positionY="243" width="128" height="270"/>
     </elements>
 </model>

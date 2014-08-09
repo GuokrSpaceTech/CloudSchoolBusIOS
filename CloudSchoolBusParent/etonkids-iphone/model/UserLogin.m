@@ -42,6 +42,7 @@ static UserLogin *current=nil;
             orderTitle,
             inactive,
             healtState,
+            tuition_time,
             orderEndTime;
 
 
@@ -147,6 +148,7 @@ static UserLogin *current=nil;
     self.orderTitle = nil;
     self.inactive=nil;
     self.healtState=nil;
+    self.tuition_time=nil;
 //    self.pull_rate = nil;
 //    self.company = nil;
 //    self.copyright = nil;

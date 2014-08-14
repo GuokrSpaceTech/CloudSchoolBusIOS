@@ -208,7 +208,7 @@
     {
         ETForgetPasswordViewController *bindVC = [[ETForgetPasswordViewController alloc] init];
         bindVC.isBind = YES;
-        [appDel.bottomNav pushViewController:bindVC animated:YES];
+        [appDel.bottomVC pushViewController:bindVC animated:YES];
         [bindVC release];
     }
     else

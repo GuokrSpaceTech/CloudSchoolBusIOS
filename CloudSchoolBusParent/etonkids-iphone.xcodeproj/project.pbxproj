@@ -35,6 +35,7 @@
 		11414318196552F2007267D6 /* health_buttoned.png in Resources */ = {isa = PBXBuildFile; fileRef = 11414316196552F2007267D6 /* health_buttoned.png */; };
 		1141431A1965548E007267D6 /* health_uppic.png in Resources */ = {isa = PBXBuildFile; fileRef = 114143191965548E007267D6 /* health_uppic.png */; };
 		1141431C19655505007267D6 /* health_doctor.png in Resources */ = {isa = PBXBuildFile; fileRef = 1141431B19655505007267D6 /* health_doctor.png */; };
+		11628294199C8E56003E4E5C /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11628293199C8E56003E4E5C /* AlipayRsaLib.a */; };
 		118A1A4A18B6F3B70002BF18 /* HTCopyableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 118A1A4918B6F3B70002BF18 /* HTCopyableLabel.m */; };
 		118CBC17178D7B64006AA633 /* ETActiveDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CBC16178D7B64006AA633 /* ETActiveDetailViewController.m */; };
 		118E62AB1961305A00E24CB8 /* CYDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 118E62AA1961305A00E24CB8 /* CYDoctor.m */; };
@@ -99,7 +100,6 @@
 		11C9F59F19641C3300C65B7A /* health_topblue.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C9F59E19641C3300C65B7A /* health_topblue.png */; };
 		11D6C38519936C7C001BBF7E /* Alixpay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 11D6C38319936C7C001BBF7E /* Alixpay.bundle */; };
 		11D6C38619936C7C001BBF7E /* AlixPaylib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D6C38419936C7C001BBF7E /* AlixPaylib.a */; };
-		11D6C38A19936C98001BBF7E /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D6C38719936C98001BBF7E /* AlipayRsaLib.a */; };
 		11D6C38B19936C98001BBF7E /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D6C38819936C98001BBF7E /* libcrypto.a */; };
 		11D6C38C19936C98001BBF7E /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D6C38919936C98001BBF7E /* libssl.a */; };
 		11D6C39119936CDB001BBF7E /* AlixPayOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D6C38E19936CDB001BBF7E /* AlixPayOrder.m */; };
@@ -656,6 +656,7 @@
 		11414316196552F2007267D6 /* health_buttoned.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_buttoned.png; sourceTree = "<group>"; };
 		114143191965548E007267D6 /* health_uppic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_uppic.png; sourceTree = "<group>"; };
 		1141431B19655505007267D6 /* health_doctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_doctor.png; sourceTree = "<group>"; };
+		11628293199C8E56003E4E5C /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
 		118A1A4818B6F3B70002BF18 /* HTCopyableLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTCopyableLabel.h; sourceTree = "<group>"; };
 		118A1A4918B6F3B70002BF18 /* HTCopyableLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTCopyableLabel.m; sourceTree = "<group>"; };
 		118CBC15178D7B64006AA633 /* ETActiveDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETActiveDetailViewController.h; sourceTree = "<group>"; };
@@ -763,7 +764,6 @@
 		11D6C38219936C7C001BBF7E /* AlixLibService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixLibService.h; sourceTree = "<group>"; };
 		11D6C38319936C7C001BBF7E /* Alixpay.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Alixpay.bundle; sourceTree = "<group>"; };
 		11D6C38419936C7C001BBF7E /* AlixPaylib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlixPaylib.a; sourceTree = "<group>"; };
-		11D6C38719936C98001BBF7E /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
 		11D6C38819936C98001BBF7E /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		11D6C38919936C98001BBF7E /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		11D6C38D19936CDB001BBF7E /* AlixPayOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayOrder.h; sourceTree = "<group>"; };
@@ -1511,6 +1511,7 @@
 				78930529187A4D6E00628928 /* libz.1.2.5.dylib in Frameworks */,
 				F9E0FA6B16DF5E4E00206925 /* MessageUI.framework in Frameworks */,
 				73C1C63917B8F0DD001A3BCC /* CoreMotion.framework in Frameworks */,
+				11628294199C8E56003E4E5C /* AlipayRsaLib.a in Frameworks */,
 				112330A3195189B5001B585F /* libMobClickLibrary_armv6.a in Frameworks */,
 				11A054F51796835F005C062A /* MapKit.framework in Frameworks */,
 				11A054F31796831D005C062A /* ImageIO.framework in Frameworks */,
@@ -1524,7 +1525,6 @@
 				F950225A16DCB21F0079A05E /* MobileCoreServices.framework in Frameworks */,
 				F950225816DCB2120079A05E /* libz.dylib in Frameworks */,
 				F96332B816D62A4100BFE8E9 /* SystemConfiguration.framework in Frameworks */,
-				11D6C38A19936C98001BBF7E /* AlipayRsaLib.a in Frameworks */,
 				11D6C38C19936C98001BBF7E /* libssl.a in Frameworks */,
 				F925403A16D3823B008B4BD2 /* CoreData.framework in Frameworks */,
 				F919DB3416C2406100CFEFD0 /* Security.framework in Frameworks */,
@@ -1655,11 +1655,11 @@
 		11D6C37D19936C3B001BBF7E /* alipay */ = {
 			isa = PBXGroup;
 			children = (
+				11628293199C8E56003E4E5C /* AlipayRsaLib.a */,
 				11D6C38D19936CDB001BBF7E /* AlixPayOrder.h */,
 				11D6C38E19936CDB001BBF7E /* AlixPayOrder.m */,
 				11D6C38F19936CDB001BBF7E /* AlixPayResult.h */,
 				11D6C39019936CDB001BBF7E /* AlixPayResult.m */,
-				11D6C38719936C98001BBF7E /* AlipayRsaLib.a */,
 				11D6C38819936C98001BBF7E /* libcrypto.a */,
 				11D6C38919936C98001BBF7E /* libssl.a */,
 				11D6C38219936C7C001BBF7E /* AlixLibService.h */,

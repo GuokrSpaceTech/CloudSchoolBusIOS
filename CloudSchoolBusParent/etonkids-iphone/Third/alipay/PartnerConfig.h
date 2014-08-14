@@ -11,8 +11,7 @@
 //  3.点击“查询合作者身份(pid)”、“查询安全校验码(key)”
 //
 
-#ifndef MQPDemo_PartnerConfig_h
-#define MQPDemo_PartnerConfig_h
+
 
 #ifndef MQPDemo_PartnerConfig_h
 #define MQPDemo_PartnerConfig_h

@@ -10,7 +10,7 @@
 //#define SERVERURL @"http://api.yunxiaoche.com/"
 //#define SERVERURL @"http://apitest.yunxiaoche.com/"
 //#define SERVERURL @"http://apitest.yunxiaoche.com/"
-#define SERVERURL @"http://123.119.89.171:81/"
+#define SERVERURL @"http://124.64.111.171:81/"
 //#define SERVERURL @"http://v33.service.yunxiaoche.com/"
 
 @interface EKRequest()
@@ -137,6 +137,8 @@ static EKRequest * instance = nil;
             return @"report";
         case search:
             return @"search";
+        case order:
+            return @"order";
         default:
             
             return nil;

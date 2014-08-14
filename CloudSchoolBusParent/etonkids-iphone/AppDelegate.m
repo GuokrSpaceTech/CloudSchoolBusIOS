@@ -14,6 +14,11 @@
 #import "ETCustomAlertView.h"
 #import "MobClick.h"
 #import "ETCommonClass.h"
+#import "AlixPayResult.h"
+
+#import "DataSigner.h"
+#import "DataVerifier.h"
+#import "PartnerConfig.h"
 @implementation AppDelegate
 
 @synthesize token,bottomNav,bottomVC,loginViewController;
@@ -137,7 +142,7 @@
 
     loginViewController=[[ETLoginViewController alloc] init];
     self.window.rootViewController = loginViewController;
-    [loginViewController release];
+    //[loginViewController release];
     
 
     
@@ -247,13 +252,30 @@
 }
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-    return  [WXApi handleOpenURL:url delegate:self];
+    NSLog(@"%@",url);
+    
+    NSString *string =[url absoluteString];
+    if([string hasPrefix:@"yunxiaocheparent"])
+    {
+         [self parse:url application:application];
+        return YES;
+    }
+    else
+    {
+       return  [WXApi handleOpenURL:url delegate:self];
+   
+    }
+    
+    return  YES;
+   
+   
 }
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    return  [WXApi handleOpenURL:url delegate:self];
-}
+//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+//{
+//       NSLog(@"%@",url);
+//    return  [WXApi handleOpenURL:url delegate:self];
+//}
 -(void) onReq:(BaseReq*)req
 {
     NSLog(@"strmsg : %@",req);
@@ -533,6 +555,81 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+//独立客户端回调函数
+//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+//	
+//
+//	return YES;
+//}
+
+- (void)parse:(NSURL *)url application:(UIApplication *)application {
+    
+    //结果处理
+    AlixPayResult* result = [self handleOpenURL:url];
+    
+	if (result)
+    {
+		
+		if (result.statusCode == 9000)
+        {
+			/*
+			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
+			 */
+            
+            //交易成功
+                        NSString* key = AlipayPubKey;
+            			id<DataVerifier> verifier;
+                        verifier = CreateRSADataVerifier(key);
+            
+            			if ([verifier verifyString:result.resultString withSign:result.signString])
+                        {
+                            //验证签名成功，交易结果无篡改
+                            
+                            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"交易成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                            [alert show];
+                            [alert release];
+                            
+            			}
+            
+        }
+        else
+        {
+            //交易失败
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:result.statusMessage delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
+        }
+    }
+    else
+    {
+        //失败
+        
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"交易失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+        
+    }
+    
+}
+
+- (AlixPayResult *)resultFromURL:(NSURL *)url {
+	NSString * query = [[url query] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+#if ! __has_feature(objc_arc)
+    return [[[AlixPayResult alloc] initWithString:query] autorelease];
+#else
+	return [[AlixPayResult alloc] initWithString:query];
+#endif
+}
+
+- (AlixPayResult *)handleOpenURL:(NSURL *)url {
+	AlixPayResult * result = nil;
+	
+	if (url != nil && [[url host] compare:@"safepay"] == 0) {
+		result = [self resultFromURL:url];
+	}
+    
+	return result;
+}
 
 
 @end

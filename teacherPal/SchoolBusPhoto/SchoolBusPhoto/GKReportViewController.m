@@ -65,7 +65,7 @@
     [navigationView addSubview:button];
     
 
-    titlelabel.text=@"班级报告";
+    titlelabel.text=NSLocalizedString(@"classreport", @"");
     
     
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y) style:UITableViewStylePlain];
@@ -258,7 +258,7 @@
     
     GKWriteReportViewController *writeVC=[[GKWriteReportViewController alloc]init];
     writeVC.model=model;
-    writeVC.titleStr=[NSString stringWithFormat:@"发布%@",model.name];
+   // writeVC.titleStr=[NSString stringWithFormat:@"发布%@",model.name];
     [self.navigationController pushViewController:writeVC animated:YES];
     
     [writeVC release];

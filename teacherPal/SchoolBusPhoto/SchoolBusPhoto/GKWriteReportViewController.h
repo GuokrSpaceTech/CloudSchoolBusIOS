@@ -25,7 +25,7 @@
 @property (nonatomic,retain)NSString *studentselectStr;
 @property (nonatomic,retain)GKReportModel *model;
 @property (nonatomic,retain)NSMutableArray *jsonArr;
-
-@property (nonatomic,retain)NSString *titleStr;
+//
+//@property (nonatomic,retain)NSString *titleStr;
 
 @end

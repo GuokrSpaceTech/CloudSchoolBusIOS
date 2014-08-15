@@ -3,7 +3,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "AppDelegate.h"
 #import "GTMBase64.h"
-#import "ETCommonClass.h"
+
 #import "ETChildManagerViewController.h"
 #import "ETCoreDataManager.h"
 #import "UIImageView+WebCache.h"
@@ -11,12 +11,8 @@
 #import "ETGCalendarViewController.h"
 #import "GKHealthListViewController.h"
 #import "GKReportViewController.h"
-#import "AlixPayOrder.h"
-#import "AlixLibService.h"
-#import "DataSigner.h"
-#import "DataVerifier.h"
-#import "AlixPayResult.h"
-#import "PartnerConfig.h"
+
+#import "GKBuyViewController.h"
 #define VIEWHEIGHT 110
 #define VIEWHEIGHT5 128
 
@@ -206,7 +202,8 @@
         
         //"doctor_con"="医生咨询";
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
-        label.text = @"学生日报";
+        label.text = NSLocalizedString(@"classribao", @"");
+        
         label.font = [UIFont systemFontOfSize:16];
         //label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
         label.backgroundColor = [UIColor clearColor];
@@ -304,142 +301,31 @@
     else if (indexPath.section == 4)
     {
     
-        
-       // if(0)
-       // {
-            // 该用户没有开通春雨  需要购买
-            
-//            [AlixLibService payOrder:orderString AndScheme:appScheme seletor:_result target:self];
-            
-            
-            ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
-            [com requestLoginWithComplete:^(NSError *err){
-               // NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:pStr,@"month", nil];
-                [[EKRequest Instance] EKHTTPRequest:order parameters:nil requestMethod:GET forDelegate:self];
-            }];
+        UserLogin *user=[UserLogin currentLogin];
+        if([user.chunyuisopen intValue]==0)
+        {
 
-            
-      //  }
+            GKBuyViewController *VC=[[GKBuyViewController alloc]init];
+            AppDelegate *appDel=SHARED_APP_DELEGATE;
+            [appDel.bottomNav pushViewController:VC animated:YES];
+            [VC release];
+        }
+        else
+        {
+            GKHealthListViewController *VC=[[GKHealthListViewController alloc]init];
+            AppDelegate *appDel=SHARED_APP_DELEGATE;
+            [appDel.bottomNav pushViewController:VC animated:YES];
+            [VC release];
+
+        }
         
-        
-//        GKHealthListViewController *VC=[[GKHealthListViewController alloc]init];
-//        AppDelegate *appDel=SHARED_APP_DELEGATE;
-//        [appDel.bottomNav pushViewController:VC animated:YES];
-//        [VC release];
-        
+ 
         
         return;
         
     }
 }
--(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
-{
-    
-}
--(void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
-{
-    if(code==1 && method==order)
-    {
-        NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
-        NSLog(@"%@",dic);
-        
-        
-        AlixPayOrder *order = [[AlixPayOrder alloc] init];
-        order.partner = PartnerID;
-        order.seller = SellerID;
-        
-        order.tradeNO = [dic objectForKey:@"oriderid"];; //订单ID（由商家自行制定）
-        order.productName = [dic objectForKey:@"title"]; //商品标题
-        order.productDescription = [dic objectForKey:@"description"]; //商品描述
-       // order.amount = [NSString stringWithFormat:@"%@",[dic objectForKey:@"price"]]; //商品价格
-        	order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格
-        order.notifyURL =   [dic objectForKey:@"notifyURL"]; //回调URL
-        
-        
-        
-        NSString *appScheme = @"yunxiaocheparent";
-        NSString* orderInfo = order.description;
-        NSString* signedStr = [self doRsa:orderInfo];
-        
-        NSLog(@"%@",signedStr);
-        
-        NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
-                                 orderInfo, signedStr, @"RSA"];
-        
-       // [AlixLibService exitFullScreen];
-        [AlixLibService payOrder:orderString AndScheme:appScheme seletor:@selector(paymentResult:) target:self];
 
-
-        
-        
-    }
-    else
-    {
-        UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"提示" message:@"订单生成失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alertView show];
-        [alertView release];
-    }
-}
-
-
-//wap回调函数
--(void)paymentResult:(NSString *)resultd
-{
-    //结果处理
-#if ! __has_feature(objc_arc)
-    AlixPayResult* result = [[[AlixPayResult alloc] initWithString:resultd] autorelease];
-#else
-    AlixPayResult* result = [[AlixPayResult alloc] initWithString:resultd];
-#endif
-	if (result)
-    {
-		
-		if (result.statusCode == 9000)
-        {
-			/*
-			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
-			 */
-            
-            NSString* key = AlipayPubKey;
-            id<DataVerifier> verifier;
-            verifier = CreateRSADataVerifier(key);
-            
-            if ([verifier verifyString:result.resultString withSign:result.signString])
-            {
-                //验证签名成功，交易结果无篡改
-                
-                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"交易成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                [alert show];
-                [alert release];
-                
-            }
-        }
-        else
-        {
-            //交易失败
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:result.statusMessage delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alert show];
-            [alert release];
-
-        }
-    }
-    else
-    {
-        //失败
-        
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"交易失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alert show];
-        [alert release];
-    }
-    
-}
--(NSString*)doRsa:(NSString*)orderInfo
-{
-    id<DataSigner> signer;
-    signer = CreateRSADataSigner(PartnerPrivKey);
-    NSString *signedString = [signer signString:orderInfo];
-    return signedString;
-}
 -(void)updateChildInfo:(NSNotification *) notification
 {
     [mainTV reloadData];

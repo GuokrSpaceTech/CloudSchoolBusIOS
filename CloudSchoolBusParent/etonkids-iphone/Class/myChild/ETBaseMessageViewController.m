@@ -278,7 +278,7 @@
         else if(indexPath.row==5)
         {
             cell.textLabel.backgroundColor=[UIColor clearColor];
-            cell.textLabel.text= @"过敏情况";
+            cell.textLabel.text= NSLocalizedString(@"guoming", @"");
             cell.backgroundColor=[UIColor whiteColor];
             cell.selectionStyle=UITableViewCellSelectionStyleBlue;
             
@@ -295,7 +295,7 @@
             
             if([user.healtState isEqualToString:@""] || user.healtState==nil)
             {
-                healthlabel.text=@"未填写";
+                healthlabel.text=NSLocalizedString(@"nofield", @"");
             }
             else
             {
@@ -380,7 +380,7 @@
         else if (indexPath.row == 4)
         {
             cell.textLabel.backgroundColor=[UIColor clearColor];
-            cell.textLabel.text=@"学费到期时间";
+            cell.textLabel.text=NSLocalizedString(@"Tuitiontime", @"");
             
                       
             UILabel  *orderlabel=[[UILabel alloc]initWithFrame:CGRectMake(100,12,180,20)];

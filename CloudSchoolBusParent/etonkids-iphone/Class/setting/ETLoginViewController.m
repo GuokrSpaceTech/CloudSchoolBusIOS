@@ -438,7 +438,8 @@
         user.inactive=[NSString stringWithFormat:@"%@",[dic objectForKey:@"inactive"]];
         user.healtState=[NSString stringWithFormat:@"%@",[dic objectForKey:@"healthstate"]];
         user.tuition_time=[NSString stringWithFormat:@"%@",[dic objectForKey:@"tuition_time"]];
-        
+        user.chunyuisopen=[NSString stringWithFormat:@"%@",[dic objectForKey:@"chunyuisopen"]];
+        user.chunyuendtime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"chunyu_endtime"]];
        [ETCoreDataManager saveUser];
         [[EKRequest Instance] EKHTTPRequest:classinfo parameters:nil requestMethod:GET forDelegate:self];
         

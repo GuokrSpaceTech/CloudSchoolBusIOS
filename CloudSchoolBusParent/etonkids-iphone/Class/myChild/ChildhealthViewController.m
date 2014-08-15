@@ -76,7 +76,7 @@
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
     middleLabel.textAlignment=UITextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
-    middleLabel.text = NSLocalizedString(@"wangtiwen", @"");
+    middleLabel.text = NSLocalizedString(@"spectialqingkuang", @"");
     middleLabel.backgroundColor=[UIColor clearColor];
     [self.view addSubview:middleLabel];
     [middleLabel release];
@@ -100,13 +100,25 @@
 
     if(healthState==nil || [healthState isEqualToString:@""])
     {
-        healthField.placeholder=@"过敏，不能吃什么等特殊情况";
+        healthField.placeholder=NSLocalizedString(@"guoming", @"");
     }
     else
     {
         healthField.placeholder=healthState;
     }
     healthField.clearButtonMode=UITextFieldViewModeAlways;
+    
+    
+    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(5,healthField.frame.size.height+healthField.frame.origin.y+5, 300, 35)];
+    label.text=NSLocalizedString(@"heathnote", @"");
+    label.numberOfLines=0;
+    label.font=[UIFont systemFontOfSize:14];
+    label.lineBreakMode=NSLineBreakByCharWrapping;
+    label.backgroundColor=[UIColor clearColor];
+    label.textColor=[UIColor grayColor];
+    [self.view addSubview:label];
+    [label release];
+    
     
 //    UIButton *xbutton=[UIButton buttonWithType:UIButtonTypeCustom];
 //    [xbutton setBackgroundImage:[UIImage imageNamed:@"clean.png"] forState:UIControlStateNormal];

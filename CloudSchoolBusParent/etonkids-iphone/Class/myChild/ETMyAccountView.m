@@ -55,7 +55,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 4;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -157,7 +157,7 @@
         }
         
     }
-    else
+    else if (indexPath.row == 2)
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
@@ -170,6 +170,43 @@
         label.text = [NSString stringWithFormat:LOCAL(@"myaccount_link", @"已关联%d个孩子"),arr.count];
         msgLabel1.hidden = YES;
         msgLabel.hidden = YES;
+    }
+    else
+    {
+//        "heakthendtime"="有效期至";
+//        "healthtimestate"="已购买医生咨询服务";
+        
+        if([user.chunyuisopen intValue]==1)
+        {
+            NSString *str =NSLocalizedString(@"healthtimestate", @"");
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            imgV.image = [UIImage imageNamed:@"myaccount1.png"];
+            label.text = str;
+            msgLabel1.hidden = YES;
+            
+            
+            label.frame = CGRectMake(50, 7, 200, 20);
+            msgLabel.frame = CGRectMake(50 , 28, 200, 30);
+            
+            msgLabel.text =[NSString stringWithFormat:@"%@%@",NSLocalizedString(@"heakthendtime", @""),user.chunyuendtime];//@"有效期至";
+        }
+        else
+        {
+            NSString *str =NSLocalizedString(@"healthtimenostate", @"");
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            imgV.image = [UIImage imageNamed:@"myaccount1.png"];
+            label.text = str;
+            msgLabel1.hidden = YES;
+            
+            
+            label.frame = CGRectMake(50, 15, 220, 30);
+            msgLabel.hidden=YES;
+            
+           
+        }
+      
     }
     
     

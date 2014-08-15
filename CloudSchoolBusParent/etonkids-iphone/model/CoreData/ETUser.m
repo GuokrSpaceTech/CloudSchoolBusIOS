@@ -2,7 +2,7 @@
 //  ETUser.m
 //  etonkids-iphone
 //
-//  Created by WenPeiFang on 14/8/10.
+//  Created by wen peifang on 14-8-15.
 //  Copyright (c) 2014年 wpf. All rights reserved.
 //
 
@@ -34,9 +34,11 @@
 @dynamic sex;
 @dynamic skinid;
 @dynamic studentid;
+@dynamic tuition_time;
 @dynamic uid_class;
 @dynamic uid_student;
 @dynamic username;
-@dynamic tuition_time;
+@dynamic chunyuopen;
+@dynamic chunyuendtime;
 
 @end

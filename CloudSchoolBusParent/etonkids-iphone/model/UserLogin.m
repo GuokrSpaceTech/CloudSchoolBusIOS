@@ -31,19 +31,14 @@ static UserLogin *current=nil;
             username,
             can_comment,
             can_comment_action,
-//            pull_rate,
-//            company,
-//            copyright,
-//            phone,
-//            product,
             studentId,
-//website,
             schoolname,
             orderTitle,
             inactive,
             healtState,
             tuition_time,
-            orderEndTime;
+            orderEndTime,
+chunyuendtime,chunyuisopen;
 
 
 #pragma --
@@ -149,6 +144,8 @@ static UserLogin *current=nil;
     self.inactive=nil;
     self.healtState=nil;
     self.tuition_time=nil;
+    self.chunyuisopen=nil;
+    self.chunyuendtime=nil;
 //    self.pull_rate = nil;
 //    self.company = nil;
 //    self.copyright = nil;

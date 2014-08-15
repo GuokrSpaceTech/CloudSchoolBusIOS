@@ -83,6 +83,8 @@
         user.ordertitle = login.orderTitle;
         user.healthstate=login.healtState;
         user.tuition_time=login.tuition_time;
+        user.chunyuendtime=login.chunyuendtime;
+        user.chunyuopen=login.chunyuisopen;
         BOOL success = [delegate.managedObjectContext save:&error];
         NSLog(@"user save success: %d",success);
     }
@@ -152,6 +154,8 @@
     login.healtState=user.healthstate;
     login.orderEndTime = user.orderenddate;
     login.tuition_time=user.tuition_time;
+    login.chunyuisopen=user.chunyuopen;
+    login.chunyuendtime=user.chunyuendtime;
     return login;
 }
 + (void)updateUserInfo:(NSDictionary *)userInfo{

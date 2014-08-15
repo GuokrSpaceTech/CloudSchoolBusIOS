@@ -558,3 +558,18 @@
 "health_bg_content"="医生咨询服务是云中校车联手国内知名线上医疗团队春雨医生而定制化的服务。这里拥有15000名公立医院专家，为您提供贴心的健康服务，为孩子成长提供专业的医疗咨询。";
 
 "health_uppic"="health_uppic.png";
+
+"guoming"="过敏等特殊情况说明";
+"systemLan"="cn";
+"nofield"="未填写";
+"classribao"="班级报告";
+"Tuitiontime"="学费到期";
+"spectialqingkuang"="特殊情况";
+"heathnote"="该信息会直接发给老师，帮助更好的照顾孩子";
+"searchreport"="搜索报告标题关键字";
+"detailreport"="报告详细";
+"buychunyutitle"="购买医生咨询服务";
+
+"heakthendtime"="有效期至";
+"healthtimestate"="已购买医生咨询服务";
+"healthtimenostate"="尚未购买医生咨询服务";

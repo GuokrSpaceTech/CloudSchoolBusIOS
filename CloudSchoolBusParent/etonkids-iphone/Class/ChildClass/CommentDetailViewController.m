@@ -220,7 +220,24 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
         btn.frame=CGRectMake(25 + col * (90 + 10), heightorign +5 + row *(20 +5) , 90, 20);
         [btn addTarget:self action:@selector(tagClick:) forControlEvents:UIControlEventTouchUpInside];
         btn.tag=i+3210;
-        [btn setTitle:[dic objectForKey:@"tagname"] forState:UIControlStateNormal];
+        
+        //"systemLan"="cn";
+        
+        if([NSLocalizedString(@"systemLan", @"") isEqualToString:@"en"])
+        {
+            NSString *title=[dic objectForKey:@"tagname_en"];
+            if([title isEqualToString:@""] || title==nil)
+                title=[dic objectForKey:@"tagname"];
+            [btn setTitle:title forState:UIControlStateNormal];
+        }
+        else
+        {
+
+            
+            NSString *title=[dic objectForKey:@"tagname"];
+            [btn setTitle:title forState:UIControlStateNormal];
+        }
+        
         [contentView addSubview:btn];
     }
     
@@ -529,6 +546,20 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     NSDictionary *dic=[self.shareContent.tagArr objectAtIndex:i];
     
     NSString *tagdesc=[dic objectForKey:@"tagnamedesc"];
+    if([NSLocalizedString(@"systemLan", @"") isEqualToString:@"en"])
+    {
+        tagdesc=[dic objectForKey:@"tagnamedesc_en"];
+        if([tagdesc isEqualToString:@""] || tagdesc==nil)
+            tagdesc=[dic objectForKey:@"tagnamedesc"];
+      
+    }
+    else
+    {
+        tagdesc=[dic objectForKey:@"tagnamedesc"];
+        
+        
+    }
+
     
     
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:tagdesc delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];

@@ -256,7 +256,7 @@
                     
                 case 5:
                     cell.accessoryType=UITableViewCellAccessoryNone;
-                    nameLabel.text=@"学费到期日";
+                    nameLabel.text=NSLocalizedString(@"fuefiedaoqi", @"");
                     realLabel.text=st.xuefeuTime;
                     break;
                 default:
@@ -264,7 +264,7 @@
             }
         }
         return cell;
-
+  
     }
     else
     {
@@ -292,8 +292,9 @@
             [contentLabel release];
         }
         
+
         UILabel *nameLabel=(UILabel *)[cell.contentView viewWithTag:TAGCELL+100];
-        nameLabel.text=@"过敏等特殊情况";
+        nameLabel.text=NSLocalizedString(@"guoming", @"");
         
         CGSize size=[st.healthstate sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 500) lineBreakMode:NSLineBreakByCharWrapping];
         UILabel *contentLabel=(UILabel *)[cell.contentView viewWithTag:TAGCELL+101];

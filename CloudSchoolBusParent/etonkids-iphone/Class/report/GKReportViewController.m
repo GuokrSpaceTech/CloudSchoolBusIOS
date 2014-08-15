@@ -85,7 +85,7 @@
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
     middleLabel.textAlignment=UITextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
-    middleLabel.text =@"报告";//  NSLocalizedString(@"doctor_con", @"医生咨询");
+    middleLabel.text =NSLocalizedString(@"classribao", @"");//  NSLocalizedString(@"doctor_con", @"医生咨询");
     middleLabel.backgroundColor=[UIColor clearColor];
     [self.view addSubview:middleLabel];
     [middleLabel release];
@@ -99,7 +99,7 @@
     _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     _searchBar=[[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
-    _searchBar.placeholder=@"输入关键字";
+    _searchBar.placeholder=NSLocalizedString(@"searchreport", @"");
     _searchBar.delegate=self;
     _searchBar.showsCancelButton=YES;
     

@@ -71,16 +71,16 @@
     
    
     
-      titlelabel.text=@"已发布班级报告";
+    titlelabel.text=NSLocalizedString(@"reportPublished", @"");
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
      _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     _tableView.backgroundColor=[UIColor colorWithRed:232/255.0 green:229/255.0 blue:220/255.0 alpha:1];
     [self.view addSubview:_tableView];
-    
+
     _searchBar=[[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
-    _searchBar.placeholder=@"输入关键字";
+    _searchBar.placeholder=NSLocalizedString(@"searchreport", @"");
     _searchBar.delegate=self;
     _searchBar.showsCancelButton=YES;
     

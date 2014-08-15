@@ -17,7 +17,7 @@
 @implementation GKWriteReportViewController
 @synthesize model;
 @synthesize jsonArr;
-@synthesize titleStr;
+//@synthesize titleStr;
 @synthesize stuidArr;
 @synthesize studentselectStr;
 
@@ -33,7 +33,7 @@
 {
     self.model=nil;
     self.jsonArr=nil;
-    self.titleStr=nil;
+  //  self.titleStr=nil;
     self.studentselectStr=nil;
     self.stuidArr=nil;
     [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
@@ -174,7 +174,7 @@
     [self.view addSubview:stuButton];
     
     
-    titlelabel.text=titleStr;
+    titlelabel.text=NSLocalizedString(@"reportpub", @"");
     jsonArr=[[NSMutableArray alloc]init];
     
     scroller=[[UIScrollView alloc]initWithFrame:CGRectMake(0, dateButton.frame.origin.y+dateButton.frame.size.height, self.view.frame.size.width , self.view.frame.size.height-(dateButton.frame.origin.y+dateButton.frame.size.height))];

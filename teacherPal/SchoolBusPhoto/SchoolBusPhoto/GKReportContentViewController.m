@@ -36,7 +36,7 @@
     [buttonBack addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
     
     
-    titlelabel.text=@"报告详情";
+    titlelabel.text=NSLocalizedString(@"detailreport", @"");
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;

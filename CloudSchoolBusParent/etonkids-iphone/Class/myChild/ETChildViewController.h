@@ -10,12 +10,11 @@
 
 
 #import <UIKit/UIKit.h>
-#import "EKRequest.h"
 #import "MTCustomActionSheet.h"
 #import "ETNicknameViewController.h"
 #import "ETBaseMessageViewController.h"
 
-@interface ETChildViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,MTCustomActionSheetDelegate,ETNicknameViewControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,ETBaseMessageViewControllerDelegate,EKProtocol>
+@interface ETChildViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,MTCustomActionSheetDelegate,ETNicknameViewControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,ETBaseMessageViewControllerDelegate>
 {
     
     UILabel *birthdaylabel;

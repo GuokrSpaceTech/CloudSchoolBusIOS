@@ -81,7 +81,7 @@
 
 //[[EKRequest Instance]EKHTTPRequest:schoolstudent parameters:[NSDictionary dictionaryWithObjectsAndKeys:@"1",@"machine", nil] requestMethod:GET forDelegate:self];
     
-//[[EKRequest Instance]EKHTTPRequest:schoolcheck parameters:[NSDictionary dictionaryWithObjectsAndKeys:@"1",@"machine", nil] requestMethod:GET forDelegate:self];
+[[EKRequest Instance]EKHTTPRequest:schoolcheck parameters:[NSDictionary dictionaryWithObjectsAndKeys:@"1",@"machine", nil] requestMethod:GET forDelegate:self];
 
     
     //[[EKRequest Instance]EKHTTPRequest:schoolad parameters:nil requestMethod:GET forDelegate:self];

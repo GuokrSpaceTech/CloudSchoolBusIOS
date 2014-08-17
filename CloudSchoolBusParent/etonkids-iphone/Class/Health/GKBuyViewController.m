@@ -85,7 +85,7 @@
     UIButton *buttonBuy=[UIButton buttonWithType:UIButtonTypeRoundedRect];
     
     buttonBuy.frame=CGRectMake(10, 200, 100, 30);
-    
+    buttonBuy.backgroundColor=[UIColor redColor];
     [buttonBuy addTarget:self action:@selector(buyClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:buttonBuy];
     [buttonBuy release];
@@ -95,8 +95,8 @@
 {
     ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
     [com requestLoginWithComplete:^(NSError *err){
-        // NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:pStr,@"month", nil];
-        [[EKRequest Instance] EKHTTPRequest:order parameters:nil requestMethod:GET forDelegate:self];
+         NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"2",@"count", nil];
+        [[EKRequest Instance] EKHTTPRequest:order parameters:dic requestMethod:GET forDelegate:self];
     }];
     
 }

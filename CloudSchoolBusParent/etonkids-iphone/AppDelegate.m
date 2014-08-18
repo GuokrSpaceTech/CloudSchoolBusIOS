@@ -584,6 +584,9 @@
             			if ([verifier verifyString:result.resultString withSign:result.signString])
                         {
                             //验证签名成功，交易结果无篡改
+                            UserLogin *user=[UserLogin currentLogin];
+                            user.chunyuisopen=@"1";
+                
                             
                             UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"交易成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                             [alert show];

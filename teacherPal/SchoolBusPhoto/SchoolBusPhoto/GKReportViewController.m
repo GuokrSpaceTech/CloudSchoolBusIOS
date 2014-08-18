@@ -52,19 +52,16 @@
     [navigationView addSubview:buttonBack];
     [buttonBack addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    
-    UIButton * button=[UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame=CGRectMake(240, 8, 70, 30);
-    //[button setTitle:NSLocalizedString(@"today", @"") forState:UIControlStateNormal];
-    button.titleLabel.font=[UIFont systemFontOfSize:15];
-    [button setBackgroundImage:[UIImage imageNamed:@"inclass.png"] forState:UIControlStateNormal];
-    [button setBackgroundImage:[UIImage imageNamed:@"inclassed.png"] forState:UIControlStateHighlighted];
-    //[photobutton setImage:[UIImage imageNamed:@"upNormal.png"] forState:UIControlStateNormal];
-    //[photobutton setImage:[UIImage imageNamed:@"upHight.png"] forState:UIControlStateHighlighted];
-    [button addTarget:self action:@selector(rightClick:) forControlEvents:UIControlEventTouchUpInside];
-    [navigationView addSubview:button];
-    
 
+    UIButton *sendbutton=[UIButton buttonWithType:UIButtonTypeCustom];
+    sendbutton.frame=CGRectMake(270, 5, 50, 35);
+    [sendbutton setBackgroundImage:[UIImage imageNamed:@"report_write_lefttop_normal.png"] forState:UIControlStateNormal];
+    [sendbutton setBackgroundImage:[UIImage imageNamed:@"report_write_lefttop_selected.png"] forState:UIControlStateHighlighted];
+    
+    [sendbutton addTarget:self action:@selector(rightClick:) forControlEvents:UIControlEventTouchUpInside];
+    [navigationView addSubview:sendbutton];
+
+    
     titlelabel.text=NSLocalizedString(@"classreport", @"");
     
     

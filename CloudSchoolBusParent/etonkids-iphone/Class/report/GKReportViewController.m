@@ -102,9 +102,15 @@
     _searchBar.placeholder=NSLocalizedString(@"searchreport", @"");
     _searchBar.delegate=self;
     _searchBar.showsCancelButton=YES;
-    
+
     _tableView.tableHeaderView=[_searchBar autorelease];
 
+    
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchbar_bg.png"]];
+//    
+//    [_searchBar insertSubview:imageView atIndex:1];
+//    
+//    [imageView release];
     
     _slimeView = [[SRRefreshView alloc] init];
     _slimeView.delegate = self;

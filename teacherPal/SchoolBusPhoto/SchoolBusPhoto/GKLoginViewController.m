@@ -306,6 +306,8 @@
     [mainVC release];
    
 
+    [self xeufeiendtime];
+    [self birthdayAlert];
 }
 
 
@@ -470,70 +472,150 @@
     }
     
 }
-// 设置本地推送
--(void)LocalPush
+-(void)birthdayAlert
 {
-
     GKUserLogin *user=[GKUserLogin currentLogin];
     NSArray *arr=user.studentArr;
     
     
+    NSMutableArray *alreadytime=[[NSMutableArray alloc]init];
+    
     for (int i=0; i<[arr count]; i++) {
+        Student *st=[arr objectAtIndex:i];
         
+        if(st.birthday!=nil)
+        {
+            NSString *xuefistr=st.birthday;
+            
+            
+            NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
+            [dateFormatter setDateFormat:@"MM-dd"];
+            NSString  *today=[dateFormatter stringFromDate:[NSDate date]];
+            
+            NSDate *date=[dateFormatter dateFromString:xuefistr];
+            
+            NSTimeInterval time=[date timeIntervalSince1970];
+            // 3天前
+            NSTimeInterval time3ago=time-3*86400;
+            NSDate *date3ago=[NSDate dateWithTimeIntervalSince1970:time3ago];
+            NSString * date3str=[dateFormatter stringFromDate:date3ago];
+            
+            //        NSDate *birdate=[dateFormatter dateFromString:xuefistr];
+            NSString *birstr=[xuefistr substringFromIndex:5];
+            
+            
+            [dateFormatter release];
+            
+            if(([today compare:date3str]==NSOrderedDescending && [today compare:birstr]==NSOrderedAscending) || [today isEqualToString:birstr])
+            {
+                [alreadytime addObject:st.cnname];
+            }
+
+        }
+        
+        
+      
+
+    }
+    
+    NSMutableString *alreadytimestr=[[NSMutableString alloc]init];
+    for (int i=0; i<[alreadytime count]; i++) {
+        [alreadytimestr appendFormat:@"%@ ",[alreadytime objectAtIndex:i]];
+    }
+    if([alreadytime count]>0)
+    {
+        NSString *st=[NSString stringWithFormat:@"生日到期：%@",alreadytimestr];
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"生日提醒" message:st delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+
+    }
+  
+
+}
+-(void)xeufeiendtime
+{
+    
+    GKUserLogin *user=[GKUserLogin currentLogin];
+    NSArray *arr=user.studentArr;
+    
+    
+    NSMutableArray *alreadytime=[[NSMutableArray alloc]init];
+     NSMutableArray *daoqitime=[[NSMutableArray alloc]init];
+    for (int i=0; i<[arr count]; i++) {
         Student *st=[arr objectAtIndex:i];
         NSString *xuefistr=st.xuefeuTime;
         
         NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        NSDate *date=[dateFormatter dateFromString:xuefistr];
-        [dateFormatter release];
-        
-        NSTimeInterval time=[date timeIntervalSince1970];
-        
-        // 七天前
-        
-        
-        //NSMutableArray *sameStArr=[[NSMutableArray alloc]init];
-        
-  
-        
-        
-     //   NSDate *todayDate=[NSDate date];
-        
-        
-        NSTimeInterval time7ago=time-7*86400;
-        
+        NSString  *today=[dateFormatter stringFromDate:[NSDate date]];
 
         
-        NSDate *date7ago=[NSDate dateWithTimeIntervalSince1970:time7ago];
-        UILocalNotification *notification=[[UILocalNotification alloc]init];
-        
-        if(notification!=nil)
+        if([today compare:xuefistr]==NSOrderedDescending)
         {
-            // 设置推送时间
-            notification.fireDate = date7ago;
-            // 设置时区
-            notification.timeZone = [NSTimeZone defaultTimeZone];
-            // 设置重复间隔
-            notification.repeatInterval = kCFCalendarUnitDay;
-            // 推送声音
-            notification.soundName = UILocalNotificationDefaultSoundName;
-            // 推送内容
-            notification.alertBody = [NSString stringWithFormat:@"%@ 学费将要到期",st.cnname];
-            //显示在icon上的红色圈中的数子
-            notification.applicationIconBadgeNumber = 1;
-            //设置userinfo 方便在之后需要撤销的时候使用
-            NSDictionary *info = [NSDictionary dictionaryWithObject:st.cnname forKey:@"key"];
-            notification.userInfo = info;
-            //添加推送到UIApplication
-            UIApplication *app = [UIApplication sharedApplication];
-            [app scheduleLocalNotification:notification];
+            // 到期
+            [alreadytime addObject:st.cnname];
+            
         }
-        
+    
+        NSDate *date=[dateFormatter dateFromString:xuefistr];
+  
+        NSTimeInterval time=[date timeIntervalSince1970];
+        // 七天前
+        NSTimeInterval time7ago=time-7*86400;
+        NSDate *date7ago=[NSDate dateWithTimeIntervalSince1970:time7ago];
+        NSString * date7str=[dateFormatter stringFromDate:date7ago];
+              [dateFormatter release];
+        if(([today compare:date7str]==NSOrderedDescending && [today compare:st.xuefeuTime]==NSOrderedAscending) || [today isEqualToString:xuefistr])
+        {
+            [daoqitime addObject:st.cnname];
+        }
+    }
+  //  NSString *alreadytimestr=[NSString stringWithFormat:@"%@",alreadytime.description];
+    
+
+ 
+        NSMutableString *alreadytimestr=[[NSMutableString alloc]init];
+        for (int i=0; i<[alreadytime count]; i++) {
+            [alreadytimestr appendFormat:@"%@ ",[alreadytime objectAtIndex:i]];
+        }
+    
+    NSMutableString *daoqistr=[[NSMutableString alloc]init];
+    for (int i=0; i<[daoqitime count]; i++) {
+        [daoqistr appendFormat:@"%@ ",[daoqitime objectAtIndex:i]];
     }
     
     
+    
+    //NSString *isdaoqistr=[NSString stringWithFormat:@"%@",daoqitime.description];
+    NSString *str=nil;
+    if([alreadytime count]>0 && [daoqitime count]>0)
+    {
+     
+        str=[NSString stringWithFormat:@"学费已经到期：%@ \n 学费即将到期%@",alreadytimestr,daoqistr];
+        
+     
+    }
+    else if([alreadytime count]>0 && [daoqitime count]==0)
+    {
+          str=[NSString stringWithFormat:@"学费已经到期：%@",alreadytimestr];
+    }
+    else if([alreadytime count]==0 && [daoqitime count]>0)
+    {
+         str=[NSString stringWithFormat:@"学费即将到期:%@",daoqistr];
+    }
+    if([alreadytime count]!=0 || [daoqitime count]!=0)
+    {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"学费到期提醒" message:str delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
+
+
+    
 }
+
+
 -(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
 {
     _loginBtn.enabled=YES;

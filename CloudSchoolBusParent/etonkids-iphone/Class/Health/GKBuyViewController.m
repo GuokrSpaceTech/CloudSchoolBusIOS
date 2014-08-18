@@ -88,7 +88,7 @@
     buttonBuy.backgroundColor=[UIColor redColor];
     [buttonBuy addTarget:self action:@selector(buyClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:buttonBuy];
-    [buttonBuy release];
+
 
 }
 -(void)buyClick:(UIButton *)btn
@@ -135,6 +135,8 @@
                                  orderInfo, signedStr, @"RSA"];
         
         // [AlixLibService exitFullScreen];
+        
+      
         [AlixLibService payOrder:orderString AndScheme:appScheme seletor:@selector(paymentResult:) target:self];
         
         
@@ -199,7 +201,7 @@
         [alert show];
         [alert release];
     }
-    
+   // exit(1);
 }
 -(NSString*)doRsa:(NSString*)orderInfo
 {

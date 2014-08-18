@@ -216,7 +216,7 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
         int col=i%3;
         
         UIButton *btn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-        btn.backgroundColor=[UIColor redColor];
+        btn.backgroundColor=[UIColor colorWithRed:97/355.0 green:177/255.0 blue:200/255.0 alpha:1];
         btn.frame=CGRectMake(25 + col * (90 + 10), heightorign +5 + row *(20 +5) , 90, 20);
         [btn addTarget:self action:@selector(tagClick:) forControlEvents:UIControlEventTouchUpInside];
         btn.tag=i+3210;

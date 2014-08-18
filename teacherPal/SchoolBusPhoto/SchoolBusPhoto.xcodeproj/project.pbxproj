@@ -21,6 +21,14 @@
 		1102A7FE181A715D00E6295C /* guanlian-B-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1102A7FC181A715D00E6295C /* guanlian-B-1.png */; };
 		1102A7FF181A715D00E6295C /* guanlian-B-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1102A7FD181A715D00E6295C /* guanlian-B-2.png */; };
 		110AFD5B192DCD1D00CEFECE /* inclass.png in Resources */ = {isa = PBXBuildFile; fileRef = 110AFD59192DCD1D00CEFECE /* inclass.png */; };
+		111B83B619A1F7D4008078BA /* report_writenormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 111B83B519A1F7D4008078BA /* report_writenormal.png */; };
+		111B83B819A1F7E5008078BA /* report_writeselect.png in Resources */ = {isa = PBXBuildFile; fileRef = 111B83B719A1F7E5008078BA /* report_writeselect.png */; };
+		111B83BB19A1F9E7008078BA /* report_write_lefttop_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 111B83B919A1F9E7008078BA /* report_write_lefttop_normal.png */; };
+		111B83BC19A1F9E7008078BA /* report_write_lefttop_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 111B83BA19A1F9E7008078BA /* report_write_lefttop_selected.png */; };
+		111B83C119A1FB15008078BA /* left_report_cn_notmal.png in Resources */ = {isa = PBXBuildFile; fileRef = 111B83BD19A1FB15008078BA /* left_report_cn_notmal.png */; };
+		111B83C219A1FB15008078BA /* left_report_cn_select.png in Resources */ = {isa = PBXBuildFile; fileRef = 111B83BE19A1FB15008078BA /* left_report_cn_select.png */; };
+		111B83C319A1FB15008078BA /* left_report_en_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 111B83BF19A1FB15008078BA /* left_report_en_normal.png */; };
+		111B83C419A1FB15008078BA /* left_report_en_select.png in Resources */ = {isa = PBXBuildFile; fileRef = 111B83C019A1FB15008078BA /* left_report_en_select.png */; };
 		111E511D1988E0A0007D9C6E /* GKReportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E511C1988E0A0007D9C6E /* GKReportModel.m */; };
 		111E51201988E616007D9C6E /* GKReportQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E511F1988E616007D9C6E /* GKReportQuestion.m */; };
 		111E51231988EC98007D9C6E /* GKWriteReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111E51221988EC98007D9C6E /* GKWriteReportViewController.m */; };
@@ -471,6 +479,14 @@
 		1102A7FC181A715D00E6295C /* guanlian-B-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanlian-B-1.png"; sourceTree = "<group>"; };
 		1102A7FD181A715D00E6295C /* guanlian-B-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanlian-B-2.png"; sourceTree = "<group>"; };
 		110AFD59192DCD1D00CEFECE /* inclass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inclass.png; sourceTree = "<group>"; };
+		111B83B519A1F7D4008078BA /* report_writenormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = report_writenormal.png; sourceTree = "<group>"; };
+		111B83B719A1F7E5008078BA /* report_writeselect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = report_writeselect.png; sourceTree = "<group>"; };
+		111B83B919A1F9E7008078BA /* report_write_lefttop_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = report_write_lefttop_normal.png; sourceTree = "<group>"; };
+		111B83BA19A1F9E7008078BA /* report_write_lefttop_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = report_write_lefttop_selected.png; sourceTree = "<group>"; };
+		111B83BD19A1FB15008078BA /* left_report_cn_notmal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_report_cn_notmal.png; sourceTree = "<group>"; };
+		111B83BE19A1FB15008078BA /* left_report_cn_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_report_cn_select.png; sourceTree = "<group>"; };
+		111B83BF19A1FB15008078BA /* left_report_en_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_report_en_normal.png; sourceTree = "<group>"; };
+		111B83C019A1FB15008078BA /* left_report_en_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_report_en_select.png; sourceTree = "<group>"; };
 		111E511B1988E0A0007D9C6E /* GKReportModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReportModel.h; sourceTree = "<group>"; };
 		111E511C1988E0A0007D9C6E /* GKReportModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReportModel.m; sourceTree = "<group>"; };
 		111E511E1988E616007D9C6E /* GKReportQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReportQuestion.h; sourceTree = "<group>"; };
@@ -1464,6 +1480,14 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				111B83BD19A1FB15008078BA /* left_report_cn_notmal.png */,
+				111B83BE19A1FB15008078BA /* left_report_cn_select.png */,
+				111B83BF19A1FB15008078BA /* left_report_en_normal.png */,
+				111B83C019A1FB15008078BA /* left_report_en_select.png */,
+				111B83B919A1F9E7008078BA /* report_write_lefttop_normal.png */,
+				111B83BA19A1F9E7008078BA /* report_write_lefttop_selected.png */,
+				111B83B719A1F7E5008078BA /* report_writeselect.png */,
+				111B83B519A1F7D4008078BA /* report_writenormal.png */,
 				11B9A2C3198A36680083E91E /* report_line.png */,
 				11B50757195D5DAF00FE1D04 /* arrowdown.png */,
 				11497AE51952BC43003F169A /* home1.png */,
@@ -2103,10 +2127,12 @@
 				11AF3AF018166ECB00B36176 /* upHight@2x.png in Resources */,
 				78709C25187D1733009250FB /* play.png in Resources */,
 				11BF896B18363221008E72F0 /* 114.png in Resources */,
+				111B83C319A1FB15008078BA /* left_report_en_normal.png in Resources */,
 				111E8CF3181E6E9F00234014 /* input.png in Resources */,
 				78BE433718B7657B003ADCB8 /* 关于我们@2x.png in Resources */,
 				11CBB31818B1BBA100614FF0 /* delphotoH.png in Resources */,
 				11AF3AEB18166AB200B36176 /* navLeftBtn_default.png in Resources */,
+				111B83B619A1F7D4008078BA /* report_writenormal.png in Resources */,
 				11D42951187E4BE60002810E /* gradeFen@2x.png in Resources */,
 				11BF896F1836325F008E72F0 /* 120.png in Resources */,
 				78D8D11C18C07ABC008860AB /* thelp_send_568.png in Resources */,
@@ -2116,6 +2142,7 @@
 				11DB02ED18337F40007981C6 /* buyButtonEnable.png in Resources */,
 				78709C14187D1733009250FB /* edit-filters-overlay-selected-short.png in Resources */,
 				1102A7DE181A48FB00E6295C /* guanyu-2.png in Resources */,
+				111B83B819A1F7E5008078BA /* report_writeselect.png in Resources */,
 				119F0CA4181A216100A5910C /* aboutNormal.png in Resources */,
 				1193B39E1827847C00660CB1 /* 积分.png in Resources */,
 				1102A7FF181A715D00E6295C /* guanlian-B-2.png in Resources */,
@@ -2132,6 +2159,7 @@
 				11DB02D218337240007981C6 /* Localizable.strings in Resources */,
 				78709C22187D1733009250FB /* navbar-button-green-disabled@2x.png in Resources */,
 				1193A6AB182B6BA0004011BC /* countInput.png in Resources */,
+				111B83BB19A1F9E7008078BA /* report_write_lefttop_normal.png in Resources */,
 				2A32A57318122C02007CAA8E /* Default@2x.png in Resources */,
 				78709C0B187D1733009250FB /* camera-progress-background@2x.png in Resources */,
 				119571A0183B464700CE9F1B /* NOData.png in Resources */,
@@ -2158,6 +2186,7 @@
 				1194023218235F6100F21FB8 /* box-1.png in Resources */,
 				78A9394018C886D700722B12 /* thelp_notice.png in Resources */,
 				7870A106187E97EE009250FB /* settingH.png in Resources */,
+				111B83C119A1FB15008078BA /* left_report_cn_notmal.png in Resources */,
 				2A32A57518122C02007CAA8E /* Default-568h@2x.png in Resources */,
 				788C7C2D188FCC3800BA9BD0 /* movieplay.png in Resources */,
 				2A32A58218122C25007CAA8E /* GKLoginViewController.xib in Resources */,
@@ -2211,6 +2240,7 @@
 				119366D5184C34AB008D2FA2 /* leftUpHE.png in Resources */,
 				11B470DA1925CDFC00CFFEC3 /* photo.png in Resources */,
 				78DB7FB918A5CF7C00421D0D /* 视频2.png in Resources */,
+				111B83BC19A1F9E7008078BA /* report_write_lefttop_selected.png in Resources */,
 				788C7C27188FCAEF00BA9BD0 /* camera-shutter-default.png in Resources */,
 				78709C1D187D1733009250FB /* navbar-button-back.png in Resources */,
 				78709C1E187D1733009250FB /* navbar-button-back@2x.png in Resources */,
@@ -2225,6 +2255,7 @@
 				78D8D11B18C07ABC008860AB /* thelp_zhuye_568.png in Resources */,
 				11B852A8183221CF005FA5B9 /* OKBtn.png in Resources */,
 				11DB02E518337ACF007981C6 /* loginOUt.png in Resources */,
+				111B83C419A1FB15008078BA /* left_report_en_select.png in Resources */,
 				1102A7FB181A5E1200E6295C /* guanlianbottom.png in Resources */,
 				78DB7FB818A5CF7C00421D0D /* 视频1.png in Resources */,
 				11E27F8A183C643600CAE0BB /* helperE.png in Resources */,
@@ -2234,6 +2265,7 @@
 				78BE433A18B7657B003ADCB8 /* 修改密码@2x.png in Resources */,
 				11BF897F18363E58008E72F0 /* addPerH.png in Resources */,
 				1192E406181B850700C5F33B /* guanlian-num.png in Resources */,
+				111B83C219A1FB15008078BA /* left_report_cn_select.png in Resources */,
 				11A5A895187B9E5100EA22CD /* settingE.png in Resources */,
 				119F0CB8181A2D9600A5910C /* backH.png in Resources */,
 				11D40E3518618700003009D0 /* alterPassword.png in Resources */,

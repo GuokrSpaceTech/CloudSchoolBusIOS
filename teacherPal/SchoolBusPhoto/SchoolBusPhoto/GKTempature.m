@@ -16,6 +16,7 @@
     self.state=nil;
     self.otherstate=nil;
     self.studentid=nil;
+  
     [super dealloc];
 }
 @end

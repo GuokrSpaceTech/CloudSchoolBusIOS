@@ -111,18 +111,17 @@
     [buttonBack addTarget:self action:@selector(leftClick:) forControlEvents:UIControlEventTouchUpInside];
     
     
-    UIButton * button=[UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame=CGRectMake(240, 8, 70, 30);
-    //[button setTitle:NSLocalizedString(@"today", @"") forState:UIControlStateNormal];
-    button.titleLabel.font=[UIFont systemFontOfSize:15];
-    [button setBackgroundImage:[UIImage imageNamed:@"inclass.png"] forState:UIControlStateNormal];
-    [button setBackgroundImage:[UIImage imageNamed:@"inclassed.png"] forState:UIControlStateHighlighted];
-    //[photobutton setImage:[UIImage imageNamed:@"upNormal.png"] forState:UIControlStateNormal];
-    //[photobutton setImage:[UIImage imageNamed:@"upHight.png"] forState:UIControlStateHighlighted];
-    [button addTarget:self action:@selector(rightClick:) forControlEvents:UIControlEventTouchUpInside];
-    [navigationView addSubview:button];
+    
+    UIButton *sendbutton=[UIButton buttonWithType:UIButtonTypeCustom];
+    sendbutton.frame=CGRectMake(270, 5, 50, 35);
+    [sendbutton setBackgroundImage:[UIImage imageNamed:@"OKBtn.png"] forState:UIControlStateNormal];
+    [sendbutton setBackgroundImage:[UIImage imageNamed:@"OKBtn_sel.png"] forState:UIControlStateHighlighted];
+
+    [sendbutton addTarget:self action:@selector(rightClick:) forControlEvents:UIControlEventTouchUpInside];
+    [navigationView addSubview:sendbutton];
 
     
+
     
     NSDate *date=[NSDate date];
     
@@ -138,11 +137,13 @@
     dateButton.backgroundColor=[UIColor whiteColor];
     [dateButton setTitle:self.dateStr forState:UIControlStateNormal];
     dateButton.tag=100;
+
     [dateButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     dateButton.frame=CGRectMake(20, navigationView.frame.size.height+navigationView.frame.origin.y+5, 140, 30);
     [dateButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:dateButton];
     
+
     
     stuButton=[UIButton buttonWithType:UIButtonTypeCustom];
     stuButton.backgroundColor=[UIColor whiteColor];
@@ -172,6 +173,17 @@
     }
    
     [self.view addSubview:stuButton];
+    UIImageView *lineView1=[[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2.0,dateButton.frame.origin.y , 1, dateButton.frame.size.height)];
+    lineView1.backgroundColor=[UIColor colorWithRed:213/255.0 green:210/255.0 blue:204/255.0 alpha:1];
+    //lineView1.image=[UIImage imageNamed:@"line.png"];
+    [self.view addSubview:lineView1];
+    [lineView1 release];
+    
+    UIImageView *lineView=[[UIImageView alloc]initWithFrame:CGRectMake(0, stuButton.frame.size.height+stuButton.frame.origin.y+10, self.view.frame.size.width-1, 1)];
+    // lineView.backgroundColor=[UIColor colorWithRed:97/355.0 green:177/255.0 blue:200/255.0 alpha:1];
+    lineView.image=[UIImage imageNamed:@"line.png"];
+    [self.view addSubview:lineView];
+    [lineView release];
     
     
     titlelabel.text=NSLocalizedString(@"reportpub", @"");
@@ -311,6 +323,17 @@
 
 -(void)buttonClick:(UIButton *)btn
 {
+    for (UIView *view in [self.view subviews]) {
+        
+        if([view isKindOfClass:[UIButton class]])
+        {
+            view.backgroundColor=[UIColor whiteColor];
+            UIButton *btn1=(UIButton *)view;
+            [btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        }
+    }
+    btn.backgroundColor=[UIColor colorWithRed:97/355.0 green:177/255.0 blue:200/255.0 alpha:1];
+      [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     if(btn.tag==100)
     {
         NSDateFormatter *formate = [[[NSDateFormatter alloc] init] autorelease];
@@ -321,6 +344,8 @@
         
         [sheet showInView:self.view.window];
         [sheet release];
+        
+    
 
     }
     else if(btn.tag==101)

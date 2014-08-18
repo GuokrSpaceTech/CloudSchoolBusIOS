@@ -258,14 +258,17 @@
 {
 
     [picTextArr removeAllObjects];
+    
+    NSLog(@"%@",self.tag);
     for (int i=0; i<[assetArr count]; i++) {
         
         
         NSString *key=[NSString stringWithFormat:@"%d",i];
         
-        NSMutableDictionary *dic= [NSMutableDictionary dictionaryWithObjectsAndKeys:self.tag,@"tag",self.tagid,@"tagid",str,@"text", nil];
-        
+        NSMutableDictionary *dic= [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSMutableArray arrayWithArray:self.tag],@"tag",[NSMutableArray arrayWithArray:self.tagid],@"tagid",str,@"text", nil];
+     
         [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:dic,key, nil]];
+        //[dic release];
     }
 
 }

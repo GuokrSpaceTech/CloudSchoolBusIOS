@@ -181,23 +181,11 @@
                 temperature.studentid=[NSString stringWithFormat:@"%@",[[arr objectAtIndex:i] objectForKey:@"studentid"]];
                 temperature.name=[[arr objectAtIndex:i] objectForKey:@"enname"];
                 temperature.tempature=[[arr objectAtIndex:i] objectForKey:@"temperature"];
+                temperature.state=[[arr objectAtIndex:i] objectForKey:@"temperaturestate"];
                 if([temperature.tempature isKindOfClass:[NSNull class]])
                 {
                     temperature.tempature=@"";
-                }
-                if(![temperature.tempature isKindOfClass:[NSNull class]])
-                {
-                    if([temperature.tempature floatValue]>=36.0 && [temperature.tempature floatValue]<=37.5)
-                    {
-                        temperature.state=NSLocalizedString(@"normal", @"");
-                        
-                        
-                    }
-                    else
-                    {
-                        temperature.state=NSLocalizedString(@"heighter", @"");
-                    }
-
+                    temperature.state=@"";
                 }
                 temperature.otherstate=[[arr objectAtIndex:i] objectForKey:@"state"];
                 if([temperature.otherstate isKindOfClass:[NSNull class]])
@@ -376,7 +364,7 @@
     GKTempature *temp=[self.tempatureArr objectAtIndex:indexPath.row];
     nameLabel.text=temp.name;
     statelabel.text=temp.state;
-    if([statelabel.text isEqualToString:NSLocalizedString(@"normal", @"")])
+    if([statelabel.text isEqualToString:@"体温正常"])
     {
         statelabel.textColor=[UIColor blackColor];
     }

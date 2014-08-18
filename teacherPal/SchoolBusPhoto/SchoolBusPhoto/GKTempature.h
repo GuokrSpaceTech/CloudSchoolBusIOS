@@ -14,5 +14,6 @@
 @property (nonatomic,retain)NSString * tempature;
 @property (nonatomic,retain)NSString *state;
 @property (nonatomic,retain)NSString *otherstate;
+
 @property (nonatomic,assign)BOOL isTempature;
 @end

@@ -196,7 +196,7 @@
         
         UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
         imgV.center = CGPointMake(26, 20);
-        imgV.image = [UIImage imageNamed:@"mychild_doctor.png"];
+        imgV.image = [UIImage imageNamed:@"report_icon.png"];
         [cell.contentView addSubview:imgV];
         [imgV release];
         

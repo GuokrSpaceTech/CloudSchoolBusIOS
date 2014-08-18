@@ -686,27 +686,6 @@
                     
                     break;
                 }
-//                case 4://给我评分
-//                {
-//                    NSString *evaluateString = [NSString stringWithFormat:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=600478283"];
-//                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:evaluateString]];
-//                    return;
-//                }
-//                case 5://发现新版本
-//                {
-//                    [self checkVersion];
-//                    return;
-//                }
-//                case 6://关于我们
-//                {
-//                    
-//                    vc = [[ETAboutView alloc] initWithFrame:CGRectMake(0,
-//                                                                       0,
-//                                                                       [UIScreen mainScreen].applicationFrame.size.width,
-//                                                                       [UIScreen mainScreen].applicationFrame.size.height)];
-//                    
-//                    break;
-//                }
                 case 5://退出登录
                 {
                     

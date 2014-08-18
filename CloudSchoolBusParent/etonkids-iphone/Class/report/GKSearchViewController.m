@@ -264,7 +264,7 @@
     NSString * tmp = [NSString stringWithFormat:@"%@",[format stringFromDate:pdate]];
     
     
-    titleLabel.text=[NSString stringWithFormat:@"%@ %@ %@",report.reportname,tmp,report.title];
+    titleLabel.text=[NSString stringWithFormat:@"%@ %@",report.reportname,tmp];
     timelabel.text=[self timeStr:report.createtime];
     
     

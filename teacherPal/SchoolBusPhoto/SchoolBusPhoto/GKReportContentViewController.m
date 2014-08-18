@@ -74,6 +74,21 @@
     
     _tableView.tableHeaderView=[headerView autorelease];
     
+    
+    UIImageView *iamgeviewtop=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width  , 1)];
+    iamgeviewtop.image= [UIImage imageNamed:@"line.png"];
+    [headerView addSubview:iamgeviewtop];
+    [iamgeviewtop release];
+    
+    UIImageView *iamgeviewmiddle=[[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2.0-1, 0, 1, headerView.frame.size.height)];
+    iamgeviewmiddle.backgroundColor=[UIColor colorWithRed:213/255.0 green:210/255.0 blue:204/255.0 alpha:1];
+    [headerView addSubview:iamgeviewmiddle];
+    [iamgeviewmiddle release];
+    UIImageView *iamgeview=[[UIImageView alloc]initWithFrame:CGRectMake(0, headerView.frame.size.height-1, self.view.frame.size.width  , 1)];
+    iamgeview.image= [UIImage imageNamed:@"line.png"];
+    [headerView addSubview:iamgeview];
+    [iamgeview release];
+    
 
     
    // list=[[NSMutableArray alloc]init];
@@ -113,7 +128,7 @@
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
         
         
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(10, 10, 280,20)];
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(20, 10, 280,20)];
         label.backgroundColor=[UIColor clearColor];
         label.tag=100;
         [cell.contentView addSubview:label];
@@ -142,7 +157,7 @@
     UILabel *titleLabel=(UILabel *)[cell.contentView viewWithTag:100];
     UILabel *contentlabel=(UILabel *)[cell.contentView viewWithTag:101];
     ;
-    titleLabel.text=[NSString stringWithFormat:@"%d、%@",(indexPath.row+1),[dic objectForKey:@"title"]];
+    titleLabel.text=[NSString stringWithFormat:@"%@",[dic objectForKey:@"title"]];
     
     
     NSString *answer=[dic objectForKey:@"answer"];

@@ -31,10 +31,10 @@
         op1Button.frame=CGRectMake(10, 25, 90, 30);
         op1Button.tag=1;
         [op1Button addTarget:self action:@selector(opClick:) forControlEvents:UIControlEventTouchUpInside];
-        op1Button.backgroundColor=[UIColor colorWithRed:97/355.0 green:177/255.0 blue:200/255.0 alpha:1];
-       
+      //  op1Button.backgroundColor=[UIColor colorWithRed:97/355.0 green:177/255.0 blue:200/255.0 alpha:1];
+        [op1Button setBackgroundImage:[UIImage imageNamed:@"report_writeselect.png"] forState:UIControlStateNormal];
 
-        [op1Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [op1Button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self addSubview:op1Button];
         
         op2Button=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -42,7 +42,7 @@
         op2Button.tag=2;
         [op2Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [op2Button addTarget:self action:@selector(opClick:) forControlEvents:UIControlEventTouchUpInside];
-        op2Button.backgroundColor= [UIColor grayColor];
+       [op2Button setBackgroundImage:[UIImage imageNamed:@"report_writenormal.png"] forState:UIControlStateNormal];
         [self addSubview:op2Button];
         
         op3Button=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -50,7 +50,8 @@
         op3Button.tag=3;
         [op3Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [op3Button addTarget:self action:@selector(opClick:) forControlEvents:UIControlEventTouchUpInside];
-        op3Button.backgroundColor= [UIColor grayColor];
+      //  op3Button.backgroundColor= [UIColor grayColor];
+        [op3Button setBackgroundImage:[UIImage imageNamed:@"report_writenormal.png"] forState:UIControlStateNormal];
         [self addSubview:op3Button];
         
        
@@ -80,16 +81,33 @@
     {
         if(tag==1)
         {
-            op1Button.backgroundColor=[UIColor colorWithRed:97/355.0 green:177/255.0 blue:200/255.0 alpha:1];
-            op2Button.backgroundColor= [UIColor grayColor];
-            op3Button.backgroundColor= [UIColor grayColor];
+//            op1Button.backgroundColor=[UIColor colorWithRed:97/355.0 green:177/255.0 blue:200/255.0 alpha:1];
+//            op2Button.backgroundColor= [UIColor grayColor];
+//            op3Button.backgroundColor= [UIColor grayColor];
+            
+            [op1Button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [op2Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [op3Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            
+            [op1Button setBackgroundImage:[UIImage imageNamed:@"report_writeselect.png"] forState:UIControlStateNormal];
+            [op2Button setBackgroundImage:[UIImage imageNamed:@"report_writenormal.png"] forState:UIControlStateNormal];
+            [op3Button setBackgroundImage:[UIImage imageNamed:@"report_writenormal.png"] forState:UIControlStateNormal];
             [delegate questionView:self questionTitle:question.title answer:question.op1];
         }
         else if(tag==2)
         {
-            op1Button.backgroundColor=[UIColor grayColor];
-            op3Button.backgroundColor= [UIColor grayColor];
-            op2Button.backgroundColor=[UIColor colorWithRed:97/355.0 green:177/255.0 blue:200/255.0 alpha:1];
+//            op1Button.backgroundColor=[UIColor grayColor];
+//            op3Button.backgroundColor= [UIColor grayColor];
+//            op2Button.backgroundColor=[UIColor colorWithRed:97/355.0 green:177/255.0 blue:200/255.0 alpha:1];
+//
+            [op1Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [op2Button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [op3Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            
+            [op2Button setBackgroundImage:[UIImage imageNamed:@"report_writeselect.png"] forState:UIControlStateNormal];
+            [op1Button setBackgroundImage:[UIImage imageNamed:@"report_writenormal.png"] forState:UIControlStateNormal];
+            [op3Button setBackgroundImage:[UIImage imageNamed:@"report_writenormal.png"] forState:UIControlStateNormal];
+            
             [delegate questionView:self questionTitle:question.title answer:question.op2];
         }
         else
@@ -97,6 +115,15 @@
             op1Button.backgroundColor=[UIColor grayColor];
             op2Button.backgroundColor= [UIColor grayColor];
             op3Button.backgroundColor= [UIColor colorWithRed:97/355.0 green:177/255.0 blue:200/255.0 alpha:1];
+            
+            [op1Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [op2Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [op3Button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            
+            
+            [op1Button setBackgroundImage:[UIImage imageNamed:@"report_writenormal.png"] forState:UIControlStateNormal];
+            [op2Button setBackgroundImage:[UIImage imageNamed:@"report_writenormal.png"] forState:UIControlStateNormal];
+            [op3Button setBackgroundImage:[UIImage imageNamed:@"report_writeselect.png"] forState:UIControlStateNormal];
             [delegate questionView:self questionTitle:question.title answer:question.op3];
         }
         

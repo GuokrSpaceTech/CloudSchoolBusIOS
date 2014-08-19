@@ -184,12 +184,20 @@
             imgV.image = [UIImage imageNamed:@"myaccount1.png"];
             label.text = str;
             msgLabel1.hidden = YES;
-            
-            
             label.frame = CGRectMake(50, 7, 200, 20);
             msgLabel.frame = CGRectMake(50 , 28, 200, 30);
             
-            msgLabel.text =[NSString stringWithFormat:@"%@%@",NSLocalizedString(@"heakthendtime", @""),user.chunyuendtime];//@"有效期至";
+            
+            NSDate *date=[NSDate dateWithTimeIntervalSince1970:[user.chunyuendtime integerValue]];
+            
+            NSDateFormatter *dateFomatter=[[NSDateFormatter alloc]init];
+            [dateFomatter setDateFormat:@"yyyy-MM-dd"];
+            
+            NSString *datestr=[dateFomatter stringFromDate:date];
+            
+            msgLabel.text =[NSString stringWithFormat:@"%@%@",NSLocalizedString(@"heakthendtime", @""),datestr];//@"有效期至";
+            
+            [dateFomatter release];
         }
         else
         {

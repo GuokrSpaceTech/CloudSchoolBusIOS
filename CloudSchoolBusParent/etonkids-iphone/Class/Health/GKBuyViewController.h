@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "EKRequest.h"
 @interface GKBuyViewController : UIViewController<EKProtocol>
-
+{
+    UITextField *textfiled;
+    UILabel * sumLabel;
+}
+@property (nonatomic,assign)int count;
 @end

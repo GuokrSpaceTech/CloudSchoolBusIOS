@@ -15,12 +15,18 @@
 #import "DataVerifier.h"
 #import "AlixPayResult.h"
 #import "PartnerConfig.h"
+#import "SBJsonWriter.h"
+#import "BuyButton.h"
+#define ALIPAY_SAFEPAY     @"SafePay"
+#define ALIPAY_DATASTRING  @"dataString"
+#define ALIPAY_SCHEME      @"fromAppUrlScheme"
+#define ALIPAY_TYPE        @"requestType"
 @interface GKBuyViewController ()
 
 @end
 
 @implementation GKBuyViewController
-
+@synthesize count;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -82,22 +88,141 @@
   
     
     
-    UIButton *buttonBuy=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIImageView *picImageView=[[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2.0-536/4.0, navigationBackView.frame.size.height+navigationBackView.frame.origin.y+10, 536/2.0, 235/2.0)];
+    picImageView.image=[UIImage imageNamed:@"health_bg_pic.png"];
+    [self.view addSubview:picImageView];
+    [picImageView release];
     
-    buttonBuy.frame=CGRectMake(10, 200, 100, 30);
-    buttonBuy.backgroundColor=[UIColor redColor];
-    [buttonBuy addTarget:self action:@selector(buyClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:buttonBuy];
+    
+    NSString *str=NSLocalizedString(@"health_bg_content", @"");
+    
+    CGSize size=[str sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:CGSizeMake(self.view.frame.size.width-20, 1000) lineBreakMode:NSLineBreakByWordWrapping];
+    
+    UILabel *contentlabel=[[UILabel alloc]initWithFrame:CGRectMake(10, picImageView.frame.size.height+picImageView.frame.origin.y+5, self.view.frame.size.width-20, size.height)];
+    contentlabel.numberOfLines=0;;
+    contentlabel.backgroundColor=[UIColor clearColor];
+    contentlabel.text=str;
+    contentlabel.font=[UIFont systemFontOfSize:13];
+    [self.view addSubview:contentlabel];
+    [contentlabel release];
+
+    count=1;
+    float y=contentlabel.frame.size.height+contentlabel.frame.origin.y+10;
+    NSArray *arr=[NSArray arrayWithObjects:@"价格",@"数量",@"总价", nil];
+    for (int i=0; i<3; i++) {
+        
+        UILabel * temp=[[UILabel alloc]initWithFrame:CGRectMake(20, y+(20 +10)*i, 50, 20)];
+        temp.backgroundColor=[UIColor clearColor];
+        temp.text=[arr objectAtIndex:i];
+        temp.font=[UIFont systemFontOfSize:15];
+        [self.view addSubview:temp];
+        [temp release];
+        
+        UIImageView *imageLine1=[[UIImageView alloc]initWithFrame:CGRectMake(0,y+25+(30)*i, self.view.frame.size.width, 1)];
+        imageLine1.image=[UIImage imageNamed:@"cellline.png"];
+        [self.view addSubview:imageLine1];
+        [imageLine1 release];
+
+    }
+    
+    
+    
+//    
+    UIImageView *imageLine=[[UIImageView alloc]initWithFrame:CGRectMake(0,y-5, self.view.frame.size.width, 1)];
+    imageLine.image=[UIImage imageNamed:@"cellline.png"];
+    [self.view addSubview:imageLine];
+    [imageLine release];
+    
+    
+    
+    UILabel * priceLabel=[[UILabel alloc]initWithFrame:CGRectMake(225, y, 50, 20)];
+    priceLabel.backgroundColor=[UIColor clearColor];
+    priceLabel.text=@"8元/月";
+    priceLabel.font=[UIFont systemFontOfSize:15];
+    [self.view addSubview:priceLabel];
+    [priceLabel release];
+    
+    
+    UIButton *jianBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    jianBtn.frame=CGRectMake(140, y+20+10, 33, 20);
+    [jianBtn setBackgroundImage:[UIImage imageNamed:@"health_minux_normal.png"] forState:UIControlStateNormal];
+    [jianBtn setBackgroundImage:[UIImage imageNamed:@"health_minux_select.png"] forState:UIControlStateHighlighted];
+    jianBtn.tag=100;
+    [jianBtn addTarget:self action:@selector(countClcik:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:jianBtn];
+    
+    
+    textfiled=[[UITextField alloc]initWithFrame:CGRectMake(180, y+30, 50, 20)];
+    textfiled.borderStyle=UITextBorderStyleRoundedRect;
+    [textfiled setEnabled:NO];
+    textfiled.text=@"1";
+    textfiled.font=[UIFont systemFontOfSize:15];
+    textfiled.textAlignment=NSTextAlignmentCenter;
+    [self.view addSubview:textfiled];
+    
+    UIButton *plusBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    plusBtn.frame=CGRectMake(240, y+30, 33, 20);
+    [plusBtn setBackgroundImage:[UIImage imageNamed:@"health_plus_mormal.png"] forState:UIControlStateNormal];
+    [plusBtn setBackgroundImage:[UIImage imageNamed:@"health_plus_select.png"] forState:UIControlStateHighlighted];
+    plusBtn.tag=101;
+    [plusBtn addTarget:self action:@selector(countClcik:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:plusBtn];
+
+    
+    sumLabel=[[UILabel alloc]initWithFrame:CGRectMake(225, y+30+30, 50, 20)];
+    sumLabel.backgroundColor=[UIColor clearColor];
+    sumLabel.text=@"8元";
+    sumLabel.font=[UIFont systemFontOfSize:15];
+    [self.view addSubview:sumLabel];
+    [sumLabel release];
+    
+    //UIButton *buttonBuy=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    BuyButton *btn=[[BuyButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2.0-611/4.0, sumLabel.frame.size.height + sumLabel.frame.origin.y+20,611/2.0, 45) title1:@"支付宝客户端支付" title2:@"推荐已安装支付宝客户端的用户使用" image:[UIImage imageNamed:@"health_buy_btn_icon.png"]];
+
+//    buttonBuy.backgroundColor=[UIColor redColor];
+  //  [btn addTarget:self action:@selector(buyClick:) forControlEvents:UIControlEventTouchDown];
+    
+    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(buyClick:)];
+    tap.numberOfTapsRequired=1;
+    [btn addGestureRecognizer:tap];
+    [tap release];
+    [self.view addSubview:btn];
+    [btn release];
 
 
 }
--(void)buyClick:(UIButton *)btn
+-(void)countClcik:(UIButton *)btn
 {
-    ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
-    [com requestLoginWithComplete:^(NSError *err){
-         NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"2",@"count", nil];
-        [[EKRequest Instance] EKHTTPRequest:order parameters:dic requestMethod:GET forDelegate:self];
-    }];
+    if(btn.tag==100)
+    {
+        if(count==1)
+        {
+            count=1;
+        }
+        else
+        {
+            count--;
+        }
+    }
+    else if (btn.tag==101)
+    {
+        count++;
+    }
+    
+    sumLabel.text=[NSString stringWithFormat:@"%d 元",count * 8];
+    textfiled.text=[NSString stringWithFormat:@"%d",count];
+}
+-(void)buyClick:(UITapGestureRecognizer *)tap
+{
+    if(tap.state==UIGestureRecognizerStateEnded)
+    {
+        ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
+        [com requestLoginWithComplete:^(NSError *err){
+            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"2",@"count", nil];
+            [[EKRequest Instance] EKHTTPRequest:order parameters:dic requestMethod:GET forDelegate:self];
+        }];
+    }
+
     
 }
 -(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
@@ -120,7 +245,7 @@
         order.productName = [dic objectForKey:@"title"]; //商品标题
         order.productDescription = [dic objectForKey:@"description"]; //商品描述
         // order.amount = [NSString stringWithFormat:@"%@",[dic objectForKey:@"price"]]; //商品价格
-        order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格
+        order.amount = [NSString stringWithFormat:@"%.2f",self.count*0.01]; //商品价格
         order.notifyURL =   [dic objectForKey:@"notifyURL"]; //回调URL
         
         
@@ -134,9 +259,51 @@
         NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
                                  orderInfo, signedStr, @"RSA"];
         
-        // [AlixLibService exitFullScreen];
         
-      
+        
+        
+        
+        NSDictionary * oderParams = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     orderString,ALIPAY_DATASTRING,
+                                     appScheme, ALIPAY_SCHEME,
+                                     ALIPAY_SAFEPAY, ALIPAY_TYPE,
+                                     nil];
+        
+        //采用SBjson将params转化为json格式的字符串
+        SBJsonWriter * OderJsonwriter = [SBJsonWriter new];
+        NSString * jsonString = [OderJsonwriter stringWithObject:oderParams];
+        [OderJsonwriter release];
+        
+        //将数据拼接成符合alipay规范的Url
+        //注意：这里改为接入独立安全支付客户端
+        
+        //支付宝钱包
+        NSString * urlString = [NSString stringWithFormat:@"alipay://alipayclient/?%@",
+                                [jsonString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        NSURL * dataUrl = [NSURL URLWithString:urlString];
+        
+        //快捷支付
+        NSString * safeUrlString = [NSString stringWithFormat:@"safepay://alipayclient/?%@",
+                                    [jsonString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        NSURL * safeDataUrl = [NSURL URLWithString:safeUrlString];
+        
+        //通过打开Url调用安全支付服务
+        //实质上,外部商户只需保证把商品信息拼接成符合规范的字符串转为Url并打开,其余任何函数代码都可以自行优化
+        if (![[UIApplication sharedApplication] canOpenURL:dataUrl] && ![[UIApplication sharedApplication] canOpenURL:safeDataUrl])
+        {
+            //[[UIApplication sharedApplication] openURL:dataUrl];
+            UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                 message:@"您还没有安装支付宝快捷支付，请先安装。"
+                                                                delegate:self
+                                                       cancelButtonTitle:@"确定"
+                                                       otherButtonTitles:nil];
+            [alertView setTag:123];
+            [alertView show];
+            [alertView release];
+
+            return;
+        }
+ 
         [AlixLibService payOrder:orderString AndScheme:appScheme seletor:@selector(paymentResult:) target:self];
         
         

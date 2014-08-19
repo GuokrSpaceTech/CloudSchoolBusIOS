@@ -301,6 +301,8 @@
     else if (indexPath.section == 4)
     {
     
+
+        
         UserLogin *user=[UserLogin currentLogin];
         if([user.chunyuisopen intValue]==0)
         {

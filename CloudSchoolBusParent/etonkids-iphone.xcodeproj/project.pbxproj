@@ -15,6 +15,10 @@
 		112330A3195189B5001B585F /* libMobClickLibrary_armv6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 112330A0195189B5001B585F /* libMobClickLibrary_armv6.a */; };
 		1124C0B919920BC60044485B /* GKReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1124C0B819920BC60044485B /* GKReportViewController.m */; };
 		1124C0BC199213C50044485B /* GKReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 1124C0BB199213C50044485B /* GKReport.m */; };
+		112FC10D19A3229400786B33 /* health_minux_select.png in Resources */ = {isa = PBXBuildFile; fileRef = 112FC10919A3229400786B33 /* health_minux_select.png */; };
+		112FC10E19A3229400786B33 /* health_plus_select.png in Resources */ = {isa = PBXBuildFile; fileRef = 112FC10A19A3229400786B33 /* health_plus_select.png */; };
+		112FC10F19A3229400786B33 /* health_minux_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 112FC10B19A3229400786B33 /* health_minux_normal.png */; };
+		112FC11019A3229400786B33 /* health_plus_mormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 112FC10C19A3229400786B33 /* health_plus_mormal.png */; };
 		113320FC1953EB140088E226 /* GKHealthListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113320FB1953EB140088E226 /* GKHealthListViewController.m */; };
 		113320FF195412C80088E226 /* GKHealthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 113320FE195412C80088E226 /* GKHealthCell.m */; };
 		1133210119542A260088E226 /* -vip.png in Resources */ = {isa = PBXBuildFile; fileRef = 1133210019542A260088E226 /* -vip.png */; };
@@ -64,6 +68,11 @@
 		11A3F3C61795248300C37EA1 /* alert.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A3F3C51795248200C37EA1 /* alert.png */; };
 		11B3E225193ED7FC00A96ACF /* ETSendRecevieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B3E224193ED7FC00A96ACF /* ETSendRecevieViewController.m */; };
 		11B3E228193F058500A96ACF /* ETSendReceiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B3E227193F058500A96ACF /* ETSendReceiveView.m */; };
+		11B62A7B19A34A1000B8604F /* BuyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B62A7A19A34A1000B8604F /* BuyButton.m */; };
+		11B62A7D19A34DEF00B8604F /* health_buy_btn_icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B62A7C19A34DEF00B8604F /* health_buy_btn_icon2.png */; };
+		11B62A7F19A34E0700B8604F /* health_buy_btn_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B62A7E19A34E0700B8604F /* health_buy_btn_icon.png */; };
+		11B62A8119A34E1400B8604F /* health_buy_btn_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B62A8019A34E1400B8604F /* health_buy_btn_BG.png */; };
+		11B62A8319A34E2200B8604F /* qq_34.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B62A8219A34E2200B8604F /* qq_34.png */; };
 		11BD325B199DB424007FCFE7 /* ETUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BD325A199DB424007FCFE7 /* ETUser.m */; };
 		11BD3261199DB962007FCFE7 /* GKBuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BD3260199DB962007FCFE7 /* GKBuyViewController.m */; };
 		11BD8C46195BB93E0098C1BA /* ETPraiseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BD8C45195BB93E0098C1BA /* ETPraiseViewController.m */; };
@@ -637,6 +646,10 @@
 		1124C0B819920BC60044485B /* GKReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReportViewController.m; sourceTree = "<group>"; };
 		1124C0BA199213C50044485B /* GKReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReport.h; sourceTree = "<group>"; };
 		1124C0BB199213C50044485B /* GKReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReport.m; sourceTree = "<group>"; };
+		112FC10919A3229400786B33 /* health_minux_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_minux_select.png; sourceTree = "<group>"; };
+		112FC10A19A3229400786B33 /* health_plus_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_plus_select.png; sourceTree = "<group>"; };
+		112FC10B19A3229400786B33 /* health_minux_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_minux_normal.png; sourceTree = "<group>"; };
+		112FC10C19A3229400786B33 /* health_plus_mormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_plus_mormal.png; sourceTree = "<group>"; };
 		113320FA1953EB140088E226 /* GKHealthListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHealthListViewController.h; sourceTree = "<group>"; };
 		113320FB1953EB140088E226 /* GKHealthListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKHealthListViewController.m; sourceTree = "<group>"; };
 		113320FD195412C80088E226 /* GKHealthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHealthCell.h; sourceTree = "<group>"; };
@@ -714,6 +727,12 @@
 		11B3E224193ED7FC00A96ACF /* ETSendRecevieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSendRecevieViewController.m; sourceTree = "<group>"; };
 		11B3E226193F058500A96ACF /* ETSendReceiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETSendReceiveView.h; sourceTree = "<group>"; };
 		11B3E227193F058500A96ACF /* ETSendReceiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSendReceiveView.m; sourceTree = "<group>"; };
+		11B62A7919A34A1000B8604F /* BuyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyButton.h; sourceTree = "<group>"; };
+		11B62A7A19A34A1000B8604F /* BuyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyButton.m; sourceTree = "<group>"; };
+		11B62A7C19A34DEF00B8604F /* health_buy_btn_icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_buy_btn_icon2.png; sourceTree = "<group>"; };
+		11B62A7E19A34E0700B8604F /* health_buy_btn_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_buy_btn_icon.png; sourceTree = "<group>"; };
+		11B62A8019A34E1400B8604F /* health_buy_btn_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_buy_btn_BG.png; sourceTree = "<group>"; };
+		11B62A8219A34E2200B8604F /* qq_34.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qq_34.png; sourceTree = "<group>"; };
 		11BD3259199DB424007FCFE7 /* ETUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETUser.h; sourceTree = "<group>"; };
 		11BD325A199DB424007FCFE7 /* ETUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETUser.m; sourceTree = "<group>"; };
 		11BD325F199DB962007FCFE7 /* GKBuyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBuyViewController.h; sourceTree = "<group>"; };
@@ -1604,6 +1623,8 @@
 				11BE36D0196BD054002F4FD4 /* HealthFirstView.m */,
 				11BD325F199DB962007FCFE7 /* GKBuyViewController.h */,
 				11BD3260199DB962007FCFE7 /* GKBuyViewController.m */,
+				11B62A7919A34A1000B8604F /* BuyButton.h */,
+				11B62A7A19A34A1000B8604F /* BuyButton.m */,
 			);
 			path = Health;
 			sourceTree = "<group>";
@@ -2268,6 +2289,14 @@
 		E3EA3B01169E94C5000DF7EE /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				11B62A8219A34E2200B8604F /* qq_34.png */,
+				11B62A8019A34E1400B8604F /* health_buy_btn_BG.png */,
+				11B62A7E19A34E0700B8604F /* health_buy_btn_icon.png */,
+				11B62A7C19A34DEF00B8604F /* health_buy_btn_icon2.png */,
+				112FC10919A3229400786B33 /* health_minux_select.png */,
+				112FC10A19A3229400786B33 /* health_plus_select.png */,
+				112FC10B19A3229400786B33 /* health_minux_normal.png */,
+				112FC10C19A3229400786B33 /* health_plus_mormal.png */,
 				11EF146419A1E147008F81E9 /* report_icon.png */,
 				1110D49B19A1D9890075539D /* searchbar_bg@2x.png */,
 				11BE36DC196BE0A4002F4FD4 /* health_uppic-en.png */,
@@ -3046,6 +3075,7 @@
 				F95023F316DCB61B0079A05E /* composereturnbtn@2x.png in Resources */,
 				F95023F416DCB61B0079A05E /* composesentbtn.png in Resources */,
 				F95023F516DCB61B0079A05E /* composesentbtn@2x.png in Resources */,
+				11B62A8319A34E2200B8604F /* qq_34.png in Resources */,
 				F95023F616DCB61B0079A05E /* composesentbtnhover.png in Resources */,
 				F95023F716DCB61B0079A05E /* composesentbtnhover@2x.png in Resources */,
 				F95023F816DCB61B0079A05E /* composeupbg.png in Resources */,
@@ -3122,8 +3152,10 @@
 				73B9CDBD17ABAE2E00E8AD36 /* ETdefaultViewController.xib in Resources */,
 				785DE1BD180FB3E6001B0EB3 /* bottomScheduleSel.png in Resources */,
 				78F841DC181A70EA007722AE /* guidebtnBack.png in Resources */,
+				11B62A8119A34E1400B8604F /* health_buy_btn_BG.png in Resources */,
 				78F841B7181943FB007722AE /* Default-568h@2x.png in Resources */,
 				78E892F41828F39500025EB5 /* noticeTabBack.png in Resources */,
+				112FC10E19A3229400786B33 /* health_plus_select.png in Resources */,
 				11BF129D195AD865003ABFF6 /* inputBG.png in Resources */,
 				78DFD29117B0B4F40069B8CC /* 保存.png in Resources */,
 				78DFD29217B0B4F40069B8CC /* 腾讯微博.png in Resources */,
@@ -3177,12 +3209,14 @@
 				78C2ADE317E0830500E6A5CD /* bottom_logout_default.png in Resources */,
 				78C2ADE417E0830500E6A5CD /* bottom_logout_selected.png in Resources */,
 				78C2ADE517E0830500E6A5CD /* bottom_newversion_default.png in Resources */,
+				112FC11019A3229400786B33 /* health_plus_mormal.png in Resources */,
 				78C2ADE617E0830500E6A5CD /* bottom_newversion_selected.png in Resources */,
 				78C2ADE717E0830500E6A5CD /* bottom_schedule_default.png in Resources */,
 				78709BB9187CFE51009250FB /* 引导页-EN.png in Resources */,
 				78A4200318211A7100D0DE50 /* bindTextBack1.png in Resources */,
 				78C2ADE817E0830500E6A5CD /* bottom_schedule_selected.png in Resources */,
 				78C2ADE917E0830500E6A5CD /* bottom_score_default.png in Resources */,
+				112FC10D19A3229400786B33 /* health_minux_select.png in Resources */,
 				78C2ADEA17E0830500E6A5CD /* bottom_score_selected.png in Resources */,
 				11BF12A4195AD88B003ABFF6 /* send_23.png in Resources */,
 				785DE1A3180FB0E5001B0EB3 /* bottomSel.png in Resources */,
@@ -3226,7 +3260,9 @@
 				7897DF7F17F2C38000DB8B21 /* order.png in Resources */,
 				7897DF8117F2C38500DB8B21 /* myCollect.png in Resources */,
 				78F841D3181A1398007722AE /* tbBtn_setting.png in Resources */,
+				11B62A7D19A34DEF00B8604F /* health_buy_btn_icon2.png in Resources */,
 				7897DF8517F2D38300DB8B21 /* activeTab1.png in Resources */,
+				11B62A7F19A34E0700B8604F /* health_buy_btn_icon.png in Resources */,
 				11BD8C49195BC7A90098C1BA /* user_subscribe_favor_normal.png in Resources */,
 				789DC88E183C4CAD006B7FF8 /* 1登录_02 (2)_EN.png in Resources */,
 				7897DF8617F2D38300DB8B21 /* activeTab2.png in Resources */,
@@ -3242,6 +3278,7 @@
 				114143141965451B007267D6 /* health_bottom@2x.png in Resources */,
 				7897DF9517F2D71E00DB8B21 /* fontSelect.png in Resources */,
 				78A420051821245E00D0DE50 /* infoBack1.png in Resources */,
+				112FC10F19A3229400786B33 /* health_minux_normal.png in Resources */,
 				11414317196552F2007267D6 /* health_button.png in Resources */,
 				78378EF417F56F6D00AAAE5A /* AboutOurView.xib in Resources */,
 				78F841C7181945F9007722AE /* tbBtn_classshare_en.png in Resources */,
@@ -3318,6 +3355,7 @@
 				E3478BE216AFB7CD00AE1E4D /* ETLoginViewController.m in Sources */,
 				E3E8955716B66CD600D2F5AC /* UserLogin.m in Sources */,
 				11BE36D1196BD054002F4FD4 /* HealthFirstView.m in Sources */,
+				11B62A7B19A34A1000B8604F /* BuyButton.m in Sources */,
 				E3FFBC5016B7B148001F0C3E /* Student.m in Sources */,
 				7860CB2C188686EC00DD0E80 /* MDRadialProgressView.m in Sources */,
 				E3F4F39516B8D14200CB8E31 /* ETFoodView.m in Sources */,

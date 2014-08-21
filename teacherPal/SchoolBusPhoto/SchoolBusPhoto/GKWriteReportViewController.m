@@ -151,26 +151,26 @@
    
     [stuButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     stuButton.frame=CGRectMake(160, navigationView.frame.size.height+navigationView.frame.origin.y+5, 140, 30);
-    if([model.type intValue]==2)
-    {
-        
-        
-        GKUserLogin *user=[GKUserLogin currentLogin];
-        
-         [stuButton setTitle:[NSString stringWithFormat:@"全班%d人",[user.studentArr count]] forState:UIControlStateNormal];
-        self.studentselectStr=[NSString stringWithFormat:@"全班%d人",[user.studentArr count]];
-        for (int i=0; i<[user.studentArr count]; i++) {
-            Student *st=[user.studentArr objectAtIndex:i];
-            [stuidArr addObject:[NSString stringWithFormat:@"%@",st.studentid]];
-        }
-
-        
-    }
-    else
-    {
+//    if([model.type intValue]==2)
+//    {
+//        
+//        
+//        GKUserLogin *user=[GKUserLogin currentLogin];
+//        
+//         [stuButton setTitle:[NSString stringWithFormat:@"全班%d人",[user.studentArr count]] forState:UIControlStateNormal];
+//        self.studentselectStr=[NSString stringWithFormat:@"全班%d人",[user.studentArr count]];
+//        for (int i=0; i<[user.studentArr count]; i++) {
+//            Student *st=[user.studentArr objectAtIndex:i];
+//            [stuidArr addObject:[NSString stringWithFormat:@"%@",st.studentid]];
+//        }
+//
+//        
+//    }
+//    else
+//    {
         [stuButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
          [stuButton setTitle:@"选择学生" forState:UIControlStateNormal];
-    }
+   // }
    
     [self.view addSubview:stuButton];
     UIImageView *lineView1=[[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2.0,dateButton.frame.origin.y , 1, dateButton.frame.size.height)];
@@ -189,7 +189,7 @@
     titlelabel.text=NSLocalizedString(@"reportpub", @"");
     jsonArr=[[NSMutableArray alloc]init];
     
-    scroller=[[UIScrollView alloc]initWithFrame:CGRectMake(0, dateButton.frame.origin.y+dateButton.frame.size.height, self.view.frame.size.width , self.view.frame.size.height-(dateButton.frame.origin.y+dateButton.frame.size.height))];
+    scroller=[[UIScrollView alloc]initWithFrame:CGRectMake(0, dateButton.frame.origin.y+dateButton.frame.size.height+10, self.view.frame.size.width , self.view.frame.size.height-(dateButton.frame.origin.y+dateButton.frame.size.height+10))];
     
     scroller.backgroundColor=[UIColor clearColor];
     
@@ -290,6 +290,8 @@
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"成功" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
         [alert show];
         [alert release];
+        
+        [self.navigationController popViewControllerAnimated:YES];
     }
     else
     {

@@ -20,8 +20,8 @@
 @end
 
 @implementation GKSendMediaViewController
-@synthesize stuList,sourcePicture,photoTag,thumbnail,moviePath,isPresent;
-
+@synthesize stuList,sourcePicture,thumbnail,moviePath,isPresent;
+@synthesize photoTag;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -175,33 +175,30 @@
     
 //    NSLog(@"%f",self.view.frame.size.height-studentView.frame.size.height-boardImageView.frame.size.height-boardImageView.frame.origin.y);
     
+//    GKPhotoTagScrollView *tagView = [[GKPhotoTagScrollView alloc] initWithFrame:CGRectMake(boardImageView.frame.origin.x - 5, boardImageView.frame.origin.y + boardImageView.frame.size.height + 5, boardImageView.frame.size.width + 10,(iphone5 ? 548 : 460) + (ios7 ? 20 : 0)-studentView.frame.size.height-boardImageView.frame.size.height-boardImageView.frame.origin.y-5)];
+//    tagView.backgroundColor = [UIColor clearColor];
+//    tagView.tagDelegate = self;
+//    [self.view addSubview:tagView];
+//    [tagView release];
+
+
     GKPhotoTagScrollView *tagView = [[GKPhotoTagScrollView alloc] initWithFrame:CGRectMake(boardImageView.frame.origin.x - 5, boardImageView.frame.origin.y + boardImageView.frame.size.height + 5, boardImageView.frame.size.width + 10,(iphone5 ? 548 : 460) + (ios7 ? 20 : 0)-studentView.frame.size.height-boardImageView.frame.size.height-boardImageView.frame.origin.y-5)];
+
     tagView.backgroundColor = [UIColor clearColor];
     tagView.tagDelegate = self;
     [self.view addSubview:tagView];
     [tagView release];
-
-
-
-
-    NSString* strLanguage = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
-    //        NSLog(@"%@",strLanguage);
-    if ([strLanguage isEqualToString:@"zh-Hans"])
-    {
-        if (nil != [user.photoTagArray objectAtIndex:0] && [[user.photoTagArray objectAtIndex:0] isKindOfClass:[NSArray class]])
-        {
-            [tagView setPhotoTags:[user.photoTagArray objectAtIndex:0]];
-        }
-    }
-    else
-    {
-        if (nil != [user.photoTagArray objectAtIndex:1] && [[user.photoTagArray objectAtIndex:1] isKindOfClass:[NSArray class]])
-        {
-            [tagView setPhotoTags:[user.photoTagArray objectAtIndex:1]];
-        }
-        
-    }
     
+    
+    
+    //GKUserLogin *user=[GKUserLogin currentLogin];
+    
+    [tagView setPhotoTags:user.photoTagArray];
+    
+
+
+    self.photoTag=[NSMutableArray array];
+
     self.stuList = [NSMutableArray array];
     
 }
@@ -424,7 +421,7 @@
     
     NSString *students = [self.stuList componentsJoinedByString:@","];
     
-    NSLog(@"students %@ , photo tag : %@",students,(photoTag == nil ? @"" : photoTag));
+   // NSLog(@"students %@ , photo tag : %@",students,(photoTag == nil ? @"" : photoTag));
     
     
     NSDate *createDate = [NSDate dateWithTimeIntervalSince1970:[timestamp intValue]];
@@ -434,6 +431,15 @@
    // textLabel.text = [format stringFromDate:createDate];
     
    // NSDateFormatter *data
+    NSMutableString *temp=[[[NSMutableString alloc]init] autorelease];
+    for (int i=0; i<[photoTag count]; i++) {
+        NSString *str=[NSString stringWithFormat:@"%@",[photoTag objectAtIndex:i]];
+        [temp appendFormat:@"%@,",str];
+    }
+    [temp deleteCharactersInRange:NSMakeRange([temp length]-1, 1)];
+
+    
+    
     
     NSString *imageName=[format stringFromDate:createDate];//[NSString stringWithFormat:@"%@",[NSNumber numberWithInt:[timestamp intValue]]];
     NSNumber *teacherid=[NSNumber numberWithInt:[user.teacher.teacherid integerValue]];
@@ -447,7 +453,7 @@
         aa.fsize=[NSNumber numberWithInt:fise];
         aa.ftime=[NSNumber numberWithInt:[timestamp intValue]];
         aa.introduce = ([contentTV.text isEqualToString:NSLocalizedString(@"descripe", @"")] ? @"" : contentTV.text);
-        aa.tag=(photoTag == nil ? @"" : photoTag);
+        aa.tag=(([photoTag count]==0)?@"":temp);
         aa.isUploading=[NSNumber numberWithInt:1];
         aa.teacherid=teacherid;
         aa.smallImage=UIImageJPEGRepresentation(thumbImgV.image, 0.1);
@@ -456,7 +462,7 @@
         
         NSLog(@"cccccfggggg");
         
-        [manager addWraperToArr:filePath name:imageName iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:([contentTV.text isEqualToString:NSLocalizedString(@"descripe", @"")] ? @"" : contentTV.text) data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(photoTag == nil ? @"":photoTag) teacherid:teacherid];
+        [manager addWraperToArr:filePath name:imageName iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:([contentTV.text isEqualToString:NSLocalizedString(@"descripe", @"")] ? @"" : contentTV.text) data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(([photoTag count]==0)?@"":temp) teacherid:teacherid];
         
         
     } failed:^(NSError *err) {
@@ -572,10 +578,25 @@
     }
 }
 
-- (void)didSelectPhotoTag:(NSString *)tag
+-(void)didSelectPhotoTag:(int)tag tagstr:(NSString *)tagstr
 {
-    self.photoTag = [NSString stringWithFormat:@"%@",tag];
+    if([photoTag containsObject:[NSNumber numberWithInt:tag]])
+    {
+        [photoTag removeAllObjects];
+    }
+    else
+    {
+        [photoTag addObject:[NSNumber numberWithInt:tag]];
+    }
+    
+    
+    
 }
+
+//- (void)didSelectPhotoTag:(NSString *)tag
+//{
+//    self.photoTag = [NSString stringWithFormat:@"%@",tag];
+//}
 
 - (BOOL)checkContentLength
 {

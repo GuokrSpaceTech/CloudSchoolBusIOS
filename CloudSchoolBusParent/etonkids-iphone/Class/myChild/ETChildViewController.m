@@ -29,12 +29,14 @@
     if (self) {
         // Custom initialization
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateChildInfo:) name:@"CHILDINFO" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadBadge:) name:@"RELOADBADGE" object:nil];
     }
     return self;
 }
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"CHILDINFO" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RELOADBADGE" object:nil];
 
 
     [super dealloc];
@@ -194,6 +196,24 @@
     else if (indexPath.section == 3)
     {
         
+         imageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"tabbar_badge.png"]];
+        imageView.frame=CGRectMake(150, 3, 19, 19);
+        imageView.hidden=YES;
+        imageView.tag=1000;
+        [cell.contentView addSubview:imageView];
+        [imageView release];
+        
+        
+        numlabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 19, 19)];
+        numlabel.backgroundColor=[UIColor clearColor];
+        //            label.text=@"11";
+        numlabel.tag = 2000 ;
+        numlabel.textColor=[UIColor whiteColor];
+        numlabel.font=[UIFont systemFontOfSize:12];
+        numlabel.textAlignment=UITextAlignmentCenter;
+        [imageView addSubview:numlabel];
+        [numlabel release];
+        
         UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
         imgV.center = CGPointMake(26, 20);
         imgV.image = [UIImage imageNamed:@"report_icon.png"];
@@ -284,6 +304,7 @@
     }
     else if (indexPath.section == 3)
     {
+        imageView.hidden=YES;
         GKReportViewController *VC=[[GKReportViewController alloc]init];
         AppDelegate *appDel=SHARED_APP_DELEGATE;
         [appDel.bottomNav pushViewController:VC animated:YES];
@@ -337,7 +358,35 @@
 {
     [mainTV reloadData];
 }
-
+- (void)reloadBadge:(NSNotification *)info
+{
+    [[EKRequest Instance] EKHTTPRequest:status parameters:nil requestMethod:GET forDelegate:self];
+}
+- (void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
+{
+    if (method == status && code == 1) {
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+        NSLog(@"new message number : %@",result);
+        
+        NSString *iconnum=[NSString stringWithFormat:@"%@",[result objectForKey:@"report"]];
+        
+     
+        if([iconnum integerValue]==0)
+        {
+            imageView.hidden=YES;
+        }
+        else
+        {
+            numlabel.text=iconnum;
+            imageView.hidden=NO;
+        }
+        //[_tabBar setBadgeNumber:result];
+    }
+}
+-(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
+{
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

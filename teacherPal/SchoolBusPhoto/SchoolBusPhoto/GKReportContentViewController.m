@@ -62,6 +62,7 @@
     
     UILabel *name=[[UILabel alloc]initWithFrame:CGRectMake(190, 0, 100, 40)];
     name.text=self.report.title;
+    name.textAlignment=NSTextAlignmentCenter;
     name.userInteractionEnabled=YES;
     [headerView addSubview:name];
     [name release];
@@ -157,7 +158,7 @@
     UILabel *titleLabel=(UILabel *)[cell.contentView viewWithTag:100];
     UILabel *contentlabel=(UILabel *)[cell.contentView viewWithTag:101];
     ;
-    titleLabel.text=[NSString stringWithFormat:@"%@",[dic objectForKey:@"title"]];
+    titleLabel.text=[NSString stringWithFormat:@"%d、%@",(indexPath.row+1),[dic objectForKey:@"title"]];
     
     
     NSString *answer=[dic objectForKey:@"answer"];
@@ -176,7 +177,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+   // return 60;
     NSDictionary *dic=[self.report.contentArr objectAtIndex:indexPath.row];
     NSString *answer=[dic objectForKey:@"answer"];
     

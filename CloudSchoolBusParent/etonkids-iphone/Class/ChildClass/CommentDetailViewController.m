@@ -215,12 +215,12 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
         int row=i/3;
         int col=i%3;
         
-        UIButton *btn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+        UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
         btn.backgroundColor=[UIColor colorWithRed:97/355.0 green:177/255.0 blue:200/255.0 alpha:1];
         btn.frame=CGRectMake(25 + col * (90 + 10), heightorign +5 + row *(20 +5) , 90, 20);
         [btn addTarget:self action:@selector(tagClick:) forControlEvents:UIControlEventTouchUpInside];
         btn.tag=i+3210;
-        
+        btn.titleLabel.font=[UIFont systemFontOfSize:15];
         //"systemLan"="cn";
         
         if([NSLocalizedString(@"systemLan", @"") isEqualToString:@"en"])
@@ -242,7 +242,7 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     }
     
     
-    int originY=heightorign + 5 + num * 20 + (num-1)*5;
+    int originY=heightorign + 5 + num * 20 + (num-1)*5 +5;
     NSDictionary *fDic = [shareContent.sharePicArr objectAtIndex:0];
     NSString *source = [NSString stringWithFormat:@"%@",[fDic objectForKey:@"source"]];
     //        NSString *source = @"http://yunxiaoche.blob.core.windows.net/article-source/39958_1389601724_644558.mp4";

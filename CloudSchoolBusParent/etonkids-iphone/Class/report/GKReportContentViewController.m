@@ -97,6 +97,7 @@
     
     NSDateFormatter *dateFormat=[[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    timeLabel.backgroundColor=[UIColor clearColor];
     timeLabel.text=[dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:[self.report.reporttime intValue]]];;
     [headerView addSubview:timeLabel];
     [timeLabel release];
@@ -110,6 +111,7 @@
     UILabel *name=[[UILabel alloc]initWithFrame:CGRectMake(190, 0, 100, 40)];
     name.textAlignment=NSTextAlignmentCenter;
     name.text=self.report.studentname;
+    name.backgroundColor=[UIColor clearColor];
     //name.userInteractionEnabled=YES;
     [headerView addSubview:name];
     [name release];
@@ -177,7 +179,7 @@
     UILabel *titleLabel=(UILabel *)[cell.contentView viewWithTag:100];
     UILabel *contentlabel=(UILabel *)[cell.contentView viewWithTag:101];
     ;
-    titleLabel.text=[NSString stringWithFormat:@"%@",[dic objectForKey:@"title"]];
+    titleLabel.text=[NSString stringWithFormat:@"%d、%@",indexPath.row+1,[dic objectForKey:@"title"]];
     
     
     NSString *answer=[dic objectForKey:@"answer"];

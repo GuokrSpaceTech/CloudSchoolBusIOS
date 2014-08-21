@@ -66,6 +66,7 @@
 		11A0554C17968ACB005C062A /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A0553D17968ACB005C062A /* UIImage+WebP.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		11A0554D17968ACB005C062A /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A0553F17968ACB005C062A /* UIImageView+WebCache.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		11A3F3C61795248300C37EA1 /* alert.png in Resources */ = {isa = PBXBuildFile; fileRef = 11A3F3C51795248200C37EA1 /* alert.png */; };
+		11AFBB1E19A5F38500BD4A7A /* health_bg_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AFBB1D19A5F38500BD4A7A /* health_bg_pic.png */; };
 		11B3E225193ED7FC00A96ACF /* ETSendRecevieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B3E224193ED7FC00A96ACF /* ETSendRecevieViewController.m */; };
 		11B3E228193F058500A96ACF /* ETSendReceiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B3E227193F058500A96ACF /* ETSendReceiveView.m */; };
 		11B62A7B19A34A1000B8604F /* BuyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B62A7A19A34A1000B8604F /* BuyButton.m */; };
@@ -83,7 +84,6 @@
 		11BE36D1196BD054002F4FD4 /* HealthFirstView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BE36D0196BD054002F4FD4 /* HealthFirstView.m */; };
 		11BE36D3196BD56C002F4FD4 /* health_bg_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BE36D2196BD56B002F4FD4 /* health_bg_clear.png */; };
 		11BE36D5196BD610002F4FD4 /* health_bg_arrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BE36D4196BD610002F4FD4 /* health_bg_arrop.png */; };
-		11BE36D7196BD91C002F4FD4 /* health_bg_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BE36D6196BD91C002F4FD4 /* health_bg_pic.png */; };
 		11BE36D9196BDD15002F4FD4 /* health_bg_btnnomal.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BE36D8196BDD15002F4FD4 /* health_bg_btnnomal.png */; };
 		11BE36DB196BDE21002F4FD4 /* health_bg_btnnoshight.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BE36DA196BDE21002F4FD4 /* health_bg_btnnoshight.png */; };
 		11BE36DD196BE0A4002F4FD4 /* health_uppic-en.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BE36DC196BE0A4002F4FD4 /* health_uppic-en.png */; };
@@ -723,6 +723,7 @@
 		11A0553E17968ACB005C062A /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		11A0553F17968ACB005C062A /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		11A3F3C51795248200C37EA1 /* alert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alert.png; sourceTree = "<group>"; };
+		11AFBB1D19A5F38500BD4A7A /* health_bg_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_bg_pic.png; sourceTree = "<group>"; };
 		11B3E223193ED7FC00A96ACF /* ETSendRecevieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETSendRecevieViewController.h; sourceTree = "<group>"; };
 		11B3E224193ED7FC00A96ACF /* ETSendRecevieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSendRecevieViewController.m; sourceTree = "<group>"; };
 		11B3E226193F058500A96ACF /* ETSendReceiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETSendReceiveView.h; sourceTree = "<group>"; };
@@ -749,7 +750,6 @@
 		11BE36D0196BD054002F4FD4 /* HealthFirstView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthFirstView.m; sourceTree = "<group>"; };
 		11BE36D2196BD56B002F4FD4 /* health_bg_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_bg_clear.png; sourceTree = "<group>"; };
 		11BE36D4196BD610002F4FD4 /* health_bg_arrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_bg_arrop.png; sourceTree = "<group>"; };
-		11BE36D6196BD91C002F4FD4 /* health_bg_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_bg_pic.png; sourceTree = "<group>"; };
 		11BE36D8196BDD15002F4FD4 /* health_bg_btnnomal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_bg_btnnomal.png; sourceTree = "<group>"; };
 		11BE36DA196BDE21002F4FD4 /* health_bg_btnnoshight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_bg_btnnoshight.png; sourceTree = "<group>"; };
 		11BE36DC196BE0A4002F4FD4 /* health_uppic-en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "health_uppic-en.png"; sourceTree = "<group>"; };
@@ -2290,6 +2290,7 @@
 			isa = PBXGroup;
 			children = (
 				11B62A8219A34E2200B8604F /* qq_34.png */,
+				11AFBB1D19A5F38500BD4A7A /* health_bg_pic.png */,
 				11B62A8019A34E1400B8604F /* health_buy_btn_BG.png */,
 				11B62A7E19A34E0700B8604F /* health_buy_btn_icon.png */,
 				11B62A7C19A34DEF00B8604F /* health_buy_btn_icon2.png */,
@@ -2302,7 +2303,6 @@
 				11BE36DC196BE0A4002F4FD4 /* health_uppic-en.png */,
 				11BE36DA196BDE21002F4FD4 /* health_bg_btnnoshight.png */,
 				11BE36D8196BDD15002F4FD4 /* health_bg_btnnomal.png */,
-				11BE36D6196BD91C002F4FD4 /* health_bg_pic.png */,
 				11BE36D4196BD610002F4FD4 /* health_bg_arrop.png */,
 				11BE36D2196BD56B002F4FD4 /* health_bg_clear.png */,
 				11414315196552F2007267D6 /* health_button.png */,
@@ -2947,7 +2947,7 @@
 				ORGANIZATIONNAME = wpf;
 				TargetAttributes = {
 					E3EA3ADE169E9490000DF7EE = {
-						DevelopmentTeam = 24QP873G9R;
+						DevelopmentTeam = 6Q77HKGB24;
 					};
 				};
 			};
@@ -2983,7 +2983,6 @@
 				78A41FEB1820FBCA00D0DE50 /* myChild1_en.png in Resources */,
 				789CC759182CEE6600E81510 /* ETGrowViewController.xib in Resources */,
 				78A41FE71820EF6200D0DE50 /* birthdayIcon.png in Resources */,
-				11BE36D7196BD91C002F4FD4 /* health_bg_pic.png in Resources */,
 				11BF12A1195AD87C003ABFF6 /* pic-2.png in Resources */,
 				78952FF5184C718C001C30D2 /* navLeftBtn_selected.png in Resources */,
 				78A41FE01820E06B00D0DE50 /* myChild_cn.png in Resources */,
@@ -3197,6 +3196,7 @@
 				78A41FDC1820B80300D0DE50 /* ETChangeBindViewController.xib in Resources */,
 				11BD8C4A195BC7A90098C1BA /* user_subscribe_favor_sel.png in Resources */,
 				78E892FB182A1DB200025EB5 /* 成长档案.png in Resources */,
+				11AFBB1E19A5F38500BD4A7A /* health_bg_pic.png in Resources */,
 				78C2ADDD17E0830500E6A5CD /* bottom_about_default.png in Resources */,
 				78C2ADDE17E0830500E6A5CD /* bottom_about_selected.png in Resources */,
 				789EAA3B1834BE1C0029D4B0 /* 1登录_10.png in Resources */,
@@ -3673,8 +3673,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -3700,8 +3700,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0F65D2C7-D9A1-42AD-B320-2A32242DFC58";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0F65D2C7-D9A1-42AD-B320-2A32242DFC58";
+				PROVISIONING_PROFILE = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3715,8 +3715,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -3742,8 +3742,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0F65D2C7-D9A1-42AD-B320-2A32242DFC58";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0F65D2C7-D9A1-42AD-B320-2A32242DFC58";
+				PROVISIONING_PROFILE = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;

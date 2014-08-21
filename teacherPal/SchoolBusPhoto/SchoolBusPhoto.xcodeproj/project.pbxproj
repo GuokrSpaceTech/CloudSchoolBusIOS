@@ -2074,7 +2074,7 @@
 				ORGANIZATIONNAME = mactop;
 				TargetAttributes = {
 					2A32A55818122C01007CAA8E = {
-						DevelopmentTeam = 24QP873G9R;
+						DevelopmentTeam = 6Q77HKGB24;
 					};
 				};
 			};
@@ -2626,8 +2626,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchoolBusPhoto/SchoolBusPhoto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2644,8 +2644,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A4E96A46-4D37-4835-9E0F-17711A8087C7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A4E96A46-4D37-4835-9E0F-17711A8087C7";
+				PROVISIONING_PROFILE = "76E8C3D3-588C-4109-87E5-5DF13FA2D9D5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "76E8C3D3-588C-4109-87E5-5DF13FA2D9D5";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2655,8 +2655,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchoolBusPhoto/SchoolBusPhoto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2673,8 +2673,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A4E96A46-4D37-4835-9E0F-17711A8087C7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A4E96A46-4D37-4835-9E0F-17711A8087C7";
+				PROVISIONING_PROFILE = "76E8C3D3-588C-4109-87E5-5DF13FA2D9D5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "76E8C3D3-588C-4109-87E5-5DF13FA2D9D5";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

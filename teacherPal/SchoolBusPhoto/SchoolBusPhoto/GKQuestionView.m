@@ -59,6 +59,7 @@
         contentField.borderStyle=UITextBorderStyleRoundedRect;
         contentField.delegate=self;
         contentField.text=@"";
+        contentField.returnKeyType=UIReturnKeyDone;
         [self addSubview:contentField];
         
         

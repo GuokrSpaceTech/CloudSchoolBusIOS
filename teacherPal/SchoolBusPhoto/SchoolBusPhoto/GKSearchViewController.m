@@ -61,7 +61,7 @@
     
     
     
-    titlelabel.text=@"已发布班级报告";
+    titlelabel.text=@"搜索结果";
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,navigationView.frame.size.height+navigationView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;

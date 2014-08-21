@@ -24,7 +24,9 @@
 @property (nonatomic, retain) NSString *moviePath;
 @property (nonatomic, retain) UIImage *thumbnail;
 @property (nonatomic, retain) NSMutableArray *stuList;
-@property (nonatomic, retain) NSString *photoTag;
+@property (nonatomic, retain) NSMutableArray *photoTag;
+
+
 @property (nonatomic, assign) BOOL isPresent; //判断是从草稿箱进入的页面 还是拍摄后进入的页面
 
 @end

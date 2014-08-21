@@ -150,6 +150,15 @@
     [self loadData:currentnumber];
     
 
+    
+    UILabel *alertLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height/2.0-20, self.view.frame.size.width, 30)];
+    alertLabel.backgroundColor=[UIColor clearColor];
+    alertLabel.text=@"您尚未提问过，马上提问吧";
+    alertLabel.tag=10000;
+    alertLabel.hidden=YES;
+    alertLabel.textColor=[UIColor grayColor];
+    alertLabel.textAlignment=NSTextAlignmentCenter;
+    [self.view addSubview:alertLabel];
 
 }
 -(void)setFooterView
@@ -296,6 +305,13 @@
         }
         [_slimeView endRefresh];
         
+        if([dateArr count]==0)
+        {
+            UILabel *label=(UILabel *)[self.view viewWithTag:10000];
+            label.hidden=NO;
+//            alertLabel.tag=10000;
+//            alertLabel.hidden=YES;
+        }
         
         [_tableView reloadData];
     }

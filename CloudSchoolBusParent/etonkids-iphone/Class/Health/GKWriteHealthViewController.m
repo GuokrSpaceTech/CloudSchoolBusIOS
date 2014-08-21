@@ -115,6 +115,7 @@
     
     _textView.text=self.placeFolder;
     _textView.delegate=self;
+    _textView.font=[UIFont systemFontOfSize:15];
     _textView.textColor=[UIColor grayColor];
     _textView.backgroundColor=[UIColor clearColor];
     _textView.tag=100;

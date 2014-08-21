@@ -524,7 +524,7 @@
     }
     if([alreadytime count]>0)
     {
-        NSString *st=[NSString stringWithFormat:@"生日到期：%@",alreadytimestr];
+        NSString *st=[NSString stringWithFormat:@"%@：%@",NSLocalizedString(@"birthdaycomming",@""),alreadytimestr];
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"生日提醒" message:st delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         [alert release];
@@ -586,23 +586,24 @@
     }
     
     
-    
+//    "xuefeiwillalert"="Tuition will expire:";
+//    "xuefeiendalert"="Tuition overdue:";
     //NSString *isdaoqistr=[NSString stringWithFormat:@"%@",daoqitime.description];
     NSString *str=nil;
     if([alreadytime count]>0 && [daoqitime count]>0)
     {
      
-        str=[NSString stringWithFormat:@"学费已经到期：%@ \n 学费即将到期%@",alreadytimestr,daoqistr];
+        str=[NSString stringWithFormat:@"%@%@ \n %@%@",NSLocalizedString(@"xuefeiendalert",@""),alreadytimestr,NSLocalizedString(@"xuefeiwillalert",@""),daoqistr];
         
      
     }
     else if([alreadytime count]>0 && [daoqitime count]==0)
     {
-          str=[NSString stringWithFormat:@"学费已经到期：%@",alreadytimestr];
+          str=[NSString stringWithFormat:@"%@%@",NSLocalizedString(@"xuefeiendalert",@""),alreadytimestr];
     }
     else if([alreadytime count]==0 && [daoqitime count]>0)
     {
-         str=[NSString stringWithFormat:@"学费即将到期:%@",daoqistr];
+         str=[NSString stringWithFormat:@"%@%@",NSLocalizedString(@"xuefeiwillalert",@""),daoqistr];
     }
     if([alreadytime count]!=0 || [daoqitime count]!=0)
     {

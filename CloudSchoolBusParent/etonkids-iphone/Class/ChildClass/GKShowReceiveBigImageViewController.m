@@ -38,9 +38,7 @@
     if(buttonIndex==0)
     {
         // UIImageWriteToSavedPhotosAlbum(imageView.image, self, nil, NULL);
-    
-        //UIImageWriteToSavedPhotosAlbum(imageView.image, self, @selector(<#selector#>), <#void *contextInfo#>)
-        
+            
         UIImageWriteToSavedPhotosAlbum(imageView.image, self, @selector(imageSavedToPhotosAlbum: didFinishSavingWithError: contextInfo:), nil);
         
     }
@@ -140,6 +138,14 @@
 
 
    
+    UIButton *rightButton =[UIButton buttonWithType:UIButtonTypeCustom];
+    [rightButton setFrame:CGRectMake(0, 0, 50, 35)];
+    [rightButton addTarget:self action:@selector(rightClick:) forControlEvents:UIControlEventTouchUpInside];
+    [rightButton setCenter:CGPointMake(320 - 10 - 50/2, navigationBackView.frame.size.height/2 + (ios7 ? 20 : 0))];
+    [rightButton setImage:[UIImage imageNamed:@"shareBtn3.0.png"] forState:UIControlStateNormal];
+    [rightButton setImage:[UIImage imageNamed:@"shareBtnSel3.0.png"] forState:UIControlStateHighlighted];
+    [self.view addSubview :rightButton];
+
     
 
     

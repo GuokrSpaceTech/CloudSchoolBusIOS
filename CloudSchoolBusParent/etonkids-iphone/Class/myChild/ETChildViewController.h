@@ -14,12 +14,14 @@
 #import "ETNicknameViewController.h"
 #import "ETBaseMessageViewController.h"
 
-@interface ETChildViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,MTCustomActionSheetDelegate,ETNicknameViewControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,ETBaseMessageViewControllerDelegate>
+@interface ETChildViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,MTCustomActionSheetDelegate,ETNicknameViewControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,ETBaseMessageViewControllerDelegate,EKProtocol>
 {
     
     UILabel *birthdaylabel;
     MBProgressHUD *HUD;
     UITableView *mainTV;
+    UIImageView * imageView;
+    UILabel *numlabel;
 }
 
 //@property (nonatomic, retain)NSArray *titleArr;

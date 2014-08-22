@@ -284,7 +284,7 @@
             
             
             
-            UILabel *healthlabel=[[UILabel alloc]initWithFrame:CGRectMake(100,10,170,20)];
+            UILabel *healthlabel=[[UILabel alloc]initWithFrame:CGRectMake(160,10,130,20)];
             healthlabel.textAlignment=UITextAlignmentRight;
             
             healthlabel.tag = 102;
@@ -300,6 +300,7 @@
             else
             {
                 healthlabel.text=user.healtState;
+               
             }
             
             
@@ -552,7 +553,8 @@
 
 - (void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
 {
-    
+   // NSString *result = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+
     if(HUD)
     {
         [HUD removeFromSuperview];

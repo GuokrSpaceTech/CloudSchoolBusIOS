@@ -1628,6 +1628,11 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     
     if (self.mPlayer.playbackState == MPMoviePlaybackStatePaused || self.mPlayer.playbackState == MPMoviePlaybackStateStopped)
     {
+        if(self.mPlayer.playbackState == MPMoviePlaybackStateStopped)
+        {
+        [self.mPlayer setCurrentPlaybackTime:0.1];
+        [self.mPlayer pause];
+        }
         [b setImage:[UIImage imageNamed:@"movieplay.png"] forState:UIControlStateNormal];
     }
     else

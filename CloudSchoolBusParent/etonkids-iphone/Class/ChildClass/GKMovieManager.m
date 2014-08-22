@@ -45,6 +45,8 @@ static GKMovieManager *mm ;
         if (cell.mPlayer.playbackState == MPMoviePlaybackStateStopped)
         {
             [cell.mPlayer prepareToPlay];
+          
+              // [cell.mPlayer setCurrentPlaybackTime:0.1];
         }
         else
         {

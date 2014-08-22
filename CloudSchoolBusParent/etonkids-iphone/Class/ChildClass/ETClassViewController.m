@@ -839,7 +839,7 @@
                                                     cell.contentBackView.frame.size.height);
                 [cell setMovieURL:source];
 //                NSLog(@"%@",source);
-                
+
                 [cell.movieThumbnailImgV setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@.jpg",source]] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType)
                 {
                     

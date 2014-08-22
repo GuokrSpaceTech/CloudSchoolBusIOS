@@ -304,13 +304,19 @@
             [self removeFooterView];
         }
         [_slimeView endRefresh];
-        
+         UILabel *label=(UILabel *)[self.view viewWithTag:10000];
         if([dateArr count]==0)
         {
-            UILabel *label=(UILabel *)[self.view viewWithTag:10000];
+           
             label.hidden=NO;
 //            alertLabel.tag=10000;
 //            alertLabel.hidden=YES;
+        }
+        else
+        {
+        
+            label.hidden=YES;
+
         }
         
         [_tableView reloadData];

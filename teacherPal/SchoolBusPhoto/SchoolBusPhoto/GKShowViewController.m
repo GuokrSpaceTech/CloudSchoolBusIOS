@@ -304,6 +304,8 @@
     }
     NSString *key=[NSString stringWithFormat:@"%d",currentpage];
     
+    BOOL found=NO;
+    
     for (int i=0; i<[self.picTextArr count]; i++) {
         NSDictionary *dic=[self.picTextArr objectAtIndex:i];
         NSString *keytemp = [[dic allKeys] objectAtIndex:0];
@@ -311,11 +313,19 @@
         {
             //self.tag,@"tag",str,@"text", nil];
 
+            found=YES;
             NSMutableDictionary *tempDic=[dic objectForKey:key];
             
             NSMutableArray *tagStrArr=[tempDic objectForKey:@"tag"];
             NSMutableArray *tagIdArr=[tempDic objectForKey:@"tagid"];
-            
+            if(tagIdArr==nil)
+            {
+                tagIdArr=[NSMutableArray array];
+            }
+            if(tagStrArr==nil)
+            {
+                tagStrArr=[NSMutableArray array];
+            }
             if([tagIdArr containsObject:[NSNumber numberWithInt:_tagid]])
             {
                 [tagIdArr removeObject:[NSNumber numberWithInt:_tagid]];
@@ -343,29 +353,25 @@
            // sayView.contextView.text=[[dic objectForKey:key] objectForKey:@"text"];
             break;
         }
-         if (i == self.picTextArr.count - 1)
-         {
-             NSMutableArray *tagstrarr=[NSMutableArray arrayWithObjects:tagTxt, nil];
-             NSMutableArray *tagidarr=[NSMutableArray arrayWithObjects:[NSNumber numberWithInt:_tagid], nil];
-             NSDictionary *addtag=[NSMutableDictionary dictionaryWithObjectsAndKeys:tagstrarr,@"tag",tagidarr,@"tagid", nil];
-             [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:addtag,key, nil]];
-
-             break;
-         }
+ 
     
     }
-    if ([picTextArr count]==0)
+    if(found==NO)
     {
         NSMutableArray *tagstrarr=[NSMutableArray arrayWithObjects:tagTxt, nil];
         NSMutableArray *tagidarr=[NSMutableArray arrayWithObjects:[NSNumber numberWithInt:_tagid], nil];
         NSDictionary *addtag=[NSMutableDictionary dictionaryWithObjectsAndKeys:tagstrarr,@"tag",tagidarr,@"tagid", nil];
         [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:addtag,key, nil]];
-        
-//        NSDictionary *addtag=[NSMutableDictionary dictionaryWithObjectsAndKeys:tagTxt,@"tag",[NSNumber numberWithInt:_tagid],@"tagid", nil];
-//        [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:addtag,key, nil]];
-        
-        
     }
+//    if ([picTextArr count]==0)
+//    {
+//
+//        
+////        NSDictionary *addtag=[NSMutableDictionary dictionaryWithObjectsAndKeys:tagTxt,@"tag",[NSNumber numberWithInt:_tagid],@"tagid", nil];
+////        [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:addtag,key, nil]];
+//        
+//        
+//    }
 
 
     
@@ -446,6 +452,11 @@
                 }
                 else
                 {
+                    [tagid removeAllObjects];
+                    [tag removeAllObjects];
+                    self.tag=[NSMutableArray arrayWithArray:tagstrArr];
+                    self.tagid=[NSMutableArray arrayWithArray:tagidArr];
+                    
                     NSMutableString *temp=[[NSMutableString alloc]init];
                     for (int i=0; i<[tagstrArr count]; i++) {
                         [temp appendFormat:@"%@,",[tagstrArr objectAtIndex:i]];
@@ -497,8 +508,7 @@
         numView.hidden=NO;
         
         //
-        [tagid removeAllObjects];
-        [tag removeAllObjects];
+
     }
     else
     {
@@ -1043,18 +1053,26 @@
                         else
                             introduce=@"";
                         
-                        NSMutableString *temp=[[NSMutableString alloc]init];
-                        for (int i=0; i<[tagidArr count]; i++) {
-                            NSString *str=[NSString stringWithFormat:@"%@",[tagidArr objectAtIndex:i]];
-                            [temp appendFormat:@"%@,",str];
-                        }
-                        [temp deleteCharactersInRange:NSMakeRange([temp length]-1, 1)];
-                        
-                        tagcontent=[temp autorelease];
-                        
-                        if(tagcontent==nil)
+                        if([tagidArr count]==0)
+                        {
                             tagcontent=@"";
-                        
+                        }
+                        else
+                        {
+                            NSMutableString *temp=[[NSMutableString alloc]init];
+                            for (int i=0; i<[tagidArr count]; i++) {
+                                NSString *str=[NSString stringWithFormat:@"%@",[tagidArr objectAtIndex:i]];
+                                [temp appendFormat:@"%@,",str];
+                            }
+                            [temp deleteCharactersInRange:NSMakeRange([temp length]-1, 1)];
+                            
+                            tagcontent=[temp autorelease];
+                        }
+                  
+//                        
+//                        if(tagcontent==nil)
+//                            tagcontent=@"";
+//                        
 //                        if(tmptag)
 //                            tagcontent=tmptag;
 //                        else
@@ -1312,17 +1330,24 @@
                 
                 NSMutableArray *arrtagstr=[[introduceDic objectForKey:txtKey] objectForKey:@"tag"];
                 
-                
-                NSMutableString *temp=[[NSMutableString alloc]init];
-                for (int i=0; i<[arrtagstr count]; i++) {
-                    [temp appendFormat:@"%@,",[arrtagstr objectAtIndex:i]];
+          
+                if(arrtagstr!=nil)
+                {
+                    NSMutableString *temp=[[NSMutableString alloc]init];
+                    for (int i=0; i<[arrtagstr count]; i++) {
+                        [temp appendFormat:@"%@,",[arrtagstr objectAtIndex:i]];
+                    }
+                    [temp deleteCharactersInRange:NSMakeRange([temp length]-1, 1)];
+                    tagStr=[temp autorelease];
                 }
-                [temp deleteCharactersInRange:NSMakeRange([temp length]-1, 1)];
+
                 
-                tagStr=[temp autorelease];
+                
+                
+               
                 
                // tagStr = [[introduceDic objectForKey:txtKey] objectForKey:@"tag"];
-                if(tagStr==nil)
+                if(arrtagstr==nil)
                 {
                     tagStr=@"";
                 }

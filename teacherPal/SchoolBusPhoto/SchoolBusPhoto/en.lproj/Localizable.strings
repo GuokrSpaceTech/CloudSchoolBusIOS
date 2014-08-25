@@ -314,5 +314,7 @@
 "xuefeiwillalert"="Tuition will expire:";
 "xuefeiendalert"="Tuition overdue:";
 
-"birthdaycomming"="Birthday is coming";
+"birthdaycomming"="Birthday is coming:";
+"birthdaytoday"="Happy Birthday:";
 "reportCancel"="Cancel sending the report?";
+"None"="None";

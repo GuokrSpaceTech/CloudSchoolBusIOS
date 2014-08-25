@@ -604,3 +604,6 @@
 "heakthendtime"="The period of validity";
 "healthtimestate"="Have bought the Consult service";
 "healthtimenostate"="Has not yet buy the Consult service";
+
+"AlipayPay"="Alipay App to pay";
+"AlipayApp"="Recommend the users had installed Alipay App";

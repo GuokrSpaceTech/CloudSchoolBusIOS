@@ -106,6 +106,15 @@
     _tableView.tableHeaderView=[_searchBar autorelease];
 
     
+    UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2.0-151/2.0, self.view.frame.size.height/2.0-131/2.0, 151, 131)];
+    imgV.image = [UIImage imageNamed:@"nodata.png"];
+   // imgV.center = CGPointMake(160, ((iphone5 ? 548 : 460) - 46 - 57 - 135)/2);
+    [self.view addSubview:imgV];
+    imgV.tag=1000;
+    [imgV release];
+
+    
+    
 //    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"searchbar_bg.png"]];
 //    
 //    [_searchBar insertSubview:imageView atIndex:1];
@@ -244,14 +253,14 @@
         //dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
         
     }
-//    if([list count]==0)
-//    {
-//        [self setNOView:NO];
-//    }
-//    else
-//    {
-//        [self setNOView:YES];
-//    }
+    if([list count]==0)
+    {
+        [self setNOView:NO];
+    }
+    else
+    {
+        [self setNOView:YES];
+    }
     if(self._refreshFooterView)
     {
         [self._refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
@@ -264,7 +273,12 @@
     
     
 }
+-(void)setNOView:(BOOL)an
+{
+    UIImageView *iamgeView=(UIImageView *)[self.view viewWithTag:1000];
 
+    iamgeView.hidden=an;
+}
 -(void)setFooterView
 {
     

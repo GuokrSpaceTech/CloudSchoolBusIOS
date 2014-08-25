@@ -334,7 +334,7 @@
 
     int time= [[NSDate date] timeIntervalSince1970];
 
-    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,self.problem.problemId,@"testchunyu"];
+    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,self.problem.problemId,@"247c78y@328y2z89x948c"];
 
     NSString *sign=[MD5 md5:string];
 

@@ -385,7 +385,7 @@
     
     int time= [[NSDate date] timeIntervalSince1970];
     
-    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,user.username,@"testchunyu"];
+    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,user.username,@"247c78y@328y2z89x948c"];
     
     NSString *sign=[self md5:string];
 

@@ -119,7 +119,7 @@
         {
             cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
-            UILabel *namelabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 11, 100, 20)];
+            UILabel *namelabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 11, 200, 20)];
             namelabel.backgroundColor=[UIColor clearColor];
             namelabel.tag=TAGCELL;
             namelabel.font=[UIFont systemFontOfSize:15];
@@ -220,7 +220,7 @@
                     nameLabel.text=NSLocalizedString(@"avator", @"");
                     //(10, 11, 100, 20)];
                     [imageView setImageWithURL:[NSURL URLWithString:st.avatar] placeholderImage:nil options:SDWebImageRefreshCached];
-                    nameLabel.frame=CGRectMake(10, 20, 100, 20);
+                    nameLabel.frame=CGRectMake(10, 20, 200, 20);
                     
                     break;
                 case 1:
@@ -256,8 +256,13 @@
                     
                 case 5:
                     cell.accessoryType=UITableViewCellAccessoryNone;
+                     //nameLabel.frame=CGRectMake(10, 20, 150, 20);
                     nameLabel.text=NSLocalizedString(@"fuefiedaoqi", @"");
+                    if(st.xuefeuTime==nil)
+                        realLabel.text=NSLocalizedString(@"None", @"");
+                    else
                     realLabel.text=st.xuefeuTime;
+                 
                     break;
                 default:
                     break;
@@ -295,7 +300,10 @@
 
         UILabel *nameLabel=(UILabel *)[cell.contentView viewWithTag:TAGCELL+100];
         nameLabel.text=NSLocalizedString(@"guoming", @"");
-        
+        if([st.healthstate isEqualToString:@""])
+        {
+            st.healthstate=NSLocalizedString(@"None", @"");
+        }
         CGSize size=[st.healthstate sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 500) lineBreakMode:NSLineBreakByCharWrapping];
         UILabel *contentLabel=(UILabel *)[cell.contentView viewWithTag:TAGCELL+101];
         contentLabel.frame=CGRectMake(10, 35, 300, size.height);

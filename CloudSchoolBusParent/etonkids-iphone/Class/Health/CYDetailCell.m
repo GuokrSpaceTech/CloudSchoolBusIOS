@@ -11,6 +11,7 @@
 #import "ProblemContent.h"
 #import "ETKids.h"
 #import "NSDate+convenience.h"
+#import "AudioStreamer.h"
 
 //#define BGTAG 100
 #define PICTAG 1000
@@ -99,6 +100,15 @@
             if(imageView.tag>=PICTAG)
             {
                 [imageView removeFromSuperview];
+            }
+        }
+        
+        if([view isKindOfClass:[MyButton class]])
+        {
+            MyButton *brn=(MyButton *)view;
+            if(brn.tag>=PICTAG)
+            {
+                [brn removeFromSuperview];
             }
         }
     }
@@ -208,6 +218,18 @@
                  cellheight+=(((BGImageView.frame.size.height + BGImageView.frame.origin.y)-20) + 10) ;
              //  cellheight+=(90+20);
 
+            }else if([pro.type isEqualToString:@"audio"])
+            {
+//                uib *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(22 , cellheight + 20 , 60, 90)];
+                
+                MyButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
+                btn.frame=CGRectMake(22, cellheight + 15, 80, 30);
+                btn.backgroundColor=[UIColor whiteColor];
+                btn.tag=PICTAG+2000+i;
+                   btn.path=pro.text;
+                  [btn anSubView];
+                [self.contentView addSubview:btn];
+
             }
             
         }
@@ -286,6 +308,19 @@
 
                 
                 
+            }else if([pro.type isEqualToString:@"audio"])
+            {
+                //                uib *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(22 , cellheight + 20 , 60, 90)];
+                
+                MyButton *btn=[MyButton buttonWithType:UIButtonTypeCustom];
+                btn.frame=CGRectMake(320-140, cellheight + 15, 80, 30);
+                btn.backgroundColor=[UIColor whiteColor];
+                   btn.tag=PICTAG+2000+i;
+                btn.path=pro.text;
+                [btn anSubView];
+                [btn addTarget:self action:@selector(audioPlay:) forControlEvents:UIControlEventTouchUpInside];
+                [self.contentView addSubview:btn];
+                
             }
 
           
@@ -296,6 +331,36 @@
     }
     
 }
+-(void)audioPlay:(MyButton *)btn
+{
+    if([[AudioPlayer instance] isPlaying])
+    {
+        if([[[AudioPlayer instance] getAudioPath] isEqualToString:btn.path])
+        {
+              [[AudioPlayer instance] stopPlay];
+        }
+        else
+        {
+            [[AudioPlayer instance] destroyStreamer];
+            [[AudioPlayer instance] createStreamer:btn.path];
+            [[AudioPlayer instance] startPlay];
+        }
+       
+        
+    }
+    else
+    {
+        [[AudioPlayer instance] destroyStreamer];
+        [[AudioPlayer instance] createStreamer:btn.path];
+        [[AudioPlayer instance] startPlay];
+    }
+    
+    [delegate startPlay:[[AudioPlayer instance] isPlaying] Button:btn];
+   
+  
+}
+
+
 -(void)tapDoctorClick:(UIGestureRecognizer *)tap
 {
     if(delegate && [delegate respondsToSelector:@selector(clickToDoctorDetailController)])

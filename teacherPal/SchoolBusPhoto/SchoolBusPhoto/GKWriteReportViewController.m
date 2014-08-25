@@ -331,6 +331,17 @@
             UIButton *btn1=(UIButton *)view;
             [btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         }
+        
+   
+    }
+    
+    for (UIView *view in scroller.subviews) {
+        if([view isKindOfClass:[GKQuestionView class]])
+        {
+            GKQuestionView *questionView=(GKQuestionView *)view;
+            
+            [questionView.contentField resignFirstResponder];
+        }
     }
     btn.backgroundColor=[UIColor colorWithRed:97/355.0 green:177/255.0 blue:200/255.0 alpha:1];
       [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -455,7 +466,7 @@
 -(void)leftClick:(UIButton *)btn
 {
     
-    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"Cancelphotos", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"no", @"") otherButtonTitles:NSLocalizedString(@"yes", @""), nil];
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"reportCancel", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"no", @"") otherButtonTitles:NSLocalizedString(@"yes", @""), nil];
     [alert show];
     [alert release];
     

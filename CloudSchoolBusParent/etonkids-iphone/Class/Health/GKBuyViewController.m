@@ -86,41 +86,45 @@
     [middleLabel release];
     
   
+    UIScrollView *scroller=[[UIScrollView alloc]initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, (iphone5 ? 548 : 460) - NAVIHEIGHT)];
+    scroller.backgroundColor=[UIColor clearColor];
+    [self.view addSubview:scroller];
+    [scroller release];
     
     
-    UIImageView *picImageView=[[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2.0-536/4.0, navigationBackView.frame.size.height+navigationBackView.frame.origin.y+10, 536/2.0, 235/2.0)];
+    UIImageView *picImageView=[[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2.0-536/4.0, 10, 536/2.0, 235/2.0)];
     picImageView.image=[UIImage imageNamed:@"health_bg_pic.png"];
-    [self.view addSubview:picImageView];
+    [scroller addSubview:picImageView];
     [picImageView release];
     
     
     NSString *str=NSLocalizedString(@"health_bg_content", @"");
     
-    CGSize size=[str sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:CGSizeMake(self.view.frame.size.width-20, 1000) lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize size=[str sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(self.view.frame.size.width-20, 1000) lineBreakMode:NSLineBreakByWordWrapping];
     
     UILabel *contentlabel=[[UILabel alloc]initWithFrame:CGRectMake(10, picImageView.frame.size.height+picImageView.frame.origin.y+5, self.view.frame.size.width-20, size.height)];
     contentlabel.numberOfLines=0;;
     contentlabel.backgroundColor=[UIColor clearColor];
     contentlabel.text=str;
-    contentlabel.font=[UIFont systemFontOfSize:13];
-    [self.view addSubview:contentlabel];
+    contentlabel.font=[UIFont systemFontOfSize:15];
+    [scroller addSubview:contentlabel];
     [contentlabel release];
 
     count=1;
-    float y=contentlabel.frame.size.height+contentlabel.frame.origin.y+10;
+    float y=contentlabel.frame.size.height+contentlabel.frame.origin.y+20;
     NSArray *arr=[NSArray arrayWithObjects:@"价格",@"数量",@"总价", nil];
     for (int i=0; i<3; i++) {
         
-        UILabel * temp=[[UILabel alloc]initWithFrame:CGRectMake(20, y+(20 +10)*i, 50, 20)];
+        UILabel * temp=[[UILabel alloc]initWithFrame:CGRectMake(20, y+(20 +20)*i, 50, 20)];
         temp.backgroundColor=[UIColor clearColor];
         temp.text=[arr objectAtIndex:i];
         temp.font=[UIFont systemFontOfSize:15];
-        [self.view addSubview:temp];
+        [scroller addSubview:temp];
         [temp release];
         
-        UIImageView *imageLine1=[[UIImageView alloc]initWithFrame:CGRectMake(0,y+25+(30)*i, self.view.frame.size.width, 1)];
+        UIImageView *imageLine1=[[UIImageView alloc]initWithFrame:CGRectMake(0,y+30+(40)*i, self.view.frame.size.width, 1)];
         imageLine1.image=[UIImage imageNamed:@"cellline.png"];
-        [self.view addSubview:imageLine1];
+        [scroller addSubview:imageLine1];
         [imageLine1 release];
 
     }
@@ -130,7 +134,7 @@
 //    
     UIImageView *imageLine=[[UIImageView alloc]initWithFrame:CGRectMake(0,y-5, self.view.frame.size.width, 1)];
     imageLine.image=[UIImage imageNamed:@"cellline.png"];
-    [self.view addSubview:imageLine];
+    [scroller addSubview:imageLine];
     [imageLine release];
     
     
@@ -139,41 +143,42 @@
     priceLabel.backgroundColor=[UIColor clearColor];
     priceLabel.text=@"8元/月";
     priceLabel.font=[UIFont systemFontOfSize:15];
-    [self.view addSubview:priceLabel];
+    [scroller addSubview:priceLabel];
     [priceLabel release];
     
     
     UIButton *jianBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    jianBtn.frame=CGRectMake(140, y+20+10, 33, 20);
+    jianBtn.frame=CGRectMake(140, y+30+10, 33, 20);
     [jianBtn setBackgroundImage:[UIImage imageNamed:@"health_minux_normal.png"] forState:UIControlStateNormal];
     [jianBtn setBackgroundImage:[UIImage imageNamed:@"health_minux_select.png"] forState:UIControlStateHighlighted];
     jianBtn.tag=100;
     [jianBtn addTarget:self action:@selector(countClcik:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:jianBtn];
+    [scroller addSubview:jianBtn];
     
     
-    textfiled=[[UITextField alloc]initWithFrame:CGRectMake(180, y+30, 50, 20)];
+    textfiled=[[UITextField alloc]initWithFrame:CGRectMake(180, y+30+10, 50, 20)];
     textfiled.borderStyle=UITextBorderStyleRoundedRect;
     [textfiled setEnabled:NO];
     textfiled.text=@"1";
     textfiled.font=[UIFont systemFontOfSize:15];
     textfiled.textAlignment=NSTextAlignmentCenter;
-    [self.view addSubview:textfiled];
+    [scroller addSubview:textfiled];
     
     UIButton *plusBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    plusBtn.frame=CGRectMake(240, y+30, 33, 20);
-    [plusBtn setBackgroundImage:[UIImage imageNamed:@"health_plus_mormal.png"] forState:UIControlStateNormal];
-    [plusBtn setBackgroundImage:[UIImage imageNamed:@"health_plus_select.png"] forState:UIControlStateHighlighted];
+    plusBtn.frame=CGRectMake(240, y+30+10, 33, 20);
+//    [plusBtn setBackgroundImage:[UIImage imageNamed:@"health_plus_mormal.png"] forState:UIControlStateNormal];
+    [plusBtn setBackgroundImage:[UIImage imageNamed:@"health_plus_select.png"] forState:UIControlStateNormal];
     plusBtn.tag=101;
     [plusBtn addTarget:self action:@selector(countClcik:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:plusBtn];
+    [scroller addSubview:plusBtn];
 
     
-    sumLabel=[[UILabel alloc]initWithFrame:CGRectMake(225, y+30+30, 50, 20)];
+    sumLabel=[[UILabel alloc]initWithFrame:CGRectMake(225, y+30+30+20, 50, 20)];
     sumLabel.backgroundColor=[UIColor clearColor];
     sumLabel.text=@"8元";
+    sumLabel.textColor=[UIColor orangeColor];
     sumLabel.font=[UIFont systemFontOfSize:15];
-    [self.view addSubview:sumLabel];
+    [scroller addSubview:sumLabel];
     [sumLabel release];
     
     //UIButton *buttonBuy=[UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -186,13 +191,17 @@
     tap.numberOfTapsRequired=1;
     [btn addGestureRecognizer:tap];
     [tap release];
-    [self.view addSubview:btn];
+    [scroller addSubview:btn];
     [btn release];
+    
+    scroller.contentSize=CGSizeMake(self.view.frame.size.width, btn.frame.size.height+btn.frame.origin.y+10);
 
 
 }
 -(void)countClcik:(UIButton *)btn
 {
+    
+    
     if(btn.tag==100)
     {
         if(count==1)
@@ -203,9 +212,12 @@
         {
             count--;
         }
+
     }
     else if (btn.tag==101)
     {
+        if(count==12)
+            return;
         count++;
     }
     

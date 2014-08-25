@@ -419,7 +419,7 @@
         if(![attence.outavater isEqualToString:@""])
         {
             outImageView.urlPath=[NSString stringWithFormat:@"http://%@",attence.outavater];
-            [outImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",attence.outavater]] placeholderImage:nil];
+            [outImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",attence.outavater]] placeholderImage:[UIImage imageNamed:@"defaultattendance.png"]];
             outImageView.userInteractionEnabled=YES;
 
         }
@@ -432,7 +432,7 @@
         if(![attence.inavater isEqualToString:@""])
         {
             inImageView.urlPath=[NSString stringWithFormat:@"http://%@",attence.inavater];
-            [inImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",attence.inavater]] placeholderImage:nil];
+            [inImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",attence.inavater]] placeholderImage:[UIImage imageNamed:@"defaultattendance.png"]];
             inImageView.userInteractionEnabled=YES;
         }
         else

@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "ProblemDetail.h"
+#import "AudioPlayer.h"
+#import "MyButton.h"
 @protocol DetailCellDelegate;
+
+
 @interface CYDetailCell : UITableViewCell
+{
+    
+}
 @property (nonatomic,retain)ProblemDetail *detail;
 @property (nonatomic,retain)UILabel *labelcontent;
 
@@ -24,5 +31,6 @@
 @protocol DetailCellDelegate <NSObject>
 
 -(void)clickToDoctorDetailController;
+-(void)startPlay:(BOOL)isPlaying Button:(MyButton *)btn;
 
 @end

@@ -84,6 +84,32 @@
     [backView release];
     
     
+    // 创建春雨账号 测试
+//    UserLogin *user1=[UserLogin currentLogin];
+//      int time= [[NSDate date] timeIntervalSince1970];
+//    
+//    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,user1.username,@"247c78y@328y2z89x948c"];
+//    
+//    NSString *sign=[MD5 md5:string];
+//    ASIFormDataRequest *resuest=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://yzxc.summer2.chunyu.me/partner/yzxc/create_vip"]];
+//    [resuest setPostValue:user1.username forKey:@"user_id"];
+//    
+//    [resuest setPostValue:@"15652376054" forKey:@"phone"];
+//    [resuest setPostValue:@"30" forKey:@"days"];
+//    
+//    [resuest setPostValue:sign forKey:@"sign"];
+//    
+//    [resuest setPostValue:[NSString stringWithFormat:@"%d",time] forKey:@"atime"];
+//    [resuest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"create",@"create", nil]];
+//    [resuest setDelegate:self];
+//    //配置代理为本类
+//    [resuest setTimeOutSeconds:10];
+//    //设置超时
+//    [resuest setDidFailSelector:@selector(urlRequestFailed:)];
+//    [resuest setDidFinishSelector:@selector(urlRequestSucceeded:)];
+//    
+//    [resuest startAsynchronous];
+
     
     
     
@@ -217,7 +243,7 @@
 
 //    [resuest setPostValue:user.username forKey:@"user_id"];
     
-    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,user.username,@"testchunyu"];
+    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,user.username,@"247c78y@328y2z89x948c"];
     //
     NSString *sign=[MD5 md5:string];
     

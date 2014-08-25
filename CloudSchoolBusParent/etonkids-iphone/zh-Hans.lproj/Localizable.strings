@@ -573,3 +573,6 @@
 "heakthendtime"="有效期至";
 "healthtimestate"="已购买医生咨询服务";
 "healthtimenostate"="尚未购买医生咨询服务";
+"AlipayPay"="支付宝客户端支付";
+"AlipayApp"="推荐已安装支付宝客户端的用户使用";
+

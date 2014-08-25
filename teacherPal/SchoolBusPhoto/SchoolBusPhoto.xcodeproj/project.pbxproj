@@ -342,6 +342,7 @@
 		11E27F92183C709700CAE0BB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E27F91183C709700CAE0BB /* MessageUI.framework */; };
 		11E27F94183C72FC00CAE0BB /* clean.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E27F93183C72FC00CAE0BB /* clean.png */; };
 		11E27F96183C731F00CAE0BB /* textfield123.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E27F95183C731F00CAE0BB /* textfield123.png */; };
+		11E933F619AB2F55000CB50C /* defaultattendance.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E933F519AB2F55000CB50C /* defaultattendance.png */; };
 		11ECEDD01946E3AC00BFB85A /* GKImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11ECEDCF1946E3AC00BFB85A /* GKImageView.m */; };
 		11EFE1D71817ACA3009CE69F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11EFE1D61817ACA3009CE69F /* QuartzCore.framework */; };
 		11EFE1DA1817C08C009CE69F /* GKStudentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EFE1D91817C08C009CE69F /* GKStudentView.m */; };
@@ -948,6 +949,7 @@
 		11E27F91183C709700CAE0BB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		11E27F93183C72FC00CAE0BB /* clean.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clean.png; sourceTree = "<group>"; };
 		11E27F95183C731F00CAE0BB /* textfield123.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textfield123.png; sourceTree = "<group>"; };
+		11E933F519AB2F55000CB50C /* defaultattendance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultattendance.png; sourceTree = "<group>"; };
 		11ECEDCE1946E3AC00BFB85A /* GKImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKImageView.h; sourceTree = "<group>"; };
 		11ECEDCF1946E3AC00BFB85A /* GKImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKImageView.m; sourceTree = "<group>"; };
 		11EFE1D61817ACA3009CE69F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1480,6 +1482,7 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				11E933F519AB2F55000CB50C /* defaultattendance.png */,
 				111B83BD19A1FB15008078BA /* left_report_cn_notmal.png */,
 				111B83BE19A1FB15008078BA /* left_report_cn_select.png */,
 				111B83BF19A1FB15008078BA /* left_report_en_normal.png */,
@@ -2074,7 +2077,7 @@
 				ORGANIZATIONNAME = mactop;
 				TargetAttributes = {
 					2A32A55818122C01007CAA8E = {
-						DevelopmentTeam = 6Q77HKGB24;
+						DevelopmentTeam = 24QP873G9R;
 					};
 				};
 			};
@@ -2197,6 +2200,7 @@
 				1193A6B8182B9225004011BC /* photoBtn.png in Resources */,
 				78709BCC187D16CA009250FB /* GKSendMediaViewController.xib in Resources */,
 				78709C06187D1733009250FB /* camera-handle-photo.png in Resources */,
+				11E933F619AB2F55000CB50C /* defaultattendance.png in Resources */,
 				11BAA76D195142F6006DA9AA /* gradeH.png in Resources */,
 				1193A6C5182C785B004011BC /* 谁在照片里_05.png in Resources */,
 				78709C09187D1733009250FB /* camera-library-overlay.png in Resources */,
@@ -2626,8 +2630,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchoolBusPhoto/SchoolBusPhoto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2644,8 +2648,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "76E8C3D3-588C-4109-87E5-5DF13FA2D9D5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "76E8C3D3-588C-4109-87E5-5DF13FA2D9D5";
+				PROVISIONING_PROFILE = "8a1c14ff-4f76-4e43-a788-6406de1675a3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8a1c14ff-4f76-4e43-a788-6406de1675a3";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2655,8 +2659,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchoolBusPhoto/SchoolBusPhoto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2673,8 +2677,8 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "76E8C3D3-588C-4109-87E5-5DF13FA2D9D5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "76E8C3D3-588C-4109-87E5-5DF13FA2D9D5";
+				PROVISIONING_PROFILE = "8a1c14ff-4f76-4e43-a788-6406de1675a3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8a1c14ff-4f76-4e43-a788-6406de1675a3";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

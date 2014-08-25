@@ -480,6 +480,8 @@
     
     NSMutableArray *alreadytime=[[NSMutableArray alloc]init];
     
+     NSMutableArray *todaytime=[[NSMutableArray alloc]init];
+    
     for (int i=0; i<[arr count]; i++) {
         Student *st=[arr objectAtIndex:i];
         
@@ -491,24 +493,38 @@
             NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
             [dateFormatter setDateFormat:@"MM-dd"];
             NSString  *today=[dateFormatter stringFromDate:[NSDate date]];
+            [dateFormatter release];
             
-            NSDate *date=[dateFormatter dateFromString:xuefistr];
+            
+            
+            NSDateFormatter *dateFormatter11=[[NSDateFormatter alloc]init];
+            [dateFormatter11 setDateFormat:@"yyyy-MM-dd"];
+            NSDate *date=[dateFormatter11 dateFromString:xuefistr];
+ 
             
             NSTimeInterval time=[date timeIntervalSince1970];
             // 3天前
             NSTimeInterval time3ago=time-3*86400;
+            
+         
+    
             NSDate *date3ago=[NSDate dateWithTimeIntervalSince1970:time3ago];
-            NSString * date3str=[dateFormatter stringFromDate:date3ago];
+            NSString * date3str=[dateFormatter11 stringFromDate:date3ago];
             
             //        NSDate *birdate=[dateFormatter dateFromString:xuefistr];
             NSString *birstr=[xuefistr substringFromIndex:5];
+            date3str=[date3str substringFromIndex:5];
             
+                       [dateFormatter11 release];
+           // [dateFormatter release];
             
-            [dateFormatter release];
-            
-            if(([today compare:date3str]==NSOrderedDescending && [today compare:birstr]==NSOrderedAscending) || [today isEqualToString:birstr])
+            if(([today compare:date3str]==NSOrderedDescending && [today compare:birstr]==NSOrderedAscending))
             {
                 [alreadytime addObject:st.cnname];
+            }
+            if( [today isEqualToString:birstr])
+            {
+                [todaytime addObject:st.cnname];
             }
 
         }
@@ -518,18 +534,45 @@
 
     }
     
-    NSMutableString *alreadytimestr=[[NSMutableString alloc]init];
+    NSMutableString *alreadytimestr=[NSMutableString stringWithString:@""];
     for (int i=0; i<[alreadytime count]; i++) {
         [alreadytimestr appendFormat:@"%@ ",[alreadytime objectAtIndex:i]];
     }
-    if([alreadytime count]>0)
+    
+    NSMutableString *todaytimestr=[NSMutableString stringWithString:@""];
+    for (int i=0; i<[todaytime count]; i++) {
+        [todaytimestr appendFormat:@"%@ ",[todaytime objectAtIndex:i]];
+    }
+    
+    if([alreadytime count]>0 && [todaytime count]==0)
     {
-        NSString *st=[NSString stringWithFormat:@"%@：%@",NSLocalizedString(@"birthdaycomming",@""),alreadytimestr];
+        // 即将到期
+        NSString *st=[NSString stringWithFormat:@"%@%@",NSLocalizedString(@"birthdaycomming",@""),alreadytimestr];
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"生日提醒" message:st delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
         [alert release];
 
     }
+    if([alreadytime count]==0 && [todaytime count]>0)
+    {
+        //今天到期
+        NSString *st=[NSString stringWithFormat:@"%@%@",NSLocalizedString(@"birthdaytoday",@""),todaytimestr];
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"生日提醒" message:st delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+        
+    }
+    
+    if([alreadytime count]>0 && [todaytime count]>0)
+    {
+        NSString *st=[NSString stringWithFormat:@"%@%@ \n %@%@",NSLocalizedString(@"birthdaycomming",@""),alreadytimestr,NSLocalizedString(@"birthdaytoday",@""),todaytimestr];
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"生日提醒" message:st delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
+    
+    [todaytime release];
+    [alreadytime release];
   
 
 }
@@ -575,12 +618,12 @@
     
 
  
-        NSMutableString *alreadytimestr=[[NSMutableString alloc]init];
+        NSMutableString *alreadytimestr=[NSMutableString stringWithString:@""];
         for (int i=0; i<[alreadytime count]; i++) {
             [alreadytimestr appendFormat:@"%@ ",[alreadytime objectAtIndex:i]];
         }
     
-    NSMutableString *daoqistr=[[NSMutableString alloc]init];
+    NSMutableString *daoqistr=[NSMutableString stringWithString:@""];
     for (int i=0; i<[daoqitime count]; i++) {
         [daoqistr appendFormat:@"%@ ",[daoqitime objectAtIndex:i]];
     }
@@ -613,6 +656,8 @@
     }
 
 
+    [alreadytime release];
+    [daoqitime release];
     
 }
 

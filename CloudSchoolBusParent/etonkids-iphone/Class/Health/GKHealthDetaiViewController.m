@@ -117,7 +117,8 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboarHidden:) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboarShow:) name:UIKeyboardWillShowNotification object:nil];
     
-    
+      [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(audioplayingstop:) name:@"PLAYINGSTOP" object:nil];
+      //[[NSNotificationCenter defaultCenter]postNotificationName:@"PLAYINGSTOP" object:nil];
     // Do any additional setup after loading the view.
     self.view.backgroundColor=[UIColor blackColor];
     
@@ -535,7 +536,7 @@
     
     int time= [[NSDate date] timeIntervalSince1970];
     
-    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,_problem.problemId,@"testchunyu"];
+    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,_problem.problemId,@"247c78y@328y2z89x948c"];
     
     NSString *sign=[self md5:string];
     
@@ -592,6 +593,43 @@
     
     
 }
+-(void)audioplayingstop:(NSNotification *)no
+{
+        NSArray *cell=[__tableView visibleCells];
+    for (int i=0; i<[cell count]; i++) {
+        UITableViewCell *tableCell=[cell objectAtIndex:i];
+        
+        for (UIView *view in tableCell.contentView.subviews) {
+            if([view isKindOfClass:[MyButton class]])
+            {
+                MyButton *button=(MyButton *)view;
+                [button stopAnimation];
+            }
+        }
+    }
+}
+-(void)startPlay:(BOOL)isPlaying Button:(MyButton *)btn
+{
+    //UITableViewCell *ce
+ 
+    NSArray *cell=[__tableView visibleCells];
+    
+    for (int i=0; i<[cell count]; i++) {
+        UITableViewCell *tableCell=[cell objectAtIndex:i];
+        
+        for (UIView *view in tableCell.contentView.subviews) {
+            if([view isKindOfClass:[MyButton class]])
+            {
+                MyButton *button=(MyButton *)view;
+                [button stopAnimation];
+            }
+        }
+    }
+    if(!isPlaying)
+    [btn startAnimation];
+    
+    
+}
 -(void)urlRequestSucceeded:(ASIFormDataRequest *)request
 {
     //  NSLog(@"%@",request.responseData);
@@ -640,6 +678,7 @@
         [_answerList removeAllObjects];
         NSDictionary *dic= [NSJSONSerialization  JSONObjectWithData:request.responseData options:0 error:nil];
         NSArray *contentDic=[dic objectForKey:@"content"];
+        
         NSDictionary *doctorDic=[dic objectForKey:@"doctor"];
         CYDoctor *doc=[[CYDoctor alloc]init];
         doc.clinic=[doctorDic objectForKey:@"clinic"];
@@ -714,6 +753,10 @@
             {
                 cellheight+=(90+20);
             }
+            else if([pro.type isEqualToString:@"audio"])
+            {
+                cellheight+=30+10;
+            }
             
         }
 
@@ -737,6 +780,10 @@
             else if([pro.type isEqualToString:@"image"])
             {
                 cellheight+=(90+20);
+            }
+            else if([pro.type isEqualToString:@"audio"])
+            {
+                cellheight+=30+10;
             }
             
             
@@ -839,6 +886,8 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"PLAYINGSTOP" object:nil];
+ 
     self._tableView=nil;
     self.photoImage=nil;
     self.problem=nil;

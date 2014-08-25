@@ -120,6 +120,14 @@
 		11D937D21947FA3D00215842 /* deleteTag.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D937D11947FA3D00215842 /* deleteTag.png */; };
 		11E46367194F05510039C0A0 /* GKShowReceiveBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E46366194F05510039C0A0 /* GKShowReceiveBigImageViewController.m */; };
 		11E82B85194957200048F0DB /* ETGCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E82B84194957200048F0DB /* ETGCalendarViewController.m */; };
+		11E933F919AB55F0000CB50C /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E933F819AB55F0000CB50C /* AudioStreamer.m */; };
+		11E933FB19AB561D000CB50C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E933FA19AB561D000CB50C /* AudioToolbox.framework */; };
+		11E933FE19AB57BA000CB50C /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E933FD19AB57BA000CB50C /* AudioPlayer.m */; };
+		11E9340119AB5993000CB50C /* MyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E9340019AB5993000CB50C /* MyButton.m */; };
+		11E9340319AB628C000CB50C /* 01.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E9340219AB628C000CB50C /* 01.png */; };
+		11E9340719AB6B71000CB50C /* audio_001.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E9340419AB6B71000CB50C /* audio_001.png */; };
+		11E9340819AB6B71000CB50C /* audio_002.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E9340519AB6B71000CB50C /* audio_002.png */; };
+		11E9340919AB6B71000CB50C /* audio_003.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E9340619AB6B71000CB50C /* audio_003.png */; };
 		11EC2860193F15AA002FF46E /* ETAddSendReceiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EC285F193F15AA002FF46E /* ETAddSendReceiveViewController.m */; };
 		11ECEDD31946EFE200BFB85A /* GKChildReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 11ECEDD21946EFE200BFB85A /* GKChildReceiver.m */; };
 		11EF146519A1E147008F81E9 /* report_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 11EF146419A1E147008F81E9 /* report_icon.png */; };
@@ -804,6 +812,17 @@
 		11E46366194F05510039C0A0 /* GKShowReceiveBigImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKShowReceiveBigImageViewController.m; sourceTree = "<group>"; };
 		11E82B811949561C0048F0DB /* ETGCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETGCalendarViewController.h; sourceTree = "<group>"; };
 		11E82B84194957200048F0DB /* ETGCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETGCalendarViewController.m; sourceTree = "<group>"; };
+		11E933F719AB55F0000CB50C /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
+		11E933F819AB55F0000CB50C /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
+		11E933FA19AB561D000CB50C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		11E933FC19AB57BA000CB50C /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
+		11E933FD19AB57BA000CB50C /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
+		11E933FF19AB5993000CB50C /* MyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyButton.h; sourceTree = "<group>"; };
+		11E9340019AB5993000CB50C /* MyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyButton.m; sourceTree = "<group>"; };
+		11E9340219AB628C000CB50C /* 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01.png; sourceTree = "<group>"; };
+		11E9340419AB6B71000CB50C /* audio_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = audio_001.png; sourceTree = "<group>"; };
+		11E9340519AB6B71000CB50C /* audio_002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = audio_002.png; sourceTree = "<group>"; };
+		11E9340619AB6B71000CB50C /* audio_003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = audio_003.png; sourceTree = "<group>"; };
 		11EC285E193F15AA002FF46E /* ETAddSendReceiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETAddSendReceiveViewController.h; sourceTree = "<group>"; };
 		11EC285F193F15AA002FF46E /* ETAddSendReceiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETAddSendReceiveViewController.m; sourceTree = "<group>"; };
 		11ECEDD11946EFE200BFB85A /* GKChildReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKChildReceiver.h; sourceTree = "<group>"; };
@@ -1531,6 +1550,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11E933FB19AB561D000CB50C /* AudioToolbox.framework in Frameworks */,
 				11D6C38619936C7C001BBF7E /* AlixPaylib.a in Frameworks */,
 				11BF1295195AA6A9003ABFF6 /* AssetsLibrary.framework in Frameworks */,
 				7860CB2218865A6800DD0E80 /* MediaPlayer.framework in Frameworks */,
@@ -1595,6 +1615,7 @@
 		113320F91953EAB50088E226 /* Health */ = {
 			isa = PBXGroup;
 			children = (
+				11E9340219AB628C000CB50C /* 01.png */,
 				113320FA1953EB140088E226 /* GKHealthListViewController.h */,
 				113320FB1953EB140088E226 /* GKHealthListViewController.m */,
 				113320FD195412C80088E226 /* GKHealthCell.h */,
@@ -1625,6 +1646,10 @@
 				11BD3260199DB962007FCFE7 /* GKBuyViewController.m */,
 				11B62A7919A34A1000B8604F /* BuyButton.h */,
 				11B62A7A19A34A1000B8604F /* BuyButton.m */,
+				11E933FC19AB57BA000CB50C /* AudioPlayer.h */,
+				11E933FD19AB57BA000CB50C /* AudioPlayer.m */,
+				11E933FF19AB5993000CB50C /* MyButton.h */,
+				11E9340019AB5993000CB50C /* MyButton.m */,
 			);
 			path = Health;
 			sourceTree = "<group>";
@@ -2200,6 +2225,7 @@
 		E3EA3AE2169E9491000DF7EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				11E933FA19AB561D000CB50C /* AudioToolbox.framework */,
 				11BF1294195AA6A9003ABFF6 /* AssetsLibrary.framework */,
 				7860CB2118865A6800DD0E80 /* MediaPlayer.framework */,
 				78930528187A4D6E00628928 /* libz.1.2.5.dylib */,
@@ -2289,6 +2315,9 @@
 		E3EA3B01169E94C5000DF7EE /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				11E9340419AB6B71000CB50C /* audio_001.png */,
+				11E9340519AB6B71000CB50C /* audio_002.png */,
+				11E9340619AB6B71000CB50C /* audio_003.png */,
 				11B62A8219A34E2200B8604F /* qq_34.png */,
 				11AFBB1D19A5F38500BD4A7A /* health_bg_pic.png */,
 				11B62A8019A34E1400B8604F /* health_buy_btn_BG.png */,
@@ -2386,6 +2415,8 @@
 		E3F2AA5B16AD0959006936A5 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				11E933F719AB55F0000CB50C /* AudioStreamer.h */,
+				11E933F819AB55F0000CB50C /* AudioStreamer.m */,
 				11D6C37D19936C3B001BBF7E /* alipay */,
 				1123309E195189B5001B585F /* Umeng */,
 				7860CB23188686C000DD0E80 /* MDRadialProgress */,
@@ -3045,6 +3076,7 @@
 				F95023E216DCB61B0079A05E /* composeEmotionBg.png in Resources */,
 				11414312196543CF007267D6 /* health__top.png in Resources */,
 				789CC761182CEF0500E81510 /* grow03.png in Resources */,
+				11E9340819AB6B71000CB50C /* audio_002.png in Resources */,
 				F95023E316DCB61B0079A05E /* composeEmotionBg@2x.png in Resources */,
 				1141431A1965548E007267D6 /* health_uppic.png in Resources */,
 				78F841C6181945F9007722AE /* tbBtn_activity_en.png in Resources */,
@@ -3087,6 +3119,7 @@
 				11D937D21947FA3D00215842 /* deleteTag.png in Resources */,
 				F95023FE16DCB61B0079A05E /* friendPortrait.png in Resources */,
 				F95023FF16DCB61B0079A05E /* friendPortrait@2x.png in Resources */,
+				11E9340719AB6B71000CB50C /* audio_001.png in Resources */,
 				785DE1BF180FB3E6001B0EB3 /* bottomSettingSel.png in Resources */,
 				F950240016DCB61B0079A05E /* netError.png in Resources */,
 				F950240116DCB61B0079A05E /* netError@2x.png in Resources */,
@@ -3157,6 +3190,7 @@
 				112FC10E19A3229400786B33 /* health_plus_select.png in Resources */,
 				11BF129D195AD865003ABFF6 /* inputBG.png in Resources */,
 				78DFD29117B0B4F40069B8CC /* 保存.png in Resources */,
+				11E9340919AB6B71000CB50C /* audio_003.png in Resources */,
 				78DFD29217B0B4F40069B8CC /* 腾讯微博.png in Resources */,
 				7860CB2E1886907F00DD0E80 /* movieplay.png in Resources */,
 				78F841E3181A8160007722AE /* currentKids.png in Resources */,
@@ -3291,6 +3325,7 @@
 				785DE1B2180FB3E6001B0EB3 /* bottomAboutDef.png in Resources */,
 				78378F0017F579A500AAAE5A /* clean.png in Resources */,
 				78931AA717F66FD6007A3ACE /* tabbar_badge.png in Resources */,
+				11E9340319AB628C000CB50C /* 01.png in Resources */,
 				78931AB017F67495007A3ACE /* 1登录_07.png in Resources */,
 				78A0662618A9D61700E3B13B /* redPoint.png in Resources */,
 				78D8D10318C0348F008860AB /* help_zhuye.png in Resources */,
@@ -3364,6 +3399,7 @@
 				E3F4F3ED16B9109200CB8E31 /* NSDate+convenience.m in Sources */,
 				E3F4F3EE16B9109200CB8E31 /* NSMutableArray+convenience.m in Sources */,
 				78AD8541186593540082E082 /* ETHelpViewController.m in Sources */,
+				11E9340119AB5993000CB50C /* MyButton.m in Sources */,
 				E3F4F3EF16B9109200CB8E31 /* UIColor+expanded.m in Sources */,
 				E3F4F3F016B9109200CB8E31 /* UIView+convenience.m in Sources */,
 				E3F4F3F116B9109200CB8E31 /* VRGCalendarView.m in Sources */,
@@ -3374,6 +3410,7 @@
 				11C848091961776100E900F2 /* CYDetailCell.m in Sources */,
 				F9EFD80316BA779C0030A5C1 /* ImageCache.m in Sources */,
 				781E53AD181E57520052851A /* ETActicalPicture.m in Sources */,
+				11E933FE19AB57BA000CB50C /* AudioPlayer.m in Sources */,
 				11BD3261199DB962007FCFE7 /* GKBuyViewController.m in Sources */,
 				F91AE3B516BB610000BF3E5C /* DutyDayView.m in Sources */,
 				F91AE3CB16BBA41900BF3E5C /* MBProgressHUD.m in Sources */,
@@ -3398,6 +3435,7 @@
 				78A41FDB1820B80300D0DE50 /* ETChangeBindViewController.m in Sources */,
 				F95021CA16DCAF640079A05E /* WeiboAuthentication.m in Sources */,
 				F95021CB16DCAF640079A05E /* WeiboEngine.m in Sources */,
+				11E933F919AB55F0000CB50C /* AudioStreamer.m in Sources */,
 				F95021CC16DCAF640079A05E /* StatusQuery.m in Sources */,
 				F95021CD16DCAF640079A05E /* TimelineQuery.m in Sources */,
 				F95021CE16DCAF640079A05E /* UserQuery.m in Sources */,
@@ -3673,8 +3711,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kai yang (E76KEG2YY8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kai yang (E76KEG2YY8)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -3700,8 +3738,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
+				PROVISIONING_PROFILE = "8b153f14-2b4c-4c45-833f-f365e29a1cf6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8b153f14-2b4c-4c45-833f-f365e29a1cf6";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3715,8 +3753,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kai yang (E76KEG2YY8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kai yang (E76KEG2YY8)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -3742,8 +3780,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
+				PROVISIONING_PROFILE = "8b153f14-2b4c-4c45-833f-f365e29a1cf6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8b153f14-2b4c-4c45-833f-f365e29a1cf6";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;

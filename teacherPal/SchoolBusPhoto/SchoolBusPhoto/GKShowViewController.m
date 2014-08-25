@@ -363,67 +363,8 @@
         NSDictionary *addtag=[NSMutableDictionary dictionaryWithObjectsAndKeys:tagstrarr,@"tag",tagidarr,@"tagid", nil];
         [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:addtag,key, nil]];
     }
-//    if ([picTextArr count]==0)
-//    {
-//
-//        
-////        NSDictionary *addtag=[NSMutableDictionary dictionaryWithObjectsAndKeys:tagTxt,@"tag",[NSNumber numberWithInt:_tagid],@"tagid", nil];
-////        [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:addtag,key, nil]];
-//        
-//        
-//    }
-
-
     
 }
-//-(void)applyAll:(UIButton *)btn
-//{
-//
-//    if([picTxtView.text isEqualToString:@""])
-//    {
-//        return;
-//    }
-//    
-//    if([self textLength:picTxtView.text] > 140)
-//    {
-//        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:@"字数过长" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
-//        [alert show];
-//        [alert release];
-//        return;
-//    }
-//    [picTextArr removeAllObjects];
-//    for (int i=0; i<[assetArr count]; i++) {
-//         NSString *key=[NSString stringWithFormat:@"%d",i];
-//         [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:picTxtView.text,key, nil]];
-//    }
-//    
-//
-//
-//}
-
-//- (void)textViewDidChange:(UITextView *)textView
-//{
-//
-//    int a= [self textLength:picTxtView.text];
-//  
-//    NSLog(@"%d",a);
-//
-//   
-//    labelNum.text=[NSString stringWithFormat:@"%d/140",a];
-//    
-//    if(a>140)
-//    {
-//        
-//        labelNum.textColor=[UIColor redColor];;
-//        
-//    }
-//    else
-//    {
-//        labelNum.textColor=[UIColor blackColor];
-//        self.preStr=picTxtView.text;
-//      
-//    }
-//}
 
 - (void)doEditText:(UIButton *)sender
 {
@@ -485,17 +426,8 @@
             }
             sayView.contextView.text = @"";
         }
-//        UIView *visibleView = [[changeView subviews] objectAtIndex:1];
-//        if (visibleView.tag != 1234) {
-//            photobutton.hidden = YES;
-//            numView.hidden=YES;
-//            titlelabel.text=NSLocalizedString(@"story", @"");
-//            [picTxtView becomeFirstResponder];
-//            
-//              textView.hidden=YES;
-//        }
-//        
-        
+       
+    
     if(sender==nil)
     {
         whichView=1;

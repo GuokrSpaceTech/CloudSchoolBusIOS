@@ -26,4 +26,5 @@ extern int badge;
 @property (nonatomic,retain) UINavigationController *leftViewController;
 @property (nonatomic) int state;
 + (id)share;
+
 @end

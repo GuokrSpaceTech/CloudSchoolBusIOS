@@ -13,7 +13,7 @@
 #import "GKReportStudentView.h"
 #import "EKRequest.h"
 #import "MBProgressHUD.h"
-@interface GKWriteReportViewController : GKBaseViewController<QuestionViewDelegate,MTCustomActionSheetDelegate,ReportStudentViewdelegate,EKProtocol>
+@interface GKWriteReportViewController : GKBaseViewController<QuestionViewDelegate,MTCustomActionSheetDelegate,ReportStudentViewdelegate,EKProtocol,UIAlertViewDelegate>
 {
     UIScrollView *scroller;
     UIButton *dateButton;

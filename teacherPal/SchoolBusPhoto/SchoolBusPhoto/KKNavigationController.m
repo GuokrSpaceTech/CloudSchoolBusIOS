@@ -12,7 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <math.h>
 #import "GKSaySomethingView.h"
-
+#import "GKWriteReportViewController.h"
 #import "GKShowViewController.h"
 #import <CoreGraphics/CoreGraphics.h>
 @interface KKNavigationController ()
@@ -184,14 +184,11 @@
     for (UIView* next = [touchedView superview]; next; next = next.superview)
     {
             UIResponder *nextResponder = [next nextResponder];
-                if ([nextResponder isKindOfClass:[GKShowViewController class]]) {
+            if ([nextResponder isKindOfClass:[GKShowViewController class]] || [nextResponder isKindOfClass:[GKWriteReportViewController class]]) {
                     return NO;
                     
             }
         
-        
-     
-    
     }
     if([touchedView isKindOfClass:[UIButton class]] ||[touchedView isKindOfClass:[GKSaySomethingView class]] || [touchedView isKindOfClass:[UITextView class]]) {
         

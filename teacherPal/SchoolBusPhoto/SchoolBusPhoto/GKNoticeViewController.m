@@ -36,6 +36,7 @@
 {
     [super viewDidAppear:animated];
     [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
+
 }
 //-(void)clickConformClick:(UIButton *)btn
 //{
@@ -54,12 +55,18 @@
 //        isConform=NO;
 //    }
 //}
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     
-    
+
+    if (ios7) {
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
     isConform=NO;
     stuArr=[[NSMutableArray alloc]init];
     UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(0, navigationView.frame.size.height+navigationView.frame.origin.y, 320, self.view.frame.size.height)];
@@ -108,25 +115,7 @@
     numberWord.font=[UIFont systemFontOfSize:14];
     [self.view addSubview:numberWord];
     [numberWord release];
-    //"check"="如需家长确认，请勾选。";
-//    UILabel *  huizhiLabel =[[UILabel alloc]initWithFrame:CGRectMake(180 , _textView.frame.size.height+_textView.frame.origin.y+5, 120, 40)];
-//    huizhiLabel.numberOfLines=2;
-//    //huizhiLabel.text="该通知需要家长确认吗？"";
-//    huizhiLabel.text=NSLocalizedString(@"check", @"");
-//    huizhiLabel.backgroundColor=[UIColor clearColor];
-//    huizhiLabel.textColor=[UIColor redColor];
-//    huizhiLabel.font=[UIFont systemFontOfSize:14];
-//    [self.view addSubview:huizhiLabel];
-//    [huizhiLabel release];
-//    
-//    
-//    UIButton * confromButton=[UIButton buttonWithType:UIButtonTypeCustom];
-//    [confromButton setBackgroundImage:[UIImage imageNamed:@"kuang.png"] forState:UIControlStateNormal];
-//    confromButton.frame=CGRectMake(150,  _textView.frame.size.height+_textView.frame.origin.y+15, 20, 20);
-//    [confromButton addTarget:self action:@selector(clickConformClick:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:confromButton];
-    
-    
+
     inputView=[[UIView alloc]initWithFrame:CGRectMake(0,_textView.frame.size.height+_textView.frame.origin.y, 320, 40)];
     
     UIImageView *tiaoview=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
@@ -392,7 +381,7 @@
             picker.delegate = self;
             picker.allowsEditing = NO;
             picker.sourceType = sourceType;
-            
+         
             [self presentModalViewController:picker animated:YES];
             [picker release];
         }
@@ -410,6 +399,13 @@
             [picker release];
         }
     }
+}
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+
+{
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
 }
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

@@ -13,7 +13,7 @@
 #import "GKSaySomethingView.h"
 #import "GKLeftViewController.h"
 #import "GKCommonClass.h"
-
+#import "GKWriteReportViewController.h"
 
 @interface GKMainViewController ()
 
@@ -115,6 +115,7 @@ static  GKMainViewController*rootViewCon;
     
     // Do any additional setup after loading thce view from its nib.
 }
+
 #pragma mark - side bar select delegate
 - (void)leftSideBarSelectWithController:(UIViewController *)controller
 {
@@ -209,7 +210,7 @@ static  GKMainViewController*rootViewCon;
     {
         // 找到GKShowViewController 禁掉拖拽手势手势
         UIResponder *nextResponder = [next nextResponder];
-        if ([nextResponder isKindOfClass:[GKShowViewController class]]) {
+        if ([nextResponder isKindOfClass:[GKShowViewController class]] || [nextResponder isKindOfClass:[GKWriteReportViewController class]]) {
             return NO;
             
         }

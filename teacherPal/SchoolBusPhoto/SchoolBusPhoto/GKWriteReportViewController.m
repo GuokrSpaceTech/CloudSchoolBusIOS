@@ -9,7 +9,7 @@
 #import "GKWriteReportViewController.h"
 #import "KKNavigationController.h"
 #import "GKUserLogin.h"
-
+//#import "m"
 @interface GKWriteReportViewController ()
 
 @end
@@ -45,6 +45,8 @@
 {
     [super viewWillAppear:animated];
     [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
+
+
     
 }
 -(void)keyboarChange:(NSNotification *)noti
@@ -70,10 +72,6 @@
     
     
     [UIView animateWithDuration:0.2 animations:^{
-      
-       // scroller.frame=CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
-       // scroller.frame=CGRectMake(0,scroller.frame.size.height+scroller.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y-58);
-        
         scroller.frame=CGRectMake(scroller.frame.origin.x, scroller.frame.origin.y, scroller.frame.size.width, self.view.frame.size.height-navigationView.frame.size.height-navigationView.frame.origin.y-30);
     }];
     
@@ -457,7 +455,20 @@
 -(void)leftClick:(UIButton *)btn
 {
     
-    [self.navigationController popViewControllerAnimated:YES];
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"Cancelphotos", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"no", @"") otherButtonTitles:NSLocalizedString(@"yes", @""), nil];
+    [alert show];
+    [alert release];
+    
+
+    
+   // [self.navigationController popViewControllerAnimated:YES];
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex==1)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 - (void)didReceiveMemoryWarning
 {

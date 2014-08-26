@@ -3711,8 +3711,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: kai yang (E76KEG2YY8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kai yang (E76KEG2YY8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -3738,8 +3738,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8b153f14-2b4c-4c45-833f-f365e29a1cf6";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8b153f14-2b4c-4c45-833f-f365e29a1cf6";
+				PROVISIONING_PROFILE = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3753,8 +3753,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: kai yang (E76KEG2YY8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kai yang (E76KEG2YY8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -3780,8 +3780,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8b153f14-2b4c-4c45-833f-f365e29a1cf6";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8b153f14-2b4c-4c45-833f-f365e29a1cf6";
+				PROVISIONING_PROFILE = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;

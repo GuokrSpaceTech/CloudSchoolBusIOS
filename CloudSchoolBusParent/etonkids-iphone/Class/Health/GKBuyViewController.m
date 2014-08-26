@@ -180,9 +180,11 @@
     sumLabel.font=[UIFont systemFontOfSize:15];
     [scroller addSubview:sumLabel];
     [sumLabel release];
-    
+  
+//    "AlipayPay"="支付宝客户端支付";
+//    "AlipayApp"="推荐已安装支付宝客户端的用户使用";
     //UIButton *buttonBuy=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    BuyButton *btn=[[BuyButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2.0-611/4.0, sumLabel.frame.size.height + sumLabel.frame.origin.y+20,611/2.0, 45) title1:@"支付宝客户端支付" title2:@"推荐已安装支付宝客户端的用户使用" image:[UIImage imageNamed:@"health_buy_btn_icon.png"]];
+    BuyButton *btn=[[BuyButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2.0-611/4.0, sumLabel.frame.size.height + sumLabel.frame.origin.y+20,611/2.0, 45) title1:NSLocalizedString(@"AlipayPay", @"") title2:NSLocalizedString(@"AlipayApp", @"") image:[UIImage imageNamed:@"health_buy_btn_icon.png"]];
 
 //    buttonBuy.backgroundColor=[UIColor redColor];
   //  [btn addTarget:self action:@selector(buyClick:) forControlEvents:UIControlEventTouchDown];
@@ -230,7 +232,7 @@
     {
         ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
         [com requestLoginWithComplete:^(NSError *err){
-            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"2",@"count", nil];
+            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:self.count,@"count", nil];
             [[EKRequest Instance] EKHTTPRequest:order parameters:dic requestMethod:GET forDelegate:self];
         }];
     }
@@ -256,8 +258,8 @@
         order.tradeNO = [dic objectForKey:@"oriderid"];; //订单ID（由商家自行制定）
         order.productName = [dic objectForKey:@"title"]; //商品标题
         order.productDescription = [dic objectForKey:@"description"]; //商品描述
-        // order.amount = [NSString stringWithFormat:@"%@",[dic objectForKey:@"price"]]; //商品价格
-        order.amount = [NSString stringWithFormat:@"%.2f",self.count*0.01]; //商品价格
+        order.amount = [NSString stringWithFormat:@"%@",[dic objectForKey:@"price"]]; //商品价格
+      //  order.amount = [NSString stringWithFormat:@"%.2f",self.count*0.01]; //商品价格
         order.notifyURL =   [dic objectForKey:@"notifyURL"]; //回调URL
         
         

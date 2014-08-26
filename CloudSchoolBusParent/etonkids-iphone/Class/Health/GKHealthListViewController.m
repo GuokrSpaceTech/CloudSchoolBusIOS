@@ -86,7 +86,7 @@
     
     // 创建春雨账号 测试
 //    UserLogin *user1=[UserLogin currentLogin];
-//      int time= [[NSDate date] timeIntervalSince1970];
+//    int time= [[NSDate date] timeIntervalSince1970];
 //    
 //    NSString *string=[NSString stringWithFormat:@"%d_%@_%@",time,user1.username,@"247c78y@328y2z89x948c"];
 //    

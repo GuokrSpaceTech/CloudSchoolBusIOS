@@ -128,6 +128,7 @@
         user.healtState=[NSString stringWithFormat:@"%@",[dic objectForKey:@"healthstate"]];
         user.tuition_time=[NSString stringWithFormat:@"%@",[dic objectForKey:@"tuition_time"]];
         user.chunyuisopen=[NSString stringWithFormat:@"%@",[dic objectForKey:@"chunyuisopen"]];
+         //user.chunyuisopen=@"1";
         user.chunyuendtime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"chunyu_endtime"]];
         [[EKRequest Instance] EKHTTPRequest:classinfo parameters:nil requestMethod:GET forDelegate:self];
         

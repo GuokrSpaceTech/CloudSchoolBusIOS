@@ -10,7 +10,7 @@
 //#define SERVERURL @"http://api.yunxiaoche.com/"
 //#define SERVERURL @"http://apitest.yunxiaoche.com/"
 #define SERVERURL @"http://apitest.yunxiaoche.com/"
-//#define SERVERURL @"http://222.128.71.186:81/"
+ //#define SERVERURL @"http://222.128.71.186:81/"
 //#define SERVERURL @"http://api34.yunxiaoche.com/"
 
 @interface EKRequest()

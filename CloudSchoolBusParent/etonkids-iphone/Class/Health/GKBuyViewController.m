@@ -232,7 +232,7 @@
     {
         ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
         [com requestLoginWithComplete:^(NSError *err){
-            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:self.count,@"count", nil];
+            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:self.count],@"count", nil];
             [[EKRequest Instance] EKHTTPRequest:order parameters:dic requestMethod:GET forDelegate:self];
         }];
     }

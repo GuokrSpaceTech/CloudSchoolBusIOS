@@ -2978,7 +2978,7 @@
 				ORGANIZATIONNAME = wpf;
 				TargetAttributes = {
 					E3EA3ADE169E9490000DF7EE = {
-						DevelopmentTeam = 6Q77HKGB24;
+						DevelopmentTeam = 24QP873G9R;
 					};
 				};
 			};
@@ -3711,8 +3711,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -3738,8 +3738,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
+				PROVISIONING_PROFILE = "b4500775-0f79-452f-97c8-c964fe701b8d";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "b4500775-0f79-452f-97c8-c964fe701b8d";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3753,8 +3753,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Guokr Space Tech Co., Ltd. (6Q77HKGB24)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -3780,8 +3780,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9C79ED4D-9932-4F76-B01C-AAEE40CDCC0F";
+				PROVISIONING_PROFILE = "b4500775-0f79-452f-97c8-c964fe701b8d";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "b4500775-0f79-452f-97c8-c964fe701b8d";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -10,7 +10,7 @@
 //#define SERVERURL @"http://api.yunxiaoche.com/"
 //#define SERVERURL @"http://apitest.yunxiaoche.com/"
 #define SERVERURL @"http://apitest.yunxiaoche.com/"
- //#define SERVERURL @"http://222.128.71.186:81/"
+//#define SERVERURL @"http://222.128.71.186:81/"
 //#define SERVERURL @"http://api34.yunxiaoche.com/"
 
 @interface EKRequest()
@@ -152,12 +152,12 @@ static EKRequest * instance = nil;
     //登录方法不加入Sid
     if((function == signin || function == unit) && param != nil)
     {
-        header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactoprestphone",@"apikey",@"3.4.0",@"Version", nil], nil];
+        header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactoprestphone",@"apikey",@"3.4.1",@"Version", nil], nil];
     }
     else
     {
         NSString * sid = [userDefault objectForKey:@"sid"];
-        header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactoprestphone",@"apikey",sid,@"sid",@"3.4.0",@"Version",nil], nil];
+        header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactoprestphone",@"apikey",sid,@"sid",@"3.4.1",@"Version",nil], nil];
     }
     
     NSString * address = [SERVERURL stringByAppendingFormat:@"%@",[self getFunction:function]];

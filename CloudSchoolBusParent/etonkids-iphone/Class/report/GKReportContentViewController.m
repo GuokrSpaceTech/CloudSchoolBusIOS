@@ -167,10 +167,13 @@
         
         
         UIImageView * lineImageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 59, self.view.frame.size.width, 1)];
+            lineImageView.tag=102;
         lineImageView.backgroundColor=[UIColor clearColor];
         lineImageView.image=[UIImage imageNamed:@"cellline.png"];
         [cell.contentView addSubview:lineImageView];
         [lineImageView release];
+        
+        
         
         
     }
@@ -178,7 +181,9 @@
     NSDictionary *dic=[self.report.contentArr objectAtIndex:indexPath.row];
     UILabel *titleLabel=(UILabel *)[cell.contentView viewWithTag:100];
     UILabel *contentlabel=(UILabel *)[cell.contentView viewWithTag:101];
-    ;
+    
+
+    UIImageView *imageView=(UIImageView *)[cell.contentView viewWithTag:102];
     titleLabel.text=[NSString stringWithFormat:@"%d、%@",indexPath.row+1,[dic objectForKey:@"title"]];
     
     
@@ -189,7 +194,7 @@
     contentlabel.text=[dic objectForKey:@"answer"];
     
     contentlabel.frame=CGRectMake(20, 35, 280, size.height);
-    
+    imageView.frame=CGRectMake(0, size.height+40-1, self.view.frame.size.width, 1);
     return cell;
     
 }
@@ -198,7 +203,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+   // return 60;
     NSDictionary *dic=[self.report.contentArr objectAtIndex:indexPath.row];
     NSString *answer=[dic objectForKey:@"answer"];
     

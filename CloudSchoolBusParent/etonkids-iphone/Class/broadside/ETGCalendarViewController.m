@@ -264,8 +264,8 @@
         [HUD removeFromSuperview];
         HUD=nil;
     }
-   // NSString *aa=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
-   // NSLog(@"%@",aa);
+//    NSString *aa=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",aa);
     if(method == attendancemanager && code == 1)
     {
         id result =[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];

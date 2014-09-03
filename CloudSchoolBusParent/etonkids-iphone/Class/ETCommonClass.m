@@ -116,7 +116,16 @@
         user.parent=[NSString stringWithFormat:@"%@",[dic objectForKey:@"parent"]];
         user.sex=[NSString stringWithFormat:@"%@",[dic objectForKey:@"sex"]];
         user.className = [NSString stringWithFormat:@"%@",[dic objectForKey:@"classname"]];
-        user.avatar = [NSString stringWithFormat:@"%@",[dic objectForKey:@"avatar"]];
+        NSString *str=[NSString stringWithFormat:@"%@",[dic objectForKey:@"avatar"]];
+        // - (NSRange)rangeOfString:(NSString *)aString;
+        if([str rangeOfString:@"source_student"].location==NSNotFound)
+        {
+            user.avatar = [NSString stringWithFormat:@"%@",[dic objectForKey:@"avatar"]];
+        }
+        else
+        {
+            user.avatar=[str stringByReplacingCharactersInRange:[str rangeOfString:@"source_"] withString:@""];
+        }
         user.allowmutionline = [NSString stringWithFormat:@"%@",[dic objectForKey:@"allow_muti_online"]];
         user.ischeck_mobile = [NSString stringWithFormat:@"%@",[dic objectForKey:@"ischeck_mobile"]];
         user.skinid = [NSString stringWithFormat:@"%@",[dic objectForKey:@"skinid"]];

@@ -214,10 +214,10 @@
     
     
         __tableView.tableFooterView=nil;
-        if(![_problem.status isEqualToString:@"n"] &&![_problem.status isEqualToString:@"d"] && ![_problem.status isEqualToString:@"c"])
-        {
+    
             UIView *footView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
             footView.backgroundColor=[UIColor clearColor];
+  
             UILabel *pingjialabel=[[UILabel alloc]initWithFrame:CGRectMake(10, 5, 300, 20)];
             pingjialabel.text=NSLocalizedString(@"doctor_solve", @"");
             pingjialabel.font=[UIFont systemFontOfSize:12];
@@ -233,14 +233,17 @@
             [pingjialabel addGestureRecognizer:tapClick];
             [tapClick release];
             
-            
-            UIView *contentView=[[UIView alloc]initWithFrame:CGRectMake(10, 35, 300, 40)];
+    
+            NSString *strcontent=NSLocalizedString(@"doctor_content", @"");;
+            CGSize size=[strcontent sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(290, 1000) lineBreakMode:NSLineBreakByCharWrapping];
+
+            UIView *contentView=[[UIView alloc]initWithFrame:CGRectMake(10, 30, 300, size.height+10)];
             contentView.backgroundColor=[UIColor whiteColor];
             [footView addSubview:contentView];
             [contentView release];
-            
-            UILabel *contentLabel=[[UILabel alloc]initWithFrame:CGRectMake(15, 35, 290, 40)];
-            contentLabel.text=NSLocalizedString(@"doctor_content", @"");
+    
+            UILabel *contentLabel=[[UILabel alloc]initWithFrame:CGRectMake(15, 30, 290, size.height)];
+            contentLabel.text=strcontent;
             contentLabel.font=[UIFont systemFontOfSize:12];
             contentLabel.numberOfLines=0;
             contentLabel.backgroundColor=[UIColor clearColor];
@@ -249,8 +252,16 @@
             [contentLabel release];
             __tableView.tableFooterView=footView;
             [footView release];
-        }
+    
+    
+    if([_problem.status isEqualToString:@"d"] || [_problem.status isEqualToString:@"c"])
+    {
+        [pingjialabel removeGestureRecognizer:tapClick];
+        [pingjialabel removeFromSuperview];
         
+        contentView.frame=CGRectMake(10, 10, 300, size.height+10);
+        contentLabel.frame=CGRectMake(15, 10, 290, size.height);
+    }
     
     [inputView removeFromSuperview];
     inputView=nil;

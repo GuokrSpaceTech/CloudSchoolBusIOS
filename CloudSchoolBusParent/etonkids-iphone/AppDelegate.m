@@ -97,7 +97,7 @@
     [MobClick startWithAppkey:@"53a150c056240b8a53094d52" reportPolicy:SEND_INTERVAL   channelId:@""];
     
     //    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    [MobClick setAppVersion:@"3.4.0"];
+    [MobClick setAppVersion:@"3.4.1"];
 
     
     NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
@@ -348,6 +348,17 @@
         }
         
     }
+    if(method==student)
+    {
+        if(code==1)
+        {
+            UserLogin *user=[UserLogin currentLogin];
+            NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+            user.chunyuisopen=[NSString stringWithFormat:@"%@",[dic objectForKey:@"chunyuisopen"]];
+            user.chunyuendtime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"chunyu_endtime"]];
+
+        }
+    }
     
 }
 -(void)CheckVersion
@@ -594,6 +605,9 @@
                             
             			}
             
+            [self performSelector:@selector(loadchunyu) withObject:nil afterDelay:3];
+
+            
         }
         else
         {
@@ -614,7 +628,10 @@
     }
     
 }
-
+-(void)loadchunyu
+{
+                [[EKRequest Instance] EKHTTPRequest:student parameters:nil requestMethod:GET forDelegate:self];
+}
 - (AlixPayResult *)resultFromURL:(NSURL *)url {
 	NSString * query = [[url query] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 #if ! __has_feature(objc_arc)

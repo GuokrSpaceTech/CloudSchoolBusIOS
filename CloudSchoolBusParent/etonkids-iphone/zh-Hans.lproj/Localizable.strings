@@ -462,7 +462,7 @@
 "clearCache" = "清除缓存";
 "confirmClear" = "确认清除";
 "zidongbofang" = "Wifi视频自动播放";
-"aboutversion" =  "家长版V3.4.0";
+"aboutversion" =  "家长版V3.4.1";
 "budeng" = "补登";
 "baocunshipin" = "保存视频";
 "fuwuzhuangtai" = "服务状态";
@@ -575,4 +575,5 @@
 "healthtimenostate"="尚未购买医生咨询服务";
 "AlipayPay"="支付宝客户端支付";
 "AlipayApp"="推荐已安装支付宝客户端的用户使用";
+"ask"="补充提问";
 

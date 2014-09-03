@@ -259,7 +259,7 @@
         order.productName = [dic objectForKey:@"title"]; //商品标题
         order.productDescription = [dic objectForKey:@"description"]; //商品描述
         order.amount = [NSString stringWithFormat:@"%@",[dic objectForKey:@"price"]]; //商品价格
-      //  order.amount = [NSString stringWithFormat:@"%.2f",self.count*0.01]; //商品价格
+        //order.amount = [NSString stringWithFormat:@"%.2f",self.count*0.01]; //商品价格
         order.notifyURL =   [dic objectForKey:@"notifyURL"]; //回调URL
         
         

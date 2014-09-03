@@ -493,7 +493,7 @@
 "clearCache" = "Wipe Cache";
 "confirmClear" = "Confirm to wipe cache";
 "zidongbofang" = "Auto Play in Wifi";
-"aboutversion" =  "For Parents V3.4.0";
+"aboutversion" =  "For Parents V3.4.1";
 "budeng" = "Additional record";
 "baocunshipin" = "Save Video";
 "fuwuzhuangtai" = "Service";
@@ -607,3 +607,5 @@
 
 "AlipayPay"="Alipay App to pay";
 "AlipayApp"="Recommend the users had installed Alipay App";
+
+"ask"="Ask";

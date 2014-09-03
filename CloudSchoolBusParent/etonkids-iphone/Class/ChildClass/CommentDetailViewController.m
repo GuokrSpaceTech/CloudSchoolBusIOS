@@ -220,7 +220,7 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
         btn.frame=CGRectMake(25 + col * (90 + 10), heightorign +5 + row *(20 +5) , 90, 20);
         [btn addTarget:self action:@selector(tagClick:) forControlEvents:UIControlEventTouchUpInside];
         btn.tag=i+3210;
-        btn.titleLabel.font=[UIFont systemFontOfSize:15];
+        btn.titleLabel.font=[UIFont systemFontOfSize:13];
         //"systemLan"="cn";
         
         if([NSLocalizedString(@"systemLan", @"") isEqualToString:@"en"])
@@ -546,23 +546,31 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     NSDictionary *dic=[self.shareContent.tagArr objectAtIndex:i];
     
     NSString *tagdesc=[dic objectForKey:@"tagnamedesc"];
+    NSString *tagname=[dic objectForKey:@"tagname"];
+    
+    
+    
     if([NSLocalizedString(@"systemLan", @"") isEqualToString:@"en"])
     {
         tagdesc=[dic objectForKey:@"tagnamedesc_en"];
+        tagname=[dic objectForKey:@"tagname_en"];
         if([tagdesc isEqualToString:@""] || tagdesc==nil)
             tagdesc=[dic objectForKey:@"tagnamedesc"];
+        
+        if([tagname isEqualToString:@""] || tagname==nil)
+            tagname=[dic objectForKey:@"tagname"];
       
     }
     else
     {
         tagdesc=[dic objectForKey:@"tagnamedesc"];
         
-        
+        tagname=[dic objectForKey:@"tagname"];
     }
 
     
     
-    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:tagdesc delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:tagname message:tagdesc delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert show];
     [alert release];
 }

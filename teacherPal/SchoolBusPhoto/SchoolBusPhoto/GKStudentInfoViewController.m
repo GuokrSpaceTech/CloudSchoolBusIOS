@@ -258,7 +258,7 @@
                     cell.accessoryType=UITableViewCellAccessoryNone;
                      //nameLabel.frame=CGRectMake(10, 20, 150, 20);
                     nameLabel.text=NSLocalizedString(@"fuefiedaoqi", @"");
-                    if(st.xuefeuTime==nil)
+                    if(st.xuefeuTime==nil || [st.xuefeuTime isEqualToString:@""])
                         realLabel.text=NSLocalizedString(@"None", @"");
                     else
                     realLabel.text=st.xuefeuTime;
@@ -300,14 +300,22 @@
 
         UILabel *nameLabel=(UILabel *)[cell.contentView viewWithTag:TAGCELL+100];
         nameLabel.text=NSLocalizedString(@"guoming", @"");
+        
+        NSString * healthStateTmp=nil;
         if([st.healthstate isEqualToString:@""])
         {
-            st.healthstate=NSLocalizedString(@"None", @"");
+            healthStateTmp=NSLocalizedString(@"None", @"");
         }
-        CGSize size=[st.healthstate sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 500) lineBreakMode:NSLineBreakByCharWrapping];
+        else
+        {
+            healthStateTmp=st.healthstate;
+        }
+        
+        
+        CGSize size=[healthStateTmp sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 500) lineBreakMode:NSLineBreakByCharWrapping];
         UILabel *contentLabel=(UILabel *)[cell.contentView viewWithTag:TAGCELL+101];
         contentLabel.frame=CGRectMake(10, 35, 300, size.height);
-        contentLabel.text=st.healthstate;
+        contentLabel.text=healthStateTmp;
         return cell;
         
             

@@ -588,7 +588,8 @@
     for (int i=0; i<[arr count]; i++) {
         Student *st=[arr objectAtIndex:i];
         NSString *xuefistr=st.xuefeuTime;
-        
+        if([xuefistr isEqualToString:@""] || [xuefistr isEqualToString:@"0000-00-00"])
+            continue;
         NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
         NSString  *today=[dateFormatter stringFromDate:[NSDate date]];

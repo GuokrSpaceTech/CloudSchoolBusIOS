@@ -145,7 +145,7 @@
     //[loginViewController release];
     
 
-    
+
     
     NSUserDefaults *defaultUser=[NSUserDefaults standardUserDefaults];
     
@@ -174,8 +174,6 @@
     
     return YES;
 }
-
-
 
 
 - (void)presentBottom

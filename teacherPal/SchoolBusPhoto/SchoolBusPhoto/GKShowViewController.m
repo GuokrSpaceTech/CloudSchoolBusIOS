@@ -1263,7 +1263,7 @@
                 NSMutableArray *arrtagstr=[[introduceDic objectForKey:txtKey] objectForKey:@"tag"];
                 
           
-                if(arrtagstr!=nil)
+                if([arrtagstr count]!=0)
                 {
                     NSMutableString *temp=[[NSMutableString alloc]init];
                     for (int i=0; i<[arrtagstr count]; i++) {

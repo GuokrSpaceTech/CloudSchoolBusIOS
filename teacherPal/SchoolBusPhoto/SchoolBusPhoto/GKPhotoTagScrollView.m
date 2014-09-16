@@ -158,14 +158,14 @@
         
         GKButtonTag *btn = (GKButtonTag *)[self viewWithTag:TAG + i];
         btn.selected=NO;
-        [btn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];
+//        [btn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         
         for (int j=0; j<[arr count]; j++) {
             int tag=[[arr objectAtIndex:j] integerValue];
             if(tag==[btn.phototag.tagid integerValue])
             {
-                [btn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue-active"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];
+//                [btn setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue-active"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];
                 btn.selected=YES;
                 selectedTag = btn.tag;
                 [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

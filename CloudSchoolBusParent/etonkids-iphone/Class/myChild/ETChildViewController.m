@@ -11,7 +11,7 @@
 #import "ETGCalendarViewController.h"
 #import "GKHealthListViewController.h"
 #import "GKReportViewController.h"
-
+#import "GKVideoListViewController.h"
 #import "GKBuyViewController.h"
 #define VIEWHEIGHT 110
 #define VIEWHEIGHT5 128
@@ -68,23 +68,13 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return 6;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0)
-    {
-        return 1;
-    }
-    else if (section == 1)
-    {
-        return 1;
-    }
-    else
-    {
-        return 1;
-    }
+
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -260,6 +250,33 @@
         cell.selectionStyle=UITableViewCellSelectionStyleBlue;
         
     }
+    
+    
+    else if (indexPath.section == 5)
+    {
+        
+        UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+        imgV.center = CGPointMake(26, 20);
+        imgV.image = [UIImage imageNamed:@"mychild_doctor.png"];
+        [cell.contentView addSubview:imgV];
+        [imgV release];
+        
+        //"doctor_con"="医生咨询";
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
+        label.text = @"视频直播";
+        label.font = [UIFont systemFontOfSize:16];
+        //label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
+        label.backgroundColor = [UIColor clearColor];
+        [cell.contentView addSubview:label];
+        [label release];
+        
+        
+        //        cell.textLabel.backgroundColor=[UIColor clearColor];
+        //        cell.textLabel.text = [titleArr objectAtIndex:indexPath.row];
+        cell.selectionStyle=UITableViewCellSelectionStyleBlue;
+        
+    }
+
 
     return cell;
     
@@ -344,6 +361,21 @@
         
  
         
+        return;
+        
+    }
+    
+    else if (indexPath.section == 5)
+    {
+        
+        
+        
+        
+        GKVideoListViewController *VC=[[GKVideoListViewController alloc]init];
+        AppDelegate *appDel=SHARED_APP_DELEGATE;
+        [appDel.bottomNav pushViewController:VC animated:YES];
+        [VC release];
+
         return;
         
     }

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 typedef void (^CompleteBlock)(BOOL success,NSString * result);
 
-typedef void (^StreamBlock)(BOOL header, char * result);
+typedef void (^StreamBlock)(BOOL header, char * result, int length);
 
 @interface GKSocket : NSObject<NSStreamDelegate>
 {

@@ -7,13 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class OpenGLView20;
 @class GKDevice;
 @interface GKVideoViewController : UIViewController
 {
     GKDevice *device;
+    OpenGLView20 *glView;
+    int viodeoLength;
+    char * video;
+    UIImageView *iamgeView;
 
 }
+
 @property (nonatomic,retain)GKDevice *device;
      - (void)startup;
 - (void)shutdown;

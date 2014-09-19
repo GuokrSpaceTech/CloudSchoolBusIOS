@@ -13,20 +13,23 @@
 #import "libavcodec/avcodec.h" 
 #import "libswscale/swscale.h" 
 #import "libavformat/avformat.h"
+
+#import "OpenGLView20.h"
 const int Header = 101;
 const int Data = 102;
 @interface GKVideoViewController ()
 {
-    AVFormatContext *pFormatCtx;
-	AVCodecContext *pCodecCtx;
-    AVFrame *pFrame;
-	AVPicture picture;
-	int videoStream;
-	struct SwsContext *img_convert_ctx;
-	int sourceWidth, sourceHeight;
-	int outputWidth, outputHeight;
-	UIImage *currentImage;
-	double duration;
+    AVFrame *frame;
+    AVPicture picture;
+    AVCodec *codec;
+    AVCodecContext *codecCtx;
+    AVPacket packet;
+    struct SwsContext *img_convert_ctx;
+    
+    NSMutableData *keyFrame;
+    
+    int outputWidth;
+    int outputHeight;
 
 
 }
@@ -102,31 +105,35 @@ const int Data = 102;
     [self.view addSubview:middleLabel];
     [middleLabel release];
     
+    //./0, , 320, (iphone5 ? 548 : 460) - NAVIHEIGHT
+    glView = [[OpenGLView20 alloc] initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height-( NAVIHEIGHT + (ios7 ? 20 : 0)))];
+    //设置视频原始尺寸
+    [glView setVideoSize:352 height:288];
+    //渲染yuv
+    [self.view addSubview:glView];
     
-avcodec_register_all();
+    //iamgeView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 100,290,400)];
+//    iamgeView.backgroundColor=[UIColor clearColor];
+//    [self.view addSubview:iamgeView];
+  //  [glView setTransform:CGAffineTransformMakeRotation(M_PI/2)];
+
+    avcodec_register_all();
+    frame = av_frame_alloc();
+    codec = avcodec_find_decoder(AV_CODEC_ID_H264);
+    codecCtx = avcodec_alloc_context3(codec);
+    int ret = avcodec_open2(codecCtx, codec, nil);
+    if (ret != 0){
+        NSLog(@"open codec failed :%d",ret);
+    }
+    
+  
+
+    
+    outputWidth = 320;
+    outputHeight = 240;
+    
+  
    
-   // pFrame = av_frame_alloc();
-   
-//    m_pCodec = avcodec_find_decoder(AV_CODEC_ID_H264);
-//    m_pCodecContext = avcodec_alloc_context3(m_pCodec);
-//    int ret = avcodec_open2(m_pCodecContext, m_pCodec, nil);
-//
-//    m_pCodecContext->width = 1280;//视频宽
-//    m_pCodecContext->height = 720;//视频高
-//    avcodec_open2(m_pCodecContext, m_pCodec, NULL);
-//    if (ret != 0){
-//       
-//        NSLog(@"open codec failed :%d",ret);
-//    }
-//
-//    if(avcodec_open2(m_pCodecContext, m_pCodec, NULL)>=0)
-//    {
-//        pFrame=av_frame_alloc();
-//    }
-//    else
-//    {
-//         NSLog(@"open 111 failed :%d",ret);
-//    }
 
     
     [self loadVideo];
@@ -154,25 +161,179 @@ avcodec_register_all();
         NSData *data = [[NSData alloc] initWithData:[respon dataUsingEncoding:NSASCIIStringEncoding]];
         [socket sendData:(char *)[data bytes] length:[data length] type:12 block:^(BOOL success, NSString *result) {
             
-        } streamBlock:^(BOOL header, char * result) {
+        } streamBlock:^(BOOL header, char * result, int length) {
             NSLog(@"%s",result);
             
           if(header==NO)
           {
-              //[self date:result size:strlen(result)];
               
+           //   [keyFrame appendBytes:[data bytes] length:[data length]
+             
+//              [keyFrame appendBytes:result length:length];
+//              
+//              int nalLen = (int)[keyFrame length];
+//              av_new_packet(&packet, nalLen);
+//              memcpy(packet.data, [keyFrame bytes], nalLen);
+              
+
+             // av_init_packet(&packet);
+              packet.data=result;
+              packet.size=length-28;
+              
+              int ret, got_picture;
+              ret = avcodec_decode_video2(codecCtx, frame, &got_picture, &packet);
+              //NSLog(@"decode finish");
+              if (ret < 0) {
+                  NSLog(@"decode error");
+                  return;
+              }
+              if (!got_picture) {
+                  NSLog(@"didn't get picture");
+                  return;
+              }
+              if(ret==1)
+                  return;
+              if(got_picture)//成功解码
+              {
+                  
+                  NSLog(@"成功解码");
+                  
+                  outputWidth = codecCtx->width;
+                  outputHeight = codecCtx->height;
+                  static int sws_flags =  SWS_FAST_BILINEAR;
+                  if (!img_convert_ctx)
+                      img_convert_ctx = sws_getContext(codecCtx->width,
+                                                       codecCtx->height,
+                                                       codecCtx->pix_fmt,
+                                                       outputWidth,
+                                                       outputHeight,
+                                                       PIX_FMT_YUV420P,
+                                                       sws_flags, NULL, NULL, NULL);
+                  
+                  avpicture_alloc(&picture, PIX_FMT_YUV420P, outputWidth, outputHeight);
+                  if (!frame->data[0])
+                  {
+                      NSLog(@"empty");
+                  }
+                  
+                  ret = sws_scale(img_convert_ctx, (const uint8_t* const*)frame->data, frame->linesize, 0, frame->height, picture.data, picture.linesize);
+                  
+                  
+                  
+                  int picSize = codecCtx->height * codecCtx->width;
+                  int newSize = picSize * 1.5;
+                  
+                  //申请内存
+                 // unsigned char *buf = new unsigned char[newSize];
+                  
+                  unsigned char * buf=malloc(newSize * sizeof(unsigned char));
+                  
+                  
+                  int height =codecCtx->height;
+                  int width = codecCtx->width;
+                  
+                  
+                  //写入数据
+                  int a=0,i;
+                  for (i=0; i<height; i++)
+                  {
+                      memcpy(buf+a,picture.data[0] + i * picture.linesize[0], width);
+                      a+=width;
+                  }
+                  for (i=0; i<height/2; i++)
+                  {
+                      memcpy(buf+a,picture.data[1] + i * picture.linesize[1], width/2);
+                      a+=width/2;   
+                  }   
+                  for (i=0; i<height/2; i++)   
+                  {   
+                      memcpy(buf+a,picture.data[2] + i * picture.linesize[2], width/2);
+                      a+=width/2;   
+                  }
+                  
+               
+                   [glView displayYUV420pData:buf width:outputWidth height:outputHeight];
+                  
+                  //[self display];
+                                   NSLog(@"show frame finish");
+                  avpicture_free(&picture);
+                  av_free_packet(&packet);
+                  
+
+              }
              
           }
 
             
         }];
 
-    } streamBlock:^(BOOL header, char * result) {
+    } streamBlock:^(BOOL header, char * result, int length) {
         
     }];
 
 }
+-(void)display
+{
+    UIImage *iamge=[self imageFromAVPicture:picture width:outputWidth height:outputHeight];
+    iamgeView.frame=CGRectMake(10, 100, outputWidth, outputHeight);
+    iamgeView.image=iamge;
 
+}
+-(void)uploadUI:(UIImage *)image
+{
+    iamgeView.image=image;
+}
+//- (UIImage *) asImage
+//{
+//    UIImage *image = nil;
+//    CFDataRef data=(CFDataRef)picture;
+//    CGDataProviderRef provider = CGDataProviderCreateWithCFData(data);
+//    if (provider) {
+//        
+//        CGImageRef imageRef = CGImageCreateWithJPEGDataProvider(provider,
+//                                                                NULL,
+//                                                                YES,
+//                                                                kCGRenderingIntentDefault);
+//        if (imageRef) {
+//            
+//            image = [UIImage imageWithCGImage:imageRef];
+//            CGImageRelease(imageRef);
+//        }
+//        CGDataProviderRelease(provider);
+//    }
+//    
+//    return image;
+//    
+//}
+-(UIImage *)imageFromAVPicture:(AVPicture)pict width:(int)width height:(int)height {
+	CGBitmapInfo bitmapInfo =kCGBitmapByteOrderDefault;
+    CFDataRef data =CFDataCreateWithBytesNoCopy(kCFAllocatorDefault, pict.data[0], pict.linesize[0]*height,kCFAllocatorNull);
+    CGDataProviderRef provider =CGDataProviderCreateWithCFData(data);
+    CGColorSpaceRef colorSpace =CGColorSpaceCreateDeviceRGB();
+    int bitsPerComponent = 8;              // 8位存储一个Component
+    int bitsPerPixel = 3 * bitsPerComponent;         // RGB存储，只用三个字节，而不是像RGBA要用4个字节，所以这里一个像素点要3个8位来存储
+    // 这里3个字节是来自于 PIX_FMT_RGB24的定义中说明的， 是一个24位的数据，其中RGB各占8位
+   // 这里// PIX_FMT_RGB24,    ///< packed RGB 8:8:8, 24bpp, RGBRGB...
+    
+    int bytesPerRow =3 * width;           // 每行有width个象素点，每个点用3个字节，另外注意：pict.linesize[0]=bytesPerRow=1056
+    CGImageRef cgImage =CGImageCreate(width,
+                                      height,
+                                      bitsPerComponent,
+                                      bitsPerPixel,
+                                      bytesPerRow,//pict.linesize[0],等效
+                                      colorSpace,
+                                      bitmapInfo,
+                                      provider, 
+                                      NULL, 
+                                      NO, 
+                                      kCGRenderingIntentDefault);
+    CGColorSpaceRelease(colorSpace);
+    UIImage *image = [UIImage imageWithCGImage:cgImage];
+    CGImageRelease(cgImage);
+    CGDataProviderRelease(provider);
+    CFRelease(data);
+    return image;
+}
 
 
 - (void)didReceiveMemoryWarning

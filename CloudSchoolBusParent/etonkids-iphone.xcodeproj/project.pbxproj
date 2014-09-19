@@ -22,8 +22,6 @@
 		113320FC1953EB140088E226 /* GKHealthListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113320FB1953EB140088E226 /* GKHealthListViewController.m */; };
 		113320FF195412C80088E226 /* GKHealthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 113320FE195412C80088E226 /* GKHealthCell.m */; };
 		1133210119542A260088E226 /* -vip.png in Resources */ = {isa = PBXBuildFile; fileRef = 1133210019542A260088E226 /* -vip.png */; };
-		113BE46B19CAD82F003738DC /* libavresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 113BE46919CAD82F003738DC /* libavresample.a */; };
-		113BE46C19CAD82F003738DC /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 113BE46A19CAD82F003738DC /* libswresample.a */; };
 		114142F81964F3CC007267D6 /* health_write_input.png in Resources */ = {isa = PBXBuildFile; fileRef = 114142F71964F3CC007267D6 /* health_write_input.png */; };
 		114142FC1964FA47007267D6 /* health_middle.png in Resources */ = {isa = PBXBuildFile; fileRef = 114142FB1964FA47007267D6 /* health_middle.png */; };
 		114142FE1964FCAB007267D6 /* health_write_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 114142FD1964FCAB007267D6 /* health_write_top.png */; };
@@ -149,6 +147,10 @@
 		11EC2860193F15AA002FF46E /* ETAddSendReceiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EC285F193F15AA002FF46E /* ETAddSendReceiveViewController.m */; };
 		11ECEDD31946EFE200BFB85A /* GKChildReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 11ECEDD21946EFE200BFB85A /* GKChildReceiver.m */; };
 		11EF146519A1E147008F81E9 /* report_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 11EF146419A1E147008F81E9 /* report_icon.png */; };
+		11F0867D19CC07E9003A3CC4 /* libavresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0867B19CC07E9003A3CC4 /* libavresample.a */; };
+		11F0867E19CC07E9003A3CC4 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0867C19CC07E9003A3CC4 /* libswresample.a */; };
+		11F0868119CC08ED003A3CC4 /* OpenGLView20.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F0868019CC08ED003A3CC4 /* OpenGLView20.m */; };
+		11F0868319CC090C003A3CC4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0868219CC090C003A3CC4 /* OpenGLES.framework */; };
 		11F440B51949959600DCA343 /* MyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F440B41949959600DCA343 /* MyImageView.m */; };
 		730FFA7F17BB7871004032C2 /* WriteCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730FFA7D17BB7870004032C2 /* WriteCommentsViewController.m */; };
 		730FFA8317BB7C3E004032C2 /* CommentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730FFA8217BB7C3E004032C2 /* CommentDetailViewController.m */; };
@@ -681,8 +683,6 @@
 		113320FD195412C80088E226 /* GKHealthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHealthCell.h; sourceTree = "<group>"; };
 		113320FE195412C80088E226 /* GKHealthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKHealthCell.m; sourceTree = "<group>"; };
 		1133210019542A260088E226 /* -vip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "-vip.png"; sourceTree = "<group>"; };
-		113BE46919CAD82F003738DC /* libavresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavresample.a; sourceTree = "<group>"; };
-		113BE46A19CAD82F003738DC /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswresample.a; sourceTree = "<group>"; };
 		114142F71964F3CC007267D6 /* health_write_input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_write_input.png; sourceTree = "<group>"; };
 		114142FB1964FA47007267D6 /* health_middle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_middle.png; sourceTree = "<group>"; };
 		114142FD1964FCAB007267D6 /* health_write_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_write_top.png; sourceTree = "<group>"; };
@@ -961,6 +961,11 @@
 		11ECEDD11946EFE200BFB85A /* GKChildReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKChildReceiver.h; sourceTree = "<group>"; };
 		11ECEDD21946EFE200BFB85A /* GKChildReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKChildReceiver.m; sourceTree = "<group>"; };
 		11EF146419A1E147008F81E9 /* report_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = report_icon.png; sourceTree = "<group>"; };
+		11F0867B19CC07E9003A3CC4 /* libavresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavresample.a; sourceTree = "<group>"; };
+		11F0867C19CC07E9003A3CC4 /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswresample.a; sourceTree = "<group>"; };
+		11F0867F19CC08ED003A3CC4 /* OpenGLView20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLView20.h; sourceTree = "<group>"; };
+		11F0868019CC08ED003A3CC4 /* OpenGLView20.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLView20.m; sourceTree = "<group>"; };
+		11F0868219CC090C003A3CC4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		11F440B31949959600DCA343 /* MyImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImageView.h; sourceTree = "<group>"; };
 		11F440B41949959600DCA343 /* MyImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImageView.m; sourceTree = "<group>"; };
 		730FFA7C17BB7870004032C2 /* WriteCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteCommentsViewController.h; sourceTree = "<group>"; };
@@ -1683,6 +1688,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11F0868319CC090C003A3CC4 /* OpenGLES.framework in Frameworks */,
 				11DBB99C19CA9D4A008110E8 /* CoreVideo.framework in Frameworks */,
 				11DBB99A19CA9C36008110E8 /* libiconv.dylib in Frameworks */,
 				11DBB99819CA9C2D008110E8 /* libbz2.1.0.dylib in Frameworks */,
@@ -1693,7 +1699,7 @@
 				78930529187A4D6E00628928 /* libz.1.2.5.dylib in Frameworks */,
 				F9E0FA6B16DF5E4E00206925 /* MessageUI.framework in Frameworks */,
 				73C1C63917B8F0DD001A3BCC /* CoreMotion.framework in Frameworks */,
-				113BE46B19CAD82F003738DC /* libavresample.a in Frameworks */,
+				11F0867D19CC07E9003A3CC4 /* libavresample.a in Frameworks */,
 				11DBB98F19CA99BB008110E8 /* libavcodec.a in Frameworks */,
 				11628294199C8E56003E4E5C /* AlipayRsaLib.a in Frameworks */,
 				112330A3195189B5001B585F /* libMobClickLibrary_armv6.a in Frameworks */,
@@ -1723,7 +1729,7 @@
 				E3EA3AE6169E9491000DF7EE /* Foundation.framework in Frameworks */,
 				11DBB99619CA99BB008110E8 /* libswscale.a in Frameworks */,
 				E3EA3AE8169E9491000DF7EE /* CoreGraphics.framework in Frameworks */,
-				113BE46C19CAD82F003738DC /* libswresample.a in Frameworks */,
+				11F0867E19CC07E9003A3CC4 /* libswresample.a in Frameworks */,
 				1194012C17EE9B4400FA14D4 /* libBPush.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1814,6 +1820,8 @@
 		1167AD6819C7F14200A4013D /* video */ = {
 			isa = PBXGroup;
 			children = (
+				11F0867F19CC08ED003A3CC4 /* OpenGLView20.h */,
+				11F0868019CC08ED003A3CC4 /* OpenGLView20.m */,
 				1167AD6919C7F16B00A4013D /* GKVideoListViewController.h */,
 				1167AD6A19C7F16B00A4013D /* GKVideoListViewController.m */,
 				114D9F7A19C839260052A100 /* GKSocket.h */,
@@ -2080,8 +2088,8 @@
 		11DBB98619CA99BB008110E8 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				113BE46919CAD82F003738DC /* libavresample.a */,
-				113BE46A19CAD82F003738DC /* libswresample.a */,
+				11F0867B19CC07E9003A3CC4 /* libavresample.a */,
+				11F0867C19CC07E9003A3CC4 /* libswresample.a */,
 				11DBB98719CA99BB008110E8 /* libavcodec.a */,
 				11DBB98819CA99BB008110E8 /* libavdevice.a */,
 				11DBB98919CA99BB008110E8 /* libavfilter.a */,
@@ -2582,6 +2590,7 @@
 		E3EA3AE2169E9491000DF7EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				11F0868219CC090C003A3CC4 /* OpenGLES.framework */,
 				11DBB99B19CA9D4A008110E8 /* CoreVideo.framework */,
 				11DBB99919CA9C36008110E8 /* libiconv.dylib */,
 				11DBB99719CA9C2D008110E8 /* libbz2.1.0.dylib */,
@@ -3817,6 +3826,7 @@
 				113320FC1953EB140088E226 /* GKHealthListViewController.m in Sources */,
 				F95023D016DCB61B0079A05E /* GetIPAddress.m in Sources */,
 				F950240816DCB61B0079A05E /* ImageDownloader.m in Sources */,
+				11F0868119CC08ED003A3CC4 /* OpenGLView20.m in Sources */,
 				78952FE7184C6488001C30D2 /* ETFood.m in Sources */,
 				F950240916DCB61B0079A05E /* TCWBRepeatViewController.m in Sources */,
 				F950240A16DCB61B0079A05E /* AttachedPictureCtrlView.m in Sources */,

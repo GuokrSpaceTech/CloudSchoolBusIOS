@@ -112,7 +112,7 @@
 
     GKSocket *socket=[GKSocket instance];
     //<TYPE>CheckUser</TYPE><User>%s</User><Pwd>%s</Pwd>","super","super
-   // NSString *response  =@"<TYPE>GetDeviceList</TYPE>";
+    //NSString *response  =@"<TYPE>GetDeviceList</TYPE>";
     NSString *response =@"<TYPE>CheckUser</TYPE><User>super</User><Pwd>super</Pwd>";
    // NSString *response =@"<?xml version=\"1.0\" encoding=\"GB2312\" standalone=\"yes\"?> <TYPE>StartStream</TYPE>\
 //    <DVRName>hb</DVRName>\
@@ -187,145 +187,20 @@
                         //TBXMLElement *rootElement= tbxml.rootXMLElement;
                         
                         
-                    } streamBlock:^(BOOL header, char * result) {
+                    } streamBlock:^(BOOL header, char * result, int length) {
                         
                     }];
-//                    [socket sendData:(char *)[data bytes] length:[data length] type:9 block:^(BOOL success, NSString *result) {
-//                        NSLog(@"%@",result);
-//                        
-//                        TBXML * tbxml = [TBXML newTBXMLWithXMLString:result error:nil];
-//                        TBXMLElement *root = tbxml.rootXMLElement;
-//                        TBXMLElement *device = [TBXML childElementNamed:@"device" parentElement:root];
-//                        
-//                        while (device) {
-//                            GKDevice *deviceObj=[[GKDevice alloc]init];
-//                            TBXMLElement *svrid = [TBXML childElementNamed:@"svrid" parentElement:device];
-//                            if(svrid)
-//                            {
-//                                NSString *svridstr=[TBXML textForElement:svrid];
-//                                deviceObj.svrid=svridstr;
-//                                
-//                            }
-//                            TBXMLElement *svrname = [TBXML childElementNamed:@"svrname" parentElement:device];
-//                            if(svrname)
-//                            {
-//                                NSString *svrnameStr=[TBXML textForElement:svrname];
-//                                deviceObj.svrname=svrnameStr;
-//                                NSString *stateStr= [TBXML valueOfAttributeNamed:@"Status" forElement:svrname];
-//                                
-//                                deviceObj.status=stateStr;
-//                                NSLog(@"%@",stateStr);
-//                            }
-//                            TBXMLElement *svrchns = [TBXML childElementNamed:@"svrchns" parentElement:device];
-//                            if(svrchns)
-//                            {
-//                                NSString *svrchnsstr=[TBXML textForElement:svrchns];
-//                                NSLog(@"%@",svrchnsstr);
-//                                deviceObj.svrchns=svrchnsstr;
-//                            }
-//                            [arrList addObject:deviceObj];
-//                            [deviceObj release];
-//                            device = [TBXML nextSiblingNamed:@"device" searchFromElement:device];
-//                            
-//                        }
-//                        
-//                        [_tableView reloadData];
-//                        
-//                        //TBXMLElement *rootElement= tbxml.rootXMLElement;
-//                        
-//                    }];
+
                 }
             }
             
-            //
-            //              TBXML *tb_xml=[[TBXML alloc]initWithXMLString:result error:nil];
-            //
-            //              TBXMLElement *root=[tb_xml rootXMLElement];
+
             
         }
-    } streamBlock:^(BOOL header, char *result) {
+    } streamBlock:^(BOOL header, char * result, int length) {
         
     }];
-//      [socket sendData:(char *)[data bytes] length:[data length] type:9 block:^(BOOL success, NSString *result) {
-//          
-//          if(success)
-//          {
-//              // 验证用户
-//              NSLog(@"%@",result);
-//              
-//              TBXML * tbxml = [TBXML newTBXMLWithXMLString:result error:nil];
-//              if (!tbxml.rootXMLElement)
-//              {
-//                  return ;
-//                // [self traverseElement:tbxml.rootXMLElement];
-//              }
-//              
-//              if([@"ReturnInfo" isEqualToString:[TBXML elementName:tbxml.rootXMLElement]])
-//              {
-//                  NSString *login=[TBXML textForElement:tbxml.rootXMLElement];
-//                  if([login isEqualToString:@"SUCCESS"])
-//                  {
-//                   
-//                      //验证成功
-//                      NSString *response  =@"<TYPE>GetDeviceList</TYPE>";
-//                      NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
-//                      [socket sendData:(char *)[data bytes] length:[data length] type:9 block:^(BOOL success, NSString *result) {
-//                           NSLog(@"%@",result);
-//                          
-//                          TBXML * tbxml = [TBXML newTBXMLWithXMLString:result error:nil];
-//                          TBXMLElement *root = tbxml.rootXMLElement;
-//                          TBXMLElement *device = [TBXML childElementNamed:@"device" parentElement:root];
-//                          
-//                          while (device) {
-//                              GKDevice *deviceObj=[[GKDevice alloc]init];
-//                               TBXMLElement *svrid = [TBXML childElementNamed:@"svrid" parentElement:device];
-//                              if(svrid)
-//                              {
-//                                  NSString *svridstr=[TBXML textForElement:svrid];
-//                                  deviceObj.svrid=svridstr;
-//                              
-//                              }
-//                               TBXMLElement *svrname = [TBXML childElementNamed:@"svrname" parentElement:device];
-//                              if(svrname)
-//                              {
-//                                  NSString *svrnameStr=[TBXML textForElement:svrname];
-//                                  deviceObj.svrname=svrnameStr;
-//                                  NSString *stateStr= [TBXML valueOfAttributeNamed:@"Status" forElement:svrname];
-//
-//                                  deviceObj.status=stateStr;
-//                                  NSLog(@"%@",stateStr);
-//                              }
-//                              TBXMLElement *svrchns = [TBXML childElementNamed:@"svrchns" parentElement:device];
-//                              if(svrchns)
-//                              {
-//                                  NSString *svrchnsstr=[TBXML textForElement:svrchns];
-//                                  NSLog(@"%@",svrchnsstr);
-//                                  deviceObj.svrchns=svrchnsstr;
-//                              }
-//                              [arrList addObject:deviceObj];
-//                              [deviceObj release];
-//                              device = [TBXML nextSiblingNamed:@"device" searchFromElement:device];
-//                              
-//                          }
-//                          
-//                          [_tableView reloadData];
-//                          
-//                           //TBXMLElement *rootElement= tbxml.rootXMLElement;
-//                          
-//                      }];
-//                  }
-//              }
-//              
-////              
-////              TBXML *tb_xml=[[TBXML alloc]initWithXMLString:result error:nil];
-////              
-////              TBXMLElement *root=[tb_xml rootXMLElement];
-//              
-//          }
-//
-//      }];
-  //  [self sendData:[data bytes] length:[data length] type:12];
-	//[outputStream write:[data bytes] maxLength:[data length]];
+
 }
 - (void)leftButtonClick:(id)sender
 {

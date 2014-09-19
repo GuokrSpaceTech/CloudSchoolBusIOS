@@ -102,7 +102,7 @@ static GKSocket *socket=nil;
                 
                 while ([inputStream hasBytesAvailable]) {
                     iRecvBytes = [inputStream read:(uint8_t *)m_pRecvBuff+m_iPreRecvLen maxLength:Net_LAYER_STRUCT_LEN-m_iPreRecvLen];
-                    if(iRecvBytes<=0)
+                    if(iRecvBytes<0)
                     {
                         iRecvBytes=-1;
                         /// /return -1;
@@ -126,11 +126,32 @@ static GKSocket *socket=nil;
                                 {
                                     char * temp=pPackage->cBuffer;
                                     
-                                    NSStringEncoding encoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-                                    NSString *output = [[NSString alloc] initWithBytes:temp length:strlen(temp) encoding:encoding];
-                                    
-                                    sTemp= [sTemp stringByAppendingFormat:@"%@",output];
-                                    NSLog(@"%@",sTemp);
+                                         NSLog(@"iActLength:-->%d",pPackage->iActLength);
+                                       if(pPackage->iBlockEndFlag)
+                                       {
+                                           int length=pPackage->iActLength-28;
+                                           
+                                           char * a=(char *)malloc(length *sizeof(char));
+                                           
+                                          strncpy(a, temp, length-1);
+                                           
+                                           NSStringEncoding encoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+                                           NSString *output = [[NSString alloc] initWithBytes:a length:strlen(a) encoding:encoding];
+                                           
+                                           sTemp= [sTemp stringByAppendingFormat:@"%@",output];
+                                           NSLog(@"%@",sTemp);
+                                           // 最后一包
+                                           //temp=pPackage->cBuffer
+                                       }
+                                    else
+                                    {
+                                        NSStringEncoding encoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+                                        NSString *output = [[NSString alloc] initWithBytes:temp length:strlen(temp) encoding:encoding];
+                                        
+                                        sTemp= [sTemp stringByAppendingFormat:@"%@",output];
+                                        NSLog(@"%@",sTemp);
+                                    }
+                              
                                     
                                     //sTemp.GetBufferSetLength(iDataLen)®;
                                     //m_sRecvXmlData+=sTemp;
@@ -147,7 +168,7 @@ static GKSocket *socket=nil;
                                            NSLog(@"byFilepercentOrFrameType:--->%d",pPackage->byFilepercentOrFrameType);
                                             char * temp=pPackage->cBuffer;
                                         
-                                         streamBlock(YES,temp);
+                                         streamBlock(YES,temp,(pPackage->iActLength-28));
                                     }
                                     if(pPackage->iBlockEndFlag)
                                     {
@@ -155,6 +176,9 @@ static GKSocket *socket=nil;
                                         {
                                             NSLog(@"byFilepercentOrFrameType:--->%d",pPackage->byFilepercentOrFrameType);
                                             NSLog(@"iBlockHeadFlag:--->%d",pPackage->iBlockHeadFlag);
+                                            NSLog(@"totle:-->%d",pPackage->iTotalSplits);
+                                              NSLog(@"iActLength:-->%d",pPackage->iActLength);
+                                              NSLog(@"currenttotle:-->%d",pPackage->iCurSplit);
                                             //if(pPackage->byFilepercentOrFrameType==1)
                                             {
                                                // NSLog(@"Len:%d FrameType:%d\n",m_iFrameLen,pPackage->byFilepercentOrFrameType);
@@ -162,8 +186,27 @@ static GKSocket *socket=nil;
                                                  char * temp=pPackage->cBuffer;
                                                // NSData *date=[NSData dataWithBytes:temp length:strlen(temp)];
                                               //  NSLog(@"data:%@",date);
+                                                if(pPackage->iBlockEndFlag)
+                                                {
+                                               
+                                                    int length=pPackage->iActLength-28-28;
+                                                    
+                                                    char * a=(char *)malloc(length *sizeof(char));
+                                                    
+                                                    strncpy(a, temp, length-1);
+                                            // 最后一包
+                                                    
+                                                    streamBlock(false,temp,pPackage->iActLength-28);
+          
+                                                }
+                                                else{
+                                                    
+                                                    NSLog(@"bushizuihou");
                                                 
-                                                streamBlock(NO,temp);
+                                                }
+
+                                                
+                                                
                                                                                               //pPackage->b
 //                                                CString sTemp;
 //                                                sTemp.Format("Len:%d FrameType:%d\n",m_iFrameLen,pPackage->byFilepercentOrFrameType);
@@ -186,18 +229,29 @@ static GKSocket *socket=nil;
                                     
                                     if(pPackage->iBlockEndFlag)///拆包的最后一包
                                     {
-                                        cBlock(true,sTemp);
+                                       
                                         if(iDataType==13)
                                         {
                                             if(pPackage->byFilepercentOrFrameType==0||pPackage->byFilepercentOrFrameType==1)//BP÷°ªÚI÷°
                                             {
                                                 
                                             }
+                                            else
+                                            {
+                                             
+                                        
+                                            }
+                                        }
+                                        else
+                                        {
+                                       
+                                            cBlock(true,sTemp);
                                         }
                                         break;
                                     }
                                     else
                                     {
+                           
                                         //continue;
                                     }
                                 }

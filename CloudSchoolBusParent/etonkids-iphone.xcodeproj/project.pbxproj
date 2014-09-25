@@ -46,6 +46,7 @@
 		114D9F8619C8403C0052A100 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 114D9F8319C8403C0052A100 /* TBXML.m */; };
 		11628294199C8E56003E4E5C /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11628293199C8E56003E4E5C /* AlipayRsaLib.a */; };
 		1167AD6B19C7F16B00A4013D /* GKVideoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1167AD6A19C7F16B00A4013D /* GKVideoListViewController.m */; };
+		11856D6919D2C224007F976E /* libavresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11856D6819D2C224007F976E /* libavresample.a */; };
 		118A1A4A18B6F3B70002BF18 /* HTCopyableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 118A1A4918B6F3B70002BF18 /* HTCopyableLabel.m */; };
 		118CBC17178D7B64006AA633 /* ETActiveDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CBC16178D7B64006AA633 /* ETActiveDetailViewController.m */; };
 		118E62AB1961305A00E24CB8 /* CYDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 118E62AA1961305A00E24CB8 /* CYDoctor.m */; };
@@ -147,7 +148,6 @@
 		11EC2860193F15AA002FF46E /* ETAddSendReceiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EC285F193F15AA002FF46E /* ETAddSendReceiveViewController.m */; };
 		11ECEDD31946EFE200BFB85A /* GKChildReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 11ECEDD21946EFE200BFB85A /* GKChildReceiver.m */; };
 		11EF146519A1E147008F81E9 /* report_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 11EF146419A1E147008F81E9 /* report_icon.png */; };
-		11F0867D19CC07E9003A3CC4 /* libavresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0867B19CC07E9003A3CC4 /* libavresample.a */; };
 		11F0867E19CC07E9003A3CC4 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0867C19CC07E9003A3CC4 /* libswresample.a */; };
 		11F0868119CC08ED003A3CC4 /* OpenGLView20.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F0868019CC08ED003A3CC4 /* OpenGLView20.m */; };
 		11F0868319CC090C003A3CC4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0868219CC090C003A3CC4 /* OpenGLES.framework */; };
@@ -712,6 +712,7 @@
 		11628293199C8E56003E4E5C /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
 		1167AD6919C7F16B00A4013D /* GKVideoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKVideoListViewController.h; sourceTree = "<group>"; };
 		1167AD6A19C7F16B00A4013D /* GKVideoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKVideoListViewController.m; sourceTree = "<group>"; };
+		11856D6819D2C224007F976E /* libavresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavresample.a; sourceTree = "<group>"; };
 		118A1A4818B6F3B70002BF18 /* HTCopyableLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTCopyableLabel.h; sourceTree = "<group>"; };
 		118A1A4918B6F3B70002BF18 /* HTCopyableLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTCopyableLabel.m; sourceTree = "<group>"; };
 		118CBC15178D7B64006AA633 /* ETActiveDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETActiveDetailViewController.h; sourceTree = "<group>"; };
@@ -961,7 +962,6 @@
 		11ECEDD11946EFE200BFB85A /* GKChildReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKChildReceiver.h; sourceTree = "<group>"; };
 		11ECEDD21946EFE200BFB85A /* GKChildReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKChildReceiver.m; sourceTree = "<group>"; };
 		11EF146419A1E147008F81E9 /* report_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = report_icon.png; sourceTree = "<group>"; };
-		11F0867B19CC07E9003A3CC4 /* libavresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavresample.a; sourceTree = "<group>"; };
 		11F0867C19CC07E9003A3CC4 /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswresample.a; sourceTree = "<group>"; };
 		11F0867F19CC08ED003A3CC4 /* OpenGLView20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLView20.h; sourceTree = "<group>"; };
 		11F0868019CC08ED003A3CC4 /* OpenGLView20.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLView20.m; sourceTree = "<group>"; };
@@ -1699,7 +1699,6 @@
 				78930529187A4D6E00628928 /* libz.1.2.5.dylib in Frameworks */,
 				F9E0FA6B16DF5E4E00206925 /* MessageUI.framework in Frameworks */,
 				73C1C63917B8F0DD001A3BCC /* CoreMotion.framework in Frameworks */,
-				11F0867D19CC07E9003A3CC4 /* libavresample.a in Frameworks */,
 				11DBB98F19CA99BB008110E8 /* libavcodec.a in Frameworks */,
 				11628294199C8E56003E4E5C /* AlipayRsaLib.a in Frameworks */,
 				112330A3195189B5001B585F /* libMobClickLibrary_armv6.a in Frameworks */,
@@ -1709,6 +1708,7 @@
 				F918E18C16F6DF2500F18574 /* CoreMedia.framework in Frameworks */,
 				F918E18A16F6D94C00F18574 /* AVFoundation.framework in Frameworks */,
 				F950242816DCB6830079A05E /* CoreLocation.framework in Frameworks */,
+				11856D6919D2C224007F976E /* libavresample.a in Frameworks */,
 				11DBB99119CA99BB008110E8 /* libavfilter.a in Frameworks */,
 				112330A2195189B5001B585F /* libMobClickLibrary.a in Frameworks */,
 				F950242616DCB6720079A05E /* libicucore.dylib in Frameworks */,
@@ -2088,7 +2088,7 @@
 		11DBB98619CA99BB008110E8 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				11F0867B19CC07E9003A3CC4 /* libavresample.a */,
+				11856D6819D2C224007F976E /* libavresample.a */,
 				11F0867C19CC07E9003A3CC4 /* libswresample.a */,
 				11DBB98719CA99BB008110E8 /* libavcodec.a */,
 				11DBB98819CA99BB008110E8 /* libavdevice.a */,
@@ -4115,6 +4115,7 @@
 					"$(PROJECT_DIR)/etonkids-iphone/Third/alipay",
 					"$(PROJECT_DIR)/etonkids-iphone/ffmpeg/lib",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -4159,6 +4160,7 @@
 					"$(PROJECT_DIR)/etonkids-iphone/Third/alipay",
 					"$(PROJECT_DIR)/etonkids-iphone/ffmpeg/lib",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",

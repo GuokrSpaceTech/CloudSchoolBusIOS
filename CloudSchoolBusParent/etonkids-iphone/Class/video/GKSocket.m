@@ -51,6 +51,30 @@ static GKSocket *socket=nil;
         m_iPreRecvLen=0;
         m_iPackageLen=0;
         m_iFrameLen=0;
+        
+        bufferdata=[[NSMutableData alloc]init];
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        NSString *diskPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"10.mp4"]; // 新建一个文件夹  保存视频
+        
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        
+        if ([fileManager fileExistsAtPath:diskPath])
+        {
+            [fileManager removeItemAtPath:diskPath error:nil];
+        }
+   
+  
+        [fileManager createFileAtPath:diskPath contents:nil attributes:nil];
+        
+        path=[diskPath retain];
+        //file=fopen([diskPath cStringUsingEncoding:NSUTF8StringEncoding], "ab+");
+        
+        //if(file==NULL)
+        //{
+           // NSLog(@"cuowu");
+        //}
+
+        
         [self initNetworkCommunication];
 
     }
@@ -88,201 +112,10 @@ static GKSocket *socket=nil;
 			break;
             
 		case NSStreamEventHasBytesAvailable:
-            if (theStream == inputStream) {
-                
-                int iRecvBytes=-1;
-                int iHeadLen=ALIGN_HEADLEN-ALIGNMENT;//25
-                NET_LAYER *pPackage;
-                //BOOL bTotalEnd=FALSE;
-                int	 iDataType;
-                int  iDataLen;
-                //char *sTemp="";
-                NSString * sTemp = @"";
-                int  iLeftBytes=0;
-                
-                while ([inputStream hasBytesAvailable]) {
-                    iRecvBytes = [inputStream read:(uint8_t *)m_pRecvBuff+m_iPreRecvLen maxLength:Net_LAYER_STRUCT_LEN-m_iPreRecvLen];
-                    if(iRecvBytes<0)
-                    {
-                        iRecvBytes=-1;
-                        /// /return -1;
-                    }
-                    else
-                    {
-                        if(iRecvBytes+m_iPreRecvLen<iHeadLen)//–°”⁄25
-                        {
-                            m_iPreRecvLen+=iRecvBytes;
-                           // goto RecvData;
-                        }
-                        else
-                        {
-                            pPackage=(NET_LAYER *)m_pRecvBuff;
-                            m_iPackageLen=pPackage->iActLength;
-                            if(m_iPreRecvLen+iRecvBytes>=m_iPackageLen)
-                            {
-                                iDataType=pPackage->bDataType;
-                                iDataLen=m_iPackageLen-ALIGN_HEADLEN;
-                                if(iDataType==12||iDataType==9)//DATA_TYPE_SMS_CMD,或者 DATA_TYPE_REAL_XML
-                                {
-                                    char * temp=pPackage->cBuffer;
-                                    
-                                         NSLog(@"iActLength:-->%d",pPackage->iActLength);
-                                       if(pPackage->iBlockEndFlag)
-                                       {
-                                           int length=pPackage->iActLength-28;
-                                           
-                                           char * a=(char *)malloc(length *sizeof(char));
-                                           
-                                          strncpy(a, temp, length-1);
-                                           
-                                           NSStringEncoding encoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-                                           NSString *output = [[NSString alloc] initWithBytes:a length:strlen(a) encoding:encoding];
-                                           
-                                           sTemp= [sTemp stringByAppendingFormat:@"%@",output];
-                                           NSLog(@"%@",sTemp);
-                                           // 最后一包
-                                           //temp=pPackage->cBuffer
-                                       }
-                                    else
-                                    {
-                                        NSStringEncoding encoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-                                        NSString *output = [[NSString alloc] initWithBytes:temp length:strlen(temp) encoding:encoding];
-                                        
-                                        sTemp= [sTemp stringByAppendingFormat:@"%@",output];
-                                        NSLog(@"%@",sTemp);
-                                    }
-                              
-                                    
-                                    //sTemp.GetBufferSetLength(iDataLen)®;
-                                    //m_sRecvXmlData+=sTemp;
-                                }
-                                else if(iDataType==13)//音视频数据
-                                {
-                                    if(pPackage->byFilepercentOrFrameType==0||pPackage->byFilepercentOrFrameType==1)////BP帧或I帧
-                                    {
-                                        memcpy(m_pStreamData+m_iFrameLen,pPackage->cBuffer,iDataLen);////未做最大单帧校验......,可能越界
-                                        m_iFrameLen+=iDataLen;
-                                    }
-                                    if(pPackage->byFilepercentOrFrameType==2)
-                                    {
-                                           NSLog(@"byFilepercentOrFrameType:--->%d",pPackage->byFilepercentOrFrameType);
-                                            char * temp=pPackage->cBuffer;
-                                        
-                                         streamBlock(YES,temp,(pPackage->iActLength-28));
-                                    }
-                                    if(pPackage->iBlockEndFlag)
-                                    {
-                                        if(pPackage->byFilepercentOrFrameType==0||pPackage->byFilepercentOrFrameType==1)//BP÷°ªÚI÷°
-                                        {
-                                            NSLog(@"byFilepercentOrFrameType:--->%d",pPackage->byFilepercentOrFrameType);
-                                            NSLog(@"iBlockHeadFlag:--->%d",pPackage->iBlockHeadFlag);
-                                            NSLog(@"totle:-->%d",pPackage->iTotalSplits);
-                                              NSLog(@"iActLength:-->%d",pPackage->iActLength);
-                                              NSLog(@"currenttotle:-->%d",pPackage->iCurSplit);
-                                            //if(pPackage->byFilepercentOrFrameType==1)
-                                            {
-                                               // NSLog(@"Len:%d FrameType:%d\n",m_iFrameLen,pPackage->byFilepercentOrFrameType);
-                                                
-                                                 char * temp=pPackage->cBuffer;
-                                               // NSData *date=[NSData dataWithBytes:temp length:strlen(temp)];
-                                              //  NSLog(@"data:%@",date);
-                                                if(pPackage->iBlockEndFlag)
-                                                {
-                                               
-                                                    int length=pPackage->iActLength-28-28;
-                                                    
-                                                    char * a=(char *)malloc(length *sizeof(char));
-                                                    
-                                                    strncpy(a, temp, length-1);
-                                            // 最后一包
-                                                    
-                                                    streamBlock(false,temp,pPackage->iActLength-28);
-          
-                                                }
-                                                else{
-                                                    
-                                                    NSLog(@"bushizuihou");
-                                                
-                                                }
+            if (theStream == inputStream)
+               [self RecvData];
+            
 
-                                                
-                                                
-                                                                                              //pPackage->b
-//                                                CString sTemp;
-//                                                sTemp.Format("Len:%d FrameType:%d\n",m_iFrameLen,pPackage->byFilepercentOrFrameType);
-//                                                OutputDebugString(sTemp);
-//                                                int a=9;
-                                            }
-                           
-                                            m_iFrameLen=0;
-                                        }
-                                    }
-                                    
-
-                                }
-                                iLeftBytes=m_iPreRecvLen+iRecvBytes-m_iPackageLen;
-                                if(iLeftBytes==0)
-                                {
-                                    
-                                    m_iPreRecvLen=0;//∏¥Œª
-                                    m_iPackageLen=0;
-                                    
-                                    if(pPackage->iBlockEndFlag)///拆包的最后一包
-                                    {
-                                       
-                                        if(iDataType==13)
-                                        {
-                                            if(pPackage->byFilepercentOrFrameType==0||pPackage->byFilepercentOrFrameType==1)//BP÷°ªÚI÷°
-                                            {
-                                                
-                                            }
-                                            else
-                                            {
-                                             
-                                        
-                                            }
-                                        }
-                                        else
-                                        {
-                                       
-                                            cBlock(true,sTemp);
-                                        }
-                                        break;
-                                    }
-                                    else
-                                    {
-                           
-                                        //continue;
-                                    }
-                                }
-                                if(iLeftBytes>0)
-                                {
-                                    memmove((char *)m_pRecvBuff,(char *)m_pRecvBuff+m_iPackageLen,iLeftBytes);
-                                    m_iPreRecvLen=iLeftBytes;
-                                    m_iPackageLen=0;
-                                    if(iLeftBytes<iHeadLen)
-                                    {
-                                        continue;
-                                    }
-                                    else
-                                    {
-                                        iRecvBytes=0;
-                                        // goto ProcessData;
-                                    }
-                                }
-                            }
-                            else//单包少于pPackage->iActLength
-                            {
-                                m_iPreRecvLen+=iRecvBytes;
-                                // goto RecvData;
-                            }
-                        }
-                       
-                        
-                    }
-
-                }
-            }
 			break;
             
 		case NSStreamEventErrorOccurred:
@@ -300,14 +133,179 @@ static GKSocket *socket=nil;
 	}
     
 }
+
+-(int)RecvData
+{
+    
+    int iRecvBytes=-1;
+    int iHeadLen=ALIGN_HEADLEN-ALIGNMENT;//25
+    NET_LAYER *pPackage;
+    //BOOL bTotalEnd=FALSE;
+    int	 iDataType;
+    int  iDataLen;
+    //char *sTemp="";
+    NSString * sTemp = @"";
+    int  iLeftBytes=0;
+
+	while(1)
+	{
+    RecvData:
+		 iRecvBytes = [inputStream read:(uint8_t *)m_pRecvBuff+m_iPreRecvLen maxLength:Net_LAYER_STRUCT_LEN-m_iPreRecvLen];
+		if(iRecvBytes <= 0 )
+		{
+			iRecvBytes=-1;
+			goto MyEnd;
+		}
+		else
+		{
+			if(iRecvBytes+m_iPreRecvLen<iHeadLen)//–°”⁄25
+			{
+				m_iPreRecvLen+=iRecvBytes;
+				goto RecvData;
+			}
+			else
+			{
+            ProcessData:
+				pPackage=(NET_LAYER *)m_pRecvBuff;
+				m_iPackageLen=pPackage->iActLength;
+				if(m_iPreRecvLen+iRecvBytes>=m_iPackageLen)
+				{
+					iDataType=pPackage->bDataType;
+					iDataLen=m_iPackageLen-ALIGN_HEADLEN;//ºı28
+                    
+                    if(iDataType==12||iDataType==9)//DATA_TYPE_SMS_CMD,或者 DATA_TYPE_REAL_XML
+                    {
+                        char * temp=pPackage->cBuffer;
+
+                        char * a=(char *)malloc(iDataLen *sizeof(char));
+                        
+                        strncpy(a, temp, iDataLen);
+                        NSStringEncoding encoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+                        NSString *output = [[NSString alloc] initWithBytes:a length:strlen(a) encoding:encoding];
+                        free(a);
+                        a=NULL;
+                        sTemp= [sTemp stringByAppendingFormat:@"%@",output];
+                        NSLog(@"%@",sTemp);
+                        
+                    }
+					else if(iDataType==13)//“Ù ”∆µ ˝æ›
+					{
+						if(pPackage->byFilepercentOrFrameType==0||pPackage->byFilepercentOrFrameType==1)//BP÷°ªÚI÷°
+						{
+							memcpy(m_pStreamData+m_iFrameLen,pPackage->cBuffer,iDataLen);//Œ¥◊ˆ◊Ó¥Ûµ•÷°–£—È......,ø…ƒ‹‘ΩΩÁ
+							m_iFrameLen+=iDataLen;
+						}
+						if(pPackage->iBlockEndFlag)
+						{
+							if(pPackage->byFilepercentOrFrameType==0||pPackage->byFilepercentOrFrameType==1)//BP÷°ªÚI÷°
+							{
+                                if(pPackage->iBlockEndFlag)
+                                {
+             
+                                    
+                               //     NSData *data=[NSData dataWithBytes:m_pStreamData length:m_iFrameLen];
+                                    
+                                    
+                                    [bufferdata appendBytes:m_pStreamData length:m_iFrameLen];
+                                    streamBlock(false,bufferdata,m_iFrameLen);
+                                    [bufferdata setLength:0];
+
+                                    
+
+                                    
+
+
+                                }
+                                else
+                                {
+                                    
+                                   // NSData *data=[NSData dataWithBytes:m_pStreamData length:m_iFrameLen];
+                                    
+                                    
+                                    [bufferdata appendBytes:pPackage->cBuffer length:m_iFrameLen];
+
+                                    
+                                }
+                      
+
+
+                                m_iFrameLen=0;
+							}
+						}
+					}
+                    
+					iLeftBytes=m_iPreRecvLen+iRecvBytes-m_iPackageLen;
+					if(iLeftBytes==0)
+					{
+						m_iPreRecvLen=0;//∏¥Œª
+						m_iPackageLen=0;
+						if(pPackage->iBlockEndFlag)//≤∞¸µƒ◊Ó∫Û“ª∞¸
+						{
+                            if(iDataType==13)
+                            {
+                                if(pPackage->byFilepercentOrFrameType==0||pPackage->byFilepercentOrFrameType==1)//BP÷°ªÚI÷°
+                                {
+
+                                }
+                                else
+                                {
+
+
+                                }
+                            }
+                            else if(iDataType==12||iDataType==9)
+                            {
+                                
+                                cBlock(true,sTemp);
+                            }
+                            break;
+
+                         
+						}
+						else
+						{
+							continue;
+						}
+					}
+					if(iLeftBytes>0)
+					{
+						memmove((char *)m_pRecvBuff,(char *)m_pRecvBuff+m_iPackageLen,iLeftBytes);
+						m_iPreRecvLen=iLeftBytes;
+						m_iPackageLen=0;
+						if(iLeftBytes<iHeadLen)
+						{
+							continue;
+						}
+						else
+						{
+							iRecvBytes=0;
+							goto ProcessData;
+						}
+					}
+				}
+				else//µ•∞¸…Ÿ”⁄pPackage->iActLength
+				{
+					m_iPreRecvLen+=iRecvBytes;
+					goto RecvData;
+				}
+			}
+		}
+	}
+	return iRecvBytes;
+MyEnd:
+	return -1;
+}
+
 - (void)cleanUpStream
 {
+    
+    [bufferdata writeToFile:path atomically:YES];
     [inputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [inputStream close];
     
     inputStream = nil;
     
-    
+
     [outputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [outputStream close];
     
@@ -315,6 +313,7 @@ static GKSocket *socket=nil;
     
     free(m_pRecvBuff);
     free(m_pStreamData);
+    socket=nil;
 }
 
 -(int)sendData:(char *)pSrc length:(int)iLength type:(int)iDataType block:(CompleteBlock)block streamBlock:(StreamBlock)strBlock;
@@ -379,6 +378,10 @@ static GKSocket *socket=nil;
 				_NetLayer.iBlockEndFlag=FALSE;
 			}
 		}
+        
+
+
+       
 		//iSendBytes=send(m_hSocket,(char *)&_NetLayer,_NetLayer.iActLength,0);
         [outputStream write:(uint8_t *)&_NetLayer maxLength:_NetLayer.iActLength];
         

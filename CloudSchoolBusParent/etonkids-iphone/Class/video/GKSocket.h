@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 typedef void (^CompleteBlock)(BOOL success,NSString * result);
 
-typedef void (^StreamBlock)(BOOL header, char * result, int length);
+typedef void (^StreamBlock)(BOOL header, NSData *data, int length);
 
 @interface GKSocket : NSObject<NSStreamDelegate>
 {
@@ -27,10 +27,14 @@ typedef void (^StreamBlock)(BOOL header, char * result, int length);
     
     Byte*			m_pStreamData;
     int				m_iFrameLen;
+    
+    NSMutableData *bufferdata;
+    NSString *path;
 
 }
 +(GKSocket *)instance;
 -(void)initNetworkCommunication;
+- (void)cleanUpStream;
 -(int)sendData:(char *)pSrc length:(int)iLength type:(int)iDataType block:(CompleteBlock)block streamBlock:(StreamBlock)strBlock;
 
 

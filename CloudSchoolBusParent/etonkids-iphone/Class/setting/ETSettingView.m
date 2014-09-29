@@ -516,7 +516,7 @@
         if(code == 1)
         {
             
-            NSString *result = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+            NSString *result = [[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] autorelease];
             
             ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"success", @"头像上传成功") delegate:self cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil];
             [alert show];

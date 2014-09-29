@@ -1156,7 +1156,7 @@ static BOOL G_LOGOUT = NO;
     NSString *urlString = [TCWBRequest serializeURL:kWBAuthorizeURL
                                              params:params
                                          httpMethod:@"GET"];
-    
+    [params release];
     TCWBAuthorizeViewController *authViewController = [[TCWBAuthorizeViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:authViewController];
     authViewController.requestURLString = urlString;

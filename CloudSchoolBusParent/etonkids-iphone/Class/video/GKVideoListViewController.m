@@ -105,29 +105,23 @@
 
     
     arrList=[[NSMutableArray alloc]init];
+    
+    
+    
+    [self loadList];
     // Do any additional setup after loading the view.
 }
--(void)rightButtonClick:(id)sender
+-(void)loadList
 {
-
-    //GKDevice *obj=[arrList objectAtIndex:indexPath.row];
-    
-    
-//    GKVideoViewController *videoVC=[[GKVideoViewController alloc]init];
-//    //videoVC.device=obj;
-//    [self.navigationController pushViewController:videoVC animated:YES];
-//    [videoVC release];
-//
-//    
     GKSocket *socket=[GKSocket instance];
     //<TYPE>CheckUser</TYPE><User>%s</User><Pwd>%s</Pwd>","super","super
     NSString *response  =@"<TYPE>GetDeviceList</TYPE>";
-    //NSString *response =@"<TYPE>CheckUser</TYPE><User>super</User><Pwd>super</Pwd>";
-   // NSString *response =@"<?xml version=\"1.0\" encoding=\"GB2312\" standalone=\"yes\"?> <TYPE>StartStream</TYPE>\
-//    <DVRName>hb</DVRName>\
-//    <ChnNo>0</ChnNo> <StreamType>1</StreamType>";
-  
-    NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
+   // NSString *response =@"<TYPE>CheckUser</TYPE><User>super</User><Pwd>super</Pwd>";
+    // NSString *response =@"<?xml version=\"1.0\" encoding=\"GB2312\" standalone=\"yes\"?> <TYPE>StartStream</TYPE>\
+    //    <DVRName>hb</DVRName>\
+    //    <ChnNo>0</ChnNo> <StreamType>1</StreamType>";
+    
+    NSData *data = [[[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]] autorelease];
     //[self sendData:[data bytes] length:[data length] type:9];
     [socket sendData:(char *)[data bytes] length:[data length] type:9  block:^(BOOL success, NSString *result) {
         if(success)
@@ -142,7 +136,7 @@
                 // [self traverseElement:tbxml.rootXMLElement];
             }
             
-           if(1)
+            if(1)
             {
                 NSString *login=[TBXML textForElement:tbxml.rootXMLElement];
                 if(1)
@@ -150,7 +144,7 @@
                     
                     //验证成功
                     NSString *response  =@"<TYPE>GetDeviceList</TYPE>";
-                    NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
+                    NSData *data = [[[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]] autorelease];
                     [socket sendData:(char *)[data bytes] length:[data length] type:9 block:^(BOOL success, NSString *result) {
                         
                         NSLog(@"%@",result);
@@ -199,16 +193,21 @@
                     } streamBlock:^(BOOL header, NSData *data, int length) {
                         
                     }];
-
+                    
                 }
             }
             
-
+            
             
         }
     } streamBlock:^(BOOL header, NSData *data, int length) {
         
     }];
+}
+-(void)rightButtonClick:(id)sender
+{
+
+
 
 }
 - (void)leftButtonClick:(id)sender
@@ -246,6 +245,14 @@
     }
     GKDevice *obj=[arrList objectAtIndex:indexPath.row];
     cell.textLabel.text=obj.svrname;
+    if([obj.status isEqualToString:@"1"])
+    {
+        cell.detailTextLabel.text=@"在线";
+    }
+    else
+    {
+         cell.detailTextLabel.text=@"离线";
+    }
        return cell;
     
     

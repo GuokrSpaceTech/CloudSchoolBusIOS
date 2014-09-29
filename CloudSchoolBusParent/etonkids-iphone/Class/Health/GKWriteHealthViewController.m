@@ -404,7 +404,7 @@
     }
     
     NSData *jsondate=[NSJSONSerialization dataWithJSONObject:arr options:NSJSONWritingPrettyPrinted error:nil];
-    NSString *jsonstr=[[NSString alloc]initWithData:jsondate encoding:NSUTF8StringEncoding];
+    NSString *jsonstr=[[[NSString alloc]initWithData:jsondate encoding:NSUTF8StringEncoding] autorelease];
     NSLog(@"%@",jsonstr);
     ASIFormDataRequest *resuest=[ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://yzxc.summer2.chunyu.me/partner/yzxc/problem/create"]];
     [resuest setPostValue:user.username forKey:@"user_id"];

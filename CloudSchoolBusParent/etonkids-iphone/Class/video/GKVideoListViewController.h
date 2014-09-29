@@ -10,16 +10,13 @@
 
 @interface GKVideoListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
-    NSInputStream * inputStream;
-    NSOutputStream * outputStream;
-    
-    
+
 
 	int				m_iPreRecvLen;
 	int				m_iPackageLen;
 	//CString			m_sRecvXmlData;
 
-	Byte *			m_pRecvBuff;
+	//Byte *			m_pRecvBuff;
 	
 
 

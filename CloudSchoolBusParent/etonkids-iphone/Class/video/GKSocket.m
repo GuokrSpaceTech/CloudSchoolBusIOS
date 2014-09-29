@@ -132,7 +132,7 @@ static GKSocket *socket=nil;
 		 iRecvBytes = [inputStream read:(uint8_t *)m_pRecvBuff+m_iPreRecvLen maxLength:Net_LAYER_STRUCT_LEN-m_iPreRecvLen];
 		if(iRecvBytes <= 0 )
 		{
-			iRecvBytes=-1;
+			//iRecvBytes=-1;
 			goto MyEnd;
 		}
 		else

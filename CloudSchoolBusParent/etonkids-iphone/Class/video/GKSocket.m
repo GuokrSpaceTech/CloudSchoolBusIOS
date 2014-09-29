@@ -48,31 +48,14 @@ static GKSocket *socket=nil;
         
          m_pStreamData=(Byte *)malloc(512*1024*sizeof(Byte));
         
+        
+  
         m_iPreRecvLen=0;
         m_iPackageLen=0;
         m_iFrameLen=0;
         
         bufferdata=[[NSMutableData alloc]init];
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-        NSString *diskPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"10.mp4"]; // 新建一个文件夹  保存视频
-        
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        
-        if ([fileManager fileExistsAtPath:diskPath])
-        {
-            [fileManager removeItemAtPath:diskPath error:nil];
-        }
-   
-  
-        [fileManager createFileAtPath:diskPath contents:nil attributes:nil];
-        
-        path=[diskPath retain];
-        //file=fopen([diskPath cStringUsingEncoding:NSUTF8StringEncoding], "ab+");
-        
-        //if(file==NULL)
-        //{
-           // NSLog(@"cuowu");
-        //}
+       
 
         
         [self initNetworkCommunication];
@@ -89,7 +72,7 @@ static GKSocket *socket=nil;
     CFWriteStreamRef writeStream;
     //CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"222.128.71.186", 600, &readStream, &writeStream);
     //222.128.71.186   //221.122.97.78  //123.196.114.83
-    CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"222.128.71.186", 600, &readStream, &writeStream);
+    CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"221.122.97.78", 600, &readStream, &writeStream);
     inputStream = (NSInputStream *)readStream;
     outputStream = (NSOutputStream *)writeStream;
     
@@ -140,13 +123,9 @@ static GKSocket *socket=nil;
     int iRecvBytes=-1;
     int iHeadLen=ALIGN_HEADLEN-ALIGNMENT;//25
     NET_LAYER *pPackage;
-    //BOOL bTotalEnd=FALSE;
     int	 iDataType;
     int  iDataLen;
-    //char *sTemp="";
-    NSString * sTemp = @"";
     int  iLeftBytes=0;
-
 	while(1)
 	{
     RecvData:
@@ -172,20 +151,29 @@ static GKSocket *socket=nil;
 				{
 					iDataType=pPackage->bDataType;
 					iDataLen=m_iPackageLen-ALIGN_HEADLEN;//ºı28
-                    
+                    if(iDataLen==12||iDataType==9)
+                    {
+                        memcpy(m_pStreamData+m_iFrameLen,pPackage->cBuffer,iDataLen);//Œ¥◊ˆ◊Ó¥Ûµ•÷°–£—È......,ø…ƒ‹‘ΩΩÁ
+                        m_iFrameLen+=iDataLen;
+                    }
                     if(iDataType==12||iDataType==9)//DATA_TYPE_SMS_CMD,或者 DATA_TYPE_REAL_XML
                     {
-                        char * temp=pPackage->cBuffer;
+                        if(pPackage->iBlockEndFlag)
+                        {
+                            [bufferdata appendBytes:m_pStreamData length:m_iFrameLen];
+                            NSStringEncoding encoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+                            NSString *outxml=[[NSString alloc]initWithData:bufferdata encoding:encoding];
+                             cBlock(true,outxml);
+                            [bufferdata setLength:0];
 
-                        char * a=(char *)malloc(iDataLen *sizeof(char));
+                        }
+                        else
+                        {
+                               [bufferdata appendBytes:pPackage->cBuffer length:m_iFrameLen];
+                        }
                         
-                        strncpy(a, temp, iDataLen);
-                        NSStringEncoding encoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-                        NSString *output = [[NSString alloc] initWithBytes:a length:strlen(a) encoding:encoding];
-                        free(a);
-                        a=NULL;
-                        sTemp= [sTemp stringByAppendingFormat:@"%@",output];
-                        NSLog(@"%@",sTemp);
+                        m_iFrameLen=0;
+
                         
                     }
 					else if(iDataType==13)//“Ù ”∆µ ˝æ›
@@ -201,33 +189,17 @@ static GKSocket *socket=nil;
 							{
                                 if(pPackage->iBlockEndFlag)
                                 {
-             
-                                    
-                               //     NSData *data=[NSData dataWithBytes:m_pStreamData length:m_iFrameLen];
-                                    
+
                                     
                                     [bufferdata appendBytes:m_pStreamData length:m_iFrameLen];
                                     streamBlock(false,bufferdata,m_iFrameLen);
                                     [bufferdata setLength:0];
 
-                                    
-
-                                    
-
-
                                 }
                                 else
                                 {
-                                    
-                                   // NSData *data=[NSData dataWithBytes:m_pStreamData length:m_iFrameLen];
-                                    
-                                    
                                     [bufferdata appendBytes:pPackage->cBuffer length:m_iFrameLen];
-
-                                    
                                 }
-                      
-
 
                                 m_iFrameLen=0;
 							}
@@ -256,7 +228,7 @@ static GKSocket *socket=nil;
                             else if(iDataType==12||iDataType==9)
                             {
                                 
-                                cBlock(true,sTemp);
+                               
                             }
                             break;
 
@@ -299,7 +271,7 @@ MyEnd:
 - (void)cleanUpStream
 {
     
-    [bufferdata writeToFile:path atomically:YES];
+
     [inputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [inputStream close];
     

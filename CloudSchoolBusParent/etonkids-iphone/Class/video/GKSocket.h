@@ -26,10 +26,12 @@ typedef void (^StreamBlock)(BOOL header, NSData *data, int length);
 	Byte *			m_pRecvBuff;
     
     Byte*			m_pStreamData;
+    //Byte*			m_xmlpStreamData;
+    
     int				m_iFrameLen;
     
     NSMutableData *bufferdata;
-    NSString *path;
+
 
 }
 +(GKSocket *)instance;

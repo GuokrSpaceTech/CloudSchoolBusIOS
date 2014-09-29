@@ -13,9 +13,9 @@
 {
     GKDevice *device;
     OpenGLView20 *glView;
-    int viodeoLength;
-    char * video;
-    UIImageView *iamgeView;
+    //int viodeoLength;
+   
+   
 
 }
 

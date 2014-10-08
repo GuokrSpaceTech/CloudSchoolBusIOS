@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-typedef void (^CompleteBlock)(BOOL success,NSString * result);
+typedef void (^streamCompleteBlock)(BOOL success,NSString * result);
 
 typedef void (^StreamBlock)(BOOL header, NSData *data, int length);
 
@@ -16,7 +16,7 @@ typedef void (^StreamBlock)(BOOL header, NSData *data, int length);
     NSInputStream * inputStream;
     NSOutputStream * outputStream;
     
-    CompleteBlock cBlock;
+    streamCompleteBlock cBlock;
     StreamBlock streamBlock;
     
 	int				m_iPreRecvLen;
@@ -34,12 +34,13 @@ typedef void (^StreamBlock)(BOOL header, NSData *data, int length);
 
 
 }
+
 +(GKSocket *)instance;
 -(void)initNetworkCommunication;
 - (void)cleanUpStream;
--(int)sendData:(char *)pSrc length:(int)iLength type:(int)iDataType block:(CompleteBlock)block streamBlock:(StreamBlock)strBlock;
+-(int)sendData:(char *)pSrc length:(int)iLength type:(int)iDataType block:(streamCompleteBlock)block streamBlock:(StreamBlock)strBlock;
 
-
++(GKSocket *)instanceddns:(NSString *)ddns port:(NSString *)port;
 
 
 @end

@@ -328,8 +328,8 @@
     UserLogin *user=[UserLogin currentLogin];
 
     NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
-    NSLog(@"%@，%@",dic,[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding]);
-    NSLog(@"error code %d",code);
+    NSLog(@"%@",dic);
+   // NSLog(@"error code %d",code);
     //登录成功后获取学生信息
     
     if (code == -1115) {
@@ -521,13 +521,16 @@
     }
     else if(method == setting && code == 1)
     {
-        NSDictionary * attendance_type = [dic objectForKey:@"attendance_type"];
+
+        NSString * ddns=[dic objectForKey:@"ddns"];
+        NSString * cameraname=[dic objectForKey:@"camera_name"];
+        NSString * port=[dic objectForKey:@"port"];
         
-        user.attendancetype = attendance_type;
-//        user.pull_rate = [dic objectForKey:@"pull_rate_student"];
-//        NSString *pStr = [NSString stringWithFormat:@"1310"];
-//        NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:pStr,@"month",nil];
-//        [[EKRequest Instance] EKHTTPRequest:attendance parameters:param requestMethod:GET forDelegate:self];
+        
+        user.ddns=ddns;
+        user.camera_name=cameraname;
+        user.port=port;
+        
         
         [self loginBackground];
         

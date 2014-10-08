@@ -167,9 +167,15 @@
         }
         NSDictionary *dic = result;
         
-        NSDictionary * attendance_type = [dic objectForKey:@"attendance_type"];
+  
+        NSString * ddns=[dic objectForKey:@"ddns"];
+        NSString * cameraname=[dic objectForKey:@"camera_name"];
+        NSString * port=[dic objectForKey:@"port"];
         
-        user.attendancetype = attendance_type;
+        
+        user.ddns=ddns;
+        user.camera_name=cameraname;
+        user.port=port;
         [ETCoreDataManager saveUser];
         cBlock(nil);
     }

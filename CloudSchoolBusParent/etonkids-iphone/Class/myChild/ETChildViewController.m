@@ -13,6 +13,17 @@
 #import "GKReportViewController.h"
 #import "GKVideoListViewController.h"
 #import "GKBuyViewController.h"
+
+
+#import "GKSocket.h"
+#import "ETKids.h"
+#import "TBXML.h"
+#import "GKDevice.h"
+#import "ETCommonClass.h"
+#import "GKVideoViewController.h"
+
+#import "UserLogin.h"
+
 #define VIEWHEIGHT 110
 #define VIEWHEIGHT5 128
 
@@ -368,19 +379,104 @@
     else if (indexPath.section == 5)
     {
         
+        [self isCameraReady];
         
         
-        
-        GKVideoListViewController *VC=[[GKVideoListViewController alloc]init];
-        AppDelegate *appDel=SHARED_APP_DELEGATE;
-        [appDel.bottomNav pushViewController:VC animated:YES];
-        [VC release];
+//        GKVideoListViewController *VC=[[GKVideoListViewController alloc]init];
+//        AppDelegate *appDel=SHARED_APP_DELEGATE;
+//        [appDel.bottomNav pushViewController:VC animated:YES];
+//        [VC release];
 
         return;
         
     }
 }
+-(void)isCameraReady
+{
+    ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
+    [com requestLoginWithComplete:^(NSError *err){
+        if(err==nil)
+        {
+            UserLogin *user=[UserLogin currentLogin];
+            if([user.ddns isEqualToString:@""] || [user.camera_name isEqualToString:@""])
+            {
+                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"学校未装摄像头" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alert show];
+                [alert release];
+                return ;
+            }
+            
+            NSString *ddns=user.ddns;
+            NSString *prot=user.port;
+            
+            GKSocket *socket=[GKSocket instanceddns:ddns port:prot];
+            
+            NSString *response  =@"<TYPE>GetDeviceList</TYPE>";
+            
+            
+            NSData *data = [[[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]] autorelease];
+            //[self sendData:[data bytes] length:[data length] type:9];
+            [socket sendData:(char *)[data bytes] length:[data length] type:9  block:^(BOOL success, NSString *result) {
+                if(success)
+                {
+                    // 验证用户
+                   
+                    BOOL found=NO;
+                    
+                    
+                    TBXML * tbxml = [TBXML newTBXMLWithXMLString:result error:nil];
+                    TBXMLElement *root = tbxml.rootXMLElement;
+                    TBXMLElement *device = [TBXML childElementNamed:@"device" parentElement:root];
+                    
+                    while (device) {
+                        TBXMLElement *svrname = [TBXML childElementNamed:@"svrname" parentElement:device];
+                        if(svrname)
+                        {
+                            NSString *svrnameStr=[TBXML textForElement:svrname];
 
+                            NSString *stateStr= [TBXML valueOfAttributeNamed:@"Status" forElement:svrname];
+                            
+                          //  deviceObj.status=stateStr;
+                            
+                            if([user.camera_name isEqualToString:svrnameStr])
+                            {
+                                //if(stateStr)
+                                if([stateStr isEqualToString:@"1"])
+                                {
+                                    found=YES;
+                                    break;
+                                }
+                            }
+                            
+                            
+                            
+                            NSLog(@"%@",stateStr);
+                        }
+                        device = [TBXML nextSiblingNamed:@"device" searchFromElement:device];
+                        
+                    }
+                    
+                    
+                    
+                  if(found==YES)
+                  {
+                        GKVideoViewController *VC=[[GKVideoViewController alloc]init];
+                        AppDelegate *appDel=SHARED_APP_DELEGATE;
+                        [appDel.bottomNav pushViewController:VC animated:YES];
+                        [VC release];
+                  }
+                 
+
+                }
+            } streamBlock:^(BOOL header, NSData *data, int length) {
+                
+            }];
+            
+        }
+    }];
+    
+
+}
 -(void)updateChildInfo:(NSNotification *) notification
 {
     [mainTV reloadData];

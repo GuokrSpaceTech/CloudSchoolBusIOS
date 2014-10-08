@@ -19,7 +19,7 @@
 
 }
 
-@property (nonatomic,retain)GKDevice *device;
+//@property (nonatomic,retain)NSString *device_name;
      - (void)startup;
 - (void)shutdown;
 @end

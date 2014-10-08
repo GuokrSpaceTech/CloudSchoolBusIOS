@@ -14,11 +14,6 @@
 
 	int				m_iPreRecvLen;
 	int				m_iPackageLen;
-	//CString			m_sRecvXmlData;
-
-	//Byte *			m_pRecvBuff;
-	
-
 
 
 }

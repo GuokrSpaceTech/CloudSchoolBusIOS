@@ -32,15 +32,25 @@ typedef struct
 
 static GKSocket *socket=nil;
 @implementation GKSocket
-+(GKSocket *)instance
+
+//+(GKSocket *)instance
+//{
+//    if(socket==nil)
+//    {
+//        socket=[[GKSocket alloc]init];
+//    }
+//    return socket;
+//}
++(GKSocket *)instanceddns:(NSString *)ddns port:(NSString *)port
 {
+
     if(socket==nil)
     {
-        socket=[[GKSocket alloc]init];
+        socket=[[GKSocket alloc]initwithddns:ddns port:port];
     }
     return socket;
 }
--(id)init
+-(id)initwithddns:(NSString *)ddns port:(NSString *)prot
 {
     if(self=[super init])
     {
@@ -58,21 +68,21 @@ static GKSocket *socket=nil;
        
 
         
-        [self initNetworkCommunication];
+        [self initNetworkCommunicationddns:ddns port:prot];
 
     }
     
     return self;
 }
 
--(void)initNetworkCommunication
+-(void)initNetworkCommunicationddns:(NSString *)ddns port:(NSString *)prot
 {
 
     CFReadStreamRef readStream;
     CFWriteStreamRef writeStream;
     //CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"222.128.71.186", 600, &readStream, &writeStream);
     //222.128.71.186   //221.122.97.78  //123.196.114.83
-    CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"221.122.97.78", 600, &readStream, &writeStream);
+    CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)ddns, [prot intValue], &readStream, &writeStream);
     inputStream = (NSInputStream *)readStream;
     outputStream = (NSOutputStream *)writeStream;
     
@@ -109,6 +119,8 @@ static GKSocket *socket=nil;
 			break;
             
 		case NSStreamEventEndEncountered:
+            NSLog(@"error socket");
+            [self cleanUpStream];
 			break;
             
 		default:
@@ -272,23 +284,32 @@ MyEnd:
 {
     
 
-    [inputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [inputStream close];
-    
-    inputStream = nil;
-    
+    if(inputStream)
+    {
+        [inputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+        [inputStream close];
+        
+        inputStream = nil;
+    }
+    if(outputStream)
+    {
+        [outputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+        [outputStream close];
+        
+        outputStream = nil;
+    }
 
-    [outputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [outputStream close];
-    
-    outputStream = nil;
-    
-    free(m_pRecvBuff);
-    free(m_pStreamData);
-    socket=nil;
+    if(socket)
+    {
+        free(m_pRecvBuff);
+        free(m_pStreamData);
+        [socket release];
+        socket=nil;
+    }
+
 }
 
--(int)sendData:(char *)pSrc length:(int)iLength type:(int)iDataType block:(CompleteBlock)block streamBlock:(StreamBlock)strBlock;
+-(int)sendData:(char *)pSrc length:(int)iLength type:(int)iDataType block:(streamCompleteBlock)block streamBlock:(StreamBlock)strBlock;
 {
     [cBlock release];
     cBlock=[block copy];

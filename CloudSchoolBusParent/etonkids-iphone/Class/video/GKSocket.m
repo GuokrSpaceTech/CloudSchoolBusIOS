@@ -72,7 +72,7 @@ static GKSocket *socket=nil;
     CFWriteStreamRef writeStream;
     //CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"222.128.71.186", 600, &readStream, &writeStream);
     //222.128.71.186   //221.122.97.78  //123.196.114.83
-    CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"221.122.97.78", 600, &readStream, &writeStream);
+    CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"192.168.2.48", 600, &readStream, &writeStream);
     inputStream = (NSInputStream *)readStream;
     outputStream = (NSOutputStream *)writeStream;
     

@@ -155,7 +155,7 @@
     //NSString *response =@"<TYPE>CheckUser</TYPE><User>super</User><Pwd>super</Pwd>";
     NSString *response=[NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"GB2312\" standalone=\"yes\"?> <TYPE>StartStream</TYPE>\
                         <DVRName>%@</DVRName>\
-                        <ChnNo>0</ChnNo> <StreamType>1</StreamType>",@"hk"];
+                        <ChnNo>0</ChnNo> <StreamType>1</StreamType>",@"c8-9c-dc-d3-bd-1d"];
       NSStringEncoding encoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
 
     

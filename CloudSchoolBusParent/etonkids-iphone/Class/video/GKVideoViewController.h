@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 @class OpenGLView20;
 @class GKDevice;
+
 @interface GKVideoViewController : UIViewController
 {
     GKDevice *device;
@@ -17,9 +19,10 @@
    
    
 
+    MBProgressHUD *HUD;
 }
 
-@property (nonatomic,retain)GKDevice *device;
+//@property (nonatomic,retain)NSString *device_name;
      - (void)startup;
 - (void)shutdown;
 @end

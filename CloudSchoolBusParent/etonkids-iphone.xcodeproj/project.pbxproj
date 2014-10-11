@@ -46,7 +46,14 @@
 		114D9F8619C8403C0052A100 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 114D9F8319C8403C0052A100 /* TBXML.m */; };
 		11628294199C8E56003E4E5C /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11628293199C8E56003E4E5C /* AlipayRsaLib.a */; };
 		1167AD6B19C7F16B00A4013D /* GKVideoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1167AD6A19C7F16B00A4013D /* GKVideoListViewController.m */; };
-		11856D6919D2C224007F976E /* libavresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11856D6819D2C224007F976E /* libavresample.a */; };
+		117930EB19E9043C002169BB /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 117930E519E9043C002169BB /* libavcodec.a */; };
+		117930EC19E9043C002169BB /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 117930E619E9043C002169BB /* libavdevice.a */; };
+		117930ED19E9043C002169BB /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 117930E719E9043C002169BB /* libavfilter.a */; };
+		117930EE19E9043C002169BB /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 117930E819E9043C002169BB /* libavformat.a */; };
+		117930EF19E9043C002169BB /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 117930E919E9043C002169BB /* libavutil.a */; };
+		117930F019E9043C002169BB /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 117930EA19E9043C002169BB /* libswscale.a */; };
+		117930F319E906C9002169BB /* libavresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 117930F119E906C9002169BB /* libavresample.a */; };
+		117930F419E906C9002169BB /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 117930F219E906C9002169BB /* libswresample.a */; };
 		118A1A4A18B6F3B70002BF18 /* HTCopyableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 118A1A4918B6F3B70002BF18 /* HTCopyableLabel.m */; };
 		118CBC17178D7B64006AA633 /* ETActiveDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CBC16178D7B64006AA633 /* ETActiveDetailViewController.m */; };
 		118E62AB1961305A00E24CB8 /* CYDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 118E62AA1961305A00E24CB8 /* CYDoctor.m */; };
@@ -124,12 +131,6 @@
 		11D6C39219936CDB001BBF7E /* AlixPayResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D6C39019936CDB001BBF7E /* AlixPayResult.m */; };
 		11D937CE1947F72000215842 /* UIScrollView+UITouchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D937CD1947F72000215842 /* UIScrollView+UITouchEvent.m */; };
 		11D937D21947FA3D00215842 /* deleteTag.png in Resources */ = {isa = PBXBuildFile; fileRef = 11D937D11947FA3D00215842 /* deleteTag.png */; };
-		11DBB98F19CA99BB008110E8 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11DBB98719CA99BB008110E8 /* libavcodec.a */; };
-		11DBB99019CA99BB008110E8 /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11DBB98819CA99BB008110E8 /* libavdevice.a */; };
-		11DBB99119CA99BB008110E8 /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11DBB98919CA99BB008110E8 /* libavfilter.a */; };
-		11DBB99219CA99BB008110E8 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11DBB98A19CA99BB008110E8 /* libavformat.a */; };
-		11DBB99419CA99BB008110E8 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11DBB98C19CA99BB008110E8 /* libavutil.a */; };
-		11DBB99619CA99BB008110E8 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11DBB98E19CA99BB008110E8 /* libswscale.a */; };
 		11DBB99819CA9C2D008110E8 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11DBB99719CA9C2D008110E8 /* libbz2.1.0.dylib */; };
 		11DBB99A19CA9C36008110E8 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11DBB99919CA9C36008110E8 /* libiconv.dylib */; };
 		11DBB99C19CA9D4A008110E8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11DBB99B19CA9D4A008110E8 /* CoreVideo.framework */; };
@@ -148,7 +149,6 @@
 		11EC2860193F15AA002FF46E /* ETAddSendReceiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EC285F193F15AA002FF46E /* ETAddSendReceiveViewController.m */; };
 		11ECEDD31946EFE200BFB85A /* GKChildReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 11ECEDD21946EFE200BFB85A /* GKChildReceiver.m */; };
 		11EF146519A1E147008F81E9 /* report_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 11EF146419A1E147008F81E9 /* report_icon.png */; };
-		11F0867E19CC07E9003A3CC4 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0867C19CC07E9003A3CC4 /* libswresample.a */; };
 		11F0868119CC08ED003A3CC4 /* OpenGLView20.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F0868019CC08ED003A3CC4 /* OpenGLView20.m */; };
 		11F0868319CC090C003A3CC4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F0868219CC090C003A3CC4 /* OpenGLES.framework */; };
 		11F440B51949959600DCA343 /* MyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F440B41949959600DCA343 /* MyImageView.m */; };
@@ -712,7 +712,14 @@
 		11628293199C8E56003E4E5C /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
 		1167AD6919C7F16B00A4013D /* GKVideoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKVideoListViewController.h; sourceTree = "<group>"; };
 		1167AD6A19C7F16B00A4013D /* GKVideoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKVideoListViewController.m; sourceTree = "<group>"; };
-		11856D6819D2C224007F976E /* libavresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavresample.a; sourceTree = "<group>"; };
+		117930E519E9043C002169BB /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavcodec.a; sourceTree = "<group>"; };
+		117930E619E9043C002169BB /* libavdevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavdevice.a; sourceTree = "<group>"; };
+		117930E719E9043C002169BB /* libavfilter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavfilter.a; sourceTree = "<group>"; };
+		117930E819E9043C002169BB /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavformat.a; sourceTree = "<group>"; };
+		117930E919E9043C002169BB /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavutil.a; sourceTree = "<group>"; };
+		117930EA19E9043C002169BB /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswscale.a; sourceTree = "<group>"; };
+		117930F119E906C9002169BB /* libavresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavresample.a; sourceTree = "<group>"; };
+		117930F219E906C9002169BB /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswresample.a; sourceTree = "<group>"; };
 		118A1A4818B6F3B70002BF18 /* HTCopyableLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTCopyableLabel.h; sourceTree = "<group>"; };
 		118A1A4918B6F3B70002BF18 /* HTCopyableLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTCopyableLabel.m; sourceTree = "<group>"; };
 		118CBC15178D7B64006AA633 /* ETActiveDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETActiveDetailViewController.h; sourceTree = "<group>"; };
@@ -929,12 +936,6 @@
 		11DBB98219CA99BB008110E8 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		11DBB98419CA99BB008110E8 /* swscale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swscale.h; sourceTree = "<group>"; };
 		11DBB98519CA99BB008110E8 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
-		11DBB98719CA99BB008110E8 /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavcodec.a; sourceTree = "<group>"; };
-		11DBB98819CA99BB008110E8 /* libavdevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavdevice.a; sourceTree = "<group>"; };
-		11DBB98919CA99BB008110E8 /* libavfilter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavfilter.a; sourceTree = "<group>"; };
-		11DBB98A19CA99BB008110E8 /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavformat.a; sourceTree = "<group>"; };
-		11DBB98C19CA99BB008110E8 /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavutil.a; sourceTree = "<group>"; };
-		11DBB98E19CA99BB008110E8 /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswscale.a; sourceTree = "<group>"; };
 		11DBB99719CA9C2D008110E8 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = usr/lib/libbz2.1.0.dylib; sourceTree = SDKROOT; };
 		11DBB99919CA9C36008110E8 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		11DBB99B19CA9D4A008110E8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -962,7 +963,6 @@
 		11ECEDD11946EFE200BFB85A /* GKChildReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKChildReceiver.h; sourceTree = "<group>"; };
 		11ECEDD21946EFE200BFB85A /* GKChildReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKChildReceiver.m; sourceTree = "<group>"; };
 		11EF146419A1E147008F81E9 /* report_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = report_icon.png; sourceTree = "<group>"; };
-		11F0867C19CC07E9003A3CC4 /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswresample.a; sourceTree = "<group>"; };
 		11F0867F19CC08ED003A3CC4 /* OpenGLView20.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLView20.h; sourceTree = "<group>"; };
 		11F0868019CC08ED003A3CC4 /* OpenGLView20.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLView20.m; sourceTree = "<group>"; };
 		11F0868219CC090C003A3CC4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1688,7 +1688,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				117930ED19E9043C002169BB /* libavfilter.a in Frameworks */,
 				11F0868319CC090C003A3CC4 /* OpenGLES.framework in Frameworks */,
+				117930F019E9043C002169BB /* libswscale.a in Frameworks */,
 				11DBB99C19CA9D4A008110E8 /* CoreVideo.framework in Frameworks */,
 				11DBB99A19CA9C36008110E8 /* libiconv.dylib in Frameworks */,
 				11DBB99819CA9C2D008110E8 /* libbz2.1.0.dylib in Frameworks */,
@@ -1699,38 +1701,36 @@
 				78930529187A4D6E00628928 /* libz.1.2.5.dylib in Frameworks */,
 				F9E0FA6B16DF5E4E00206925 /* MessageUI.framework in Frameworks */,
 				73C1C63917B8F0DD001A3BCC /* CoreMotion.framework in Frameworks */,
-				11DBB98F19CA99BB008110E8 /* libavcodec.a in Frameworks */,
 				11628294199C8E56003E4E5C /* AlipayRsaLib.a in Frameworks */,
 				112330A3195189B5001B585F /* libMobClickLibrary_armv6.a in Frameworks */,
+				117930F419E906C9002169BB /* libswresample.a in Frameworks */,
 				11A054F51796835F005C062A /* MapKit.framework in Frameworks */,
 				11A054F31796831D005C062A /* ImageIO.framework in Frameworks */,
 				11D6C38B19936C98001BBF7E /* libcrypto.a in Frameworks */,
 				F918E18C16F6DF2500F18574 /* CoreMedia.framework in Frameworks */,
 				F918E18A16F6D94C00F18574 /* AVFoundation.framework in Frameworks */,
 				F950242816DCB6830079A05E /* CoreLocation.framework in Frameworks */,
-				11856D6919D2C224007F976E /* libavresample.a in Frameworks */,
-				11DBB99119CA99BB008110E8 /* libavfilter.a in Frameworks */,
 				112330A2195189B5001B585F /* libMobClickLibrary.a in Frameworks */,
 				F950242616DCB6720079A05E /* libicucore.dylib in Frameworks */,
 				F950225C16DCB2270079A05E /* CFNetwork.framework in Frameworks */,
-				11DBB99019CA99BB008110E8 /* libavdevice.a in Frameworks */,
 				F950225A16DCB21F0079A05E /* MobileCoreServices.framework in Frameworks */,
 				F950225816DCB2120079A05E /* libz.dylib in Frameworks */,
-				11DBB99219CA99BB008110E8 /* libavformat.a in Frameworks */,
 				F96332B816D62A4100BFE8E9 /* SystemConfiguration.framework in Frameworks */,
 				11D6C38C19936C98001BBF7E /* libssl.a in Frameworks */,
-				11DBB99419CA99BB008110E8 /* libavutil.a in Frameworks */,
 				F925403A16D3823B008B4BD2 /* CoreData.framework in Frameworks */,
 				F919DB3416C2406100CFEFD0 /* Security.framework in Frameworks */,
 				78F841FD181E1430007722AE /* libWeChatSDK.a in Frameworks */,
+				117930EF19E9043C002169BB /* libavutil.a in Frameworks */,
 				F91AE3D016BBA54800BF3E5C /* QuartzCore.framework in Frameworks */,
 				E3FFBC6D16B7CE39001F0C3E /* libxml2.dylib in Frameworks */,
+				117930EC19E9043C002169BB /* libavdevice.a in Frameworks */,
+				117930EE19E9043C002169BB /* libavformat.a in Frameworks */,
 				E3EA3AE4169E9491000DF7EE /* UIKit.framework in Frameworks */,
+				117930F319E906C9002169BB /* libavresample.a in Frameworks */,
 				E3EA3AE6169E9491000DF7EE /* Foundation.framework in Frameworks */,
-				11DBB99619CA99BB008110E8 /* libswscale.a in Frameworks */,
 				E3EA3AE8169E9491000DF7EE /* CoreGraphics.framework in Frameworks */,
-				11F0867E19CC07E9003A3CC4 /* libswresample.a in Frameworks */,
 				1194012C17EE9B4400FA14D4 /* libBPush.a in Frameworks */,
+				117930EB19E9043C002169BB /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2088,14 +2088,14 @@
 		11DBB98619CA99BB008110E8 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				11856D6819D2C224007F976E /* libavresample.a */,
-				11F0867C19CC07E9003A3CC4 /* libswresample.a */,
-				11DBB98719CA99BB008110E8 /* libavcodec.a */,
-				11DBB98819CA99BB008110E8 /* libavdevice.a */,
-				11DBB98919CA99BB008110E8 /* libavfilter.a */,
-				11DBB98A19CA99BB008110E8 /* libavformat.a */,
-				11DBB98C19CA99BB008110E8 /* libavutil.a */,
-				11DBB98E19CA99BB008110E8 /* libswscale.a */,
+				117930F119E906C9002169BB /* libavresample.a */,
+				117930F219E906C9002169BB /* libswresample.a */,
+				117930E519E9043C002169BB /* libavcodec.a */,
+				117930E619E9043C002169BB /* libavdevice.a */,
+				117930E719E9043C002169BB /* libavfilter.a */,
+				117930E819E9043C002169BB /* libavformat.a */,
+				117930E919E9043C002169BB /* libavutil.a */,
+				117930EA19E9043C002169BB /* libswscale.a */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -4115,7 +4115,7 @@
 					"$(PROJECT_DIR)/etonkids-iphone/Third/alipay",
 					"$(PROJECT_DIR)/etonkids-iphone/ffmpeg/lib",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -4160,7 +4160,7 @@
 					"$(PROJECT_DIR)/etonkids-iphone/Third/alipay",
 					"$(PROJECT_DIR)/etonkids-iphone/ffmpeg/lib",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",

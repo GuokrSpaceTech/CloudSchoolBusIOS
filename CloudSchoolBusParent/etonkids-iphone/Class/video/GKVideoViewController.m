@@ -13,8 +13,9 @@
 #import "libavcodec/avcodec.h" 
 #import "libswscale/swscale.h" 
 #import "libavformat/avformat.h"
-
+#import "UserLogin.h"
 #import "OpenGLView20.h"
+#import "TBXML.h"
 //const int Header = 101;
 //const int Data = 102;
 @interface GKVideoViewController ()
@@ -33,13 +34,17 @@
     
     Byte * frameData;
     int total;
+    
+    // 音频
+    AVCodecContext *codecaudioCtx;
+    AVCodec *audiocodec;
 
 
 }
 @end
 
 @implementation GKVideoViewController
-@synthesize device;
+//@synthesize device_name;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -53,16 +58,21 @@
 }
 -(void)dealloc
 {
-    self.device=nil;
+   // self.device=nil;
     
     free(frameData);
     [super dealloc];
 }
 - (void)leftButtonClick:(id)sender
 {
+    UserLogin *user=[UserLogin currentLogin];
     
-    [[GKSocket instance] cleanUpStream];
-   // [self.navigationController popViewControllerAnimated:YES];
+    NSString *ddns=user.ddns;
+    NSString *prot=user.port;
+    [[GKSocket instanceddns:ddns port:prot] cleanUpStream];
+    
+   // [[GKSocket instance] cleanUpStream];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)viewDidLoad
 {
@@ -127,6 +137,7 @@
     avcodec_register_all();
     frame = av_frame_alloc();
     codec = avcodec_find_decoder(AV_CODEC_ID_H264);
+   
     codecCtx = avcodec_alloc_context3(codec);
 
    // codecCtx->frame_number = 1;
@@ -135,6 +146,8 @@
         NSLog(@"open codec failed :%d",ret);
     }
     
+  
+    //codecCtx->time_base
   
 
     
@@ -149,107 +162,205 @@
 
 -(void)loadVideo
 {
-    GKSocket *socket=[GKSocket instance];
+    
+    if(HUD==nil)
+    {
+        HUD=[[MBProgressHUD alloc]initWithView:self.view];
+        HUD.mode=MBProgressHUDModeText;
+        HUD.labelText=@"正在加载...";
+        [self.view addSubview:HUD];
+        [HUD release];
+        [HUD show:YES];
+    }
+    UserLogin *user=[UserLogin currentLogin];
+    
+    NSString *ddns=user.ddns;
+    NSString *prot=user.port;
+    GKSocket *socket=[GKSocket instanceddns:ddns port:prot];
     //<TYPE>CheckUser</TYPE><User>%s</User><Pwd>%s</Pwd>","super","super
     // NSString *response  =@"<TYPE>GetDeviceList</TYPE>";
     //NSString *response =@"<TYPE>CheckUser</TYPE><User>super</User><Pwd>super</Pwd>";
     NSString *response=[NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"GB2312\" standalone=\"yes\"?> <TYPE>StartStream</TYPE>\
                         <DVRName>%@</DVRName>\
-                        <ChnNo>0</ChnNo> <StreamType>1</StreamType>",@"c8-9c-dc-d3-bd-1d"];
+                        <ChnNo>0</ChnNo> <StreamType>0</StreamType>",user.camera_name];
+
       NSStringEncoding encoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
 
     
     NSData *data = [[[NSData alloc] initWithData:[response dataUsingEncoding:encoding]] autorelease];
 
     [socket sendData:(char *)[data bytes] length:[data length] type:12 block:^(BOOL success, NSString *result) {
+        NSLog(@"%@",result);
         
-        NSString *respon=@"<TYPE>ImOK</TYPE>";
-        NSData *data = [[NSData alloc] initWithData:[respon dataUsingEncoding:NSASCIIStringEncoding]];
-        [socket sendData:(char *)[data bytes] length:[data length] type:12 block:^(BOOL success, NSString *result) {
+//        <LinkReturn>SUCCESS</LinkReturn><DVRType>PCH264</DVRType><Width>352</Width><Height>288</Height><Interval>100</Interval><AudioCodeID>86017</AudioCodeID><HZ>44100</HZ><SampleWidth>16</SampleWidth><AudioChns>1</AudioChns><BitRate>8000</BitRate>
+        
+        NSString * xml=[NSString stringWithFormat:@"<root>%@</root>",result];
+        TBXML * tbxml = [TBXML newTBXMLWithXMLString:xml error:nil];
+        TBXMLElement *root = tbxml.rootXMLElement;
+        
+        TBXMLElement *linkReturn=[TBXML childElementNamed:@"LinkReturn" parentElement:root];
+        if(linkReturn)
+        {
+            NSString *isSuccess=[TBXML textForElement:linkReturn];
             
-        } streamBlock:^(BOOL header, NSData *data, int length) {
-           
-           // NSLog(@"%s",result);
-            
-          if(header==NO)
-          {
-            AVPacket packet;
-            av_init_packet(&packet);
-            packet.data=[data bytes];
-                           
-            packet.size=length;
-            packet.flags=AV_PKT_FLAG_KEY;
-            int got_picture,ret;
-            ret = avcodec_decode_video2(codecCtx, frame, &got_picture, &packet);
-            if (ret < 0) {
-                      NSLog(@"decode error");
-                      return;
-            }
-            if (!got_picture) {
-                NSLog(@"didn't get picture");
-                return;
-            }
-            if(got_picture)//成功解码
+        
+            TBXMLElement * HZ=[TBXML childElementNamed:@"AudioCodeID" parentElement:root];
+            if(HZ)
             {
-                
-                outputWidth = codecCtx->width;
-                outputHeight = codecCtx->height;
-                static int sws_flags =  SWS_FAST_BILINEAR;
-                if (!img_convert_ctx)
-                    img_convert_ctx = sws_getContext(codecCtx->width,
-                                                           codecCtx->height,
-                                                           codecCtx->pix_fmt,
-                                                           outputWidth,
-                                                           outputHeight,
-                                                           PIX_FMT_YUV420P,
-                                                           sws_flags, NULL, NULL, NULL);
-                      
-                    avpicture_alloc(&picture, PIX_FMT_YUV420P, outputWidth, outputHeight);
-                    if (!frame->data[0])
-                    {
-                        NSLog(@"empty");
-                    }
-                      
-                    ret = sws_scale(img_convert_ctx, (const uint8_t* const*)frame->data, frame->linesize, 0, frame->height, picture.data, picture.linesize);
- 
-                    int picSize = codecCtx->height * codecCtx->width;
-                    int newSize = picSize * 1.5;
-
-                    unsigned char * buf=malloc(newSize * sizeof(unsigned char));
-                    int height =codecCtx->height;
-                    int width = codecCtx->width;
-                      //写入数据
-                    int a=0,i;
-                    for (i=0; i<height; i++)
-                    {
-                        memcpy(buf+a,picture.data[0] + i * picture.linesize[0], width);
-                        a+=width;
-                    }
-                    for (i=0; i<height/2; i++)
-                    {
-                        memcpy(buf+a,picture.data[1] + i * picture.linesize[1], width/2);
-                        a+=width/2;
-                    }
-                    for (i=0; i<height/2; i++)
-                    {
-                        memcpy(buf+a,picture.data[2] + i * picture.linesize[2], width/2);
-                        a+=width/2;
-                    }
-                    [glView displayYUV420pData:buf width:outputWidth height:outputHeight];
-                      
-                    free(buf);
-                    avpicture_free(&picture);
-                    av_free_packet(&packet);
-                  }
-                  
-              }
-           
-          
-
+                NSString *hz=[TBXML textForElement:HZ];
+            }
             
-        }];
+            TBXMLElement * SampleWidth=[TBXML childElementNamed:@"AudioCodeID" parentElement:root];
+            if(SampleWidth)
+            {
+                NSString *samplewidth=[TBXML textForElement:SampleWidth];
+            }
+     
+            
+            
+            if([isSuccess isEqualToString:@"SUCCESS"])
+            {
+                TBXMLElement * AudioCodeID=[TBXML childElementNamed:@"AudioCodeID" parentElement:root];
+                if(AudioCodeID)
+                {
+                    NSString * codeid=[TBXML textForElement:AudioCodeID];
+                    //audiocodec = avcodec_find_decoder();
+                    audiocodec=avcodec_find_decoder([codeid intValue]);
+                    
+                    if (!audiocodec)
+                    {
+                        
+                    }
+                    
+                    codecaudioCtx=avcodec_alloc_context3(audiocodec);
+                    int ret=avcodec_open2(codecaudioCtx, audiocodec, NULL);
+                    if(ret!=0)
+                    {
+                        
+                    }
+                    TBXMLElement * BitRate=[TBXML childElementNamed:@"AudioCodeID" parentElement:root];
+                    if(BitRate)
+                    {
+                        NSString *bitrate=[TBXML textForElement:BitRate];
+                        codecaudioCtx->bit_rate=[bitrate intValue];
+                    }
 
-    } streamBlock:^(BOOL header, NSData *data, int length) {
+                    TBXMLElement * AudioChns=[TBXML childElementNamed:@"AudioCodeID" parentElement:root];
+                    if(AudioChns)
+                    {
+                        NSString *chns=[TBXML textForElement:AudioChns];
+                        codecaudioCtx->channels=[chns intValue];
+                    }
+                    
+                    
+                }
+                
+              
+                
+                NSString *respon=@"<TYPE>ImOK</TYPE>";
+                NSData *data = [[NSData alloc] initWithData:[respon dataUsingEncoding:NSASCIIStringEncoding]];
+                [socket sendData:(char *)[data bytes] length:[data length] type:12 block:^(BOOL success, NSString *result) {
+                    
+                    NSLog(@"%@",result);
+                    
+                } streamBlock:^(NSData *data, int length,NSError *error) {
+                    
+        
+                    
+                    if(HUD)
+                    {
+                        [HUD removeFromSuperview];
+                        HUD=nil;
+                    }
+                    
+                    if(error!=nil)
+                    {
+                        [self.navigationController popViewControllerAnimated:YES];
+                        return ;
+                    }
+                 
+                        AVPacket packet;
+                        av_init_packet(&packet);
+                        packet.data=[data bytes];
+                        
+                        packet.size=length;
+                        packet.flags=AV_PKT_FLAG_KEY;
+                        int got_picture,ret;
+                        ret = avcodec_decode_video2(codecCtx, frame, &got_picture, &packet);
+                        if (ret < 0) {
+                            NSLog(@"decode error");
+                            return;
+                        }
+                        if (!got_picture) {
+                            NSLog(@"didn't get picture");
+                            return;
+                        }
+                        if(got_picture)//成功解码
+                        {
+                            
+                            outputWidth = codecCtx->width;
+                            outputHeight = codecCtx->height;
+                            static int sws_flags =  SWS_FAST_BILINEAR;
+                            if (!img_convert_ctx)
+                                img_convert_ctx = sws_getContext(codecCtx->width,
+                                                                 codecCtx->height,
+                                                                 codecCtx->pix_fmt,
+                                                                 outputWidth,
+                                                                 outputHeight,
+                                                                 PIX_FMT_YUV420P,
+                                                                 sws_flags, NULL, NULL, NULL);
+                            
+                            avpicture_alloc(&picture, PIX_FMT_YUV420P, outputWidth, outputHeight);
+                            if (!frame->data[0])
+                            {
+                                NSLog(@"empty");
+                            }
+                            
+                            ret = sws_scale(img_convert_ctx, (const uint8_t* const*)frame->data, frame->linesize, 0, frame->height, picture.data, picture.linesize);
+                            
+                            int picSize = codecCtx->height * codecCtx->width;
+                            int newSize = picSize * 1.5;
+                            
+                            unsigned char * buf=malloc(newSize * sizeof(unsigned char));
+                            int height =codecCtx->height;
+                            int width = codecCtx->width;
+                            //写入数据
+                            int a=0,i;
+                            for (i=0; i<height; i++)
+                            {
+                                memcpy(buf+a,picture.data[0] + i * picture.linesize[0], width);
+                                a+=width;
+                            }
+                            for (i=0; i<height/2; i++)
+                            {
+                                memcpy(buf+a,picture.data[1] + i * picture.linesize[1], width/2);
+                                a+=width/2;
+                            }
+                            for (i=0; i<height/2; i++)
+                            {
+                                memcpy(buf+a,picture.data[2] + i * picture.linesize[2], width/2);
+                                a+=width/2;
+                            }
+                            [glView displayYUV420pData:buf width:outputWidth height:outputHeight];
+                            
+                            free(buf);
+                            avpicture_free(&picture);
+                            av_free_packet(&packet);
+                        }
+                        
+                    
+                    
+                    
+                    
+                    
+                }];
+            }
+        }
+
+        
+
+
+    } streamBlock:^(NSData *data, int length,NSError *error) {
         
     }];
 

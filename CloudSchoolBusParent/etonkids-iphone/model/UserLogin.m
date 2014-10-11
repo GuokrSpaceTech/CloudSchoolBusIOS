@@ -40,6 +40,8 @@ static UserLogin *current=nil;
             orderEndTime,
 chunyuendtime,chunyuisopen;
 
+@synthesize camera_name,ddns,port;
+
 
 #pragma --
 

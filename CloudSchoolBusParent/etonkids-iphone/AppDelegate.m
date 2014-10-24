@@ -89,6 +89,7 @@
     
 
     
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(netWorkChanged:) name:kReachabilityChangedNotification object:nil];
     
     reachabiltiy=[[Reachability reachabilityWithHostName:@"www.yunxiaoche.com"] retain];
@@ -339,6 +340,7 @@
 }
 - (void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
 {
+
     if (method == push) {
         
         if (code == 1) {

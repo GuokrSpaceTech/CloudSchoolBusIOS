@@ -9,5 +9,11 @@
 #import "GKGeofence.h"
 
 @implementation GKGeofence
-
+@synthesize geofenceid,name;
+-(void)dealloc
+{
+    self.geofenceid=nil;
+    self.name=nil;
+    [super dealloc];
+}
 @end

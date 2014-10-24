@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface GKGeofenceViewController : UIViewController
-
+#import "EKRequest.h"
+@interface GKGeofenceViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,EKProtocol>
+@property (nonatomic,retain)UITableView *_tableView;
+@property (nonatomic,retain)NSMutableArray *arrList;
 @end

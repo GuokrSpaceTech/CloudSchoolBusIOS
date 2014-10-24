@@ -35,8 +35,8 @@ typedef void (^StreamBlock)( NSData *data, int length,NSError *error);
 
 }
 
-+(GKSocket *)instance;
--(void)initNetworkCommunication;
+//+(GKSocket *)instance;
+
 - (void)cleanUpStream;
 -(int)sendData:(char *)pSrc length:(int)iLength type:(int)iDataType block:(streamCompleteBlock)block streamBlock:(StreamBlock)strBlock;
 

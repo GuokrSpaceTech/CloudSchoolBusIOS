@@ -12,34 +12,37 @@
 #import "ETCommonClass.h"
 #import "MBProgressHUD.h"
 #import "MyImageView.h"
-@interface ETGCalendarViewController : UIViewController<VRGCalendarViewDelegate,EKProtocol>
+@interface ETGCalendarViewController : UIViewController<VRGCalendarViewDelegate,EKProtocol,UITableViewDataSource,UITableViewDelegate>
 {
     VRGCalendarView *myCalendar;
-    UILabel *inLabel;
-    UILabel *outlable;
+//    UILabel *inLabel;
+//    UILabel *outlable;
     
     
-    UILabel *tempatureLabel;
-    UILabel *tempatureStateLabel;
+   // UILabel *tempatureLabel;
+   // UILabel *tempatureStateLabel;
     UILabel *otherStateLabel;
     
     UILabel *fesLabel;
-    
-    MyImageView *inImageView;
-    MyImageView *outImageView;
-    UIImageView *circleImageView4;
-    UIImageView *circleImageView3;
-    UIImageView *line3;
-    UIImageView *line2;
+
     UILabel *countLabel;
     UILabel *dateLabel;
-    
+    UILabel *todaycount;
+  
     UIImageView *fesImgV;
     
-    UIScrollView *scroller;
+
+
     MBProgressHUD *HUD;
 }
-@property (nonatomic,retain)UIScrollView *scroller;
+//@property (nonatomic,retain)UIScrollView *scroller;
 @property (nonatomic, retain) NSMutableArray *attArr;
 @property (nonatomic, retain) NSMutableArray *fesArr;
+
+@property (nonatomic,retain)NSString *festvStr;
+@property (nonatomic,retain)NSString *currentDateStr;
+
+@property (nonatomic,retain)UITableView *_tableView;
+
+@property (nonatomic,retain)NSMutableArray *dateList;
 @end

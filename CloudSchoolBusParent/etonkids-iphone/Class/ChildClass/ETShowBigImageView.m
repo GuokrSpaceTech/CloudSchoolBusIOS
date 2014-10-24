@@ -129,7 +129,8 @@
     
     [self downloadBigImage];
 }
-
+- (void)signInOnViewController:(UIViewController *)viewController
+{}
 - (void)reloadFrame:(UIInterfaceOrientation)orientation
 {
     NSLog(@"%d",originShowNum);
@@ -363,7 +364,7 @@
 
 - (void)imageSavedToPhotosAlbum:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *) contextInfo {
     NSString *message;
-    NSString *title;
+   // NSString *title;
     
     if(saveHUD)
     {

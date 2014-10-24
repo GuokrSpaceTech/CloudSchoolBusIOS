@@ -40,7 +40,7 @@
     return UIStatusBarStyleLightContent;
 }
 
-- (id)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitlesArray:(NSArray *)titles
+- (id)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id)_delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitlesArray:(NSArray *)titles
 {
     
     self = [super initWithFrame:[UIScreen mainScreen].applicationFrame];
@@ -52,7 +52,7 @@
         
         self.myTitle = title;
         self.myMessage = message;
-        self.delegate = delegate;
+        self.delegate = _delegate;
         
 //        self.windowLevel = UIWindowLevelStatusBar+1;
         

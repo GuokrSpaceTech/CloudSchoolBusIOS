@@ -13,9 +13,6 @@
 #define ALIGNMENT				3
 #define ALIGN_HEADLEN					(sizeof(int)+sizeof(Byte)+3*sizeof(Byte)+4*sizeof(int)+sizeof(Byte)+ALIGNMENT)	//28字节长,包含3个对齐字节
 
-
-
-
 typedef struct
 {
     int 	iActLength;
@@ -30,46 +27,29 @@ typedef struct
 }NET_LAYER;
 #define Net_LAYER_STRUCT_LEN	sizeof(NET_LAYER)
 
-static GKSocket *socket=nil;
+static GKSocket *currentSocket=nil;
 @implementation GKSocket
 
-//+(GKSocket *)instance
-//{
-//    if(socket==nil)
-//    {
-//        socket=[[GKSocket alloc]init];
-//    }
-//    return socket;
-//}
 +(GKSocket *)instanceddns:(NSString *)ddns port:(NSString *)port
 {
 
-    if(socket==nil)
+    if(currentSocket==nil)
     {
-        socket=[[GKSocket alloc]initwithddns:ddns port:port];
+        currentSocket=[[GKSocket alloc]initwithddns:ddns port:port];
     }
-    return socket;
+    return currentSocket;
 }
 -(id)initwithddns:(NSString *)ddns port:(NSString *)prot
 {
     if(self=[super init])
     {
         m_pRecvBuff=(Byte *)malloc(Net_LAYER_STRUCT_LEN*sizeof(Byte));
-        
-         m_pStreamData=(Byte *)malloc(512*1024*sizeof(Byte));
-        
-        
-  
+        m_pStreamData=(Byte *)malloc(512*1024*sizeof(Byte));
         m_iPreRecvLen=0;
         m_iPackageLen=0;
         m_iFrameLen=0;
-        
         bufferdata=[[NSMutableData alloc]init];
-       
-
-        
         [self initNetworkCommunicationddns:ddns port:prot];
-
     }
     
     return self;
@@ -285,8 +265,6 @@ MyEnd:
 
 - (void)cleanUpStream
 {
-    
-
     if(inputStream)
     {
         [inputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
@@ -302,12 +280,12 @@ MyEnd:
         outputStream = nil;
     }
 
-    if(socket)
+    if(currentSocket)
     {
         free(m_pRecvBuff);
         free(m_pStreamData);
-        [socket release];
-        socket=nil;
+        [currentSocket release];
+        currentSocket=nil;
     }
 
 }

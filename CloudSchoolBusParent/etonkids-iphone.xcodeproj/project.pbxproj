@@ -45,15 +45,14 @@
 		114D9F8519C8403C0052A100 /* TBXML+HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 114D9F8119C8403C0052A100 /* TBXML+HTTP.m */; };
 		114D9F8619C8403C0052A100 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 114D9F8319C8403C0052A100 /* TBXML.m */; };
 		11628294199C8E56003E4E5C /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11628293199C8E56003E4E5C /* AlipayRsaLib.a */; };
-		1167AD6B19C7F16B00A4013D /* GKVideoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1167AD6A19C7F16B00A4013D /* GKVideoListViewController.m */; };
+		11644FD019F90566001E6D1C /* GKGeofenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11644FCF19F90566001E6D1C /* GKGeofenceViewController.m */; };
+		11644FD319F90B0E001E6D1C /* GKGeofence.m in Sources */ = {isa = PBXBuildFile; fileRef = 11644FD219F90B0E001E6D1C /* GKGeofence.m */; };
 		117930EB19E9043C002169BB /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 117930E519E9043C002169BB /* libavcodec.a */; };
 		117930EC19E9043C002169BB /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 117930E619E9043C002169BB /* libavdevice.a */; };
 		117930ED19E9043C002169BB /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 117930E719E9043C002169BB /* libavfilter.a */; };
 		117930EE19E9043C002169BB /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 117930E819E9043C002169BB /* libavformat.a */; };
 		117930EF19E9043C002169BB /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 117930E919E9043C002169BB /* libavutil.a */; };
 		117930F019E9043C002169BB /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 117930EA19E9043C002169BB /* libswscale.a */; };
-		117930F319E906C9002169BB /* libavresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 117930F119E906C9002169BB /* libavresample.a */; };
-		117930F419E906C9002169BB /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 117930F219E906C9002169BB /* libswresample.a */; };
 		118A1A4A18B6F3B70002BF18 /* HTCopyableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 118A1A4918B6F3B70002BF18 /* HTCopyableLabel.m */; };
 		118CBC17178D7B64006AA633 /* ETActiveDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CBC16178D7B64006AA633 /* ETActiveDetailViewController.m */; };
 		118E62AB1961305A00E24CB8 /* CYDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 118E62AA1961305A00E24CB8 /* CYDoctor.m */; };
@@ -710,16 +709,16 @@
 		114D9F8219C8403C0052A100 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
 		114D9F8319C8403C0052A100 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
 		11628293199C8E56003E4E5C /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
-		1167AD6919C7F16B00A4013D /* GKVideoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKVideoListViewController.h; sourceTree = "<group>"; };
-		1167AD6A19C7F16B00A4013D /* GKVideoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKVideoListViewController.m; sourceTree = "<group>"; };
+		11644FCE19F90566001E6D1C /* GKGeofenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKGeofenceViewController.h; sourceTree = "<group>"; };
+		11644FCF19F90566001E6D1C /* GKGeofenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKGeofenceViewController.m; sourceTree = "<group>"; };
+		11644FD119F90B0E001E6D1C /* GKGeofence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKGeofence.h; sourceTree = "<group>"; };
+		11644FD219F90B0E001E6D1C /* GKGeofence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKGeofence.m; sourceTree = "<group>"; };
 		117930E519E9043C002169BB /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavcodec.a; sourceTree = "<group>"; };
 		117930E619E9043C002169BB /* libavdevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavdevice.a; sourceTree = "<group>"; };
 		117930E719E9043C002169BB /* libavfilter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavfilter.a; sourceTree = "<group>"; };
 		117930E819E9043C002169BB /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavformat.a; sourceTree = "<group>"; };
 		117930E919E9043C002169BB /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavutil.a; sourceTree = "<group>"; };
 		117930EA19E9043C002169BB /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswscale.a; sourceTree = "<group>"; };
-		117930F119E906C9002169BB /* libavresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavresample.a; sourceTree = "<group>"; };
-		117930F219E906C9002169BB /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswresample.a; sourceTree = "<group>"; };
 		118A1A4818B6F3B70002BF18 /* HTCopyableLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTCopyableLabel.h; sourceTree = "<group>"; };
 		118A1A4918B6F3B70002BF18 /* HTCopyableLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTCopyableLabel.m; sourceTree = "<group>"; };
 		118CBC15178D7B64006AA633 /* ETActiveDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETActiveDetailViewController.h; sourceTree = "<group>"; };
@@ -1703,7 +1702,6 @@
 				73C1C63917B8F0DD001A3BCC /* CoreMotion.framework in Frameworks */,
 				11628294199C8E56003E4E5C /* AlipayRsaLib.a in Frameworks */,
 				112330A3195189B5001B585F /* libMobClickLibrary_armv6.a in Frameworks */,
-				117930F419E906C9002169BB /* libswresample.a in Frameworks */,
 				11A054F51796835F005C062A /* MapKit.framework in Frameworks */,
 				11A054F31796831D005C062A /* ImageIO.framework in Frameworks */,
 				11D6C38B19936C98001BBF7E /* libcrypto.a in Frameworks */,
@@ -1726,7 +1724,6 @@
 				117930EC19E9043C002169BB /* libavdevice.a in Frameworks */,
 				117930EE19E9043C002169BB /* libavformat.a in Frameworks */,
 				E3EA3AE4169E9491000DF7EE /* UIKit.framework in Frameworks */,
-				117930F319E906C9002169BB /* libavresample.a in Frameworks */,
 				E3EA3AE6169E9491000DF7EE /* Foundation.framework in Frameworks */,
 				E3EA3AE8169E9491000DF7EE /* CoreGraphics.framework in Frameworks */,
 				1194012C17EE9B4400FA14D4 /* libBPush.a in Frameworks */,
@@ -1817,13 +1814,22 @@
 			path = TBXML;
 			sourceTree = "<group>";
 		};
+		11644FCB19F8F591001E6D1C /* geofence */ = {
+			isa = PBXGroup;
+			children = (
+				11644FCE19F90566001E6D1C /* GKGeofenceViewController.h */,
+				11644FCF19F90566001E6D1C /* GKGeofenceViewController.m */,
+				11644FD119F90B0E001E6D1C /* GKGeofence.h */,
+				11644FD219F90B0E001E6D1C /* GKGeofence.m */,
+			);
+			path = geofence;
+			sourceTree = "<group>";
+		};
 		1167AD6819C7F14200A4013D /* video */ = {
 			isa = PBXGroup;
 			children = (
 				11F0867F19CC08ED003A3CC4 /* OpenGLView20.h */,
 				11F0868019CC08ED003A3CC4 /* OpenGLView20.m */,
-				1167AD6919C7F16B00A4013D /* GKVideoListViewController.h */,
-				1167AD6A19C7F16B00A4013D /* GKVideoListViewController.m */,
 				114D9F7A19C839260052A100 /* GKSocket.h */,
 				114D9F7B19C839260052A100 /* GKSocket.m */,
 				11E10EA119C932C000228B12 /* GKDevice.h */,
@@ -2088,8 +2094,6 @@
 		11DBB98619CA99BB008110E8 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				117930F119E906C9002169BB /* libavresample.a */,
-				117930F219E906C9002169BB /* libswresample.a */,
 				117930E519E9043C002169BB /* libavcodec.a */,
 				117930E619E9043C002169BB /* libavdevice.a */,
 				117930E719E9043C002169BB /* libavfilter.a */,
@@ -2658,6 +2662,7 @@
 		E3EA3B00169E94C5000DF7EE /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				11644FCB19F8F591001E6D1C /* geofence */,
 				1167AD6819C7F14200A4013D /* video */,
 				1124C0B619920BAF0044485B /* report */,
 				113320F91953EAB50088E226 /* Health */,
@@ -3791,7 +3796,6 @@
 				F927996516D4A98E00E2F3AF /* ImageScaleView.m in Sources */,
 				F96332AC16D6026A00BFE8E9 /* LoadMoreTableFooterView.m in Sources */,
 				F96332B116D602AB00BFE8E9 /* EGORefreshTableHeaderView.m in Sources */,
-				1167AD6B19C7F16B00A4013D /* GKVideoListViewController.m in Sources */,
 				F96332B616D626A800BFE8E9 /* NetWork.m in Sources */,
 				F950216D16DC8B090079A05E /* ETChildViewController.m in Sources */,
 				F95021C116DCAF640079A05E /* NSDictionaryAdditions.m in Sources */,
@@ -3854,6 +3858,7 @@
 				F950241916DCB61B0079A05E /* NSObject+SBJSON.m in Sources */,
 				F950241A16DCB61B0079A05E /* NSString+SBJSON.m in Sources */,
 				F950241B16DCB61B0079A05E /* SBJSON.m in Sources */,
+				11644FD019F90566001E6D1C /* GKGeofenceViewController.m in Sources */,
 				F950241C16DCB61B0079A05E /* SBJsonBase.m in Sources */,
 				F950241D16DCB61B0079A05E /* SBJsonParser.m in Sources */,
 				F950241E16DCB61B0079A05E /* SBJsonWriter.m in Sources */,
@@ -3989,6 +3994,7 @@
 				78FA831E18064FDC009E9176 /* ETImageView.m in Sources */,
 				78ED81591806888700A98C7F /* ETGestureCheckViewController.m in Sources */,
 				78ED815D1807E48600A98C7F /* ETBottomNavigationController.m in Sources */,
+				11644FD319F90B0E001E6D1C /* GKGeofence.m in Sources */,
 				11D937CE1947F72000215842 /* UIScrollView+UITouchEvent.m in Sources */,
 				7818DEAB180CE1E0005781DF /* ETAttendance.m in Sources */,
 				11E10EA619C9353900228B12 /* GKVideoViewController.m in Sources */,
@@ -4090,9 +4096,9 @@
 		E3EA3AFE169E9491000DF7EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: kai yang (E76KEG2YY8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kai yang (E76KEG2YY8)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -4107,6 +4113,7 @@
 				);
 				INFOPLIST_FILE = "etonkids-iphone/etonkids-iphone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/**",
 					"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/weixin/**",
@@ -4125,6 +4132,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3a994eb4-c160-4cf9-abdf-86a24b07598b";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				VALID_ARCHS = "armv7 armv7s";
@@ -4135,9 +4143,9 @@
 		E3EA3AFF169E9491000DF7EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: kai yang (E76KEG2YY8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kai yang (E76KEG2YY8)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -4152,6 +4160,7 @@
 				);
 				INFOPLIST_FILE = "etonkids-iphone/etonkids-iphone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/**",
 					"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/weixin/**",

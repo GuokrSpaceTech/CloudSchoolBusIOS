@@ -128,7 +128,7 @@ static LeveyTabBarController *leveyTabBarController;
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    
+    [super viewWillAppear:animated];
 }
 
 - (void)createFirstVC

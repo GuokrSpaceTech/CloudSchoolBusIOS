@@ -461,7 +461,7 @@ static float		g_keyboardFrameHeightLastTime = 216;		// 默认初始键盘高度
                     NSData *dataImageSend = UIImageJPEGRepresentation(SmallImage, 1.0);
                     dataImage = dataImageSend;
                 }
-            NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithCapacity:5];
+            NSMutableDictionary *dic = [[[NSMutableDictionary alloc]initWithCapacity:5] autorelease];
             [dic setObject:@"json" forKey:@"format"];
             [dic setObject:@"0" forKey:@"compatibleflag"];
             [dic setObject:([textView hasText] ? textView.text : @"#分享图片#") forKey:@"content"];

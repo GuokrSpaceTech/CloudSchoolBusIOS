@@ -63,6 +63,12 @@
     free(frameData);
     [super dealloc];
 }
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [UIApplication sharedApplication].idleTimerDisabled=NO;
+}
 - (void)leftButtonClick:(id)sender
 {
     UserLogin *user=[UserLogin currentLogin];
@@ -70,7 +76,7 @@
     NSString *ddns=user.ddns;
     NSString *prot=user.port;
     [[GKSocket instanceddns:ddns port:prot] cleanUpStream];
-    
+    [UIApplication sharedApplication].idleTimerDisabled=NO;
    // [[GKSocket instance] cleanUpStream];
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -79,7 +85,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor=[UIColor blackColor];
-    
+    [UIApplication sharedApplication].idleTimerDisabled=YES;
     if (ios7) {
         [self setNeedsStatusBarAppearanceUpdate];
         
@@ -101,7 +107,6 @@
     [self.view addSubview:navigationBackView];
     [navigationBackView release];
     
-    
     UIButton *leftButton =[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 50, 35)];
     [leftButton setCenter:CGPointMake(10 + 34/2, navigationBackView.frame.size.height/2+ (ios7 ? 20 : 0))];
@@ -109,52 +114,31 @@
     [leftButton setImage:[UIImage imageNamed:@"backBtnSel_3.0.png"] forState:UIControlStateHighlighted];
     [leftButton addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:leftButton];
-//    UISwipeGestureRecognizer *popGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftButtonClick:)];
-//    popGes.direction = UISwipeGestureRecognizerDirectionRight;
-//    [self.view addGestureRecognizer:popGes];
-//    [popGes release];
     
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
     middleLabel.textAlignment=UITextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
-    middleLabel.text =  NSLocalizedString(@"doctor_con", @"医生咨询");
+    middleLabel.text =  @"视频直播";
     middleLabel.backgroundColor=[UIColor clearColor];
     [self.view addSubview:middleLabel];
     [middleLabel release];
     
-    //./0, , 320, (iphone5 ? 548 : 460) - NAVIHEIGHT
     glView = [[OpenGLView20 alloc] initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height-( NAVIHEIGHT + (ios7 ? 20 : 0)))];
     //设置视频原始尺寸
     [glView setVideoSize:352 height:288];
     //渲染yuv
     [self.view addSubview:glView];
     
-    //iamgeView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 100,290,400)];
-//    iamgeView.backgroundColor=[UIColor clearColor];
-//    [self.view addSubview:iamgeView];
-  //  [glView setTransform:CGAffineTransformMakeRotation(M_PI/2)];
-
     avcodec_register_all();
     frame = av_frame_alloc();
     codec = avcodec_find_decoder(AV_CODEC_ID_H264);
-   
     codecCtx = avcodec_alloc_context3(codec);
-
-   // codecCtx->frame_number = 1;
     int ret = avcodec_open2(codecCtx, codec, nil);
     if (ret != 0){
         NSLog(@"open codec failed :%d",ret);
     }
-    
-  
-    //codecCtx->time_base
-  
-
-    
     outputWidth = 320;
     outputHeight = 240;
-
-   
     frameData=(Byte *)malloc(512*1024*sizeof(Byte));
     
     [self loadVideo];
@@ -182,16 +166,11 @@
     //NSString *response =@"<TYPE>CheckUser</TYPE><User>super</User><Pwd>super</Pwd>";
     NSString *response=[NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"GB2312\" standalone=\"yes\"?> <TYPE>StartStream</TYPE>\
                         <DVRName>%@</DVRName>\
-                        <ChnNo>0</ChnNo> <StreamType>0</StreamType>",user.camera_name];
-
-      NSStringEncoding encoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-
-    
+                        <ChnNo>0</ChnNo> <StreamType>1</StreamType>",user.camera_name];
+    NSStringEncoding encoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
     NSData *data = [[[NSData alloc] initWithData:[response dataUsingEncoding:encoding]] autorelease];
 
     [socket sendData:(char *)[data bytes] length:[data length] type:12 block:^(BOOL success, NSString *result) {
-        NSLog(@"%@",result);
-        
 //        <LinkReturn>SUCCESS</LinkReturn><DVRType>PCH264</DVRType><Width>352</Width><Height>288</Height><Interval>100</Interval><AudioCodeID>86017</AudioCodeID><HZ>44100</HZ><SampleWidth>16</SampleWidth><AudioChns>1</AudioChns><BitRate>8000</BitRate>
         
         NSString * xml=[NSString stringWithFormat:@"<root>%@</root>",result];
@@ -202,22 +181,17 @@
         if(linkReturn)
         {
             NSString *isSuccess=[TBXML textForElement:linkReturn];
-            
-        
             TBXMLElement * HZ=[TBXML childElementNamed:@"AudioCodeID" parentElement:root];
             if(HZ)
             {
-                NSString *hz=[TBXML textForElement:HZ];
+               // NSString *hz=[TBXML textForElement:HZ];
             }
             
             TBXMLElement * SampleWidth=[TBXML childElementNamed:@"AudioCodeID" parentElement:root];
             if(SampleWidth)
             {
-                NSString *samplewidth=[TBXML textForElement:SampleWidth];
+               // NSString *samplewidth=[TBXML textForElement:SampleWidth];
             }
-     
-            
-            
             if([isSuccess isEqualToString:@"SUCCESS"])
             {
                 TBXMLElement * AudioCodeID=[TBXML childElementNamed:@"AudioCodeID" parentElement:root];
@@ -254,8 +228,6 @@
                     
                     
                 }
-                
-              
                 
                 NSString *respon=@"<TYPE>ImOK</TYPE>";
                 NSData *data = [[NSData alloc] initWithData:[respon dataUsingEncoding:NSASCIIStringEncoding]];
@@ -316,7 +288,7 @@
                                 NSLog(@"empty");
                             }
                             
-                            ret = sws_scale(img_convert_ctx, (const uint8_t* const*)frame->data, frame->linesize, 0, frame->height, picture.data, picture.linesize);
+                            sws_scale(img_convert_ctx, (const uint8_t* const*)frame->data, frame->linesize, 0, frame->height, picture.data, picture.linesize);
                             
                             int picSize = codecCtx->height * codecCtx->width;
                             int newSize = picSize * 1.5;
@@ -342,23 +314,15 @@
                                 a+=width/2;
                             }
                             [glView displayYUV420pData:buf width:outputWidth height:outputHeight];
-                            
+                            [NSThread sleepForTimeInterval:40/1000.0f];
                             free(buf);
                             avpicture_free(&picture);
                             av_free_packet(&packet);
                         }
-                        
-                    
-                    
-                    
-                    
-                    
+
                 }];
             }
         }
-
-        
-
 
     } streamBlock:^(NSData *data, int length,NSError *error) {
         

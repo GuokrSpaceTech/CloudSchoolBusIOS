@@ -15,14 +15,7 @@
 {
     GKDevice *device;
     OpenGLView20 *glView;
-    //int viodeoLength;
-   
-   
-
     MBProgressHUD *HUD;
 }
 
-//@property (nonatomic,retain)NSString *device_name;
-     - (void)startup;
-- (void)shutdown;
 @end

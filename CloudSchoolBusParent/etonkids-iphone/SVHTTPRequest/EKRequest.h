@@ -46,7 +46,8 @@ enum RequestFunction
     deletereceiver,
     report,
     search,
-    order
+    order,
+    geofenceparents
     
 };
 typedef NSUInteger RequestFunction;

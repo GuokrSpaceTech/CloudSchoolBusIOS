@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface GKGeofence : NSObject
-
+@property (nonatomic,retain)NSString *geofenceid;
+@property (nonatomic,retain)NSString *name;
 @end

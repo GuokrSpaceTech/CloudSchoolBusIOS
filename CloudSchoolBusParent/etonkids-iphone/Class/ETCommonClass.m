@@ -62,7 +62,8 @@
 
 - (void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
 {
-    
+ 
+   // [NSURLConnection sendAsynchronousRequest:<#(NSURLRequest *)#> queue:(NSOperationQueue *) completionHandler:<#^(NSURLResponse *response, NSData *data, NSError *connectionError)handler#>]
     UserLogin *user = [UserLogin currentLogin];
     
 //    NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];

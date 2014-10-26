@@ -653,6 +653,7 @@
 		F9DB03F016E46F930094A679 /* ETShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DB03EE16E46F930094A679 /* ETShareViewController.m */; };
 		F9DB03F116E46F930094A679 /* ETShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DB03EF16E46F930094A679 /* ETShareViewController.xib */; };
 		F9E0FA6B16DF5E4E00206925 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9E0FA6A16DF5E4E00206925 /* MessageUI.framework */; };
+		F9E570CD19FA183D00F9DBDD /* GKAllStopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E570CC19FA183D00F9DBDD /* GKAllStopViewController.m */; };
 		F9EFD7D616BA309A0030A5C1 /* StudentDuty.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFD7D516BA309A0030A5C1 /* StudentDuty.m */; };
 		F9EFD7E616BA4BFB0030A5C1 /* StudentDutySameYearMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFD7E516BA4BFB0030A5C1 /* StudentDutySameYearMonth.m */; };
 		F9EFD80316BA779C0030A5C1 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFD80216BA779C0030A5C1 /* ImageCache.m */; };
@@ -1674,6 +1675,8 @@
 		F9DB03EE16E46F930094A679 /* ETShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETShareViewController.m; sourceTree = "<group>"; };
 		F9DB03EF16E46F930094A679 /* ETShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ETShareViewController.xib; sourceTree = "<group>"; };
 		F9E0FA6A16DF5E4E00206925 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		F9E570CB19FA183D00F9DBDD /* GKAllStopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAllStopViewController.h; sourceTree = "<group>"; };
+		F9E570CC19FA183D00F9DBDD /* GKAllStopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAllStopViewController.m; sourceTree = "<group>"; };
 		F9EFD7D416BA309A0030A5C1 /* StudentDuty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentDuty.h; sourceTree = "<group>"; };
 		F9EFD7D516BA309A0030A5C1 /* StudentDuty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentDuty.m; sourceTree = "<group>"; };
 		F9EFD7E416BA4BFB0030A5C1 /* StudentDutySameYearMonth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentDutySameYearMonth.h; sourceTree = "<group>"; };
@@ -1821,6 +1824,8 @@
 				11644FCF19F90566001E6D1C /* GKGeofenceViewController.m */,
 				11644FD119F90B0E001E6D1C /* GKGeofence.h */,
 				11644FD219F90B0E001E6D1C /* GKGeofence.m */,
+				F9E570CB19FA183D00F9DBDD /* GKAllStopViewController.h */,
+				F9E570CC19FA183D00F9DBDD /* GKAllStopViewController.m */,
 			);
 			path = geofence;
 			sourceTree = "<group>";
@@ -3944,6 +3949,7 @@
 				7860CB2B188686EC00DD0E80 /* MDRadialProgressTheme.m in Sources */,
 				1112BB4D1797C4E500337CB4 /* NSStringAdditions.m in Sources */,
 				73545DD817A79B9C000E39FC /* ETNicknameViewController.m in Sources */,
+				F9E570CD19FA183D00F9DBDD /* GKAllStopViewController.m in Sources */,
 				11B3E228193F058500A96ACF /* ETSendReceiveView.m in Sources */,
 				73545DDD17A79BDA000E39FC /* ETBackgroundViewController.m in Sources */,
 				73545DE217A79C04000E39FC /* AboutOursViewController.m in Sources */,

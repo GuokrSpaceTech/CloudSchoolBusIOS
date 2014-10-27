@@ -170,6 +170,9 @@
         [HUD removeFromSuperview];
         HUD=nil;
     }
+    
+    NSString *aa=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",aa);
     if(method==attendancemanager)
     {
         if(code==1)

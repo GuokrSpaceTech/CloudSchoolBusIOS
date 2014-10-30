@@ -72,7 +72,10 @@
 - (void)leftButtonClick:(id)sender
 {
     UserLogin *user=[UserLogin currentLogin];
-    
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        [[UIDevice currentDevice] performSelector:@selector(setOrientation:)
+                                       withObject:(id)UIInterfaceOrientationPortrait];
+    }
     NSString *ddns=user.ddns;
     NSString *prot=user.port;
     [[GKSocket instanceddns:ddns port:prot] cleanUpStream];
@@ -102,7 +105,7 @@
     [backView release];
     
     
-    UIImageView *navigationBackView=[[UIImageView alloc]initWithFrame:CGRectMake(0, (ios7 ? 20 : 0), 320, NAVIHEIGHT)];
+    navigationBackView=[[UIImageView alloc]initWithFrame:CGRectMake(0, (ios7 ? 20 : 0), 320, NAVIHEIGHT)];
     navigationBackView.image=[UIImage imageNamed:@"navigationNoText.png"];
     [self.view addSubview:navigationBackView];
     [navigationBackView release];
@@ -115,7 +118,7 @@
     [leftButton addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:leftButton];
     
-    UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
+    middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
     middleLabel.textAlignment=UITextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text =  @"视频直播";
@@ -140,10 +143,20 @@
     outputWidth = 320;
     outputHeight = 240;
     frameData=(Byte *)malloc(512*1024*sizeof(Byte));
-    
+//    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+//        [[UIDevice currentDevice] performSelector:@selector(setOrientation:)
+//                                       withObject:(id)UIInterfaceOrientationLandscapeRight];
+//    }
     [self loadVideo];
 }
-
+//-(void)setOrientation:(UIInterfaceOrientation)orientation
+//{
+//    CGSize size=[UIScreen mainScreen].bounds.size;
+//    navigationBackView.frame=CGRectMake(0, (ios7 ? 20 : 0), size.width, NAVIHEIGHT);
+//    
+//    glView.frame=CGRectMake(0, (ios7 ? 20 : 0)+NAVIHEIGHT, size.width, size.height-NAVIHEIGHT-(ios7 ? 20 : 0));
+//    middleLabel.frame=CGRectMake(50, 13+(ios7 ? 20 : 0), size.width-100,20);
+//}
 -(void)loadVideo
 {
     
@@ -314,7 +327,7 @@
                                 a+=width/2;
                             }
                             [glView displayYUV420pData:buf width:outputWidth height:outputHeight];
-                            [NSThread sleepForTimeInterval:40/1000.0f];
+                           // [NSThread sleepForTimeInterval:40/1000.0f];
                             free(buf);
                             avpicture_free(&picture);
                             av_free_packet(&packet);
@@ -337,7 +350,28 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval) duration {
+    
+    CGSize size=[UIScreen mainScreen].bounds.size;
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
+        NSLog(@"ss");
+        
+       // glView = [[OpenGLView20 alloc] initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height-( NAVIHEIGHT + (ios7 ? 20 : 0)))];
+        
+        navigationBackView.frame=CGRectMake(0, (ios7 ? 20 : 0), size.width, NAVIHEIGHT);
+       
+          glView.frame=CGRectMake(0, (ios7 ? 20 : 0)+NAVIHEIGHT, size.width, size.height-NAVIHEIGHT-(ios7 ? 20 : 0));
+        //设置视频原始尺寸
+    } else {
+        NSLog(@"dd");
+       // glView = [[OpenGLView20 alloc] initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height-( NAVIHEIGHT + (ios7 ? 20 : 0)))];
+        //设置视频原始尺寸
+        navigationBackView.frame=CGRectZero;
+        glView.frame=CGRectMake(0,0, size.width, size.height);
+    }
+      //  middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
+   // middleLabel.frame=CGRectMake(50, 13+(ios7 ? 20 : 0), size.width-100,20);
+}
 /*
 #pragma mark - Navigation
 

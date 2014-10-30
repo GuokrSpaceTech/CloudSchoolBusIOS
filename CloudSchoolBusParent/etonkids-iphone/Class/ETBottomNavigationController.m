@@ -7,7 +7,7 @@
 //
 
 #import "ETBottomNavigationController.h"
-
+#import "GKVideoViewController.h"
 @interface ETBottomNavigationController ()
 
 @end
@@ -36,10 +36,10 @@
 }
 
 
-- (BOOL)shouldAutorotate
-{
-    return NO;
-}
+//- (BOOL)shouldAutorotate
+//{
+//    return NO;
+//}
 //- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 //{
 //    return NO;
@@ -50,4 +50,22 @@
 //    return UIInterfaceOrientationPortrait;
 //}
 
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return toInterfaceOrientation ==UIDeviceOrientationPortrait;
+}
+
+- (BOOL)shouldAutorotate
+{
+    if ([self.topViewController isKindOfClass:[GKVideoViewController class]]) { // 如果是这个 vc 则支持自动旋转
+        return YES;
+    }
+    return NO;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAllButUpsideDown;
+}
 @end

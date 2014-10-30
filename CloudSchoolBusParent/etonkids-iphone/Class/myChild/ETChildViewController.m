@@ -268,13 +268,13 @@
         
         UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
         imgV.center = CGPointMake(26, 20);
-        imgV.image = [UIImage imageNamed:@"mychild_doctor.png"];
+        imgV.image = [UIImage imageNamed:@"mychild_video.png"];
         [cell.contentView addSubview:imgV];
         [imgV release];
         
         //"doctor_con"="医生咨询";
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
-        label.text = @"视频直播";
+        label.text = @"视频公开课";
         label.font = [UIFont systemFontOfSize:16];
         //label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
         label.backgroundColor = [UIColor clearColor];
@@ -292,13 +292,13 @@
         
         UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
         imgV.center = CGPointMake(26, 20);
-        imgV.image = [UIImage imageNamed:@"mychild_doctor.png"];
+        imgV.image = [UIImage imageNamed:@"mychild_geofence.png"];
         [cell.contentView addSubview:imgV];
         [imgV release];
         
         //"doctor_con"="医生咨询";
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
-        label.text = @"电子围栏/围栏通知";
+        label.text = @"校车到站通知";
         label.font = [UIFont systemFontOfSize:16];
         //label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
         label.backgroundColor = [UIColor clearColor];

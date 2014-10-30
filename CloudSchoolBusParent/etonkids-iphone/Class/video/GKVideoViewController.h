@@ -16,6 +16,9 @@
     GKDevice *device;
     OpenGLView20 *glView;
     MBProgressHUD *HUD;
+    UILabel *middleLabel;
+    
+    UIImageView *navigationBackView;
 }
 
 @end

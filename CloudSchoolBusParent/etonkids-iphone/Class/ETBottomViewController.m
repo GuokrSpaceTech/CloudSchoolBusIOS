@@ -944,19 +944,19 @@
     [super dealloc];
 }
 
-//- (BOOL)shouldAutorotate
-//{
-//    return NO;
-//}
-//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-//{
-//
-//    return NO;
-//
-//}
-//- (NSUInteger)supportedInterfaceOrientations
-//{
-//    return UIInterfaceOrientationPortrait;
-//}
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+
+    return toInterfaceOrientation==UIInterfaceOrientationPortrait;
+
+}
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationPortrait;
+}
 
 @end

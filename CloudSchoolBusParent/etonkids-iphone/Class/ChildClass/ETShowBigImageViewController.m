@@ -390,7 +390,21 @@
 }
 
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return toInterfaceOrientation == UIDeviceOrientationPortrait;
+}
 
+- (BOOL)shouldAutorotate
+{
+
+    return NO;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIDeviceOrientationPortrait;
+}
 //- (NSUInteger)supportedInterfaceOrientations
 //{
 //    

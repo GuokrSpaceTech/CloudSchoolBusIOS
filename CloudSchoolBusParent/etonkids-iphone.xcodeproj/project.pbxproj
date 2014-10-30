@@ -60,6 +60,10 @@
 		1192A608178E52BA00BDA5BD /* ETEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 1192A607178E52BA00BDA5BD /* ETEvents.m */; };
 		1194012C17EE9B4400FA14D4 /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1194012B17EE9B4400FA14D4 /* libBPush.a */; };
 		1194012E17EE9D6500FA14D4 /* BPushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1194012D17EE9D6500FA14D4 /* BPushConfig.plist */; };
+		1195270F1A00F7B000E03930 /* mychild_geofence.png in Resources */ = {isa = PBXBuildFile; fileRef = 1195270E1A00F7B000E03930 /* mychild_geofence.png */; };
+		119527111A00F7FA00E03930 /* mychild_video.png in Resources */ = {isa = PBXBuildFile; fileRef = 119527101A00F7FA00E03930 /* mychild_video.png */; };
+		119527131A00F84800E03930 /* geofence_changestop.png in Resources */ = {isa = PBXBuildFile; fileRef = 119527121A00F84800E03930 /* geofence_changestop.png */; };
+		119527151A00F90B00E03930 /* geofence_changestop_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 119527141A00F90B00E03930 /* geofence_changestop_white.png */; };
 		119DECAE19921CD600BF7362 /* GKReportContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 119DECAD19921CD600BF7362 /* GKReportContentViewController.m */; };
 		119DECB119921F2D00BF7362 /* GKSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 119DECB019921F2D00BF7362 /* GKSearchViewController.m */; };
 		11A054F31796831D005C062A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A054F21796831D005C062A /* ImageIO.framework */; };
@@ -653,6 +657,7 @@
 		F9DB03F016E46F930094A679 /* ETShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DB03EE16E46F930094A679 /* ETShareViewController.m */; };
 		F9DB03F116E46F930094A679 /* ETShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DB03EF16E46F930094A679 /* ETShareViewController.xib */; };
 		F9E0FA6B16DF5E4E00206925 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9E0FA6A16DF5E4E00206925 /* MessageUI.framework */; };
+		F9E570CD19FA183D00F9DBDD /* GKAllStopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E570CC19FA183D00F9DBDD /* GKAllStopViewController.m */; };
 		F9EFD7D616BA309A0030A5C1 /* StudentDuty.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFD7D516BA309A0030A5C1 /* StudentDuty.m */; };
 		F9EFD7E616BA4BFB0030A5C1 /* StudentDutySameYearMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFD7E516BA4BFB0030A5C1 /* StudentDutySameYearMonth.m */; };
 		F9EFD80316BA779C0030A5C1 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFD80216BA779C0030A5C1 /* ImageCache.m */; };
@@ -732,6 +737,10 @@
 		1194012A17EE9B4400FA14D4 /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
 		1194012B17EE9B4400FA14D4 /* libBPush.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBPush.a; sourceTree = "<group>"; };
 		1194012D17EE9D6500FA14D4 /* BPushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BPushConfig.plist; sourceTree = "<group>"; };
+		1195270E1A00F7B000E03930 /* mychild_geofence.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mychild_geofence.png; sourceTree = "<group>"; };
+		119527101A00F7FA00E03930 /* mychild_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mychild_video.png; sourceTree = "<group>"; };
+		119527121A00F84800E03930 /* geofence_changestop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = geofence_changestop.png; sourceTree = "<group>"; };
+		119527141A00F90B00E03930 /* geofence_changestop_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = geofence_changestop_white.png; sourceTree = "<group>"; };
 		119DECAC19921CD600BF7362 /* GKReportContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReportContentViewController.h; sourceTree = "<group>"; };
 		119DECAD19921CD600BF7362 /* GKReportContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReportContentViewController.m; sourceTree = "<group>"; };
 		119DECAF19921F2D00BF7362 /* GKSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSearchViewController.h; sourceTree = "<group>"; };
@@ -1674,6 +1683,8 @@
 		F9DB03EE16E46F930094A679 /* ETShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETShareViewController.m; sourceTree = "<group>"; };
 		F9DB03EF16E46F930094A679 /* ETShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ETShareViewController.xib; sourceTree = "<group>"; };
 		F9E0FA6A16DF5E4E00206925 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		F9E570CB19FA183D00F9DBDD /* GKAllStopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAllStopViewController.h; sourceTree = "<group>"; };
+		F9E570CC19FA183D00F9DBDD /* GKAllStopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAllStopViewController.m; sourceTree = "<group>"; };
 		F9EFD7D416BA309A0030A5C1 /* StudentDuty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentDuty.h; sourceTree = "<group>"; };
 		F9EFD7D516BA309A0030A5C1 /* StudentDuty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentDuty.m; sourceTree = "<group>"; };
 		F9EFD7E416BA4BFB0030A5C1 /* StudentDutySameYearMonth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentDutySameYearMonth.h; sourceTree = "<group>"; };
@@ -1821,6 +1832,8 @@
 				11644FCF19F90566001E6D1C /* GKGeofenceViewController.m */,
 				11644FD119F90B0E001E6D1C /* GKGeofence.h */,
 				11644FD219F90B0E001E6D1C /* GKGeofence.m */,
+				F9E570CB19FA183D00F9DBDD /* GKAllStopViewController.h */,
+				F9E570CC19FA183D00F9DBDD /* GKAllStopViewController.m */,
 			);
 			path = geofence;
 			sourceTree = "<group>";
@@ -2691,6 +2704,10 @@
 		E3EA3B01169E94C5000DF7EE /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				119527141A00F90B00E03930 /* geofence_changestop_white.png */,
+				119527121A00F84800E03930 /* geofence_changestop.png */,
+				119527101A00F7FA00E03930 /* mychild_video.png */,
+				1195270E1A00F7B000E03930 /* mychild_geofence.png */,
 				11E9340419AB6B71000CB50C /* audio_001.png */,
 				11E9340519AB6B71000CB50C /* audio_002.png */,
 				11E9340619AB6B71000CB50C /* audio_003.png */,
@@ -3477,6 +3494,7 @@
 				F95023F016DCB61B0079A05E /* composequxiaobtn.png in Resources */,
 				F95023F116DCB61B0079A05E /* composequxiaobtn@2x.png in Resources */,
 				F95023F216DCB61B0079A05E /* composereturnbtn.png in Resources */,
+				119527111A00F7FA00E03930 /* mychild_video.png in Resources */,
 				11C4327C19501FAF0096778C /* point_attendance.png in Resources */,
 				78E892FC182A1DB200025EB5 /* 成长季刊.png in Resources */,
 				78A41FFF18210AAA00D0DE50 /* myaccount3.png in Resources */,
@@ -3501,6 +3519,7 @@
 				F950240016DCB61B0079A05E /* netError.png in Resources */,
 				F950240116DCB61B0079A05E /* netError@2x.png in Resources */,
 				11EF146519A1E147008F81E9 /* report_icon.png in Resources */,
+				119527151A00F90B00E03930 /* geofence_changestop_white.png in Resources */,
 				F950240216DCB61B0079A05E /* repeatVideoStarticon.png in Resources */,
 				F950240316DCB61B0079A05E /* repeatVideoStarticon@2x.png in Resources */,
 				F950240416DCB61B0079A05E /* separatorLine.png in Resources */,
@@ -3568,6 +3587,7 @@
 				11BF129D195AD865003ABFF6 /* inputBG.png in Resources */,
 				78DFD29117B0B4F40069B8CC /* 保存.png in Resources */,
 				11E9340919AB6B71000CB50C /* audio_003.png in Resources */,
+				1195270F1A00F7B000E03930 /* mychild_geofence.png in Resources */,
 				78DFD29217B0B4F40069B8CC /* 腾讯微博.png in Resources */,
 				7860CB2E1886907F00DD0E80 /* movieplay.png in Resources */,
 				78F841E3181A8160007722AE /* currentKids.png in Resources */,
@@ -3613,6 +3633,7 @@
 				789EAA3B1834BE1C0029D4B0 /* 1登录_10.png in Resources */,
 				78C2ADDF17E0830500E6A5CD /* bottom_feedback_default.png in Resources */,
 				78C2ADE017E0830500E6A5CD /* bottom_feedback_selected.png in Resources */,
+				119527131A00F84800E03930 /* geofence_changestop.png in Resources */,
 				78DFFBB91848301C000BF443 /* 晚餐.png in Resources */,
 				78C2ADE117E0830500E6A5CD /* bottom_food_default.png in Resources */,
 				78C2ADE217E0830500E6A5CD /* bottom_food_selected.png in Resources */,
@@ -3944,6 +3965,7 @@
 				7860CB2B188686EC00DD0E80 /* MDRadialProgressTheme.m in Sources */,
 				1112BB4D1797C4E500337CB4 /* NSStringAdditions.m in Sources */,
 				73545DD817A79B9C000E39FC /* ETNicknameViewController.m in Sources */,
+				F9E570CD19FA183D00F9DBDD /* GKAllStopViewController.m in Sources */,
 				11B3E228193F058500A96ACF /* ETSendReceiveView.m in Sources */,
 				73545DDD17A79BDA000E39FC /* ETBackgroundViewController.m in Sources */,
 				73545DE217A79C04000E39FC /* AboutOursViewController.m in Sources */,
@@ -4097,8 +4119,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: kai yang (E76KEG2YY8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kai yang (E76KEG2YY8)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -4128,8 +4150,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3a994eb4-c160-4cf9-abdf-86a24b07598b";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3a994eb4-c160-4cf9-abdf-86a24b07598b";
+				PROVISIONING_PROFILE = "f1f03cf6-fd15-45aa-92c0-0afbe608d3fe";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "f1f03cf6-fd15-45aa-92c0-0afbe608d3fe";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -4144,8 +4166,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: kai yang (E76KEG2YY8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kai yang (E76KEG2YY8)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -4175,8 +4197,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3a994eb4-c160-4cf9-abdf-86a24b07598b";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3a994eb4-c160-4cf9-abdf-86a24b07598b";
+				PROVISIONING_PROFILE = "f1f03cf6-fd15-45aa-92c0-0afbe608d3fe";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "f1f03cf6-fd15-45aa-92c0-0afbe608d3fe";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -156,6 +156,7 @@ static GKSocket *currentSocket=nil;
                         if(pPackage->iBlockEndFlag)
                         {
                             [bufferdata appendBytes:m_pStreamData length:m_iFrameLen];
+                            //[NSThread sleepForTimeInterval:40/1000.0f];
                             NSStringEncoding encoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
                             NSString *outxml=[[NSString alloc]initWithData:bufferdata encoding:encoding];
                              cBlock(true,outxml);

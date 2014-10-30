@@ -93,6 +93,7 @@
     else if (method == unit && code == 1)
     {
         user.loginStatus=LOGIN_SERVER;
+        [BPush bindChannel];
         [[EKRequest Instance] EKHTTPRequest:student parameters:nil requestMethod:GET forDelegate:self];
     }
     

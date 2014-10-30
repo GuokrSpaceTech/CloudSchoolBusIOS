@@ -98,6 +98,7 @@
     _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     
+
 //    topView=[[UIView alloc]initWithFrame:CGRectMake(0, -40, self.view.frame.size.width, 40)];
 //    topView.backgroundColor=[UIColor grayColor];
 //    [self.view addSubview:topView];
@@ -116,6 +117,7 @@
 //    [btn addTarget:self action:@selector(change:) forControlEvents:UIControlEventTouchUpInside];
 //    [topView addSubview:btn];
     
+
     [self showHUB];
     [[EKRequest Instance]EKHTTPRequest:geofenceparents parameters:nil requestMethod:GET forDelegate:self];
     
@@ -194,11 +196,13 @@
             else
             {
                 [self hiddenHUB];
+
             
              //   topView.frame=CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, 40);
 //                  topView.hidden=NO;
                 rightButton.hidden=NO;
                 _tableView.frame=CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height - NAVIHEIGHT-(ios7 ? 20 : 0));
+
                                          
                 [arrList removeAllObjects]; //存放通知
                 [arrTempList removeAllObjects];
@@ -220,8 +224,9 @@
                     
                 }
                 self.currentStopid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"currentstopid"]];
+
                 middleLabel.text=[NSString stringWithFormat:@"%@到站通知",[dic objectForKey:@"currentstop"]];
-               // currentStopLabel.text=[NSString stringWithFormat:@"当前围栏:%@",[dic objectForKey:@"currentstop"]];
+
                 [self._tableView reloadData];
 
     
@@ -235,6 +240,7 @@
         {
             // 没有设置站点
             [self hiddenHUB];
+
             middleLabel.text=@"选择校车站点";
             [arrList removeAllObjects];
             [arrTempList removeAllObjects];
@@ -244,6 +250,7 @@
             _tableView.frame=CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height - NAVIHEIGHT-(ios7 ? 20 : 0));
             self.currentStopid=@"";
 //            currentStopLabel.text=@"";
+
             NSArray *allArr=[dic objectForKey:@"allstop"];
             
             for (int i=0; i<[allArr count]; i++) {

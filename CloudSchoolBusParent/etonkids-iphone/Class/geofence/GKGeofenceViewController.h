@@ -12,11 +12,11 @@
 #import "GKAllStopViewController.h"
 @interface GKGeofenceViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,EKProtocol,AllStopDelegate>
 {
-    //UIView *topView;
-    //UILabel *currentStopLabel;
+
     UILabel *middleLabel;
     MBProgressHUD *HUD;
     UIButton * rightButton;
+
 }
 @property (nonatomic,retain)UITableView *_tableView;
 @property (nonatomic,retain)NSMutableArray *arrList;

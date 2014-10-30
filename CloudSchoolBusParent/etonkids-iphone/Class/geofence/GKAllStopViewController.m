@@ -78,7 +78,9 @@
     
     UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:@"删除当前围栏" forState:UIControlStateNormal];
+
     [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+
     btn.frame=CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, 40);
     [btn addTarget:self action:@selector(changeGeofence:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];

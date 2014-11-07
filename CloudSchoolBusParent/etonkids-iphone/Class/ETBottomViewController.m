@@ -212,30 +212,15 @@
                        @"bottomScheduleDef.png",
                        @"bottomSettingDef.png",
                        @"bottomFeedbackDef.png",
-//                       @"bottomCommentDef.png",
-//                       @"bottomNewVersionDef.png",
-//                       @"bottomAboutDef.png",
                        @"bottomLogoutDef.png", nil];
     
-//    NSArray *selArr = [NSArray arrayWithObjects:
-//                       @"bottomFoodSel.png",
-//                       @"bottomScheduleSel.png",
-//                       @"bottomSettingSel.png",
-//                       @"bottomFeedbackSel.png",
-//                       @"bottomCommentSel.png",
-//                       @"bottomNewVersionSel.png",
-//                       @"bottomAboutSel.png",
-//                       @"bottom_logout_selected.png", nil];
-    
+
     NSArray *titleArr = [NSArray arrayWithObjects:
                          LOCAL(@"btm_myaccount",@""),
                          LOCAL(@"btm_food",@""),
                          LOCAL(@"btm_schedule",@""),
                          LOCAL(@"btm_setting",@""),
                          LOCAL(@"btm_feedback",@""),
-//                         LOCAL(@"btm_score",@""),
-//                         LOCAL(@"btm_newversion",@""),
-//                         LOCAL(@"btm_about",@""),
                          LOCAL(@"btm_logout",@""), nil];
     
     for (int i = 0 ; i < 6; i++)
@@ -252,7 +237,6 @@
         if (i == 5)
         {
             btn.frame = CGRectMake(0, 0, 320, 53);
-//            btn.center = CGPointMake(160, ([UIScreen mainScreen].applicationFrame.size.height - 38 - 7*48)/2 + (38 + 7*48));
             btn.center = CGPointMake(160, [UIScreen mainScreen].applicationFrame.size.height - 24 - 20 + (ios7 ? 20 : 0));
         }
         else
@@ -647,9 +631,6 @@
                                                                            [UIScreen mainScreen].applicationFrame.size.width,
                                                                            [UIScreen mainScreen].applicationFrame.size.height)];
                     
-//                    NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"",@"userid",@"",@"channelid", nil];
-//                    [[EKRequest Instance] EKHTTPRequest:push parameters:param requestMethod:POST forDelegate:self];
-                    
                     
                     break;
                 }
@@ -776,9 +757,6 @@
             [self.navigationController pushViewController:gesVC animated:YES];
             [gesVC release];
             
-//            ETRePassWordViewController  *et=[[ETRePassWordViewController alloc]initWithNibName:@"ETRePassWordViewController" bundle:nil];
-//            [self.navigationController pushViewController:et animated:YES];
-//            [et release];
         }
         return;
     }
@@ -791,16 +769,17 @@
         }
         else if (index == 1)
         {
-            if(HUD==nil)
-            {
-                HUD=[[MBProgressHUD alloc]initWithView:self.view];
-                [self.view addSubview:HUD];
-                [HUD release];
-                [HUD show:YES];
-                
-            }
-            
-            [[EKRequest Instance] EKHTTPRequest:signin parameters:nil requestMethod:DELETE forDelegate:self];
+             [ETCommonClass logoutAndClearUserMessage];
+//            if(HUD==nil)
+//            {
+//                HUD=[[MBProgressHUD alloc]initWithView:self.view];
+//                [self.view addSubview:HUD];
+//                [HUD release];
+//                [HUD show:YES];
+//                
+//            }
+//            
+//            [[EKRequest Instance] EKHTTPRequest:signin parameters:nil requestMethod:DELETE forDelegate:self];
             
         }
     }

@@ -107,15 +107,7 @@
         ageLabel.backgroundColor=[UIColor clearColor];
         [ageBack addSubview:ageLabel];
         
-//        schoolLabel=[[UILabel alloc]initWithFrame:CGRectMake(320 - 120, nameLabel.frame.origin.y, 120, 40)];
-//        schoolLabel.backgroundColor=[UIColor clearColor];
-//        schoolLabel.font=[UIFont systemFontOfSize:16];
-//        schoolLabel.textColor=[UIColor whiteColor];
-//        schoolLabel.lineBreakMode=NSLineBreakByCharWrapping
-//        [schoolLabel setNumberOfLines:0];
-//        schoolLabel.textAlignment=UITextAlignmentCenter;
-//        schoolLabel.text=ModifyData.Schoolname;
-//        [self addSubview:schoolLabel];
+
         
         
         classLabel=[[UILabel alloc]initWithFrame:CGRectMake(320 - 110, nameLabel.frame.origin.y, 100, 20)];
@@ -134,9 +126,13 @@
         [photoImageView addGestureRecognizer:Recognizer];
         [Recognizer release];
 
+
+
+        
     }
     return self;
 }
+
 -(void)backgroundImage:(NSNotification*)notification
 {
     NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];

@@ -36,10 +36,10 @@
         self.backgroundColor = CELLCOLOR;
         self.backgroundView.backgroundColor = CELLCOLOR;
         
-        UIImageView *carImgV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 25, 23)];
-        carImgV.image = [UIImage imageNamed:@"car.png"];
-        [self addSubview:carImgV];
-        [carImgV release];
+//        UIImageView *carImgV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 25, 23)];
+//        carImgV.image = [UIImage imageNamed:@"car.png"];
+//        [self addSubview:carImgV];
+//        [carImgV release];
         
         
         UILabel *tLabel=[[UILabel alloc]initWithFrame:CGRectMake(40, 10, 250, 23)];

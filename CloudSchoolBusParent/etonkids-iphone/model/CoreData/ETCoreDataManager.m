@@ -67,6 +67,7 @@
         user.cnname = login.cnname;
         user.enname = login.enname;
         user.avatar = login.avatar;
+        user.schoolid=login.schooldID;
         user.nikename = login.nickname;
         user.studentid = login.studentId;
         user.allowmutionline = login.allowmutionline;
@@ -131,6 +132,7 @@
     login.regName = user.account;
     login.passWord = user.password;
     login.age = user.age;
+    login.schooldID=user.schoolid;
     login.birthday = user.birthday;
     login.sex = user.sex;
     login.className = user.classname;
@@ -169,17 +171,7 @@
     [request setEntity:entity];
     NSArray *userArr = [delegate.managedObjectContext executeFetchRequest:request error:nil];
     if (userArr) {
-        //        [delegate.managedObjectContext deleteObject:user.lastObject];
-        
-//        ETUser *user = userArr.lastObject;
-//        user.name = [userInfo objectForKey:@"name"];
-//        user.gender = [NSNumber numberWithInt:[[userInfo objectForKey:@"gender"] intValue]];
-//        user.birthday = [userInfo objectForKey:@"birthday"];
-//        user.city = [userInfo objectForKey:@"city"];
-//        user.mobile = [userInfo objectForKey:@"mobile"];
-//        user.email = [userInfo objectForKey:@"email"];
-//        BOOL success = [self saveContext];
-//        NSLog(@"save userinfo success : %d",success);
+
     }
     
 }
@@ -218,7 +210,7 @@
         NSDictionary *dic = [children objectAtIndex:i];
         NSString *stuid = [dic objectForKey:@"uid_student"];
         NSString *cid = [dic objectForKey:@"uid_class"];
-        
+        NSString *schoolid=[dic objectForKey:@"schoolid"];
         NSFetchRequest* request = [[[NSFetchRequest alloc] init] autorelease];
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"ETUser" inManagedObjectContext:delegate.managedObjectContext];
         NSPredicate* pred = [NSPredicate predicateWithFormat:@"(account = %@ and uid_student = %@ and uid_class = %@)", username, stuid, cid];
@@ -244,22 +236,18 @@
         {
             user.account = username;
             user.password = userLogin.passWord;
-//            user.age = login.age;
-//            user.birthday = login.birthday;
-//            user.sex = login.sex;
+            user.schoolid=schoolid;
+            
             user.classname = [NSString stringWithFormat:@"%@",[dic objectForKey:@"classname"]];
-//            user.mobile = login.mobile;
             user.cnname = [NSString stringWithFormat:@"%@",[dic objectForKey:@"cnname"]];
-//            user.enname = login.enname;
-//            user.avatar = login.avatar;
             user.nikename = [NSString stringWithFormat:@"%@",[dic objectForKey:@"nikename"]];
-//            user.studentid = login.studentId;
-//            user.allowmutionline = login.allowmutionline;
-//            user.schoolname = login.schoolname;
-//            user.pid = login.pid;
             user.uid_class = [NSString stringWithFormat:@"%@",[dic objectForKey:@"uid_class"]];
             user.uid_student = [NSString stringWithFormat:@"%@",[dic objectForKey:@"uid_student"]];
+            user.studentid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"uid_student"]];
+
             user.inactive=[NSString stringWithFormat:@"%@",[dic objectForKey:@"inactive"]];
+            user.birthday=[dic objectForKey:@"birthday"];
+            user.sex=[NSString stringWithFormat:@"%@",[dic objectForKey:@"sex"]];
             
         }
     }

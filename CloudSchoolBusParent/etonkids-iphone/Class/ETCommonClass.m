@@ -34,6 +34,18 @@
         [[EKRequest Instance] EKHTTPRequest:signin parameters:param requestMethod:POST forDelegate:self];
         
     }
+    else if(user.isStudentInterface==NO)
+    {
+          [[EKRequest Instance] EKHTTPRequest:student parameters:nil requestMethod:GET forDelegate:self];
+    }
+    else if (user.isClassInfonterface==NO)
+    {
+          [[EKRequest Instance] EKHTTPRequest:classinfo parameters:nil requestMethod:GET forDelegate:self];
+    }
+    else if(user.isSettingInterface==NO)
+    {
+         [[EKRequest Instance] EKHTTPRequest:setting parameters:nil requestMethod:GET forDelegate:self];
+    }
     else
     {
         cBlock(nil);
@@ -108,6 +120,7 @@
         NSDictionary *dic = result;
         NSLog(@"%@",dic);
 
+        user.isStudentInterface=YES;
         user.studentId = [NSString stringWithFormat:@"%@",[dic objectForKey:@"studentid"]];
         user.age=[NSString stringWithFormat:@"%@",[dic objectForKey:@"age"]];
         user.birthday=[NSString stringWithFormat:@"%@",[dic objectForKey:@"birthday"]];
@@ -147,18 +160,21 @@
     }
     else if(method == classinfo && code == 1)
     {
+        
         id result = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
         if (![result isKindOfClass:[NSDictionary class]]) {
             NSLog(@"班级信息返回格式错误");
             return;
         }
+        user.isClassInfonterface=YES;
         NSDictionary *dic = result;
         NSDictionary * dic11 = [dic objectForKey:@"classinfo"];
         user.schoolname = [dic11 objectForKey:@"schoolname"];
         user.uid_class = [NSString stringWithFormat:@"%@",[dic11 objectForKey:@"uid"]];
         
         [[EKRequest Instance] EKHTTPRequest:setting parameters:nil requestMethod:GET forDelegate:self];
-        
+        NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
+        [center postNotificationName:@"CHILDINFO" object:nil];
     }
     else if(method == setting && code == 1)
     {
@@ -167,6 +183,7 @@
             NSLog(@"setting接口返回格式错误");
             return;
         }
+        user.isSettingInterface=YES;
         NSDictionary *dic = result;
         
   
@@ -213,7 +230,10 @@
     [[EKRequest Instance] clearSid];
     
     [UserLogin clearLastPassword];
-    
+    [UserLogin currentLogin].loginStatus=LOGIN_OFF;
+    [UserLogin currentLogin].isSettingInterface=NO;
+    [UserLogin currentLogin].isStudentInterface=NO;
+    [UserLogin currentLogin].isClassInfonterface=NO;
     [ETCommonClass clearUserMessage];
     
     AppDelegate *appDel = SHARED_APP_DELEGATE;

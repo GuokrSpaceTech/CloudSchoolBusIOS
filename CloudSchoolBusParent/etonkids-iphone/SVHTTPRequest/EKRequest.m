@@ -50,6 +50,9 @@ static EKRequest * instance = nil;
 {
     NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault removeObjectForKey:@"sid"];
+    
+
+    
 }
 
 - (NSString *)userSid
@@ -141,6 +144,10 @@ static EKRequest * instance = nil;
             return @"order";
         case geofenceparents:
             return @"geofenceparents";
+        case price:
+            return @"price";
+        case personalorder:
+            return @"personalorder";
         default:
             
             return nil;
@@ -152,7 +159,7 @@ static EKRequest * instance = nil;
     
     NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
     //登录方法不加入Sid
-    if((function == signin || function == unit) && param != nil)
+    if((function == signin || function == unit || function==personalorder || function==price) && param != nil)
     {
         header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactoprestphone",@"apikey",@"3.4.3",@"Version", nil], nil];
     }
@@ -176,11 +183,10 @@ static EKRequest * instance = nil;
              
              NSDictionary * allHeaderInfo = [urlResponse allHeaderFields];
              int code = [[allHeaderInfo objectForKey:@"Code"] intValue];
-
-//             NSString *str=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
-             
-//             NSLog(@"%@",str);
-//             NSDictionary * json = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
+             if(function==notice)
+             {
+                 [self addPostNotification];
+             }
              [delegate getEKResponse:response forMethod:function resultCode:code withParam:param];
          }];
     }
@@ -189,9 +195,6 @@ static EKRequest * instance = nil;
     {
         [SVHTTPRequest POST:address parameters:param customHeader:header completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error)
          {
-             
-//             NSLog(@" %@",response);
-             
              if(error != nil)
              {
                    NSLog(@"%@",error);
@@ -202,22 +205,16 @@ static EKRequest * instance = nil;
            
              NSDictionary * allHeaderInfo = [urlResponse allHeaderFields];
              int code = [[allHeaderInfo objectForKey:@"Code"] intValue];
-//             NSString *str=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
-             
-//             NSLog(@"%@",str);
-             
-             
+             if(code==-2000)
+             {
+                 [self addPostNotification];
+             }
              id json = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
-             
-//             NSLog(@"%@",json);
              if(json != nil && [json isKindOfClass:[NSDictionary class]])
              {
-//                 if([userDefault objectForKey:@"sid"] == nil)
-//                 {
                      id sid = [json objectForKey:@"sid"];
                      if(sid != nil)
                          [userDefault setObject:sid forKey:@"sid"];
-//                 }
              }
              [delegate getEKResponse:response forMethod:function resultCode:code withParam:param];
          }];
@@ -234,8 +231,6 @@ static EKRequest * instance = nil;
              }
              NSDictionary * allHeaderInfo = [urlResponse allHeaderFields];
              int code = [[allHeaderInfo objectForKey:@"Code"] intValue];
-             NSLog(@"codedddddddd=%d",code);
-//             NSDictionary * json = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
              [delegate getEKResponse:response forMethod:function resultCode:code withParam:param];
          }];
     }
@@ -245,6 +240,10 @@ static EKRequest * instance = nil;
 }
 
 
-
+-(void)addPostNotification
+{
+    NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
+    [center postNotificationName:@"PERSIONALALIPAY" object:nil];
+}
 
 @end

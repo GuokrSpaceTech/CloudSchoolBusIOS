@@ -47,7 +47,9 @@ enum RequestFunction
     report,
     search,
     order,
-    geofenceparents
+    geofenceparents,
+    price,
+    personalorder
     
 };
 typedef NSUInteger RequestFunction;

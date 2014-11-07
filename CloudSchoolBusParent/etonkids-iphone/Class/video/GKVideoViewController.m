@@ -327,7 +327,7 @@
                                 a+=width/2;
                             }
                             [glView displayYUV420pData:buf width:outputWidth height:outputHeight];
-                           // [NSThread sleepForTimeInterval:40/1000.0f];
+                      
                             free(buf);
                             avpicture_free(&picture);
                             av_free_packet(&packet);

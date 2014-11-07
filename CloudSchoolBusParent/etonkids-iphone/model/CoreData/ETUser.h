@@ -41,5 +41,6 @@
 @property (nonatomic, retain) NSString * username;
 @property (nonatomic, retain) NSString * chunyuopen;
 @property (nonatomic, retain) NSString * chunyuendtime;
+@property (nonatomic ,retain) NSString * schoolid;
 
 @end

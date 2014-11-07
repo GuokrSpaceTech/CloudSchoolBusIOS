@@ -161,40 +161,16 @@
 //    NSLog(@"%@,%@",[defaultUser objectForKey:AUTOLOGIN],[defaultUser objectForKey:REMEMBERPSAAWORD]);
     if([defaultUser objectForKey:AUTOLOGIN])
     {
-//        remImgV.hidden = NO;
-//        autoImgV.hidden = NO;
-        //判定最后一次登录的状态是否成功，及判定帐号和密码是否存在
         if ([user getLastLogin])
         {
             userNameField.text=user.regName;
-//            passWordField.text=user.passWord;
         }
     }
     else
     {
 //        autoImgV.hidden = YES;
     }
-    //记住密码*******************************
-    
-    //判定是否设定了记住密码
-//    if([defaultUser objectForKey:REMEMBERPSAAWORD])
-//    {
-//        remImgV.hidden = NO;
-        //判定最后一次登录的状态是否成功，及判定帐号和密码是否存在
-//        if ([user getLastLogin])
-//        {
-//            userNameField.text=user.regName;
-//            passWordField.text=user.passWord;
-//        }
 
-        
-//    }
-//    else
-//    {
-//        remImgV.hidden = YES;
-//    }
-    
-    
     
     NSString * docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];
     //拼接文件路径
@@ -377,8 +353,12 @@
                 NSString *stuid = [NSString stringWithFormat:@"%@",[dic objectForKey:@"uid_student"]];
                 NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:cid, @"uid_class", stuid, @"uid_student", nil];
                 
+                NSString *schoolid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"schoolid"]];
+                user.schooldID=schoolid;
                 user.uid_class = cid;
                 user.uid_student = stuid;
+                user.studentId=stuid;
+                user.schooldID=
                 user.inactive=[NSString stringWithFormat:@"%@",[dic objectForKey:@"inactive"]];
                 [[EKRequest Instance] EKHTTPRequest:unit parameters:param requestMethod:POST forDelegate:self];
             }
@@ -406,18 +386,20 @@
         }
         
       
-    }    else if (method == unit && code == 1)
+    }
+    else if (method == unit && code == 1)
     {
 //        NSString *s = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
-        
-        
+        user.regName=userNameField.text;
+        user.passWord=passWordField.text;
+         [self loginBackground];
         [[EKRequest Instance] EKHTTPRequest:student parameters:nil requestMethod:GET forDelegate:self];
     }
     //成功获取学生信息
     else if(method == student && code == 1)
     {
-        user.regName=userNameField.text;
-        user.passWord=passWordField.text;
+        user.isStudentInterface=YES;
+  
         user.studentId = [NSString stringWithFormat:@"%@",[dic objectForKey:@"studentid"]];
         user.age=[NSString stringWithFormat:@"%@",[dic objectForKey:@"age"]];
         user.birthday=[NSString stringWithFormat:@"%@",[dic objectForKey:@"birthday"]];
@@ -431,7 +413,6 @@
         
         
         NSString *str=[NSString stringWithFormat:@"%@",[dic objectForKey:@"avatar"]];
-       // - (NSRange)rangeOfString:(NSString *)aString;
         if([str rangeOfString:@"source_student"].location==NSNotFound)
         {
              user.avatar = [NSString stringWithFormat:@"%@",[dic objectForKey:@"avatar"]];
@@ -453,75 +434,25 @@
         user.tuition_time=[NSString stringWithFormat:@"%@",[dic objectForKey:@"tuition_time"]];
         user.chunyuisopen=[NSString stringWithFormat:@"%@",[dic objectForKey:@"chunyuisopen"]];
         user.chunyuendtime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"chunyu_endtime"]];
-       [ETCoreDataManager saveUser];
+        [ETCoreDataManager saveUser];
         [[EKRequest Instance] EKHTTPRequest:classinfo parameters:nil requestMethod:GET forDelegate:self];
-        
-        
-        
-        NSString *birthday=[NSString stringWithFormat:@"%@",[dic objectForKey:@"birthday"]];
-      //   stri=[NSString stringWithFormat:@"%@",[dic objectForKey:@"cnname"]];
-        if(birthday)
-        {
-            NSArray *dateArr=[birthday componentsSeparatedByString:@"-"];
-            
-            int month=[[dateArr objectAtIndex:1] integerValue];
-            int day=[[dateArr objectAtIndex:2] integerValue];
-            
-            [[UIApplication sharedApplication] cancelAllLocalNotifications];
-            
-            UILocalNotification *local=[[[UILocalNotification alloc]init] autorelease];
-            
-            if(local)
-            {
-                
-                
-                NSCalendar *calendar = [NSCalendar currentCalendar]; // gets default calendar
-                
-                NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:[NSDate date]]; // gets the year, month, day,hour and minutesfor today's date
-                
-                [components setMonth:month];
-                [components setDay:day];
-                [components setHour:8];
-                [components setMinute:1];
-                [components setSecond:1];
-                local.fireDate = [calendar dateFromComponents:components];
-                NSLog(@"--------------------%@ -- %@ ",[calendar dateFromComponents:components],user.cnname);
-                local.timeZone=[NSTimeZone defaultTimeZone];
-                
-                local.alertBody=[NSString stringWithFormat:@"宝宝%@的生日",user.cnname];
-                local.alertAction=@"确定";
-                local.soundName=UILocalNotificationDefaultSoundName;
-                local.hasAction=YES;
-                local.repeatInterval=NSYearCalendarUnit;
-                
-                // int count= [UIApplication sharedApplication].applicationIconBadgeNumber;
-                local.applicationIconBadgeNumber=1;
-                NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:user.cnname,@"birthday", nil];
-                local.userInfo=dic;
-                
-                [[UIApplication sharedApplication] scheduleLocalNotification:local];
-                
-            }
-            
-        }
-
         
         
     }
     else if(method == classinfo && code == 1)
     {
         
+        user.isClassInfonterface=YES;
         NSDictionary * dic11 = [dic objectForKey:@"classinfo"];
         user.schoolname=[dic11 objectForKey:@"schoolname"];
-        //ModifyData.Schoolname=[NSString stringWithFormat:@"%@",[dic objectForKey:@"schoolname"]];
-        //user.schoolname=[NSString stringWithFormat:@"%@",[dic objectForKey:@"schoolname"]];
-//         ModifyData.Schoolname=user.schoolname;
         [[EKRequest Instance] EKHTTPRequest:setting parameters:nil requestMethod:GET forDelegate:self];
+        
 
     }
     else if(method == setting && code == 1)
     {
 
+        user.isSettingInterface=YES;
         NSString * ddns=[dic objectForKey:@"ddns"];
         NSString * cameraname=[dic objectForKey:@"camera_name"];
         NSString * port=[dic objectForKey:@"port"];
@@ -531,8 +462,9 @@
         user.camera_name=cameraname;
         user.port=port;
         
-        
-        [self loginBackground];
+ 
+
+       // [self loginBackground];
         
     }
     else
@@ -688,12 +620,7 @@
     
     NSUserDefaults *defaultUser = [NSUserDefaults standardUserDefaults];
     
-//    if (autoImgV.hidden)
-//    {
-//        [defaultUser removeObjectForKey:AUTOLOGIN];
-//    }
-//    else
-//    {
+
     [defaultUser setObject:AUTOLOGINVALUE forKey:AUTOLOGIN];
     if (![defaultUser objectForKey:@"AutoPlay"]) {
         [defaultUser setObject:@"0" forKey:@"AutoPlay"];
@@ -785,9 +712,11 @@
             NSDictionary *dic = [resultSelectChild objectAtIndex:index];
             NSString *cid = [NSString stringWithFormat:@"%@",[dic objectForKey:@"uid_class"]];
             NSString *stuid = [NSString stringWithFormat:@"%@",[dic objectForKey:@"uid_student"]];
+            NSString *schoolid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"schoolid"]];
             NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:cid, @"uid_class", stuid, @"uid_student", nil];
-            
+            user.schooldID=schoolid;
             user.uid_class = cid;
+            user.studentId=stuid;
             user.uid_student = stuid;
              user.inactive=[NSString stringWithFormat:@"%@",[dic objectForKey:@"inactive"]];
             [[EKRequest Instance] EKHTTPRequest:unit parameters:param requestMethod:POST forDelegate:self];

@@ -48,6 +48,8 @@
     
     BOOL isVisible; // 判断当前页面是否可见
     
+    UIImageView * tempImageView;
+    
 }
 @property (nonatomic,assign)id<ClassShareCellDelegate>delegate;
 @property(nonatomic,retain)ShareContent *shareContent;

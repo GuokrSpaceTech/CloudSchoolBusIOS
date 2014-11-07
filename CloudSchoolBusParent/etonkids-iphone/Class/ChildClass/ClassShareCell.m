@@ -22,9 +22,9 @@
 @synthesize delegate;
 @synthesize praiseButton;
 @synthesize commentsButton;
-@synthesize praiseLab,commentLab,praiseImgV,commentImgV,photoImgVArr,triangle;
+@synthesize praiseLab,commentLab,praiseImgV,commentImgV,triangle;
 
-
+@synthesize picImageView;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier cellMode:(CellMode)mode
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -34,10 +34,10 @@
         
         self.contentView.backgroundColor = CELLCOLOR;
         
-        UIImageView *carImgV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 25, 23)];
-        carImgV.image = [UIImage imageNamed:@"car.png"];
-        [self addSubview:carImgV];
-        [carImgV release];
+//        UIImageView *carImgV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 25, 23)];
+//        carImgV.image = [UIImage imageNamed:@"car.png"];
+//        [self addSubview:carImgV];
+//        [carImgV release];
         
         
         UILabel *tLabel=[[UILabel alloc]initWithFrame:CGRectMake(40, 10, 250, 23)];
@@ -61,22 +61,22 @@
         
         self.timeLabel = timeLab;
         
-        UIImageView *tImgV = [[UIImageView alloc] initWithFrame:CGRectZero];
-        tImgV.image = [UIImage imageNamed:@"triangle.png"];
-        [self addSubview:tImgV];
-        [tImgV release];
+//        UIImageView *tImgV = [[UIImageView alloc] initWithFrame:CGRectZero];
+//        tImgV.image = [UIImage imageNamed:@"triangle.png"];
+//        [self addSubview:tImgV];
+//        [tImgV release];
+//        
+//        self.triangle = tImgV;
         
-        self.triangle = tImgV;
-        
-        UIImageView *bImgV = [[UIImageView alloc] initWithFrame:CGRectMake(40, 0, 270, 0)];
-//        UIImage *img = [UIImage imageNamed:@"popback"];
-//        backImgV.image = [img resizableImageWithCapInsets:UIEdgeInsetsMake(50, 30, 30, 15)];
-        bImgV.backgroundColor = [UIColor whiteColor];
-        bImgV.layer.cornerRadius = 10;
-        [self addSubview:bImgV];
-        [bImgV release];
-        
-        self.backImgV = bImgV;
+//        UIImageView *bImgV = [[UIImageView alloc] initWithFrame:CGRectMake(40, 0, 270, 0)];
+////        UIImage *img = [UIImage imageNamed:@"popback"];
+////        backImgV.image = [img resizableImageWithCapInsets:UIEdgeInsetsMake(50, 30, 30, 15)];
+//        bImgV.backgroundColor = [UIColor whiteColor];
+//        bImgV.layer.cornerRadius = 10;
+//        [self addSubview:bImgV];
+//        [bImgV release];
+//        
+//        self.backImgV = bImgV;
         
         
         UILabel *ctntLabel=[[UILabel alloc]initWithFrame:CGRectZero];
@@ -147,23 +147,37 @@
         self.commentsButton = cmtButton;
         
         
-        self.photoImgVArr = [NSMutableArray array];
+     //   self.photoImgVArr = [NSMutableArray array];
         
-        for (int i = 0; i < MAX_IMAGECOUNT; i++) {
-            UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectZero];
-            imgV.userInteractionEnabled = YES;
-//            imgV.contentMode = UIViewContentModeScaleAspectFit;
-            imgV.tag = TAPIMAGETAG + i;
-            [self addSubview:imgV];
-            [imgV release];
-            
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageView:)];
-            [imgV addGestureRecognizer:tap];
-            [tap release];
-            
-            [self.photoImgVArr addObject:imgV];
-        }
+//        for (int i = 0; i < MAX_IMAGECOUNT; i++) {
+//            UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectZero];
+//            imgV.userInteractionEnabled = YES;
+////            imgV.contentMode = UIViewContentModeScaleAspectFit;
+//            imgV.tag = TAPIMAGETAG + i;
+//            [self addSubview:imgV];
+//            [imgV release];
+//            
+//            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageView:)];
+//            [imgV addGestureRecognizer:tap];
+//            [tap release];
+//            
+//         //   [self.photoImgVArr addObject:imgV];
+//        }
+//
         
+        
+        picImageView= [[UIImageView alloc] initWithFrame:CGRectZero];
+        picImageView.userInteractionEnabled = YES;
+        picImageView.contentMode = UIViewContentModeScaleAspectFill;
+        picImageView.tag = TAPIMAGETAG;
+        picImageView.clipsToBounds=YES;
+        [self addSubview:picImageView];
+        [picImageView release];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageView:)];
+        [picImageView addGestureRecognizer:tap];
+        [tap release];
+
         UIImageView *l = [[UIImageView alloc] initWithFrame:CGRectZero];
         l.image = [UIImage imageNamed:@"cellline.png"];
         [self addSubview:l];
@@ -259,27 +273,7 @@
     [btn addTarget:self action:@selector(shareAnimation:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-//-(void)loadMore:(UIButton *)button
-//{
-//    // button.selected=!button.selected;
-//    
-//    NSString *more=LOCAL(@"more", @"更多");
-//    NSString *up=LOCAL(@"up", @"收起");
-//    
-//    if([button.titleLabel.text isEqualToString:more])
-//    {
-//        [button.titleLabel.text isEqualToString:up];
-//    }
-//    else
-//    {
-//        [button.titleLabel.text isEqualToString:more];
-//    }
-//    if(delegate&&[delegate respondsToSelector:@selector(shareCell:share:)])
-//    {
-//        [delegate shareCell:self share:self.theShareCtnt];
-//    }
-//
-//}
+
 -(void)dealloc
 {
     self.titleLabel=nil;
@@ -297,95 +291,14 @@
     self.commentImgV = nil;
     self.praiseImgV = nil;
     self.backImgV = nil;
-    self.photoImgVArr = nil;
+   // self.photoImgVArr = nil;
     self.line = nil;
-    
+    self.picImageView=nil;
     self.triangle = nil;
     
     [super dealloc];
     
 }
-
-//-(void)showHUD:(BOOL) animation
-//{
-//    if(animation)
-//    {
-//        if(HUD==nil)
-//        {
-//            AppDelegate *app=(AppDelegate *)[[UIApplication sharedApplication] delegate];
-//            HUD=[[MBProgressHUD alloc]initWithView:app.window];
-//            [app.window addSubview:HUD];
-//            [HUD show:YES];
-//            [HUD release];
-//        }
-//        
-//    }
-//    else
-//    {
-//        if(HUD)
-//        {
-//            [HUD removeFromSuperview];
-//            HUD=nil;
-//        }
-//    }
-//}
-//-(void)tapClick:(UITapGestureRecognizer *)tap
-//{
-//    [self showHUD:YES];
-//    dispatch_async(dispatch_get_global_queue(0, 0), ^(void)
-//                   {
-//                       NSMutableArray * imgArr  = [[NSMutableArray alloc] initWithCapacity:1];
-//                       dispatch_group_t group = dispatch_group_create();
-//                       __block dispatch_semaphore_t sem = dispatch_semaphore_create(1);
-//                       for(int i=0;i<self.theShareCtnt.sharePicArr.count;i++)
-//                       {
-//                           dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);
-//                           
-//                           dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^(void)
-//                                                {
-//                                                    NSDictionary * dic = [self.theShareCtnt.sharePicArr objectAtIndex:i];
-//                                                    NSString * path = [dic objectForKey:@"source"];
-//                                                    NSString * bigerUrl = path;
-//                                                    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:bigerUrl]];
-//                                                    UIImage * image = [UIImage imageWithData:data];
-//                                                    if(image!=nil)
-//                                                        [imgArr addObject:image];
-//                                                    
-//                                                    dispatch_semaphore_signal(sem);
-//                                                });
-//                       }
-//                       dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);
-//                       dispatch_group_notify(group, dispatch_get_main_queue(), ^(void)
-//                                             {
-//                                                 [self showHUD:NO];
-//                                                 
-//                                                 if(imgArr.count ==0)
-//                                                 {
-//                                                     dispatch_release(group);
-//                                                     [imgArr release];
-//                                                     return;
-//                                                 }
-//                                                 
-//                                                 AppDelegate *delegate11=(AppDelegate *)[[UIApplication sharedApplication]delegate];
-//                                                 
-//                                                 CGRect frame=[[UIScreen mainScreen]applicationFrame];
-//                                                 
-//                                                 ImageScaleView *ivew=[[ImageScaleView alloc]initWithFrame:CGRectMake(0,frame.size.height,frame.size.width , frame.size.height) image:imgArr];
-//                                                 [delegate11.window addSubview:ivew];
-//                                                 
-//                                                 [UIView animateWithDuration:0.5 animations:^{
-//                                                     ivew.frame=CGRectMake(0, 20, frame.size.width, frame.size.height);
-//                                                 } completion:^(BOOL finished) {
-//                                                     
-//                                                     dispatch_release(group);
-//                                                     [imgArr release];
-//                                                     
-//                                                 }];
-//                                             });
-//                       
-//                   });  
-//    
-//}
 
 
 - (void)tapImageView:(UITapGestureRecognizer *)sender

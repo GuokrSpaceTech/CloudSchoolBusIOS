@@ -20,7 +20,7 @@
 #import "EKRequest.h"
 #import "ETCoreDataManager.h"
 #import "MTCustomActionSheet.h"
-
+#import "UserLogin.h"
 @protocol headerViewdelegate <NSObject>
 @optional
 -(void)headerViewBackButtonClick;
@@ -40,7 +40,7 @@
     UIImageView *birthdayImgV;
     
     id<headerViewdelegate>delegate;
-    
+    UserLogin *userLogin;
     MBProgressHUD *HUD;
 
 }

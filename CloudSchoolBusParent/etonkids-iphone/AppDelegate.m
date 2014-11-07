@@ -19,6 +19,8 @@
 #import "DataSigner.h"
 #import "DataVerifier.h"
 #import "PartnerConfig.h"
+
+#import "GKPersionalViewController.h"
 @implementation AppDelegate
 
 @synthesize token,bottomNav,bottomVC,loginViewController;
@@ -89,6 +91,7 @@
     
 
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(personalAlipay:) name:@"PERSIONALALIPAY" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(netWorkChanged:) name:kReachabilityChangedNotification object:nil];
     
@@ -96,8 +99,6 @@
     [reachabiltiy startNotifier];
     
     [MobClick startWithAppkey:@"53a150c056240b8a53094d52" reportPolicy:SEND_INTERVAL   channelId:@""];
-    
-    //    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     [MobClick setAppVersion:@"3.4.3"];
 
     
@@ -114,10 +115,7 @@
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
     UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
 
-    //[UIApplication sharedApplication].s;
-    
-    //application.statusBarStyle = UIStatusBarStyleLightContent;
-    
+
     //向微信注册
     [WXApi registerApp:@"wx2376a8ec446b2086"];
     
@@ -156,14 +154,18 @@
     
     if ([defaultUser objectForKey:AUTOLOGIN] && [user getLastLogin])
     {
-        [ETCoreDataManager cachedUser:user.regName withPass:user.passWord andStudent:user.uid_student];
-        
-        ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
-        [com requestLoginWithComplete:^(NSError *err){
-            //[[EKRequest Instance] EKHTTPRequest:notice parameters:param requestMethod:POST forDelegate:self];
-        }];
-        
-        [self performSelector:@selector(presentBottom) withObject:nil afterDelay:0.00];
+       UserLogin *userLogin= [ETCoreDataManager cachedUser:user.regName withPass:user.passWord andStudent:user.uid_student];
+
+       if(userLogin!=nil)
+       {
+           ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
+           [com requestLoginWithComplete:^(NSError *err){
+               //[[EKRequest Instance] EKHTTPRequest:notice parameters:param requestMethod:POST forDelegate:self];
+           }];
+           
+           [self performSelector:@selector(presentBottom) withObject:nil afterDelay:0.00];
+       }
+
     }
 
 
@@ -176,7 +178,16 @@
     return YES;
 }
 
-
+-(void)personalAlipay:(NSNotification *)no
+{
+    if([[self.bottomNav topViewController] isKindOfClass:[GKPersionalViewController class]])
+    {
+        return;
+    }
+    GKPersionalViewController *VC=[[GKPersionalViewController alloc]init];
+    
+    [self.bottomNav pushViewController:VC animated:YES];
+}
 - (void)presentBottom
 {
     ETBottomViewController *bVC = [[ETBottomViewController alloc] init];
@@ -350,13 +361,18 @@
     }
     if(method==student)
     {
+         UserLogin *user=[UserLogin currentLogin];
         if(code==1)
         {
-            UserLogin *user=[UserLogin currentLogin];
+            user.isStudentInterface=YES;
             NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
             user.chunyuisopen=[NSString stringWithFormat:@"%@",[dic objectForKey:@"chunyuisopen"]];
             user.chunyuendtime=[NSString stringWithFormat:@"%@",[dic objectForKey:@"chunyu_endtime"]];
 
+        }
+        else
+        {
+            user.isStudentInterface=NO;
         }
     }
     
@@ -595,8 +611,8 @@
             			if ([verifier verifyString:result.resultString withSign:result.signString])
                         {
                             //验证签名成功，交易结果无篡改
-                            UserLogin *user=[UserLogin currentLogin];
-                            user.chunyuisopen=@"1";
+//                            UserLogin *user=[UserLogin currentLogin];
+//                            user.chunyuisopen=@"1";
                 
                             
                             UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"交易成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];

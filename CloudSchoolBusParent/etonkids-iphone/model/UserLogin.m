@@ -39,9 +39,9 @@ static UserLogin *current=nil;
             tuition_time,
             orderEndTime,
 chunyuendtime,chunyuisopen;
-
+@synthesize schooldID;
 @synthesize camera_name,ddns,port;
-
+@synthesize isClassInfonterface,isSettingInterface,isStudentInterface;
 
 #pragma --
 
@@ -50,6 +50,9 @@ chunyuendtime,chunyuisopen;
     if(self=[super init])
     {
         self.loginStatus=LOGIN_OFF;
+        [self setIsClassInfonterface:NO];
+        [self setIsSettingInterface:NO];
+        [self setIsStudentInterface:NO];
     }
     return self;
 }
@@ -83,6 +86,7 @@ chunyuendtime,chunyuisopen;
     [SFHFKeychainUtils deleteItemForUsername:kMHKeychainPassword andServiceName:kMHKeychainServiceName error:nil];
     [SFHFKeychainUtils deleteItemForUsername:kMHKeychainStudent andServiceName:kMHKeychainServiceName error:nil];
     [SFHFKeychainUtils deleteItemForUsername:kMHKeychainClass andServiceName:kMHKeychainServiceName error:nil];
+    
 }
 
 + (void)clearLastPassword
@@ -148,6 +152,7 @@ chunyuendtime,chunyuisopen;
     self.tuition_time=nil;
     self.chunyuisopen=nil;
     self.chunyuendtime=nil;
+    self.schooldID=nil;
 //    self.pull_rate = nil;
 //    self.company = nil;
 //    self.copyright = nil;

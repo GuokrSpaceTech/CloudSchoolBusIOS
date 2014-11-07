@@ -25,6 +25,11 @@ typedef enum {LOGIN_SERVER,LOGIN_OFF} LoginStatus;
 }
 
 @property(nonatomic,assign)LoginStatus loginStatus;
+@property (nonatomic,assign)BOOL isStudentInterface;
+@property (nonatomic,assign)BOOL isClassInfonterface;
+@property (nonatomic,assign)BOOL isSettingInterface;
+
+@property (nonatomic,retain)NSString *schooldID;
 @property(nonatomic,retain)NSString *age;
 @property(nonatomic,retain)NSString *birthday;
 @property(nonatomic,retain)NSString *cnname;
@@ -61,6 +66,10 @@ typedef enum {LOGIN_SERVER,LOGIN_OFF} LoginStatus;
 @property(nonatomic,retain)NSString * port;
 @property(nonatomic,retain)NSString * camera_name;
 @property(nonatomic,retain)NSString   *schoolname;
+
+
+
+
 +(UserLogin *)currentLogin;
 + (void)clearLastLogin;
 - (BOOL)getLastLogin;

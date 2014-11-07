@@ -203,12 +203,6 @@
 
 -(void)shareController:(NSInteger)shareType
 {
-//    ETShareViewController *shareController=[[[ETShareViewController alloc]initWithNibName:@"ETShareViewController" bundle:nil] autorelease];
-//    
-//    shareController.shareType=shareType;
-//    shareController.content=shareContent.shareContent;
-//    shareController.pic=self.shareContent.sharePic;
-//    [self pushShareViewController:shareController];
     
 }
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -728,12 +722,6 @@
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.contentView.backgroundColor = CELLCOLOR;
-//        cell.textLabel.text = LOCAL(@"defaultdata", @"");
-//        cell.textLabel.font=[UIFont systemFontOfSize:28];
-//        cell.textLabel.textColor=[UIColor grayColor];
-//        cell.textLabel.textAlignment=UITextAlignmentCenter;
-        
-        
         UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 151, 131)];
         imgV.image = [UIImage imageNamed:@"nodata.png"];
         imgV.center = CGPointMake(160, ((iphone5 ? 548 : 460) - 46 - 57 - 135)/2);
@@ -748,7 +736,6 @@
         ShareContent *sContent=[self.list objectAtIndex:indexPath.row];
         NSDictionary *fDic = [sContent.sharePicArr objectAtIndex:0];
         NSString *source = [NSString stringWithFormat:@"%@",[fDic objectForKey:@"source"]];
-//        NSString *source = @"http://yunxiaoche.blob.core.windows.net/article-source/39958_1389601724_644558.mp4";
         NSString *ext = [[source componentsSeparatedByString:@"."] lastObject]; // 获取后缀名
         
         
@@ -778,55 +765,22 @@
                 
                 int calculateHeight = 0; // add up height.
                 
-                // calculate title size.
-                CGSize titleSize = [sContent.shareTitle sizeWithFont:[UIFont systemFontOfSize:TITLEFONTSIZE] constrainedToSize:CGSizeMake(230, 1000) lineBreakMode:UILineBreakModeWordWrap];
+                CGSize contentSize = [sContent.shareContent sizeWithFont:[UIFont systemFontOfSize:CONTENTFONTSIZE] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:UILineBreakModeWordWrap];
                 
-//                if (titleSize.height > cell.titleLabel.font.lineHeight * 1)
-//                {
-                    cell.titleLabel.frame = CGRectMake(cell.titleLabel.frame.origin.x,
-                                                       cell.titleLabel.frame.origin.y,
-                                                       titleSize.width,
-                                                       cell.titleLabel.font.lineHeight * 1);
-                    calculateHeight = cell.titleLabel.frame.origin.y + cell.titleLabel.font.lineHeight * 1;
-//                }
-//                else
-//                {
-//                    cell.titleLabel.frame = CGRectMake(cell.titleLabel.frame.origin.x,
-//                                                       cell.titleLabel.frame.origin.y,
-//                                                       titleSize.width,
-//                                                       titleSize.height);
-//                    calculateHeight = cell.titleLabel.frame.origin.y + titleSize.height;
-//                }
+                // 内容高度 contentsize.height
+                [cell.contentLabel setFrame:CGRectMake(10,
+                                                       calculateHeight + 5, //the distance is between title and content,
+                                                       contentSize.width,
+                                                       contentSize.height)];
                 
-                
-                cell.titleLabel.text = sContent.shareTitle;
-                
-                /*
-                // calculate content size.
-                CGSize contentSize = [sContent.shareContent sizeWithFont:[UIFont systemFontOfSize:CONTENTFONTSIZE] constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:UILineBreakModeWordWrap];
-                
-                
-                
-                if (contentSize.height > cell.contentLabel.font.lineHeight * 3)
-                {
-                    [cell.contentLabel setFrame:CGRectMake(50,
-                                                           calculateHeight + 25,
-                                                           contentSize.width,
-                                                           cell.contentLabel.font.lineHeight * 3)];
-                    calculateHeight = calculateHeight + 25 + cell.contentLabel.font.lineHeight * 3;
-                }
+                if ([sContent.shareContent isEqualToString:@""] || sContent.shareContent==nil)
+                    calculateHeight=0;
                 else
-                {
-                    
-                    [cell.contentLabel setFrame:CGRectMake(50,
-                                                           calculateHeight + 25,
-                                                           contentSize.width,
-                                                           contentSize.height)];
-                    NSLog(@"ssssss : %f , %d,%f",contentSize.height,indexPath.row,cell.contentLabel.font.lineHeight);
-                    calculateHeight = calculateHeight + (ABS(contentSize.height) <= 14 ? 14 : (contentSize.height + 25));
-                }
-                */
+                    calculateHeight = calculateHeight+ 5 + contentSize.height;
                 
+
+      
+
                 cell.contentLabel.text = sContent.shareContent;
                 
                 
@@ -834,7 +788,7 @@
                 // --------   加载视频   --------
                     
                 cell.contentBackView.frame = CGRectMake(cell.contentBackView.frame.origin.x,
-                                                    calculateHeight + 15,
+                                                    calculateHeight+5 ,
                                                     cell.contentBackView.frame.size.width,
                                                     cell.contentBackView.frame.size.height);
                 [cell setMovieURL:source];
@@ -846,40 +800,14 @@
                     cell.movieThumbnailImgV.image = image;
                 }];
                 
-                calculateHeight = calculateHeight + 10 + cell.contentBackView.frame.size.width + 10;
+                calculateHeight = calculateHeight +5+ cell.contentBackView.frame.size.height ;
                 
+        
+               // calculateHeight += 10;
                 
+                cell.timeLabel.frame = CGRectMake(10, calculateHeight+5, cell.timeLabel.frame.size.width, cell.timeLabel.frame.size.height);
                 
-//                if (titleSize.height > cell.titleLabel.font.lineHeight * 1)
-//                {
-//                    cell.triangle.frame = CGRectMake(cell.backImgV.frame.origin.x + 15,
-//                                                     cell.titleLabel.frame.origin.y + cell.titleLabel.font.lineHeight * 1,
-//                                                     14,
-//                                                     12);
-//                    
-//                    cell.backImgV.frame = CGRectMake(cell.backImgV.frame.origin.x,
-//                                                     cell.titleLabel.frame.origin.y + cell.titleLabel.font.lineHeight * 1 + 12,
-//                                                     cell.backImgV.frame.size.width,
-//                                                     calculateHeight - cell.titleLabel.frame.origin.y - cell.titleLabel.font.lineHeight * 1 - 12);
-//                }
-//                else
-//                {
-//                    cell.triangle.frame = CGRectMake(cell.backImgV.frame.origin.x + 15,
-//                                                     cell.titleLabel.frame.origin.y + titleSize.height,
-//                                                     14,
-//                                                     12);
-//                    
-//                    cell.backImgV.frame = CGRectMake(cell.backImgV.frame.origin.x,
-//                                                     cell.titleLabel.frame.origin.y + titleSize.height + 12,
-//                                                     cell.backImgV.frame.size.width,
-//                                                     calculateHeight - cell.titleLabel.frame.origin.y - titleSize.height - 12);
-//                }
-                
-                
-                calculateHeight += 10;
-                
-                cell.timeLabel.frame = CGRectMake(50, calculateHeight, cell.timeLabel.frame.size.width, cell.timeLabel.frame.size.height);
-                
+                calculateHeight=calculateHeight+5+20;
                 //----- calculate time -----------
                 NSString *time = sContent.publishtime;
                 
@@ -921,15 +849,11 @@
                 
                 // -----------------------
                 
-                int centerHeight = calculateHeight + cell.timeLabel.frame.size.height/2;
+                int centerHeight = calculateHeight -15+ cell.timeLabel.frame.size.height/2;
                 
                 cell.praiseButton.frame = CGRectMake(cell.praiseButton.frame.origin.x, centerHeight - cell.praiseButton.frame.size.height/2, cell.praiseButton.frame.size.width, cell.praiseButton.frame.size.height);
-                
                 cell.commentsButton.frame = CGRectMake(cell.commentsButton.frame.origin.x, centerHeight - cell.commentsButton.frame.size.height/2, cell.commentsButton.frame.size.width, cell.commentsButton.frame.size.height);
-                
-                
                 cell.praiseImgV.frame = CGRectMake(cell.praiseButton.frame.origin.x + 5, centerHeight - 8, 20, 16);
-                
                 if (sContent.havezan.intValue == 0)
                 {
                     cell.praiseImgV.image = [UIImage imageNamed:@"cellPraise.png"];
@@ -938,12 +862,9 @@
                 {
                     cell.praiseImgV.image = [UIImage imageNamed:@"myzan.png"];
                 }
-                
                 cell.theShareCtnt = sContent;
-                
                 NSArray *languages = [NSLocale preferredLanguages];
                 NSString *currentLanguage = [languages objectAtIndex:0]; //获得当期语言.
-                
                 cell.praiseLab.frame = CGRectMake(cell.praiseButton.frame.origin.x + 25, centerHeight - 7, 35, 14);
                 cell.praiseLab.text = [NSString stringWithFormat:@"%@", (sContent.upnum.intValue == 0 ? LOCAL(@"upText", @"") : sContent.upnum)];
                 if (sContent.upnum.intValue == 0)
@@ -956,19 +877,16 @@
                     {
                         cell.praiseLab.font = [UIFont systemFontOfSize:12];
                     }
-                    
                 }
                 else
                 {
                     cell.praiseLab.font = [UIFont systemFontOfSize:CONTENTFONTSIZE];
                 }
-                
                 cell.commentImgV.frame = CGRectMake(cell.commentsButton.frame.origin.x + 5, centerHeight - 8, 20, 16);
                 cell.commentLab.frame = CGRectMake(cell.commentsButton.frame.origin.x + 25, centerHeight - 7 , 38, 14);
                 cell.commentLab.text = [NSString stringWithFormat:@"%@",(sContent.commentnum.intValue == 0 ? LOCAL(@"comText", @"") : sContent.commentnum)];
                 if (sContent.commentnum.intValue == 0)
                 {
-                    
                     if([currentLanguage isEqualToString:@"en"])
                     {
                         cell.commentLab.font = [UIFont systemFontOfSize:8];
@@ -977,14 +895,13 @@
                     {
                         cell.commentLab.font = [UIFont systemFontOfSize:12];
                     }
-                    
                 }
                 else
                 {
                     cell.commentLab.font = [UIFont systemFontOfSize:CONTENTFONTSIZE];
                 }
                 
-                cell.line.frame = CGRectMake(0, calculateHeight + 25, 320, 2);
+                cell.line.frame = CGRectMake(0, calculateHeight + 5, 320, 2);
                 
                 
                 
@@ -1034,59 +951,24 @@
             {
                 cell.tag = indexPath.row;
                 ShareContent *sContent=[self.list objectAtIndex:indexPath.row];
+                float calculateHeight = 0; // add up height.
                 
+  
+                CGSize contentSize = [sContent.shareContent sizeWithFont:[UIFont systemFontOfSize:CONTENTFONTSIZE] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:UILineBreakModeWordWrap];
+
+//                
+                [cell.contentLabel setFrame:CGRectMake(10,
+                                                       calculateHeight + 5, //the distance is between title and content,
+                                                       contentSize.width,
+                                                       contentSize.height)];
                 
-                int calculateHeight = 0; // add up height.
-                
-                // calculate title size.
-                CGSize titleSize = [sContent.shareTitle sizeWithFont:[UIFont systemFontOfSize:TITLEFONTSIZE] constrainedToSize:CGSizeMake(230, 1000) lineBreakMode:UILineBreakModeWordWrap];
-                
-//                if (titleSize.height > cell.titleLabel.font.lineHeight * 1)
-//                {
-                    cell.titleLabel.frame = CGRectMake(cell.titleLabel.frame.origin.x,
-                                                       cell.titleLabel.frame.origin.y,
-                                                       titleSize.width,
-                                                       cell.titleLabel.font.lineHeight * 1);
-                    calculateHeight = cell.titleLabel.frame.origin.y + cell.titleLabel.font.lineHeight * 1;
-//                }
-//                else
-//                {
-//                    cell.titleLabel.frame = CGRectMake(cell.titleLabel.frame.origin.x,
-//                                                       cell.titleLabel.frame.origin.y,
-//                                                       titleSize.width,
-//                                                       titleSize.height);
-//                    calculateHeight = cell.titleLabel.frame.origin.y + titleSize.height;
-//                }
-                
-                
-                cell.titleLabel.text = sContent.shareTitle;
-                
-                
-                // calculate content size.
-                CGSize contentSize = [sContent.shareContent sizeWithFont:[UIFont systemFontOfSize:CONTENTFONTSIZE] constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:UILineBreakModeWordWrap];
-                
-                
-                
-                if (contentSize.height > cell.contentLabel.font.lineHeight * 3)
-                {
-                    [cell.contentLabel setFrame:CGRectMake(50,
-                                                           calculateHeight + 25,//the distance is between title and content
-                                                           contentSize.width,
-                                                           cell.contentLabel.font.lineHeight * 3)];
-                    calculateHeight = calculateHeight + 25 + cell.contentLabel.font.lineHeight * 3;
-                }
+                if ([sContent.shareContent isEqualToString:@""] || sContent.shareContent==nil)
+                    calculateHeight=0;
                 else
-                {
+                    calculateHeight = calculateHeight+ 5 + contentSize.height;
                     
-                    [cell.contentLabel setFrame:CGRectMake(50,
-                                                           calculateHeight + 25, //the distance is between title and content,
-                                                           contentSize.width,
-                                                           contentSize.height)];
-                    NSLog(@"ssssss : %f , %d,%f",contentSize.height,indexPath.row,cell.contentLabel.font.lineHeight);
-                    calculateHeight = calculateHeight + (ABS(contentSize.height) <= 14 ? 14 : (contentSize.height + 25));
-                }
                 
-                
+
                 cell.contentLabel.text = sContent.shareContent;
                 
                 
@@ -1097,128 +979,66 @@
                                                         calculateHeight + 10,
                                                         cell.contentView.frame.size.width,
                                                         cell.contentView.frame.size.height);
-                    
-                    
-                    
+
                 }
                 
                 
-                for (int i = 0; i < cell.photoImgVArr.count; i++) {
+                int picCount = sContent.sharePicArr.count;
+         
+               // __block float picHeight=0;
+                if(picCount>=1)
+                {
+                    NSDictionary *dic = [sContent.sharePicArr objectAtIndex:0];
+                    NSString *picURL=[NSString stringWithFormat:@"%@",[dic objectForKey:@"source"]];
+                    picURL = [picURL stringByAppendingString:@".small.jpg"];
                     
-                    UIImageView *imgV = [cell.photoImgVArr objectAtIndex:i];
-                    int picCount = sContent.sharePicArr.count;
-                    
-                    if (i < picCount)
-                    {
-                        NSDictionary *dic = [sContent.sharePicArr objectAtIndex:i];
-                        if ([dic objectForKey:@"source"]) {
-                            NSString *picURL=[NSString stringWithFormat:@"%@",[dic objectForKey:@"source"]];
-                            if (picCount == 1)
-                            {
-                                picURL = [picURL stringByAppendingString:@".small.jpg"];
-                            }
-                            else
-                            {
-                                picURL = [picURL stringByAppendingString:@".tiny.jpg"];
-                            }
+                    [cell.picImageView setImageWithURL:[NSURL URLWithString:picURL] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                        if (error) {
                             
-                            
-                            [imgV setImageWithURL:[NSURL URLWithString:picURL] placeholderImage:[UIImage imageNamed:@"imageplaceholder.png"] options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                                
-                                //                        NSLog(@"%d",cacheType);
-                                
-                                if (error) {
-                                    
-                                    NSLog(@"Error : load image fail.");
-                                    imgV.image = [UIImage imageNamed:@"imageerror.png"];
-                                    
-                                    
-                                }
-                                else
-                                {
-                                    imgV.image = image;
-                                    
-                                    //                                NSData *d = UIImagePNGRepresentation(image);
-                                    //                                NSLog(@"image length  %d",d.length);
-                                    
-                                    if (cacheType == 0) { // request url
-                                        CATransition *transition = [CATransition animation];
-                                        transition.duration = 1.0f;
-                                        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-                                        transition.type = kCATransitionFade;
-                                        
-                                        [imgV.layer addAnimation:transition forKey:nil];
-                                    }
-                                }
-                                
-                                
-                                
-                            }];
+                            //cell.picImageView.image = [UIImage imageNamed:@"imageerror.png"];
+                           //  cell.picImageView.frame = CGRectMake(5, calculateHeight + 10 , _tableView.frame.size.width-10, 150);
                         }
                         else
                         {
-                            NSLog(@"Error : picture url error .");
+                           // cell.picImageView.image = image;
+                
+                            //  float picHeight=image.size.height*(300 /image.size.width);
+                            
+                         
+                            if (cacheType == 0) { // request url
+                                CATransition *transition = [CATransition animation];
+                                transition.duration = 1.0f;
+                                transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+                                transition.type = kCATransitionFade;
+                                
+                                [cell.picImageView.layer addAnimation:transition forKey:nil];
+                            }
                         }
+
                         
-                        if (picCount == 1)
-                        {
-                            imgV.frame = CGRectMake(58 + i%3*(75 + 5), calculateHeight + 10 + i/3*(75 + 5), 150, 150);
-                        }
-                        else
-                        {
-                            imgV.frame = CGRectMake(58 + i%3*(75 + 5), calculateHeight + 10 + i/3*(75 + 5), 75, 75);
-                        }
-                        
-                        
-                        
-                        
-                    }
-                    else
-                    {
-                        imgV.image = nil;
-                        imgV.frame = CGRectZero;
-                    }
+                    }];
                     
+                    cell.picImageView.frame = CGRectMake(5, calculateHeight + 10 , _tableView.frame.size.width-10, 200);
+                   
                 }
+                else
+                {
+                     cell.picImageView.image = nil;
+                     cell.picImageView.frame = CGRectZero;
+
+                }
+                
+
                 
                 if (sContent.sharePicArr.count == 1)
                 {
-                    calculateHeight = calculateHeight + 10 + 150 + 10;
-                }
-                else
-                {
-                    calculateHeight = calculateHeight + 10 + (sContent.sharePicArr.count == 0 ? 0 : ((sContent.sharePicArr.count-1)/3 + 1) * (75 + 10));
+                    calculateHeight = calculateHeight+ 5+ 200 ;
                 }
                 
                 
-                
-                if (titleSize.height > cell.titleLabel.font.lineHeight * 1)
-                {
-                    cell.triangle.frame = CGRectMake(cell.backImgV.frame.origin.x + 15,
-                                                     cell.titleLabel.frame.origin.y + cell.titleLabel.font.lineHeight * 1,
-                                                     14,
-                                                     12);
-                    
-                    cell.backImgV.frame = CGRectMake(cell.backImgV.frame.origin.x,
-                                                     cell.titleLabel.frame.origin.y + cell.titleLabel.font.lineHeight * 1 + 12,
-                                                     cell.backImgV.frame.size.width,
-                                                     calculateHeight - cell.titleLabel.frame.origin.y - cell.titleLabel.font.lineHeight * 1 - 12);
-                }
-                else
-                {
-                    cell.triangle.frame = CGRectMake(cell.backImgV.frame.origin.x + 15,
-                                                     cell.titleLabel.frame.origin.y + titleSize.height,
-                                                     14,
-                                                     12);
-                    
-                    cell.backImgV.frame = CGRectMake(cell.backImgV.frame.origin.x, cell.titleLabel.frame.origin.y + titleSize.height + 12, cell.backImgV.frame.size.width, calculateHeight - cell.titleLabel.frame.origin.y - titleSize.height - 12);
-                }
-                
-                
-                calculateHeight += 10;
-                
-                cell.timeLabel.frame = CGRectMake(50, calculateHeight, cell.timeLabel.frame.size.width, cell.timeLabel.frame.size.height);
-                
+
+                cell.timeLabel.frame = CGRectMake(10, calculateHeight+10, cell.timeLabel.frame.size.width, cell.timeLabel.frame.size.height);
+                calculateHeight = calculateHeight+ 5 +20;
                 //----- calculate time -----------
                 NSString *time = sContent.publishtime;
                 
@@ -1259,10 +1079,11 @@
                 }
                 
                 // -----------------------
-                
-                int centerHeight = calculateHeight + cell.timeLabel.frame.size.height/2;
+                //calculateHeight+ 5 +20
+                int centerHeight = calculateHeight-15 + cell.timeLabel.frame.size.height/2;
                 
                 cell.praiseButton.frame = CGRectMake(cell.praiseButton.frame.origin.x, centerHeight - cell.praiseButton.frame.size.height/2, cell.praiseButton.frame.size.width, cell.praiseButton.frame.size.height);
+                
                 
                 cell.commentsButton.frame = CGRectMake(cell.commentsButton.frame.origin.x, centerHeight - cell.commentsButton.frame.size.height/2, cell.commentsButton.frame.size.width, cell.commentsButton.frame.size.height);
                 
@@ -1323,7 +1144,7 @@
                     cell.commentLab.font = [UIFont systemFontOfSize:CONTENTFONTSIZE];
                 }
                 
-                cell.line.frame = CGRectMake(0, calculateHeight + 25, 320, 2);
+                cell.line.frame = CGRectMake(0, calculateHeight + 5, 320, 2);
                 
                 
                 cell.theShareCtnt = sContent;
@@ -1369,51 +1190,42 @@
     
     int calculateHeight = 0; // add up height.
     
-    // calculate title size.
-//    CGSize titleSize = [sContent.shareTitle sizeWithFont:[UIFont systemFontOfSize:TITLEFONTSIZE] constrainedToSize:CGSizeMake(230, 1000) lineBreakMode:UILineBreakModeWordWrap];
-//    if (titleSize.height > [UIFont systemFontOfSize:TITLEFONTSIZE].lineHeight * 1)
-//    {
-        calculateHeight = 10 + [UIFont systemFontOfSize:TITLEFONTSIZE].lineHeight * 1;
-//    }
-//    else
-//    {
-//        calculateHeight = 10 + titleSize.height;
-//    }
+    CGSize contentSize = [sContent.shareContent sizeWithFont:[UIFont systemFontOfSize:CONTENTFONTSIZE] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:UILineBreakModeWordWrap];
+
+    if ([sContent.shareContent isEqualToString:@""] || sContent.shareContent==nil)
+        calculateHeight=0;
+    else
+        calculateHeight = calculateHeight+ 5 + contentSize.height;
     
+
+
+
     
     NSDictionary *fDic = [sContent.sharePicArr objectAtIndex:0];
     NSString *source = [NSString stringWithFormat:@"%@",[fDic objectForKey:@"source"]];
-//    NSString *source = @"http://yunxiaoche.blob.core.windows.net/article-source/39958_1389601724_644558.mp4";
     NSString *ext = [[source componentsSeparatedByString:@"."] lastObject]; // 获取后缀名
     
     
     if ([ext isEqualToString:@"mp4"])
     {
-        calculateHeight = calculateHeight + 10 + 300 + 10 + 10 + 26;
+        calculateHeight = calculateHeight+5 + 300 + 5 + 20 + 5 +2;
     }
     else
     {
-        CGSize contentSize = [sContent.shareContent sizeWithFont:[UIFont systemFontOfSize:CONTENTFONTSIZE] constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:UILineBreakModeWordWrap];
+
         
-        if (contentSize.height > [UIFont systemFontOfSize:CONTENTFONTSIZE].lineHeight * 3)
-        {
-            calculateHeight = calculateHeight + 25 + [UIFont systemFontOfSize:CONTENTFONTSIZE].lineHeight * 3;
-        }
-        else
-        {
-            calculateHeight = calculateHeight + (ABS(contentSize.height) <= 14 ? 14 : (contentSize.height + 25));
-        }
         
+       // ClassShareCell*cell=(ClassShareCell *)[tableView cellForRowAtIndexPath:indexPath];
+//        
+        NSDictionary *dic = [sContent.sharePicArr objectAtIndex:0];
+        NSString *picURL=[NSString stringWithFormat:@"%@",[dic objectForKey:@"source"]];
+        picURL = [picURL stringByAppendingString:@".small.jpg"];
+
         
         if (sContent.sharePicArr.count == 1)
         {
-            calculateHeight = calculateHeight + 10 + 150 + 10 + 10 + 26;
+            calculateHeight = calculateHeight +5+  200 + 5 + 20 + 5+2;
         }
-        else
-        {
-            calculateHeight = calculateHeight + 10 + (sContent.sharePicArr.count == 0 ? 0 : ((sContent.sharePicArr.count-1)/3 + 1) * (75 + 10)) + 10 + 26;
-        }
-        
         
 //        calculateHeight = calculateHeight + 10 + (sContent.sharePicArr.count == 0 ? 0 : ((sContent.sharePicArr.count-1)/3 + 1) * (75 + 10)) + 10 + 26;
     }

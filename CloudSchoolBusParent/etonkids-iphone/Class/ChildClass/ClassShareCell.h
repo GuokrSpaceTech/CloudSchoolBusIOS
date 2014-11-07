@@ -81,7 +81,9 @@ typedef enum{
 @property(nonatomic, retain) UIImageView *praiseImgV;
 @property (nonatomic, retain) UIImageView *backImgV;
 
-@property (nonatomic, retain)NSMutableArray *photoImgVArr;
+@property (nonatomic,retain)UIImageView *picImageView;
+
+
 
 @property (nonatomic, retain)UIImageView *line;
 

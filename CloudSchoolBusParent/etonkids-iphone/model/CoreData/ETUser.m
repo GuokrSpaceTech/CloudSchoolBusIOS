@@ -40,5 +40,5 @@
 @dynamic username;
 @dynamic chunyuopen;
 @dynamic chunyuendtime;
-
+@dynamic schoolid;
 @end

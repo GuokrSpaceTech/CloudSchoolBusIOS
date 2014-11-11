@@ -72,10 +72,6 @@
 - (void)leftButtonClick:(id)sender
 {
     UserLogin *user=[UserLogin currentLogin];
-    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
-        [[UIDevice currentDevice] performSelector:@selector(setOrientation:)
-                                       withObject:(id)UIInterfaceOrientationPortrait];
-    }
     NSString *ddns=user.ddns;
     NSString *prot=user.port;
     [[GKSocket instanceddns:ddns port:prot] cleanUpStream];
@@ -147,6 +143,8 @@
 //        [[UIDevice currentDevice] performSelector:@selector(setOrientation:)
 //                                       withObject:(id)UIInterfaceOrientationLandscapeRight];
 //    }
+    
+    //[self performSelectorInBackground:@selector(hahahah:) withObject:nil];
     [self loadVideo];
 }
 //-(void)setOrientation:(UIInterfaceOrientation)orientation
@@ -157,6 +155,7 @@
 //    glView.frame=CGRectMake(0, (ios7 ? 20 : 0)+NAVIHEIGHT, size.width, size.height-NAVIHEIGHT-(ios7 ? 20 : 0));
 //    middleLabel.frame=CGRectMake(50, 13+(ios7 ? 20 : 0), size.width-100,20);
 //}
+
 -(void)loadVideo
 {
     
@@ -249,9 +248,6 @@
                     NSLog(@"%@",result);
                     
                 } streamBlock:^(NSData *data, int length,NSError *error) {
-                    
-        
-                    
                     if(HUD)
                     {
                         [HUD removeFromSuperview];

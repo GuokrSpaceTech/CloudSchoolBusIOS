@@ -390,42 +390,25 @@
 }
 
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-{
-    return toInterfaceOrientation == UIDeviceOrientationPortrait;
-}
-
 - (BOOL)shouldAutorotate
 {
-
     return NO;
 }
-
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    
+    return toInterfaceOrientation==UIInterfaceOrientationPortrait;
+    
+}
 - (NSUInteger)supportedInterfaceOrientations
 {
-    return UIDeviceOrientationPortrait;
+    return UIInterfaceOrientationPortrait;
 }
-//- (NSUInteger)supportedInterfaceOrientations
-//{
-//    
-//    if ([UIDevice currentDevice].orientation == UIInterfaceOrientationLandscapeLeft || [UIDevice currentDevice].orientation == UIInterfaceOrientationLandscapeRight) {
-//        
-////        CGRect frame=[[UIScreen mainScreen]applicationFrame];
-////        NSLog(@"%f,%f",frame.size.width,frame.size.height);
-//        bigImgV.frame = CGRectMake(0, (ios7 ? 20 : 0), (iphone5 ? 568 : 480), 300);
-//        
-//    }
-//    else
-//    {
-//        CGRect frame=[[UIScreen mainScreen]applicationFrame];
-//        NSLog(@"%f,%f",frame.size.width,frame.size.height);
-//        bigImgV.frame = CGRectMake(0, (ios7 ? 20 : 0), frame.size.width, frame.size.height - (ios7 ? 20 : 0));
-//    }
-//    
-//    [bigImgV reloadFrame:[UIDevice currentDevice].orientation];
-//    
-//    return UIInterfaceOrientationMaskAll;
-//}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
 
 
 

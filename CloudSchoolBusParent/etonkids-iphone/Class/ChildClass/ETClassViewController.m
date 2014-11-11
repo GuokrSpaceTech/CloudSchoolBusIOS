@@ -1492,14 +1492,21 @@
     
 }
 
+
+
 - (BOOL)shouldAutorotate
 {
-    //    if ([self isKindOfClass:[ETShowBigImageViewController class]]) { // 如果是这个 vc 则支持自动旋转
-    //        return YES;
-    //    }
     return NO;
 }
-
-
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    
+    return NO;
+    
+}
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationPortrait;
+}
 
 @end

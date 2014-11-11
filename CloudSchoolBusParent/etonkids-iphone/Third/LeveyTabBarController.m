@@ -398,20 +398,20 @@ static LeveyTabBarController *leveyTabBarController;
 }
 
 
-//- (BOOL)shouldAutorotate
-//{
-//    return NO;
-//}
-//
-//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-//{
-//    //    if([[self selectedViewController] isKindOfClass:[子类 class]])
-//    return NO;
-//}
-//
-//- (NSUInteger)supportedInterfaceOrientations
-//{
-//    return UIInterfaceOrientationPortrait;
-//}
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    //    if([[self selectedViewController] isKindOfClass:[子类 class]])
+    return toInterfaceOrientation==UIInterfaceOrientationPortrait;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationPortrait;
+}
 
 @end

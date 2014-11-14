@@ -147,8 +147,8 @@
         [HUD release];
     }
     
-    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"2",@"type",date,@"date", nil];
-    [[EKRequest Instance] EKHTTPRequest:attendancemanager parameters:dic requestMethod:GET forDelegate:self];
+    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:date,@"date", nil];
+    [[EKRequest Instance] EKHTTPRequest:studenthealth parameters:dic requestMethod:GET forDelegate:self];
     
 }
 -(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
@@ -164,12 +164,14 @@
 }
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
 {
+    NSString *aa=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",aa);
     if(HUD)
     {
         [HUD removeFromSuperview];
         HUD=nil;
     }
-    if(method==attendancemanager)
+    if(method==studenthealth)
     {
         if(code==1)
         {
@@ -180,19 +182,11 @@
                 GKTempature *temperature=[[GKTempature alloc]init];
                 temperature.studentid=[NSString stringWithFormat:@"%@",[[arr objectAtIndex:i] objectForKey:@"studentid"]];
                 temperature.name=[[arr objectAtIndex:i] objectForKey:@"enname"];
-                temperature.tempature=[[arr objectAtIndex:i] objectForKey:@"temperature"];
-                temperature.state=[[arr objectAtIndex:i] objectForKey:@"temperaturestate"];
-                if([temperature.tempature isKindOfClass:[NSNull class]])
-                {
-                    temperature.tempature=@"";
-                    temperature.state=@"";
-                }
-                temperature.otherstate=[[arr objectAtIndex:i] objectForKey:@"state"];
-                if([temperature.otherstate isKindOfClass:[NSNull class]])
-                {
-                    temperature.otherstate=@"";
-                }
-                temperature.isTempature=YES;
+               
+                temperature.state=[[arr objectAtIndex:i] objectForKey:@"healthstate"];
+                temperature.otherstate=[[arr objectAtIndex:i] objectForKey:@"reminder"];
+              
+         
                 [_tempatureArr addObject:temperature];
                 
             }
@@ -222,7 +216,7 @@
                     attence.name=st.enname;
                     attence.state=@"";
                     attence.otherstate=@"";
-                  //  [_tempatureArr addObject:attence];
+                 
                     [arrtemp addObject:attence];
                     [attence release];
                 }
@@ -364,15 +358,7 @@
     GKTempature *temp=[self.tempatureArr objectAtIndex:indexPath.row];
     nameLabel.text=temp.name;
     statelabel.text=temp.state;
-    if([statelabel.text isEqualToString:@"体温正常"])
-    {
-        statelabel.textColor=[UIColor blackColor];
-    }
-    else
-    {
-        statelabel.textColor=[UIColor redColor];
-    }
-  //  if(tem.tempature)
+     //  if(tem.tempature)
     tempature.text=[NSString stringWithFormat:@"%@：%@℃",NSLocalizedString(@"temperature",@""),temp.tempature];
     otherLabel.text=[NSString stringWithFormat:@"异常状态：%@",temp.otherstate];
     otherLabel.textColor=[UIColor redColor];

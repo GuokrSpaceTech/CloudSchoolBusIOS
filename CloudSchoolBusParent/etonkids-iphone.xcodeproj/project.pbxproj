@@ -134,16 +134,14 @@
 		11DBB99C19CA9D4A008110E8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11DBB99B19CA9D4A008110E8 /* CoreVideo.framework */; };
 		11E10EA319C932C000228B12 /* GKDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E10EA219C932C000228B12 /* GKDevice.m */; };
 		11E10EA619C9353900228B12 /* GKVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E10EA519C9353900228B12 /* GKVideoViewController.m */; };
+		11E174FD1A11F98500A6CF7F /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E174F71A11F98500A6CF7F /* libavcodec.a */; };
+		11E174FE1A11F98500A6CF7F /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E174F81A11F98500A6CF7F /* libavdevice.a */; };
+		11E174FF1A11F98500A6CF7F /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E174F91A11F98500A6CF7F /* libavfilter.a */; };
+		11E175001A11F98500A6CF7F /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E174FA1A11F98500A6CF7F /* libavformat.a */; };
+		11E175011A11F98500A6CF7F /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E174FB1A11F98500A6CF7F /* libavutil.a */; };
+		11E175021A11F98500A6CF7F /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E174FC1A11F98500A6CF7F /* libswscale.a */; };
 		11E46367194F05510039C0A0 /* GKShowReceiveBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E46366194F05510039C0A0 /* GKShowReceiveBigImageViewController.m */; };
 		11E82B85194957200048F0DB /* ETGCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E82B84194957200048F0DB /* ETGCalendarViewController.m */; };
-		11E9279F1A10B1BA004741DE /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E927971A10B1BA004741DE /* libavcodec.a */; };
-		11E927A01A10B1BA004741DE /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E927981A10B1BA004741DE /* libavdevice.a */; };
-		11E927A11A10B1BA004741DE /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E927991A10B1BA004741DE /* libavfilter.a */; };
-		11E927A21A10B1BA004741DE /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E9279A1A10B1BA004741DE /* libavformat.a */; };
-		11E927A31A10B1BA004741DE /* libavresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E9279B1A10B1BA004741DE /* libavresample.a */; };
-		11E927A41A10B1BA004741DE /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E9279C1A10B1BA004741DE /* libavutil.a */; };
-		11E927A51A10B1BA004741DE /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E9279D1A10B1BA004741DE /* libswresample.a */; };
-		11E927A61A10B1BA004741DE /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E9279E1A10B1BA004741DE /* libswscale.a */; };
 		11E933F919AB55F0000CB50C /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E933F819AB55F0000CB50C /* AudioStreamer.m */; };
 		11E933FB19AB561D000CB50C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E933FA19AB561D000CB50C /* AudioToolbox.framework */; };
 		11E933FE19AB57BA000CB50C /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E933FD19AB57BA000CB50C /* AudioPlayer.m */; };
@@ -952,18 +950,16 @@
 		11E10EA219C932C000228B12 /* GKDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKDevice.m; sourceTree = "<group>"; };
 		11E10EA419C9353900228B12 /* GKVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKVideoViewController.h; sourceTree = "<group>"; };
 		11E10EA519C9353900228B12 /* GKVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKVideoViewController.m; sourceTree = "<group>"; };
+		11E174F71A11F98500A6CF7F /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavcodec.a; sourceTree = "<group>"; };
+		11E174F81A11F98500A6CF7F /* libavdevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavdevice.a; sourceTree = "<group>"; };
+		11E174F91A11F98500A6CF7F /* libavfilter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavfilter.a; sourceTree = "<group>"; };
+		11E174FA1A11F98500A6CF7F /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavformat.a; sourceTree = "<group>"; };
+		11E174FB1A11F98500A6CF7F /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavutil.a; sourceTree = "<group>"; };
+		11E174FC1A11F98500A6CF7F /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswscale.a; sourceTree = "<group>"; };
 		11E46365194F05510039C0A0 /* GKShowReceiveBigImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKShowReceiveBigImageViewController.h; sourceTree = "<group>"; };
 		11E46366194F05510039C0A0 /* GKShowReceiveBigImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKShowReceiveBigImageViewController.m; sourceTree = "<group>"; };
 		11E82B811949561C0048F0DB /* ETGCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETGCalendarViewController.h; sourceTree = "<group>"; };
 		11E82B84194957200048F0DB /* ETGCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETGCalendarViewController.m; sourceTree = "<group>"; };
-		11E927971A10B1BA004741DE /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavcodec.a; sourceTree = "<group>"; };
-		11E927981A10B1BA004741DE /* libavdevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavdevice.a; sourceTree = "<group>"; };
-		11E927991A10B1BA004741DE /* libavfilter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavfilter.a; sourceTree = "<group>"; };
-		11E9279A1A10B1BA004741DE /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavformat.a; sourceTree = "<group>"; };
-		11E9279B1A10B1BA004741DE /* libavresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavresample.a; sourceTree = "<group>"; };
-		11E9279C1A10B1BA004741DE /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavutil.a; sourceTree = "<group>"; };
-		11E9279D1A10B1BA004741DE /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswresample.a; sourceTree = "<group>"; };
-		11E9279E1A10B1BA004741DE /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswscale.a; sourceTree = "<group>"; };
 		11E933F719AB55F0000CB50C /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
 		11E933F819AB55F0000CB50C /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		11E933FA19AB561D000CB50C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -1707,12 +1703,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11E927A11A10B1BA004741DE /* libavfilter.a in Frameworks */,
-				11E927A41A10B1BA004741DE /* libavutil.a in Frameworks */,
+				11E174FF1A11F98500A6CF7F /* libavfilter.a in Frameworks */,
 				11F0868319CC090C003A3CC4 /* OpenGLES.framework in Frameworks */,
+				11E175021A11F98500A6CF7F /* libswscale.a in Frameworks */,
 				11DBB99C19CA9D4A008110E8 /* CoreVideo.framework in Frameworks */,
 				11DBB99A19CA9C36008110E8 /* libiconv.dylib in Frameworks */,
-				11E927A61A10B1BA004741DE /* libswscale.a in Frameworks */,
 				11DBB99819CA9C2D008110E8 /* libbz2.1.0.dylib in Frameworks */,
 				11E933FB19AB561D000CB50C /* AudioToolbox.framework in Frameworks */,
 				11D6C38619936C7C001BBF7E /* AlixPaylib.a in Frameworks */,
@@ -1738,18 +1733,17 @@
 				11D6C38C19936C98001BBF7E /* libssl.a in Frameworks */,
 				F925403A16D3823B008B4BD2 /* CoreData.framework in Frameworks */,
 				F919DB3416C2406100CFEFD0 /* Security.framework in Frameworks */,
-				11E927A31A10B1BA004741DE /* libavresample.a in Frameworks */,
 				78F841FD181E1430007722AE /* libWeChatSDK.a in Frameworks */,
+				11E175011A11F98500A6CF7F /* libavutil.a in Frameworks */,
 				F91AE3D016BBA54800BF3E5C /* QuartzCore.framework in Frameworks */,
 				E3FFBC6D16B7CE39001F0C3E /* libxml2.dylib in Frameworks */,
-				11E927A01A10B1BA004741DE /* libavdevice.a in Frameworks */,
-				11E927A21A10B1BA004741DE /* libavformat.a in Frameworks */,
+				11E174FE1A11F98500A6CF7F /* libavdevice.a in Frameworks */,
+				11E175001A11F98500A6CF7F /* libavformat.a in Frameworks */,
 				E3EA3AE4169E9491000DF7EE /* UIKit.framework in Frameworks */,
 				E3EA3AE6169E9491000DF7EE /* Foundation.framework in Frameworks */,
 				E3EA3AE8169E9491000DF7EE /* CoreGraphics.framework in Frameworks */,
 				1194012C17EE9B4400FA14D4 /* libBPush.a in Frameworks */,
-				11E927A51A10B1BA004741DE /* libswresample.a in Frameworks */,
-				11E9279F1A10B1BA004741DE /* libavcodec.a in Frameworks */,
+				11E174FD1A11F98500A6CF7F /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2118,14 +2112,12 @@
 		11DBB98619CA99BB008110E8 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				11E927971A10B1BA004741DE /* libavcodec.a */,
-				11E927981A10B1BA004741DE /* libavdevice.a */,
-				11E927991A10B1BA004741DE /* libavfilter.a */,
-				11E9279A1A10B1BA004741DE /* libavformat.a */,
-				11E9279B1A10B1BA004741DE /* libavresample.a */,
-				11E9279C1A10B1BA004741DE /* libavutil.a */,
-				11E9279D1A10B1BA004741DE /* libswresample.a */,
-				11E9279E1A10B1BA004741DE /* libswscale.a */,
+				11E174F71A11F98500A6CF7F /* libavcodec.a */,
+				11E174F81A11F98500A6CF7F /* libavdevice.a */,
+				11E174F91A11F98500A6CF7F /* libavfilter.a */,
+				11E174FA1A11F98500A6CF7F /* libavformat.a */,
+				11E174FB1A11F98500A6CF7F /* libavutil.a */,
+				11E174FC1A11F98500A6CF7F /* libswscale.a */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -4135,8 +4127,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kai yang (E76KEG2YY8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kai yang (E76KEG2YY8)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -4150,7 +4142,7 @@
 					"$(PROJECT_DIR)/etonkids-iphone/ffmpeg/include",
 				);
 				INFOPLIST_FILE = "etonkids-iphone/etonkids-iphone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/**",
@@ -4166,8 +4158,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e4985d56-96c8-421c-8760-a3fa0afe0fe8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "e4985d56-96c8-421c-8760-a3fa0afe0fe8";
+				PROVISIONING_PROFILE = "3a994eb4-c160-4cf9-abdf-86a24b07598b";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3a994eb4-c160-4cf9-abdf-86a24b07598b";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -4182,8 +4174,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kai yang (E76KEG2YY8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kai yang (E76KEG2YY8)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -4197,7 +4189,7 @@
 					"$(PROJECT_DIR)/etonkids-iphone/ffmpeg/include",
 				);
 				INFOPLIST_FILE = "etonkids-iphone/etonkids-iphone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/**",
@@ -4213,8 +4205,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e4985d56-96c8-421c-8760-a3fa0afe0fe8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "e4985d56-96c8-421c-8760-a3fa0afe0fe8";
+				PROVISIONING_PROFILE = "3a994eb4-c160-4cf9-abdf-86a24b07598b";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3a994eb4-c160-4cf9-abdf-86a24b07598b";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;

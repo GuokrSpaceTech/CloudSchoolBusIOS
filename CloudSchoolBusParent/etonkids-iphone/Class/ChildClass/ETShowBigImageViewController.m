@@ -373,14 +373,7 @@
 
 - (void)didClickBackButton
 {
-    
-    
-    
-//    [UIView animateWithDuration:0.5f animations:^{
-//        self.view.alpha = 0.0f;
-//    } completion:^(BOOL finished) {
         [self dismissModalViewControllerAnimated:YES];
-//    }];
 }
 
 - (void)didReceiveMemoryWarning

@@ -404,9 +404,6 @@
 
         if(code == 1)
         {
-//            NSLog(@"mm=%@",[NSJSONSerialization JSONObjectWithData:response options:nil error:nil]);
-//            ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"praiseSuccess",@"赞成功") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
-//            [alert show];
             
             NSString *key = [[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding] autorelease];
             
@@ -448,10 +445,6 @@
         }
         else if(code==-6)
         {
-//            ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"alreadypraise",@"您已经赞过了") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
-//            [alert show];
-            
-
         }
         else
         {
@@ -638,21 +631,6 @@
 {
     [super viewWillAppear:animated];
     
-//    UserLogin *user = [UserLogin currentLogin];
-//    NSLog(@"%d",user.loginStatus);
-    
-//    if (_tableView) {
-//        [_tableView reloadData];
-//    }
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doUpdate:) name:@"CommentNumberUpdate" object:nil];
-    
-//    NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
-//    if ([[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"1"] || [[userdefault objectForKey:@"AutoPlay"] isEqualToString:@"2"])
-//    {//如果设置自动播放
-//        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(controlVisibleCellPlay) object:nil];
-//        [self performSelector:@selector(controlVisibleCellPlay) withObject:nil afterDelay:0.1f];
-//    }
     
     isVisible = YES;
     

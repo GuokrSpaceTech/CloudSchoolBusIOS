@@ -136,40 +136,6 @@
     NSLog(@"%d",originShowNum);
     
     int temp = originShowNum;
-   // if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight)
-    //{
-//        navigationBackView.frame = CGRectMake(0, 0, iphone5 ? 568 : 480, NAVIHEIGHT);
-//        item.center = CGPointMake((iphone5 ? 568 : 480)/2, NAVIHEIGHT/2);
-//        rightButton.frame = CGRectMake((iphone5 ? 568 : 480) - 10 - 40, (NAVIHEIGHT - 35)/2.0f, 50, 35);
-//        scrollV.frame = CGRectMake(0, 0, iphone5 ? 568 : 480, 300);
-//        scrollV.contentOffset = CGPointMake((iphone5 ? 568 : 480) * temp, 0);
-//        
-//        scrollV.contentSize = CGSizeMake(scrollV.frame.size.width * self.imgUrlArr.count, scrollV.frame.size.height);
-//        
-//        for (id obj in scrollV.subviews) {
-//            
-//            if ([obj isKindOfClass:[ETZoomScrollView class]]) {
-//                ETZoomScrollView *imgV = (ETZoomScrollView *)obj;
-//                if (imgV.tag >= 777) {
-//                    imgV.frame = CGRectMake(scrollV.frame.size.width*(imgV.tag % 777), 0, scrollV.frame.size.width, scrollV.frame.size.height);
-//                    imgV.zoomScale = 1;
-//                    imgV.imageView.frame = CGRectMake(0,
-//                                                      0,
-//                                                      scrollV.frame.size.width,
-//                                                      scrollV.frame.size.height);
-//                }
-//            }
-//            
-//        }
-        
-        
-        
-        
-        
-        
-    //}
-    //else
-    //{
         navigationBackView.frame = CGRectMake(0, 0, 320, NAVIHEIGHT);
         item.center = CGPointMake(320/2, NAVIHEIGHT/2);
         rightButton.frame=CGRectMake(320 - 10 - 40, (NAVIHEIGHT - 35)/2.0f,50, 35);
@@ -398,9 +364,7 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    
-    
+{            
     if (scrollView == scrollV) {
         int offset = (int)scrollV.contentOffset.x/scrollV.frame.size.width;
 //        NSLog(@"offset  %f,%f , %d",scrollV.contentOffset.x,scrollV.frame.size.width,offset);
@@ -428,22 +392,24 @@
                 }
                 
             }
-            
-            
-            
-            
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
 }
 
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    
+    return toInterfaceOrientation==UIInterfaceOrientationPortrait;
+    
+}
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationPortrait;
+}
 
 
 - (void)dealloc

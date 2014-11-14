@@ -53,9 +53,7 @@
     }
     return self;
 }
--(UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
-}
+
 -(void)dealloc
 {
    // self.device=nil;
@@ -66,7 +64,7 @@
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    
+    [UIApplication sharedApplication].statusBarHidden=NO;;
     [UIApplication sharedApplication].idleTimerDisabled=NO;
 }
 - (void)leftButtonClick:(id)sender
@@ -76,57 +74,43 @@
     NSString *prot=user.port;
     [[GKSocket instanceddns:ddns port:prot] cleanUpStream];
     [UIApplication sharedApplication].idleTimerDisabled=NO;
+    [UIApplication sharedApplication].statusBarHidden=NO;;
    // [[GKSocket instance] cleanUpStream];
     [self.navigationController popViewControllerAnimated:YES];
+}
+-(BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor=[UIColor blackColor];
+
+
+
     [UIApplication sharedApplication].idleTimerDisabled=YES;
-    if (ios7) {
-        [self setNeedsStatusBarAppearanceUpdate];
-        
-        UIView *statusbar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
-        statusbar.backgroundColor = [UIColor blackColor];
-        [self.view addSubview:statusbar];
-        [statusbar release];
-        
-    }
-    
-    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, (ios7 ? 20 : 0) + NAVIHEIGHT, 320, self.view.frame.size.height - NAVIHEIGHT - (ios7 ? 20 : 0))];
-    backView.backgroundColor = CELLCOLOR;
-    [self.view insertSubview:backView atIndex:0];
-    [backView release];
+ 
+    [UIApplication sharedApplication].statusBarHidden=YES;;
+
     
     
-    navigationBackView=[[UIImageView alloc]initWithFrame:CGRectMake(0, (ios7 ? 20 : 0), 320, NAVIHEIGHT)];
-    navigationBackView.image=[UIImage imageNamed:@"navigationNoText.png"];
-    [self.view addSubview:navigationBackView];
-    [navigationBackView release];
+    glView = [[OpenGLView20 alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, self.view.frame.size.width)];
+    //设置视频原始尺寸
+    [glView setVideoSize:352 height:288];
+    //渲染yuv
+    [self.view addSubview:glView];
+    
+    self.view.transform= CGAffineTransformMakeRotation(M_PI/2);;
     
     UIButton *leftButton =[UIButton buttonWithType:UIButtonTypeCustom];
-    [leftButton setFrame:CGRectMake(0, 0, 50, 35)];
+    [leftButton setFrame:CGRectMake(300, 10, 50, 35)];
     [leftButton setCenter:CGPointMake(10 + 34/2, navigationBackView.frame.size.height/2+ (ios7 ? 20 : 0))];
     [leftButton setImage:[UIImage imageNamed:@"backBtnDefault_3.0.png"] forState:UIControlStateNormal];
     [leftButton setImage:[UIImage imageNamed:@"backBtnSel_3.0.png"] forState:UIControlStateHighlighted];
     [leftButton addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:leftButton];
-    
-    middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
-    middleLabel.textColor=[UIColor whiteColor];
-    middleLabel.text =  @"视频直播";
-    middleLabel.backgroundColor=[UIColor clearColor];
-    [self.view addSubview:middleLabel];
-    [middleLabel release];
-    
-    glView = [[OpenGLView20 alloc] initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height-( NAVIHEIGHT + (ios7 ? 20 : 0)))];
-    //设置视频原始尺寸
-    [glView setVideoSize:352 height:288];
-    //渲染yuv
-    [self.view addSubview:glView];
     
     avcodec_register_all();
     frame = av_frame_alloc();
@@ -139,22 +123,10 @@
     outputWidth = 320;
     outputHeight = 240;
     frameData=(Byte *)malloc(512*1024*sizeof(Byte));
-//    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
-//        [[UIDevice currentDevice] performSelector:@selector(setOrientation:)
-//                                       withObject:(id)UIInterfaceOrientationLandscapeRight];
-//    }
-    
-    //[self performSelectorInBackground:@selector(hahahah:) withObject:nil];
+
     [self loadVideo];
 }
-//-(void)setOrientation:(UIInterfaceOrientation)orientation
-//{
-//    CGSize size=[UIScreen mainScreen].bounds.size;
-//    navigationBackView.frame=CGRectMake(0, (ios7 ? 20 : 0), size.width, NAVIHEIGHT);
-//    
-//    glView.frame=CGRectMake(0, (ios7 ? 20 : 0)+NAVIHEIGHT, size.width, size.height-NAVIHEIGHT-(ios7 ? 20 : 0));
-//    middleLabel.frame=CGRectMake(50, 13+(ios7 ? 20 : 0), size.width-100,20);
-//}
+
 
 -(void)loadVideo
 {
@@ -173,9 +145,7 @@
     NSString *ddns=user.ddns;
     NSString *prot=user.port;
     GKSocket *socket=[GKSocket instanceddns:ddns port:prot];
-    //<TYPE>CheckUser</TYPE><User>%s</User><Pwd>%s</Pwd>","super","super
-    // NSString *response  =@"<TYPE>GetDeviceList</TYPE>";
-    //NSString *response =@"<TYPE>CheckUser</TYPE><User>super</User><Pwd>super</Pwd>";
+
     NSString *response=[NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"GB2312\" standalone=\"yes\"?> <TYPE>StartStream</TYPE>\
                         <DVRName>%@</DVRName>\
                         <ChnNo>0</ChnNo> <StreamType>1</StreamType>",user.camera_name];
@@ -339,44 +309,41 @@
 
 }
 
+- (void)deviceOrientationDidChange
 
+{
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIDeviceOrientationLandscapeLeft animated:YES];
+    UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    
+   // CGFloat startRotation = [[self valueForKeyPath:@"layer.transform.rotation.z"] floatValue];
+    
+    CGAffineTransform rotation;
+    
+    switch (interfaceOrientation) {
+            
+        case UIInterfaceOrientationLandscapeLeft:
+            
+            rotation = CGAffineTransformMakeRotation(M_PI*1.5);;
+            
+            break;
+
+            
+        default:
+            
+            rotation =CGAffineTransformIdentity;
+            
+            break;
+            
+    }
+    
+    self.view.transform = rotation;
+    
+}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval) duration {
-    
-    CGSize size=[UIScreen mainScreen].bounds.size;
-    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
-        NSLog(@"ss");
-        
-       // glView = [[OpenGLView20 alloc] initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height-( NAVIHEIGHT + (ios7 ? 20 : 0)))];
-        
-        navigationBackView.frame=CGRectMake(0, (ios7 ? 20 : 0), size.width, NAVIHEIGHT);
-       
-          glView.frame=CGRectMake(0, (ios7 ? 20 : 0)+NAVIHEIGHT, size.width, size.height-NAVIHEIGHT-(ios7 ? 20 : 0));
-        //设置视频原始尺寸
-    } else {
-        NSLog(@"dd");
-       // glView = [[OpenGLView20 alloc] initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height-( NAVIHEIGHT + (ios7 ? 20 : 0)))];
-        //设置视频原始尺寸
-        navigationBackView.frame=CGRectZero;
-        glView.frame=CGRectMake(0,0, size.width, size.height);
-    }
-      //  middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
-   // middleLabel.frame=CGRectMake(50, 13+(ios7 ? 20 : 0), size.width-100,20);
-}
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

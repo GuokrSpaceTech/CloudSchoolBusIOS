@@ -140,16 +140,10 @@ static EKRequest * instance = nil;
             return @"relationship";
         case resetpassword:
             return @"resetpassword";
-        case smartcard:
-            return @"smartcard";
         case attendancemanager:
             return @"attendancemanager";
-        case schoolstudent:
-            return @"schoolstudent";
-        case schoolcheck:
-            return @"schoolcheck";
-        case schoolad:
-            return @"schoolad";
+        case studenthealth:
+            return @"studenthealth";
         case report:
             return @"report";
         case search:
@@ -169,10 +163,7 @@ static EKRequest * instance = nil;
     {
         header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactoprest",@"apikey",CURRENTVERSION,@"Version", nil], nil];
     }
-    else if ((function==smartcard || function==schoolstudent || function==schoolcheck ||function== schoolad) && param != nil)
-    {
-        header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactopattendance",@"apikey",CURRENTVERSION,@"Version", nil], nil];
-    }
+
     else
     {
         GKUserLogin *user=[GKUserLogin currentLogin];

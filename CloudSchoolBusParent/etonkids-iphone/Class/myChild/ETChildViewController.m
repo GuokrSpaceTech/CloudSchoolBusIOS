@@ -44,6 +44,10 @@
     }
     return self;
 }
+-(BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"CHILDINFO" object:nil];

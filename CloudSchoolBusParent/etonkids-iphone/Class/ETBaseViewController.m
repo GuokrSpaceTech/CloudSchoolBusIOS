@@ -274,20 +274,7 @@
         }
     }
     
-//    if ([obj isKindOfClass:[NSData class]]) {
-//        NSData *d = (NSData *)obj;
-//        topBackImgView.image = [UIImage imageWithData:d];
-//    }
-//    else if ([obj isKindOfClass:[NSString class]])
-//    {
-//        NSString *num = (NSString *)obj;
-//        
-//        if ([num isEqualToString:@"-1"]) {
-//            <#statements#>
-//        }
-//        
-//        topBackImgView.image = [UIImage imageNamed:[imgArr objectAtIndex:num.intValue]];
-//    }
+
 }
 - (void)autoDragScrollLoading
 {
@@ -338,18 +325,6 @@
     [super dealloc];
 }
 
-//- (BOOL)shouldAutorotate
-//{
-//    return NO;
-//}
-//
-//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-//{
-//    return NO;
-//}
-//- (NSUInteger)supportedInterfaceOrientations
-//{
-//    return UIInterfaceOrientationPortrait;
-//}
+
 
 @end

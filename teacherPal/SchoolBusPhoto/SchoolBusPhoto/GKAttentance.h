@@ -14,9 +14,8 @@
 }
 @property (nonatomic,retain)NSString *studentId;
 @property (nonatomic,retain)NSString *studentName;
-@property (nonatomic,retain)NSString *intime;
-@property (nonatomic,retain)NSString *outtime;
-@property (nonatomic,retain)NSString *inavater;
-@property (nonatomic,retain)NSString *outavater;
-@property (nonatomic,assign)BOOL isAttence;
+@property (nonatomic,retain)NSString *createtime;
+
+@property (nonatomic,retain)NSString *imagepath;
+
 @end

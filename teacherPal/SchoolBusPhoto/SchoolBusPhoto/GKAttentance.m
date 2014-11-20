@@ -15,10 +15,9 @@
 
     
     self.studentName=nil;
-    self.intime=nil;
-    self.outavater=nil;
-    self.outtime=nil;
-    self.inavater=nil;
+
+    self.createtime=nil;
+    self.imagepath=nil;
     self.studentId=nil;
     [super dealloc];
 }

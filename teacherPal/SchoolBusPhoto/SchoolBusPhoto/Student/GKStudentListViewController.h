@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "GKBaseViewController.h"
-@interface GKStudentListViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate>
+#import "EKRequest.h"
+@interface GKStudentListViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate,EKProtocol>
 {
     UILabel *numLabel;
 }
 @property (nonatomic,retain)UITableView *_tableView;
 @property (nonatomic,retain)NSMutableArray *studentArr;
+@property (nonatomic,retain)NSMutableArray *tempatureArr;
 @end

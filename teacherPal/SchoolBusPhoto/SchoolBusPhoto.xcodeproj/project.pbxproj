@@ -124,6 +124,7 @@
 		119973401821FAB40017E99A /* GKMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1199733F1821FAB40017E99A /* GKMarket.m */; };
 		119973431822094F0017E99A /* GKMarketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 119973421822094F0017E99A /* GKMarketCell.m */; };
 		119973461822456D0017E99A /* GKMarketDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 119973451822456D0017E99A /* GKMarketDetailView.m */; };
+		1199F7EB1A1CAC8B00B57CDF /* GKClassBlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1199F7EA1A1CAC8B00B57CDF /* GKClassBlogViewController.m */; };
 		119AC2731839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 119AC2711839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodeld */; };
 		119AC2771839C63500ED19D3 /* GKUploaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 119AC2761839C63500ED19D3 /* GKUploaderCell.m */; };
 		119AC2991839FB3B00ED19D3 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 119AC2981839FB3B00ED19D3 /* DACircularProgressView.m */; };
@@ -217,7 +218,6 @@
 		11AF3B1718168F3400B36176 /* login_selBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3B1518168F3400B36176 /* login_selBtn.png */; };
 		11AF3B1918168FC400B36176 /* loginBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AF3B1818168FC400B36176 /* loginBtn@2x.png */; };
 		11B218171835C624002825FA /* GKNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B218161835C624002825FA /* GKNoticeViewController.m */; };
-		11B269BB193DB40C00E5369E /* GKHealthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B269BA193DB40C00E5369E /* GKHealthViewController.m */; };
 		11B269BF193DB61500E5369E /* GKAttentanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B269BE193DB61500E5369E /* GKAttentanceViewController.m */; };
 		11B269C2193DC94600E5369E /* GKAttentance.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B269C1193DC94600E5369E /* GKAttentance.m */; };
 		11B364BA191CB62C003E087E /* GKTeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B364B9191CB62C003E087E /* GKTeacher.m */; };
@@ -281,6 +281,7 @@
 		11BF898E183646DF008E72F0 /* GKBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BF898D183646DF008E72F0 /* GKBadgeView.m */; };
 		11C2328F1980F7410079F282 /* GKSchoolTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C2328E1980F7410079F282 /* GKSchoolTag.m */; };
 		11C232921980FF220079F282 /* GKButtonTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C232911980FF220079F282 /* GKButtonTag.m */; };
+		11C3829D1A1AF388004BD2DC /* GKDetailAttendanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C3829C1A1AF388004BD2DC /* GKDetailAttendanceViewController.m */; };
 		11C4326D19501BDF0096778C /* attendanceH-cn.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4326919501BDF0096778C /* attendanceH-cn.png */; };
 		11C4326E19501BDF0096778C /* attendanceH-en.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4326A19501BDF0096778C /* attendanceH-en.png */; };
 		11C4326F19501BDF0096778C /* attendanceN-cn.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C4326B19501BDF0096778C /* attendanceN-cn.png */; };
@@ -299,6 +300,7 @@
 		11C75DBA181273E600A3AA89 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DB6181273E600A3AA89 /* NSDataAdditions.m */; };
 		11C75DBB181273E600A3AA89 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C75DB8181273E600A3AA89 /* NSStringAdditions.m */; };
 		11C75DBD181276BA00A3AA89 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C75DBC181276BA00A3AA89 /* SystemConfiguration.framework */; };
+		11C7E8791A19DD9E001CBA9A /* GKAttentanceObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C7E8781A19DD9E001CBA9A /* GKAttentanceObj.m */; };
 		11CB883819877BF400A2A080 /* GKReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CB883719877BF400A2A080 /* GKReportViewController.m */; };
 		11CB883B19878CA400A2A080 /* GKReportHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CB883A19878CA400A2A080 /* GKReportHistoryViewController.m */; };
 		11CBB31718B1BBA100614FF0 /* delphoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CBB31518B1BBA100614FF0 /* delphoto.png */; };
@@ -627,6 +629,8 @@
 		119973421822094F0017E99A /* GKMarketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMarketCell.m; sourceTree = "<group>"; };
 		119973441822456D0017E99A /* GKMarketDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMarketDetailView.h; sourceTree = "<group>"; };
 		119973451822456D0017E99A /* GKMarketDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMarketDetailView.m; sourceTree = "<group>"; };
+		1199F7E91A1CAC8B00B57CDF /* GKClassBlogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GKClassBlogViewController.h; path = SchoolBusPhoto/GKClassBlogViewController.h; sourceTree = SOURCE_ROOT; };
+		1199F7EA1A1CAC8B00B57CDF /* GKClassBlogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GKClassBlogViewController.m; path = SchoolBusPhoto/GKClassBlogViewController.m; sourceTree = SOURCE_ROOT; };
 		119AC2721839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SchoolBusPhoto.xcdatamodel; sourceTree = "<group>"; };
 		119AC2741839C39300ED19D3 /* SchoolBusPhoto 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 2.xcdatamodel"; sourceTree = "<group>"; };
 		119AC2751839C63500ED19D3 /* GKUploaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKUploaderCell.h; sourceTree = "<group>"; };
@@ -780,8 +784,6 @@
 		11AF3B1818168FC400B36176 /* loginBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginBtn@2x.png"; sourceTree = "<group>"; };
 		11B218151835C624002825FA /* GKNoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKNoticeViewController.h; sourceTree = "<group>"; };
 		11B218161835C624002825FA /* GKNoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKNoticeViewController.m; sourceTree = "<group>"; };
-		11B269B9193DB40C00E5369E /* GKHealthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHealthViewController.h; sourceTree = "<group>"; };
-		11B269BA193DB40C00E5369E /* GKHealthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKHealthViewController.m; sourceTree = "<group>"; };
 		11B269BD193DB61500E5369E /* GKAttentanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAttentanceViewController.h; sourceTree = "<group>"; };
 		11B269BE193DB61500E5369E /* GKAttentanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAttentanceViewController.m; sourceTree = "<group>"; };
 		11B269C0193DC94600E5369E /* GKAttentance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAttentance.h; sourceTree = "<group>"; };
@@ -867,6 +869,8 @@
 		11C2328E1980F7410079F282 /* GKSchoolTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSchoolTag.m; sourceTree = "<group>"; };
 		11C232901980FF220079F282 /* GKButtonTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKButtonTag.h; sourceTree = "<group>"; };
 		11C232911980FF220079F282 /* GKButtonTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKButtonTag.m; sourceTree = "<group>"; };
+		11C3829B1A1AF388004BD2DC /* GKDetailAttendanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKDetailAttendanceViewController.h; sourceTree = "<group>"; };
+		11C3829C1A1AF388004BD2DC /* GKDetailAttendanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKDetailAttendanceViewController.m; sourceTree = "<group>"; };
 		11C4326919501BDF0096778C /* attendanceH-cn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attendanceH-cn.png"; sourceTree = "<group>"; };
 		11C4326A19501BDF0096778C /* attendanceH-en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attendanceH-en.png"; sourceTree = "<group>"; };
 		11C4326B19501BDF0096778C /* attendanceN-cn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attendanceN-cn.png"; sourceTree = "<group>"; };
@@ -893,6 +897,8 @@
 		11C75DB7181273E600A3AA89 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		11C75DB8181273E600A3AA89 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
 		11C75DBC181276BA00A3AA89 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		11C7E8771A19DD9E001CBA9A /* GKAttentanceObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAttentanceObj.h; sourceTree = "<group>"; };
+		11C7E8781A19DD9E001CBA9A /* GKAttentanceObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAttentanceObj.m; sourceTree = "<group>"; };
 		11CB883619877BF400A2A080 /* GKReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReportViewController.h; sourceTree = "<group>"; };
 		11CB883719877BF400A2A080 /* GKReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReportViewController.m; sourceTree = "<group>"; };
 		11CB883919878CA400A2A080 /* GKReportHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReportHistoryViewController.h; sourceTree = "<group>"; };
@@ -1785,8 +1791,8 @@
 		11B269B8193DB3F100E5369E /* healthy */ = {
 			isa = PBXGroup;
 			children = (
-				11B269B9193DB40C00E5369E /* GKHealthViewController.h */,
-				11B269BA193DB40C00E5369E /* GKHealthViewController.m */,
+				1199F7E91A1CAC8B00B57CDF /* GKClassBlogViewController.h */,
+				1199F7EA1A1CAC8B00B57CDF /* GKClassBlogViewController.m */,
 			);
 			path = healthy;
 			sourceTree = "<group>";
@@ -1798,6 +1804,10 @@
 				11B269BE193DB61500E5369E /* GKAttentanceViewController.m */,
 				11ECEDCE1946E3AC00BFB85A /* GKImageView.h */,
 				11ECEDCF1946E3AC00BFB85A /* GKImageView.m */,
+				11C7E8771A19DD9E001CBA9A /* GKAttentanceObj.h */,
+				11C7E8781A19DD9E001CBA9A /* GKAttentanceObj.m */,
+				11C3829B1A1AF388004BD2DC /* GKDetailAttendanceViewController.h */,
+				11C3829C1A1AF388004BD2DC /* GKDetailAttendanceViewController.m */,
 			);
 			path = Attentance;
 			sourceTree = "<group>";
@@ -2392,7 +2402,6 @@
 			files = (
 				11B4051B1918CE3700E56A59 /* GKAddStudentSearchViewController.h in Sources */,
 				2A32A56B18122C02007CAA8E /* main.m in Sources */,
-				11B269BB193DB40C00E5369E /* GKHealthViewController.m in Sources */,
 				78D8D11418C05CA9008860AB /* GKCommonClass.m in Sources */,
 				11BF898E183646DF008E72F0 /* GKBadgeView.m in Sources */,
 				119E96221814C5A300866DE8 /* ASICloudFilesContainer.m in Sources */,
@@ -2419,6 +2428,7 @@
 				111E511D1988E0A0007D9C6E /* GKReportModel.m in Sources */,
 				11DA38AF181F55DB00B6A6AC /* UIScrollView+UITouchEvent.m in Sources */,
 				11C75DBA181273E600A3AA89 /* NSDataAdditions.m in Sources */,
+				1199F7EB1A1CAC8B00B57CDF /* GKClassBlogViewController.m in Sources */,
 				119AC2771839C63500ED19D3 /* GKUploaderCell.m in Sources */,
 				111E8CE7181E532400234014 /* UIButton+WebCache.m in Sources */,
 				11B4051A1918CC4400E56A59 /* GKSearchCell.m in Sources */,
@@ -2466,6 +2476,7 @@
 				11B218171835C624002825FA /* GKNoticeViewController.m in Sources */,
 				111E8CEA181E532400234014 /* UIImage+WebP.m in Sources */,
 				11AB5FE218A5E227001E2EB1 /* HTCopyableLabel.m in Sources */,
+				11C7E8791A19DD9E001CBA9A /* GKAttentanceObj.m in Sources */,
 				78881912187F9A2600D0A851 /* GKDraftViewController.m in Sources */,
 				1199733D1821FA700017E99A /* GKMarketGird.m in Sources */,
 				111E8CDF181E532400234014 /* NSData+GIF.m in Sources */,
@@ -2492,6 +2503,7 @@
 				11C75DA61812725600A3AA89 /* EKRequest.m in Sources */,
 				119E96211814C5A300866DE8 /* ASICloudFilesCDNRequest.m in Sources */,
 				1102A7E8181A4E2000E6295C /* GKAboutViewController.m in Sources */,
+				11C3829D1A1AF388004BD2DC /* GKDetailAttendanceViewController.m in Sources */,
 				11CE2A85187FA18400742001 /* NSDate+convenience.m in Sources */,
 				1193A6BD182B9A64004011BC /* GKLetterData.m in Sources */,
 				119566B3181E098300366B13 /* GKLetterCell.m in Sources */,

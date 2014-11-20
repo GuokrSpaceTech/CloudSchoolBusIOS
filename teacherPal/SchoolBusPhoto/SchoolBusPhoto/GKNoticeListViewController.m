@@ -348,27 +348,7 @@
  
     //回执
     
-//    NSMutableString *selectobectStr =[NSMutableString stringWithString:@""];
-//    NSLog(@"~~~~~~~~%@",_notice.slistname);
-//    for (int i=0; i<[_notice.slistname count]; i++) {
-//        [selectobectStr appendFormat:@"%@    " ,[_notice.slistname objectAtIndex:i]];
-//    }
-//    if(![selectobectStr isEqualToString:@""])
-//    {
-//        NSString *huizhiText=[NSString stringWithFormat:@"%@:%@",@"回执",selectobectStr];
-//        
-//        CGSize huizSize=[huizhiText sizeWithFont:FONTSIZE constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:NSLineBreakByWordWrapping];
-//        height+=huizSize.height;
-//        height+=5;
-//        
-//    }
-//    else
-//    {
-//        height+=0;
-//    }
-    
-    
-//pic
+
     
     if([_notice.plist count]==1)
     {
@@ -387,46 +367,21 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //[tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     GKNoticeCell *cell=(GKNoticeCell *)[tableView cellForRowAtIndexPath:indexPath];
     [cell.contentlabel setCopyMenuVisible:NO];
-    
-     GKNotice *_notice=[noticeList objectAtIndex:indexPath.row];
-    
+    GKNotice *_notice=[noticeList objectAtIndex:indexPath.row];
     GKNoticeInfoViewController *infoVC=[[GKNoticeInfoViewController alloc]init];
     infoVC.notice=_notice;
     [self.navigationController pushViewController:infoVC animated:YES];
     [infoVC release];
-//    _notice.open=!_notice.open;
-//    [_tableView reloadData];
 }
 
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//    
-//    if (self._slimeView) {
-//        [self._slimeView scrollViewDidScroll];
-//    }
-//    
-//}
-//
-//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-//{
-//    if (self._slimeView) {
-//        [self._slimeView scrollViewDidEndDraging];
-//    }
-//    
-//    
-//}
+
 - (void)slimeRefreshStartRefresh:(SRRefreshView *)refreshView
 {
     NSLog(@"start refresh");
-    //    [self showHUD:YES];
     NSDictionary * param = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",@"0",@"checkuserid",nil];
-    
     [self loadNotice:param];
-    //theRefreshPos = EGORefreshHeader;
-    //[self requestNoticeData:nil];
 }
 -(void)setFooterView
 {

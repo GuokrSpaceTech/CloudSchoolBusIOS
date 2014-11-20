@@ -181,7 +181,7 @@
     imageView.backgroundColor=[UIColor clearColor];
     [scroller addSubview:imageView];
     [imageView release];
-    imageView.contentMode=UIViewContentModeScaleAspectFit;
+    imageView.contentMode=UIViewContentModeScaleAspectFill;
     
     
     if(type==1)
@@ -214,10 +214,7 @@
         }];
 
     }
-//    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick:)];
-//    tap.numberOfTapsRequired=1;
-//    [imageView addGestureRecognizer:tap];
-//    [tap release];
+
     
     
     

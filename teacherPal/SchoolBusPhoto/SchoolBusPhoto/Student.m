@@ -32,9 +32,21 @@ orderendtime,
 healthstate,
 stunumber,
 xuefeuTime;
-
+@synthesize inSchoolHealth,parentAlert;
+-(id)init
+{
+    if(self=[super init])
+    {
+        [self setInSchoolHealth:@""];
+        [self setParentAlert:@""];
+    }
+    
+    return self;
+}
 -(void)dealloc
 {
+    self.inSchoolHealth=nil;
+    self.parentAlert=nil;
     self.absence=nil;
     self.avatar=nil;
     self.birthday=nil;

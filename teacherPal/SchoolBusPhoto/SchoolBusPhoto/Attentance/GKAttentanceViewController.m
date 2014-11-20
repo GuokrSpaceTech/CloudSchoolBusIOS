@@ -14,6 +14,8 @@
 #import "UIImageView+WebCache.h"
 #import "GKShowBigImageViewController.h"
 #import "GKImageView.h"
+#import "GKDetailAttendanceViewController.h"
+#import "GKAttentanceObj.h"
 #define TAGNAME 6256
 #define TAGINLABEL 6257
 #define TAGOUTLABEL 6258
@@ -178,21 +180,37 @@
         if(code==1)
         {
             [attenceArr removeAllObjects];
-            NSArray *arr=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
-            
+            NSDictionary *rootDic=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
+            NSArray *arr=[rootDic objectForKey:@"attendance"];
             for (int i=0; i<[arr count]; i++) {
-                GKAttentance *attence=[[GKAttentance alloc]init];
-                attence.studentId=[[arr objectAtIndex:i] objectForKey:@"studentid"];
-                attence.intime=[[arr objectAtIndex:i] objectForKey:@"start_time"];
-                attence.outtime=[[arr objectAtIndex:i] objectForKey:@"end_time"];
-                attence.inavater=[NSString stringWithFormat:@"%@",[[arr objectAtIndex:i] objectForKey:@"startpath"]];
-                attence.outavater=[NSString stringWithFormat:@"%@",[[arr objectAtIndex:i] objectForKey:@"endpath"]];
-                attence.studentName=[[arr objectAtIndex:i] objectForKey:@"enname"];
-                attence.isAttence=YES;
-                [attenceArr addObject:attence];
+                
+                NSDictionary *dic=[arr objectAtIndex:i];
+                
+                GKAttentanceObj *obj=[[GKAttentanceObj alloc]init];
+                obj.stuentid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"studentid"]];
+                obj.cnname=[dic objectForKey:@"cnname"];
+                obj.isAttence=YES;
+               
+                NSArray *attArr=[dic objectForKey:@"record"];
+                
+                for (int j=0; j<[attArr count]; j++) {
+                    GKAttentance *attence=[[GKAttentance alloc]init];
+                    attence.studentId=[[attArr objectAtIndex:j] objectForKey:@"studentid"];
+                 
+            
+                    attence.studentName=[[attArr objectAtIndex:j] objectForKey:@"enname"];
+                    attence.imagepath=[[attArr objectAtIndex:j] objectForKey:@"imgpath"];
+                    attence.createtime=[[attArr objectAtIndex:j] objectForKey:@"createtime"];
+                    [obj.attendanceArr addObject:attence];
+                    [attence release];
+                }
+                
+                [attenceArr addObject:obj];
+                [obj release];
+                
 
             }
-            numLabel.text=[NSString stringWithFormat:@"%d %@",[arr count],NSLocalizedString(@"alreadyattendance", @"")];
+            numLabel.text=[NSString stringWithFormat:@"%d %@",[attenceArr count],NSLocalizedString(@"alreadyattendance", @"")];
             
             //计算出未考勤孩子
             NSMutableArray *arrtemp=[[NSMutableArray alloc]init];
@@ -202,9 +220,9 @@
                 Student *st=[user.studentArr objectAtIndex:i];
                 BOOL found=NO;
                 for (int j=0; j<[attenceArr count]; j++) {
-                    GKAttentance *attence=[attenceArr objectAtIndex:j];
+                    GKAttentanceObj *attence=[attenceArr objectAtIndex:j];
                     
-                    if([st.studentid intValue]  ==  [attence.studentId intValue])
+                    if([st.studentid intValue]  ==  [attence.stuentid intValue])
                     {
                         found=YES;
                         break;
@@ -213,12 +231,10 @@
                 }
                 if(found==NO)
                 {
-                    GKAttentance *attence=[[GKAttentance alloc]init];
-                    attence.studentId=[NSString stringWithFormat:@"%@",st.studentid];
-                    attence.studentName=st.enname;
-                    attence.intime=@"";
-                    attence.outtime=@"";
-                    //[attenceArr addObject:attence];
+                    GKAttentanceObj *attence=[[GKAttentanceObj alloc]init];
+                    attence.cnname=st.cnname;
+                    attence.isAttence=NO;
+                    attence.stuentid=[NSString stringWithFormat:@"%@",st.studentid];
                     [arrtemp addObject:attence];
                     [attence release];
                 }
@@ -316,7 +332,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [attenceArr count];
-}
+} 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier=@"cell";
@@ -337,114 +353,32 @@
         
         
         
-        UILabel * inlabel =[[UILabel alloc]initWithFrame:CGRectMake(80, 5, 150, 18)];
-        inlabel.backgroundColor=[UIColor clearColor];
-        inlabel.font=[UIFont systemFontOfSize:14];
+        UILabel * normalLabel =[[UILabel alloc]initWithFrame:CGRectMake(150, 15, 100, 18)];
+        normalLabel.backgroundColor=[UIColor clearColor];
+        normalLabel.font=[UIFont systemFontOfSize:14];
         //inlabel.text=@"入园时间：";
-        inlabel.tag=TAGINLABEL;
-        [cell.contentView addSubview:inlabel];
-        [inlabel release];
+        normalLabel.tag=TAGINLABEL;
+        [cell.contentView addSubview:normalLabel];
+        [normalLabel release];
         
-        UILabel * outlabel =[[UILabel alloc]initWithFrame:CGRectMake(80, 25, 150, 18)];
-        outlabel.backgroundColor=[UIColor clearColor];
-        outlabel.font=[UIFont systemFontOfSize:14];
-        //outlabel.text=@"离园时间：";
-        outlabel.tag=TAGOUTLABEL;
-        [cell.contentView addSubview:outlabel];
-        [outlabel release];
-        
-        
-        
-        GKImageView *imageViewIn=[[GKImageView alloc]initWithFrame:CGRectMake(220, 5, 40, 40)];
-        imageViewIn.backgroundColor=[UIColor clearColor];
-        imageViewIn.userInteractionEnabled=YES;
-        [cell.contentView addSubview:imageViewIn];
-        imageViewIn.tag=TAGINIMAGE;
-        [imageViewIn release];
-        
-        UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapInClick:)];
-        tap.numberOfTapsRequired=1;
-        [imageViewIn addGestureRecognizer:tap];
-        [tap release];
-        
-        GKImageView *imageViewout=[[GKImageView alloc]initWithFrame:CGRectMake(265, 5, 40, 40)];
-        imageViewout.backgroundColor=[UIColor clearColor];
-        imageViewout.tag=TAGOUTIMAGE;
-        imageViewout.userInteractionEnabled=YES;
-        [cell.contentView addSubview:imageViewout];
-        [imageViewout release];
-        UITapGestureRecognizer *tap1=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapInClick:)];
-        tap1.numberOfTapsRequired=1;
-        [imageViewout addGestureRecognizer:tap1];
-        [tap1 release];
+
         
     }
     
-    GKAttentance *attence=[attenceArr objectAtIndex:indexPath.row];
-    
+    GKAttentanceObj *attence=[attenceArr objectAtIndex:indexPath.row];
+//    
     UILabel *namelabel=(UILabel *)[cell.contentView viewWithTag:TAGNAME];
-    namelabel.text=attence.studentName;
-    UILabel *inlabel=(UILabel *)[cell.contentView viewWithTag:TAGINLABEL];
-    inlabel.text=@"";
-//    UILabel *intime=(UILabel *)[cell.contentView viewWithTag:TAGINTIME];
-//    intime.text=@"";
-    
-    UILabel *outlabel=(UILabel *)[cell.contentView viewWithTag:TAGOUTLABEL];
-    outlabel.text=@"";
-//    UILabel *outtime=(UILabel *)[cell.contentView viewWithTag:TAGOUTTIME];
-//    outtime.text=@"";
-    
-    inlabel.textColor=[UIColor blackColor];
-    GKImageView *inImageView=(GKImageView *)[cell.contentView viewWithTag:TAGINIMAGE];
-    
-    GKImageView *outImageView=(GKImageView *)[cell.contentView viewWithTag:TAGOUTIMAGE];
-    inImageView.image=nil;
-    outImageView.image=nil;
-    
-    if(attence.isAttence==NO)
+    namelabel.text=attence.cnname;
+    UILabel *normalLabel=(UILabel *)[cell.contentView viewWithTag:TAGINLABEL];
+    if(attence.isAttence==YES)
     {
-        inlabel.frame=CGRectMake(150, 15, 100, 18);
-        inlabel.text=NSLocalizedString(@"nodate", @"");
-        inlabel.textColor=[UIColor grayColor];
-        outImageView.userInteractionEnabled=NO;
-        inImageView.userInteractionEnabled=NO;
-        inImageView.image=nil;
-        outImageView.image=nil;
+        normalLabel.text=@"有考勤";
     }
     else
     {
-        inlabel.frame=CGRectMake(80, 5, 150, 18);
-
-        inlabel.text=[NSString stringWithFormat:@"%@%@",NSLocalizedString(@"inclasstime", @""),attence.intime];
-        outlabel.text=[NSString stringWithFormat:@"%@%@",NSLocalizedString(@"outclasstime", @""),attence.outtime];
-        
-        inImageView.urlPath=attence.inavater;
-        if(![attence.outavater isEqualToString:@""])
-        {
-            outImageView.urlPath=[NSString stringWithFormat:@"http://%@",attence.outavater];
-            [outImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",attence.outavater]] placeholderImage:[UIImage imageNamed:@"defaultattendance.png"]];
-            outImageView.userInteractionEnabled=YES;
-
-        }
-        else
-        {
-            outImageView.userInteractionEnabled=NO;
-        }
-        
-       // NSURL
-        if(![attence.inavater isEqualToString:@""])
-        {
-            inImageView.urlPath=[NSString stringWithFormat:@"http://%@",attence.inavater];
-            [inImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",attence.inavater]] placeholderImage:[UIImage imageNamed:@"defaultattendance.png"]];
-            inImageView.userInteractionEnabled=YES;
-        }
-        else
-        {
-            inImageView.userInteractionEnabled=NO;
-        }
-        
-
+        normalLabel.text=@"无考勤";
     }
+
     
     return cell;
     
@@ -455,6 +389,21 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    GKAttentanceObj *obj=[attenceArr objectAtIndex:indexPath.row];
+    
+    NSMutableArray *arr=obj.attendanceArr;
+    
+    
+    UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
+    
+    CGRect point=[cell convertRect:cell.frame toView:self.view];
+    
+    
+
+    GKDetailAttendanceViewController *DetailVc=[[GKDetailAttendanceViewController alloc]init];
+    DetailVc.attendanceArr=arr;
+    [self.navigationController pushViewController:DetailVc animated:YES];
+    [DetailVc release];
     
 }
 

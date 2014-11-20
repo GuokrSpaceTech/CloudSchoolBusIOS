@@ -209,7 +209,7 @@
     
     NSDateFormatter *dateformatter=[[NSDateFormatter alloc]init];
     //[dateformatter setDateStyle:"hh:MM:ss"];
-    [dateformatter setTimeStyle:"hh:MM"];
+    [dateformatter setTimeStyle:@"hh:MM"];
     
     NSString *timestr=[dateformatter stringFromDate:date];
     

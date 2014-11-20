@@ -14,6 +14,7 @@
 #import "UIImageView+WebCache.h"
 #import "GKAddStudentSearchViewController.h"
 #import "GKMainViewController.h"
+#import "GKTempature.h"
 #define CELLTAG 100
 @interface GKStudentListViewController ()
 
@@ -93,9 +94,62 @@
     [numLabel release];
     [bottomView release];
     
+    
+    [self loadHealthState];
 	// Do any additional setup after loading the view.
 }
+-(void)loadHealthState
+{
+  
+    [[EKRequest Instance] EKHTTPRequest:studenthealth parameters:nil requestMethod:GET forDelegate:self];
+}
+-(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
+{
 
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:NSLocalizedString(@"alert", @"") message:NSLocalizedString(@"network", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
+    [alert show];
+    [alert release];
+}
+-(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
+{
+    NSString *aa=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",aa);
+
+    if(method==studenthealth)
+    {
+        if(code==1)
+        {
+          //  [_tempatureArr removeAllObjects];
+            NSArray *arr=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
+            for (int i=0; i<[arr count]; i++) {
+                NSDictionary *dic=[arr objectAtIndex:i];
+                
+                NSString *stuid=[NSString stringWithFormat:@"%@",[dic objectForKey:@"studentid"]];
+                
+                for (int j=0; j<[studentArr count]; j++) {
+                    Student *st=[studentArr objectAtIndex:j];
+                    
+                    if([st.studentid intValue]==[stuid intValue])
+                    {
+                        st.parentAlert=[dic objectForKey:@"reminder"];
+                        st.inSchoolHealth=[dic objectForKey:@"healthstate"];
+                   
+                        break;
+                        
+                    }
+                    
+                }
+                
+            }
+            
+            [self._tableView reloadData];
+            //
+        }
+        
+        
+    }
+    
+}
 -(void)addStudent:(UIButton *)btn
 {
     GKAddStudentSearchViewController *addStudentVC=[[GKAddStudentSearchViewController alloc]init];
@@ -136,7 +190,7 @@
         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
         cell.backgroundColor=[UIColor clearColor];
-        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 65, 40)];
+        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 65, 60)];
         imageView.backgroundColor=[UIColor clearColor];
         imageView.tag=CELLTAG;
         
@@ -150,34 +204,59 @@
         [cell.contentView addSubview:nameLabel];
         [nameLabel release];
         
-        UILabel *ageLabel=[[UILabel alloc]initWithFrame:CGRectMake(150 , 5, 60, 20)];
-        ageLabel.backgroundColor=[UIColor clearColor];
-        ageLabel.font=[UIFont systemFontOfSize:14];
-        if(IOSVERSION>=6.0)
-            ageLabel.textAlignment=NSTextAlignmentCenter;
-        else
-            ageLabel.textAlignment=UITextAlignmentCenter;
-        ageLabel.tag=CELLTAG+2;
-        [cell.contentView addSubview:ageLabel];
-        [ageLabel release];
+//        UILabel *ageLabel=[[UILabel alloc]initWithFrame:CGRectMake(150 , 5, 60, 20)];
+//        ageLabel.backgroundColor=[UIColor clearColor];
+//        ageLabel.font=[UIFont systemFontOfSize:14];
+//        if(IOSVERSION>=6.0)
+//            ageLabel.textAlignment=NSTextAlignmentCenter;
+//        else
+//            ageLabel.textAlignment=UITextAlignmentCenter;
+//        ageLabel.tag=CELLTAG+2;
+//        [cell.contentView addSubview:ageLabel];
+//        [ageLabel release];
         
-        UILabel *priceLabel=[[UILabel alloc]initWithFrame:CGRectMake(220, 5, 70, 20)];
-        priceLabel.backgroundColor=[UIColor clearColor];
-        priceLabel.tag=CELLTAG+3;
-        priceLabel.font=[UIFont systemFontOfSize:14];
-        [cell.contentView addSubview:priceLabel];
-        [priceLabel release];
+//        UILabel *priceLabel=[[UILabel alloc]initWithFrame:CGRectMake(220, 5, 70, 20)];
+//        priceLabel.backgroundColor=[UIColor clearColor];
+//        priceLabel.tag=CELLTAG+3;
+//        priceLabel.font=[UIFont systemFontOfSize:14];
+//        [cell.contentView addSubview:priceLabel];
+//        [priceLabel release];
         
+//        UILabel *inschoolLabel=[[UILabel alloc]initWithFrame:CGRectMake(220, 5, 70, 20)];
+//        inschoolLabel.backgroundColor=[UIColor clearColor];
+//        inschoolLabel.tag=CELLTAG+3;
+//        inschoolLabel.font=[UIFont systemFontOfSize:14];
+//        [cell.contentView addSubview:inschoolLabel];
+//        [inschoolLabel release];
+        
+        UIImageView *stateImageView=[[UIImageView alloc]initWithFrame:CGRectMake(290, 5, 5, 5)];
+        stateImageView.backgroundColor=[UIColor redColor];
+        stateImageView.tag=CELLTAG+3;
+        [cell.contentView addSubview:stateImageView];
+        [stateImageView release];
         
         UILabel *healthLabel=[[UILabel alloc]initWithFrame:CGRectMake(75, 25, 220, 20)];
         healthLabel.backgroundColor=[UIColor clearColor];
         healthLabel.tag=CELLTAG+4;
         healthLabel.textColor=[UIColor grayColor];
-        healthLabel.font=[UIFont systemFontOfSize:14];
+        healthLabel.font=[UIFont systemFontOfSize:12];
         [cell.contentView addSubview:healthLabel];
         [healthLabel release];
         
-        UIImageView *LineimageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 49, 320, 1)];
+        
+
+        
+        
+        UILabel *reminderLabel=[[UILabel alloc]initWithFrame:CGRectMake(75, 25, 220, 20)];
+        reminderLabel.backgroundColor=[UIColor clearColor];
+        reminderLabel.tag=CELLTAG+5;
+        reminderLabel.textColor=[UIColor grayColor];
+        reminderLabel.font=[UIFont systemFontOfSize:12];
+        [cell.contentView addSubview:reminderLabel];
+        [reminderLabel release];
+        
+        
+        UIImageView *LineimageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 69, 320, 1)];
         
         LineimageView.image=IMAGENAME(IMAGEWITHPATH(@"line"));;
         [cell.contentView addSubview:LineimageView];
@@ -187,55 +266,61 @@
    
         
     }
-     Student *st=[studentArr objectAtIndex:indexPath.row];
+    Student *st=[studentArr objectAtIndex:indexPath.row];
     UIImageView *imageView=(UIImageView *)[cell.contentView viewWithTag:CELLTAG];
     UILabel *nameLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+1];
-    UILabel *ageLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+2];
-    UILabel *priceLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+3];
+   // UILabel *ageLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+2];
+    UIImageView *stateImageView=(UIImageView *)[cell.contentView viewWithTag:CELLTAG+3];
     UILabel *healthLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+4];
+    UILabel *reminderLabel=(UILabel *)[cell.contentView viewWithTag:CELLTAG+5];
+    
     if([st.healthstate isEqualToString:@""])
     {
-        nameLabel.frame=CGRectMake(75, 15, 90, 20);
-        ageLabel.frame=CGRectMake(150 , 15, 60, 20);
-        priceLabel.frame=CGRectMake(220, 15, 70, 20);
+        nameLabel.frame=CGRectMake(75, 10, 90, 20);
+       // ageLabel.frame=CGRectMake(150 , 15, 60, 20);
+        //inschoolLabel.frame=CGRectMake(220, 10, 70, 20);
         healthLabel.frame=CGRectZero;
+        
+        reminderLabel.frame=CGRectMake(75, 40, 220, 20);
     }
     else
     {
         nameLabel.frame=CGRectMake(75, 5, 90, 20);
-        ageLabel.frame=CGRectMake(150 , 5, 60, 20);
-        priceLabel.frame=CGRectMake(220, 5, 70, 20);
-        healthLabel.frame=CGRectMake(75, 25, 220, 20);
+       // ageLabel.frame=CGRectMake(150 , 5, 60, 20);
+        //inschoolLabel.frame=CGRectMake(220, 5, 70, 20);
+
+        reminderLabel.frame=CGRectMake(75, 25, 220, 20);
+        healthLabel.frame=CGRectMake(75, 45, 220, 20);
     }
    
     
     [imageView setImageWithURL:[NSURL URLWithString:st.avatar] placeholderImage:nil options:SDWebImageRefreshCached];
-    
-    nameLabel.text=st.enname;;
-    if([st.age intValue]<=0)
-     ageLabel.text=[NSString stringWithFormat:@"%d %@",0,NSLocalizedString(@"oldyear", @"")];
-    else
-    ageLabel.text=[NSString stringWithFormat:@"%@ %@",st.age,NSLocalizedString(@"oldyear", @"")];
-    if(st.orderendtime==nil  || [st.orderendtime isKindOfClass:[NSNull class]]  || [st.orderendtime isEqualToString:@""])
+    if([st.parentAlert isEqualToString:@""])
     {
-        priceLabel.text=NSLocalizedString(@"Notservice", @"");
-        priceLabel.textColor=[UIColor redColor];
-        
+        reminderLabel.text=@"今日提醒：无";
     }
     else
     {
-        int time=[[NSDate date] timeIntervalSinceNow];
-        if(time<[[st orderendtime] integerValue])
-        {
-            priceLabel.text=NSLocalizedString(@"Inservice", @"");
-            priceLabel.textColor=[UIColor blackColor];
-        }
-        else
-        {
-            priceLabel.text=NSLocalizedString(@"renewal", @"");
-            priceLabel.textColor=[UIColor redColor];
-        }
-        
+        reminderLabel.text=[NSString stringWithFormat:@"今日提醒：%@",st.parentAlert];
+    }
+    nameLabel.text=st.enname;;
+//    if([st.age intValue]<=0)
+//     ageLabel.text=[NSString stringWithFormat:@"%d %@",0,NSLocalizedString(@"oldyear", @"")];
+//    else
+//    ageLabel.text=[NSString stringWithFormat:@"%@ %@",st.age,NSLocalizedString(@"oldyear", @"")];
+   // inschoolLabel.text=st.inSchoolHealth;
+    if([st.inSchoolHealth integerValue]==0)
+    {
+        //bu
+        stateImageView.backgroundColor=[UIColor redColor];
+    }
+    else if([st.inSchoolHealth integerValue]==1)
+    {
+        stateImageView.backgroundColor=[UIColor greenColor];
+    }
+    else
+    {
+        stateImageView.backgroundColor=[UIColor clearColor];
     }
     
     healthLabel.text=st.healthstate;
@@ -244,7 +329,8 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    
+    return 70;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

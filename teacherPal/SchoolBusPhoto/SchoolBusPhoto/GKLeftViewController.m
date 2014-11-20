@@ -16,7 +16,7 @@
 #import "GKLoaderManager.h"
 #import "GKUpLoaderViewController.h"
 #import "GKNoticeListViewController.h"
-#import "GKHealthViewController.h"
+#import "GKClassBlogViewController.h"
 #import "GKAttentanceViewController.h"
 
 #import "GKReportViewController.h"
@@ -284,7 +284,7 @@
     {
         // 每日晨检
         
-        GKHealthViewController *health=[[GKHealthViewController alloc]init];
+        GKClassBlogViewController *health=[[GKClassBlogViewController alloc]init];
         KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:health];
         [health release];
         

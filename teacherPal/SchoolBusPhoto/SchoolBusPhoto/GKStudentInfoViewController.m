@@ -105,7 +105,7 @@
         return 3;
     else if(section==1)
         return 6;
-    return 1;
+    return 2;
     
 }
  -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -297,25 +297,50 @@
             [contentLabel release];
         }
         
-
         UILabel *nameLabel=(UILabel *)[cell.contentView viewWithTag:TAGCELL+100];
-        nameLabel.text=NSLocalizedString(@"guoming", @"");
-        
-        NSString * healthStateTmp=nil;
-        if([st.healthstate isEqualToString:@""])
+        UILabel *contentLabel=(UILabel *)[cell.contentView viewWithTag:TAGCELL+101];
+        if(indexPath.row==0)
         {
-            healthStateTmp=NSLocalizedString(@"None", @"");
+         
+            nameLabel.text=NSLocalizedString(@"guoming", @"");
+            
+            NSString * healthStateTmp=nil;
+            if([st.healthstate isEqualToString:@""])
+            {
+                healthStateTmp=NSLocalizedString(@"None", @"");
+            }
+            else
+            {
+                healthStateTmp=st.healthstate;
+            }
+            
+            
+            CGSize size=[healthStateTmp sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 500) lineBreakMode:NSLineBreakByCharWrapping];
+            
+            contentLabel.frame=CGRectMake(10, 35, 300, size.height);
+            contentLabel.text=healthStateTmp;
         }
         else
         {
-            healthStateTmp=st.healthstate;
+            nameLabel.text=@"今日提醒";
+            NSString * healthStateTmp=nil;
+            if([st.parentAlert isEqualToString:@""])
+            {
+                healthStateTmp=NSLocalizedString(@"None", @"");
+            }
+            else
+            {
+                healthStateTmp=st.parentAlert;
+            }
+            
+            
+            CGSize size=[healthStateTmp sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 500) lineBreakMode:NSLineBreakByCharWrapping];
+            
+            contentLabel.frame=CGRectMake(10, 35, 300, size.height);
+            contentLabel.text=healthStateTmp;
+
         }
-        
-        
-        CGSize size=[healthStateTmp sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 500) lineBreakMode:NSLineBreakByCharWrapping];
-        UILabel *contentLabel=(UILabel *)[cell.contentView viewWithTag:TAGCELL+101];
-        contentLabel.frame=CGRectMake(10, 35, 300, size.height);
-        contentLabel.text=healthStateTmp;
+
         return cell;
         
             
@@ -400,9 +425,19 @@
     return 44;
     else
     {
-        CGSize size=[st.healthstate sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 500) lineBreakMode:NSLineBreakByCharWrapping];
-       
-        return 35+size.height+10;
+        if(indexPath.row==0)
+        {
+            CGSize size=[st.healthstate sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 500) lineBreakMode:NSLineBreakByCharWrapping];
+            
+            return 35+size.height+10;
+        }
+        else
+        {
+            CGSize size=[st.parentAlert sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 500) lineBreakMode:NSLineBreakByCharWrapping];
+            
+            return 35+size.height+10;
+        }
+
         //contentLabel.frame=CGRectMake(10, 35, 300, size.height);
     }
     return 0;

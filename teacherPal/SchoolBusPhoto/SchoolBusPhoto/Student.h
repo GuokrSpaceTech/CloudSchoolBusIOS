@@ -16,97 +16,102 @@
 /**
  *	学生缺勤原因
  */
-@property (nonatomic,copy) NSString *absence;
+@property (nonatomic,retain) NSString *absence;
 
 /**
  *	学生头像
  */
-@property (nonatomic,copy) NSString *avatar;
+@property (nonatomic,retain) NSString *avatar;
 
 /**
  *	学生年龄
  */
-@property (nonatomic,copy) NSNumber *age;
+@property (nonatomic,retain) NSNumber *age;
 
 
 /**
  *	学号
  */
-@property (nonatomic,copy) NSNumber *stunumber;
+@property (nonatomic,retain) NSNumber *stunumber;
 
 
 /**
  *	学生生日
  */
-@property (nonatomic,copy) NSString *birthday;
+@property (nonatomic,retain) NSString *birthday;
 
 /**
  *	学生中文名
  */
-@property (nonatomic,copy) NSString *cnname;
+@property (nonatomic,retain) NSString *cnname;
 
 /**
  *	学生英文名
  */
-@property (nonatomic,copy) NSString *enname;
+@property (nonatomic,retain) NSString *enname;
 
-@property (nonatomic,copy) NSNumber *filesize;
+@property (nonatomic,retain) NSNumber *filesize;
 /**
  *	是否缺勤
  */
-@property (nonatomic,copy) NSNumber *isabsence;
+@property (nonatomic,retain) NSNumber *isabsence;
 
 /**
  *	是否在校
  */
-@property (nonatomic,copy) NSNumber *isattendance;
+@property (nonatomic,retain) NSNumber *isattendance;
 
 /**
  *	是否锁定
  */
-@property (nonatomic,copy) NSNumber *islock;
+@property (nonatomic,retain) NSNumber *islock;
 
 /**
  *	学生家长电话
  */
-@property (nonatomic,copy) NSNumber *mobile;
+@property (nonatomic,retain) NSNumber *mobile;
 
 
 /**
  *	学生性别
  */
-@property (nonatomic,copy) NSNumber *sex;
+@property (nonatomic,retain) NSNumber *sex;
 
 /**
  *	学生id
  */
-@property (nonatomic,copy) NSNumber *studentid;
+@property (nonatomic,retain) NSNumber *studentid;
 
-@property (nonatomic,copy) NSNumber *studentno;
+@property (nonatomic,retain) NSNumber *studentno;
 
 
-@property (nonatomic,copy)NSNumber *isinstalled;
+@property (nonatomic,retain)NSNumber *isinstalled;
 
 /**
  *	是否在线
  */
-@property (nonatomic,copy)NSNumber *online;
-@property (nonatomic,copy)NSNumber *uid;
+@property (nonatomic,retain)NSNumber *online;
+@property (nonatomic,retain)NSNumber *uid;
 
-@property (nonatomic,copy)NSString *orderendtime;
-@property (nonatomic,copy)NSNumber *parentid;
-@property (nonatomic,copy)NSString *username;
+@property (nonatomic,retain)NSString *orderendtime;
+@property (nonatomic,retain)NSNumber *parentid;
+@property (nonatomic,retain)NSString *username;
 
 /**
  *	学生健康状态
  */
-@property (nonatomic,copy) NSString *healthstate;
+@property (nonatomic,retain) NSString *healthstate;
 
 
 /**
  *	学费到期日
  */
-@property (nonatomic,copy) NSString *xuefeuTime;
+@property (nonatomic,retain) NSString *xuefeuTime;
+
+
+
+@property (nonatomic,retain) NSString *parentAlert;;
+@property (nonatomic,retain) NSString *inSchoolHealth;
 
 //
 //isinstalled = 1;

@@ -11,11 +11,14 @@
 #import "MTCustomActionSheet.h"
 #import "EKRequest.h"
 #import "MBProgressHUD.h"
+
 @interface GKAttentanceViewController : GKBaseViewController<UITableViewDelegate,UITableViewDataSource,MTCustomActionSheetDelegate,EKProtocol>
 {
     UILabel *numLabel;
     MBProgressHUD *HUD;
     UIButton* todayBtn;
+    
+    //GKAttendanceView *attendanceView;
 }
 @property (nonatomic,retain)NSMutableArray *attenceArr;
 @property (nonatomic,retain)UITableView *_tableView;

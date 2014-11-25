@@ -18,7 +18,6 @@
 #import "GKNoticeListViewController.h"
 #import "GKClassBlogViewController.h"
 #import "GKAttentanceViewController.h"
-
 #import "GKReportViewController.h"
 @interface GKLeftViewController ()
 

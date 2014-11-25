@@ -436,6 +436,7 @@
         NSString *str=[NSString stringWithFormat:@"%@",[photoTag objectAtIndex:i]];
         [temp appendFormat:@"%@,",str];
     }
+    if([photoTag count]>0)
     [temp deleteCharactersInRange:NSMakeRange([temp length]-1, 1)];
 
     

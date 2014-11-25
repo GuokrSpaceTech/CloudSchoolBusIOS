@@ -67,6 +67,15 @@
 		1155E92B1856BC75005D09C1 /* KKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1155E9291856BC74005D09C1 /* KKNavigationController.m */; };
 		1165E27C182CFCE000B60A81 /* pic-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1165E278182CFCE000B60A81 /* pic-2.png */; };
 		1165E27E182CFCE000B60A81 /* pic-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1165E27A182CFCE000B60A81 /* pic-1.png */; };
+		116F88A91A22DE6D00A3AFDA /* MDRadialProgressLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 116F88A41A22DE6D00A3AFDA /* MDRadialProgressLabel.m */; };
+		116F88AA1A22DE6D00A3AFDA /* MDRadialProgressTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 116F88A61A22DE6D00A3AFDA /* MDRadialProgressTheme.m */; };
+		116F88AB1A22DE6D00A3AFDA /* MDRadialProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 116F88A81A22DE6D00A3AFDA /* MDRadialProgressView.m */; };
+		116F88C81A2313BE00A3AFDA /* myzan.png in Resources */ = {isa = PBXBuildFile; fileRef = 116F88C71A2313BE00A3AFDA /* myzan.png */; };
+		116F88CA1A2313DF00A3AFDA /* cellPraise.png in Resources */ = {isa = PBXBuildFile; fileRef = 116F88C91A2313DF00A3AFDA /* cellPraise.png */; };
+		116F88CF1A23143F00A3AFDA /* cellComment_disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 116F88CB1A23143F00A3AFDA /* cellComment_disable.png */; };
+		116F88D01A23143F00A3AFDA /* cellComment.png in Resources */ = {isa = PBXBuildFile; fileRef = 116F88CC1A23143F00A3AFDA /* cellComment.png */; };
+		116F88D11A23143F00A3AFDA /* cellline.png in Resources */ = {isa = PBXBuildFile; fileRef = 116F88CD1A23143F00A3AFDA /* cellline.png */; };
+		116F88D21A23143F00A3AFDA /* cellPraise_disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 116F88CE1A23143F00A3AFDA /* cellPraise_disable.png */; };
 		118AE7EE188E69840034AE63 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 118AE7ED188E69840034AE63 /* DBManager.m */; };
 		1192B7721829E8900082D37B /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1192B7711829E8900082D37B /* libBPush.a */; };
 		1192B7741829E8A70082D37B /* BPushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1192B7731829E8A70082D37B /* BPushConfig.plist */; };
@@ -124,7 +133,6 @@
 		119973401821FAB40017E99A /* GKMarket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1199733F1821FAB40017E99A /* GKMarket.m */; };
 		119973431822094F0017E99A /* GKMarketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 119973421822094F0017E99A /* GKMarketCell.m */; };
 		119973461822456D0017E99A /* GKMarketDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 119973451822456D0017E99A /* GKMarketDetailView.m */; };
-		1199F7EB1A1CAC8B00B57CDF /* GKClassBlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1199F7EA1A1CAC8B00B57CDF /* GKClassBlogViewController.m */; };
 		119AC2731839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 119AC2711839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodeld */; };
 		119AC2771839C63500ED19D3 /* GKUploaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 119AC2761839C63500ED19D3 /* GKUploaderCell.m */; };
 		119AC2991839FB3B00ED19D3 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 119AC2981839FB3B00ED19D3 /* DACircularProgressView.m */; };
@@ -261,6 +269,21 @@
 		11BBA70B19249E3700637BED /* inclass.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BBA70919249E3700637BED /* inclass.png */; };
 		11BBE88E198F38ED0004D8D0 /* GKReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BBE88D198F38ED0004D8D0 /* GKReport.m */; };
 		11BBE894198F6A1D0004D8D0 /* GKReportContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BBE893198F6A1D0004D8D0 /* GKReportContentViewController.m */; };
+		11BEA55B1A242BC40054DF03 /* ClassShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA54E1A242BC40054DF03 /* ClassShareCell.m */; };
+		11BEA55C1A242BC40054DF03 /* GKClassBlog.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5501A242BC40054DF03 /* GKClassBlog.m */; };
+		11BEA55D1A242BC40054DF03 /* GKClassBlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5521A242BC40054DF03 /* GKClassBlogViewController.m */; };
+		11BEA55E1A242BC40054DF03 /* GKMovieCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5541A242BC40054DF03 /* GKMovieCache.m */; };
+		11BEA55F1A242BC40054DF03 /* GKMovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5561A242BC40054DF03 /* GKMovieCell.m */; };
+		11BEA5601A242BC40054DF03 /* GKMovieDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5581A242BC40054DF03 /* GKMovieDownloader.m */; };
+		11BEA5611A242BC40054DF03 /* GKMovieManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA55A1A242BC40054DF03 /* GKMovieManager.m */; };
+		11BEA5641A242BDC0054DF03 /* CommentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5631A242BDC0054DF03 /* CommentDetailViewController.m */; };
+		11BEA5671A2457EA0054DF03 /* ContentUpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5661A2457EA0054DF03 /* ContentUpCell.m */; };
+		11BEA56A1A24588E0054DF03 /* DetailContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5691A24588E0054DF03 /* DetailContentCell.m */; };
+		11BEA56D1A24685F0054DF03 /* WriteCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA56C1A24685F0054DF03 /* WriteCommentsViewController.m */; };
+		11BEA5731A2479320054DF03 /* GKWriteCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5721A2479320054DF03 /* GKWriteCommentsViewController.m */; };
+		11BEA5761A2479790054DF03 /* GKBlogDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5751A2479790054DF03 /* GKBlogDetailViewController.m */; };
+		11BEA5791A2496800054DF03 /* GKLikeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5781A2496800054DF03 /* GKLikeObject.m */; };
+		11BEA57C1A249A370054DF03 /* GKCommentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA57B1A249A370054DF03 /* GKCommentObject.m */; };
 		11BF896B18363221008E72F0 /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF896818363221008E72F0 /* 114.png */; };
 		11BF896D18363221008E72F0 /* ICON.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF896A18363221008E72F0 /* ICON.png */; };
 		11BF896F1836325F008E72F0 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BF896E1836325F008E72F0 /* 120.png */; };
@@ -552,6 +575,18 @@
 		1155E92A1856BC74005D09C1 /* KKNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKNavigationController.h; sourceTree = "<group>"; };
 		1165E278182CFCE000B60A81 /* pic-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic-2.png"; sourceTree = "<group>"; };
 		1165E27A182CFCE000B60A81 /* pic-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic-1.png"; sourceTree = "<group>"; };
+		116F88A31A22DE6D00A3AFDA /* MDRadialProgressLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRadialProgressLabel.h; sourceTree = "<group>"; };
+		116F88A41A22DE6D00A3AFDA /* MDRadialProgressLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRadialProgressLabel.m; sourceTree = "<group>"; };
+		116F88A51A22DE6D00A3AFDA /* MDRadialProgressTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRadialProgressTheme.h; sourceTree = "<group>"; };
+		116F88A61A22DE6D00A3AFDA /* MDRadialProgressTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRadialProgressTheme.m; sourceTree = "<group>"; };
+		116F88A71A22DE6D00A3AFDA /* MDRadialProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRadialProgressView.h; sourceTree = "<group>"; };
+		116F88A81A22DE6D00A3AFDA /* MDRadialProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRadialProgressView.m; sourceTree = "<group>"; };
+		116F88C71A2313BE00A3AFDA /* myzan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myzan.png; sourceTree = "<group>"; };
+		116F88C91A2313DF00A3AFDA /* cellPraise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellPraise.png; sourceTree = "<group>"; };
+		116F88CB1A23143F00A3AFDA /* cellComment_disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellComment_disable.png; sourceTree = "<group>"; };
+		116F88CC1A23143F00A3AFDA /* cellComment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellComment.png; sourceTree = "<group>"; };
+		116F88CD1A23143F00A3AFDA /* cellline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellline.png; sourceTree = "<group>"; };
+		116F88CE1A23143F00A3AFDA /* cellPraise_disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellPraise_disable.png; sourceTree = "<group>"; };
 		118AE7EC188E69840034AE63 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		118AE7ED188E69840034AE63 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		1192B7701829E8900082D37B /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
@@ -629,8 +664,6 @@
 		119973421822094F0017E99A /* GKMarketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMarketCell.m; sourceTree = "<group>"; };
 		119973441822456D0017E99A /* GKMarketDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMarketDetailView.h; sourceTree = "<group>"; };
 		119973451822456D0017E99A /* GKMarketDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMarketDetailView.m; sourceTree = "<group>"; };
-		1199F7E91A1CAC8B00B57CDF /* GKClassBlogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GKClassBlogViewController.h; path = SchoolBusPhoto/GKClassBlogViewController.h; sourceTree = SOURCE_ROOT; };
-		1199F7EA1A1CAC8B00B57CDF /* GKClassBlogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GKClassBlogViewController.m; path = SchoolBusPhoto/GKClassBlogViewController.m; sourceTree = SOURCE_ROOT; };
 		119AC2721839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SchoolBusPhoto.xcdatamodel; sourceTree = "<group>"; };
 		119AC2741839C39300ED19D3 /* SchoolBusPhoto 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 2.xcdatamodel"; sourceTree = "<group>"; };
 		119AC2751839C63500ED19D3 /* GKUploaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKUploaderCell.h; sourceTree = "<group>"; };
@@ -846,6 +879,36 @@
 		11BBE88D198F38ED0004D8D0 /* GKReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReport.m; sourceTree = "<group>"; };
 		11BBE892198F6A1D0004D8D0 /* GKReportContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReportContentViewController.h; sourceTree = "<group>"; };
 		11BBE893198F6A1D0004D8D0 /* GKReportContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReportContentViewController.m; sourceTree = "<group>"; };
+		11BEA54D1A242BC40054DF03 /* ClassShareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassShareCell.h; sourceTree = "<group>"; };
+		11BEA54E1A242BC40054DF03 /* ClassShareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassShareCell.m; sourceTree = "<group>"; };
+		11BEA54F1A242BC40054DF03 /* GKClassBlog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKClassBlog.h; sourceTree = "<group>"; };
+		11BEA5501A242BC40054DF03 /* GKClassBlog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKClassBlog.m; sourceTree = "<group>"; };
+		11BEA5511A242BC40054DF03 /* GKClassBlogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKClassBlogViewController.h; sourceTree = "<group>"; };
+		11BEA5521A242BC40054DF03 /* GKClassBlogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKClassBlogViewController.m; sourceTree = "<group>"; };
+		11BEA5531A242BC40054DF03 /* GKMovieCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMovieCache.h; sourceTree = "<group>"; };
+		11BEA5541A242BC40054DF03 /* GKMovieCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMovieCache.m; sourceTree = "<group>"; };
+		11BEA5551A242BC40054DF03 /* GKMovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMovieCell.h; sourceTree = "<group>"; };
+		11BEA5561A242BC40054DF03 /* GKMovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMovieCell.m; sourceTree = "<group>"; };
+		11BEA5571A242BC40054DF03 /* GKMovieDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMovieDownloader.h; sourceTree = "<group>"; };
+		11BEA5581A242BC40054DF03 /* GKMovieDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMovieDownloader.m; sourceTree = "<group>"; };
+		11BEA5591A242BC40054DF03 /* GKMovieManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMovieManager.h; sourceTree = "<group>"; };
+		11BEA55A1A242BC40054DF03 /* GKMovieManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMovieManager.m; sourceTree = "<group>"; };
+		11BEA5621A242BDC0054DF03 /* CommentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailViewController.h; sourceTree = "<group>"; };
+		11BEA5631A242BDC0054DF03 /* CommentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDetailViewController.m; sourceTree = "<group>"; };
+		11BEA5651A2457EA0054DF03 /* ContentUpCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentUpCell.h; sourceTree = "<group>"; };
+		11BEA5661A2457EA0054DF03 /* ContentUpCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentUpCell.m; sourceTree = "<group>"; };
+		11BEA5681A24588E0054DF03 /* DetailContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailContentCell.h; sourceTree = "<group>"; };
+		11BEA5691A24588E0054DF03 /* DetailContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailContentCell.m; sourceTree = "<group>"; };
+		11BEA56B1A24685F0054DF03 /* WriteCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteCommentsViewController.h; sourceTree = "<group>"; };
+		11BEA56C1A24685F0054DF03 /* WriteCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteCommentsViewController.m; sourceTree = "<group>"; };
+		11BEA5711A2479320054DF03 /* GKWriteCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKWriteCommentsViewController.h; sourceTree = "<group>"; };
+		11BEA5721A2479320054DF03 /* GKWriteCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKWriteCommentsViewController.m; sourceTree = "<group>"; };
+		11BEA5741A2479790054DF03 /* GKBlogDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBlogDetailViewController.h; sourceTree = "<group>"; };
+		11BEA5751A2479790054DF03 /* GKBlogDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBlogDetailViewController.m; sourceTree = "<group>"; };
+		11BEA5771A2496800054DF03 /* GKLikeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKLikeObject.h; sourceTree = "<group>"; };
+		11BEA5781A2496800054DF03 /* GKLikeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKLikeObject.m; sourceTree = "<group>"; };
+		11BEA57A1A249A370054DF03 /* GKCommentObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCommentObject.h; sourceTree = "<group>"; };
+		11BEA57B1A249A370054DF03 /* GKCommentObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCommentObject.m; sourceTree = "<group>"; };
 		11BF896818363221008E72F0 /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
 		11BF896A18363221008E72F0 /* ICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ICON.png; sourceTree = "<group>"; };
 		11BF896E1836325F008E72F0 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
@@ -1172,6 +1235,19 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		116F88A21A22DE6D00A3AFDA /* MDRadialProgress */ = {
+			isa = PBXGroup;
+			children = (
+				116F88A31A22DE6D00A3AFDA /* MDRadialProgressLabel.h */,
+				116F88A41A22DE6D00A3AFDA /* MDRadialProgressLabel.m */,
+				116F88A51A22DE6D00A3AFDA /* MDRadialProgressTheme.h */,
+				116F88A61A22DE6D00A3AFDA /* MDRadialProgressTheme.m */,
+				116F88A71A22DE6D00A3AFDA /* MDRadialProgressView.h */,
+				116F88A81A22DE6D00A3AFDA /* MDRadialProgressView.m */,
+			);
+			path = MDRadialProgress;
+			sourceTree = "<group>";
+		};
 		119973371821F59C0017E99A /* letterVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1286,6 +1362,7 @@
 		119E5FD31818FB4D00726761 /* third */ = {
 			isa = PBXGroup;
 			children = (
+				116F88A21A22DE6D00A3AFDA /* MDRadialProgress */,
 				11BA02B1192B05DF00124DC1 /* Umeng */,
 				11CE2A981880091E00742001 /* MBProgressHUD */,
 				11CE2A91187FF8EA00742001 /* EGORefreshTableHeaderView.h */,
@@ -1488,6 +1565,12 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				116F88CB1A23143F00A3AFDA /* cellComment_disable.png */,
+				116F88CC1A23143F00A3AFDA /* cellComment.png */,
+				116F88CD1A23143F00A3AFDA /* cellline.png */,
+				116F88CE1A23143F00A3AFDA /* cellPraise_disable.png */,
+				116F88C91A2313DF00A3AFDA /* cellPraise.png */,
+				116F88C71A2313BE00A3AFDA /* myzan.png */,
 				11E933F519AB2F55000CB50C /* defaultattendance.png */,
 				111B83BD19A1FB15008078BA /* left_report_cn_notmal.png */,
 				111B83BE19A1FB15008078BA /* left_report_cn_select.png */,
@@ -1788,15 +1871,6 @@
 			name = notice;
 			sourceTree = "<group>";
 		};
-		11B269B8193DB3F100E5369E /* healthy */ = {
-			isa = PBXGroup;
-			children = (
-				1199F7E91A1CAC8B00B57CDF /* GKClassBlogViewController.h */,
-				1199F7EA1A1CAC8B00B57CDF /* GKClassBlogViewController.m */,
-			);
-			path = healthy;
-			sourceTree = "<group>";
-		};
 		11B269BC193DB5FE00E5369E /* Attentance */ = {
 			isa = PBXGroup;
 			children = (
@@ -1820,6 +1894,43 @@
 				11BA02B4192B05DF00124DC1 /* MobClick.h */,
 			);
 			path = Umeng;
+			sourceTree = "<group>";
+		};
+		11BEA54C1A242BA20054DF03 /* classblog */ = {
+			isa = PBXGroup;
+			children = (
+				11BEA56B1A24685F0054DF03 /* WriteCommentsViewController.h */,
+				11BEA56C1A24685F0054DF03 /* WriteCommentsViewController.m */,
+				11BEA5681A24588E0054DF03 /* DetailContentCell.h */,
+				11BEA5691A24588E0054DF03 /* DetailContentCell.m */,
+				11BEA5651A2457EA0054DF03 /* ContentUpCell.h */,
+				11BEA5661A2457EA0054DF03 /* ContentUpCell.m */,
+				11BEA5621A242BDC0054DF03 /* CommentDetailViewController.h */,
+				11BEA5631A242BDC0054DF03 /* CommentDetailViewController.m */,
+				11BEA54D1A242BC40054DF03 /* ClassShareCell.h */,
+				11BEA54E1A242BC40054DF03 /* ClassShareCell.m */,
+				11BEA54F1A242BC40054DF03 /* GKClassBlog.h */,
+				11BEA5501A242BC40054DF03 /* GKClassBlog.m */,
+				11BEA5511A242BC40054DF03 /* GKClassBlogViewController.h */,
+				11BEA5521A242BC40054DF03 /* GKClassBlogViewController.m */,
+				11BEA5531A242BC40054DF03 /* GKMovieCache.h */,
+				11BEA5541A242BC40054DF03 /* GKMovieCache.m */,
+				11BEA5551A242BC40054DF03 /* GKMovieCell.h */,
+				11BEA5561A242BC40054DF03 /* GKMovieCell.m */,
+				11BEA5571A242BC40054DF03 /* GKMovieDownloader.h */,
+				11BEA5581A242BC40054DF03 /* GKMovieDownloader.m */,
+				11BEA5591A242BC40054DF03 /* GKMovieManager.h */,
+				11BEA55A1A242BC40054DF03 /* GKMovieManager.m */,
+				11BEA5711A2479320054DF03 /* GKWriteCommentsViewController.h */,
+				11BEA5721A2479320054DF03 /* GKWriteCommentsViewController.m */,
+				11BEA5741A2479790054DF03 /* GKBlogDetailViewController.h */,
+				11BEA5751A2479790054DF03 /* GKBlogDetailViewController.m */,
+				11BEA5771A2496800054DF03 /* GKLikeObject.h */,
+				11BEA5781A2496800054DF03 /* GKLikeObject.m */,
+				11BEA57A1A249A370054DF03 /* GKCommentObject.h */,
+				11BEA57B1A249A370054DF03 /* GKCommentObject.m */,
+			);
+			path = classblog;
 			sourceTree = "<group>";
 		};
 		11C75D9E1812725600A3AA89 /* SVHTTPRequest */ = {
@@ -1964,9 +2075,9 @@
 		2A32A56418122C01007CAA8E /* SchoolBusPhoto */ = {
 			isa = PBXGroup;
 			children = (
+				11BEA54C1A242BA20054DF03 /* classblog */,
 				11CB883519877BA100A2A080 /* ClassReport */,
 				11B269BC193DB5FE00E5369E /* Attentance */,
-				11B269B8193DB3F100E5369E /* healthy */,
 				78709BD1187D1715009250FB /* tempResource */,
 				11A3BF421875678A0032BA07 /* Student */,
 				11A5AE621863E045008794C0 /* setting */,
@@ -2144,6 +2255,7 @@
 				111E8CF3181E6E9F00234014 /* input.png in Resources */,
 				78BE433718B7657B003ADCB8 /* 关于我们@2x.png in Resources */,
 				11CBB31818B1BBA100614FF0 /* delphotoH.png in Resources */,
+				116F88D21A23143F00A3AFDA /* cellPraise_disable.png in Resources */,
 				11AF3AEB18166AB200B36176 /* navLeftBtn_default.png in Resources */,
 				111B83B619A1F7D4008078BA /* report_writenormal.png in Resources */,
 				11D42951187E4BE60002810E /* gradeFen@2x.png in Resources */,
@@ -2151,6 +2263,7 @@
 				78D8D11C18C07ABC008860AB /* thelp_send_568.png in Resources */,
 				2A32A56918122C02007CAA8E /* InfoPlist.strings in Resources */,
 				2A32A57118122C02007CAA8E /* Default.png in Resources */,
+				116F88D01A23143F00A3AFDA /* cellComment.png in Resources */,
 				11A5AE64186438FA008794C0 /* applyAll.png in Resources */,
 				11DB02ED18337F40007981C6 /* buyButtonEnable.png in Resources */,
 				78709C14187D1733009250FB /* edit-filters-overlay-selected-short.png in Resources */,
@@ -2186,6 +2299,7 @@
 				11B852A2183221CF005FA5B9 /* ETNicknameViewController.xib in Resources */,
 				7870A0F2187D4637009250FB /* navbar-button-blue-active@2x.png in Resources */,
 				78709C17187D1733009250FB /* navbar-button-back-active.png in Resources */,
+				116F88C81A2313BE00A3AFDA /* myzan.png in Resources */,
 				1193A6D8182C87CC004011BC /* loginIcon.png in Resources */,
 				113BCAC2182B5BDF0079E9AD /* goodsImage.png in Resources */,
 				119F0C98181A20C600A5910C /* tou.png in Resources */,
@@ -2310,6 +2424,7 @@
 				1165E27E182CFCE000B60A81 /* pic-1.png in Resources */,
 				11B9A2C4198A36680083E91E /* report_line.png in Resources */,
 				11AF3B1918168FC400B36176 /* loginBtn@2x.png in Resources */,
+				116F88CA1A2313DF00A3AFDA /* cellPraise.png in Resources */,
 				11BF898018363E58008E72F0 /* addPicH.png in Resources */,
 				11B852BD18334D52005FA5B9 /* inputBG.png in Resources */,
 				11EFE1F01817EEF7009CE69F /* sr_refresh@2X.png in Resources */,
@@ -2360,6 +2475,7 @@
 				119F0CAE181A297300A5910C /* leftN.png in Resources */,
 				11CBB31718B1BBA100614FF0 /* delphoto.png in Resources */,
 				11D42952187E4BE60002810E /* uploadIcon@2x.png in Resources */,
+				116F88D11A23143F00A3AFDA /* cellline.png in Resources */,
 				11B852BC18334D52005FA5B9 /* textFileBG.png in Resources */,
 				78709C23187D1733009250FB /* navbar-button-green.png in Resources */,
 				1193A6D9182C87CC004011BC /* login_user.png in Resources */,
@@ -2387,6 +2503,7 @@
 				11BAA76A195142F6006DA9AA /* grade.png in Resources */,
 				1102A7E9181A4E2000E6295C /* GKAboutViewController.xib in Resources */,
 				119366D3184C3283008D2FA2 /* leftUpN.png in Resources */,
+				116F88CF1A23143F00A3AFDA /* cellComment_disable.png in Resources */,
 				1193A6D7182C87CC004011BC /* helper.png in Resources */,
 				11497AE71952BC43003F169A /* home1.png in Resources */,
 				11DB02FB1833A0AA007981C6 /* aboutNormalE.png in Resources */,
@@ -2403,6 +2520,7 @@
 				11B4051B1918CE3700E56A59 /* GKAddStudentSearchViewController.h in Sources */,
 				2A32A56B18122C02007CAA8E /* main.m in Sources */,
 				78D8D11418C05CA9008860AB /* GKCommonClass.m in Sources */,
+				11BEA5761A2479790054DF03 /* GKBlogDetailViewController.m in Sources */,
 				11BF898E183646DF008E72F0 /* GKBadgeView.m in Sources */,
 				119E96221814C5A300866DE8 /* ASICloudFilesContainer.m in Sources */,
 				1192E401181B6CE200C5F33B /* GKWebViewController.m in Sources */,
@@ -2428,15 +2546,16 @@
 				111E511D1988E0A0007D9C6E /* GKReportModel.m in Sources */,
 				11DA38AF181F55DB00B6A6AC /* UIScrollView+UITouchEvent.m in Sources */,
 				11C75DBA181273E600A3AA89 /* NSDataAdditions.m in Sources */,
-				1199F7EB1A1CAC8B00B57CDF /* GKClassBlogViewController.m in Sources */,
 				119AC2771839C63500ED19D3 /* GKUploaderCell.m in Sources */,
 				111E8CE7181E532400234014 /* UIButton+WebCache.m in Sources */,
+				11BEA55C1A242BC40054DF03 /* GKClassBlog.m in Sources */,
 				11B4051A1918CC4400E56A59 /* GKSearchCell.m in Sources */,
 				119AC2731839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodeld in Sources */,
 				1138D427198B5D9A008760E1 /* GKReportStudentView.m in Sources */,
 				11C75DA71812725600A3AA89 /* SVHTTPClient.m in Sources */,
 				119E962B1814C5A300866DE8 /* ASIS3BucketObject.m in Sources */,
 				11B9A2C2198A1EC20083E91E /* GKQuestionView.m in Sources */,
+				116F88A91A22DE6D00A3AFDA /* MDRadialProgressLabel.m in Sources */,
 				11C232921980FF220079F282 /* GKButtonTag.m in Sources */,
 				2AFFF376181233580045BFD0 /* GKUpLoaderViewController.m in Sources */,
 				11DB43ED18AB41F600F77C1A /* GKCustomButton.m in Sources */,
@@ -2475,7 +2594,9 @@
 				78709BC9187D16CA009250FB /* GKFilterViewController.m in Sources */,
 				11B218171835C624002825FA /* GKNoticeViewController.m in Sources */,
 				111E8CEA181E532400234014 /* UIImage+WebP.m in Sources */,
+				116F88AB1A22DE6D00A3AFDA /* MDRadialProgressView.m in Sources */,
 				11AB5FE218A5E227001E2EB1 /* HTCopyableLabel.m in Sources */,
+				11BEA56D1A24685F0054DF03 /* WriteCommentsViewController.m in Sources */,
 				11C7E8791A19DD9E001CBA9A /* GKAttentanceObj.m in Sources */,
 				78881912187F9A2600D0A851 /* GKDraftViewController.m in Sources */,
 				1199733D1821FA700017E99A /* GKMarketGird.m in Sources */,
@@ -2508,6 +2629,7 @@
 				1193A6BD182B9A64004011BC /* GKLetterData.m in Sources */,
 				119566B3181E098300366B13 /* GKLetterCell.m in Sources */,
 				1193B3921827843800660CB1 /* GKScoreCell.m in Sources */,
+				11BEA5791A2496800054DF03 /* GKLikeObject.m in Sources */,
 				111E8CE1181E532400234014 /* SDWebImageCompat.m in Sources */,
 				11AA3388187CEDC6002FE2D4 /* GKNotice.m in Sources */,
 				11B405141918C82400E56A59 /* GKAddStudentViewController.m in Sources */,
@@ -2519,23 +2641,31 @@
 				119E963D1814E2C800866DE8 /* GKUpWraper.m in Sources */,
 				119E96291814C5A300866DE8 /* Reachability.m in Sources */,
 				119E961D1814C5A300866DE8 /* ASIHTTPRequest.m in Sources */,
+				11BEA5601A242BC40054DF03 /* GKMovieDownloader.m in Sources */,
+				11BEA5671A2457EA0054DF03 /* ContentUpCell.m in Sources */,
 				119EA9BE181616990070DBF1 /* GKImagePickerViewController.m in Sources */,
 				119E96261814C5A300866DE8 /* ASICloudFilesObjectRequest.m in Sources */,
 				119973431822094F0017E99A /* GKMarketCell.m in Sources */,
 				11ECEDD01946E3AC00BFB85A /* GKImageView.m in Sources */,
+				11BEA55E1A242BC40054DF03 /* GKMovieCache.m in Sources */,
 				111E8CE3181E532400234014 /* SDWebImageDownloader.m in Sources */,
 				111E8CE0181E532400234014 /* SDImageCache.m in Sources */,
 				11D40E3818618D1B003009D0 /* GKRePasswordViewController.m in Sources */,
+				11BEA5611A242BC40054DF03 /* GKMovieManager.m in Sources */,
 				78709BCF187D16CA009250FB /* UIImage+GKImage.m in Sources */,
 				1195719E183B461800CE9F1B /* GKNODataView.m in Sources */,
+				116F88AA1A22DE6D00A3AFDA /* MDRadialProgressTheme.m in Sources */,
 				119E964518151F0300866DE8 /* GTMBase64.m in Sources */,
 				111E8CE5181E532400234014 /* SDWebImageManager.m in Sources */,
 				11CE2A9B1880091E00742001 /* MBProgressHUD.m in Sources */,
 				111E8CE9181E532400234014 /* UIImage+MultiFormat.m in Sources */,
 				1192B7771829EB8D0082D37B /* JSONKit.m in Sources */,
+				11BEA5731A2479320054DF03 /* GKWriteCommentsViewController.m in Sources */,
 				11B852A1183221CF005FA5B9 /* ETNicknameViewController.m in Sources */,
 				11BBE88E198F38ED0004D8D0 /* GKReport.m in Sources */,
 				11B269C2193DC94600E5369E /* GKAttentance.m in Sources */,
+				11BEA55D1A242BC40054DF03 /* GKClassBlogViewController.m in Sources */,
+				11BEA57C1A249A370054DF03 /* GKCommentObject.m in Sources */,
 				11A5A89B187BF2FE00EA22CD /* GKNoticeListViewController.m in Sources */,
 				119E5FD21818EE8D00726761 /* GKBaseViewController.m in Sources */,
 				119E5FF21819470400726761 /* Student.m in Sources */,
@@ -2546,15 +2676,19 @@
 				1193A6D0182C78E9004011BC /* kLineView.m in Sources */,
 				11C75DAF1812729500A3AA89 /* SFHFKeychainUtils.m in Sources */,
 				119E96181814C5A300866DE8 /* ASIAuthenticationDialog.m in Sources */,
+				11BEA55B1A242BC40054DF03 /* ClassShareCell.m in Sources */,
 				119E96201814C5A300866DE8 /* ASIWebPageRequest.m in Sources */,
 				119E961B1814C5A300866DE8 /* ASIDownloadCache.m in Sources */,
 				11A5A898187BBC9F00EA22CD /* MTCustomActionSheet.m in Sources */,
 				119EA9BA18160F170070DBF1 /* GKLeftViewController.m in Sources */,
 				118AE7EE188E69840034AE63 /* DBManager.m in Sources */,
 				11BB579F192353A900DE826A /* GKRelationViewController.m in Sources */,
+				11BEA56A1A24588E0054DF03 /* DetailContentCell.m in Sources */,
+				11BEA55F1A242BC40054DF03 /* GKMovieCell.m in Sources */,
 				11A3BF48187567E20032BA07 /* GKStudentListViewController.m in Sources */,
 				2AFFF35318122D8B0045BFD0 /* GKMainViewController.m in Sources */,
 				119E96241814C5A300866DE8 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
+				11BEA5641A242BDC0054DF03 /* CommentDetailViewController.m in Sources */,
 				111E8CE4181E532400234014 /* SDWebImageDownloaderOperation.m in Sources */,
 				119F0C96181A0AFC00A5910C /* GKButton.m in Sources */,
 			);
@@ -2657,6 +2791,7 @@
 					"$(inherited)",
 					"SchoolBusPhoto/**",
 					"$(PROJECT_DIR)/SchoolBusPhoto/Umeng",
+					"$(PROJECT_DIR)/SchoolBusPhoto",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2686,6 +2821,7 @@
 					"$(inherited)",
 					"SchoolBusPhoto/**",
 					"$(PROJECT_DIR)/SchoolBusPhoto/Umeng",
+					"$(PROJECT_DIR)/SchoolBusPhoto",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";

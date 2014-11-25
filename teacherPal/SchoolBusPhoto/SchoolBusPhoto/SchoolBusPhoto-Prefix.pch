@@ -30,5 +30,10 @@
 #define IMAGENAME(b) [UIImage imageWithContentsOfFile:b]
 #define SHARED_APP_DELEGATE ((GKAppDelegate *)[[UIApplication sharedApplication] delegate])
 #define CUSTOMALBUMNAME @"云中校车（Cloud School Bus）"
-
+typedef enum
+{
+    logoutType = 0,
+    loginType
+    
+} RequestType;
 #endif

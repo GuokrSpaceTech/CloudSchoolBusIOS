@@ -393,12 +393,6 @@
     
     NSMutableArray *arr=obj.attendanceArr;
     
-    
-    UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
-    
-    CGRect point=[cell convertRect:cell.frame toView:self.view];
-    
-    
 
     GKDetailAttendanceViewController *DetailVc=[[GKDetailAttendanceViewController alloc]init];
     DetailVc.attendanceArr=arr;

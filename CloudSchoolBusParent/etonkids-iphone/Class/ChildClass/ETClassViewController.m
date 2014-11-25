@@ -838,7 +838,7 @@
                 }
                 else
                 {
-                    cell.praiseImgV.image = [UIImage imageNamed:@"myzan.png"];
+                    cell.praiseImgV.image = [UIImage imageNamed:@""];
                 }
                 cell.theShareCtnt = sContent;
                 NSArray *languages = [NSLocale preferredLanguages];

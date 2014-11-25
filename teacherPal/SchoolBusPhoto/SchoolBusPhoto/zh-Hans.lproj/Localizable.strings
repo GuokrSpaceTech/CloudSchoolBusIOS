@@ -312,3 +312,10 @@
 "birthdaycomming"="生日马上就要到了:";
 "reportCancel"="取消发送报告？";
 "None"="无";
+
+
+
+"minutesago" = "分钟前";
+"hoursago" = "小时前";
+"upText" = "赞";
+"comText" = "评论";

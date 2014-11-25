@@ -183,10 +183,10 @@ static EKRequest * instance = nil;
              
              NSDictionary * allHeaderInfo = [urlResponse allHeaderFields];
              int code = [[allHeaderInfo objectForKey:@"Code"] intValue];
-             if(function==notice)
-             {
-                 [self addPostNotification];
-             }
+//             if(function==notice)
+//             {
+//                 [self addPostNotification];
+//             }
              [delegate getEKResponse:response forMethod:function resultCode:code withParam:param];
          }];
     }
@@ -240,10 +240,10 @@ static EKRequest * instance = nil;
 }
 
 
--(void)addPostNotification
-{
-    NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
-    [center postNotificationName:@"PERSIONALALIPAY" object:nil];
-}
+//-(void)addPostNotification
+//{
+//    NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
+//    [center postNotificationName:@"PERSIONALALIPAY" object:nil];
+//}
 
 @end

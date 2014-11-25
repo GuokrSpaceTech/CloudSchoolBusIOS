@@ -318,3 +318,9 @@
 "birthdaytoday"="Happy Birthday:";
 "reportCancel"="Cancel sending the report?";
 "None"="None";
+
+
+"minutesago" = "m before";
+"hoursago" = "h before";
+"upText" = "Like";
+"comText" = "Comment";

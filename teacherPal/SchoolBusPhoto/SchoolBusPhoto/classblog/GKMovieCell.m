@@ -30,7 +30,7 @@
         
         
         // Initialization code
-//        self.contentView.backgroundColor = CELLCOLOR;
+        self.contentView.backgroundColor = [UIColor colorWithRed:240/255.0f green:238/255.0f blue:227/255.0f alpha:1.0f];
 //        self.backgroundColor = CELLCOLOR;
 //        self.backgroundView.backgroundColor = CELLCOLOR;
         

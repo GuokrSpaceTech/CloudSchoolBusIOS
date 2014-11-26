@@ -64,10 +64,6 @@
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
-    
-
-//    _hostReach = [[Reachability reachabilityWithHostName:@"www.google.com"] retain];
-//    [_hostReach startNotifier];
 
     [self CheckVersion];
     //[UIApplication sharedApplication].statusBarStyle= UIStatusBarStyleLightContent;
@@ -77,14 +73,6 @@
     [reachability startNotifier];
     
  
-    
-
-//[[EKRequest Instance]EKHTTPRequest:schoolstudent parameters:[NSDictionary dictionaryWithObjectsAndKeys:@"1",@"machine", nil] requestMethod:GET forDelegate:self];
-    
-//[[EKRequest Instance]EKHTTPRequest:schoolcheck parameters:[NSDictionary dictionaryWithObjectsAndKeys:@"007805026cb6",@"machine", nil] requestMethod:GET forDelegate:self];
-
-    
-    //[[EKRequest Instance]EKHTTPRequest:schoolad parameters:nil requestMethod:GET forDelegate:self];
     
     [self.window makeKeyAndVisible];
     return YES;

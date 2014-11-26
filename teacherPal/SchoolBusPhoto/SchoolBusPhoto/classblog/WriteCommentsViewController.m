@@ -35,7 +35,7 @@
     
 
     
-
+    self.view.backgroundColor=[UIColor colorWithRed:237/255.0 green:234/255.0 blue:225/255.0 alpha:1];
     UIButton *buttom=[UIButton buttonWithType:UIButtonTypeCustom];
     buttom.frame=CGRectMake(10, 5, 34, 35);
     //UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 34, 35)];
@@ -104,28 +104,7 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     
-//    if ([text isEqualToString:@"\n"]) {
-//        
-//        [textView resignFirstResponder];
-//        
-//        return NO;
-//        
-//    }
-//    NSString * toString = [textView.text stringByReplacingCharactersInRange:range withString:text]; //得到输入框的内容
-//    
-//    if (self.textview == textView)  //判断是否时我们想要限定的那个输入框
-//    {
-//        int length = [self textLength:toString];
-//        
-//        if (length > LIMIT_COMMENT) { //如果输入框内容大于70则弹出警告
-//            
-////            self.textview.text = [toString substringToIndex:70];
-//            ETCustomAlertView *alert = [[ETCustomAlertView alloc] initWithTitle:nil message:LOCAL(@"Can not", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
-//            [alert show];
-//            return NO;
-//        }
-//    }
-    
+
     return YES;
 }
 
@@ -167,35 +146,25 @@
     int length = [self textLength:textV.text];
     if ([self.textview.text isEqualToString:@""] || [self.textview.text isEqualToString:NSLocalizedString(@"please", @"")])
     {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"输入内容不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
 //        ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"empty", @"") delegate:self cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
 //        [alert show];
         
     }
     else if (length > 70)
     {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"输入内容过长" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
 //        ETCustomAlertView *alert = [[ETCustomAlertView alloc] initWithTitle:nil message:LOCAL(@"Can not", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
 //        [alert show];
     }
     
     else
     {
-//        UserLogin * user = (UserLogin *)[keyedArchiver getArchiver:@"LOGIN" forKey:@"LOGIN"];
-//        if(user.loginStatus==LOGIN_OFF)
-//        {
-//            ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"localResult", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil,nil];
-//            [alert show];
-//            
-//            return;
-//        }
-//        if(![NetWork connectedToNetWork])
-//        {
-//            ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"busy", @"网络故障，请稍后重试") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
-//            [alert show];
-//            
-//            [self.view setNeedsLayout];
-//            return;
-//        }
-        
+
 
         NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"article",@"itemtype",self.itemid,@"itemid",self.textview.text,@"content",self.commentId,@"reply",nil];
         

@@ -49,6 +49,10 @@
 		111E8CF1181E540900234014 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 111E8CF0181E540900234014 /* MapKit.framework */; };
 		111E8CF3181E6E9F00234014 /* input.png in Resources */ = {isa = PBXBuildFile; fileRef = 111E8CF2181E6E9F00234014 /* input.png */; };
 		1124C0B51991D87B0044485B /* GKSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1124C0B41991D87B0044485B /* GKSearchViewController.m */; };
+		112AF4491A257CEE002DA30B /* bottomBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 112AF4481A257CEE002DA30B /* bottomBack.png */; };
+		112AF44B1A257CFF002DA30B /* textBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 112AF44A1A257CFF002DA30B /* textBack.png */; };
+		112AF44E1A257D17002DA30B /* upBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 112AF44C1A257D17002DA30B /* upBtn.png */; };
+		112AF44F1A257D17002DA30B /* upBtnSel.png in Resources */ = {isa = PBXBuildFile; fileRef = 112AF44D1A257D17002DA30B /* upBtnSel.png */; };
 		1138D427198B5D9A008760E1 /* GKReportStudentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1138D426198B5D9A008760E1 /* GKReportStudentView.m */; };
 		113BCABE182B41280079E9AD /* topImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 113BCABD182B41280079E9AD /* topImage.png */; };
 		113BCAC0182B46450079E9AD /* select.png in Resources */ = {isa = PBXBuildFile; fileRef = 113BCABF182B46450079E9AD /* select.png */; };
@@ -276,11 +280,9 @@
 		11BEA55F1A242BC40054DF03 /* GKMovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5561A242BC40054DF03 /* GKMovieCell.m */; };
 		11BEA5601A242BC40054DF03 /* GKMovieDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5581A242BC40054DF03 /* GKMovieDownloader.m */; };
 		11BEA5611A242BC40054DF03 /* GKMovieManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA55A1A242BC40054DF03 /* GKMovieManager.m */; };
-		11BEA5641A242BDC0054DF03 /* CommentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5631A242BDC0054DF03 /* CommentDetailViewController.m */; };
 		11BEA5671A2457EA0054DF03 /* ContentUpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5661A2457EA0054DF03 /* ContentUpCell.m */; };
 		11BEA56A1A24588E0054DF03 /* DetailContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5691A24588E0054DF03 /* DetailContentCell.m */; };
 		11BEA56D1A24685F0054DF03 /* WriteCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA56C1A24685F0054DF03 /* WriteCommentsViewController.m */; };
-		11BEA5731A2479320054DF03 /* GKWriteCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5721A2479320054DF03 /* GKWriteCommentsViewController.m */; };
 		11BEA5761A2479790054DF03 /* GKBlogDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5751A2479790054DF03 /* GKBlogDetailViewController.m */; };
 		11BEA5791A2496800054DF03 /* GKLikeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5781A2496800054DF03 /* GKLikeObject.m */; };
 		11BEA57C1A249A370054DF03 /* GKCommentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA57B1A249A370054DF03 /* GKCommentObject.m */; };
@@ -553,6 +555,10 @@
 		111E8CF2181E6E9F00234014 /* input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = input.png; sourceTree = "<group>"; };
 		1124C0B31991D87B0044485B /* GKSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKSearchViewController.h; sourceTree = "<group>"; };
 		1124C0B41991D87B0044485B /* GKSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKSearchViewController.m; sourceTree = "<group>"; };
+		112AF4481A257CEE002DA30B /* bottomBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomBack.png; sourceTree = "<group>"; };
+		112AF44A1A257CFF002DA30B /* textBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textBack.png; sourceTree = "<group>"; };
+		112AF44C1A257D17002DA30B /* upBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upBtn.png; sourceTree = "<group>"; };
+		112AF44D1A257D17002DA30B /* upBtnSel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upBtnSel.png; sourceTree = "<group>"; };
 		1138D425198B5D9A008760E1 /* GKReportStudentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReportStudentView.h; sourceTree = "<group>"; };
 		1138D426198B5D9A008760E1 /* GKReportStudentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReportStudentView.m; sourceTree = "<group>"; };
 		113BCABD182B41280079E9AD /* topImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topImage.png; sourceTree = "<group>"; };
@@ -893,16 +899,12 @@
 		11BEA5581A242BC40054DF03 /* GKMovieDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMovieDownloader.m; sourceTree = "<group>"; };
 		11BEA5591A242BC40054DF03 /* GKMovieManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKMovieManager.h; sourceTree = "<group>"; };
 		11BEA55A1A242BC40054DF03 /* GKMovieManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKMovieManager.m; sourceTree = "<group>"; };
-		11BEA5621A242BDC0054DF03 /* CommentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailViewController.h; sourceTree = "<group>"; };
-		11BEA5631A242BDC0054DF03 /* CommentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDetailViewController.m; sourceTree = "<group>"; };
 		11BEA5651A2457EA0054DF03 /* ContentUpCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentUpCell.h; sourceTree = "<group>"; };
 		11BEA5661A2457EA0054DF03 /* ContentUpCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentUpCell.m; sourceTree = "<group>"; };
 		11BEA5681A24588E0054DF03 /* DetailContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailContentCell.h; sourceTree = "<group>"; };
 		11BEA5691A24588E0054DF03 /* DetailContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailContentCell.m; sourceTree = "<group>"; };
 		11BEA56B1A24685F0054DF03 /* WriteCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WriteCommentsViewController.h; sourceTree = "<group>"; };
 		11BEA56C1A24685F0054DF03 /* WriteCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteCommentsViewController.m; sourceTree = "<group>"; };
-		11BEA5711A2479320054DF03 /* GKWriteCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKWriteCommentsViewController.h; sourceTree = "<group>"; };
-		11BEA5721A2479320054DF03 /* GKWriteCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKWriteCommentsViewController.m; sourceTree = "<group>"; };
 		11BEA5741A2479790054DF03 /* GKBlogDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKBlogDetailViewController.h; sourceTree = "<group>"; };
 		11BEA5751A2479790054DF03 /* GKBlogDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKBlogDetailViewController.m; sourceTree = "<group>"; };
 		11BEA5771A2496800054DF03 /* GKLikeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKLikeObject.h; sourceTree = "<group>"; };
@@ -1565,6 +1567,10 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				112AF44C1A257D17002DA30B /* upBtn.png */,
+				112AF44D1A257D17002DA30B /* upBtnSel.png */,
+				112AF44A1A257CFF002DA30B /* textBack.png */,
+				112AF4481A257CEE002DA30B /* bottomBack.png */,
 				116F88CB1A23143F00A3AFDA /* cellComment_disable.png */,
 				116F88CC1A23143F00A3AFDA /* cellComment.png */,
 				116F88CD1A23143F00A3AFDA /* cellline.png */,
@@ -1905,8 +1911,6 @@
 				11BEA5691A24588E0054DF03 /* DetailContentCell.m */,
 				11BEA5651A2457EA0054DF03 /* ContentUpCell.h */,
 				11BEA5661A2457EA0054DF03 /* ContentUpCell.m */,
-				11BEA5621A242BDC0054DF03 /* CommentDetailViewController.h */,
-				11BEA5631A242BDC0054DF03 /* CommentDetailViewController.m */,
 				11BEA54D1A242BC40054DF03 /* ClassShareCell.h */,
 				11BEA54E1A242BC40054DF03 /* ClassShareCell.m */,
 				11BEA54F1A242BC40054DF03 /* GKClassBlog.h */,
@@ -1921,8 +1925,6 @@
 				11BEA5581A242BC40054DF03 /* GKMovieDownloader.m */,
 				11BEA5591A242BC40054DF03 /* GKMovieManager.h */,
 				11BEA55A1A242BC40054DF03 /* GKMovieManager.m */,
-				11BEA5711A2479320054DF03 /* GKWriteCommentsViewController.h */,
-				11BEA5721A2479320054DF03 /* GKWriteCommentsViewController.m */,
 				11BEA5741A2479790054DF03 /* GKBlogDetailViewController.h */,
 				11BEA5751A2479790054DF03 /* GKBlogDetailViewController.m */,
 				11BEA5771A2496800054DF03 /* GKLikeObject.h */,
@@ -2453,6 +2455,7 @@
 				11C4327619501CF50096778C /* morningH-en.png in Resources */,
 				11FC0F42182C9ECC00442EF6 /* scoreBtn_selected.png in Resources */,
 				78709C24187D1733009250FB /* navbar-button-green@2x.png in Resources */,
+				112AF44E1A257D17002DA30B /* upBtn.png in Resources */,
 				78709C16187D1733009250FB /* logo-flat-dark.png in Resources */,
 				11DB02FC1833A0AA007981C6 /* aboutE.png in Resources */,
 				11DB02EB18337F40007981C6 /* buyButtonN.png in Resources */,
@@ -2462,6 +2465,7 @@
 				11AF3B0D18168C4900B36176 /* loginIcon11.png in Resources */,
 				11940246182391C100F21FB8 /* back-2.png in Resources */,
 				119C7C8D1889062A00572BCB /* delN.png in Resources */,
+				112AF44F1A257D17002DA30B /* upBtnSel.png in Resources */,
 				78709C20187D1733009250FB /* navbar-button-green-active@2x.png in Resources */,
 				113BCAC4182B5E900079E9AD /* jifen.png in Resources */,
 				1102A7F1181A537B00E6295C /* guanlian.png in Resources */,
@@ -2490,6 +2494,7 @@
 				11D40E3318618700003009D0 /* alterPasswordSE.png in Resources */,
 				11BB992118AB15B9006273A7 /* qipao22@2x.png in Resources */,
 				11E27F96183C731F00CAE0BB /* textfield123.png in Resources */,
+				112AF44B1A257CFF002DA30B /* textBack.png in Resources */,
 				78D8D11118C05C6A008860AB /* thelp_zhuye.png in Resources */,
 				1102A7EF181A4FF500E6295C /* guanyu-5.png in Resources */,
 				11CE2A90187FF5AD00742001 /* imageerror.png in Resources */,
@@ -2498,6 +2503,7 @@
 				78BE433418B7657B003ADCB8 /* 班级学生@2x.png in Resources */,
 				11FC0F44182C9F4C00442EF6 /* FZZYJW.TTF in Resources */,
 				78709C08187D1733009250FB /* camera-library-overlay-active.png in Resources */,
+				112AF4491A257CEE002DA30B /* bottomBack.png in Resources */,
 				78709C19187D1733009250FB /* navbar-button-back-black-alt-active.png in Resources */,
 				78A9393F18C886D700722B12 /* thelp_notice_568.png in Resources */,
 				11BAA76A195142F6006DA9AA /* grade.png in Resources */,
@@ -2660,7 +2666,6 @@
 				11CE2A9B1880091E00742001 /* MBProgressHUD.m in Sources */,
 				111E8CE9181E532400234014 /* UIImage+MultiFormat.m in Sources */,
 				1192B7771829EB8D0082D37B /* JSONKit.m in Sources */,
-				11BEA5731A2479320054DF03 /* GKWriteCommentsViewController.m in Sources */,
 				11B852A1183221CF005FA5B9 /* ETNicknameViewController.m in Sources */,
 				11BBE88E198F38ED0004D8D0 /* GKReport.m in Sources */,
 				11B269C2193DC94600E5369E /* GKAttentance.m in Sources */,
@@ -2688,7 +2693,6 @@
 				11A3BF48187567E20032BA07 /* GKStudentListViewController.m in Sources */,
 				2AFFF35318122D8B0045BFD0 /* GKMainViewController.m in Sources */,
 				119E96241814C5A300866DE8 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
-				11BEA5641A242BDC0054DF03 /* CommentDetailViewController.m in Sources */,
 				111E8CE4181E532400234014 /* SDWebImageDownloaderOperation.m in Sources */,
 				119F0C96181A0AFC00A5910C /* GKButton.m in Sources */,
 			);

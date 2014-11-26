@@ -8,13 +8,13 @@
 
 #import "GKBlogDetailViewController.h"
 #import "KKNavigationController.h"
-#import "WriteCommentsViewController.h"
 #import "NSDate+convenience.h"
 #import "UIImageView+WebCache.h"
 #import "GKMovieManager.h"
 #import "GKMovieCache.h"
 #import "GKCommentObject.h"
 #import "GKLikeObject.h"
+#import "GKUserLogin.h"
 #define VIDEOTAG   8888
 #define BUTTONTAG  777
 @interface GKBlogDetailViewController ()
@@ -28,6 +28,7 @@
 @synthesize radial;
 @synthesize mPlayer;
 @synthesize list;
+@synthesize currentComId;
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -38,7 +39,7 @@
     
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackChangeState:) name:MPMoviePlayerPlaybackStateDidChangeNotification object:nil];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor=[UIColor orangeColor];
+   
     UIButton *buttom=[UIButton buttonWithType:UIButtonTypeCustom];
     buttom.frame=CGRectMake(10, 5, 34, 35);
     //UIButton *buttom=[[UIButton alloc]initWithFrame:CGRectMake(10, 5, 34, 35)];
@@ -55,7 +56,7 @@
     tableview.separatorStyle=UITableViewCellSeparatorStyleNone;
     
     [self.view addSubview:tableview];
-    titlelabel.text=NSLocalizedString(@"body", @"");
+    titlelabel.text=@"详情";
     
     
     list=[[NSMutableArray alloc]init];
@@ -234,21 +235,21 @@
     
     
     
-    UIButton *btnPinglun=[UIButton buttonWithType:UIButtonTypeCustom];
+    btnPinglun=[UIButton buttonWithType:UIButtonTypeCustom];
     btnPinglun.frame=CGRectMake(self.view.frame.size.width-100, timeLabel.frame.origin.y-5, 24, 19);
     [btnPinglun setBackgroundImage:[UIImage imageNamed:@"cellComment.png"] forState:UIControlStateNormal];
-    [btnPinglun setBackgroundImage:[UIImage imageNamed:@"cellComment_disable.png"] forState:UIControlStateHighlighted];
+   // [btnPinglun setBackgroundImage:[UIImage imageNamed:@"cellComment_disable.png"] forState:UIControlStateHighlighted];
    // [btnPinglun setBackgroundImage:[UIImage imageNamed:@"cellComment_disable.png"] forState:UIControlStateSelected];
     [btnPinglun addTarget:self action:@selector(pinglunLoad:) forControlEvents:UIControlEventTouchUpInside];
     [contentView addSubview:btnPinglun];
     
     
-    UIButton *btnZan=[UIButton buttonWithType:UIButtonTypeCustom];
+    btnZan=[UIButton buttonWithType:UIButtonTypeCustom];
     btnZan.frame=CGRectMake(self.view.frame.size.width-100+40, timeLabel.frame.origin.y-5, 24, 19);
     [btnZan setBackgroundImage:[UIImage imageNamed:@"cellPraise.png"] forState:UIControlStateNormal];
     [btnZan addTarget:self action:@selector(zanLoad:) forControlEvents:UIControlEventTouchUpInside];
   //  [btnZan setBackgroundImage:[UIImage imageNamed:@"cellPraise_disable.png"] forState:UIControlStateSelected];
-    [btnZan setBackgroundImage:[UIImage imageNamed:@"cellPraise_disable.png"] forState:UIControlStateHighlighted];
+    [btnZan setBackgroundImage:[UIImage imageNamed:@"cellPraise_disable.png"] forState:UIControlStateNormal];
  
     [contentView addSubview:btnZan];
     
@@ -260,10 +261,16 @@
 
 -(void)pinglunLoad:(UIButton *)btn
 {
+    [btnPinglun setBackgroundImage:[UIImage imageNamed:@"cellComment.png"] forState:UIControlStateNormal];
+    [btnZan setBackgroundImage:[UIImage imageNamed:@"cellPraise_disable.png"] forState:UIControlStateNormal];
+    
     [self loadCommentList];
 }
 -(void)zanLoad:(UIButton *)btn
 {
+    [btnPinglun setBackgroundImage:[UIImage imageNamed:@"cellComment_disable.png"] forState:UIControlStateNormal];
+    [btnZan setBackgroundImage:[UIImage imageNamed:@"cellPraise.png"] forState:UIControlStateNormal];
+    
     [self loadData];
 }
 - (void)loadData
@@ -316,7 +323,7 @@
     commentTF.showsVerticalScrollIndicator = NO;
     commentTF.delegate = self;
     commentTF.tag = 456;
-    commentTF.text = NSLocalizedString(@"CommentPlaceholder", @"");
+    commentTF.text = @"评论";
     [bView addSubview:commentTF];
     [commentTF release];
     
@@ -357,6 +364,93 @@
     
     commentTF.inputAccessoryView = inputView;
 }
+- (void)doSendUp:(UIButton *)sender
+{
+
+
+        if([shareContent.havezan integerValue]==0)
+        {
+            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:shareContent.shareId,@"itemid",@"article",@"itemtype", @"1",@"isup",nil];
+            
+            [[EKRequest Instance] EKHTTPRequest:comment parameters:dic requestMethod:POST forDelegate:self];
+            
+            // 没攒的情况下 操作
+            
+            // 没攒
+        }
+        else
+        {
+            
+            NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"comment_action",@"type",shareContent.havezan,@"key",nil];
+            //取消赞.
+            
+            [[EKRequest Instance] EKHTTPRequest:deleteF parameters:dic requestMethod:POST forDelegate:self];
+            
+        }
+ 
+
+    
+    CABasicAnimation *an=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    
+    an.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    an.duration =0.15;
+    an.repeatCount = 1;
+    an.autoreverses = YES;
+    an.fromValue = [NSNumber numberWithFloat:0.8];
+    an.toValue = [NSNumber numberWithFloat:1.2];
+    [sender.layer addAnimation:an forKey:@"dfdf"];
+}
+- (void)doSendComment:(UIButton *)sender
+{
+    
+    UITextView *t = (UITextView *)[commentTF.inputAccessoryView viewWithTag:457];
+    
+    
+    //stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]
+    
+    NSString *str=[t.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    if ([str isEqualToString:@""] )
+    {
+        NSLog(@"发送内容为空");
+        
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"内容不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+        
+        return;
+    }
+    
+    int length = [self textLength:t.text];
+    if (length > 70)
+    {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"内容过长" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+
+        return;
+    }
+    
+    
+    [t resignFirstResponder];
+    [commentTF resignFirstResponder];
+    
+    
+    if ([self.view viewWithTag:1234]) {
+        //删除uicontrol
+        [[self.view viewWithTag:1234] removeFromSuperview];
+    }
+    
+    
+    
+    NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:@"article",@"itemtype",self.shareContent.shareId,@"itemid",t.text,@"content",nil];
+    [[EKRequest Instance] EKHTTPRequest:comment parameters:param requestMethod:POST forDelegate:self];
+    
+    
+    
+    
+}
+
 -(void)tagClick:(UIButton *)btn
 {
     int i=btn.tag-3210;
@@ -432,9 +526,10 @@
             
 
             NSLog(@"%@",result);
-            [list removeAllObjects];
+            
             if ([isGet isEqualToString:@"0"]) {
                 // 评论列表.
+                [list removeAllObjects];
                 //self.comList = [NSMutableArray arrayWithArray:result];
                 for (int i=0; i<[result count]; i++) {
                     NSDictionary *dic=[result objectAtIndex:i];
@@ -455,6 +550,7 @@
             }
             else if([isGet isEqualToString:@"1"])
             {
+                [list removeAllObjects];
                 //self.upList = [NSMutableArray arrayWithArray:result];
               //  self.shareContent.upnum = [NSNumber numberWithInt:self.upList.count];
                 for (int i=0; i<[result count]; i++) {
@@ -494,12 +590,24 @@
                 [t resignFirstResponder];
                 [commentTF resignFirstResponder];
                 
-                commentTF.text = NSLocalizedString(@"CommentPlaceholder", @"");
+                commentTF.text = @"评论";
                 commentTF.textColor = [UIColor grayColor];
                 
                 
-               // [self loadData];
+                [self loadCommentList];
                 
+            }
+            else if([sendCmt isEqualToString:@"article"] && [[parm allKeys]containsObject:@"reply"])
+            {
+                self.shareContent.commentnum = [NSNumber numberWithInt:self.shareContent.commentnum.intValue + 1];
+             
+                
+                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"回复成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alert show];
+                [alert release];
+                
+                [self loadCommentList];
+
             }
             
         }
@@ -516,7 +624,8 @@
                 //删除评论.
                 //[self.comList removeObjectAtIndex:deleteRow - 1];
                 self.shareContent.commentnum = [NSNumber numberWithInt:self.shareContent.commentnum.intValue - 1];
-                [self.tableview reloadData];
+                //[self.tableview reloadData];
+                [self loadCommentList];
                 UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"删除成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                 [alert show];
                 [alert release];
@@ -575,6 +684,47 @@
             }
         }
     }
+    else if (actionSheet.tag >= 333 && actionSheet.tag < 4444)
+    {
+        if (buttonIndex == 0)
+        {
+            [self deleteCommentById:currentComId withRow:actionSheet.tag%333];
+        }
+        
+        
+    }
+    else if (actionSheet.tag == 4444)
+    {
+        if (buttonIndex == 0)
+        {
+            [self replyCommentByCommentId:currentComId];
+        }
+    }
+}
+- (void)replyCommentByCommentId:(NSString *)comId
+{
+    WriteCommentsViewController *wtritecommnet=[[WriteCommentsViewController alloc]init];
+    wtritecommnet.delegate = self;
+    wtritecommnet.itemid=self.shareContent.shareId;
+    wtritecommnet.commentId = comId;
+    [self.navigationController pushViewController:wtritecommnet animated:YES];
+    [wtritecommnet release];
+    
+}
+
+- (void)replyCommentByParam:(NSDictionary *)param
+{
+    [[EKRequest Instance] EKHTTPRequest:comment parameters:param requestMethod:POST forDelegate:self];
+}
+
+
+- (void)deleteCommentById:(NSString *)comId withRow:(int)row
+
+{
+    deleteRow = row;
+    
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"comment",@"type",comId,@"key", nil];
+    [[EKRequest Instance]EKHTTPRequest:deleteF parameters:dic requestMethod:POST forDelegate:self];
 }
 - (void)saveMovie:(UIGestureRecognizer *)gesture
 {
@@ -648,7 +798,7 @@
 - (void)textViewDidEndEditing:(UITextView *)textView{
     if (textView == commentTF) {
         if ([commentTF.text isEqualToString:@""]) {
-            commentTF.text = NSLocalizedString(@"CommentPlaceholder", @"");
+            commentTF.text =@"评论";
         }
     }
 }
@@ -780,7 +930,7 @@
     if(cell==nil)
     {
         cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellidentifier] autorelease];
-        
+        cell.backgroundColor=[UIColor colorWithRed:240/255.0f green:238/255.0f blue:227/255.0f alpha:1.0f];
         UIImageView *photoImageView=[[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 30, 30)];
         photoImageView.backgroundColor=[UIColor clearColor];
         photoImageView.tag=99999;
@@ -804,10 +954,21 @@
         [cell.contentView addSubview:contentLabel];
         [contentLabel release];
         
+        
+        UILabel *timeLabel=[[UILabel alloc]initWithFrame:CGRectMake(40, 0, 0, 0)];
+        timeLabel.backgroundColor=[UIColor clearColor];
+        timeLabel.font=[UIFont systemFontOfSize:13];
+        timeLabel.lineBreakMode=NSLineBreakByWordWrapping;
+        timeLabel.tag=100002;
+        [cell.contentView addSubview:timeLabel];
+        [timeLabel release];
+        
     }
     UIImageView *imageView=(UIImageView *)[cell.contentView viewWithTag:99999];
     UILabel *namelabel=(UILabel *)[cell.contentView viewWithTag:100000];
     UILabel *contentlabel=(UILabel *)[cell.contentView viewWithTag:100001];
+    
+    UILabel *timetlabel=(UILabel *)[cell.contentView viewWithTag:100002];
     id obj=[self.list objectAtIndex:indexPath.row];
     if([obj isKindOfClass:[GKLikeObject class]])
     {
@@ -815,6 +976,7 @@
         [imageView setImageWithURL:[NSURL URLWithString:like.avatar] placeholderImage:nil];
         namelabel.text=like.nickname;
         contentlabel.text=@"";
+        timetlabel.frame=CGRectMake(200, 5, 100, 20);
         imageView.frame=CGRectMake(5, 5, 30, 30);
         namelabel.frame=CGRectMake(40, 10, 200, 20);
         contentlabel.frame=CGRectZero;
@@ -832,10 +994,20 @@
         {
             namelabel.text=[NSString stringWithFormat:@"%@ 老师",comment.nickname];
         }
-        namelabel.text=comment.nickname;
-        
-        CGSize size=[comment.content sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:CGSizeMake(250, 10000) lineBreakMode:NSLineBreakByWordWrapping];
-        contentlabel.text=comment.content;
+        timetlabel.text=[self timeConvert:comment.addtime];
+        //namelabel.text=comment.nickname;
+        NSString *content;
+        if (![comment.replynickname isEqualToString:@""])
+        {
+            content = [NSString stringWithFormat:@"回复 %@：%@",comment.replynickname,comment.content];
+        }
+        else
+        {
+            content = comment.content;
+        }
+        CGSize size=[content sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:CGSizeMake(250, 10000) lineBreakMode:NSLineBreakByWordWrapping];
+        contentlabel.text=content;
+        timetlabel.frame=CGRectMake(200, 5, 100, 20);
         imageView.frame=CGRectMake(5, 10, 30, 30);
         namelabel.frame=CGRectMake(40, 5, 200, 20);
         contentlabel.frame=CGRectMake(40, 30, 250, size.height);
@@ -857,7 +1029,18 @@
     {
         GKCommentObject *comment=(GKCommentObject *)obj;
         
-        CGSize size=[comment.content sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:CGSizeMake(250, 10000) lineBreakMode:NSLineBreakByWordWrapping];
+        NSString *content;
+        if (![comment.replynickname isEqualToString:@""])
+        {
+            content = [NSString stringWithFormat:@"回复 %@：%@",comment.replynickname,comment.content];
+        }
+        else
+        {
+            content = comment.content;
+        }
+        CGSize size=[content sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:CGSizeMake(250, 10000) lineBreakMode:NSLineBreakByWordWrapping];
+        
+      //  CGSize size=[comment.content sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:CGSizeMake(250, 10000) lineBreakMode:NSLineBreakByWordWrapping];
     
         return size.height + 30+5;
         
@@ -868,9 +1051,36 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WriteCommentsViewController *VC=[[WriteCommentsViewController alloc]init];
-    [self.navigationController pushViewController:VC animated:YES];
-    [VC release];
+    id obj=[self.list objectAtIndex:indexPath.row];
+    if([obj isKindOfClass:[GKLikeObject class]])
+    {
+        return;
+    }
+    else if([obj isKindOfClass:[GKCommentObject class]])
+    {
+        
+    
+        GKCommentObject *comment=(GKCommentObject *)obj;
+        self.currentComId=comment.commentid;
+        GKUserLogin *user=[GKUserLogin currentLogin];
+        if(![comment.isstudent isEqualToString:@"1"] && [comment.adduserid isEqualToString:user.teacher.teacherid])
+        {
+            
+            UIActionSheet *sheet=[[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:nil, nil];
+            sheet.tag=333+indexPath.row;
+            [sheet showInView:self.view];
+            [sheet release];
+        }
+        else
+        {
+            UIActionSheet *sheet=[[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"回复", nil];
+            sheet.tag=4444;
+            [sheet showInView:self.view];
+            [sheet release];
+        }
+        
+    }
+    
 }
 -(void)leftButtonClick:(UIButton *)btn
 {
@@ -889,6 +1099,7 @@
     self.movieBackView=nil;
     self.mPlayer=nil;
     self.list=nil;
+    self.currentComId=nil;
 
     [super dealloc];
 }

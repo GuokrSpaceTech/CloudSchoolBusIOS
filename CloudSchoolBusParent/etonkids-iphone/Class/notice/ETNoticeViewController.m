@@ -799,7 +799,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     if ([info.isconfirm isEqualToString:@"1"] && [info.haveisconfirm isEqualToString:@"0"]) //需要确认回执
     {
         NSString *title = [NSString stringWithFormat:@"%@ %@",LOCAL(@"com", @""),info.noticeTitle];
-        tSize = [title sizeWithFont:cell.noticeTitleLabel.font constrainedToSize:CGSizeMake(260, 1000) lineBreakMode:NSLineBreakByWordWrapping];
+        tSize = [title sizeWithFont:cell.noticeTitleLabel.font constrainedToSize:CGSizeMake(260, FLT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
         cell.noticeTitleLabel.textColor=[UIColor redColor];
         cell.noticeTitleLabel.text = title;
         cell.noticeTitleLabel.frame = CGRectMake(cell.noticeTitleLabel.frame.origin.x,
@@ -809,7 +809,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }
     else
     {
-        tSize = [info.noticeTitle sizeWithFont:cell.noticeTitleLabel.font constrainedToSize:CGSizeMake(260, 1000) lineBreakMode:NSLineBreakByWordWrapping];
+        tSize = [info.noticeTitle sizeWithFont:cell.noticeTitleLabel.font constrainedToSize:CGSizeMake(260, FLT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
         cell.noticeTitleLabel.textColor = [UIColor blackColor];
         cell.noticeTitleLabel.text = info.noticeTitle;
         cell.noticeTitleLabel.frame = CGRectMake(cell.noticeTitleLabel.frame.origin.x,
@@ -821,7 +821,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     calculateHeight += tSize.height + cell.noticeTitleLabel.frame.origin.y;
     
     
-    CGSize ctntSize = [info.noticeContent sizeWithFont:cell.noticeContentLabel.font constrainedToSize:CGSizeMake(250, 10000) lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize ctntSize = [info.noticeContent sizeWithFont:cell.noticeContentLabel.font constrainedToSize:CGSizeMake(250, FLT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
     if (ctntSize.height > cell.noticeContentLabel.font.lineHeight * 3 && !info.isMore)  //如果超过三行 只显示三行
     {
         cell.noticeContentLabel.text = info.noticeContent;
@@ -1045,19 +1045,19 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     if ([info.isconfirm isEqualToString:@"1"] && [info.haveisconfirm isEqualToString:@"0"]) //需要确认回执
     {
         NSString *title = [NSString stringWithFormat:@"%@ %@",LOCAL(@"com", @""),info.noticeTitle];
-        tSize = [title sizeWithFont:[UIFont systemFontOfSize:TITLEFONTSIZE] constrainedToSize:CGSizeMake(260, 1000) lineBreakMode:NSLineBreakByWordWrapping];
+        tSize = [title sizeWithFont:[UIFont systemFontOfSize:TITLEFONTSIZE] constrainedToSize:CGSizeMake(260, FLT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
         
     }
     else
     {
-        tSize = [info.noticeTitle sizeWithFont:[UIFont systemFontOfSize:TITLEFONTSIZE] constrainedToSize:CGSizeMake(260, 1000) lineBreakMode:NSLineBreakByWordWrapping];
+        tSize = [info.noticeTitle sizeWithFont:[UIFont systemFontOfSize:TITLEFONTSIZE] constrainedToSize:CGSizeMake(260, FLT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
     }
     
     calculateHeight += tSize.height + 10;
     
     
     UIFont *ctntFont = [UIFont systemFontOfSize:CONTENTFONTSIZE];
-    CGSize ctntSize = [info.noticeContent sizeWithFont:ctntFont constrainedToSize:CGSizeMake(250, 1000) lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize ctntSize = [info.noticeContent sizeWithFont:ctntFont constrainedToSize:CGSizeMake(250, FLT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
     
     if (ctntSize.height > ctntFont.lineHeight * 3 && !info.isMore)  //如果超过三行 只显示三行
     {

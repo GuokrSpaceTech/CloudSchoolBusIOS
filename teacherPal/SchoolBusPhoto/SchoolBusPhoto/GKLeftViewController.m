@@ -19,6 +19,7 @@
 #import "GKClassBlogViewController.h"
 #import "GKAttentanceViewController.h"
 #import "GKReportViewController.h"
+#import "GKEventListViewController.h"
 @interface GKLeftViewController ()
 
 @end
@@ -104,8 +105,11 @@
 //    "leftreportN"="left_report_en_normal.png";
 //    "leftreportH"="left_report_en_select.png";
     
-    NSArray *defArr = [NSArray arrayWithObjects:NSLocalizedString(@"morningleftN", @""),NSLocalizedString(@"attendanceleftN", @""),NSLocalizedString(@"notice", @""),NSLocalizedString(@"grade", @""), NSLocalizedString(@"home", @""), NSLocalizedString(@"leftreportN", @""),NSLocalizedString(@"leftUpN", @""),NSLocalizedString(@"setting", @""),nil];
-    NSArray *selArr = [NSArray arrayWithObjects:NSLocalizedString(@"morningleftH", @""),NSLocalizedString(@"attendanceleftH", @""),NSLocalizedString(@"noticeH", @""),NSLocalizedString(@"gradeH", @""),NSLocalizedString(@"homeH", @""),NSLocalizedString(@"leftreportH", @""), NSLocalizedString(@"leftUpH", @""),NSLocalizedString(@"settingH", @""),  nil];
+//    "eventN"="event_cn_n.png";
+//    "eventS"="event_cn_s.png";
+    
+    NSArray *defArr = [NSArray arrayWithObjects:NSLocalizedString(@"classshareN", @""),NSLocalizedString(@"attendanceleftN", @""),NSLocalizedString(@"notice", @""),NSLocalizedString(@"grade", @""), NSLocalizedString(@"home", @""), NSLocalizedString(@"leftreportN", @""), NSLocalizedString(@"eventN", @""),  NSLocalizedString(@"leftUpN", @""),NSLocalizedString(@"setting", @""),nil];
+    NSArray *selArr = [NSArray arrayWithObjects:NSLocalizedString(@"classshareS", @""),NSLocalizedString(@"attendanceleftH", @""),NSLocalizedString(@"noticeH", @""),NSLocalizedString(@"gradeH", @""),NSLocalizedString(@"homeH", @""),NSLocalizedString(@"leftreportH", @""), NSLocalizedString(@"eventS", @""),NSLocalizedString(@"leftUpH", @""),NSLocalizedString(@"settingH", @""),  nil];
     totle=[defArr count];
     
     
@@ -370,6 +374,17 @@
     }
     if(index==7)
     {
+
+        // 活动报名
+        GKEventListViewController *uploadq=[[GKEventListViewController alloc]init];
+        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:uploadq];
+        [uploadq release];
+        
+        return [nav autorelease];
+        //
+    }
+    if(index==8)
+    {
         // 上传列表
 //        GKAboutViewController *aboutVC=[[GKAboutViewController alloc]initWithNibName:@"GKAboutViewController" bundle:nil];
 //        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:aboutVC];
@@ -384,7 +399,7 @@
         return [nav autorelease];
 //
     }
-    if(index==8)
+    if(index==9)
     {
         //设置
         

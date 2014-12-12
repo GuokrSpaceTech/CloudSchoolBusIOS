@@ -148,6 +148,8 @@ static EKRequest * instance = nil;
             return @"report";
         case search:
             return @"search";
+        case teachereventslist:
+            return @"teachereventslist";
         default:
             return nil;
     }

@@ -189,7 +189,7 @@
     
     NSString *answer=[dic objectForKey:@"answer"];
     
-    CGSize size=[answer sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(280, 1000) lineBreakMode:NSLineBreakByCharWrapping];
+    CGSize size=[answer sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(280, FLT_MAX) lineBreakMode:NSLineBreakByCharWrapping];
     
     contentlabel.text=[dic objectForKey:@"answer"];
     
@@ -207,7 +207,8 @@
     NSDictionary *dic=[self.report.contentArr objectAtIndex:indexPath.row];
     NSString *answer=[dic objectForKey:@"answer"];
     
-    CGSize size=[answer sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(280, 1000) lineBreakMode:NSLineBreakByCharWrapping];
+
+    CGSize size=[answer sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(280, FLT_MAX) lineBreakMode:NSLineBreakByCharWrapping];
     
     return size.height + 40;
    //    contentlabel.frame=CGRectMake(20, 35, 280, size.height);

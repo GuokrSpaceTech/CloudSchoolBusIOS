@@ -297,6 +297,13 @@
 
 "morningleftN"="morningN-en.png";
 "morningleftH"="morningH-en.png";
+
+"classshareN"="class_share_en_n.png";
+"classshareS"="class_share_en_s.png";
+
+"eventN"="event_en_n.png";
+"eventS"="event_en_s.png";
+
 "homefont"="Home";
 
 "forgetpass"="Forget password,Please contact the school admin";
@@ -319,7 +326,10 @@
 "reportCancel"="Cancel sending the report?";
 "None"="None";
 
-
+"activeStatus1"="No start";
+"activeStatus2"="End";
+"activeStatus3"="Full";
+"activeStatus4"="In progress";
 "minutesago" = "m before";
 "hoursago" = "h before";
 "upText" = "Like";

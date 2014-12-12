@@ -55,6 +55,7 @@ enum RequestFunction
     studenthealth,
     report,
     search,
+    teachereventslist
 };
 typedef NSUInteger RequestFunction;
 

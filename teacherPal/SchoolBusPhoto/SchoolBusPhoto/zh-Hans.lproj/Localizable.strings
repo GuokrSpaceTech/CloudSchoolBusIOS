@@ -165,7 +165,10 @@
 "gradeH"="gradeH.png";
 "setting"="setting.png";
 "settingH"="settingH.png";
-
+"activeStatus1"="未开始";
+"activeStatus2"="已结束";
+"activeStatus3"="满员";
+"activeStatus4"="进行中";
 
 "Princess"="女孩";
 "prince"="男孩";
@@ -294,6 +297,11 @@
 
 "morningleftN"="morningN-cn.png";
 "morningleftH"="morningH-cn.png";
+"classshareN"="class_share_cn_n.png";
+"classshareS"="class_share_cn_s.png";
+"eventN"="event_cn_n.png";
+"eventS"="event_cn_s.png";
+
 "homefont"="主页";
 "forgetpass"="忘记密码，请联系校园管理员";
 "classreport"="班级报告";

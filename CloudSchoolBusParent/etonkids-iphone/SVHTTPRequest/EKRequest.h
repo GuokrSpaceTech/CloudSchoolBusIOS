@@ -40,6 +40,7 @@ enum RequestFunction
     bindTel,
     forgetpwd,
     bindreplace,
+    messageletter,
     skinid,
     attendancemanager,
     childreceiver,
@@ -49,7 +50,8 @@ enum RequestFunction
     order,
     geofenceparents,
     price,
-    personalorder
+    personalorder,
+    lastestletter
     
 };
 typedef NSUInteger RequestFunction;

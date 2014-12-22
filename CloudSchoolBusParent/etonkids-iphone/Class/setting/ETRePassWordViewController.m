@@ -98,10 +98,10 @@
     [self.view addSubview:rightButton];
     
 
-    UISwipeGestureRecognizer *popGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftButtonClick:)];
-    popGes.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:popGes];
-    [popGes release];
+//    UISwipeGestureRecognizer *popGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftButtonClick:)];
+//    popGes.direction = UISwipeGestureRecognizerDirectionRight;
+//    [self.view addGestureRecognizer:popGes];
+//    [popGes release];
     
 }
 -(void)leftButtonClick:(UIButton*)sender

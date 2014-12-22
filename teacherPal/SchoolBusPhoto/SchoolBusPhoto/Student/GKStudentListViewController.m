@@ -229,8 +229,8 @@
 //        [cell.contentView addSubview:inschoolLabel];
 //        [inschoolLabel release];
         
-        UIImageView *stateImageView=[[UIImageView alloc]initWithFrame:CGRectMake(290, 5, 5, 5)];
-        stateImageView.backgroundColor=[UIColor redColor];
+        UIImageView *stateImageView=[[UIImageView alloc]initWithFrame:CGRectMake(280, 10, 8, 8)];
+        stateImageView.backgroundColor=[UIColor clearColor];
         stateImageView.tag=CELLTAG+3;
         [cell.contentView addSubview:stateImageView];
         [stateImageView release];
@@ -312,15 +312,16 @@
     if([st.inSchoolHealth integerValue]==0)
     {
         //bu
-        stateImageView.backgroundColor=[UIColor redColor];
+        stateImageView.image=[UIImage imageNamed:@"redPoint.png"];
     }
     else if([st.inSchoolHealth integerValue]==1)
     {
-        stateImageView.backgroundColor=[UIColor greenColor];
+        stateImageView.image=[UIImage imageNamed:@"greenPoint.png"];
     }
     else
     {
-        stateImageView.backgroundColor=[UIColor clearColor];
+        stateImageView.image=nil;
+         //stateImageView.image=[UIImage imageNamed:@"redPoint.png"];
     }
     
     healthLabel.text=st.healthstate;

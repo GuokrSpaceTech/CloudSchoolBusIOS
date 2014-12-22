@@ -21,6 +21,7 @@
 @synthesize _tableView;
 @synthesize dataArr;
 @synthesize _slimeView;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -32,7 +33,8 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [(KKNavigationController *)self.navigationController setNavigationTouch:NO];
+    [_tableView reloadData];
+    [(KKNavigationController *)self.navigationController setNavigationTouch:YES];
 }
 -(void)keyboarChange:(NSNotification *)noti
 {
@@ -93,6 +95,7 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboarShow:) name:UIKeyboardWillShowNotification object:nil];
     
     
+    _contactObj.state=@"0";
     
     UIButton *buttom=[UIButton buttonWithType:UIButtonTypeCustom];
     buttom.frame=CGRectMake(10, 5, 34, 35);
@@ -131,7 +134,7 @@
     
     [_tableView addSubview:self._slimeView];
     
-    titlelabel.text=NSLocalizedString(@"message", @"");
+    titlelabel.text=_contactObj.cnname;
     
     
     dataArr=[[NSMutableArray alloc]init];
@@ -178,26 +181,15 @@
    // [imageView];
     [self.view bringSubviewToFront:_imageView11];
     
+          
     [self loadData];
 	// Do any additional setup after loading the view.
 }
 -(void)leftClick:(UIButton *)btn
 {
     
-    GKMainViewController *main=[GKMainViewController share];
-    if(main.state==0)
-    {
-        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
-            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionLeft];
-            [inputField resignFirstResponder];
-        }
-    }
-    else
-    {
-        if ([[GKMainViewController share] respondsToSelector:@selector(showSideBarControllerWithDirection:)]) {
-            [[GKMainViewController share] showSideBarControllerWithDirection:SideBarShowDirectionNone];
-        }
-    }
+    [self.navigationController popToRootViewControllerAnimated:YES];
+
     
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -283,16 +275,16 @@
     }
     
     
-    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:inputField.text,@"content",@"txt",@"lettertype", nil];
-    [[EKRequest Instance]EKHTTPRequest:LetterF parameters:dic requestMethod:POST forDelegate:self];
+    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:inputField.text,@"content",@"txt",@"lettertype",_contactObj.from_id,@"id", nil];
+    [[EKRequest Instance]EKHTTPRequest:messageletter parameters:dic requestMethod:POST forDelegate:self];
 
     
 }
 -(void)loadData
 {
     
-    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime", nil];
-    [[EKRequest Instance]EKHTTPRequest:LetterF parameters:dic requestMethod:GET forDelegate:self];
+    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",_contactObj.from_id,@"id", nil];
+    [[EKRequest Instance]EKHTTPRequest:messageletter parameters:dic requestMethod:GET forDelegate:self];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -343,8 +335,8 @@
         
         int ftime=[[NSDate date]timeIntervalSince1970];
         
-        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"img",@"lettertype",base64,@"fbody",[NSNumber numberWithInt:ftime],@"ftime",[NSNumber numberWithInt:[base64 length]],@"fsize",@"jpg",@"fext", nil];
-        [[EKRequest Instance]EKHTTPRequest:LetterF parameters:dic requestMethod:POST forDelegate:self];
+        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"img",@"lettertype",base64,@"fbody",[NSNumber numberWithInt:ftime],@"ftime",[NSNumber numberWithInt:[base64 length]],@"fsize",@"jpg",@"fext",_contactObj.from_id,@"id", nil];
+        [[EKRequest Instance]EKHTTPRequest:messageletter parameters:dic requestMethod:POST forDelegate:self];
     }
     
 }
@@ -372,19 +364,13 @@
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
 {
     NSLog(@"%d",code);
-  
-       [_slimeView endRefresh];
-//    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"code %d",code] message:str delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-//    [alert show];
-//    [alert release];
-//    
-//    return;
+    [_slimeView endRefresh];
     if(HUD)
     {
         [HUD removeFromSuperview];
         HUD=nil;
     }
-    if(method==LetterF && code==1)
+    if(method==messageletter && code==1)
     {
  
         NSArray *parmArr= [parm allKeys];
@@ -415,12 +401,7 @@
                 [formatter setDateFormat:@"yyyy-MM-dd"];
                 NSString *dateStr=[formatter stringFromDate:date];
                 [formatter release];
-               // labeTime.text=st;
-                
-               // NSString *dateStr= [[NSDate dateWithTimeIntervalSince1970: [letter.letterTime integerValue]].description substringToIndex:10];;
-                //NSLog(@"%@",dateStr);
-                
-                
+
                 BOOL found=NO;
                 for (int j=0; j<[dataArr count]; j++) {
                     GKLetterData *data=[dataArr objectAtIndex:j];
@@ -477,13 +458,11 @@
         else
         {
             inputField.text=@"";
-            if([dataArr count]>0)
-            {
-               // Letter *letter=[dataArr objectAtIndex:0];
+          // Letter *letter=[dataArr objectAtIndex:0];
                 
-                NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime", nil];
-                [[EKRequest Instance]EKHTTPRequest:LetterF parameters:dic requestMethod:GET forDelegate:self];
-            }
+                NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",_contactObj.from_id,@"id", nil];
+                [[EKRequest Instance]EKHTTPRequest:messageletter parameters:dic requestMethod:GET forDelegate:self];
+           // }
            
         }
      
@@ -667,14 +646,14 @@
     {
         GKLetterData *data=[dataArr objectAtIndex:0];
         NSString *time=[[data.letterArr objectAtIndex:0] letterTime];
-        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:time,@"starttime",@"0",@"endtime", nil];
-        [[EKRequest Instance]EKHTTPRequest:LetterF parameters:dic requestMethod:GET forDelegate:self];
+        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:time,@"starttime",@"0",@"endtime",_contactObj.from_id,@"id", nil];
+        [[EKRequest Instance]EKHTTPRequest:messageletter parameters:dic requestMethod:GET forDelegate:self];
 
     }
     else
     {
-        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime", nil];
-        [[EKRequest Instance]EKHTTPRequest:LetterF parameters:dic requestMethod:GET forDelegate:self];
+        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"0",@"starttime",@"0",@"endtime",_contactObj.from_id,@"id", nil];
+        [[EKRequest Instance]EKHTTPRequest:messageletter parameters:dic requestMethod:GET forDelegate:self];
 
     }
 
@@ -694,6 +673,7 @@
     self._tableView=nil;
     self.dataArr=nil;
     self._slimeView= nil;
+    self.contactObj=nil;
     [super dealloc];
 }
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated

@@ -144,7 +144,7 @@
     
     NSString *ddns=user.ddns;
     NSString *prot=user.port;
-    GKSocket *socket=[GKSocket instanceddns:ddns port:prot];
+    GKSocket *socket=[GKSocket instanceddns:@"54.223.156.59" port:prot];
 
     NSString *response=[NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"GB2312\" standalone=\"yes\"?> <TYPE>StartStream</TYPE>\
                         <DVRName>%@</DVRName>\

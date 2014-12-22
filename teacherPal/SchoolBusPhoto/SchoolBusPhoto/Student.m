@@ -39,6 +39,7 @@ xuefeuTime;
     {
         [self setInSchoolHealth:@""];
         [self setParentAlert:@""];
+        [self setInSchoolHealth:@"2"];
     }
     
     return self;

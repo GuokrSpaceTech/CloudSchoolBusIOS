@@ -23,7 +23,7 @@
 #import "ETSettingView.h"
 #import "ETChildViewController.h"
 #import "ETMyAccountView.h"
-
+#import "GKMessageView.h"
 #define PASSWordOrgin  998
 #define LoginOutAlety 997
 #define VersionAlert 996
@@ -210,8 +210,10 @@
                        @"mycounticon2.png",
                        @"bottomFoodDef.png",
                        @"bottomScheduleDef.png",
+                        @"bottomFeedbackDef.png",
                        @"bottomSettingDef.png",
                        @"bottomFeedbackDef.png",
+                       
                        @"bottomLogoutDef.png", nil];
     
 
@@ -219,22 +221,25 @@
                          LOCAL(@"btm_myaccount",@""),
                          LOCAL(@"btm_food",@""),
                          LOCAL(@"btm_schedule",@""),
+                         @"最近留言",
                          LOCAL(@"btm_setting",@""),
+                         
                          LOCAL(@"btm_feedback",@""),
+                         
                          LOCAL(@"btm_logout",@""), nil];
     
-    for (int i = 0 ; i < 6; i++)
+    for (int i = 0 ; i < 7; i++)
     {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        if (i != 5) {
+        if (i != 6) {
             [btn setImage:[UIImage imageNamed:@"bottomDef.png"] forState:UIControlStateNormal];
             [btn setImage:[UIImage imageNamed:@"bottomSel.png"] forState:UIControlStateHighlighted];
             [btn setImage:[UIImage imageNamed:@"bottomSel.png"] forState:UIControlStateSelected];
         }
         
         btn.tag = 4444 + i;
-        if (i == 5)
+        if (i == 6)
         {
             btn.frame = CGRectMake(0, 0, 320, 53);
             btn.center = CGPointMake(160, [UIScreen mainScreen].applicationFrame.size.height - 24 - 20 + (ios7 ? 20 : 0));
@@ -250,7 +255,7 @@
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 130, 40)];
         label.backgroundColor = [UIColor clearColor];
-        if (i == 5) {
+        if (i == 6) {
             label.textColor = [UIColor colorWithRed: 232/255.0f green:203/255.0f blue:99/255.0f alpha:1.0f];
         }else{
             label.textColor = [UIColor colorWithRed:183/255.0f green:192/255.0f blue:199/255.0f alpha:1.0f];
@@ -271,7 +276,7 @@
         [self.view addSubview:imgV];
         [imgV release];
         
-        if (i != 5) {
+        if (i != 6) {
             UIImageView *arrowImgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 9, 13)];
             arrowImgV.image = [UIImage imageNamed:@"GO"];
             arrowImgV.tag = 7777 + i;
@@ -552,10 +557,6 @@
             [navBtn setImage:[UIImage imageNamed:@"navLeftBtn_default.png"] forState:UIControlStateNormal];
             [navBtn setImage:[UIImage imageNamed:@"navLeftBtn_selected.png"] forState:UIControlStateHighlighted];
             [navBtn addTarget:self action:@selector(doClickLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
-        }else{
-//            [navBtn setImage:[UIImage imageNamed:@"navRightBtn_default.png"] forState:UIControlStateNormal];
-//            [navBtn setImage:[UIImage imageNamed:@"navRightBtn_selected.png"] forState:UIControlStateHighlighted];
-//            [navBtn addTarget:self action:@selector(doClickRightBtn:) forControlEvents:UIControlEventTouchUpInside];
         }
         [navBtn setFrame:CGRectMake(0, 0, 50, 35)];
         [navBtn setCenter:CGPointMake(10 + 34/2 + 266 *i, navigationView.frame.size.height/2)];
@@ -604,7 +605,7 @@
     
     [UIView animateWithDuration:0.1f animations:^{
         
-        if (num != 5) {
+        if (num != 6) {
             topView.frame = CGRectMake(320, topView.frame.origin.y, topView.frame.size.width, topView.frame.size.height);
         }
         
@@ -612,7 +613,7 @@
         
         if (!selected)
         {
-            if ( num != 5 ) {
+            if ( num != 6 ) {
                 
                 [[topView viewWithTag:1111] removeFromSuperview];
                 self.leveyTBC = nil;
@@ -650,7 +651,16 @@
                                                                           [UIScreen mainScreen].applicationFrame.size.height)];
                     break;
                 }
-                case 3://设置
+                case 3://课程表
+                {
+                    vc = [[GKMessageView alloc] initWithFrame:CGRectMake(0,
+                                                                          0,
+                                                                          [UIScreen mainScreen].applicationFrame.size.width,
+                                                                          [UIScreen mainScreen].applicationFrame.size.height)];
+                    break;
+                }
+                    
+                case 4://设置
                 {
                     vc = [[ETSettingView alloc] initWithFrame:CGRectMake(0,
                                                                          0,
@@ -658,7 +668,7 @@
                                                                          [UIScreen mainScreen].applicationFrame.size.height)];
                     break;
                 }
-                case 4://意见反馈
+                case 5://意见反馈
                 {
                     vc = [[ETFeedbackView alloc] initWithFrame:CGRectMake(0,
                                                                           0,
@@ -667,7 +677,7 @@
                     
                     break;
                 }
-                case 5://退出登录
+                case 6://退出登录
                 {
                     
                     
@@ -726,7 +736,7 @@
         if ([obj isKindOfClass:[UIButton class]])
         {
             UIButton *btn = (UIButton *)obj;
-            if (btnNum != 5)
+            if (btnNum != 6)
             {
                 if (btn.tag >= 4444 && btn.tag <= 5000)
                 {
@@ -736,7 +746,7 @@
         }
     }
     
-    if (btnNum != 5) {
+    if (btnNum != 6) {
         sender.selected = YES;
     }
     

@@ -80,7 +80,7 @@
             }
         }
     }
-    if([_letter.letterFromRole isEqualToString:@"admin"])
+    if([_letter.letterFromRole isEqualToString:@"parent"])
     {
         // 左气泡
         

@@ -490,10 +490,10 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     [self loadData];
     
     
-    UISwipeGestureRecognizer *popGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftButtonClick:)];
-    popGes.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:popGes];
-    [popGes release];
+//    UISwipeGestureRecognizer *popGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftButtonClick:)];
+//    popGes.direction = UISwipeGestureRecognizerDirectionRight;
+//    [self.view addGestureRecognizer:popGes];
+//    [popGes release];
     
     
     UserLogin *user = [UserLogin currentLogin];

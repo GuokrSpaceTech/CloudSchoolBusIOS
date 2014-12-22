@@ -32,10 +32,12 @@ static GKSocket *currentSocket=nil;
 
 +(GKSocket *)instanceddns:(NSString *)ddns port:(NSString *)port
 {
+    
+    
 
     if(currentSocket==nil)
     {
-        currentSocket=[[GKSocket alloc]initwithddns:ddns port:port];
+        currentSocket=[[GKSocket alloc]initwithddns:@"54.223.156.59" port:port];
     }
     return currentSocket;
 }
@@ -58,6 +60,9 @@ static GKSocket *currentSocket=nil;
 -(void)initNetworkCommunicationddns:(NSString *)ddns port:(NSString *)prot
 {
 
+    
+
+    
     CFReadStreamRef readStream;
     CFWriteStreamRef writeStream;
     //CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"222.128.71.186", 600, &readStream, &writeStream);

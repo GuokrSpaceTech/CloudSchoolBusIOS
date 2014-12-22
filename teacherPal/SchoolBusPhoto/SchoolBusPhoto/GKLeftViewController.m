@@ -10,7 +10,7 @@
 
 #import "GKAppDelegate.h"
 #import "GKStudentListViewController.h"
-#import "GKLetterViewController.h"
+#import "GKLastLetterViewController.h"
 #import "KKNavigationController.h"
 #import "GKAlumbViewController.h"
 #import "GKLoaderManager.h"
@@ -139,7 +139,7 @@
     }
     
     
-    scroller.contentSize=CGSizeMake(self.view.frame.size.width, 8*52);
+    scroller.contentSize=CGSizeMake(self.view.frame.size.width, 9*52);
     UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(25, self.view.frame.size.height-40, 26, 26)];
     imageView.image=IMAGENAME(IMAGEWITHPATH(@"loginOUt"));
     [self.view addSubview:imageView];
@@ -311,13 +311,13 @@
     {
         //系统消息
         
-        NSUserDefaults *defaultuser=[NSUserDefaults standardUserDefaults];
-        [defaultuser setObject:[NSNumber numberWithInt:0]forKey:@"BADGE"];
+//        NSUserDefaults *defaultuser=[NSUserDefaults standardUserDefaults];
+//        [defaultuser setObject:[NSNumber numberWithInt:0]forKey:@"BADGE"];
+//        
+//        GKUserLogin *user=[GKUserLogin currentLogin];
+//        user.badgeNumber=[NSNumber numberWithInt:0];
         
-        GKUserLogin *user=[GKUserLogin currentLogin];
-        user.badgeNumber=[NSNumber numberWithInt:0];
-        
-        GKLetterViewController *letterVC=[[GKLetterViewController alloc]init];
+        GKLastLetterViewController *letterVC=[[GKLastLetterViewController alloc]init];
         KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:letterVC];
         [letterVC release];
         

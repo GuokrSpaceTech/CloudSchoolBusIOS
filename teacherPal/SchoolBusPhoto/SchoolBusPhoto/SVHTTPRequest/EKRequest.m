@@ -59,8 +59,8 @@ static EKRequest * instance = nil;
 {
     switch (fun)
     {
-        case LetterF:
-            return @"Letter";
+        case messageletter:
+            return @"messageletter";
         case tsignin:
             return @"tsignin";
         case password:
@@ -150,6 +150,8 @@ static EKRequest * instance = nil;
             return @"search";
         case teachereventslist:
             return @"teachereventslist";
+        case lastestletter:
+            return @"lastestletter";
         default:
             return nil;
     }

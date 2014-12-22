@@ -102,10 +102,10 @@
     [mainTV release];
     
     
-    UISwipeGestureRecognizer *popGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftButtonClick:)];
-    popGes.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:popGes];
-    [popGes release];
+//    UISwipeGestureRecognizer *popGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftButtonClick:)];
+//    popGes.direction = UISwipeGestureRecognizerDirectionRight;
+//    [self.view addGestureRecognizer:popGes];
+//    [popGes release];
     
 }
 - (void)leftButtonClick:(id)sender

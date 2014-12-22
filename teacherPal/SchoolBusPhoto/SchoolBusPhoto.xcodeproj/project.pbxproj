@@ -21,6 +21,11 @@
 		1102A7FE181A715D00E6295C /* guanlian-B-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1102A7FC181A715D00E6295C /* guanlian-B-1.png */; };
 		1102A7FF181A715D00E6295C /* guanlian-B-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1102A7FD181A715D00E6295C /* guanlian-B-2.png */; };
 		110AFD5B192DCD1D00CEFECE /* inclass.png in Resources */ = {isa = PBXBuildFile; fileRef = 110AFD59192DCD1D00CEFECE /* inclass.png */; };
+		111640BE1A3EC0D900A91ACD /* greenPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 111640BC1A3EC0D900A91ACD /* greenPoint.png */; };
+		111640BF1A3EC0D900A91ACD /* redPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 111640BD1A3EC0D900A91ACD /* redPoint.png */; };
+		111A48031A42906900C483B7 /* GKLastLetterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111A48021A42906900C483B7 /* GKLastLetterViewController.m */; };
+		111A48061A42B9E700C483B7 /* GKContactObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 111A48051A42B9E700C483B7 /* GKContactObj.m */; };
+		111A48081A42C6A000C483B7 /* yellowPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 111A48071A42C6A000C483B7 /* yellowPoint.png */; };
 		111B83B619A1F7D4008078BA /* report_writenormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 111B83B519A1F7D4008078BA /* report_writenormal.png */; };
 		111B83B819A1F7E5008078BA /* report_writeselect.png in Resources */ = {isa = PBXBuildFile; fileRef = 111B83B719A1F7E5008078BA /* report_writeselect.png */; };
 		111B83BB19A1F9E7008078BA /* report_write_lefttop_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 111B83B919A1F9E7008078BA /* report_write_lefttop_normal.png */; };
@@ -283,6 +288,7 @@
 		11BBA70B19249E3700637BED /* inclass.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BBA70919249E3700637BED /* inclass.png */; };
 		11BBE88E198F38ED0004D8D0 /* GKReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BBE88D198F38ED0004D8D0 /* GKReport.m */; };
 		11BBE894198F6A1D0004D8D0 /* GKReportContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BBE893198F6A1D0004D8D0 /* GKReportContentViewController.m */; };
+		11BD391A1A43EF7600487318 /* GKContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BD39191A43EF7600487318 /* GKContactViewController.m */; };
 		11BEA55B1A242BC40054DF03 /* ClassShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA54E1A242BC40054DF03 /* ClassShareCell.m */; };
 		11BEA55C1A242BC40054DF03 /* GKClassBlog.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5501A242BC40054DF03 /* GKClassBlog.m */; };
 		11BEA55D1A242BC40054DF03 /* GKClassBlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BEA5521A242BC40054DF03 /* GKClassBlogViewController.m */; };
@@ -519,6 +525,13 @@
 		1102A7FC181A715D00E6295C /* guanlian-B-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanlian-B-1.png"; sourceTree = "<group>"; };
 		1102A7FD181A715D00E6295C /* guanlian-B-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanlian-B-2.png"; sourceTree = "<group>"; };
 		110AFD59192DCD1D00CEFECE /* inclass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inclass.png; sourceTree = "<group>"; };
+		111640BC1A3EC0D900A91ACD /* greenPoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenPoint.png; sourceTree = "<group>"; };
+		111640BD1A3EC0D900A91ACD /* redPoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redPoint.png; sourceTree = "<group>"; };
+		111A48011A42906900C483B7 /* GKLastLetterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKLastLetterViewController.h; sourceTree = "<group>"; };
+		111A48021A42906900C483B7 /* GKLastLetterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKLastLetterViewController.m; sourceTree = "<group>"; };
+		111A48041A42B9E700C483B7 /* GKContactObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKContactObj.h; sourceTree = "<group>"; };
+		111A48051A42B9E700C483B7 /* GKContactObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKContactObj.m; sourceTree = "<group>"; };
+		111A48071A42C6A000C483B7 /* yellowPoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowPoint.png; sourceTree = "<group>"; };
 		111B83B519A1F7D4008078BA /* report_writenormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = report_writenormal.png; sourceTree = "<group>"; };
 		111B83B719A1F7E5008078BA /* report_writeselect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = report_writeselect.png; sourceTree = "<group>"; };
 		111B83B919A1F9E7008078BA /* report_write_lefttop_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = report_write_lefttop_normal.png; sourceTree = "<group>"; };
@@ -909,6 +922,8 @@
 		11BBE88D198F38ED0004D8D0 /* GKReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReport.m; sourceTree = "<group>"; };
 		11BBE892198F6A1D0004D8D0 /* GKReportContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReportContentViewController.h; sourceTree = "<group>"; };
 		11BBE893198F6A1D0004D8D0 /* GKReportContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReportContentViewController.m; sourceTree = "<group>"; };
+		11BD39181A43EF7600487318 /* GKContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKContactViewController.h; sourceTree = "<group>"; };
+		11BD39191A43EF7600487318 /* GKContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKContactViewController.m; sourceTree = "<group>"; };
 		11BEA54D1A242BC40054DF03 /* ClassShareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassShareCell.h; sourceTree = "<group>"; };
 		11BEA54E1A242BC40054DF03 /* ClassShareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassShareCell.m; sourceTree = "<group>"; };
 		11BEA54F1A242BC40054DF03 /* GKClassBlog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKClassBlog.h; sourceTree = "<group>"; };
@@ -1289,6 +1304,12 @@
 				1193A6BC182B9A64004011BC /* GKLetterData.m */,
 				119566B1181E098300366B13 /* GKLetterCell.h */,
 				119566B2181E098300366B13 /* GKLetterCell.m */,
+				111A48011A42906900C483B7 /* GKLastLetterViewController.h */,
+				111A48021A42906900C483B7 /* GKLastLetterViewController.m */,
+				111A48041A42B9E700C483B7 /* GKContactObj.h */,
+				111A48051A42B9E700C483B7 /* GKContactObj.m */,
+				11BD39181A43EF7600487318 /* GKContactViewController.h */,
+				11BD39191A43EF7600487318 /* GKContactViewController.m */,
 			);
 			name = letterVC;
 			sourceTree = "<group>";
@@ -1595,6 +1616,9 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				111A48071A42C6A000C483B7 /* yellowPoint.png */,
+				111640BC1A3EC0D900A91ACD /* greenPoint.png */,
+				111640BD1A3EC0D900A91ACD /* redPoint.png */,
 				11B1E1CE1A39724F00FFE39A /* event_cn_n.png */,
 				11B1E1CF1A39724F00FFE39A /* event_cn_s.png */,
 				11B1E1D01A39724F00FFE39A /* event_en_n.png */,
@@ -2435,7 +2459,9 @@
 				78709BFE187D1733009250FB /* camera-blind-bottom-simple.png in Resources */,
 				78709C02187D1733009250FB /* camera-glyph-cameratoggle.png in Resources */,
 				1194023D182360EB00F21FB8 /* M-4.png in Resources */,
+				111640BF1A3EC0D900A91ACD /* redPoint.png in Resources */,
 				788C7C28188FCAEF00BA9BD0 /* camera-shutter-video-default-active.png in Resources */,
+				111640BE1A3EC0D900A91ACD /* greenPoint.png in Resources */,
 				11B852D4183368A0005FA5B9 /* mail.png in Resources */,
 				78D8D11B18C07ABC008860AB /* thelp_zhuye_568.png in Resources */,
 				11B852A8183221CF005FA5B9 /* OKBtn.png in Resources */,
@@ -2481,6 +2507,7 @@
 				110AFD5B192DCD1D00CEFECE /* inclass.png in Resources */,
 				78A0FF7018AB267C00E6A3D5 /* 云中校车视频相册封面.png in Resources */,
 				1165E27E182CFCE000B60A81 /* pic-1.png in Resources */,
+				111A48081A42C6A000C483B7 /* yellowPoint.png in Resources */,
 				11B9A2C4198A36680083E91E /* report_line.png in Resources */,
 				11AF3B1918168FC400B36176 /* loginBtn@2x.png in Resources */,
 				116F88CA1A2313DF00A3AFDA /* cellPraise.png in Resources */,
@@ -2619,6 +2646,7 @@
 				119AC2731839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodeld in Sources */,
 				1138D427198B5D9A008760E1 /* GKReportStudentView.m in Sources */,
 				11C75DA71812725600A3AA89 /* SVHTTPClient.m in Sources */,
+				111A48061A42B9E700C483B7 /* GKContactObj.m in Sources */,
 				119E962B1814C5A300866DE8 /* ASIS3BucketObject.m in Sources */,
 				11B9A2C2198A1EC20083E91E /* GKQuestionView.m in Sources */,
 				116F88A91A22DE6D00A3AFDA /* MDRadialProgressLabel.m in Sources */,
@@ -2629,6 +2657,7 @@
 				119E962A1814C5A300866DE8 /* ASIS3Bucket.m in Sources */,
 				11A3BF4B18756A3A0032BA07 /* GKStudentInfoViewController.m in Sources */,
 				11B4051E1918D09E00E56A59 /* GKStudentAdd.m in Sources */,
+				11BD391A1A43EF7600487318 /* GKContactViewController.m in Sources */,
 				11A30EFB1862FB9500DEB58B /* GKDisapperView.m in Sources */,
 				119566B6181E09A000366B13 /* Letter.m in Sources */,
 				1193A6CE182C78E9004011BC /* ETScoreView.m in Sources */,
@@ -2638,6 +2667,7 @@
 				119E961F1814C5A300866DE8 /* ASINetworkQueue.m in Sources */,
 				11C2328F1980F7410079F282 /* GKSchoolTag.m in Sources */,
 				119E5FCB1818C65100726761 /* ClassInfo.m in Sources */,
+				111A48031A42906900C483B7 /* GKLastLetterViewController.m in Sources */,
 				11B3E222193EC21500A96ACF /* GKTempature.m in Sources */,
 				11B405171918C85400E56A59 /* GKSearchListViewController.m in Sources */,
 				111E8CDE181E532400234014 /* MKAnnotationView+WebCache.m in Sources */,
@@ -2894,7 +2924,6 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3a994eb4-c160-4cf9-abdf-86a24b07598b";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3a994eb4-c160-4cf9-abdf-86a24b07598b";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

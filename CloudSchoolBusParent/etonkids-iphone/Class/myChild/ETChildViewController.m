@@ -153,7 +153,6 @@
     }
     else if (indexPath.section == 1)
     {
-        
         UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
         imgV.center = CGPointMake(26, 20);
         imgV.image = [UIImage imageNamed:@"孩子管理.png"];

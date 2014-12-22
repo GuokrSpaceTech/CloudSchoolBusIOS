@@ -84,10 +84,10 @@
     
     self.tableview = tv;
     
-    UISwipeGestureRecognizer *popGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftButtonClick:)];
-    popGes.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:popGes];
-    [popGes release];
+//    UISwipeGestureRecognizer *popGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftButtonClick:)];
+//    popGes.direction = UISwipeGestureRecognizerDirectionRight;
+//    [self.view addGestureRecognizer:popGes];
+//    [popGes release];
 
     // Do any additional setup after loading the view from its nib.
 }

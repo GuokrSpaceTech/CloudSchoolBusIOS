@@ -47,11 +47,11 @@
         tv.dataSource = self;
         [self addSubview:tv];
         [tv release];
-        
-        UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftButtonClick:)];
-        swipe.direction = UISwipeGestureRecognizerDirectionRight;
-        [self addGestureRecognizer:swipe];
-        [swipe release];
+//        
+//        UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftButtonClick:)];
+//        swipe.direction = UISwipeGestureRecognizerDirectionRight;
+//        [self addGestureRecognizer:swipe];
+//        [swipe release];
         
         self.mainTV = tv;
         

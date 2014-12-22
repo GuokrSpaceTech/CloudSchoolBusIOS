@@ -63,10 +63,10 @@
     [leftButton setImage:[UIImage imageNamed:@"backBtnSel_3.0.png"] forState:UIControlStateHighlighted];
     [leftButton addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:leftButton];
-    UISwipeGestureRecognizer *popGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftButtonClick:)];
-    popGes.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:popGes];
-    [popGes release];
+//    UISwipeGestureRecognizer *popGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftButtonClick:)];
+//    popGes.direction = UISwipeGestureRecognizerDirectionRight;
+//    [self.view addGestureRecognizer:popGes];
+//    [popGes release];
    
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
     middleLabel.textAlignment=UITextAlignmentCenter;

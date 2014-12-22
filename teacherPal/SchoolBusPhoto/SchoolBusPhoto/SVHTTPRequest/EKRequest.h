@@ -39,7 +39,7 @@ enum RequestFunction
     calendar,
     push,
     forward,
-    LetterF,
+    messageletter,
     Creditshop,
     Credit,
     source,
@@ -55,7 +55,8 @@ enum RequestFunction
     studenthealth,
     report,
     search,
-    teachereventslist
+    teachereventslist,
+    lastestletter
 };
 typedef NSUInteger RequestFunction;
 

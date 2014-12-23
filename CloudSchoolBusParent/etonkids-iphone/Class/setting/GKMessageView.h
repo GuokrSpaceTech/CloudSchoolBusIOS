@@ -8,8 +8,10 @@
 
 #import "ETBoardSideView.h"
 #import "EKRequest.h"
-@interface GKMessageView : ETBoardSideView<UITableViewDataSource,UITableViewDelegate,EKProtocol>
+#import "SRRefreshView.h"
+@interface GKMessageView : ETBoardSideView<UITableViewDataSource,UITableViewDelegate,EKProtocol,SRRefreshDelegate>
 {}
 @property (nonatomic,retain)UITableView *tableView;
 @property (nonatomic,retain)NSMutableArray *dataArr;
+@property (nonatomic, retain)SRRefreshView   *_slimeView;
 @end

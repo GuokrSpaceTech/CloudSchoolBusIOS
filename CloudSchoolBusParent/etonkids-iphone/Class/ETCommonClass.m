@@ -13,7 +13,7 @@
 #import "MTAuthCode.h"
 #import "ETCoreDataManager.h"
 #import "ETLoginViewController.h"
-
+#import "GKTeacher.h"
 @implementation ETCommonClass
 @synthesize preSid;
 
@@ -172,6 +172,17 @@
         user.schoolname = [dic11 objectForKey:@"schoolname"];
         user.uid_class = [NSString stringWithFormat:@"%@",[dic11 objectForKey:@"uid"]];
         
+        NSArray *arr=[dic objectForKey:@"teacherlist"];
+        [user.teacherList removeAllObjects];
+        for (int i=0; i<[arr count]; i++) {
+            GKTeacher *teacher=[[GKTeacher alloc]init];
+            teacher.teacherid=[NSString stringWithFormat:@"%@",[[arr objectAtIndex:i] objectForKey:@"teacherid"]];
+            teacher.teachername=[[arr objectAtIndex:i] objectForKey:@"teachername"];
+            [user.teacherList addObject:teacher];
+            [teacher release];
+            
+        }
+        
         [[EKRequest Instance] EKHTTPRequest:setting parameters:nil requestMethod:GET forDelegate:self];
         NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
         [center postNotificationName:@"CHILDINFO" object:nil];
@@ -234,6 +245,7 @@
     [UserLogin currentLogin].isSettingInterface=NO;
     [UserLogin currentLogin].isStudentInterface=NO;
     [UserLogin currentLogin].isClassInfonterface=NO;
+    [UserLogin releaseCurrentUser];
     [ETCommonClass clearUserMessage];
     
     AppDelegate *appDel = SHARED_APP_DELEGATE;

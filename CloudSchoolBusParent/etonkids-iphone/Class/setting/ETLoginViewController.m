@@ -12,7 +12,7 @@
 
 #import "Modify.h"
 #import "MTAuthCode.h"
-
+#import "GKTeacher.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ETForgetPasswordViewController.h"
 #import "ETBottomViewController.h"
@@ -445,6 +445,19 @@
         user.isClassInfonterface=YES;
         NSDictionary * dic11 = [dic objectForKey:@"classinfo"];
         user.schoolname=[dic11 objectForKey:@"schoolname"];
+        
+        
+        NSArray *arr=[dic objectForKey:@"teacherlist"];
+        [user.teacherList removeAllObjects];
+        for (int i=0; i<[arr count]; i++) {
+            GKTeacher *teacher=[[GKTeacher alloc]init];
+            teacher.teacherid=[NSString stringWithFormat:@"%@",[[arr objectAtIndex:i] objectForKey:@"teacherid"]];
+            teacher.teachername=[[arr objectAtIndex:i] objectForKey:@"teachername"];
+            [user.teacherList addObject:teacher];
+            [teacher release];
+            
+        }
+        
         [[EKRequest Instance] EKHTTPRequest:setting parameters:nil requestMethod:GET forDelegate:self];
         
 

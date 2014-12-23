@@ -11,10 +11,13 @@
 #import "GKContactObj.h"
 #import "GKLetterViewController.h"
 #import "AppDelegate.h"
+#import "GKContactViewController.h"
 @implementation GKMessageView
+@synthesize _slimeView;
 -(void)dealloc
 {
     self.tableView=nil;
+    self._slimeView=nil;
     self.dataArr=nil;
     [super dealloc];
 }
@@ -28,14 +31,23 @@
         middleLabel.text=@"最近留言";
         
         _dataArr=[[NSMutableArray alloc]init];
+        UIButton *leftBtn =[UIButton buttonWithType:UIButtonTypeCustom];
+        [leftBtn setFrame:CGRectMake(0, 0, 50, 35)];
+        [leftBtn setCenter:CGPointMake(320 - 10 - 34/2 , navigationBackView.frame.size.height/2)];
+        [leftBtn addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+       // [rightButton setImage:[UIImage imageNamed:@"OKBtn.png"] forState:UIControlStateNormal];
+        //[rightButton setImage:[UIImage imageNamed:@"OKBtn_sel.png"] forState:UIControlStateHighlighted];
+        [self addSubview:leftBtn];
+        
+        
+        
         UIButton *rightButton =[UIButton buttonWithType:UIButtonTypeCustom];
         [rightButton setFrame:CGRectMake(0, 0, 50, 35)];
         [rightButton setCenter:CGPointMake(320 - 10 - 34/2 , navigationBackView.frame.size.height/2)];
         [rightButton addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-       // [rightButton setImage:[UIImage imageNamed:@"OKBtn.png"] forState:UIControlStateNormal];
-        //[rightButton setImage:[UIImage imageNamed:@"OKBtn_sel.png"] forState:UIControlStateHighlighted];
+        [rightButton setImage:[UIImage imageNamed:@"OKBtn.png"] forState:UIControlStateNormal];
+        [rightButton setImage:[UIImage imageNamed:@"OKBtn_sel.png"] forState:UIControlStateHighlighted];
         [self addSubview:rightButton];
-        
         
         UIImageView *txtBack = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10 + NAVIHEIGHT, 291, 160)];
         txtBack.image = [UIImage imageNamed:@"SetingContent.png"];
@@ -50,7 +62,17 @@
         _tableView.dataSource = self;
         [self addSubview:_tableView];
         
-    
+        _slimeView = [[SRRefreshView alloc] init];
+        _slimeView.delegate = self;
+        _slimeView.upInset = 0;
+        _slimeView.slimeMissWhenGoingBack = YES;
+        _slimeView.slime.bodyColor = [UIColor blackColor];
+        _slimeView.slime.skinColor = [UIColor blackColor];
+        _slimeView.slime.lineWith = 1;
+        _slimeView.slime.shadowBlur = 4;
+        _slimeView.slime.shadowColor = [UIColor blackColor];
+        
+        [_tableView addSubview:self._slimeView];
 //        
 //        UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftButtonClick:)];
 //        swipe.direction = UISwipeGestureRecognizerDirectionRight;
@@ -64,7 +86,13 @@
     }
     return self;
 }
-
+-(void)rightButtonClick:(UIButton *)btn
+{
+    AppDelegate *app = SHARED_APP_DELEGATE;
+    GKContactViewController *contactViewController=[[GKContactViewController alloc]init];
+    [app.bottomNav pushViewController:contactViewController animated:YES];
+    [contactViewController release];
+}
 
 -(void)loadLatestMessage
 {
@@ -73,7 +101,7 @@
 
 -(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
 {
-    
+        [_slimeView endRefresh];
     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"busy", @"网络故障，请稍后重试") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
     [alert show];
     [alert release];
@@ -82,7 +110,7 @@
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
 {
   
-    
+        [_slimeView endRefresh];
     if(code==1&& method==lastestletter)
     {
         
@@ -198,6 +226,28 @@
     [app.bottomNav pushViewController:letterViewController animated:YES];
  
     [letterViewController release];
+    
+}
+- (void)slimeRefreshStartRefresh:(SRRefreshView *)refreshView
+{
+    
+    [self loadLatestMessage];
+}
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+    if (self._slimeView) {
+        [self._slimeView scrollViewDidScroll];
+    }
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (self._slimeView) {
+        [self._slimeView scrollViewDidEndDraging];
+    }
+    
     
 }
 /*

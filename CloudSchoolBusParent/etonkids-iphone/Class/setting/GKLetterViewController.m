@@ -10,9 +10,9 @@
 #import "GTMBase64.h"
 #import "GKLetterData.h"
 #import "ETKids.h"
-
+#import "AppDelegate.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-
+#import "ETBottomViewController.h"
 @interface GKLetterViewController ()
 
 @end
@@ -28,7 +28,16 @@
 }
 - (void)leftButtonClick:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    AppDelegate *deletae=SHARED_APP_DELEGATE;
+    NSArray *arr=deletae.bottomNav.viewControllers;
+    for (int i=0; i<[arr count]; i++) {
+        UIViewController *vc=[arr objectAtIndex:i];
+        if([vc isKindOfClass:[ETBottomViewController class]])
+        {
+            [self.navigationController popToViewController:vc animated:YES];
+            return;
+        }
+    }
 }
 -(void)keyboarChange:(NSNotification *)noti
 {
@@ -159,7 +168,7 @@
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
     middleLabel.textAlignment=UITextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
-    middleLabel.text = NSLocalizedString(@"doctor_tiwendetail", @"提问详情");
+    middleLabel.text = _contactObj.cnname;
     middleLabel.backgroundColor=[UIColor clearColor];
     [self.view addSubview:middleLabel];
     [middleLabel release];
@@ -456,7 +465,7 @@
         {
             cell=[[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell0] autorelease];
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
-            
+            cell.backgroundColor=[UIColor clearColor];
             UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 10, 320, 1)];
             imageView.image=[UIImage imageNamed:@"letterLine.png"];
             [cell addSubview:imageView];
@@ -486,6 +495,7 @@
     {
         cell=[[[GKLetterCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        cell.backgroundColor=[UIColor clearColor];
         cell.delegate=self;
     }
     
@@ -605,7 +615,7 @@
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"img",@"lettertype",base64,@"fbody",[NSNumber numberWithInt:ftime],@"ftime",[NSNumber numberWithInt:[base64 length]],@"fsize",@"jpg",@"fext",_contactObj.from_id,@"id", nil];
     
     
-    NSLog(@"%@",dic);
+   // NSLog(@"%@",dic);
     [[EKRequest Instance]EKHTTPRequest:messageletter parameters:dic requestMethod:POST forDelegate:self];
     
     

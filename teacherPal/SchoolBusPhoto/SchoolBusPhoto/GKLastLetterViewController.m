@@ -148,8 +148,21 @@
             GKContactObj *obj=[[GKContactObj alloc]init];
             NSDictionary *dic=[arr objectAtIndex:i];
             obj.cnname=[dic objectForKey:@"cnname"];
-            obj.type=[[dic objectForKey:@"content"] objectForKey:@"type"];
-            obj.content=[[dic objectForKey:@"content"] objectForKey:@"content"];
+            
+            NSDictionary *contecntdic=[dic objectForKey:@"content"];
+            if(contecntdic)
+            {
+                obj.type=[[dic objectForKey:@"content"] objectForKey:@"type"];
+                
+                obj.content=[[dic objectForKey:@"content"] objectForKey:@"content"];
+            }
+            else
+            {
+                obj.type=@"txt";
+                
+                obj.content=@"1";
+            }
+         
             obj.from_id=[dic objectForKey:@"from_id"];
             obj.state=[dic objectForKey:@"state"];
             [dataArr addObject:obj];

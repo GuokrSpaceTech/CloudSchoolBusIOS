@@ -42,7 +42,7 @@ chunyuendtime,chunyuisopen;
 @synthesize schooldID;
 @synthesize camera_name,ddns,port;
 @synthesize isClassInfonterface,isSettingInterface,isStudentInterface;
-
+@synthesize teacherList;
 #pragma --
 
 -(id)init
@@ -53,6 +53,9 @@ chunyuendtime,chunyuisopen;
         [self setIsClassInfonterface:NO];
         [self setIsSettingInterface:NO];
         [self setIsStudentInterface:NO];
+        NSMutableArray *temp=[[NSMutableArray alloc]init];
+        [self setTeacherList:temp];
+        [temp release];
     }
     return self;
 }
@@ -153,6 +156,7 @@ chunyuendtime,chunyuisopen;
     self.chunyuisopen=nil;
     self.chunyuendtime=nil;
     self.schooldID=nil;
+    self.teacherList=nil;
 //    self.pull_rate = nil;
 //    self.company = nil;
 //    self.copyright = nil;

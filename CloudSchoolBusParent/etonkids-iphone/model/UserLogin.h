@@ -66,6 +66,7 @@ typedef enum {LOGIN_SERVER,LOGIN_OFF} LoginStatus;
 @property(nonatomic,retain)NSString * port;
 @property(nonatomic,retain)NSString * camera_name;
 @property(nonatomic,retain)NSString   *schoolname;
+@property (nonatomic,retain)NSMutableArray *teacherList;
 
 
 

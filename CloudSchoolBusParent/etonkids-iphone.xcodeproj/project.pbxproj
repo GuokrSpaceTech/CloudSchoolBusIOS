@@ -149,6 +149,8 @@
 		11E10EA319C932C000228B12 /* GKDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E10EA219C932C000228B12 /* GKDevice.m */; };
 		11E10EA619C9353900228B12 /* GKVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E10EA519C9353900228B12 /* GKVideoViewController.m */; };
 		11E46367194F05510039C0A0 /* GKShowReceiveBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E46366194F05510039C0A0 /* GKShowReceiveBigImageViewController.m */; };
+		11E47F631A4917FA0030AE43 /* GKTeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E47F621A4917FA0030AE43 /* GKTeacher.m */; };
+		11E47F661A4956760030AE43 /* GKContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E47F651A4956760030AE43 /* GKContactViewController.m */; };
 		11E82B85194957200048F0DB /* ETGCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E82B84194957200048F0DB /* ETGCalendarViewController.m */; };
 		11E933F919AB55F0000CB50C /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E933F819AB55F0000CB50C /* AudioStreamer.m */; };
 		11E933FB19AB561D000CB50C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E933FA19AB561D000CB50C /* AudioToolbox.framework */; };
@@ -977,6 +979,10 @@
 		11E10EA519C9353900228B12 /* GKVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKVideoViewController.m; sourceTree = "<group>"; };
 		11E46365194F05510039C0A0 /* GKShowReceiveBigImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKShowReceiveBigImageViewController.h; sourceTree = "<group>"; };
 		11E46366194F05510039C0A0 /* GKShowReceiveBigImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKShowReceiveBigImageViewController.m; sourceTree = "<group>"; };
+		11E47F611A4917FA0030AE43 /* GKTeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKTeacher.h; sourceTree = "<group>"; };
+		11E47F621A4917FA0030AE43 /* GKTeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKTeacher.m; sourceTree = "<group>"; };
+		11E47F641A4956760030AE43 /* GKContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKContactViewController.h; sourceTree = "<group>"; };
+		11E47F651A4956760030AE43 /* GKContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKContactViewController.m; sourceTree = "<group>"; };
 		11E82B811949561C0048F0DB /* ETGCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETGCalendarViewController.h; sourceTree = "<group>"; };
 		11E82B84194957200048F0DB /* ETGCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETGCalendarViewController.m; sourceTree = "<group>"; };
 		11E933F719AB55F0000CB50C /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
@@ -2819,6 +2825,8 @@
 				F96B77CC16EF055E0062B1AA /* Food.m */,
 				7365F6AB177AF4C9007EAF57 /* Modify.h */,
 				7365F6AC177AF4C9007EAF57 /* Modify.m */,
+				11E47F611A4917FA0030AE43 /* GKTeacher.h */,
+				11E47F621A4917FA0030AE43 /* GKTeacher.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -3037,6 +3045,8 @@
 				789EAA51183A0CE70029D4B0 /* ETNavigationController.m */,
 				78AD853F186593540082E082 /* ETHelpViewController.h */,
 				78AD8540186593540082E082 /* ETHelpViewController.m */,
+				11E47F641A4956760030AE43 /* GKContactViewController.h */,
+				11E47F651A4956760030AE43 /* GKContactViewController.m */,
 			);
 			path = setting;
 			sourceTree = "<group>";
@@ -3902,6 +3912,7 @@
 				F950241216DCB61B0079A05E /* TCWBRebroadcastMsgViewController.m in Sources */,
 				F950241316DCB61B0079A05E /* TCWBTopicViewController.m in Sources */,
 				F950241416DCB61B0079A05E /* UIImage+rotate.m in Sources */,
+				11E47F631A4917FA0030AE43 /* GKTeacher.m in Sources */,
 				F950241516DCB61B0079A05E /* UINoteView.m in Sources */,
 				11C701FD1957F99F001C7D37 /* GKWriteHealthViewController.m in Sources */,
 				F950241616DCB61B0079A05E /* UITableViewFriendCell.m in Sources */,
@@ -4053,6 +4064,7 @@
 				78FA831E18064FDC009E9176 /* ETImageView.m in Sources */,
 				78ED81591806888700A98C7F /* ETGestureCheckViewController.m in Sources */,
 				78ED815D1807E48600A98C7F /* ETBottomNavigationController.m in Sources */,
+				11E47F661A4956760030AE43 /* GKContactViewController.m in Sources */,
 				11644FD319F90B0E001E6D1C /* GKGeofence.m in Sources */,
 				1198C8B01A481F27005BAFC5 /* GKLetterCell.m in Sources */,
 				11D937CE1947F72000215842 /* UIScrollView+UITouchEvent.m in Sources */,

@@ -10,17 +10,15 @@
 #import "ETKids.h"
 #import "UserLogin.h"
 
-#import "AlixPayOrder.h"
-#import "AlixLibService.h"
+#import "Order.h"
 #import "DataSigner.h"
-#import "DataVerifier.h"
-#import "AlixPayResult.h"
+#import <AlipaySDK/AlipaySDK.h>
 #import "PartnerConfig.h"
-#import "SBJsonWriter.h"
-#define ALIPAY_SAFEPAY     @"SafePay"
-#define ALIPAY_DATASTRING  @"dataString"
-#define ALIPAY_SCHEME      @"fromAppUrlScheme"
-#define ALIPAY_TYPE        @"requestType"
+//#import "SBJsonWriter.h"
+//#define ALIPAY_SAFEPAY     @"SafePay"
+//#define ALIPAY_DATASTRING  @"dataString"
+//#define ALIPAY_SCHEME      @"fromAppUrlScheme"
+//#define ALIPAY_TYPE        @"requestType"
 
 #define LEFTLABELTAG 1000
 #define RIGHTLABELTAG 1111
@@ -287,7 +285,7 @@
             NSLog(@"%@",dic);
             
             
-            AlixPayOrder *order = [[AlixPayOrder alloc] init];
+            Order *order = [[Order alloc] init];
             order.partner = PartnerID;
             order.seller = SellerID;
             
@@ -299,62 +297,58 @@
             order.notifyURL =   [dic objectForKey:@"notifyURL"]; //回调URL
             
 
-            
+            order.service = @"mobile.securitypay.pay";
+            order.paymentType = @"1";
+            order.inputCharset = @"utf-8";
+            order.itBPay = @"30m";
+            order.showUrl = @"m.alipay.com";
             NSString *appScheme = @"yunxiaocheparent";
-            NSString* orderInfo = order.description;
-            NSString* signedStr = [self doRsa:orderInfo];
+            NSString *orderSpec = [order description];
+            NSLog(@"orderSpec = %@",orderSpec);
+            id<DataSigner> signer = CreateRSADataSigner(PartnerPrivKey);
+            NSString *signedString = [signer signString:orderSpec];
             
-            NSLog(@"%@",signedStr);
+            //  NSLog(@"%@",signedStr);
             
-            NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
-                                     orderInfo, signedStr, @"RSA"];
-            
-            
+            //   NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+            //orderInfo, signedString, @"RSA"];
             
             
             
-            NSDictionary * oderParams = [NSDictionary dictionaryWithObjectsAndKeys:
-                                         orderString,ALIPAY_DATASTRING,
-                                         appScheme, ALIPAY_SCHEME,
-                                         ALIPAY_SAFEPAY, ALIPAY_TYPE,
-                                         nil];
-            
-            //采用SBjson将params转化为json格式的字符串
-            SBJsonWriter * OderJsonwriter = [SBJsonWriter new];
-            NSString * jsonString = [OderJsonwriter stringWithObject:oderParams];
-            [OderJsonwriter release];
-            
-            //将数据拼接成符合alipay规范的Url
-            //注意：这里改为接入独立安全支付客户端
-            
-            //支付宝钱包
-            NSString * urlString = [NSString stringWithFormat:@"alipay://alipayclient/?%@",
-                                    [jsonString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-            NSURL * dataUrl = [NSURL URLWithString:urlString];
-            
-            //快捷支付
-            NSString * safeUrlString = [NSString stringWithFormat:@"safepay://alipayclient/?%@",
-                                        [jsonString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-            NSURL * safeDataUrl = [NSURL URLWithString:safeUrlString];
-            
-            //通过打开Url调用安全支付服务
-            //实质上,外部商户只需保证把商品信息拼接成符合规范的字符串转为Url并打开,其余任何函数代码都可以自行优化
-            if (![[UIApplication sharedApplication] canOpenURL:dataUrl] && ![[UIApplication sharedApplication] canOpenURL:safeDataUrl])
-            {
-                //[[UIApplication sharedApplication] openURL:dataUrl];
-                UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                     message:@"您还没有安装支付宝快捷支付，请先安装。"
-                                                                    delegate:self
-                                                           cancelButtonTitle:@"确定"
-                                                           otherButtonTitles:nil];
-                [alertView setTag:123];
-                [alertView show];
-                [alertView release];
+            NSString *orderString = nil;
+            if (signedString != nil) {
+                orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                               orderSpec, signedString, @"RSA"];
                 
-                return;
+                [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+                    NSLog(@"reslut = %@",resultDic);
+                    NSString *resultStatus=[resultDic objectForKey:@"resultStatus"];
+                    if([resultStatus isEqualToString:@"9000"])
+                    {
+                        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"交易成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                        [alert show];
+                        [alert release];
+                    }
+                    else
+                    {
+                        NSString *result=[resultDic objectForKey:@"result"];
+                        NSString *result1=[resultDic objectForKey:@"memo"];
+                        
+                        NSLog(@"%@--%@",result,result1);
+                        
+                        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"交易失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                        [alert show];
+                        [alert release];
+                        
+                    }
+
+                }];
+                
+                // [tableView deselectRowAtIndexPath:indexPath animated:YES];
             }
+
             
-            [AlixLibService payOrder:orderString AndScheme:appScheme seletor:@selector(paymentResult:) target:self];
+
             
 
         }
@@ -369,56 +363,56 @@
 
 }
 //wap回调函数
--(void)paymentResult:(NSString *)resultd
-{
-    //结果处理
-#if ! __has_feature(objc_arc)
-    AlixPayResult* result = [[[AlixPayResult alloc] initWithString:resultd] autorelease];
-#else
-    AlixPayResult* result = [[AlixPayResult alloc] initWithString:resultd];
-#endif
-    if (result)
-    {
-        
-        if (result.statusCode == 9000)
-        {
-            /*
-             *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
-             */
-            
-            NSString* key = AlipayPubKey;
-            id<DataVerifier> verifier;
-            verifier = CreateRSADataVerifier(key);
-            
-            if ([verifier verifyString:result.resultString withSign:result.signString])
-            {
-                //验证签名成功，交易结果无篡改
-                
-                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"交易成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                [alert show];
-                [alert release];
-                
-            }
-        }
-        else
-        {
-            //交易失败
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:result.statusMessage delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alert show];
-            [alert release];
-            
-        }
-    }
-    else
-    {
-        //失败
-        
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"交易失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alert show];
-        [alert release];
-    }
-    // exit(1);
-}
+//-(void)paymentResult:(NSString *)resultd
+//{
+//    //结果处理
+//#if ! __has_feature(objc_arc)
+//    AlixPayResult* result = [[[AlixPayResult alloc] initWithString:resultd] autorelease];
+//#else
+//    AlixPayResult* result = [[AlixPayResult alloc] initWithString:resultd];
+//#endif
+//    if (result)
+//    {
+//        
+//        if (result.statusCode == 9000)
+//        {
+//            /*
+//             *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
+//             */
+//            
+//            NSString* key = AlipayPubKey;
+//            id<DataVerifier> verifier;
+//            verifier = CreateRSADataVerifier(key);
+//            
+//            if ([verifier verifyString:result.resultString withSign:result.signString])
+//            {
+//                //验证签名成功，交易结果无篡改
+//                
+//                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"交易成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//                [alert show];
+//                [alert release];
+//                
+//            }
+//        }
+//        else
+//        {
+//            //交易失败
+//            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:result.statusMessage delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//            [alert show];
+//            [alert release];
+//            
+//        }
+//    }
+//    else
+//    {
+//        //失败
+//        
+//        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"交易失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//        [alert show];
+//        [alert release];
+//    }
+//    // exit(1);
+//}
 
 -(NSString*)doRsa:(NSString*)orderInfo
 {

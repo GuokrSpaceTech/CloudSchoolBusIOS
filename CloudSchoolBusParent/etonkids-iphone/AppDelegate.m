@@ -14,11 +14,12 @@
 #import "ETCustomAlertView.h"
 #import "MobClick.h"
 #import "ETCommonClass.h"
-#import "AlixPayResult.h"
+#import <AlipaySDK/AlipaySDK.h>
+//#import "AlixPayResult.h"
 
-#import "DataSigner.h"
-#import "DataVerifier.h"
-#import "PartnerConfig.h"
+//#import "DataSigner.h"
+//#import "DataVerifier.h"
+//#import "PartnerConfig.h"
 
 #import "GKPersionalViewController.h"
 @implementation AppDelegate
@@ -288,7 +289,7 @@
     NSString *string =[url absoluteString];
     if([string hasPrefix:@"yunxiaocheparent"])
     {
-         [self parse:url application:application];
+       //  [self parse:url application:application];
         return YES;
     }
     else
@@ -595,6 +596,58 @@
 //    
 //    return networkStatus;
 //}
+
+
+
+
+//result = {
+//    memo = "";
+//    result = "partner=\"2088511416723811\"&seller_id=\"guokr@mac-top.mobi\"&out_trade_no=\"k7TADjWxHw5fDgB\"&subject=\"\U533b\U751f\U54a8\U8be2\U670d\U52a1\"&body=\"\U533b\U751f\U54a8\U8be2\"&total_fee=\"0.01\"&notify_url=\"http%3A%2F%2Fwww.yunxiaoche.com%2Falpay%2Fnotify_url.php\"&service=\"mobile.securitypay.pay\"&payment_type=\"1\"&_input_charset=\"utf-8\"&it_b_pay=\"30m\"&show_url=\"m.alipay.com\"&success=\"true\"&sign_type=\"RSA\"&sign=\"UbOMiykR0L/RdOl4fpQK3JKJYRL7tceFRZ7yNny6tsZ+lHSLv+u1PIsf4j1oovpv2hWjPIOQ2j5nSCpOCpeuV59xNICi67ss0DRS/3JpUgMkz/xS5FL+zy9NtOaztOStu1ul5oEhQUkU6VndIcj4aNxonxXLqZM3p6FS16IOBuw=\"";
+//    resultStatus = 9000;
+//}
+
+//2014-12-24 19:07:43.810 etonkids-iphone[2362:266264] result = {
+//    memo = "\U7528\U6237\U4e2d\U9014\U53d6\U6d88";
+//    result = "";
+//    resultStatus = 6001;
+//}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    
+    //跳转支付宝钱包进行支付，需要将支付宝钱包的支付结果回传给SDK
+    if ([url.host isEqualToString:@"safepay"]) {
+        [[AlipaySDK defaultService]
+         processOrderWithPaymentResult:url
+         standbyCallback:^(NSDictionary *resultDic) {
+             NSLog(@"result = %@", resultDic);
+             
+             NSString *resultStatus=[resultDic objectForKey:@"resultStatus"];
+             if([resultStatus isEqualToString:@"9000"])
+             {
+                 UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"交易成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                 [alert show];
+                 [alert release];
+             }
+             else
+             {
+                 NSString *result=[resultDic objectForKey:@"result"];
+                 NSString *result1=[resultDic objectForKey:@"memo"];
+                 
+                 NSLog(@"%@--%@",result,result1);
+                 
+                 UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:result1 delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                 [alert show];
+                 [alert release];
+     
+             }
+         }];
+    }
+    
+    return YES;
+}
 #pragma mark - Application's Documents directory
 
 // Returns the URL to the application's Documents directory.
@@ -603,89 +656,10 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
-//独立客户端回调函数
-//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-//	
-//
-//	return YES;
-//}
 
-- (void)parse:(NSURL *)url application:(UIApplication *)application {
-    
-    //结果处理
-    AlixPayResult* result = [self handleOpenURL:url];
-    
-	if (result)
-    {
-		
-		if (result.statusCode == 9000)
-        {
-			/*
-			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
-			 */
-            
-            //交易成功
-                        NSString* key = AlipayPubKey;
-            			id<DataVerifier> verifier;
-                        verifier = CreateRSADataVerifier(key);
-            
-            			if ([verifier verifyString:result.resultString withSign:result.signString])
-                        {
-                            //验证签名成功，交易结果无篡改
-//                            UserLogin *user=[UserLogin currentLogin];
-//                            user.chunyuisopen=@"1";
-                
-                            
-                            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"交易成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                            [alert show];
-                            [alert release];
-                            
-            			}
-            
-            [self performSelector:@selector(loadchunyu) withObject:nil afterDelay:3];
-
-            
-        }
-        else
-        {
-            //交易失败
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:result.statusMessage delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alert show];
-            [alert release];
-        }
-    }
-    else
-    {
-        //失败
-        
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"交易失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alert show];
-        [alert release];
-        
-    }
-    
-}
 -(void)loadchunyu
 {
-                [[EKRequest Instance] EKHTTPRequest:student parameters:nil requestMethod:GET forDelegate:self];
-}
-- (AlixPayResult *)resultFromURL:(NSURL *)url {
-	NSString * query = [[url query] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-#if ! __has_feature(objc_arc)
-    return [[[AlixPayResult alloc] initWithString:query] autorelease];
-#else
-	return [[AlixPayResult alloc] initWithString:query];
-#endif
-}
-
-- (AlixPayResult *)handleOpenURL:(NSURL *)url {
-	AlixPayResult * result = nil;
-	
-	if (url != nil && [[url host] compare:@"safepay"] == 0) {
-		result = [self resultFromURL:url];
-	}
-    
-	return result;
+    [[EKRequest Instance] EKHTTPRequest:student parameters:nil requestMethod:GET forDelegate:self];
 }
 
 

@@ -19,6 +19,10 @@
 		112FC10E19A3229400786B33 /* health_plus_select.png in Resources */ = {isa = PBXBuildFile; fileRef = 112FC10A19A3229400786B33 /* health_plus_select.png */; };
 		112FC10F19A3229400786B33 /* health_minux_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 112FC10B19A3229400786B33 /* health_minux_normal.png */; };
 		112FC11019A3229400786B33 /* health_plus_mormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 112FC10C19A3229400786B33 /* health_plus_mormal.png */; };
+		113192FD1A4AA85F0008F894 /* BPushClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 113192F71A4AA85F0008F894 /* BPushClass.m */; };
+		113192FE1A4AA85F0008F894 /* GzipCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 113192F91A4AA85F0008F894 /* GzipCompressor.m */; };
+		113192FF1A4AA85F0008F894 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 113192FB1A4AA85F0008F894 /* OpenUDID.m */; };
+		113193011A4AA8A30008F894 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113193001A4AA8A30008F894 /* CoreTelephony.framework */; };
 		113320FC1953EB140088E226 /* GKHealthListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113320FB1953EB140088E226 /* GKHealthListViewController.m */; };
 		113320FF195412C80088E226 /* GKHealthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 113320FE195412C80088E226 /* GKHealthCell.m */; };
 		1133210119542A260088E226 /* -vip.png in Resources */ = {isa = PBXBuildFile; fileRef = 1133210019542A260088E226 /* -vip.png */; };
@@ -693,6 +697,15 @@
 		112FC10A19A3229400786B33 /* health_plus_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_plus_select.png; sourceTree = "<group>"; };
 		112FC10B19A3229400786B33 /* health_minux_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_minux_normal.png; sourceTree = "<group>"; };
 		112FC10C19A3229400786B33 /* health_plus_mormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health_plus_mormal.png; sourceTree = "<group>"; };
+		113192F31A4AA85F0008F894 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		113192F51A4AA85F0008F894 /* Base64Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Defines.h; sourceTree = "<group>"; };
+		113192F61A4AA85F0008F894 /* BPushClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPushClass.h; sourceTree = "<group>"; };
+		113192F71A4AA85F0008F894 /* BPushClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPushClass.m; sourceTree = "<group>"; };
+		113192F81A4AA85F0008F894 /* GzipCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GzipCompressor.h; sourceTree = "<group>"; };
+		113192F91A4AA85F0008F894 /* GzipCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GzipCompressor.m; sourceTree = "<group>"; };
+		113192FA1A4AA85F0008F894 /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
+		113192FB1A4AA85F0008F894 /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		113193001A4AA8A30008F894 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		113320FA1953EB140088E226 /* GKHealthListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHealthListViewController.h; sourceTree = "<group>"; };
 		113320FB1953EB140088E226 /* GKHealthListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKHealthListViewController.m; sourceTree = "<group>"; };
 		113320FD195412C80088E226 /* GKHealthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHealthCell.h; sourceTree = "<group>"; };
@@ -1728,6 +1741,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				113193011A4AA8A30008F894 /* CoreTelephony.framework in Frameworks */,
 				1198C8C21A48205D005BAFC5 /* libavfilter.a in Frameworks */,
 				11F0868319CC090C003A3CC4 /* OpenGLES.framework in Frameworks */,
 				11DBB99C19CA9D4A008110E8 /* CoreVideo.framework in Frameworks */,
@@ -1799,6 +1813,21 @@
 				1124C0B819920BC60044485B /* GKReportViewController.m */,
 			);
 			path = report;
+			sourceTree = "<group>";
+		};
+		113192F21A4AA85F0008F894 /* opensource */ = {
+			isa = PBXGroup;
+			children = (
+				113192F31A4AA85F0008F894 /* Base64.h */,
+				113192F51A4AA85F0008F894 /* Base64Defines.h */,
+				113192F61A4AA85F0008F894 /* BPushClass.h */,
+				113192F71A4AA85F0008F894 /* BPushClass.m */,
+				113192F81A4AA85F0008F894 /* GzipCompressor.h */,
+				113192F91A4AA85F0008F894 /* GzipCompressor.m */,
+				113192FA1A4AA85F0008F894 /* OpenUDID.h */,
+				113192FB1A4AA85F0008F894 /* OpenUDID.m */,
+			);
+			path = opensource;
 			sourceTree = "<group>";
 		};
 		113320F91953EAB50088E226 /* Health */ = {
@@ -2627,6 +2656,7 @@
 		E3EA3AE2169E9491000DF7EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				113193001A4AA8A30008F894 /* CoreTelephony.framework */,
 				11F0868219CC090C003A3CC4 /* OpenGLES.framework */,
 				11DBB99B19CA9D4A008110E8 /* CoreVideo.framework */,
 				11DBB99919CA9C36008110E8 /* libiconv.dylib */,
@@ -2834,6 +2864,7 @@
 		E3F2AA5B16AD0959006936A5 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				113192F21A4AA85F0008F894 /* opensource */,
 				114D9F7D19C8403C0052A100 /* TBXML */,
 				11E933F719AB55F0000CB50C /* AudioStreamer.h */,
 				11E933F819AB55F0000CB50C /* AudioStreamer.m */,
@@ -3865,6 +3896,7 @@
 				119DECAE19921CD600BF7362 /* GKReportContentViewController.m in Sources */,
 				F95021C316DCAF640079A05E /* Province.m in Sources */,
 				F95021C416DCAF640079A05E /* Resources.m in Sources */,
+				113192FD1A4AA85F0008F894 /* BPushClass.m in Sources */,
 				118E62AB1961305A00E24CB8 /* CYDoctor.m in Sources */,
 				F95021C516DCAF640079A05E /* Status.m in Sources */,
 				11D6C39219936CDB001BBF7E /* AlixPayResult.m in Sources */,
@@ -4033,6 +4065,7 @@
 				78C2ADF917E15BCF00E6A5CD /* ETClass.m in Sources */,
 				11E10EA319C932C000228B12 /* GKDevice.m in Sources */,
 				1198C8B81A481F42005BAFC5 /* GKContactObj.m in Sources */,
+				113192FF1A4AA85F0008F894 /* OpenUDID.m in Sources */,
 				78C2ADFC17E15BDC00E6A5CD /* ETAttendanceType.m in Sources */,
 				78C2ADFF17E15BF600E6A5CD /* ETCoreDataManager.m in Sources */,
 				78DBF51F17E2FB3A00D44108 /* SRRefreshView.m in Sources */,
@@ -4072,6 +4105,7 @@
 				11E10EA619C9353900228B12 /* GKVideoViewController.m in Sources */,
 				7818DEAE180CEB05005781DF /* ETCalendar.m in Sources */,
 				114D9F7C19C839260052A100 /* GKSocket.m in Sources */,
+				113192FE1A4AA85F0008F894 /* GzipCompressor.m in Sources */,
 				7818DEBC180E39BA005781DF /* ETSchedule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

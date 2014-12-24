@@ -114,7 +114,7 @@
 }
 -(void)refreshController
 {
-     [[EKRequest Instance]EKHTTPRequest:lastestletter parameters:nil requestMethod:GET forDelegate:self];
+     [[EKRequest Instance]EKHTTPRequest:latestletter parameters:nil requestMethod:GET forDelegate:self];
 }
 -(void)contact:(UIButton *)btn
 {
@@ -135,7 +135,7 @@
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
 {
     [_slimeView endRefresh];
-    if(code==1&& method==lastestletter)
+    if(code==1&& method==latestletter)
     {
         
        
@@ -278,7 +278,7 @@
 }
 - (void)slimeRefreshStartRefresh:(SRRefreshView*)refreshView
 {
-      [[EKRequest Instance]EKHTTPRequest:lastestletter parameters:nil requestMethod:GET forDelegate:self];
+      [[EKRequest Instance]EKHTTPRequest:latestletter parameters:nil requestMethod:GET forDelegate:self];
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {

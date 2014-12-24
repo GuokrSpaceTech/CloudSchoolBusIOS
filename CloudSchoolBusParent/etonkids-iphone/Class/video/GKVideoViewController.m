@@ -148,7 +148,7 @@
 
     NSString *response=[NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"GB2312\" standalone=\"yes\"?> <TYPE>StartStream</TYPE>\
                         <DVRName>%@</DVRName>\
-                        <ChnNo>0</ChnNo> <StreamType>1</StreamType>",user.camera_name];
+                        <ChnNo>0</ChnNo> <StreamType>1/StreamType>",@"dvr"];
     NSStringEncoding encoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
     NSData *data = [[[NSData alloc] initWithData:[response dataUsingEncoding:encoding]] autorelease];
 
@@ -176,40 +176,40 @@
             }
             if([isSuccess isEqualToString:@"SUCCESS"])
             {
-                TBXMLElement * AudioCodeID=[TBXML childElementNamed:@"AudioCodeID" parentElement:root];
-                if(AudioCodeID)
-                {
-                    NSString * codeid=[TBXML textForElement:AudioCodeID];
-                    //audiocodec = avcodec_find_decoder();
-                    audiocodec=avcodec_find_decoder([codeid intValue]);
-                    
-                    if (!audiocodec)
-                    {
-                        
-                    }
-                    
-                    codecaudioCtx=avcodec_alloc_context3(audiocodec);
-                    int ret=avcodec_open2(codecaudioCtx, audiocodec, NULL);
-                    if(ret!=0)
-                    {
-                        
-                    }
-                    TBXMLElement * BitRate=[TBXML childElementNamed:@"AudioCodeID" parentElement:root];
-                    if(BitRate)
-                    {
-                        NSString *bitrate=[TBXML textForElement:BitRate];
-                        codecaudioCtx->bit_rate=[bitrate intValue];
-                    }
-
-                    TBXMLElement * AudioChns=[TBXML childElementNamed:@"AudioCodeID" parentElement:root];
-                    if(AudioChns)
-                    {
-                        NSString *chns=[TBXML textForElement:AudioChns];
-                        codecaudioCtx->channels=[chns intValue];
-                    }
-                    
-                    
-                }
+//                TBXMLElement * AudioCodeID=[TBXML childElementNamed:@"AudioCodeID" parentElement:root];
+//                if(AudioCodeID)
+//                {
+//                    NSString * codeid=[TBXML textForElement:AudioCodeID];
+//                    //audiocodec = avcodec_find_decoder();
+//                    audiocodec=avcodec_find_decoder([codeid intValue]);
+//                    
+//                    if (!audiocodec)
+//                    {
+//                        
+//                    }
+//                    
+//                    codecaudioCtx=avcodec_alloc_context3(audiocodec);
+//                    int ret=avcodec_open2(codecaudioCtx, audiocodec, NULL);
+//                    if(ret!=0)
+//                    {
+//                        
+//                    }
+//                    TBXMLElement * BitRate=[TBXML childElementNamed:@"AudioCodeID" parentElement:root];
+//                    if(BitRate)
+//                    {
+//                        NSString *bitrate=[TBXML textForElement:BitRate];
+//                        codecaudioCtx->bit_rate=[bitrate intValue];
+//                    }
+//
+//                    TBXMLElement * AudioChns=[TBXML childElementNamed:@"AudioCodeID" parentElement:root];
+//                    if(AudioChns)
+//                    {
+//                        NSString *chns=[TBXML textForElement:AudioChns];
+//                        codecaudioCtx->channels=[chns intValue];
+//                    }
+//                    
+//                    
+//                }
                 
                 NSString *respon=@"<TYPE>ImOK</TYPE>";
                 NSData *data = [[NSData alloc] initWithData:[respon dataUsingEncoding:NSASCIIStringEncoding]];
@@ -232,42 +232,42 @@
                  
                         AVPacket packet;
                         av_init_packet(&packet);
-                        packet.data=[data bytes];
+                        packet.data=(uint8_t*)[data bytes];
                         
                         packet.size=length;
                         packet.flags=AV_PKT_FLAG_KEY;
                         int got_picture,ret;
                         ret = avcodec_decode_video2(codecCtx, frame, &got_picture, &packet);
-                        if (ret < 0) {
-                            NSLog(@"decode error");
-                            return;
-                        }
-                        if (!got_picture) {
-                            NSLog(@"didn't get picture");
-                            return;
-                        }
+//                        if (ret < 0) {
+//                            NSLog(@"decode error");
+//                            return;
+//                        }
+//                        if (!got_picture) {
+//                            NSLog(@"didn't get picture");
+//                            return;
+//                        }
                         if(got_picture)//成功解码
                         {
                             
                             outputWidth = codecCtx->width;
                             outputHeight = codecCtx->height;
-                            static int sws_flags =  SWS_FAST_BILINEAR;
-                            if (!img_convert_ctx)
-                                img_convert_ctx = sws_getContext(codecCtx->width,
-                                                                 codecCtx->height,
-                                                                 codecCtx->pix_fmt,
-                                                                 outputWidth,
-                                                                 outputHeight,
-                                                                 PIX_FMT_YUV420P,
-                                                                 sws_flags, NULL, NULL, NULL);
-                            
-                            avpicture_alloc(&picture, PIX_FMT_YUV420P, outputWidth, outputHeight);
-                            if (!frame->data[0])
-                            {
-                                NSLog(@"empty");
-                            }
-                            
-                            sws_scale(img_convert_ctx, (const uint8_t* const*)frame->data, frame->linesize, 0, frame->height, picture.data, picture.linesize);
+//                            static int sws_flags =  SWS_FAST_BILINEAR;
+//                            if (!img_convert_ctx)
+//                                img_convert_ctx = sws_getContext(codecCtx->width,
+//                                                                 codecCtx->height,
+//                                                                 codecCtx->pix_fmt,
+//                                                                 outputWidth,
+//                                                                 outputHeight,
+//                                                                 PIX_FMT_YUV420P,
+//                                                                 sws_flags, NULL, NULL, NULL);
+//                            
+//                            avpicture_alloc(&picture, PIX_FMT_YUV420P, outputWidth, outputHeight);
+//                            if (!frame->data[0])
+//                            {
+//                                NSLog(@"empty");
+//                            }
+//                            
+//                            sws_scale(img_convert_ctx, (const uint8_t* const*)frame->data, frame->linesize, 0, frame->height, picture.data, picture.linesize);
                             
                             int picSize = codecCtx->height * codecCtx->width;
                             int newSize = picSize * 1.5;
@@ -279,17 +279,17 @@
                             int a=0,i;
                             for (i=0; i<height; i++)
                             {
-                                memcpy(buf+a,picture.data[0] + i * picture.linesize[0], width);
+                                memcpy(buf+a,frame->data[0] + i * frame->linesize[0], width);
                                 a+=width;
                             }
                             for (i=0; i<height/2; i++)
                             {
-                                memcpy(buf+a,picture.data[1] + i * picture.linesize[1], width/2);
+                                memcpy(buf+a,frame->data[1] + i * frame->linesize[1], width/2);
                                 a+=width/2;
                             }
                             for (i=0; i<height/2; i++)
                             {
-                                memcpy(buf+a,picture.data[2] + i * picture.linesize[2], width/2);
+                                memcpy(buf+a,frame->data[2] + i *frame->linesize[2], width/2);
                                 a+=width/2;
                             }
                             [glView displayYUV420pData:buf width:outputWidth height:outputHeight];

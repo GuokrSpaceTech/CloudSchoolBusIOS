@@ -150,8 +150,8 @@ static EKRequest * instance = nil;
             return @"search";
         case teachereventslist:
             return @"teachereventslist";
-        case lastestletter:
-            return @"lastestletter";
+        case latestletter:
+            return @"latestletter";
         default:
             return nil;
     }

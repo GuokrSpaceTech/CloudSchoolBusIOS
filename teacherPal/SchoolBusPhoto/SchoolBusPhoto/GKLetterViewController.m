@@ -154,7 +154,7 @@
     inputField=[[UITextField alloc]initWithFrame:CGRectMake(57, 15, 180, 27)];
     inputField.borderStyle=UITextBorderStyleRoundedRect;
     inputField.delegate=self;
-    inputField.placeholder=NSLocalizedString(@"ask", @"");
+    inputField.placeholder=@"说点什么";
     [inputView addSubview:inputField];
     
     UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];

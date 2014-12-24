@@ -117,9 +117,10 @@ static GKSocket *currentSocket=nil;
     
 }
 
+
 -(int)RecvData
 {
-    
+   
     int iRecvBytes=-1;
     int iHeadLen=ALIGN_HEADLEN-ALIGNMENT;//25
     NET_LAYER *pPackage;
@@ -162,6 +163,7 @@ static GKSocket *currentSocket=nil;
                         {
                             [bufferdata appendBytes:m_pStreamData length:m_iFrameLen];
                             //[NSThread sleepForTimeInterval:40/1000.0f];
+                          
                             NSStringEncoding encoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
                             NSString *outxml=[[NSString alloc]initWithData:bufferdata encoding:encoding];
                              cBlock(true,outxml);
@@ -192,13 +194,17 @@ static GKSocket *currentSocket=nil;
                                 {
 
                                     
+                                   //
+                                   //  [NSThread sleepForTimeInterval:40/1000.0f];
                                     [bufferdata appendBytes:m_pStreamData length:m_iFrameLen];
                                     streamBlock(bufferdata,m_iFrameLen,nil);
                                     [bufferdata setLength:0];
+                                    
 
                                 }
                                 else
                                 {
+                              
                                     [bufferdata appendBytes:pPackage->cBuffer length:m_iFrameLen];
                                 }
 

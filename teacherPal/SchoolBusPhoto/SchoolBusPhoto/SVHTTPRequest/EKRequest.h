@@ -56,7 +56,7 @@ enum RequestFunction
     report,
     search,
     teachereventslist,
-    lastestletter
+    latestletter
 };
 typedef NSUInteger RequestFunction;
 

@@ -6,7 +6,7 @@
 #import "NSString+SBJSON.h"
 #import "JSONKit.h"
 #import "SBJSON.h"
-
+#import "ETCommonClass.h"
 //#define SERVERURL @"http://api.yunxiaoche.com/"
 //#define SERVERURL @"http://apitest.yunxiaoche.com/"
 //#define SERVERURL @"http://apitest.yunxiaoche.com/"
@@ -148,8 +148,8 @@ static EKRequest * instance = nil;
             return @"price";
         case personalorder:
             return @"personalorder";
-        case lastestletter:
-            return @"lastestletter";
+        case latestletter:
+            return @"latestletter";
         case messageletter:
             return @"messageletter";
         default:
@@ -191,6 +191,17 @@ static EKRequest * instance = nil;
              {
                  [self addPostNotification];
              }
+             
+             if(code==-1113)
+             {
+                 if (code == -1113)
+                 {
+                     ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
+                     [com mutiDeviceLogin];
+                     return;
+                     
+                 }
+             }
              [delegate getEKResponse:response forMethod:function resultCode:code withParam:param];
          }];
     }
@@ -212,6 +223,16 @@ static EKRequest * instance = nil;
              if(code==-2000)
              {
                  [self addPostNotification];
+             }
+             if(code==-1113)
+             {
+                 if (code == -1113)
+                 {
+                     ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
+                     [com mutiDeviceLogin];
+                     
+                 }
+                 return;
              }
              id json = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];
              if(json != nil && [json isKindOfClass:[NSDictionary class]])

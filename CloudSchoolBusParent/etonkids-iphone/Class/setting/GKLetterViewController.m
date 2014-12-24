@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "ETBottomViewController.h"
+#import "GKShowReceiveBigImageViewController.h"
 @interface GKLetterViewController ()
 
 @end
@@ -72,6 +73,15 @@
             [__tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[_dataArr count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
     }];
     
+}
+
+-(void)clickImageViewLookImage:(NSString *)path
+{
+  
+    GKShowReceiveBigImageViewController *showVC=[[GKShowReceiveBigImageViewController alloc]init];
+    showVC.path=path;
+    [self presentModalViewController:showVC animated:YES];
+    [showVC release];
 }
 -(void)keyboarShow:(NSNotification *)noti
 {
@@ -239,7 +249,7 @@
     inputField=[[UITextField alloc]initWithFrame:CGRectMake(57, 15, 180, 27)];
     inputField.borderStyle=UITextBorderStyleRoundedRect;
     inputField.delegate=self;
-    inputField.placeholder=NSLocalizedString(@"ask", @"");
+    inputField.placeholder=@"说点什么";
     [inputView addSubview:inputField];
     
     UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];

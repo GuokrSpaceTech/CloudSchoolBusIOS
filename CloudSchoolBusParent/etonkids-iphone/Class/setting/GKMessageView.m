@@ -96,7 +96,7 @@
 
 -(void)loadLatestMessage
 {
-    [[EKRequest Instance]EKHTTPRequest:lastestletter parameters:nil requestMethod:GET forDelegate:self];
+    [[EKRequest Instance]EKHTTPRequest:latestletter parameters:nil requestMethod:GET forDelegate:self];
 }
 
 -(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
@@ -111,7 +111,7 @@
 {
   
         [_slimeView endRefresh];
-    if(code==1&& method==lastestletter)
+    if(code==1&& method==latestletter)
     {
         
         

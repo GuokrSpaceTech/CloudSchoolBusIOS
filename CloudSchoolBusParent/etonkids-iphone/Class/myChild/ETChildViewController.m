@@ -516,7 +516,7 @@
                             
                           //  deviceObj.status=stateStr;
                             
-                            if([user.camera_name isEqualToString:svrnameStr])
+                            if([@"dvr" isEqualToString:svrnameStr])
                             {
                                 //if(stateStr)
                                 if([stateStr isEqualToString:@"1"])

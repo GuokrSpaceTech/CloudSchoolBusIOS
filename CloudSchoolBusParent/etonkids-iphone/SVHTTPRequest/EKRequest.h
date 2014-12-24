@@ -51,7 +51,7 @@ enum RequestFunction
     geofenceparents,
     price,
     personalorder,
-    lastestletter
+    latestletter
     
 };
 typedef NSUInteger RequestFunction;

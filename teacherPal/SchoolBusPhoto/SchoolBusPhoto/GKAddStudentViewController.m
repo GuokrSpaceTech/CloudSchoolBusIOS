@@ -488,7 +488,7 @@
                 student.uid=[studentdic objectForKey:@"uid_student"];
                 
                 student.username=[NSString stringWithFormat:@"%@",[studentdic objectForKey:@"username"]];
-                student.parentid=[NSNumber numberWithInt:[[studentdic objectForKey:@"parentid"] integerValue]];
+                student.parentid=[NSNumber numberWithInteger:[[studentdic objectForKey:@"parentid"] integerValue]];
                 [user.studentArr addObject:student];
                 [student release];
 

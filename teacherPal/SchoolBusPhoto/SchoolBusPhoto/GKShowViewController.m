@@ -111,8 +111,8 @@
     }
     
     GKUserLogin *user=[GKUserLogin currentLogin];
-    int col=([user.studentArr count] )/4; //行
-    int y = MIN(col+1, 4);
+    NSInteger col=([user.studentArr count] )/4; //行
+    NSInteger y = MIN(col+1, 4);
 
     changeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0+46 + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height-(5 + y*STUDENTCELLHEIGHT)- (ios7 ? 20 : 0)-46)];
        // changeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0+46 + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height- (ios7 ? 20 : 0)-46)];
@@ -148,7 +148,7 @@
     
     [picView addSubview:_scroller];
     
-    NSLog(@"---------------------------------------------- count  %d",[assetArr count]);
+   // NSLog(@"---------------------------------------------- count  %d",[assetArr count]);
     _scroller.contentSize=CGSizeMake([assetArr count] *320, _scroller.frame.size.height);
     _scroller.showsHorizontalScrollIndicator=NO;
     _scroller.showsVerticalScrollIndicator=NO;
@@ -158,7 +158,7 @@
     [_scroller release];
     
     
-    NSLog(@" contentsize%f -----------------%f",_scroller.contentSize.width,_scroller.contentSize.height);
+  //  NSLog(@" contentsize%f -----------------%f",_scroller.contentSize.width,_scroller.contentSize.height);
     
    // [self.view bringSubviewToFront:navigationView];
 
@@ -209,7 +209,7 @@
     
     numbeLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 58, 18)];
     numbeLabel.backgroundColor=[UIColor clearColor];
-    numbeLabel.text=[NSString stringWithFormat:@"1/%d",[assetArr count]];
+    numbeLabel.text=[NSString stringWithFormat:@"1/%lu",(unsigned long)[assetArr count]];
     numbeLabel.font=[UIFont systemFontOfSize:15];
  
     if(IOSVERSION>=6.0)
@@ -278,7 +278,7 @@
     [picTextArr removeAllObjects];
 }
 
--(void)tag:(NSString *)tagTxt tagid:(int)_tagid
+-(void)tag:(NSString *)tagTxt tagid:(NSInteger)_tagid
 {
    // self.tag=tagTxt;
    // self.tagid=[NSNumber numberWithInt:_tagid];
@@ -293,7 +293,7 @@
     {
         [tag addObject:tagTxt];
     }
-    NSNumber * tagidnumber=[NSNumber numberWithInt:_tagid];
+    NSNumber * tagidnumber=[NSNumber numberWithInteger:_tagid];
     if([tagid containsObject:tagidnumber])
     {
         [tagid removeObject:tagidnumber];
@@ -326,13 +326,13 @@
             {
                 tagStrArr=[NSMutableArray array];
             }
-            if([tagIdArr containsObject:[NSNumber numberWithInt:_tagid]])
+            if([tagIdArr containsObject:[NSNumber numberWithInteger:_tagid]])
             {
-                [tagIdArr removeObject:[NSNumber numberWithInt:_tagid]];
+                [tagIdArr removeObject:[NSNumber numberWithInteger:_tagid]];
             }
             else
             {
-                [tagIdArr addObject:[NSNumber numberWithInt:_tagid]];
+                [tagIdArr addObject:[NSNumber numberWithInteger:_tagid]];
             }
             
             if([tagStrArr containsObject:tagTxt])
@@ -359,7 +359,7 @@
     if(found==NO)
     {
         NSMutableArray *tagstrarr=[NSMutableArray arrayWithObjects:tagTxt, nil];
-        NSMutableArray *tagidarr=[NSMutableArray arrayWithObjects:[NSNumber numberWithInt:_tagid], nil];
+        NSMutableArray *tagidarr=[NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:_tagid], nil];
         NSDictionary *addtag=[NSMutableDictionary dictionaryWithObjectsAndKeys:tagstrarr,@"tag",tagidarr,@"tagid", nil];
         [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:addtag,key, nil]];
     }
@@ -746,11 +746,11 @@
         NSDictionary *dic=[stuList objectAtIndex:i];
         NSString *keytemp=[[dic allKeys]objectAtIndex:0];
         
-        int keyInt=[keytemp integerValue];
+        long keyInt=[keytemp integerValue];
         if(keyInt>currentpage)
         {
             id value=[dic objectForKey:keytemp];
-            NSDictionary *dicNew=[NSDictionary dictionaryWithObjectsAndKeys:value,[NSString stringWithFormat:@"%d",keyInt-1], nil];
+            NSDictionary *dicNew=[NSDictionary dictionaryWithObjectsAndKeys:value,[NSString stringWithFormat:@"%ld",keyInt-1], nil];
             [stuList replaceObjectAtIndex:i withObject:dicNew];
         }
         
@@ -775,11 +775,11 @@
         NSMutableDictionary *dic=[picTextArr objectAtIndex:i];
         NSString *keytemp=[[dic allKeys]objectAtIndex:0];
         
-        int keyInt=[keytemp integerValue];
+        NSInteger keyInt=[keytemp integerValue];
         if(keyInt>currentpage)
         {
             id value=[dic objectForKey:keytemp];
-            NSMutableDictionary *dicNew=[NSMutableDictionary dictionaryWithObjectsAndKeys:value,[NSString stringWithFormat:@"%d",keyInt-1], nil];
+            NSMutableDictionary *dicNew=[NSMutableDictionary dictionaryWithObjectsAndKeys:value,[NSString stringWithFormat:@"%ld",(long)(keyInt-1)], nil];
             [picTextArr replaceObjectAtIndex:i withObject:dicNew];
         }
         
@@ -795,7 +795,7 @@
     if(last)
         currentpage=currentpage-1;
         
-    numbeLabel.text=[NSString stringWithFormat:@"%d/%d",currentpage+1,[assetArr count]];
+    numbeLabel.text=[NSString stringWithFormat:@"%d/%lu",currentpage+1,(unsigned long)[assetArr count]];
     
      _scroller.contentSize=CGSizeMake([assetArr count] *320, _scroller.frame.size.height);
    // -(void)addImageViewToScroller:(int)index
@@ -1017,16 +1017,16 @@
         NSLog(@"introduce:??????????????????????????????????%@",introduce);
         
 
-        NSNumber *teacherid=[NSNumber numberWithInt:[user.teacher.teacherid integerValue]];
+        NSNumber *teacherid=[NSNumber numberWithLong:[user.teacher.teacherid integerValue]];
         [[DBManager shareInstance]insertObject:^(NSManagedObject *object) {
             UpLoader *aa=(UpLoader *)object;
             aa.image=filenamePath; //路径
             aa.nameID=photo.nameId;
             aa.teacherid=teacherid;
-            aa.classUid=[NSNumber numberWithInt:[user.classInfo.uid integerValue]];
+            aa.classUid=[NSNumber numberWithLong:[user.classInfo.uid integerValue]];
             aa.name=representation.filename;
             aa.studentId=studentId;
-            aa.fsize=[NSNumber numberWithInt:representation.size];
+            aa.fsize=[NSNumber numberWithLong:representation.size];
             aa.ftime=[NSNumber numberWithInt:ftime];
             aa.introduce=introduce;
             aa.tag=tagcontent;
@@ -1038,7 +1038,7 @@
             
             NSLog(@"写数据库成功 ----------------------上传数据");
             
-        [manager addWraperToArr:filenamePath name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:tagcontent teacherid:teacherid];
+        [manager addWraperToArr:filenamePath name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithLong:representation.size] classID:[NSNumber numberWithLong:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:tagcontent teacherid:teacherid];
 
             
         } failed:^(NSError *err) {
@@ -1192,7 +1192,7 @@
     int yu=x%(int)(_scroller.frame.size.width);
     
     if (yu == 0) {
-        numbeLabel.text=[NSString stringWithFormat:@"%d/%d",++num,[assetArr count]];
+        numbeLabel.text=[NSString stringWithFormat:@"%d/%lu",++num,(unsigned long)[assetArr count]];
         
         currentpage=num-1;
         
@@ -1220,7 +1220,7 @@
         UIImageView * proV = (UIImageView*)[_scroller viewWithTag:TAG + currentpage];
         for ( UIImageView * item in _scroller.subviews ) {
             if ((item.tag - TAG < currentpage -1  ||item.tag - TAG > currentpage + 1)&&[item isKindOfClass:[UIImageView class]]&&proV != nil) {
-                NSLog(@"removeFromSuperview---%d",item.tag);
+               // NSLog(@"removeFromSuperview---%ld",(long)item.tag);
                 item.image=nil;
                 [item removeFromSuperview];
                 

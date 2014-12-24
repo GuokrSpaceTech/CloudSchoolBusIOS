@@ -123,16 +123,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (BOOL)checkTel:(NSString *)str
-
 {
-    
-
-    
-    //1[0-9]{10}
-    
-    //^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$
-    
-    //    NSString *regex = @"[0-9]{11}";
     
     NSString *regex = @"^((13[0-9])|(147)|(15[^4,\\D])|(18[0,5-9]))\\d{8}$";
     

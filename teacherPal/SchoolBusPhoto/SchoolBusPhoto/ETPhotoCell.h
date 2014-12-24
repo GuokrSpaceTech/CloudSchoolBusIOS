@@ -95,6 +95,6 @@
  *	@param 	tag 	图片tag
  *	@param 	an 	选中状态
  */
--(void)selectPhoto:(int)tag select:(BOOL)an;
+-(void)selectPhoto:(NSInteger)tag select:(BOOL)an;
 
 @end

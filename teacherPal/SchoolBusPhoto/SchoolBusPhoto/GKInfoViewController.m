@@ -335,7 +335,7 @@
 }
 -(void)isSelectedTheButton:(GKMarketButton *)marketView isSelected:(BOOL)selected
 {
-    int a=marketView.tag;
+    NSInteger a=marketView.tag;
     
     
 //    if(a==TAGMARKET +2)

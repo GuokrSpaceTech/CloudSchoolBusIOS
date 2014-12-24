@@ -212,7 +212,7 @@
                 
 
             }
-            numLabel.text=[NSString stringWithFormat:@"%d %@",[attenceArr count],NSLocalizedString(@"alreadyattendance", @"")];
+            numLabel.text=[NSString stringWithFormat:@"%lu %@",(unsigned long)[attenceArr count],NSLocalizedString(@"alreadyattendance", @"")];
             
             //计算出未考勤孩子
             NSMutableArray *arrtemp=[[NSMutableArray alloc]init];
@@ -244,7 +244,7 @@
             
             [attenceArr addObjectsFromArray:arrtemp];
             [arrtemp release];
-            NSLog(@"-------%d",[attenceArr count]);
+          //  NSLog(@"-------%d",[attenceArr count]);
             [self._tableView reloadData];
 
         }

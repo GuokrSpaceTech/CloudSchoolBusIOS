@@ -63,7 +63,7 @@
 
    // scroller.frame=CGRectMake(0, 0, 320, self.frame.size.height);
     
-    NSLog(@"%d",[studentArr count]);
+    //NSLog(@"%d",[studentArr count]);
     
     
     if (studentArr.count != 0) {

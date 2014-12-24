@@ -36,7 +36,7 @@
     [super viewWillAppear:animated];
     [(KKNavigationController *)self.navigationController setNavigationTouch:NO];
     
-     numLabel.text=[NSString stringWithFormat:@"%@%d",NSLocalizedString(@"studentCount", @""),self.studentArr.count];
+     numLabel.text=[NSString stringWithFormat:@"%@%lu",NSLocalizedString(@"studentCount", @""),(unsigned long)self.studentArr.count];
     [_tableView reloadData];
 }
 - (void)viewDidLoad
@@ -85,7 +85,7 @@
     else
         numLabel.textAlignment=UITextAlignmentCenter;
     numLabel.font=[UIFont systemFontOfSize:14];
-    numLabel.text=[NSString stringWithFormat:@"%@%d",NSLocalizedString(@"studentCount", @""),self.studentArr.count];
+    numLabel.text=[NSString stringWithFormat:@"%@%lu",NSLocalizedString(@"studentCount", @""),(unsigned long)self.studentArr.count];
     [bottomView addSubview:numLabel];
     
    // studentCount

@@ -158,7 +158,7 @@
     UILabel *titleLabel=(UILabel *)[cell.contentView viewWithTag:100];
     UILabel *contentlabel=(UILabel *)[cell.contentView viewWithTag:101];
     ;
-    titleLabel.text=[NSString stringWithFormat:@"%d、%@",(indexPath.row+1),[dic objectForKey:@"title"]];
+    titleLabel.text=[NSString stringWithFormat:@"%ld、%@",(unsigned long)(indexPath.row+1),[dic objectForKey:@"title"]];
     
     
     NSString *answer=[dic objectForKey:@"answer"];

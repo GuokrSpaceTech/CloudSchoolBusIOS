@@ -257,7 +257,7 @@
 -(void)tapClick:(UITapGestureRecognizer *)tap
 {
     
-    int a=  tap.view.tag-IMGTAG;
+    NSInteger a=  tap.view.tag-IMGTAG;
     
     NSString *urlStr=[[notice.plist objectAtIndex:a] objectForKey:@"source"];
 

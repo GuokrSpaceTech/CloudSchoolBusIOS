@@ -609,12 +609,12 @@
         cell.delegate=self;
     }
     
-    int first=indexPath.row *4;
-    int last=first+4;
+    NSInteger first=indexPath.row *4;
+    NSInteger last=first+4;
     
     int currentIndex=0;
-    int c =MIN(last, imageArr.count);
-    NSLog(@"-------------------------%d",c);
+    NSInteger c =MIN(last, imageArr.count);
+   // NSLog(@"-------------------------%d",c);
     for ( ; first+currentIndex < c; currentIndex++) {
         ETPhoto *photo= [imageArr objectAtIndex:currentIndex+first];
         // ALAsset *aset= [assetsArr objectAtIndex:currentIndex+first];
@@ -718,10 +718,10 @@
     
     [_tableView reloadData];
 }
--(void)selectPhoto:(int)tag select:(BOOL)an
+-(void)selectPhoto:(NSInteger)tag select:(BOOL)an
 
 {
-    NSLog(@"%d---------tag :%d",an,tag);
+  //  NSLog(@"%d---------tag :%d",an,tag);
     
 
     ETPhoto *photo=[imageArr objectAtIndex:tag];
@@ -802,7 +802,7 @@
     
 }
 // 动画  按钮上显示所选照片数量
--(void)playAnimation:(int)a
+-(void)playAnimation:(NSUInteger)a
 {
     CABasicAnimation *an=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
     

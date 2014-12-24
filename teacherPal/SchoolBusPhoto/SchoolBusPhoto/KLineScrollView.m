@@ -18,7 +18,7 @@
         // Initialization code
         
 //        int interval = 30; //点与点间隔距离.
-        int pointNum = data.count; //点数量
+        NSInteger pointNum = data.count; //点数量
         
         self.contentSize = CGSizeMake(pointNum*POINTINTERVAL + 10, frame.size.height);
         

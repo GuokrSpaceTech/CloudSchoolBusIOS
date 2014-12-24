@@ -265,7 +265,7 @@
     {
         huizhiLabel.frame=CGRectMake(200, 10+height+10, 100, 15);
         huizhiLabel.textColor=[UIColor redColor];
-        huizhiLabel.text=[NSString stringWithFormat:@"%@%d%@",NSLocalizedString(@"Confirmednotice",@""), [notice.sisconfirm count],NSLocalizedString(@"people",@"")];
+        huizhiLabel.text=[NSString stringWithFormat:@"%@%lu%@",NSLocalizedString(@"Confirmednotice",@""), (unsigned long)[notice.sisconfirm count],NSLocalizedString(@"people",@"")];
         IconImageView.image=[UIImage imageNamed:@"noticeStar.png"];
       
 
@@ -282,7 +282,7 @@
 -(void)tapClick:(UITapGestureRecognizer *)tap
 {
     
-   int a=  tap.view.tag-IMAGETAG;
+   NSInteger a=  tap.view.tag-IMAGETAG;
     
     NSString *urlStr=[[notice.plist objectAtIndex:a] objectForKey:@"source"];
     

@@ -158,9 +158,9 @@
 //        
 //    }
     
-    int col=([user.studentArr count] )/4; //行
+    NSInteger col=([user.studentArr count] )/4; //行
     //int row=([user.studentArr count] )%4;
-    int y = MIN(col+1, 4);
+    NSInteger y = MIN(col+1, 4);
     
     
     GKStudentView *studentView=[[GKStudentView alloc]initWithFrame:CGRectMake(0, (iphone5 ? 548 : 460) + (ios7 ? 20 : 0) - (y*55), 320,( y*55))];
@@ -377,7 +377,7 @@
     NSString *timestamp = [NSString stringWithFormat:@"%d", (int)[[NSDate date] timeIntervalSince1970]];
     
     NSString *filePath;
-    int fise=0;
+    NSInteger fise=0;
     if (self.sourcePicture != nil)
     { //上传图片.
         
@@ -443,15 +443,15 @@
     
     
     NSString *imageName=[format stringFromDate:createDate];//[NSString stringWithFormat:@"%@",[NSNumber numberWithInt:[timestamp intValue]]];
-    NSNumber *teacherid=[NSNumber numberWithInt:[user.teacher.teacherid integerValue]];
+    NSNumber *teacherid=[NSNumber numberWithInteger:[user.teacher.teacherid integerValue]];
     [[DBManager shareInstance]insertObject:^(NSManagedObject *object) {
         UpLoader *aa=(UpLoader *)object;
         aa.image=filePath;
         aa.nameID=[NSString stringWithFormat:@"draft%@",timestamp];
-        aa.classUid=[NSNumber numberWithInt:[user.classInfo.uid integerValue]];
+        aa.classUid=[NSNumber numberWithInteger:[user.classInfo.uid integerValue]];
         aa.name=imageName;
         aa.studentId=students;
-        aa.fsize=[NSNumber numberWithInt:fise];
+        aa.fsize=[NSNumber numberWithInteger:fise];
         aa.ftime=[NSNumber numberWithInt:[timestamp intValue]];
         aa.introduce = ([contentTV.text isEqualToString:NSLocalizedString(@"descripe", @"")] ? @"" : contentTV.text);
         aa.tag=(([photoTag count]==0)?@"":temp);
@@ -463,7 +463,7 @@
         
         NSLog(@"cccccfggggg");
         
-        [manager addWraperToArr:filePath name:imageName iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInt:fise] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:([contentTV.text isEqualToString:NSLocalizedString(@"descripe", @"")] ? @"" : contentTV.text) data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(([photoTag count]==0)?@"":temp) teacherid:teacherid];
+        [manager addWraperToArr:filePath name:imageName iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInteger:fise] classID:[NSNumber numberWithInteger:[user.classInfo.uid integerValue]] intro:([contentTV.text isEqualToString:NSLocalizedString(@"descripe", @"")] ? @"" : contentTV.text) data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(([photoTag count]==0)?@"":temp) teacherid:teacherid];
         
         
     } failed:^(NSError *err) {
@@ -579,15 +579,15 @@
     }
 }
 
--(void)didSelectPhotoTag:(int)tag tagstr:(NSString *)tagstr
+-(void)didSelectPhotoTag:(NSInteger)tag tagstr:(NSString *)tagstr
 {
-    if([photoTag containsObject:[NSNumber numberWithInt:tag]])
+    if([photoTag containsObject:[NSNumber numberWithInteger:tag]])
     {
         [photoTag removeAllObjects];
     }
     else
     {
-        [photoTag addObject:[NSNumber numberWithInt:tag]];
+        [photoTag addObject:[NSNumber numberWithInteger:tag]];
     }
     
     

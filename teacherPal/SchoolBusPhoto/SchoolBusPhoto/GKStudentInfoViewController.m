@@ -532,7 +532,7 @@
     }
     if(actionSheet.tag==ACTIONTAG+1)
     {
-        NSLog(@"%d",buttonIndex);
+      //  NSLog(@"%ld",(long)buttonIndex);
         if(buttonIndex==0)
         {
             //男
@@ -745,7 +745,7 @@
             {
                 //修改性别成功
                 NSString *sex=[parm objectForKey:@"sex"];
-                st.sex=[NSNumber numberWithInt:[sex integerValue]];
+                st.sex=[NSNumber numberWithInteger:[sex integerValue]];
                 
             }
             if([[parm allKeys] containsObject:@"birthday"])

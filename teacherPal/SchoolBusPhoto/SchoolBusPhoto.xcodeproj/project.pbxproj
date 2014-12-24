@@ -20,7 +20,6 @@
 		1102A7FB181A5E1200E6295C /* guanlianbottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 1102A7FA181A5E1200E6295C /* guanlianbottom.png */; };
 		1102A7FE181A715D00E6295C /* guanlian-B-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1102A7FC181A715D00E6295C /* guanlian-B-1.png */; };
 		1102A7FF181A715D00E6295C /* guanlian-B-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1102A7FD181A715D00E6295C /* guanlian-B-2.png */; };
-		110AFD5B192DCD1D00CEFECE /* inclass.png in Resources */ = {isa = PBXBuildFile; fileRef = 110AFD59192DCD1D00CEFECE /* inclass.png */; };
 		111640BE1A3EC0D900A91ACD /* greenPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 111640BC1A3EC0D900A91ACD /* greenPoint.png */; };
 		111640BF1A3EC0D900A91ACD /* redPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 111640BD1A3EC0D900A91ACD /* redPoint.png */; };
 		111A48031A42906900C483B7 /* GKLastLetterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111A48021A42906900C483B7 /* GKLastLetterViewController.m */; };
@@ -258,7 +257,6 @@
 		11B405141918C82400E56A59 /* GKAddStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B405131918C82400E56A59 /* GKAddStudentViewController.m */; };
 		11B405171918C85400E56A59 /* GKSearchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B405161918C85400E56A59 /* GKSearchListViewController.m */; };
 		11B4051A1918CC4400E56A59 /* GKSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B405191918CC4400E56A59 /* GKSearchCell.m */; };
-		11B4051B1918CE3700E56A59 /* GKAddStudentSearchViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 114DEFA5190A73B3008413DE /* GKAddStudentSearchViewController.h */; };
 		11B4051E1918D09E00E56A59 /* GKStudentAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B4051D1918D09E00E56A59 /* GKStudentAdd.m */; };
 		11B470D81925CB5300CFFEC3 /* headplaceholder_big.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B470D71925CB5300CFFEC3 /* headplaceholder_big.png */; };
 		11B470DA1925CDFC00CFFEC3 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B470D91925CDFC00CFFEC3 /* photo.png */; };
@@ -282,7 +280,6 @@
 		11B9A2C2198A1EC20083E91E /* GKQuestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B9A2C1198A1EC20083E91E /* GKQuestionView.m */; };
 		11B9A2C4198A36680083E91E /* report_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B9A2C3198A36680083E91E /* report_line.png */; };
 		11BA02B5192B05DF00124DC1 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BA02B2192B05DF00124DC1 /* libMobClickLibrary.a */; };
-		11BA02B6192B05DF00124DC1 /* libMobClickLibrary_armv6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BA02B3192B05DF00124DC1 /* libMobClickLibrary_armv6.a */; };
 		11BA02B8192B060C00124DC1 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BA02B7192B060C00124DC1 /* libz.dylib */; };
 		11BAA76A195142F6006DA9AA /* grade.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BAA766195142F6006DA9AA /* grade.png */; };
 		11BAA76B195142F6006DA9AA /* gradeE.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BAA767195142F6006DA9AA /* gradeE.png */; };
@@ -922,7 +919,6 @@
 		11B9A2C1198A1EC20083E91E /* GKQuestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKQuestionView.m; sourceTree = "<group>"; };
 		11B9A2C3198A36680083E91E /* report_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = report_line.png; sourceTree = "<group>"; };
 		11BA02B2192B05DF00124DC1 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
-		11BA02B3192B05DF00124DC1 /* libMobClickLibrary_armv6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary_armv6.a; sourceTree = "<group>"; };
 		11BA02B4192B05DF00124DC1 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		11BA02B7192B060C00124DC1 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		11BAA766195142F6006DA9AA /* grade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grade.png; sourceTree = "<group>"; };
@@ -1231,7 +1227,6 @@
 			files = (
 				113193111A4AA9E80008F894 /* CoreTelephony.framework in Frameworks */,
 				11BA02B8192B060C00124DC1 /* libz.dylib in Frameworks */,
-				11BA02B6192B05DF00124DC1 /* libMobClickLibrary_armv6.a in Frameworks */,
 				78709C2F187D1A43009250FB /* MediaPlayer.framework in Frameworks */,
 				78709C2D187D1A3B009250FB /* CoreMedia.framework in Frameworks */,
 				78709C2B187D1A30009250FB /* CoreVideo.framework in Frameworks */,
@@ -2004,7 +1999,6 @@
 			isa = PBXGroup;
 			children = (
 				11BA02B2192B05DF00124DC1 /* libMobClickLibrary.a */,
-				11BA02B3192B05DF00124DC1 /* libMobClickLibrary_armv6.a */,
 				11BA02B4192B05DF00124DC1 /* MobClick.h */,
 			);
 			path = Umeng;
@@ -2306,7 +2300,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = GK;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = mactop;
 				TargetAttributes = {
 					2A32A55818122C01007CAA8E = {
@@ -2538,7 +2532,6 @@
 				78709C0A187D1733009250FB /* camera-progress-background.png in Resources */,
 				11B1E1D21A39724F00FFE39A /* event_cn_n.png in Resources */,
 				11BF896D18363221008E72F0 /* ICON.png in Resources */,
-				110AFD5B192DCD1D00CEFECE /* inclass.png in Resources */,
 				78A0FF7018AB267C00E6A3D5 /* 云中校车视频相册封面.png in Resources */,
 				1165E27E182CFCE000B60A81 /* pic-1.png in Resources */,
 				111A48081A42C6A000C483B7 /* yellowPoint.png in Resources */,
@@ -2644,7 +2637,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11B4051B1918CE3700E56A59 /* GKAddStudentSearchViewController.h in Sources */,
 				2A32A56B18122C02007CAA8E /* main.m in Sources */,
 				78D8D11418C05CA9008860AB /* GKCommonClass.m in Sources */,
 				11BEA5761A2479790054DF03 /* GKBlogDetailViewController.m in Sources */,
@@ -2918,7 +2910,6 @@
 				GCC_PREFIX_HEADER = "SchoolBusPhoto/SchoolBusPhoto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Applications/Xcode\\ 5.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
 					$SDKROOT/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "SchoolBusPhoto/SchoolBusPhoto-Info.plist";
@@ -2933,7 +2924,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3a994eb4-c160-4cf9-abdf-86a24b07598b";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3a994eb4-c160-4cf9-abdf-86a24b07598b";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2948,7 +2939,6 @@
 				GCC_PREFIX_HEADER = "SchoolBusPhoto/SchoolBusPhoto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Applications/Xcode\\ 5.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
 					$SDKROOT/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "SchoolBusPhoto/SchoolBusPhoto-Info.plist";
@@ -2962,7 +2952,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3a994eb4-c160-4cf9-abdf-86a24b07598b";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

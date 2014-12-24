@@ -122,8 +122,8 @@
             
         }
         
-        int count = [commandArray count];
-        NSLog(@"count %d",count);
+        NSInteger count = [commandArray count];
+       // NSLog(@"count %d",count);
         [syCondition unlockWithCondition:(count > 0)?LOCK_CONDITION_HAVEDATA : LOCK_CONDITION_NODATA];
     }
 }

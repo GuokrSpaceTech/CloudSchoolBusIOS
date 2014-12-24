@@ -30,8 +30,8 @@
         
         
         GKUserLogin *user=[GKUserLogin currentLogin];
-        int col=([user.studentArr count] )/4; //行
-        int y = MIN(col+1, 4);
+        NSInteger col=([user.studentArr count] )/4; //行
+        NSInteger y = MIN(col+1, 4);
         
       //  GKUserLogin *user=[GKUserLogin currentLogin];
         studentView=[[GKStudentView alloc]initWithFrame:CGRectMake(0, self.frame.size.height, 320,y*55)];
@@ -57,8 +57,8 @@
     if(delegate&&[delegate respondsToSelector:@selector(studentViewHidden:)])
     {
         GKUserLogin *user=[GKUserLogin currentLogin];
-        int col=([user.studentArr count] )/4; //行
-        int y = MIN(col+1, 4);
+        NSInteger col=([user.studentArr count] )/4; //行
+        NSInteger y = MIN(col+1, 4);
         
         [UIView animateWithDuration:0.3 animations:^{
              studentView.frame=CGRectMake(0, self.frame.size.height, 320,y*55);
@@ -82,8 +82,8 @@
 {
     
     GKUserLogin *user=[GKUserLogin currentLogin];
-    int col=([user.studentArr count] )/4; //行
-    int y = MIN(col+1, 4);
+    NSInteger col=([user.studentArr count] )/4; //行
+    NSInteger y = MIN(col+1, 4);
     
     [UIView animateWithDuration:0.2 animations:^{
        studentView.frame=CGRectMake(0, self.frame.size.height-(y*55), 320,y*55);

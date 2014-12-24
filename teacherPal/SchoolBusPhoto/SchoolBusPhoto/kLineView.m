@@ -80,7 +80,7 @@
     
     
 //    int interval = 30; //点与点间隔距离.
-    int pointNum = dataArr.count; //点数量
+    NSInteger pointNum = dataArr.count; //点数量
     
 //    self.contentSize = CGSizeMake(pointNum*interval + 20, self.frame.size.height);
     

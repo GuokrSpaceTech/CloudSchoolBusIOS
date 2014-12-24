@@ -95,7 +95,7 @@
                 [_writer startWriting];
                 [_writer startSessionAtSourceTime:startTime];
                 time = ((double)startTime.value)/startTime.timescale;
-                NSLog(@"~~~~~~~~~  start : %f,write status : %d    path : %@",time,_writer.status,self.path);
+               // NSLog(@"~~~~~~~~~  start : %f,write status : %d    path : %@",time,_writer.status,self.path);
                 
             }
             if (_writer.status == AVAssetWriterStatusFailed)

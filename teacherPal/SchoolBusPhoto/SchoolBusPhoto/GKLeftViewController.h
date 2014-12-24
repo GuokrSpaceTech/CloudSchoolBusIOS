@@ -17,10 +17,10 @@
 
         GKBadgeView *badgeView;
     NSArray *arr;
-    int _selectIdnex;
+    NSInteger _selectIdnex;
     GKUserLogin * usr;
     UIScrollView *scroller;
-    int totle;
+    NSInteger totle;
     
 }
 

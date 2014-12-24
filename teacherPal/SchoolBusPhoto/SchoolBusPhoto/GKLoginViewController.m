@@ -415,7 +415,7 @@
             student.healthstate=[studentInfo objectForKey:@"healthstate"];
             student.xuefeuTime=[studentInfo objectForKey:@"tuition_time"];
             student.username=[NSString stringWithFormat:@"%@",[studentInfo objectForKey:@"username"]];
-            student.parentid=[NSNumber numberWithInt:[[studentInfo objectForKey:@"parentid"] integerValue]];
+            student.parentid=[NSNumber numberWithInteger:[[studentInfo objectForKey:@"parentid"] integerValue]];
             [studentArr addObject:student];
             [student release];
             

@@ -234,7 +234,7 @@
     }
 
 }
-- (void)didSelectPhotoTag:(int )tag tagstr:(NSString *)_tagstr
+- (void)didSelectPhotoTag:(NSInteger )tag tagstr:(NSString *)_tagstr
 {
     UIButton *button = (UIButton *)[self viewWithTag:333];
     [button setBackgroundImage:[[UIImage imageNamed:@"navbar-button-blue"] stretchableImageWithLeftCapWidth:3 topCapHeight:15] forState:UIControlStateNormal];

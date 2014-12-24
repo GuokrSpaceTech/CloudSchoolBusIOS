@@ -99,7 +99,7 @@
     }];
     
 }
--(NSString *)stateStr:(int )a
+-(NSString *)stateStr:(NSInteger )a
 {
     switch (a) {
         case 1:

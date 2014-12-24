@@ -12,7 +12,6 @@
 		1112BB4C1797C4E500337CB4 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1112BB491797C4E500337CB4 /* NSDataAdditions.m */; };
 		1112BB4D1797C4E500337CB4 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1112BB4B1797C4E500337CB4 /* NSStringAdditions.m */; };
 		112330A2195189B5001B585F /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1123309F195189B5001B585F /* libMobClickLibrary.a */; };
-		112330A3195189B5001B585F /* libMobClickLibrary_armv6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 112330A0195189B5001B585F /* libMobClickLibrary_armv6.a */; };
 		1124C0B919920BC60044485B /* GKReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1124C0B819920BC60044485B /* GKReportViewController.m */; };
 		1124C0BC199213C50044485B /* GKReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 1124C0BB199213C50044485B /* GKReport.m */; };
 		112FC10D19A3229400786B33 /* health_minux_select.png in Resources */ = {isa = PBXBuildFile; fileRef = 112FC10919A3229400786B33 /* health_minux_select.png */; };
@@ -687,7 +686,6 @@
 		1112BB4A1797C4E500337CB4 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		1112BB4B1797C4E500337CB4 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
 		1123309F195189B5001B585F /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
-		112330A0195189B5001B585F /* libMobClickLibrary_armv6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary_armv6.a; sourceTree = "<group>"; };
 		112330A1195189B5001B585F /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		1124C0B719920BC60044485B /* GKReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKReportViewController.h; sourceTree = "<group>"; };
 		1124C0B819920BC60044485B /* GKReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKReportViewController.m; sourceTree = "<group>"; };
@@ -1755,7 +1753,6 @@
 				F9E0FA6B16DF5E4E00206925 /* MessageUI.framework in Frameworks */,
 				73C1C63917B8F0DD001A3BCC /* CoreMotion.framework in Frameworks */,
 				11628294199C8E56003E4E5C /* AlipayRsaLib.a in Frameworks */,
-				112330A3195189B5001B585F /* libMobClickLibrary_armv6.a in Frameworks */,
 				11A054F51796835F005C062A /* MapKit.framework in Frameworks */,
 				11A054F31796831D005C062A /* ImageIO.framework in Frameworks */,
 				11D6C38B19936C98001BBF7E /* libcrypto.a in Frameworks */,
@@ -1794,7 +1791,6 @@
 			isa = PBXGroup;
 			children = (
 				1123309F195189B5001B585F /* libMobClickLibrary.a */,
-				112330A0195189B5001B585F /* libMobClickLibrary_armv6.a */,
 				112330A1195189B5001B585F /* MobClick.h */,
 			);
 			path = Umeng;

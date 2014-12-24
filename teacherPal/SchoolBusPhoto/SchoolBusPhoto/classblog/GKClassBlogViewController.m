@@ -99,7 +99,7 @@
     
     int minDis = 1000;
     
-    for (int i = cells.count - 1 ; i>=0 ; i--) {
+    for (NSInteger i = cells.count - 1 ; i>=0 ; i--) {
         id obj = [cells objectAtIndex:i];
         
         if ([obj isKindOfClass:[GKMovieCell class]])
@@ -622,7 +622,7 @@
             }
             
             
-            int picCount = sContent.sharePicArr.count;
+            NSInteger picCount = sContent.sharePicArr.count;
             
             // __block float picHeight=0;
             if(picCount>=1)

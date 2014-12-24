@@ -73,10 +73,12 @@ static GKSocket *currentSocket=nil;
     
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
-    [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [inputStream scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    [outputStream scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     [inputStream open];
     [outputStream open];
+    
+   // CFReadStreamScheduleWithRunLoop(<#CFReadStreamRef stream#>, <#CFRunLoopRef runLoop#>, <#CFStringRef runLoopMode#>)
     
 }
 - (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {

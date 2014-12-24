@@ -94,9 +94,9 @@
     [contentLabel release];
     
     float heightorign=contentLabel.frame.origin.y+contentLabel.frame.size.height;
-    int row=[shareContent.tagArr count]/3;
-    int col=[shareContent.tagArr count]%3;
-    int num= ((col==0)?row:(row+1));
+    NSInteger row=[shareContent.tagArr count]/3;
+    NSInteger col=[shareContent.tagArr count]%3;
+    NSInteger num= ((col==0)?row:(row+1));
     for (int i=0; i<[shareContent.tagArr count]; i++) {
 
         NSDictionary *dic=[shareContent.tagArr objectAtIndex:i];
@@ -453,7 +453,7 @@
 
 -(void)tagClick:(UIButton *)btn
 {
-    int i=btn.tag-3210;
+    NSInteger i=btn.tag-3210;
     
     NSDictionary *dic=[self.shareContent.tagArr objectAtIndex:i];
     
@@ -574,7 +574,7 @@
             {
                 NSString *str=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
                 
-                self.shareContent.havezan = [NSNumber numberWithInt:[str integerValue]];
+                self.shareContent.havezan = [NSNumber numberWithInteger:[str integerValue]];
                 [str release];
                 [upBtn setImage:[UIImage imageNamed:@"upBtnSel.png"] forState:UIControlStateNormal];
                 

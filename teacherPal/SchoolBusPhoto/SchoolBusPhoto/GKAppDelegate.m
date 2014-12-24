@@ -208,7 +208,7 @@
     
     GKUserLogin *user=[GKUserLogin currentLogin];
     
-    user.badgeNumber=[NSNumber numberWithInt:[user.badgeNumber integerValue]+1];
+    user.badgeNumber=[NSNumber numberWithInteger:[user.badgeNumber integerValue]+1];
     NSUserDefaults *defaultuser=[NSUserDefaults standardUserDefaults];
     [defaultuser setObject:user.badgeNumber forKey:@"BADGE"];
     

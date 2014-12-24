@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface GKBadgeView : UIView
-@property (nonatomic,assign)int bagde;
+@property (nonatomic,assign)NSInteger bagde;
 @end

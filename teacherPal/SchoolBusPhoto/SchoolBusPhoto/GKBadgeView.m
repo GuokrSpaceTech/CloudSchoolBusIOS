@@ -18,7 +18,7 @@
     }
     return self;
 }
--(void)setBagde:(int)_bagde
+-(void)setBagde:(NSInteger)_bagde
 {
     bagde=_bagde;
     
@@ -41,7 +41,7 @@
     [iamge drawInRect:rect];
     
     [[UIColor whiteColor] set];
-    NSString *str=[NSString stringWithFormat:@"%d",self.bagde];
+    NSString *str=[NSString stringWithFormat:@"%ld",(long)self.bagde];
     
     [str drawInRect:rect withFont:[UIFont systemFontOfSize:9] lineBreakMode:NSLineBreakByTruncatingTail alignment:NSTextAlignmentCenter];
 }

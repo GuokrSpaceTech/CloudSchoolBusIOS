@@ -30,7 +30,7 @@
 @optional
 
 - (void) shareCell:(ClassShareCell *)_notice share:(GKClassBlog *)info;
-- (void) shareWeibo:(GKClassBlog *)info withTag:(int) tag;
+- (void) shareWeibo:(GKClassBlog *)info withTag:(NSInteger) tag;
 - (void) clickComment:(GKClassBlog *)content;
 - (void) clickPraise:(UITableViewCell *)cell;
 - (void) didTapImageWithImagecontent:(GKClassBlog *)content;

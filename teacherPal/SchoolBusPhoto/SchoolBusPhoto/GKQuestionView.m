@@ -76,7 +76,7 @@
 }
 -(void)opClick:(UIButton *)btn
 {
-    int tag=btn.tag;
+    NSInteger tag=btn.tag;
     
     if(delegate&& [delegate respondsToSelector:@selector(questionView:questionTitle:answer:)])
     {

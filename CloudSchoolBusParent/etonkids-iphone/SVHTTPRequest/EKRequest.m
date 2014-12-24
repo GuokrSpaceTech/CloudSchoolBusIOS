@@ -11,7 +11,7 @@
 //#define SERVERURL @"http://apitest.yunxiaoche.com/"
 //#define SERVERURL @"http://apitest.yunxiaoche.com/"
 //#define SERVERURL @"http://222.128.71.186:81/"
-#define SERVERURL @"http://api34.yunxiaoche.com/"
+#define SERVERURLHOST @"http://api34.yunxiaoche.com/"
 #define VERSION @"3.4.5"
 @interface EKRequest()
 
@@ -173,7 +173,7 @@ static EKRequest * instance = nil;
         header = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"mactoprestphone",@"apikey",sid,@"sid",VERSION,@"Version",nil], nil];
     }
     
-    NSString * address = [SERVERURL stringByAppendingFormat:@"%@",[self getFunction:function]];
+    NSString * address = [SERVERURLHOST stringByAppendingFormat:@"%@",[self getFunction:function]];
     //GET请求
     if(method == GET)
     {

@@ -335,7 +335,7 @@
         
         int ftime=[[NSDate date]timeIntervalSince1970];
         
-        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"img",@"lettertype",base64,@"fbody",[NSNumber numberWithInt:ftime],@"ftime",[NSNumber numberWithInt:[base64 length]],@"fsize",@"jpg",@"fext",_contactObj.from_id,@"id", nil];
+        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"img",@"lettertype",base64,@"fbody",[NSNumber numberWithInt:ftime],@"ftime",[NSNumber numberWithInteger:[base64 length]],@"fsize",@"jpg",@"fext",_contactObj.from_id,@"id", nil];
         [[EKRequest Instance]EKHTTPRequest:messageletter parameters:dic requestMethod:POST forDelegate:self];
     }
     

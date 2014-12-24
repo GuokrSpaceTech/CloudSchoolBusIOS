@@ -177,9 +177,9 @@
     
     GKUserLogin *user=[GKUserLogin currentLogin];
     
-    int col=([user.studentArr count] )/4; //行
+    NSInteger col=([user.studentArr count] )/4; //行
     //int row=([user.studentArr count] )%4;
-    int y = MIN(col+1, 4);
+    NSInteger y = MIN(col+1, 4);
     if (studentView == nil) {
         studentView=[[GKStudentView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-( y*55), 320,( y*55))];
         

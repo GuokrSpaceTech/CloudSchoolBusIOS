@@ -381,7 +381,7 @@
         self.studentselectStr=oneName;
     }
     else
-    self.studentselectStr=[NSString stringWithFormat:@"%@等%d人",oneName,[stuIdList count]];
+    self.studentselectStr=[NSString stringWithFormat:@"%@等%lu人",oneName,(unsigned long)[stuIdList count]];
     
     [stuButton setTitle:self.studentselectStr forState:UIControlStateNormal];
 }

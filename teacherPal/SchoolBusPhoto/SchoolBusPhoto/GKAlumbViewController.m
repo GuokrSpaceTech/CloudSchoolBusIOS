@@ -138,12 +138,12 @@
             
             if(group)
             {
-                NSLog(@"%d",group.numberOfAssets);
+              //  NSLog(@"%d",group.numberOfAssets);
                 
                 
                 [arr insertObject:group atIndex:0];
                 
-                NSLog(@"dddd");
+               // NSLog(@"dddd");
             }
             else
             {
@@ -156,7 +156,7 @@
             [_slimeView endRefresh];
             NSLog(@"------%@",error.description);
             
-            NSLog(@"%d",error.code);
+           // NSLog(@"%d",error.code);
          
             if(error.code==-3311)
             {

@@ -27,7 +27,7 @@
 @protocol GKSaySomethingViewDelegate <NSObject>
 
 //-(void)textView:(NSString *)contextTxt;
--(void)tag:(NSString *)tagTxt tagid:(int) tagid;
+-(void)tag:(NSString *)tagTxt tagid:(NSInteger) tagid;
 -(void)applyAll:(NSString *)str;
 - (void)cancelApplyAll;
 

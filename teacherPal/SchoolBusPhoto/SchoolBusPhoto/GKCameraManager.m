@@ -624,7 +624,7 @@ static GKCameraManager *cameraManager;
                         }
                         else
                         {
-                            NSLog(@"export error and session.status = %d",session.status);
+                            //NSLog(@"export error and session.status = %d",session.status);
                             NSError *error;
                             [[NSFileManager defaultManager] removeItemAtPath:oPath error:&error];
                             NSLog(@" %@", error);

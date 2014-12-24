@@ -1204,7 +1204,7 @@ static NSOperationQueue *sharedQueue = nil;
 
         // Tell CFNetwork not to validate SSL certificates
         if (![self validatesSecureCertificate]) {
-            [sslProperties setObject:(NSString *)kCFBooleanFalse forKey:(NSString *)kCFStreamSSLValidatesCertificateChain];
+            [sslProperties setObject:(NSNumber *)kCFBooleanFalse forKey:(NSString *)kCFStreamSSLValidatesCertificateChain];
         }
 
         // Tell CFNetwork to use a client certificate

@@ -221,7 +221,7 @@
     for (id obj in scroller.subviews) {
         if ([obj isKindOfClass:[UIButton class]]) {
             UIButton *btn = (UIButton *)obj;
-            NSLog(@"%d",btn.tag);
+           // NSLog(@"%d",btn.tag);
             if (btn.tag >= 1 && btn.tag <= totle) {
                 btn.selected = NO;
                 //                btn.userInteractionEnabled = YES;
@@ -231,7 +231,7 @@
     
     NSInteger tag=sender.tag;
     
-        NSLog(@"click bottom button:%d",tag);
+       // NSLog(@"click bottom button:%d",tag);
     if(tag==totle+1)
     {
         
@@ -269,7 +269,7 @@
         }
     }
 }
-- (UINavigationController *)subConWithIndex:(int)index
+- (UINavigationController *)subConWithIndex:(NSInteger)index
 {
     if(index==0)
     {

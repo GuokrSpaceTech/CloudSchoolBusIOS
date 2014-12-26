@@ -20,7 +20,7 @@
 #import "TBXML.h"
 #import "GKDevice.h"
 #import "ETCommonClass.h"
-#import "GKVideoViewController.h"
+#import "GKChildCameraViewController.h"
 
 #import "UserLogin.h"
 
@@ -379,6 +379,9 @@
     
 
         
+       
+        
+        
         UserLogin *user=[UserLogin currentLogin];
         if([user.chunyuisopen intValue]==0)
         {
@@ -406,13 +409,16 @@
     else if (indexPath.section == 5)
     {
         
-        [self isCameraReady];
+        //[self isCameraReady];
         
         
-//        GKVideoListViewController *VC=[[GKVideoListViewController alloc]init];
-//        AppDelegate *appDel=SHARED_APP_DELEGATE;
-//        [appDel.bottomNav pushViewController:VC animated:YES];
-//        [VC release];
+        
+       // [[EKRequest Instance] EKHTTPRequest:camera parameters:nil requestMethod:GET forDelegate:self];
+        
+        GKChildCameraViewController *VC=[[GKChildCameraViewController alloc]init];
+        AppDelegate *appDel=SHARED_APP_DELEGATE;
+        [appDel.bottomNav pushViewController:VC animated:YES];
+        [VC release];
 
         return;
         
@@ -516,7 +522,7 @@
                             
                           //  deviceObj.status=stateStr;
                             
-                            if([@"dvr" isEqualToString:svrnameStr])
+                            if([@"hb" isEqualToString:svrnameStr])
                             {
                                 //if(stateStr)
                                 if([stateStr isEqualToString:@"1"])
@@ -538,10 +544,10 @@
                     
                   if(found==YES)
                   {
-                        GKVideoViewController *VC=[[GKVideoViewController alloc]init];
-                        AppDelegate *appDel=SHARED_APP_DELEGATE;
-                        [appDel.bottomNav pushViewController:VC animated:YES];
-                        [VC release];
+//                        GKVideoViewController *VC=[[GKVideoViewController alloc]init];
+//                        AppDelegate *appDel=SHARED_APP_DELEGATE;
+//                        [appDel.bottomNav pushViewController:VC animated:YES];
+//                        [VC release];
                   }
                  
 
@@ -570,6 +576,9 @@
 }
 - (void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
 {
+    
+//    NSString * aa=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",aa);
 
     if (method == status && code == 1) {
         NSDictionary *result = [NSJSONSerialization JSONObjectWithData:response options:nil error:nil];

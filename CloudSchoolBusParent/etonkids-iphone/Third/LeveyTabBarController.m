@@ -345,7 +345,7 @@ static LeveyTabBarController *leveyTabBarController;
         return;
     }
     NSLog(@"Display View.");
-    int preSelectedIndex = _selectedIndex;
+    NSInteger preSelectedIndex = _selectedIndex;
     _selectedIndex = index;
     
 	UIViewController *selectedVC = [self.viewControllers objectAtIndex:index];

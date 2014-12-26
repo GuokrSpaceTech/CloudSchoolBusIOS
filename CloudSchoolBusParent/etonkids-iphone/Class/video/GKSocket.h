@@ -11,15 +11,16 @@ typedef void (^streamCompleteBlock)(BOOL success,NSString * result);
 
 typedef void (^StreamBlock)( NSData *data, int length,NSError *error);
 
+typedef void(^OpenStream)(BOOL success,NSString *result);
 @interface GKSocket : NSObject<NSStreamDelegate>
 {
     NSInputStream * inputStream;
     NSOutputStream * outputStream;
     
-    streamCompleteBlock cBlock;
-    StreamBlock streamBlock;
+//    streamCompleteBlock cBlock;
+//    StreamBlock streamBlock;
     
-	int				m_iPreRecvLen;
+	NSUInteger				m_iPreRecvLen;
 	int				m_iPackageLen;
 	//CString			m_sRecvXmlData;
     
@@ -31,16 +32,25 @@ typedef void (^StreamBlock)( NSData *data, int length,NSError *error);
     int				m_iFrameLen;
     
     NSMutableData *bufferdata;
+    
+    BOOL isInputOpen;
+    BOOL isOutputOpen;
+    BOOL isConnect;
 
 
 }
+@property (nonatomic,copy)streamCompleteBlock cBlock;
+@property (nonatomic,copy)StreamBlock streamBlock;
+@property (nonatomic,copy)OpenStream openBlock;
+
 
 //+(GKSocket *)instance;
 
 - (void)cleanUpStream;
--(int)sendData:(char *)pSrc length:(int)iLength type:(int)iDataType block:(streamCompleteBlock)block streamBlock:(StreamBlock)strBlock;
-
-+(GKSocket *)instanceddns:(NSString *)ddns port:(NSString *)port;
+-(void)connectwithddns:(NSString *)ddns port:(NSString *)prot isConnect:(BOOL)connect block:(OpenStream)block;
+-(int)sendData:(char *)pSrc length:(int)iLength type:(int)iDataType isConnect:(BOOL)connect block:(streamCompleteBlock)block streamBlock:(StreamBlock)strBlock;
+-(id)initwithddns:(NSString *)ddns port:(NSString *)prot block:(OpenStream)block;
++(GKSocket *)instanceddns:(NSString *)ddns port:(NSString *)port block:(OpenStream)block;
 
 
 @end

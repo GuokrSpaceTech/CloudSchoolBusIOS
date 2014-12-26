@@ -29,7 +29,7 @@
     
 	UIColor *uiColor = self.titleLabel.textColor;
 	CGColorRef color = [uiColor CGColor];
-	int numComponents = CGColorGetNumberOfComponents(color);
+	NSInteger numComponents = CGColorGetNumberOfComponents(color);
 	
 	if (numComponents == 4)
 	{

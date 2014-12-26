@@ -259,7 +259,7 @@
     [_textField resignFirstResponder];
     [_textView resignFirstResponder];
     UIImageView *imageView=(UIImageView *)tap.view;
-    int tag=imageView.tag;
+    NSInteger tag=imageView.tag;
     
     if(tag==3000)
     {
@@ -319,7 +319,7 @@
 {
     const char *cStr = [str UTF8String];
     unsigned char result[16];
-    CC_MD5(cStr, strlen(cStr), result); // This is the md5 call
+    CC_MD5(cStr, (CC_LONG)strlen(cStr), result); // This is the md5 call
     return [NSString stringWithFormat:
             @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
             result[0], result[1], result[2], result[3],
@@ -412,7 +412,7 @@
     [resuest setPostValue:jsonstr forKey:@"content"];
     [resuest setPostValue:sign forKey:@"sign"];
  
-    [resuest setPostValue:[NSString stringWithFormat:@"%d",keshinumber] forKey:@"clinic_no"];
+    [resuest setPostValue:[NSString stringWithFormat:@"%ld",(long)keshinumber] forKey:@"clinic_no"];
    
     [resuest setPostValue:[NSString stringWithFormat:@"%d",time] forKey:@"atime"];
     [resuest setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"nopic",@"pic", nil]];

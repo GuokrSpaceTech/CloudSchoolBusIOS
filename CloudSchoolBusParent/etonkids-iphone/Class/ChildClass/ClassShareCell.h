@@ -30,10 +30,10 @@
 @optional
 
 - (void) shareCell:(ClassShareCell *)_notice share:(ShareContent *)info;
-- (void) shareWeibo:(ShareContent *)info withTag:(int) tag;
+- (void) shareWeibo:(ShareContent *)info withTag:(NSInteger) tag;
 - (void) clickComment:(ShareContent *)content;
 - (void) clickPraise:(UITableViewCell *)cell;
-- (void) didTapImageWithImageArray:(NSArray *)imgArr showNumber:(int)num content:(ShareContent *)content;
+- (void) didTapImageWithImageArray:(NSArray *)imgArr showNumber:(NSInteger)num content:(ShareContent *)content;
 
 
 -(void)playAudioStreamView:(ClassShareCell *)viewCell Info:(ShareContent *)info;

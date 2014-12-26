@@ -690,7 +690,7 @@ static float		g_keyboardFrameHeightLastTime = 216;		// 默认初始键盘高度
 	}
 
 	char *pchSource = (char *)[strCopy cStringUsingEncoding:NSUTF8StringEncoding];
-	int sourcelen = strlen(pchSource);
+	NSInteger sourcelen = strlen(pchSource);
 	
 	int nCurNum = 0;		// 当前已经统计的字数
 	for (int n = 0; n < sourcelen; ) {
@@ -721,7 +721,7 @@ static float		g_keyboardFrameHeightLastTime = 216;		// 默认初始键盘高度
 		return strSource;
 	}
 	char *pchSource = (char *)[strSource cStringUsingEncoding:NSUTF8StringEncoding];
-	int sourcelen = strlen(pchSource);
+	NSInteger sourcelen = strlen(pchSource);
 	int nCharIndex = 0;		// 字符串中字符个数,取值范围[0, [strSource length]]
 	int nCurNum = 0;		// 当前已经统计的字数
 	for (int n = 0; n < sourcelen; ) {
@@ -753,7 +753,7 @@ static float		g_keyboardFrameHeightLastTime = 216;		// 默认初始键盘高度
 - (void)insertTextAtCurrentIndex:(NSString *)contextStr {
 	if ([textView hasText]) {
 		// 获得光标所在的位置
-		int location = curSelectedRange.location;
+		NSInteger location = curSelectedRange.location;
 		// 将UITextView中的内容进行调整（主要是在光标所在的位置进行字符串截取，再拼接你需要插入的文字即可）
 		NSString *content = textView.text;
 		if (location > [content length]) {
@@ -877,7 +877,7 @@ static float		g_keyboardFrameHeightLastTime = 216;		// 默认初始键盘高度
 }
 
 - (void)topicViewsubTitle:(NSString *)title {
-    textView.text = [textView.text stringByAppendingFormat:title];
+    textView.text = [textView.text stringByAppendingFormat:@"%@",title];
 }
 - (void)viewDidUnload
 {

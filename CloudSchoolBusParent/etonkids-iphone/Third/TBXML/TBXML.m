@@ -240,7 +240,7 @@
     if (error) *error = localError;
     
     // return success or error code
-    return localError == nil ? D_TBXML_SUCCESS : [localError code];
+    return localError == nil ? D_TBXML_SUCCESS : (int)[localError code];
 }
 
 @end

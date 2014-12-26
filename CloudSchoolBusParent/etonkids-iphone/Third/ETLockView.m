@@ -146,7 +146,7 @@
                     BOOL found=YES;
                     for (int i=0; i<[arr count]; i++)
                     {
-                        int a=[[arr objectAtIndex:i] integerValue];
+                        NSInteger a=[[arr objectAtIndex:i] integerValue];
                         
                         if(a==imageview.tag-1000)
                         {
@@ -168,7 +168,7 @@
                         if(self.currentImage!=nil)
                         {
                             self.currentImage=imageview;
-                            [arr addObject:[NSNumber numberWithInt:imageview.tag-1000]];
+                            [arr addObject:[NSNumber numberWithInteger:imageview.tag-1000]];
                             imageview.choose=YES;
                             //beginPoint=imageview.center;
                             

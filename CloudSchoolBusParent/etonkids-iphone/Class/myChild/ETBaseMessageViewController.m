@@ -40,7 +40,7 @@
     [super viewWillAppear:animated];
     
     [mainTV reloadData];
-    countlabel.text=[NSString stringWithFormat:@"%d",[self.receiveArr count]];
+    countlabel.text=[NSString stringWithFormat:@"%lu",(unsigned long)[self.receiveArr count]];
 }
 - (void)viewDidLoad
 {
@@ -250,7 +250,7 @@
            // countlabel.text=@"0位";
             [countlabel release];
             
-            countlabel.text=[NSString stringWithFormat:@"%d",[self.receiveArr count]];
+            countlabel.text=[NSString stringWithFormat:@"%lu",(unsigned long)[self.receiveArr count]];
             if([self.receiveArr count]==0)
             {
                 
@@ -578,7 +578,7 @@
                 [receiver release];
             }
             
-            countlabel.text=[NSString stringWithFormat:@"%d",[arr count]];
+            countlabel.text=[NSString stringWithFormat:@"%lu",(unsigned long)[arr count]];
             [activeView stopAnimating];
             
 

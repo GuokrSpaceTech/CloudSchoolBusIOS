@@ -229,7 +229,7 @@
 {
     iv.frame = CGRectMake(0, 40, 320, self.frame.size.height - 75);
 	CATransition *transition;
-	int nextPage = pageControl.currentPage;
+	NSInteger nextPage = pageControl.currentPage;
 	
 	if (nextPage - currentPage > 0)
 	{

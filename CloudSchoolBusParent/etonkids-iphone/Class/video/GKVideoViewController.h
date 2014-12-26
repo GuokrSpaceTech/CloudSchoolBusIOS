@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
+#import "GKSocket.h"
 @class OpenGLView20;
 @class GKDevice;
 
@@ -19,6 +20,10 @@
     UILabel *middleLabel;
     
     UIImageView *navigationBackView;
+    
+    
+    dispatch_queue_t ffmengQueue;
 }
-
+@property (nonatomic,retain)GKSocket *socket;
+@property (nonatomic,retain)NSData *ffmpegData;
 @end

@@ -9,7 +9,7 @@
 
 @implementation NSDate (Convenience)
 
--(int)year {
+-(NSInteger)year {
     NSCalendar *gregorian = [[NSCalendar alloc]
                              initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [gregorian components:NSYearCalendarUnit fromDate:self];
@@ -18,7 +18,7 @@
 }
 
 
--(int)month {
+-(NSInteger)month {
     NSCalendar *gregorian = [[NSCalendar alloc]
                              initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [gregorian components:NSMonthCalendarUnit fromDate:self];
@@ -26,7 +26,7 @@
     return [components month];
 }
 
--(int)day {
+-(NSInteger)day {
     NSCalendar *gregorian = [[NSCalendar alloc]
                              initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [gregorian components:NSDayCalendarUnit fromDate:self];
@@ -34,7 +34,7 @@
     return [components day];
 }
 
--(int)firstWeekDayInMonth {
+-(NSInteger)firstWeekDayInMonth {
     NSCalendar *gregorian = [[[NSCalendar alloc]
                              initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
     [gregorian setFirstWeekday:2]; //monday is first day
@@ -90,7 +90,7 @@
 
 
 
--(int)numDaysInMonth {
+-(NSInteger)numDaysInMonth {
     NSCalendar *cal = [NSCalendar currentCalendar];
     NSRange rng = [cal rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:self];
     NSUInteger numberOfDaysInMonth = rng.length;

@@ -39,7 +39,7 @@
 
     ShareContent *shareContent;
     EGORefreshPos theRefreshPos;
-    int currentTag;
+    NSInteger currentTag;
     UIImage  *headImage;
     
 //    UILabel  *defaultlabel;

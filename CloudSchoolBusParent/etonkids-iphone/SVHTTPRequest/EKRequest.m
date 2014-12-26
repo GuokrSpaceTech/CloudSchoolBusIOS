@@ -11,7 +11,7 @@
 //#define SERVERURL @"http://apitest.yunxiaoche.com/"
 //#define SERVERURL @"http://apitest.yunxiaoche.com/"
 //#define SERVERURL @"http://222.128.71.186:81/"
-#define SERVERURLHOST @"http://api34.yunxiaoche.com/"
+#define SERVERURLHOST @"http://api34.yunxiaoche.com:81sz/"
 #define VERSION @"3.4.5"
 @interface EKRequest()
 
@@ -37,7 +37,7 @@ static EKRequest * instance = nil;
 {
     const char *cStr = [str UTF8String];
     unsigned char result[32];
-    CC_MD5( cStr, strlen(cStr), result );
+    CC_MD5( cStr, (CC_LONG)strlen(cStr), result );
     return [NSString stringWithFormat:
             @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
             result[0], result[1], result[2], result[3],
@@ -152,6 +152,8 @@ static EKRequest * instance = nil;
             return @"latestletter";
         case messageletter:
             return @"messageletter";
+        case camera:
+            return @"camera";
         default:
             
             return nil;

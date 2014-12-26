@@ -139,7 +139,7 @@
     
 }
 
-- (void)setBadgeViewHidden:(int)type
+- (void)setBadgeViewHidden:(NSInteger)type
 {
     UIImageView *imageView = (UIImageView *)[self viewWithTag:(type + 1000)];
     
@@ -152,7 +152,7 @@
     an.toValue = [NSNumber numberWithFloat:0];
     [imageView.layer addAnimation:an forKey:@"myscale1"];
     
-    [self performSelector:@selector(badgeHidden:) withObject:[NSString stringWithFormat:@"%d",type] afterDelay:0.45f];
+    [self performSelector:@selector(badgeHidden:) withObject:[NSString stringWithFormat:@"%ld",(long)type] afterDelay:0.45f];
 }
 - (void)badgeHidden:(NSString *)type
 {
@@ -172,7 +172,7 @@
 	UIButton *btn = sender;
 	[self selectTabAtIndex:btn.tag];
     
-    NSLog(@"Select index: %d",btn.tag);
+  //  NSLog(@"Select index: %d",btn.tag);
     if ([_delegate respondsToSelector:@selector(tabBar:didSelectIndex:)])
     {
         [_delegate tabBar:self didSelectIndex:btn.tag];

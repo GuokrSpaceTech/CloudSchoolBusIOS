@@ -306,7 +306,7 @@
     
     if (delegate && [delegate respondsToSelector:@selector(didTapImageWithImageArray:showNumber:content:)]) {
         
-        [delegate didTapImageWithImageArray:self.theShareCtnt.sharePicArr showNumber:MAX(0,sender.view.tag - TAPIMAGETAG) content:self.theShareCtnt];
+        [delegate didTapImageWithImageArray:self.theShareCtnt.sharePicArr showNumber:(NSInteger)(MAX(0,sender.view.tag - TAPIMAGETAG)) content:self.theShareCtnt];
     }
     
 }

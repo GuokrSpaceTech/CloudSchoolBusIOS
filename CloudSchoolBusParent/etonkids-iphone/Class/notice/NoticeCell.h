@@ -58,7 +58,7 @@
 // 点击回执
 - (void)clickComfirmNoticeCell:(NoticeCell *)_notice;
 
-- (void) didTapImageWithImageArray:(NSArray *)imgArr showNumber:(int)num content:(NoticeInfo *)notice;
+- (void) didTapImageWithImageArray:(NSArray *)imgArr showNumber:(NSInteger)num content:(NoticeInfo *)notice;
 
 
 @end

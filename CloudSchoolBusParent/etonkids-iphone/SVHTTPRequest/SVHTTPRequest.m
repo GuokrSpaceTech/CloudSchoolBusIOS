@@ -83,6 +83,7 @@ static NSString *defaultUserAgent;
     dispatch_release(_saveDataDispatchGroup);
     dispatch_release(_saveDataDispatchQueue);
 #endif
+    [super dealloc];
 }
 
 + (void)setDefaultTimeoutInterval:(NSTimeInterval)interval {

@@ -45,7 +45,7 @@
 // 重载set方法
 - (void)setWordsNum:(NSInteger)counts {
 	wordsNum = counts;
-	NSString *numString = [NSString stringWithFormat:@"%d", wordsNum];
+	NSString *numString = [NSString stringWithFormat:@"%ld", (long)wordsNum];
 	labelWord.font = [UIFont systemFontOfSize: LabelFontSize];
     labelWord.textColor = [UIColor redColor];
 	NSInteger width = [self getTextWidth:numString];

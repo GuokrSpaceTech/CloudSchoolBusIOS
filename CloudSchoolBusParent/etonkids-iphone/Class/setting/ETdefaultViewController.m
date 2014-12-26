@@ -141,7 +141,7 @@
         
     }
     
-    NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",sender.tag%999],@"skinid", nil];
+    NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%ld",sender.tag%999],@"skinid", nil];
     [[EKRequest Instance] EKHTTPRequest:skinid parameters:param requestMethod:POST forDelegate:self];
 }
 

@@ -21,7 +21,7 @@
     MBProgressHUD *HUD;
     UINavigationBar *navigation;
     
-    int currentPage;
+    NSInteger currentPage;
     NSArray * imgArr;
     
 }

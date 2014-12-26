@@ -260,7 +260,7 @@
     {
         NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
         // 0:关闭自动播放     1:wifi下自动播放     2:始终自动播放
-        [userdefault setObject:[NSString stringWithFormat:@"%d",indexPath.row] forKey:@"AutoPlay"];
+        [userdefault setObject:[NSString stringWithFormat:@"%ld",(long)indexPath.row] forKey:@"AutoPlay"];
         [tableView reloadData];
     }
     else if(indexPath.section == 1)

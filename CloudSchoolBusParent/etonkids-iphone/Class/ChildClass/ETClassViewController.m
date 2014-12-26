@@ -194,7 +194,7 @@
 }
 
 
--(void)shareWeibo:(ShareContent *)info withTag:(int)tag
+-(void)shareWeibo:(ShareContent *)info withTag:(NSInteger)tag
 {
     self.shareContent=info;
     currentTag = tag;
@@ -643,7 +643,7 @@
 }
 
 
-- (void)didTapImageWithImageArray:(NSArray *)imgArr showNumber:(int)num content:(ShareContent *)content
+- (void)didTapImageWithImageArray:(NSArray *)imgArr showNumber:(NSInteger)num content:(ShareContent *)content
 {
     
     if (imgArr != nil && content != nil) {
@@ -961,7 +961,7 @@
                 }
                 
                 
-                int picCount = sContent.sharePicArr.count;
+                NSInteger picCount = sContent.sharePicArr.count;
          
                // __block float picHeight=0;
                 if(picCount>=1)
@@ -1438,7 +1438,7 @@
     
     int minDis = 1000;
     
-    for (int i = cells.count - 1 ; i>=0 ; i--) {
+    for (NSInteger i = cells.count - 1 ; i>=0 ; i--) {
         id obj = [cells objectAtIndex:i];
         
         if ([obj isKindOfClass:[GKMovieCell class]])

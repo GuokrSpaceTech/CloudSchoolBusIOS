@@ -81,7 +81,7 @@
     
 }
 
-- (id)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...NS_REQUIRES_NIL_TERMINATION
+- (id)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id)_delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...NS_REQUIRES_NIL_TERMINATION
 {
     self = [super initWithFrame:[UIScreen mainScreen].applicationFrame];
     if (self) {
@@ -93,7 +93,7 @@
         
         self.myTitle = title;
         self.myMessage = message;
-        self.delegate = delegate;
+        self.delegate = _delegate;
         
 //        self.windowLevel = UIWindowLevelStatusBar+1;
         
@@ -255,7 +255,7 @@
         btn.userInteractionEnabled = NO;
     }
     
-    NSLog(@"%d",sender.tag%333);
+    //NSLog(@"%d",sender.tag%333);
     if (delegate && [delegate respondsToSelector:@selector(alertView:didSelectButtonAtIndex:)]) {
         [delegate alertView:self didSelectButtonAtIndex:sender.tag%333];
     }

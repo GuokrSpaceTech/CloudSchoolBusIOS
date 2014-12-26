@@ -17,7 +17,7 @@
     UIImageView *photoImageView;
     UIScrollView *_scroller;
     
-    int keshinumber;
+    NSInteger keshinumber;
     
     MBProgressHUD *HUD;
 }

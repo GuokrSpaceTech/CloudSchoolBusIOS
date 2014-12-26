@@ -203,17 +203,17 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     
     float heightorign=contentLabel.frame.origin.y+contentLabel.frame.size.height;
     
-    int row=[shareContent.tagArr count]/3;
-    int col=[shareContent.tagArr count]%3;
+    NSInteger row=[shareContent.tagArr count]/3;
+    NSInteger col=[shareContent.tagArr count]%3;
    
     
-    int num= ((col==0)?row:(row+1));
+    NSInteger num= ((col==0)?row:(row+1));
     
-    for (int i=0; i<[shareContent.tagArr count]; i++) {
+    for (NSInteger i=0; i<[shareContent.tagArr count]; i++) {
         
         NSDictionary *dic=[shareContent.tagArr objectAtIndex:i];
-        int row=i/3;
-        int col=i%3;
+        NSInteger row=i/3;
+        NSInteger col=i%3;
         
         UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
         btn.backgroundColor=[UIColor colorWithRed:97/355.0 green:177/255.0 blue:200/255.0 alpha:1];
@@ -950,7 +950,7 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
                 [upAI stopAnimating];
                 self.upList = [NSMutableArray arrayWithArray:result];
                 
-                self.shareContent.upnum = [NSNumber numberWithInt:self.upList.count];
+                self.shareContent.upnum = [NSNumber numberWithInteger:self.upList.count];
                 
 //                NSLog(@"%@",self.upList);
                 
@@ -965,7 +965,7 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
                 
                 NSString *str=[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding];
                 
-                self.shareContent.havezan = [NSNumber numberWithInt:[str integerValue]];
+                self.shareContent.havezan = [NSNumber numberWithInteger:[str integerValue]];
                 [upBtn setImage:[UIImage imageNamed:@"upBtnSel.png"] forState:UIControlStateNormal];
                 
                 [self loadData];

@@ -317,7 +317,7 @@
 	}
     
 	char *pchSource = (char *)[strCopy cStringUsingEncoding:NSUTF8StringEncoding];
-	int sourcelen = strlen(pchSource);
+	size_t sourcelen = strlen(pchSource);
 	
 	int nCurNum = 0;		// 当前已经统计的字数
 	for (int n = 0; n < sourcelen; ) {

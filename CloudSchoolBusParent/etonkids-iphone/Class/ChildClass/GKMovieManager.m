@@ -41,7 +41,7 @@ static GKMovieManager *mm ;
     
     if (cell.mPlayer.contentURL != nil)
     {
-        NSLog(@"player 不为空 %d",cell.mPlayer.playbackState); // 0 stop   1 playing   2 pause;
+       // NSLog(@"player 不为空 %d",cell.mPlayer.playbackState); // 0 stop   1 playing   2 pause;
         if (cell.mPlayer.playbackState == MPMoviePlaybackStateStopped)
         {
             [cell.mPlayer prepareToPlay];

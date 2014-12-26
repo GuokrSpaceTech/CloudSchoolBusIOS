@@ -30,7 +30,7 @@
 
 -(void)setLabelText:(NSString *)num Function:(int) which;
 -(void)setBadgeNumber:(NSDictionary *)info;
-- (void)setBadgeViewHidden:(int)type;
+- (void)setBadgeViewHidden:(NSInteger)type;
 
 
 @end

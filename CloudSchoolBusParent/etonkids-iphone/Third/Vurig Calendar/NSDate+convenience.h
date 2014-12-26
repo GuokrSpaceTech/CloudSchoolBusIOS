@@ -12,11 +12,11 @@
 -(NSDate *)offsetMonth:(int)numMonths;
 -(NSDate *)offsetDay:(int)numDays;
 -(NSDate *)offsetHours:(int)hours;
--(int)numDaysInMonth;
--(int)firstWeekDayInMonth;
--(int)year;
--(int)month;
--(int)day;
+-(NSInteger)numDaysInMonth;
+-(NSInteger)firstWeekDayInMonth;
+-(NSInteger)year;
+-(NSInteger)month;
+-(NSInteger)day;
 
 +(NSDate *)dateStartOfDay:(NSDate *)date;
 +(NSDate *)dateStartOfWeek;

@@ -221,7 +221,7 @@
     _tableView.scrollEnabled = NO;
     [_tableView bringSubviewToFront:block];
     
-    int originIndex = [self.blockArr indexOfObject:block];
+    NSInteger originIndex = [self.blockArr indexOfObject:block];
     
     for (int i = 0; i < self.blockArr.count - 1; i++) {
         CGPoint targetPos = CGPointMake((LEFT_MARGIN + i%2 * (ORDER_BLOCK_WIDTH + LEFT_MARGIN + 1) + block.frame.size.width/2),
@@ -233,11 +233,11 @@
         
         if (i != 0 && i!= self.blockArr.count-1 && i != originIndex && [self isNearPosition:pos otherPosition:targetPos]) {
             
-            for (int j = originIndex;
+            for (NSInteger j = originIndex;
                  i > originIndex ? j < i : j > i ;
                  i > originIndex ? j++ : j--) {
                 
-                int index = i > originIndex ? j + 1 : j - 1;
+                NSInteger index = i > originIndex ? j + 1 : j - 1;
                 
                 OrderBlock *moveBlock = [self.blockArr objectAtIndex:index];
                 
@@ -267,7 +267,7 @@
 {
     _tableView.scrollEnabled = YES;
     
-    int index = [self.blockArr indexOfObject:block];
+    NSInteger index = [self.blockArr indexOfObject:block];
     
     [UIView animateWithDuration:0.5f animations:^{
         block.frame = CGRectMake((LEFT_MARGIN + index%2 * (ORDER_BLOCK_WIDTH + LEFT_MARGIN + 1)),

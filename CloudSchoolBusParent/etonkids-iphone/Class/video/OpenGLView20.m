@@ -392,7 +392,7 @@ void main(void)\
 }
 
 #pragma mark - 接口
-- (void)displayYUV420pData:(void *)data width:(NSInteger)w height:(NSInteger)h
+- (void)displayYUV420pData:(void *)data width:(int32_t)w height:(int32_t)h
 {
     //_pYuvData = data;
 //    if (_offScreen || !self.window)

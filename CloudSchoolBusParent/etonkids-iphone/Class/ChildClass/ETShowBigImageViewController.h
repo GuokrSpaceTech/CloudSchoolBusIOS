@@ -31,7 +31,7 @@
 
 
 @property (nonatomic, retain)NSArray *picArr;
-@property (nonatomic, assign) int showNum;
+@property (nonatomic, assign) NSInteger showNum;
 @property (nonatomic, retain) TCWBEngine *tcEngine;
 @property (nonatomic, retain) NSString *content;
 @property (nonatomic, retain)UIImage *targetImage;

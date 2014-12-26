@@ -48,7 +48,7 @@
             
     }
     
-    return [[[NSString alloc] initWithFormat:@"不能识别的错误代码: %d", errCode] autorelease];
+    return [[[NSString alloc] initWithFormat:@"不能识别的错误代码: %ld", (long)errCode] autorelease];
 }
 
 

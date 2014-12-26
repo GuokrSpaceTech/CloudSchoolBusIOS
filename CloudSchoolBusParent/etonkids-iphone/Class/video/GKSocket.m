@@ -29,40 +29,62 @@ typedef struct
 
 static GKSocket *currentSocket=nil;
 @implementation GKSocket
-
-+(GKSocket *)instanceddns:(NSString *)ddns port:(NSString *)port
-{
-    
-    
-
-    if(currentSocket==nil)
-    {
-        currentSocket=[[GKSocket alloc]initwithddns:@"54.223.156.59" port:port];
-    }
-    return currentSocket;
-}
--(id)initwithddns:(NSString *)ddns port:(NSString *)prot
+@synthesize openBlock,streamBlock,cBlock;
+//+(GKSocket *)instanceddns:(NSString *)ddns port:(NSString *)port block:(OpenStream)block
+//{
+//
+//   
+//    if(currentSocket==nil)
+//    {
+//        currentSocket=[[GKSocket alloc]init];
+//    }
+//    return currentSocket;
+//}
+-(id)init
 {
     if(self=[super init])
     {
-        m_pRecvBuff=(Byte *)malloc(Net_LAYER_STRUCT_LEN*sizeof(Byte));
-        m_pStreamData=(Byte *)malloc(512*1024*sizeof(Byte));
-        m_iPreRecvLen=0;
-        m_iPackageLen=0;
-        m_iFrameLen=0;
-        bufferdata=[[NSMutableData alloc]init];
-        [self initNetworkCommunicationddns:ddns port:prot];
+        isConnect=NO;
     }
-    
     return self;
 }
+-(void)connectwithddns:(NSString *)ddns port:(NSString *)prot isConnect:(BOOL)connect block:(OpenStream)block;
+{
+    
+    self.openBlock=block;
+    isConnect=connect;
+    m_pRecvBuff=(Byte *)malloc(Net_LAYER_STRUCT_LEN*sizeof(Byte));
+    m_pStreamData=(Byte *)malloc(512*1024*sizeof(Byte));
+    m_iPreRecvLen=0;
+    m_iPackageLen=0;
+    m_iFrameLen=0;
+    isInputOpen=NO;
+    isOutputOpen=NO;
+    isConnect=connect;
+    bufferdata=[[NSMutableData alloc]init];
+    [self initNetworkCommunicationddns:ddns port:prot];
+}
+//-(id)initwithddns:(NSString *)ddns port:(NSString *)prot block:(OpenStream)block
+//{
+//    if(self=[super init])
+//    {
+//        self.openBlock=block;
+//        m_pRecvBuff=(Byte *)malloc(Net_LAYER_STRUCT_LEN*sizeof(Byte));
+//        m_pStreamData=(Byte *)malloc(512*1024*sizeof(Byte));
+//        m_iPreRecvLen=0;
+//        m_iPackageLen=0;
+//        m_iFrameLen=0;
+//        isOpen=NO;
+//        bufferdata=[[NSMutableData alloc]init];
+//        [self initNetworkCommunicationddns:ddns port:prot];
+//    }
+//    
+//    return self;
+//}
 
 -(void)initNetworkCommunicationddns:(NSString *)ddns port:(NSString *)prot
 {
 
-    
-
-    
     CFReadStreamRef readStream;
     CFWriteStreamRef writeStream;
     //CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"222.128.71.186", 600, &readStream, &writeStream);
@@ -70,15 +92,12 @@ static GKSocket *currentSocket=nil;
     CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)ddns, [prot intValue], &readStream, &writeStream);
     inputStream = (NSInputStream *)readStream;
     outputStream = (NSOutputStream *)writeStream;
-    
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
-    [inputStream scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-    [outputStream scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [inputStream open];
     [outputStream open];
-    
-   // CFReadStreamScheduleWithRunLoop(<#CFReadStreamRef stream#>, <#CFRunLoopRef runLoop#>, <#CFStringRef runLoopMode#>)
     
 }
 - (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
@@ -89,6 +108,16 @@ static GKSocket *currentSocket=nil;
             
 		case NSStreamEventOpenCompleted:
 			NSLog(@"Stream opened");
+            if([theStream isEqual:inputStream])
+            {
+                NSLog(@"ddd");
+                isInputOpen=YES;
+            }
+            if([theStream isEqual:outputStream])
+            {
+                NSLog(@"dddff");
+                isOutputOpen=YES;
+            }
 			break;
             
 		case NSStreamEventHasBytesAvailable:
@@ -100,35 +129,47 @@ static GKSocket *currentSocket=nil;
             
 		case NSStreamEventErrorOccurred:
             //[self];
-			NSLog(@"Can not connect to the host!");
-     
-            cBlock(false,nil);
-            streamBlock(nil,0,theStream.streamError);
+			NSLog(@"Can not connect to the host! %@",theStream.streamError.description);
+            
+            if(openBlock)
+            {
+                openBlock(NO,nil);
+            }
+            
+//            cBlock(false,nil);
+//            streamBlock(nil,0,theStream.streamError);
            // NSData *data, int length,NSError *error
             [self cleanUpStream];
 			break;
             
 		case NSStreamEventEndEncountered:
-            NSLog(@"error socket");
+            NSLog(@"error socket %@",theStream.streamError);
             [self cleanUpStream];
 			break;
             
 		default:
-			NSLog(@"Unknown event");
+            if(isConnect)
+            {
+                if(isOutputOpen && isInputOpen)
+                {
+                    openBlock(true,nil);
+                }
+            }
+
 	}
     
 }
 
 
--(int)RecvData
+-(NSInteger)RecvData
 {
    
-    int iRecvBytes=-1;
+    NSInteger iRecvBytes=-1;
     int iHeadLen=ALIGN_HEADLEN-ALIGNMENT;//25
     NET_LAYER *pPackage;
     int	 iDataType;
     int  iDataLen;
-    int  iLeftBytes=0;
+    NSInteger  iLeftBytes=0;
 	while(1)
 	{
     RecvData:
@@ -304,8 +345,9 @@ MyEnd:
 
 }
 
--(int)sendData:(char *)pSrc length:(int)iLength type:(int)iDataType block:(streamCompleteBlock)block streamBlock:(StreamBlock)strBlock;
+-(int)sendData:(char *)pSrc length:(int)iLength type:(int)iDataType isConnect:(BOOL)connect block:(streamCompleteBlock)block streamBlock:(StreamBlock)strBlock
 {
+    isConnect=NO;
     [cBlock release];
     cBlock=[block copy];
     
@@ -387,6 +429,9 @@ MyEnd:
 {
     [inputStream close];
     [outputStream close];
+    self.cBlock=nil;
+    self.streamBlock=nil;
+    self.openBlock=nil;
     free(m_pRecvBuff);
     free(m_pStreamData);
     

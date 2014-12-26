@@ -45,6 +45,7 @@
 
 @implementation GKVideoViewController
 //@synthesize device_name;
+@synthesize socket;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -59,6 +60,8 @@
    // self.device=nil;
     
     free(frameData);
+    self.socket=nil;
+    self.ffmpegData=nil;
     [super dealloc];
 }
 -(void)viewDidDisappear:(BOOL)animated
@@ -69,10 +72,10 @@
 }
 - (void)leftButtonClick:(id)sender
 {
-    UserLogin *user=[UserLogin currentLogin];
-    NSString *ddns=user.ddns;
-    NSString *prot=user.port;
-    [[GKSocket instanceddns:ddns port:prot] cleanUpStream];
+//    UserLogin *user=[UserLogin currentLogin];
+//    NSString *ddns=user.ddns;
+//    NSString *prot=user.port;
+    [self.socket cleanUpStream];
     [UIApplication sharedApplication].idleTimerDisabled=NO;
     [UIApplication sharedApplication].statusBarHidden=NO;;
    // [[GKSocket instance] cleanUpStream];
@@ -94,7 +97,7 @@
  
     [UIApplication sharedApplication].statusBarHidden=YES;;
 
-    
+    ffmengQueue=dispatch_queue_create("com.guokr.mobi.ffmpeg", NULL);
     
     glView = [[OpenGLView20 alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, self.view.frame.size.width)];
     //设置视频原始尺寸
@@ -125,34 +128,106 @@
     frameData=(Byte *)malloc(512*1024*sizeof(Byte));
 
     [self loadVideo];
+    
+    NSThread *thread = [[NSThread alloc]initWithTarget:self selector:@selector(doSomething:) object:nil];
+    [thread start];
 }
+-(void)doSomething:(id)sender
+{
+    while (1) {
+        
+        
+        AVPacket packet;
+        av_init_packet(&packet);
+        if(_ffmpegData)
+        {
+              packet.data=[_ffmpegData bytes];
+        }
+      
+        packet.size=[_ffmpegData length];
+        packet.flags=AV_PKT_FLAG_KEY;
+        int got_picture,ret;
+        ret = avcodec_decode_video2(codecCtx, frame, &got_picture, &packet);
+        //                        if (ret < 0) {
+        //                            NSLog(@"decode error");
+        //                            return;
+        //                        }
+        if (!got_picture) {
+            NSLog(@"didn't get picture");
+           // return;
+        }
+        if(got_picture)//成功解码
+        {
+            
+            outputWidth = codecCtx->width;
+            outputHeight = codecCtx->height;
+            
+            int picSize = codecCtx->height * codecCtx->width;
+            int newSize = picSize * 1.5;
+            
+            unsigned char * buf=malloc(newSize * sizeof(unsigned char));
+            int height =codecCtx->height;
+            int width = codecCtx->width;
+            //写入数据
+            int a=0,i;
+            for (i=0; i<height; i++)
+            {
+                memcpy(buf+a,frame->data[0] + i * frame->linesize[0], width);
+                a+=width;
+            }
+            for (i=0; i<height/2; i++)
+            {
+                memcpy(buf+a,frame->data[1] + i * frame->linesize[1], width/2);
+                a+=width/2;
+            }
+            for (i=0; i<height/2; i++)
+            {
+                memcpy(buf+a,frame->data[2] + i *frame->linesize[2], width/2);
+                a+=width/2;
+            }
+            
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+               [glView displayYUV420pData:buf width:outputWidth height:outputHeight];
+            });
+            
+            
+            
+            
+            free(buf);
+            avpicture_free(&picture);
+            av_free_packet(&packet);
+        }
 
+    }
+    
+}
 
 -(void)loadVideo
 {
     
-    if(HUD==nil)
-    {
-        HUD=[[MBProgressHUD alloc]initWithView:self.view];
-        HUD.mode=MBProgressHUDModeText;
-        HUD.labelText=@"正在加载...";
-        [self.view addSubview:HUD];
-        [HUD release];
-        [HUD show:YES];
-    }
-    UserLogin *user=[UserLogin currentLogin];
+//    if(HUD==nil)
+//    {
+//        HUD=[[MBProgressHUD alloc]initWithView:self.view];
+//        HUD.mode=MBProgressHUDModeText;
+//        HUD.labelText=@"正在加载...";
+//        [self.view addSubview:HUD];
+//        [HUD release];
+//        [HUD show:YES];
+//    }
+  //  UserLogin *user=[UserLogin currentLogin];
     
-    NSString *ddns=user.ddns;
-    NSString *prot=user.port;
-    GKSocket *socket=[GKSocket instanceddns:@"54.223.156.59" port:prot];
+//    NSString *ddns=user.ddns;
+//    NSString *prot=user.port;
+    //GKSocket *socket=[GKSocket instanceddns:@"54.223.156.59" port:prot];
 
     NSString *response=[NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"GB2312\" standalone=\"yes\"?> <TYPE>StartStream</TYPE>\
                         <DVRName>%@</DVRName>\
-                        <ChnNo>0</ChnNo> <StreamType>1/StreamType>",@"dvr"];
+                        <ChnNo>0</ChnNo> <StreamType>1/StreamType>",@"hb"];
     NSStringEncoding encoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
     NSData *data = [[[NSData alloc] initWithData:[response dataUsingEncoding:encoding]] autorelease];
 
-    [socket sendData:(char *)[data bytes] length:[data length] type:12 block:^(BOOL success, NSString *result) {
+    [socket sendData:(char *)[data bytes] length:(int)[data length] type:12 isConnect:NO block:^(BOOL success, NSString *result) {
 //        <LinkReturn>SUCCESS</LinkReturn><DVRType>PCH264</DVRType><Width>352</Width><Height>288</Height><Interval>100</Interval><AudioCodeID>86017</AudioCodeID><HZ>44100</HZ><SampleWidth>16</SampleWidth><AudioChns>1</AudioChns><BitRate>8000</BitRate>
         
         NSString * xml=[NSString stringWithFormat:@"<root>%@</root>",result];
@@ -213,92 +288,103 @@
                 
                 NSString *respon=@"<TYPE>ImOK</TYPE>";
                 NSData *data = [[NSData alloc] initWithData:[respon dataUsingEncoding:NSASCIIStringEncoding]];
-                [socket sendData:(char *)[data bytes] length:[data length] type:12 block:^(BOOL success, NSString *result) {
+                [socket sendData:(char *)[data bytes] length:(int)[data length] type:12 isConnect:NO block:^(BOOL success, NSString *result) {
                     
                     NSLog(@"%@",result);
                     
                 } streamBlock:^(NSData *data, int length,NSError *error) {
-                    if(HUD)
-                    {
-                        [HUD removeFromSuperview];
-                        HUD=nil;
-                    }
                     
-                    if(error!=nil)
-                    {
-                        [self.navigationController popViewControllerAnimated:YES];
-                        return ;
-                    }
-                 
-                        AVPacket packet;
-                        av_init_packet(&packet);
-                        packet.data=(uint8_t*)[data bytes];
+                    // 线程解码
+                    
+                    
+                    self.ffmpegData=data;
+                   
+                                      //
+
                         
-                        packet.size=length;
-                        packet.flags=AV_PKT_FLAG_KEY;
-                        int got_picture,ret;
-                        ret = avcodec_decode_video2(codecCtx, frame, &got_picture, &packet);
-//                        if (ret < 0) {
-//                            NSLog(@"decode error");
-//                            return;
-//                        }
+                  
+                    
+//                    if(HUD)
+//                    {
+//                        [HUD removeFromSuperview];
+//                        HUD=nil;
+//                    }
+//                    
+//                    if(error!=nil)
+//                    {
+//                        [self.navigationController popViewControllerAnimated:YES];
+//                        return ;
+//                    }
+//                 
+//                        AVPacket packet;
+//                        av_init_packet(&packet);
+//                        packet.data=[data bytes];
+//                        
+//                        packet.size=length;
+//                        packet.flags=AV_PKT_FLAG_KEY;
+//                        int got_picture,ret;
+//                        ret = avcodec_decode_video2(codecCtx, frame, &got_picture, &packet);
+////                        if (ret < 0) {
+////                            NSLog(@"decode error");
+////                            return;
+////                        }
 //                        if (!got_picture) {
 //                            NSLog(@"didn't get picture");
 //                            return;
 //                        }
-                        if(got_picture)//成功解码
-                        {
-                            
-                            outputWidth = codecCtx->width;
-                            outputHeight = codecCtx->height;
-//                            static int sws_flags =  SWS_FAST_BILINEAR;
-//                            if (!img_convert_ctx)
-//                                img_convert_ctx = sws_getContext(codecCtx->width,
-//                                                                 codecCtx->height,
-//                                                                 codecCtx->pix_fmt,
-//                                                                 outputWidth,
-//                                                                 outputHeight,
-//                                                                 PIX_FMT_YUV420P,
-//                                                                 sws_flags, NULL, NULL, NULL);
+//                        if(got_picture)//成功解码
+//                        {
 //                            
-//                            avpicture_alloc(&picture, PIX_FMT_YUV420P, outputWidth, outputHeight);
-//                            if (!frame->data[0])
+//                            outputWidth = codecCtx->width;
+//                            outputHeight = codecCtx->height;
+////                            static int sws_flags =  SWS_FAST_BILINEAR;
+////                            if (!img_convert_ctx)
+////                                img_convert_ctx = sws_getContext(codecCtx->width,
+////                                                                 codecCtx->height,
+////                                                                 codecCtx->pix_fmt,
+////                                                                 outputWidth,
+////                                                                 outputHeight,
+////                                                                 PIX_FMT_YUV420P,
+////                                                                 sws_flags, NULL, NULL, NULL);
+////                            
+////                            avpicture_alloc(&picture, PIX_FMT_YUV420P, outputWidth, outputHeight);
+////                            if (!frame->data[0])
+////                            {
+////                                NSLog(@"empty");
+////                            }
+////                            
+////                            sws_scale(img_convert_ctx, (const uint8_t* const*)frame->data, frame->linesize, 0, frame->height, picture.data, picture.linesize);
+//                            
+//                            int picSize = codecCtx->height * codecCtx->width;
+//                            int newSize = picSize * 1.5;
+//                            
+//                            unsigned char * buf=malloc(newSize * sizeof(unsigned char));
+//                            int height =codecCtx->height;
+//                            int width = codecCtx->width;
+//                            //写入数据
+//                            int a=0,i;
+//                            for (i=0; i<height; i++)
 //                            {
-//                                NSLog(@"empty");
+//                                memcpy(buf+a,frame->data[0] + i * frame->linesize[0], width);
+//                                a+=width;
 //                            }
-//                            
-//                            sws_scale(img_convert_ctx, (const uint8_t* const*)frame->data, frame->linesize, 0, frame->height, picture.data, picture.linesize);
-                            
-                            int picSize = codecCtx->height * codecCtx->width;
-                            int newSize = picSize * 1.5;
-                            
-                            unsigned char * buf=malloc(newSize * sizeof(unsigned char));
-                            int height =codecCtx->height;
-                            int width = codecCtx->width;
-                            //写入数据
-                            int a=0,i;
-                            for (i=0; i<height; i++)
-                            {
-                                memcpy(buf+a,frame->data[0] + i * frame->linesize[0], width);
-                                a+=width;
-                            }
-                            for (i=0; i<height/2; i++)
-                            {
-                                memcpy(buf+a,frame->data[1] + i * frame->linesize[1], width/2);
-                                a+=width/2;
-                            }
-                            for (i=0; i<height/2; i++)
-                            {
-                                memcpy(buf+a,frame->data[2] + i *frame->linesize[2], width/2);
-                                a+=width/2;
-                            }
-                            [glView displayYUV420pData:buf width:outputWidth height:outputHeight];
-                      
-                            free(buf);
-                            avpicture_free(&picture);
-                            av_free_packet(&packet);
-                        }
-
+//                            for (i=0; i<height/2; i++)
+//                            {
+//                                memcpy(buf+a,frame->data[1] + i * frame->linesize[1], width/2);
+//                                a+=width/2;
+//                            }
+//                            for (i=0; i<height/2; i++)
+//                            {
+//                                memcpy(buf+a,frame->data[2] + i *frame->linesize[2], width/2);
+//                                a+=width/2;
+//                            }
+//                            [glView displayYUV420pData:buf width:outputWidth height:outputHeight];
+//                      
+//                            free(buf);
+//                            avpicture_free(&picture);
+//                            av_free_packet(&packet);
+//                        }
+//
                 }];
             }
         }

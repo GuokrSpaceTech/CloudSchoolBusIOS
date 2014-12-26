@@ -330,7 +330,7 @@
 {
     NSString * docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];
     //拼接文件路径
-    NSString *path = [docPath stringByAppendingPathComponent:[NSString stringWithFormat:@"help_%d",sender.view.tag]];
+    NSString *path = [docPath stringByAppendingPathComponent:[NSString stringWithFormat:@"help_%ld",(long)sender.view.tag]];
     //调用文件管理器
     NSFileManager * fm = [NSFileManager defaultManager];
     [fm createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];

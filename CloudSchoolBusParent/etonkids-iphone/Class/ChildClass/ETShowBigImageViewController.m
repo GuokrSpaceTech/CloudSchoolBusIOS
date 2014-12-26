@@ -133,7 +133,7 @@
         UIImage *smallImage=[self imageWithImage:image scaledToSize:CGSizeMake(100, scaleH)];
         
         NSData *dataScale=UIImageJPEGRepresentation(smallImage, 1);
-        NSLog(@"%d  K",[dataScale length]/1024);
+        //NSLog(@"%d  K",[dataScale length]/1024);
         
         UIImage *imageThum=[UIImage imageWithData:dataScale];
         [message setThumbImage:imageThum];

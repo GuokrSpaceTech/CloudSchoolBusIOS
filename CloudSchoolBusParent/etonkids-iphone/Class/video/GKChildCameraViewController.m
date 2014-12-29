@@ -273,11 +273,14 @@
                     }
                     if(found==YES)
                     {
-                        GKVideoViewController *VC=[[GKVideoViewController alloc]init];
-                        AppDelegate *appDel=SHARED_APP_DELEGATE;
-                        VC.socket=socket;
-                        [appDel.bottomNav pushViewController:VC animated:YES];
-                        [VC release];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            GKVideoViewController *VC=[[GKVideoViewController alloc]init];
+                            AppDelegate *appDel=SHARED_APP_DELEGATE;
+                            VC.socket=socket;
+                            [appDel.bottomNav pushViewController:VC animated:YES];
+                            [VC release];
+                        });
+               
                     }
                     else
                     {

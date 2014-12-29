@@ -45,6 +45,8 @@ static GKSocket *currentSocket=nil;
     if(self=[super init])
     {
         isConnect=NO;
+          ffmengQueue=dispatch_queue_create("com.guokr.mobi.ffmpeg", NULL);
+        //[self createNewThread];
     }
     return self;
 }
@@ -122,8 +124,10 @@ static GKSocket *currentSocket=nil;
             
 		case NSStreamEventHasBytesAvailable:
             if (theStream == inputStream)
-               [self RecvData];
-            
+              
+            dispatch_async(ffmengQueue, ^{
+                [self RecvData];
+            });
 
 			break;
             
@@ -160,7 +164,11 @@ static GKSocket *currentSocket=nil;
     
 }
 
-
+//-(void)createNewThread
+//{
+//    //[self performSelectorInBackground:@selector(RecvData) withObject:nil];
+//    [NSThread detachNewThreadSelector:@selector(RecvData:) toTarget:self withObject:nil];
+//}
 -(NSInteger)RecvData
 {
    

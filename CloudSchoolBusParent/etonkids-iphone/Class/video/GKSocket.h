@@ -37,7 +37,7 @@ typedef void(^OpenStream)(BOOL success,NSString *result);
     BOOL isOutputOpen;
     BOOL isConnect;
 
-
+    dispatch_queue_t ffmengQueue;
 }
 @property (nonatomic,copy)streamCompleteBlock cBlock;
 @property (nonatomic,copy)StreamBlock streamBlock;

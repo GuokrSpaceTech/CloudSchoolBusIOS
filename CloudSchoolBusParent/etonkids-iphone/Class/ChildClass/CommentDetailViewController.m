@@ -907,12 +907,7 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     if (user.can_comment_action != nil && [user.can_comment_action isEqualToString:@"1"]) {
         upBtn.userInteractionEnabled = YES; //重置 防止点击多次
     }
-    if (code == -1113)
-    {
-        ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
-        [com mutiDeviceLogin];
-        
-    }
+
     else if (code == -1115)
     {
         ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"fufei", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];

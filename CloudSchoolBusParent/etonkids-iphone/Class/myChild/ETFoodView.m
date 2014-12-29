@@ -409,12 +409,7 @@
         //NSMutableArray *MenuArray=(NSMutableArray*)response;
 //        NSLog(@"%@",result);
     }
-    
-    else if (code == -1113)
-    {
-        ETCommonClass *com = [[[ETCommonClass alloc] init] autorelease];
-        [com mutiDeviceLogin];
-    }
+
     else if (code == -1115)
     {
         ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"fufei", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];

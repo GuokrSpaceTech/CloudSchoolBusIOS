@@ -139,7 +139,14 @@ static GKSocket *currentSocket=nil;
             {
                 openBlock(NO,nil);
             }
-            
+            if(cBlock)
+            {
+                cBlock(false,nil);
+            }
+            if(streamBlock)
+            {
+                streamBlock(nil,0,theStream.streamError);
+            }
 //            cBlock(false,nil);
 //            streamBlock(nil,0,theStream.streamError);
            // NSData *data, int length,NSError *error
@@ -350,6 +357,9 @@ MyEnd:
         [currentSocket release];
         currentSocket=nil;
     }
+    self.openBlock=nil;
+    self.streamBlock=nil;
+    self.cBlock=nil;
 
 }
 

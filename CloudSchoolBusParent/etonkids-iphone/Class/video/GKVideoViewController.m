@@ -46,6 +46,7 @@
 @implementation GKVideoViewController
 //@synthesize device_name;
 @synthesize socket;
+@synthesize dvrObj;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -62,6 +63,8 @@
     free(frameData);
     self.socket=nil;
     self.ffmpegData=nil;
+    self.dvrObj=nil;
+    avpicture_free(&picture);
     [super dealloc];
 }
 -(void)viewDidDisappear:(BOOL)animated
@@ -135,15 +138,15 @@
 -(void)loadVideo
 {
     
-//    if(HUD==nil)
-//    {
-//        HUD=[[MBProgressHUD alloc]initWithView:self.view];
-//        HUD.mode=MBProgressHUDModeText;
-//        HUD.labelText=@"正在加载...";
-//        [self.view addSubview:HUD];
-//        [HUD release];
-//        [HUD show:YES];
-//    }
+    if(HUD==nil)
+    {
+        HUD=[[MBProgressHUD alloc]initWithView:self.view];
+        HUD.mode=MBProgressHUDModeText;
+        HUD.labelText=@"正在加载...";
+        [self.view addSubview:HUD];
+        [HUD release];
+        [HUD show:YES];
+    }
   //  UserLogin *user=[UserLogin currentLogin];
     
 //    NSString *ddns=user.ddns;
@@ -152,7 +155,7 @@
 
     NSString *response=[NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"GB2312\" standalone=\"yes\"?> <TYPE>StartStream</TYPE>\
                         <DVRName>%@</DVRName>\
-                        <ChnNo>0</ChnNo> <StreamType>1/StreamType>",@"hb"];
+                        <ChnNo>%@</ChnNo> <StreamType>1/StreamType>",dvrObj.dvr_name,dvrObj.channelid];
     NSStringEncoding encoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
     NSData *data = [[[NSData alloc] initWithData:[response dataUsingEncoding:encoding]] autorelease];
 
@@ -225,25 +228,21 @@
                     
                     // 线程解码
                     
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if(HUD)
+                        {
+                            [HUD removeFromSuperview];
+                            HUD=nil;
+                        }
+                        if(error!=nil)
+                        {
+                            [self.navigationController popViewControllerAnimated:YES];
+                            return ;
+                        }
+                    });
+         
                     
-                //    self.ffmpegData=data;
-                   
-                                      //
-                    NSLog(@"ddddddd");
-                        
-                  
-                    
-                    if(HUD)
-                    {
-                        [HUD removeFromSuperview];
-                        HUD=nil;
-                    }
-                    
-                    if(error!=nil)
-                    {
-                        [self.navigationController popViewControllerAnimated:YES];
-                        return ;
-                    }
+          
                  
                     @autoreleasepool {
                         AVPacket packet;

@@ -277,6 +277,7 @@
                             GKVideoViewController *VC=[[GKVideoViewController alloc]init];
                             AppDelegate *appDel=SHARED_APP_DELEGATE;
                             VC.socket=socket;
+                            VC.dvrObj=obj;
                             [appDel.bottomNav pushViewController:VC animated:YES];
                             [VC release];
                         });
@@ -284,9 +285,13 @@
                     }
                     else
                     {
-                        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"学校摄像头没配置成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                        [alert show];
-                        [alert release];
+
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"学校摄像头没配置成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                            [alert show];
+                            [alert release];
+                        });
                     }
                     
                     

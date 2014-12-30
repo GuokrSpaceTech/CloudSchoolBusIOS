@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 #import "GKSocket.h"
+#import "GKDvrObj.h"
 @class OpenGLView20;
 @class GKDevice;
 
@@ -26,4 +27,5 @@
 }
 @property (nonatomic,retain)GKSocket *socket;
 @property (nonatomic,retain)NSData *ffmpegData;
+@property (nonatomic,retain)GKDvrObj * dvrObj;
 @end

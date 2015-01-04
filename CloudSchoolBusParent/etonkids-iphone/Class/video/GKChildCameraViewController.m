@@ -197,7 +197,7 @@
 {    UserLogin *user=[UserLogin currentLogin];
     GKDvrObj * obj=[_arrList objectAtIndex:indexPath.row];
 //    
-    GKSocket *socket=[[GKSocket alloc]init];
+    GKSocket *socket=[[[GKSocket alloc]init] autorelease];
      //222.128.71.186
     [socket connectwithddns:user.ddns port:user.port isConnect:YES  block:^(BOOL success, NSString *result) {
         if(success)
@@ -266,10 +266,12 @@
                     
                     if(channel==0 || [obj.channelid integerValue]>=channel)
                     {
-                        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"学校摄像头没配置成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                        [alert show];
-                        [alert release];
-                        return ;
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                         
+                            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"学校摄像头没配置成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                            [alert show];
+                            [alert release];
+                        });
                     }
                     if(found==YES)
                     {
@@ -279,6 +281,7 @@
                             VC.socket=socket;
                             VC.dvrObj=obj;
                             [appDel.bottomNav pushViewController:VC animated:YES];
+                           // [socket release];
                             [VC release];
                         });
                
@@ -288,6 +291,7 @@
 
                         
                         dispatch_async(dispatch_get_main_queue(), ^{
+                  
                             UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"学校摄像头没配置成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                             [alert show];
                             [alert release];
@@ -306,7 +310,7 @@
         }
     }];
 
-    
+   
     
 }
 
@@ -314,7 +318,7 @@
 {
     self.arrList=nil;
     self.tableView=nil;
-  
+
     [super dealloc];
 }
 - (void)didReceiveMemoryWarning {

@@ -49,8 +49,8 @@ typedef void(^OpenStream)(BOOL success,NSString *result);
 - (void)cleanUpStream;
 -(void)connectwithddns:(NSString *)ddns port:(NSString *)prot isConnect:(BOOL)connect block:(OpenStream)block;
 -(int)sendData:(char *)pSrc length:(int)iLength type:(int)iDataType isConnect:(BOOL)connect block:(streamCompleteBlock)block streamBlock:(StreamBlock)strBlock;
--(id)initwithddns:(NSString *)ddns port:(NSString *)prot block:(OpenStream)block;
-+(GKSocket *)instanceddns:(NSString *)ddns port:(NSString *)port block:(OpenStream)block;
+//-(id)initwithddns:(NSString *)ddns port:(NSString *)prot block:(OpenStream)block;
+//+(GKSocket *)instanceddns:(NSString *)ddns port:(NSString *)port block:(OpenStream)block;
 
 
 @end

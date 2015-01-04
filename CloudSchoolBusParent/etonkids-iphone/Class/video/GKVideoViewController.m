@@ -34,7 +34,7 @@
     
     Byte * frameData;
     int total;
-    
+    AVPacket packet;
     // 音频
     AVCodecContext *codecaudioCtx;
     AVCodec *audiocodec;
@@ -64,7 +64,9 @@
     self.socket=nil;
     self.ffmpegData=nil;
     self.dvrObj=nil;
-    avpicture_free(&picture);
+    //self.socket=nil;
+   // av_free_packet(&packet);
+   // avpicture_free(&picture);
     [super dealloc];
 }
 -(void)viewDidDisappear:(BOOL)animated
@@ -241,11 +243,12 @@
                         }
                     });
          
-                    
-          
                  
-                    @autoreleasepool {
-                        AVPacket packet;
+                    if(data==nil|| length==0)
+                        return ;
+                    
+                    
+                    
                         av_init_packet(&packet);
                         packet.data=[data bytes];
                         
@@ -253,10 +256,10 @@
                         packet.flags=AV_PKT_FLAG_KEY;
                         int got_picture,ret;
                         ret = avcodec_decode_video2(codecCtx, frame, &got_picture, &packet);
-                        //                        if (ret < 0) {
-                        //                            NSLog(@"decode error");
-                        //                            return;
-                        //                        }
+                        if (ret < 0) {
+                            NSLog(@"decode error");
+                            return;
+                        }
                         if (!got_picture) {
                             NSLog(@"didn't get picture");
                             return;
@@ -266,63 +269,64 @@
                             
                             outputWidth = codecCtx->width;
                             outputHeight = codecCtx->height;
-                            //                            static int sws_flags =  SWS_FAST_BILINEAR;
-                            //                            if (!img_convert_ctx)
-                            //                                img_convert_ctx = sws_getContext(codecCtx->width,
-                            //                                                                 codecCtx->height,
-                            //                                                                 codecCtx->pix_fmt,
-                            //                                                                 outputWidth,
-                            //                                                                 outputHeight,
-                            //                                                                 PIX_FMT_YUV420P,
-                            //                                                                 sws_flags, NULL, NULL, NULL);
-                            //
-                            //                            avpicture_alloc(&picture, PIX_FMT_YUV420P, outputWidth, outputHeight);
-                            //                            if (!frame->data[0])
-                            //                            {
-                            //                                NSLog(@"empty");
-                            //                            }
-                            //
-                            //                            sws_scale(img_convert_ctx, (const uint8_t* const*)frame->data, frame->linesize, 0, frame->height, picture.data, picture.linesize);
+                            static int sws_flags =  SWS_FAST_BILINEAR;
+                            if (!img_convert_ctx)
+                                img_convert_ctx = sws_getContext(codecCtx->width,
+                                                                 codecCtx->height,
+                                                                 codecCtx->pix_fmt,
+                                                                 outputWidth,
+                                                                 outputHeight,
+                                                                 PIX_FMT_YUV420P,
+                                                                 sws_flags, NULL, NULL, NULL);
+
+                            avpicture_alloc(&picture, PIX_FMT_YUV420P, outputWidth, outputHeight);
+                            if (!frame->data[0])
+                            {
+                                NSLog(@"empty");
+                            }
+
+                            sws_scale(img_convert_ctx, (const uint8_t* const*)frame->data, frame->linesize, 0, frame->height, picture.data, picture.linesize);
                             
                             int picSize = codecCtx->height * codecCtx->width;
                             int newSize = picSize * 1.5;
                             
-                            unsigned char * buf=malloc(newSize * sizeof(unsigned char));
-                            int height =codecCtx->height;
-                            int width = codecCtx->width;
-                            //写入数据
-                            int a=0,i;
-                            for (i=0; i<height; i++)
-                            {
-                                memcpy(buf+a,frame->data[0] + i * frame->linesize[0], width);
-                                a+=width;
-                            }
-                            for (i=0; i<height/2; i++)
-                            {
-                                memcpy(buf+a,frame->data[1] + i * frame->linesize[1], width/2);
-                                a+=width/2;
-                            }
-                            for (i=0; i<height/2; i++)
-                            {
-                                memcpy(buf+a,frame->data[2] + i *frame->linesize[2], width/2);
-                                a+=width/2;
-                            }
+    
                          
-                            dispatch_async(dispatch_get_main_queue(), ^{
+                           // dispatch_async(dispatch_get_main_queue(), ^{
+                                unsigned char * buf=malloc(newSize * sizeof(unsigned char));
+                                int height =codecCtx->height;
+                                int width = codecCtx->width;
+                                //写入数据
+                                int a=0,i;
+                                for (i=0; i<height; i++)
+                                {
+                                    memcpy(buf+a,picture.data[0] + i * picture.linesize[0], width);
+                                    a+=width;
+                                }
+                                for (i=0; i<height/2; i++)
+                                {
+                                    memcpy(buf+a,picture.data[1] + i * picture.linesize[1], width/2);
+                                    a+=width/2;
+                                }
+                                for (i=0; i<height/2; i++)
+                                {
+                                    memcpy(buf+a,picture.data[2] + i *picture.linesize[2], width/2);
+                                    a+=width/2;
+                                }
                                  [glView displayYUV420pData:buf width:outputWidth height:outputHeight];
-                                   free(buf);
-                            });
+                                free(buf);
+                            //});
                             
                          
                             
                             
                             
                             
-                            // avpicture_free(&picture);
-                            av_free_packet(&packet);
+                             avpicture_free(&picture);
+                           // av_free_packet(&packet);
                         }
 
-                    }
+                    
                     
                        //
                 }];

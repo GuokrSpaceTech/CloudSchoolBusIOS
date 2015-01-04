@@ -27,7 +27,7 @@ typedef struct
 }NET_LAYER;
 #define Net_LAYER_STRUCT_LEN	sizeof(NET_LAYER)
 
-static GKSocket *currentSocket=nil;
+
 @implementation GKSocket
 @synthesize openBlock,streamBlock,cBlock;
 //+(GKSocket *)instanceddns:(NSString *)ddns port:(NSString *)port block:(OpenStream)block
@@ -49,6 +49,19 @@ static GKSocket *currentSocket=nil;
         //[self createNewThread];
     }
     return self;
+}
+-(void)dealloc
+{
+    
+    free(m_pRecvBuff);
+    free(m_pStreamData);
+    //        [currentSocket release];
+    //        currentSocket=nil;
+    
+    self.openBlock=nil;
+    self.streamBlock=nil;
+    self.cBlock=nil;
+    [super dealloc];
 }
 -(void)connectwithddns:(NSString *)ddns port:(NSString *)prot isConnect:(BOOL)connect block:(OpenStream)block;
 {
@@ -350,16 +363,14 @@ MyEnd:
         outputStream = nil;
     }
 
-    if(currentSocket)
-    {
-        free(m_pRecvBuff);
-        free(m_pStreamData);
-        [currentSocket release];
-        currentSocket=nil;
-    }
-    self.openBlock=nil;
-    self.streamBlock=nil;
-    self.cBlock=nil;
+   
+//    self.cBlock=nil;
+//    self.streamBlock=nil;
+//    self.openBlock=nil;
+    
+    
+//    free(m_pRecvBuff);
+//    free(m_pStreamData);
 
 }
 

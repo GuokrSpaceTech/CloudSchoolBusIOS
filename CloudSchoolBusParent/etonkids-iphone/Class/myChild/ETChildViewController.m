@@ -83,13 +83,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    return 7;
+    if(section==0)
+    return 1;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -108,213 +110,221 @@
     
     UserLogin * user = [UserLogin currentLogin];
     
-    if (indexPath.row == 0)
+    if (indexPath.section == 0)
     {
         //            //头像
-        UIImageView * headImage=[[UIImageView alloc]initWithFrame:CGRectMake(20,15, 65, 65)];
-        headImage.backgroundColor=[UIColor clearColor];
-        headImage.tag=100;
-//        headImage.layer.borderWidth=2;
-//        headImage.layer.borderColor=[UIColor colorWithRed:166/255.0 green:166/255.0 blue:166/255.0 alpha:1].CGColor;
-        
-        
-        if(user.avatar != nil)
-            [headImage setImageWithURL:[NSURL URLWithString:user.avatar] placeholderImage:[UIImage imageNamed:@"headplaceholder_big.png"] options:SDWebImageRefreshCached|SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+        if(indexPath.row==0)
+        {
+            UIImageView * headImage=[[UIImageView alloc]initWithFrame:CGRectMake(20,15, 65, 65)];
+            headImage.backgroundColor=[UIColor clearColor];
+            headImage.tag=100;
+            //        headImage.layer.borderWidth=2;
+            //        headImage.layer.borderColor=[UIColor colorWithRed:166/255.0 green:166/255.0 blue:166/255.0 alpha:1].CGColor;
+            
+            
+            if(user.avatar != nil)
+                [headImage setImageWithURL:[NSURL URLWithString:user.avatar] placeholderImage:[UIImage imageNamed:@"headplaceholder_big.png"] options:SDWebImageRefreshCached|SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                     headImage.image = image;
-            }];
-    
-        [cell.contentView addSubview:headImage];
-        [headImage release];
-        
-        UILabel *nicknamelabel=[[UILabel alloc]initWithFrame:CGRectMake(100,25,170,20)];
-        nicknamelabel.tag = 101;
-//        nicknamelabel.textAlignment=UITextAlignmentRight;
-        [cell.contentView addSubview:nicknamelabel];
-        nicknamelabel.backgroundColor=[UIColor clearColor];
-        nicknamelabel.font=[UIFont systemFontOfSize:18];
-        nicknamelabel.text=user.nickname;
-        [nicknamelabel release];
-        
-        NSDate *d = [NSDate dateWithTimeIntervalSince1970:user.orderEndTime.integerValue];
-        NSDateFormatter *f = [[[NSDateFormatter alloc] init] autorelease];
-        [f setDateFormat:@"yyyy-MM-dd"];
-        
-        UILabel *orderlabel = [[UILabel alloc]initWithFrame:CGRectMake(100,55,170,20)];
-//        typelabel.tag = 102;
-//        typelabel.textAlignment=UITextAlignmentRight;
-        [cell.contentView addSubview:orderlabel];
-        orderlabel.backgroundColor = [UIColor clearColor];
-        orderlabel.font = [UIFont systemFontOfSize:16];
-        orderlabel.text = [NSString stringWithFormat:@"%@%@",[f stringFromDate:d],LOCAL(@"daoqi", @"到期")];;
-        [orderlabel release];
-        
-        
-        
-    }
-    else if (indexPath.row == 1)
-    {
-        UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-        imgV.center = CGPointMake(26, 20);
-        imgV.image = [UIImage imageNamed:@"孩子管理.png"];
-        [cell.contentView addSubview:imgV];
-        [imgV release];
-        
-        
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
-        label.text = LOCAL(@"childmanager", @"");
-        label.backgroundColor = [UIColor clearColor];
-        label.font = [UIFont systemFontOfSize:16];
-        [cell.contentView addSubview:label];
-        [label release];
- 
-        
-    }
-    else if (indexPath.row == 2)
-    {
-        
-        //section 2
+                }];
+            
+            [cell.contentView addSubview:headImage];
+            [headImage release];
+            
+            UILabel *nicknamelabel=[[UILabel alloc]initWithFrame:CGRectMake(100,25,170,20)];
+            nicknamelabel.tag = 101;
+            //        nicknamelabel.textAlignment=UITextAlignmentRight;
+            [cell.contentView addSubview:nicknamelabel];
+            nicknamelabel.backgroundColor=[UIColor clearColor];
+            nicknamelabel.font=[UIFont systemFontOfSize:18];
+            nicknamelabel.text=user.nickname;
+            [nicknamelabel release];
+            
+            NSDate *d = [NSDate dateWithTimeIntervalSince1970:user.orderEndTime.integerValue];
+            NSDateFormatter *f = [[[NSDateFormatter alloc] init] autorelease];
+            [f setDateFormat:@"yyyy-MM-dd"];
+            
+            UILabel *orderlabel = [[UILabel alloc]initWithFrame:CGRectMake(100,55,170,20)];
+            //        typelabel.tag = 102;
+            //        typelabel.textAlignment=UITextAlignmentRight;
+            [cell.contentView addSubview:orderlabel];
+            orderlabel.backgroundColor = [UIColor clearColor];
+            orderlabel.font = [UIFont systemFontOfSize:16];
+            orderlabel.text = [NSString stringWithFormat:@"%@%@",[f stringFromDate:d],LOCAL(@"daoqi", @"到期")];;
+            [orderlabel release];
+        }
 
         
-        UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-        imgV.center = CGPointMake(26, 20);
-        imgV.image = [UIImage imageNamed:@"-vip.png"];
-        [cell.contentView addSubview:imgV];
-        [imgV release];
         
-        
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
-        label.text = LOCAL(@"checkAndCalendar", @"");
-        label.font = [UIFont systemFontOfSize:16];
-        //label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
-        label.backgroundColor = [UIColor clearColor];
-        [cell.contentView addSubview:label];
-        [label release];
-        
-        
-//        cell.textLabel.backgroundColor=[UIColor clearColor];
-//        cell.textLabel.text = [titleArr objectAtIndex:indexPath.row];
-        cell.selectionStyle=UITableViewCellSelectionStyleBlue;
         
     }
-    
-    else if (indexPath.row == 3)
+    else if(indexPath.section==1)
     {
+        if (indexPath.row == 0)
+        {
+            UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+            imgV.center = CGPointMake(26, 20);
+            imgV.image = [UIImage imageNamed:@"孩子管理.png"];
+            [cell.contentView addSubview:imgV];
+            [imgV release];
+            
+            
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
+            label.text = LOCAL(@"childmanager", @"");
+            label.backgroundColor = [UIColor clearColor];
+            label.font = [UIFont systemFontOfSize:16];
+            [cell.contentView addSubview:label];
+            [label release];
+            
+            
+        }
+        else if (indexPath.row == 1)
+        {
+            
+            //section 2
+            
+            
+            UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+            imgV.center = CGPointMake(26, 20);
+            imgV.image = [UIImage imageNamed:@"-vip.png"];
+            [cell.contentView addSubview:imgV];
+            [imgV release];
+            
+            
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
+            label.text = LOCAL(@"checkAndCalendar", @"");
+            label.font = [UIFont systemFontOfSize:16];
+            //label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
+            label.backgroundColor = [UIColor clearColor];
+            [cell.contentView addSubview:label];
+            [label release];
+            
+            
+            //        cell.textLabel.backgroundColor=[UIColor clearColor];
+            //        cell.textLabel.text = [titleArr objectAtIndex:indexPath.row];
+            cell.selectionStyle=UITableViewCellSelectionStyleBlue;
+            
+        }
         
-         imageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"tabbar_badge.png"]];
-        imageView.frame=CGRectMake(150, 3, 19, 19);
-        imageView.hidden=YES;
-        imageView.tag=1000;
-        [cell.contentView addSubview:imageView];
-        [imageView release];
+        else if (indexPath.row == 2)
+        {
+            
+            imageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"tabbar_badge.png"]];
+            imageView.frame=CGRectMake(150, 3, 19, 19);
+            imageView.hidden=YES;
+            imageView.tag=1000;
+            [cell.contentView addSubview:imageView];
+            [imageView release];
+            
+            
+            numlabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 19, 19)];
+            numlabel.backgroundColor=[UIColor clearColor];
+            //            label.text=@"11";
+            numlabel.tag = 2000 ;
+            numlabel.textColor=[UIColor whiteColor];
+            numlabel.font=[UIFont systemFontOfSize:12];
+            numlabel.textAlignment=UITextAlignmentCenter;
+            [imageView addSubview:numlabel];
+            [numlabel release];
+            
+            UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+            imgV.center = CGPointMake(26, 20);
+            imgV.image = [UIImage imageNamed:@"report_icon.png"];
+            [cell.contentView addSubview:imgV];
+            [imgV release];
+            
+            //"doctor_con"="医生咨询";
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
+            label.text = NSLocalizedString(@"classribao", @"");
+            
+            label.font = [UIFont systemFontOfSize:16];
+            //label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
+            label.backgroundColor = [UIColor clearColor];
+            [cell.contentView addSubview:label];
+            [label release];
+            
+            
+            //        cell.textLabel.backgroundColor=[UIColor clearColor];
+            //        cell.textLabel.text = [titleArr objectAtIndex:indexPath.row];
+            cell.selectionStyle=UITableViewCellSelectionStyleBlue;
+            
+        }
+        else if (indexPath.row == 3)
+        {
+            
+            UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+            imgV.center = CGPointMake(26, 20);
+            imgV.image = [UIImage imageNamed:@"mychild_doctor.png"];
+            [cell.contentView addSubview:imgV];
+            [imgV release];
+            
+            //"doctor_con"="医生咨询";
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
+            label.text = NSLocalizedString(@"doctor_con", @"医生咨询");
+            label.font = [UIFont systemFontOfSize:16];
+            //label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
+            label.backgroundColor = [UIColor clearColor];
+            [cell.contentView addSubview:label];
+            [label release];
+            
+            
+            //        cell.textLabel.backgroundColor=[UIColor clearColor];
+            //        cell.textLabel.text = [titleArr objectAtIndex:indexPath.row];
+            cell.selectionStyle=UITableViewCellSelectionStyleBlue;
+            
+        }
         
         
-        numlabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 19, 19)];
-        numlabel.backgroundColor=[UIColor clearColor];
-        //            label.text=@"11";
-        numlabel.tag = 2000 ;
-        numlabel.textColor=[UIColor whiteColor];
-        numlabel.font=[UIFont systemFontOfSize:12];
-        numlabel.textAlignment=UITextAlignmentCenter;
-        [imageView addSubview:numlabel];
-        [numlabel release];
-        
-        UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-        imgV.center = CGPointMake(26, 20);
-        imgV.image = [UIImage imageNamed:@"report_icon.png"];
-        [cell.contentView addSubview:imgV];
-        [imgV release];
-        
-        //"doctor_con"="医生咨询";
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
-        label.text = NSLocalizedString(@"classribao", @"");
-        
-        label.font = [UIFont systemFontOfSize:16];
-        //label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
-        label.backgroundColor = [UIColor clearColor];
-        [cell.contentView addSubview:label];
-        [label release];
-        
-        
-        //        cell.textLabel.backgroundColor=[UIColor clearColor];
-        //        cell.textLabel.text = [titleArr objectAtIndex:indexPath.row];
-        cell.selectionStyle=UITableViewCellSelectionStyleBlue;
-        
-    }
-    else if (indexPath.row == 4)
-    {
-        
-        UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-        imgV.center = CGPointMake(26, 20);
-        imgV.image = [UIImage imageNamed:@"mychild_doctor.png"];
-        [cell.contentView addSubview:imgV];
-        [imgV release];
-        
-        //"doctor_con"="医生咨询";
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
-        label.text = NSLocalizedString(@"doctor_con", @"医生咨询");
-        label.font = [UIFont systemFontOfSize:16];
-        //label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
-        label.backgroundColor = [UIColor clearColor];
-        [cell.contentView addSubview:label];
-        [label release];
-        
-        
-        //        cell.textLabel.backgroundColor=[UIColor clearColor];
-        //        cell.textLabel.text = [titleArr objectAtIndex:indexPath.row];
-        cell.selectionStyle=UITableViewCellSelectionStyleBlue;
-        
-    }
-    
-    
-    else if (indexPath.row == 5)
-    {
-        
-        UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-        imgV.center = CGPointMake(26, 20);
-        imgV.image = [UIImage imageNamed:@"mychild_video.png"];
-        [cell.contentView addSubview:imgV];
-        [imgV release];
-        
-        //"doctor_con"="医生咨询";
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
-        label.text = @"视频公开课";
-        label.font = [UIFont systemFontOfSize:16];
-        //label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
-        label.backgroundColor = [UIColor clearColor];
-        [cell.contentView addSubview:label];
-        [label release];
-        
-        
-        //        cell.textLabel.backgroundColor=[UIColor clearColor];
-        //        cell.textLabel.text = [titleArr objectAtIndex:indexPath.row];
-        cell.selectionStyle=UITableViewCellSelectionStyleBlue;
-        
-    }
-    else if (indexPath.row == 6)
-    {
-        
-        UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-        imgV.center = CGPointMake(26, 20);
-        imgV.image = [UIImage imageNamed:@"mychild_geofence.png"];
-        [cell.contentView addSubview:imgV];
-        [imgV release];
-        
-        //"doctor_con"="医生咨询";
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
-        label.text = @"校车到站通知";
-        label.font = [UIFont systemFontOfSize:16];
-        //label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
-        label.backgroundColor = [UIColor clearColor];
-        [cell.contentView addSubview:label];
-        [label release];
-        
-        
-        //        cell.textLabel.backgroundColor=[UIColor clearColor];
-        //        cell.textLabel.text = [titleArr objectAtIndex:indexPath.row];
-        cell.selectionStyle=UITableViewCellSelectionStyleBlue;
-        
-    }
+        else if (indexPath.row == 4)
+        {
+            
+            UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+            imgV.center = CGPointMake(26, 20);
+            imgV.image = [UIImage imageNamed:@"mychild_video.png"];
+            [cell.contentView addSubview:imgV];
+            [imgV release];
+            
+            //"doctor_con"="医生咨询";
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
+            label.text = @"视频公开课";
+            label.font = [UIFont systemFontOfSize:16];
+            //label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
+            label.backgroundColor = [UIColor clearColor];
+            [cell.contentView addSubview:label];
+            [label release];
+            
+            
+            //        cell.textLabel.backgroundColor=[UIColor clearColor];
+            //        cell.textLabel.text = [titleArr objectAtIndex:indexPath.row];
+            cell.selectionStyle=UITableViewCellSelectionStyleBlue;
+            
+        }
+        else if (indexPath.row == 5)
+        {
+            
+            UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+            imgV.center = CGPointMake(26, 20);
+            imgV.image = [UIImage imageNamed:@"mychild_geofence.png"];
+            [cell.contentView addSubview:imgV];
+            [imgV release];
+            
+            //"doctor_con"="医生咨询";
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 200, 30)];
+            label.text = @"校车到站通知";
+            label.font = [UIFont systemFontOfSize:16];
+            //label.textColor = [UIColor colorWithRed:175/255.0f green:175/255.0f blue:175/255.0f alpha:1.0f];
+            label.backgroundColor = [UIColor clearColor];
+            [cell.contentView addSubview:label];
+            [label release];
+            
+            
+            //        cell.textLabel.backgroundColor=[UIColor clearColor];
+            //        cell.textLabel.text = [titleArr objectAtIndex:indexPath.row];
+            cell.selectionStyle=UITableViewCellSelectionStyleBlue;
+            
+        }
 
+    }
+    
     return cell;
     
 }
@@ -324,116 +334,124 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.row == 0)
+    if(indexPath.section==0)
     {
-        ETBaseMessageViewController *bmVC = [[ETBaseMessageViewController alloc] init];
-        bmVC.delegate = self;
-        AppDelegate *appDel = SHARED_APP_DELEGATE;
-        [appDel.bottomNav pushViewController:bmVC animated:YES];
-        [bmVC release];
-    }
-    else if (indexPath.row == 1)
-    {
-        
-        ETChildManagerViewController *cmVC = [[ETChildManagerViewController alloc] init];
-        AppDelegate *appDel = SHARED_APP_DELEGATE;
-        [appDel.bottomNav pushViewController:cmVC animated:YES];
-        [cmVC release];
-        
-    }
-    else if (indexPath.row == 2)
-    {
-        ETGCalendarViewController *VC=[[ETGCalendarViewController alloc]init];
-        AppDelegate *appDel=SHARED_APP_DELEGATE;
-        [appDel.bottomNav pushViewController:VC animated:YES];
-        [VC release];
-        
-        
-//        ETCalendarViewController *cal = [[ETCalendarViewController alloc] initWithNibName:nil bundle:nil];
-//        AppDelegate *appDel = SHARED_APP_DELEGATE;
-//        [appDel.bottomNav pushViewController:cal animated:YES];
-//        [cal release];
-
-        return;
-        
-    }
-    else if (indexPath.row == 3)
-    {
-        imageView.hidden=YES;
-        GKReportViewController *VC=[[GKReportViewController alloc]init];
-        AppDelegate *appDel=SHARED_APP_DELEGATE;
-        [appDel.bottomNav pushViewController:VC animated:YES];
-        [VC release];
-        
-        
-        //        ETCalendarViewController *cal = [[ETCalendarViewController alloc] initWithNibName:nil bundle:nil];
-        //        AppDelegate *appDel = SHARED_APP_DELEGATE;
-        //        [appDel.bottomNav pushViewController:cal animated:YES];
-        //        [cal release];
-        
-        return;
-        
-    }
-    else if (indexPath.row == 4)
-    {
-    
-
-        
-       
-        
-        
-        UserLogin *user=[UserLogin currentLogin];
-        if([user.chunyuisopen intValue]==0)
+        if (indexPath.row == 0)
         {
-
-            GKBuyViewController *VC=[[GKBuyViewController alloc]init];
+            ETBaseMessageViewController *bmVC = [[ETBaseMessageViewController alloc] init];
+            bmVC.delegate = self;
+            AppDelegate *appDel = SHARED_APP_DELEGATE;
+            [appDel.bottomNav pushViewController:bmVC animated:YES];
+            [bmVC release];
+        }
+    }
+    else if(indexPath.section==1)
+    {
+        if (indexPath.row == 0)
+        {
+            
+            ETChildManagerViewController *cmVC = [[ETChildManagerViewController alloc] init];
+            AppDelegate *appDel = SHARED_APP_DELEGATE;
+            [appDel.bottomNav pushViewController:cmVC animated:YES];
+            [cmVC release];
+            
+        }
+        else if (indexPath.row == 1)
+        {
+            ETGCalendarViewController *VC=[[ETGCalendarViewController alloc]init];
             AppDelegate *appDel=SHARED_APP_DELEGATE;
             [appDel.bottomNav pushViewController:VC animated:YES];
             [VC release];
+            
+            
+            //        ETCalendarViewController *cal = [[ETCalendarViewController alloc] initWithNibName:nil bundle:nil];
+            //        AppDelegate *appDel = SHARED_APP_DELEGATE;
+            //        [appDel.bottomNav pushViewController:cal animated:YES];
+            //        [cal release];
+            
+            return;
+            
         }
-        else
+        else if (indexPath.row == 2)
         {
-            GKHealthListViewController *VC=[[GKHealthListViewController alloc]init];
+            imageView.hidden=YES;
+            GKReportViewController *VC=[[GKReportViewController alloc]init];
             AppDelegate *appDel=SHARED_APP_DELEGATE;
             [appDel.bottomNav pushViewController:VC animated:YES];
             [VC release];
-
+            
+            
+            //        ETCalendarViewController *cal = [[ETCalendarViewController alloc] initWithNibName:nil bundle:nil];
+            //        AppDelegate *appDel = SHARED_APP_DELEGATE;
+            //        [appDel.bottomNav pushViewController:cal animated:YES];
+            //        [cal release];
+            
+            return;
+            
+        }
+        else if (indexPath.row == 3)
+        {
+            
+            
+            
+            
+            
+            
+            UserLogin *user=[UserLogin currentLogin];
+            if([user.chunyuisopen intValue]==0)
+            {
+                
+                GKBuyViewController *VC=[[GKBuyViewController alloc]init];
+                AppDelegate *appDel=SHARED_APP_DELEGATE;
+                [appDel.bottomNav pushViewController:VC animated:YES];
+                [VC release];
+            }
+            else
+            {
+                GKHealthListViewController *VC=[[GKHealthListViewController alloc]init];
+                AppDelegate *appDel=SHARED_APP_DELEGATE;
+                [appDel.bottomNav pushViewController:VC animated:YES];
+                [VC release];
+                
+            }
+            
+            
+            
+            return;
+            
         }
         
- 
+        else if (indexPath.row == 4)
+        {
+            
+            //[self isCameraReady];
+            
+            
+            
+            // [[EKRequest Instance] EKHTTPRequest:camera parameters:nil requestMethod:GET forDelegate:self];
+            
+            GKChildCameraViewController *VC=[[GKChildCameraViewController alloc]init];
+            AppDelegate *appDel=SHARED_APP_DELEGATE;
+            [appDel.bottomNav pushViewController:VC animated:YES];
+            [VC release];
+            
+            return;
+            
+        }
         
-        return;
-        
+        else if (indexPath.row == 5)
+        {
+            GKGeofenceViewController *VC=[[GKGeofenceViewController alloc]init];
+            AppDelegate *appDel=SHARED_APP_DELEGATE;
+            [appDel.bottomNav pushViewController:VC animated:YES];
+            [VC release];
+            
+            return;
+            
+        }
     }
-    
-    else if (indexPath.row == 5)
-    {
-        
-        //[self isCameraReady];
-        
-        
-        
-       // [[EKRequest Instance] EKHTTPRequest:camera parameters:nil requestMethod:GET forDelegate:self];
-        
-        GKChildCameraViewController *VC=[[GKChildCameraViewController alloc]init];
-        AppDelegate *appDel=SHARED_APP_DELEGATE;
-        [appDel.bottomNav pushViewController:VC animated:YES];
-        [VC release];
 
-        return;
-        
-    }
-    
-    else if (indexPath.row == 6)
-    {
-        GKGeofenceViewController *VC=[[GKGeofenceViewController alloc]init];
-        AppDelegate *appDel=SHARED_APP_DELEGATE;
-        [appDel.bottomNav pushViewController:VC animated:YES];
-        [VC release];
-        
-        return;
-        
-    }
+
 }
 //-(void)isCameraReady
 //{

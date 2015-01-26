@@ -24,7 +24,7 @@
     VRGCalendarView * calendar;
     UILabel *sumLabel;
     
-    int reqMonth;
+    NSInteger reqMonth;
 }
 
 @property(nonatomic,retain)NSMutableArray *listArr;

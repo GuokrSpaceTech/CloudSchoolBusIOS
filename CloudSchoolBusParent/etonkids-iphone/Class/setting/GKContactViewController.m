@@ -55,7 +55,7 @@
     [leftButton addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:leftButton];
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text =@"联系人";
     middleLabel.backgroundColor=[UIColor clearColor];

@@ -68,7 +68,7 @@
     
     
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-50, 13+ (ios7 ? 20 : 0), 100, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text = LOCAL(@"About Us", @"");
     middleLabel.backgroundColor=[UIColor clearColor];
@@ -103,7 +103,7 @@
     versionLabel.backgroundColor = [UIColor clearColor];
     versionLabel.textColor = [UIColor whiteColor];
     versionLabel.font = [UIFont boldSystemFontOfSize:8];
-    versionLabel.textAlignment = UITextAlignmentCenter;
+    versionLabel.textAlignment = NSTextAlignmentCenter;
     versionLabel.text = LOCAL(@"aboutversion", @"");
     [self.view addSubview:versionLabel];
     [versionLabel release];
@@ -150,7 +150,10 @@
             
 //            NSData *data = UIImagePNGRepresentation(image);
 //            [mc addAttachmentData:data mimeType:@"image/png" fileName:@"SharePicture.png"];
-            [self presentModalViewController:mc animated:YES];
+           // [self presentModalViewController:mc animated:YES];
+            [self presentViewController:mc animated:YES completion:^{
+                
+            }];
             [mc release];
         }else
         {
@@ -202,7 +205,10 @@
         default:
             break;
     }
-    [self dismissModalViewControllerAnimated:YES];
+    //[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (void)launchMailAppOnDevice

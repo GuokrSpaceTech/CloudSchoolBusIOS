@@ -2904,8 +2904,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kai yang (E76KEG2YY8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kai yang (E76KEG2YY8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchoolBusPhoto/SchoolBusPhoto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2913,7 +2913,7 @@
 					$SDKROOT/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "SchoolBusPhoto/SchoolBusPhoto-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"SchoolBusPhoto/**",
@@ -2933,8 +2933,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kai yang (E76KEG2YY8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kai yang (E76KEG2YY8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SchoolBusPhoto/SchoolBusPhoto-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2942,7 +2942,7 @@
 					$SDKROOT/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "SchoolBusPhoto/SchoolBusPhoto-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"SchoolBusPhoto/**",

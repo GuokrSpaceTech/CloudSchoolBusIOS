@@ -45,7 +45,7 @@
         
         UILabel *nTitleLabel=[[UILabel alloc]initWithFrame:CGRectMake(40, 10, 250, 23)];
         nTitleLabel.backgroundColor=[UIColor clearColor];
-        nTitleLabel.lineBreakMode = UILineBreakModeWordWrap;
+        nTitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
         nTitleLabel.numberOfLines = 0;
         nTitleLabel.font=[UIFont systemFontOfSize:TITLEFONTSIZE];
         [self.contentView addSubview:nTitleLabel];
@@ -87,7 +87,7 @@
         nctntLabel.font=[UIFont systemFontOfSize:CONTENTFONTSIZE];
         nctntLabel.textColor = CONTENTTEXTCOLOR;
         nctntLabel.numberOfLines = 0;
-        nctntLabel.lineBreakMode=UILineBreakModeWordWrap|NSLineBreakByTruncatingTail;
+        nctntLabel.lineBreakMode=NSLineBreakByWordWrapping|NSLineBreakByTruncatingTail;
         [self.contentView addSubview:nctntLabel];
         [nctntLabel release];
         

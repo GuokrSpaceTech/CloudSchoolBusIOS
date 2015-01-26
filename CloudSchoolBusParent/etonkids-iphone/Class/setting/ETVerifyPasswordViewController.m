@@ -72,7 +72,7 @@
     
     
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text = LOCAL(@"forgotpwdtitle", @"");
     middleLabel.backgroundColor=[UIColor clearColor];
@@ -166,7 +166,10 @@
             ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"success", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
             [alert show];
             
-            [self.navigationController dismissModalViewControllerAnimated:YES];
+          //  [self.navigationController dismissModalViewControllerAnimated:YES];
+            [self.navigationController dismissViewControllerAnimated:YES completion:^{
+                
+            }];
         }
         else
         {

@@ -156,7 +156,9 @@
 }
 
 - (void)alertView:(ETCustomAlertView *)alertView didSelectButtonAtIndex:(NSInteger)index{
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 
@@ -165,7 +167,9 @@
 
 - (void)onButtonCancel {
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 

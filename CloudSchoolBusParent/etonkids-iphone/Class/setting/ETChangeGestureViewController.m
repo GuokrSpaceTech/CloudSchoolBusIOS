@@ -54,7 +54,7 @@
     
     
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text=LOCAL(@"SetGesturePassword", @"");
     middleLabel.backgroundColor=[UIColor clearColor];
@@ -76,7 +76,7 @@
     tLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, NAVIHEIGHT + 70 + (ios7 ? 20 : 0), 320, 30)];
     tLabel.text = LOCAL(@"drawlock", @"");
     tLabel.backgroundColor = [UIColor clearColor];
-    tLabel.textAlignment = UITextAlignmentCenter;
+    tLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:tLabel];
     [tLabel release];
     

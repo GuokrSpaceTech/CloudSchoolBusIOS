@@ -64,7 +64,7 @@
             label.tag = 2000 + i;
             label.textColor=[UIColor whiteColor];
             label.font=[UIFont systemFontOfSize:12];
-            label.textAlignment=UITextAlignmentCenter;
+            label.textAlignment=NSTextAlignmentCenter;
             [imageView addSubview:label];
             [label release];
             

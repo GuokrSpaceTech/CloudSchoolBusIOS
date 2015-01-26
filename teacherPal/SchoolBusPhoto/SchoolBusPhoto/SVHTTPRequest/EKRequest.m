@@ -14,7 +14,7 @@
 //#define SERVERURL @"http://v33.service.yunxiaoche.com/"
 //#define SERVERURL @"http://222.128.71.186:81/"
 
-#define SERVERURL @"http://api34.yunxiaoche.com/"
+#define SERVERURL @"http://api35.yunxiaoche.com:81/"
 @interface EKRequest()
 
 -(NSString *) getFunction:(RequestFunction) fun;

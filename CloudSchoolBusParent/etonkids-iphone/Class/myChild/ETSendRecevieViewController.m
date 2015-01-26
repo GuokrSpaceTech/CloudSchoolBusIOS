@@ -75,7 +75,7 @@
 //    [popGes release];
     
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text = NSLocalizedString(@"receiver", @"");
     middleLabel.backgroundColor=[UIColor clearColor];
@@ -139,10 +139,10 @@
 
     }
  
-     int row=([self.receiverArr count]+1)/2;
-    int col=([self.receiverArr count]+1)%2;
+     NSInteger row=([self.receiverArr count]+1)/2;
+    NSInteger col=([self.receiverArr count]+1)%2;
     
-    int real=row + ((col==0)?0:1);
+    NSInteger real=row + ((col==0)?0:1);
 
     _scrollerView_.contentSize=CGSizeMake(_scrollerView_.frame.size.width, real *(140+25+10));
     

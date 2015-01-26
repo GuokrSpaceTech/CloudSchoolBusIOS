@@ -55,7 +55,7 @@
 @property (nonatomic, retain) NSArray *markedSummerDates;
 @property (nonatomic, retain) NSArray *markedBudengDates;
 
--(void)selectDate:(int)date;
+-(void)selectDate:(NSInteger)date;
 -(void)reset;
 -(void)markqueqinDates:(NSArray *)dates ;
 - (void)markedBuDengDates:(NSArray *)dates;
@@ -75,6 +75,6 @@
 
 @protocol VRGCalendarViewDelegate <NSObject>
 @optional
--(void)calendarView:(VRGCalendarView *)calendarView switchedToYear:(int)year switchedToMonth:(int)month targetHeight:(float)targetHeight animated:(BOOL)animated;
+-(void)calendarView:(VRGCalendarView *)calendarView switchedToYear:(NSInteger)year switchedToMonth:(NSInteger)month targetHeight:(float)targetHeight animated:(BOOL)animated;
 -(void)calendarView:(VRGCalendarView *)calendarView dateSelected:(NSDate *)date;
 @end

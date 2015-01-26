@@ -91,7 +91,7 @@
         
         self.calendarDic = [dic objectForKey:@"calendar"];
         
-        NSLog(@"%d",self.calendarDic.count);
+        NSLog(@"%lu",(unsigned long)self.calendarDic.count);
         
         if (self.calendarDic != nil && self.calendarDic.count != 0) {
             NSArray *keys = [calendarDic allKeys];
@@ -226,7 +226,7 @@
         [calendar markDates:mutDateArr];
     
     NSString * totalDays =LOCAL(@"allDay", @"本月出勤总数:") ;//; @"本月出勤总数:";
-    totalDays = [totalDays stringByAppendingFormat:@"%d",mutDateArr.count];
+    totalDays = [totalDays stringByAppendingFormat:@"%lu",(unsigned long)mutDateArr.count];
     sumLabel.text = totalDays;
     
     [mutDateArr release];
@@ -279,12 +279,12 @@
 
 /// 日历代理方法  回调当前选择的年份，月份，并根据参数请求数据.
 
--(void)calendarView:(VRGCalendarView *)calendarView switchedToYear:(int)year switchedToMonth:(int)month targetHeight:(float)targetHeight animated:(BOOL)animated
+-(void)calendarView:(VRGCalendarView *)calendarView switchedToYear:(NSInteger)year switchedToMonth:(NSInteger)month targetHeight:(float)targetHeight animated:(BOOL)animated
 {
-    NSString * myYear = [NSString stringWithFormat:@"%d",year];
+    NSString * myYear = [NSString stringWithFormat:@"%ld",(long)year];
     myYear = [myYear substringFromIndex:2];
     NSMutableString * myMonth = [NSMutableString stringWithCapacity:1];
-    [myMonth setString:[NSString stringWithFormat:@"%d",month]];
+    [myMonth setString:[NSString stringWithFormat:@"%ld",(long)month]];
     if(myMonth.length < 2)
     {
         [myMonth insertString:@"0" atIndex:0];
@@ -319,7 +319,7 @@
     DutyDayView * myDutyView = (DutyDayView *)[self viewWithTag:100];
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:date];
     NSInteger day = [components day];
-    myDutyView.dayLabel.text = [NSString stringWithFormat:@"%d",day];
+    myDutyView.dayLabel.text = [NSString stringWithFormat:@"%ld",(long)day];
 //    if([date compare:[NSDate date]] == NSOrderedDescending)
 //        dutyView.dutyStatus.text = @"";
 //    else

@@ -110,7 +110,7 @@
 //    [popGes release];
     
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text = NSLocalizedString(@"evaluation", @"");
     middleLabel.backgroundColor=[UIColor clearColor];
@@ -151,7 +151,7 @@
     }
     else
     {
-        label.textAlignment=UITextAlignmentCenter;
+        label.textAlignment=NSTextAlignmentCenter;
     }
     label.backgroundColor=[UIColor clearColor];
     [topView addSubview:label];
@@ -175,7 +175,7 @@
     }
     else
     {
-        startlabl.textAlignment=UITextAlignmentCenter;
+        startlabl.textAlignment=NSTextAlignmentCenter;
     }
     startlabl.backgroundColor=[UIColor clearColor];
     startlabl.textColor=[UIColor grayColor];
@@ -259,7 +259,7 @@
 }
 -(void)praiseBtn:(UIButton *)btn
 {
-    int tag=btn.tag;
+    NSInteger tag=btn.tag;
     star=tag+1;
 
     

@@ -27,7 +27,7 @@
         if(IOSVERSION>=6.0)
             namelabel.textAlignment=NSTextAlignmentCenter;
         else
-            namelabel.textAlignment=UITextAlignmentCenter;
+            namelabel.textAlignment=NSTextAlignmentCenter;
    
         
         

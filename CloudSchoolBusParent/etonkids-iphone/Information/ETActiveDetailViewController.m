@@ -72,7 +72,7 @@
     [self.view addSubview:leftButton];
     
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-50, 13 + (ios7 ? 20 : 0), 100, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text=LOCAL(@"content12", @"活动内容");
     middleLabel.backgroundColor=[UIColor clearColor];
@@ -419,7 +419,10 @@
         shareController.shareType=index+1;
         shareController.shareContent.text=etevent.htmlurl;
         shareController.content = etevent.htmlurl;
-        [self presentModalViewController:shareController animated:YES];
+        //[self presentModalViewController:shareController animated:YES];
+        [self presentViewController:shareController animated:YES completion:^{
+            
+        }];
         [shareController release];
         
     }

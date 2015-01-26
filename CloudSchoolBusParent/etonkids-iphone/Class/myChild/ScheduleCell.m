@@ -37,7 +37,7 @@
         
         self.courseLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 10, 180, 0)];
         self.courseLabel.textAlignment = NSTextAlignmentCenter;
-        self.courseLabel.lineBreakMode = UILineBreakModeWordWrap;
+        self.courseLabel.lineBreakMode = NSLineBreakByWordWrapping;
         self.courseLabel.backgroundColor = [UIColor clearColor];
         self.courseLabel.numberOfLines = 0;
         self.courseLabel.font = [UIFont systemFontOfSize:14.0f];

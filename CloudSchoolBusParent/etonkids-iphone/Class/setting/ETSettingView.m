@@ -549,7 +549,9 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
    
-    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     

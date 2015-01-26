@@ -158,7 +158,7 @@ NSString *formattedPEMString(NSString *originalString)
 {    
     NSString *trimmedString = [originalString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     const char *c = [trimmedString UTF8String];
-    int len = [trimmedString length];
+    NSInteger len = [trimmedString length];
     NSMutableString *result = [NSMutableString string];
     [result appendString:@"-----BEGIN PRIVATE KEY-----\n"];
     int index = 0;

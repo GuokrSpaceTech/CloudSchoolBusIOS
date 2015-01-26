@@ -19,7 +19,7 @@
 @synthesize content;
 @synthesize rightButton,leftButton,delegate;
 
-- (id)initWithFrame:(CGRect)frame AndShowImageNum:(int)num dataArr:(NSArray *)array content:(NSString *)_content
+- (id)initWithFrame:(CGRect)frame AndShowImageNum:(NSInteger)num dataArr:(NSArray *)array content:(NSString *)_content
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -62,7 +62,7 @@
         item.backgroundColor = [UIColor clearColor];
         item.textAlignment = NSTextAlignmentCenter;
         item.font = [UIFont boldSystemFontOfSize:20];
-        item.text = [NSString stringWithFormat:@"%d / %d",originShowNum + 1,self.imgUrlArr.count];
+        item.text = [NSString stringWithFormat:@"%ld / %lu",originShowNum + 1,(unsigned long)self.imgUrlArr.count];
         [navigationBackView addSubview:item];
         [item release];
         
@@ -133,9 +133,9 @@
 {}
 - (void)reloadFrame:(UIInterfaceOrientation)orientation
 {
-    NSLog(@"%d",originShowNum);
+  //  NSLog(@"%ld",(long)originShowNum);
     
-    int temp = originShowNum;
+    NSInteger temp = originShowNum;
         navigationBackView.frame = CGRectMake(0, 0, 320, NAVIHEIGHT);
         item.center = CGPointMake(320/2, NAVIHEIGHT/2);
         rightButton.frame=CGRectMake(320 - 10 - 40, (NAVIHEIGHT - 35)/2.0f,50, 35);
@@ -159,7 +159,7 @@
         }
         
         
-        NSLog(@"%d",originShowNum);
+        //NSLog(@"%d",originShowNum);
         
     //}
 
@@ -373,7 +373,7 @@
             
             if (offset != originShowNum) {
                 originShowNum = offset;
-                item.text = [NSString stringWithFormat:@"%d / %d",originShowNum + 1,self.imgUrlArr.count];
+                item.text = [NSString stringWithFormat:@"%ld / %lu",originShowNum + 1,(unsigned long)self.imgUrlArr.count];
                 
                 [self downloadBigImage];
                 

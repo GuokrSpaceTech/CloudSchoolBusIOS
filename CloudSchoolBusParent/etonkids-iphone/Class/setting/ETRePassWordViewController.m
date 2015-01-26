@@ -82,7 +82,7 @@
     [self.view addSubview:leftButton];
     
     middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-80, 13 + (ios7 ? 20 : 0), 160, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text=LOCAL(@"AlterPass",@"");
     middleLabel.backgroundColor=[UIColor clearColor];

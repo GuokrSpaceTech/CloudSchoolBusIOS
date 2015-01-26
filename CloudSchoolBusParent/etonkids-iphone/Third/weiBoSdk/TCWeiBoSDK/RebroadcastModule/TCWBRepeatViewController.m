@@ -85,7 +85,7 @@
     [labelTitle setBackgroundColor:[UIColor clearColor]];
     [labelTitle setFont:[UIFont systemFontOfSize:17]];
     [labelTitle setTextColor:[UIColor whiteColor]];
-    [labelTitle setTextAlignment:UITextAlignmentCenter];
+    [labelTitle setTextAlignment:NSTextAlignmentCenter];
     NSBundle *main = [NSBundle mainBundle];
     NSString *strRebroadcast = [main localizedStringForKey:kLanguageRelay value:nil table:kTCWBTable];    
     [labelTitle setText:strRebroadcast];
@@ -235,7 +235,10 @@
 - (void)DoneCompose:(id)sender {
     UIButton *button = (UIButton *)sender;
     button.enabled = NO;
-    [self dismissModalViewControllerAnimated:YES];
+ //   [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     id delegate = ((DelegateObject *)[self.dictRepeat objectForKey:@"requestDelegate"]).delegate;
     SEL postStartCallback = NSSelectorFromString([self.dictRepeat objectForKey:@"postStartCallback"]);
     if ([delegate respondsToSelector:postStartCallback]) {
@@ -264,7 +267,10 @@
 }
 // 取消
 - (void)cancelCompose:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+   // [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 

@@ -62,7 +62,7 @@
     //    [popGes release];
     
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text =@"摄像头列表";//  NSLocalizedString(@"doctor_con", @"医生咨询");
     middleLabel.backgroundColor=[UIColor clearColor];
@@ -137,6 +137,7 @@
                 NSDictionary *drvDic=[arr objectAtIndex:i];
                 
                 GKDvrObj *obj=[[GKDvrObj alloc]init];
+                
                 obj.channeldesc=[drvDic objectForKey:@"channeldesc"];
                 obj.channelid=[drvDic objectForKey:@"channelid"];
                 obj.dvr_name=[drvDic objectForKey:@"dvr_name"];
@@ -185,6 +186,7 @@
     }
     
     GKDvrObj * obj=[_arrList objectAtIndex:indexPath.row];
+    
     cell.textLabel.text=obj.channeldesc;
 
     
@@ -248,6 +250,7 @@
                                 else
                                 {
                                     code=-1;//不在线
+                                    break;
                                 }
                             }
                             else
@@ -264,7 +267,7 @@
                     }
                     
                     
-                    if(channel==0 || [obj.channelid integerValue]>=channel)
+                    if(channel==0)
                     {
                         dispatch_async(dispatch_get_main_queue(), ^{
                          
@@ -292,6 +295,13 @@
                         
                         dispatch_async(dispatch_get_main_queue(), ^{
                   
+                            if(code==-1)
+                            {
+                                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"设备不在线" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                                [alert show];
+                                [alert release];
+                                return ;
+                            }
                             UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"学校摄像头没配置成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                             [alert show];
                             [alert release];

@@ -36,7 +36,7 @@
        // [self.LeftImageview release];
             
         self.ChineseLabel=[[[UILabel alloc]initWithFrame:CGRectMake(120, 10, 180, 0)] autorelease];
-        self.ChineseLabel.textAlignment=UITextAlignmentCenter;
+        self.ChineseLabel.textAlignment=NSTextAlignmentCenter;
         self.ChineseLabel.backgroundColor = [UIColor clearColor];
         self.ChineseLabel.lineBreakMode=NSLineBreakByWordWrapping;
         self.ChineseLabel.numberOfLines = 0;
@@ -46,7 +46,7 @@
         
         self.leftTitleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(10, 5, 100, 40)] autorelease];
         self.leftTitleLabel.backgroundColor = [UIColor clearColor];
-        self.leftTitleLabel.textAlignment = UITextAlignmentCenter;
+        self.leftTitleLabel.textAlignment = NSTextAlignmentCenter;
         self.leftTitleLabel.textColor = [UIColor whiteColor];
         [self.contentView addSubview:self.leftTitleLabel];
         //[self.leftTitleLabel release];
@@ -55,7 +55,7 @@
         
 //        self.EnglishLabel=[[UILabel alloc]initWithFrame:CGRectMake(120, 0, 180, 0)];
 //        self.EnglishLabel.backgroundColor = [UIColor blackColor];
-//        self.EnglishLabel.textAlignment=UITextAlignmentCenter;
+//        self.EnglishLabel.textAlignment=NSTextAlignmentCenter;
 //        self.EnglishLabel.lineBreakMode=NSLineBreakByWordWrapping;
 //        self.EnglishLabel.numberOfLines = 0;
 //        self.EnglishLabel.font=[UIFont systemFontOfSize:15];

@@ -379,7 +379,7 @@
 //        cell.textLabel.text = LOCAL(@"defaultdata", @"");
 //        cell.textLabel.font=[UIFont systemFontOfSize:28];
 //        cell.textLabel.textColor=[UIColor grayColor];
-//        cell.textLabel.textAlignment=UITextAlignmentCenter;
+//        cell.textLabel.textAlignment=NSTextAlignmentCenter;
         
         UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 151, 131)];
         imgV.image = [UIImage imageNamed:@"nodata.png"];

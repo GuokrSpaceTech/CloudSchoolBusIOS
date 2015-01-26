@@ -46,7 +46,7 @@
 		
 		// Customise appearance
 		self.font = theme.font;
-		self.textAlignment = UITextAlignmentCenter;
+		self.textAlignment = NSTextAlignmentCenter;
 		self.textColor = theme.labelColor;
 		self.pointSizeToWidthFactor = 0.5;
 //		self.adjustFontSizeToFitBounds = YES;

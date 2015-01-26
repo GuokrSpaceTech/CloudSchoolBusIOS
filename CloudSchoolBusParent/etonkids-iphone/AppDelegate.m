@@ -100,7 +100,7 @@
     [reachabiltiy startNotifier];
     
     [MobClick startWithAppkey:@"53a150c056240b8a53094d52" reportPolicy:SEND_INTERVAL   channelId:@""];
-    [MobClick setAppVersion:@"3.4.3"];
+    [MobClick setAppVersion:@"3.4.5"];
 
     
     NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
@@ -221,7 +221,10 @@
     [bNC release];
     
     
-    [loginViewController presentModalViewController:self.bottomNav animated:NO];
+   // [loginViewController presentModalViewController:self.bottomNav animated:NO];
+    [loginViewController presentViewController:self.bottomNav animated:NO completion:^{
+        
+    }];
     
     
     
@@ -229,7 +232,10 @@
     if ([[userdefault objectForKey:SWITHGESTURE] isEqualToString:@"1"])
     {
         ETGestureCheckViewController *gcVC = [[ETGestureCheckViewController alloc] init];
-        [self.bottomVC presentModalViewController:gcVC animated:YES];
+      //  [self.bottomVC presentModalViewController:gcVC animated:YES];
+        [self.bottomVC presentViewController:gcVC animated:YES completion:^{
+            
+        }];
         [gcVC release];
     }
     
@@ -490,7 +496,10 @@
         if ([[userdefault objectForKey:SWITHGESTURE] isEqualToString:@"1"])
         {
             ETGestureCheckViewController *gcVC = [[ETGestureCheckViewController alloc] init];
-            [self.bottomVC presentModalViewController:gcVC animated:YES];
+         //   [self.bottomVC presentModalViewController:gcVC animated:YES];
+            [self.bottomVC presentViewController:gcVC animated:YES completion:^{
+                
+            }];
             [gcVC release];
         }
     }

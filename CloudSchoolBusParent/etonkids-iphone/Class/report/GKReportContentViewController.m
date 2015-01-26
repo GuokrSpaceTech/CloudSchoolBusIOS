@@ -67,7 +67,7 @@
 //    [popGes release];
     
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text =NSLocalizedString(@"detailreport", @"");//  NSLocalizedString(@"doctor_con", @"医生咨询");
     middleLabel.backgroundColor=[UIColor clearColor];
@@ -184,7 +184,7 @@
     
 
     UIImageView *imageView=(UIImageView *)[cell.contentView viewWithTag:102];
-    titleLabel.text=[NSString stringWithFormat:@"%d、%@",indexPath.row+1,[dic objectForKey:@"title"]];
+    titleLabel.text=[NSString stringWithFormat:@"%ld、%@",indexPath.row+1,[dic objectForKey:@"title"]];
     
     
     NSString *answer=[dic objectForKey:@"answer"];

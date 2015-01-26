@@ -167,7 +167,7 @@
     [labelTitle setBackgroundColor:[UIColor clearColor]];
     [labelTitle setFont:[UIFont systemFontOfSize:17]];
     [labelTitle setTextColor:[UIColor whiteColor]];
-    [labelTitle setTextAlignment:UITextAlignmentCenter];
+    [labelTitle setTextAlignment:NSTextAlignmentCenter];
     
     NSString *strFriends = [main localizedStringForKey:kLanguageFriends value:nil table:kTCWBTable];
     [labelTitle setText:strFriends];
@@ -419,7 +419,9 @@
     }
     
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 
@@ -460,7 +462,9 @@
 
 - (void)onButtonBack {
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 
@@ -942,7 +946,7 @@
         [labelNick setBackgroundColor:[UIColor clearColor]];
         [labelNick setFont:[UIFont systemFontOfSize:15]];
         [labelNick setTextColor:[UIColor blackColor]];
-        [labelNick setTextAlignment:UITextAlignmentLeft];
+        [labelNick setTextAlignment:NSTextAlignmentLeft];
         
         [cell.contentView addSubview:labelNick];
         [labelNick release];

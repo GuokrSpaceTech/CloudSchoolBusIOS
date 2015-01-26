@@ -94,7 +94,7 @@
     
     
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-50, 13 + (ios7 ? 20 : 0), 100, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text=LOCAL(@"checkAndCalendar", @"");
     middleLabel.backgroundColor=[UIColor clearColor];
@@ -228,7 +228,9 @@
     
     GKShowReceiveBigImageViewController *showVC=[[GKShowReceiveBigImageViewController alloc]init];
     showVC.path=url;
-    [self presentModalViewController:showVC animated:YES];
+    [self presentViewController:showVC animated:YES completion:^{
+        
+    }];
     [showVC release];
 }
 -(void)tapClick:(UIGestureRecognizer *)tap
@@ -237,7 +239,9 @@
     MyImageView *iamgeView=(MyImageView *)tap.view;
     GKShowReceiveBigImageViewController *showVC=[[GKShowReceiveBigImageViewController alloc]init];
     showVC.path=iamgeView.path;
-    [self presentModalViewController:showVC animated:YES];
+    [self presentViewController:showVC animated:YES completion:^{
+        
+    }];
     [showVC release];
 }
 - (void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
@@ -459,7 +463,7 @@
         [myCalendar markDates:mutDateArr];
 
     NSString * totalDays =LOCAL(@"allDay", @"本月出勤总数:") ;//; @"本月出勤总数:";
-    totalDays = [totalDays stringByAppendingFormat:@"%d",mutDateArr.count];
+    totalDays = [totalDays stringByAppendingFormat:@"%lu",(unsigned long)mutDateArr.count];
     countLabel.text = totalDays;
     
     [mutDateArr release];
@@ -516,7 +520,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)calendarView:(VRGCalendarView *)calendarView switchedToYear:(int)year switchedToMonth:(int)month targetHeight:(float)targetHeight animated:(BOOL)animated
+-(void)calendarView:(VRGCalendarView *)calendarView switchedToYear:(NSInteger)year switchedToMonth:(NSInteger)month targetHeight:(float)targetHeight animated:(BOOL)animated
 {
     
 
@@ -524,8 +528,8 @@
            _tableView.frame=CGRectMake(0, targetHeight+NAVIHEIGHT+(ios7?20:0), self.view.frame.size.width, self.view.frame.size.height-targetHeight-NAVIHEIGHT-(ios7?20:0)-25);
     }];
 
-    NSString *s = [NSString stringWithFormat:@"%d",year];
-    NSString *pStr = [NSString stringWithFormat:@"%@-%02d",s,month];
+    NSString *s = [NSString stringWithFormat:@"%ld",(long)year];
+    NSString *pStr = [NSString stringWithFormat:@"%@-%02ld",s,(long)month];
    // NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:pStr,@"month",nil];
     [self.dateList removeAllObjects];
     [_tableView reloadData];

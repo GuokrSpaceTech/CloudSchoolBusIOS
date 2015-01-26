@@ -61,7 +61,7 @@
     [middleView release];
     
     middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-50, 12, 100, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text=LOCAL(@"replyComment", @"");
     middleLabel.backgroundColor=[UIColor clearColor];

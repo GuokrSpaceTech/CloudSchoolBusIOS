@@ -69,7 +69,7 @@
 //    [popGes release];
    
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text =NSLocalizedString(@"doctor_infomation", @"");
     middleLabel.backgroundColor=[UIColor clearColor];

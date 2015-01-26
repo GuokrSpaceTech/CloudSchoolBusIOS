@@ -66,7 +66,7 @@
     tLabel.text = LOCAL(@"qingshurushoushi", @"");
     tLabel.backgroundColor = [UIColor clearColor];
     tLabel.textColor = [UIColor blackColor];
-    tLabel.textAlignment = UITextAlignmentCenter;
+    tLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:tLabel];
     [tLabel release];
     
@@ -112,7 +112,9 @@
         
         if ([gPwd isEqualToString:pwd])
         {
-            [self dismissModalViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
             
         }
         else
@@ -179,7 +181,9 @@
 {
     if (method == signin && code == 1) {
         if (param == nil) {
-            [self dismissModalViewControllerAnimated:NO];
+            [self dismissViewControllerAnimated:NO completion:^{
+                
+            }];
             [ETCommonClass logoutAndClearUserMessage];
         }
         

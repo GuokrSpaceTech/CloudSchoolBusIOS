@@ -25,7 +25,7 @@
 	CGContextRef ctx = UIGraphicsGetCurrentContext();
 	CGSize fontSize =[self.currentTitle sizeWithFont:self.titleLabel.font
 											forWidth:self.bounds.size.width
-									   lineBreakMode:UILineBreakModeTailTruncation];
+									   lineBreakMode:NSLineBreakByTruncatingTail];
     
 	UIColor *uiColor = self.titleLabel.textColor;
 	CGColorRef color = [uiColor CGColor];

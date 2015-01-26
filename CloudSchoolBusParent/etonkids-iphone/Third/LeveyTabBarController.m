@@ -173,12 +173,17 @@ static LeveyTabBarController *leveyTabBarController;
 -(void)backLogin:(NSNotification *)no
 {
     
-    [self dismissModalViewControllerAnimated:YES];
+    //[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 
 }
 -(void)back:(NSNotification *)no
 {
-     [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 -(void)Hide:(NSNotification *)no
 {

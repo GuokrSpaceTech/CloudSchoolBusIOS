@@ -80,7 +80,7 @@
     
     
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text = LOCAL(@"basemessage", @"");
     middleLabel.backgroundColor=[UIColor clearColor];
@@ -180,7 +180,7 @@
             
             UILabel *nicknamelabel=[[UILabel alloc]initWithFrame:CGRectMake(100,10,170,20)];
             nicknamelabel.tag = 101;
-            nicknamelabel.textAlignment=UITextAlignmentRight;
+            nicknamelabel.textAlignment=NSTextAlignmentRight;
             [cell.contentView addSubview:nicknamelabel];
             nicknamelabel.backgroundColor=[UIColor clearColor];
             nicknamelabel.font=[UIFont systemFontOfSize:15];
@@ -197,7 +197,7 @@
             cell.selectionStyle=UITableViewCellSelectionStyleBlue;
             
             UILabel *genderlabel=[[UILabel alloc]initWithFrame:CGRectMake(100,10,170,20)];
-            genderlabel.textAlignment=UITextAlignmentRight;
+            genderlabel.textAlignment=NSTextAlignmentRight;
             genderlabel.tag = 102;
             [cell.contentView addSubview:genderlabel];
             genderlabel.backgroundColor=[UIColor clearColor];
@@ -224,7 +224,7 @@
             
             
             birthdaylabel=[[UILabel alloc]initWithFrame:CGRectMake(100,10,170,20)];
-            birthdaylabel.textAlignment=UITextAlignmentRight;
+            birthdaylabel.textAlignment=NSTextAlignmentRight;
             [cell.contentView addSubview:birthdaylabel];
             birthdaylabel.tag = 103;
             birthdaylabel.backgroundColor=[UIColor clearColor];
@@ -243,7 +243,7 @@
             
             
             countlabel=[[UILabel alloc]initWithFrame:CGRectMake(100,10,170,20)];
-            countlabel.textAlignment=UITextAlignmentRight;
+            countlabel.textAlignment=NSTextAlignmentRight;
             [cell.contentView addSubview:countlabel];
             countlabel.backgroundColor=[UIColor clearColor];
             countlabel.font=[UIFont systemFontOfSize:15];
@@ -285,7 +285,7 @@
             
             
             UILabel *healthlabel=[[UILabel alloc]initWithFrame:CGRectMake(160,10,130,20)];
-            healthlabel.textAlignment=UITextAlignmentRight;
+            healthlabel.textAlignment=NSTextAlignmentRight;
             
             healthlabel.tag = 102;
             [cell.contentView addSubview:healthlabel];
@@ -318,7 +318,7 @@
             cell.selectedBackgroundView.backgroundColor=[UIColor blackColor];
             
             UILabel  *namelabel=[[UILabel alloc]initWithFrame:CGRectMake(100,12,180,20)];
-            namelabel.textAlignment=UITextAlignmentRight;
+            namelabel.textAlignment=NSTextAlignmentRight;
             namelabel.backgroundColor=[UIColor clearColor];
             namelabel.font=[UIFont systemFontOfSize:CONTENTFONTSIZE];
             namelabel.text = user.cnname;
@@ -331,7 +331,7 @@
             cell.textLabel.text=LOCAL(@"Class", @"班级");
             
             UILabel  *classlabel=[[UILabel alloc]initWithFrame:CGRectMake(100,12,180,20)];
-            classlabel.textAlignment=UITextAlignmentRight;
+            classlabel.textAlignment=NSTextAlignmentRight;
             [cell.contentView addSubview:classlabel];
             classlabel.backgroundColor=[UIColor clearColor];
             classlabel.font=[UIFont systemFontOfSize:CONTENTFONTSIZE];
@@ -354,7 +354,7 @@
             CGSize size = [schoollabel.text sizeWithFont:font constrainedToSize:constraint lineBreakMode:NSLineBreakByCharWrapping];
             schoollabel.numberOfLines=0;
             [schoollabel setFrame:CGRectMake(100,12,180, size.height)];
-            schoollabel.textAlignment=UITextAlignmentRight;
+            schoollabel.textAlignment=NSTextAlignmentRight;
             [cell.contentView addSubview:schoollabel];
             schoollabel.backgroundColor=[UIColor clearColor];
             [schoollabel release];
@@ -370,7 +370,7 @@
             
             
             UILabel  *orderlabel=[[UILabel alloc]initWithFrame:CGRectMake(100,12,180,20)];
-            orderlabel.textAlignment=UITextAlignmentRight;
+            orderlabel.textAlignment=NSTextAlignmentRight;
             [cell.contentView addSubview:orderlabel];
             orderlabel.backgroundColor = [UIColor clearColor];
             orderlabel.font = [UIFont systemFontOfSize:CONTENTFONTSIZE];
@@ -385,7 +385,7 @@
             
                       
             UILabel  *orderlabel=[[UILabel alloc]initWithFrame:CGRectMake(100,12,180,20)];
-            orderlabel.textAlignment=UITextAlignmentRight;
+            orderlabel.textAlignment=NSTextAlignmentRight;
             [cell.contentView addSubview:orderlabel];
             orderlabel.backgroundColor = [UIColor clearColor];
             orderlabel.font = [UIFont systemFontOfSize:CONTENTFONTSIZE];
@@ -498,7 +498,10 @@
             picker.sourceType = sourceType;
             
             AppDelegate *appDel = SHARED_APP_DELEGATE;
-            [appDel.bottomNav presentModalViewController:picker animated:YES];
+          //  [appDel.bottomNav presentModalViewController:picker animated:YES];
+            [appDel.bottomNav presentViewController:picker animated:YES completion:^{
+                
+            }];
             [picker release];
         }
         else if (index == 1)
@@ -511,7 +514,10 @@
             picker.sourceType = sourceType;
             
             AppDelegate *appDel = SHARED_APP_DELEGATE;
-            [appDel.bottomNav presentModalViewController:picker animated:YES];
+            //[appDel.bottomNav presentModalViewController:picker animated:YES];
+            [appDel.bottomNav presentViewController:picker animated:YES completion:^{
+                
+            }];
             [picker release];
         }
     }
@@ -724,7 +730,10 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     
-    [picker dismissModalViewControllerAnimated:YES];
+   // [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
@@ -740,7 +749,9 @@
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 - (void)saveImage:(UIImage *)image
 {

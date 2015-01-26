@@ -17,7 +17,7 @@
 @synthesize markedDates,markedColors,calendarHeight,selectedDate,markedSchoolDates,markedSummerDates;
 @synthesize markedqueqinDates,markedBudengDates;
 #pragma mark - Select Date
--(void)selectDate:(int)date {
+-(void)selectDate:(NSInteger)date {
     
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *comps = [gregorian components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:self.currentMonth];
@@ -33,11 +33,11 @@
 //    
 //    NSDate *localeDate = [self.selectedDate  dateByAddingTimeInterval: interval];
     
-    int selectedDateYear = [selectedDate year];
-    int selectedDateMonth = [selectedDate month];
+    NSInteger selectedDateYear = [selectedDate year];
+    NSInteger selectedDateMonth = [selectedDate month];
     
-    int currentMonthYear = [currentMonth year];
-    int currentMonthMonth = [currentMonth month];
+    NSInteger currentMonthYear = [currentMonth year];
+    NSInteger currentMonthMonth = [currentMonth month];
     
     if (selectedDateYear < currentMonthYear) {
         [self showPreviousMonth];
@@ -147,8 +147,8 @@
     
     [self setNeedsDisplay];
     
-    int lastBlock = [currentMonth firstWeekDayInMonth]+[currentMonth numDaysInMonth]-1;
-    int numBlocks = [self numRows]*7;
+    NSInteger lastBlock = [currentMonth firstWeekDayInMonth]+[currentMonth numDaysInMonth]-1;
+    NSInteger numBlocks = [self numRows]*7;
     BOOL hasNextMonthDays = lastBlock<numBlocks;
     
     //Old month
@@ -301,8 +301,8 @@
         int row = floorf(yLocation/(kVRGCalendarViewDayHeight+2));
         
         int blockNr = (column+1)+row*7;
-        int firstWeekDay = [self.currentMonth firstWeekDayInMonth]-1; //-1 because weekdays begin at 1, not 0
-        int date = blockNr-firstWeekDay;
+        NSInteger firstWeekDay = [self.currentMonth firstWeekDayInMonth]-1; //-1 because weekdays begin at 1, not 0
+        NSInteger date = blockNr-firstWeekDay;
         [self selectDate:date];
         return;
     }
@@ -321,8 +321,8 @@
     } else if (CGRectContainsPoint(self.labelCurrentMonth.frame, touchPoint)) {
         //Detect touch in current month
         
-        int currentMonthIndex = [self.currentMonth month];
-        int todayMonth = [[NSDate date] month];
+        NSInteger currentMonthIndex = [self.currentMonth month];
+        NSInteger todayMonth = [[NSDate date] month];
         [self reset];
         if ((todayMonth!=currentMonthIndex) && [delegate respondsToSelector:@selector(calendarView:switchedToYear:switchedToMonth:targetHeight:animated:)]) [delegate calendarView:self switchedToYear:[currentMonth year]  switchedToMonth:[currentMonth month] targetHeight:self.calendarHeight animated:NO];
     }
@@ -331,7 +331,7 @@
 #pragma mark - Drawing
 - (void)drawRect:(CGRect)rect
 {
-    int firstWeekDay = [self.currentMonth firstWeekDayInMonth]-1; //-1 because weekdays begin at 1, not 0
+    NSInteger firstWeekDay = [self.currentMonth firstWeekDayInMonth]-1; //-1 because weekdays begin at 1, not 0
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMMM/yyyy"];
@@ -422,7 +422,7 @@
         UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:8];
 //        NSLog(@"%@",weekdayValue);
         
-        [weekdayValue drawInRect:CGRectMake(i*(kVRGCalendarViewDayWidth+2) + 13, 30, kVRGCalendarViewDayWidth+2, 20) withFont:font lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentCenter];
+        [weekdayValue drawInRect:CGRectMake(i*(kVRGCalendarViewDayWidth+2) + 13, 30, kVRGCalendarViewDayWidth+2, 20) withFont:font lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
     }
     
     int numRows = [self numRows];
@@ -463,10 +463,10 @@
     
     int numBlocks = numRows*7;
     NSDate *previousMonth = [self.currentMonth offsetMonth:-1];
-    int currentMonthNumDays = [currentMonth numDaysInMonth];
-    int prevMonthNumDays = [previousMonth numDaysInMonth];
+    NSInteger currentMonthNumDays = [currentMonth numDaysInMonth];
+    NSInteger prevMonthNumDays = [previousMonth numDaysInMonth];
     
-    int selectedDateBlock = ([selectedDate day]-1)+firstWeekDay;
+    NSInteger selectedDateBlock = ([selectedDate day]-1)+firstWeekDay;
     
     //prepAnimationPreviousMonth nog wat mee doen
     
@@ -483,7 +483,7 @@
     }
     
     if (isSelectedDatePreviousMonth) {
-        int lastPositionPreviousMonth = firstWeekDay-1;
+        NSInteger lastPositionPreviousMonth = firstWeekDay-1;
         selectedDateBlock=lastPositionPreviousMonth-([selectedDate numDaysInMonth]-[selectedDate day]);
     } else if (isSelectedDateNextMonth) {
         selectedDateBlock = [currentMonth numDaysInMonth] + (firstWeekDay-1) + [selectedDate day];
@@ -491,7 +491,7 @@
     
     
     NSDate *todayDate = [NSDate date];
-    int todayBlock = -1;
+    NSInteger todayBlock = -1;
     
 //    NSLog(@"currentMonth month = %i day = %i, todaydate day = %i",[currentMonth month],[currentMonth day],[todayDate month]);
     
@@ -499,12 +499,12 @@
         todayBlock = [todayDate day] + firstWeekDay - 1;
     }
     
-    for (int i=0; i<numBlocks; i++) {
-        int targetDate = i;
-        int targetColumn = i%7;
-        int targetRow = i/7;
-        int targetX = targetColumn * (kVRGCalendarViewDayWidth+2) + 13;
-        int targetY = kVRGCalendarViewTopBarHeight + targetRow * (kVRGCalendarViewDayHeight+2) + 6;
+    for (NSInteger i=0; i<numBlocks; i++) {
+        NSInteger targetDate = i;
+        NSInteger targetColumn = i%7;
+        NSInteger targetRow = i/7;
+        NSInteger targetX = targetColumn * (kVRGCalendarViewDayWidth+2) + 13;
+        NSInteger targetY = kVRGCalendarViewTopBarHeight + targetRow * (kVRGCalendarViewDayHeight+2) + 6;
         
         CGRect rectangleGrid = CGRectMake(targetX+1,targetY,kVRGCalendarViewDayWidth+1,kVRGCalendarViewDayHeight+1);
         CGContextAddRect(context, rectangleGrid);
@@ -545,7 +545,7 @@
         
         
         
-        NSString *date = [NSString stringWithFormat:@"%i",targetDate];
+        NSString *date = [NSString stringWithFormat:@"%li",(long)targetDate];
 
         //draw selected date
         if (selectedDate && i==selectedDateBlock) {
@@ -566,7 +566,7 @@
 //                                           [UIColor colorWithRed:255/255.0f green:251/255.0f blue:166/255.0f alpha:1.0f].CGColor);
         }
         
-        [date drawInRect:CGRectMake(targetX+2, targetY+10, kVRGCalendarViewDayWidth, kVRGCalendarViewDayHeight) withFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:17] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentCenter];
+        [date drawInRect:CGRectMake(targetX+2, targetY+10, kVRGCalendarViewDayWidth, kVRGCalendarViewDayHeight) withFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:17] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
     }
     
     
@@ -574,7 +574,7 @@
     for (int i = 0; i < self.markedSchoolDates.count; i++) {
         id markedDateObj = [self.markedSchoolDates objectAtIndex:i];
         
-        int targetDate;
+        NSInteger targetDate;
         if ([markedDateObj isKindOfClass:[NSNumber class]]) {
             targetDate = [(NSNumber *)markedDateObj intValue];
         } else if ([markedDateObj isKindOfClass:[NSDate class]]) {
@@ -584,12 +584,12 @@
             continue;
         }
         
-        int targetBlock = firstWeekDay + (targetDate-1);
-        int targetColumn = targetBlock%7;
-        int targetRow = targetBlock/7;
+        NSInteger targetBlock = firstWeekDay + (targetDate-1);
+        NSInteger targetColumn = targetBlock%7;
+        NSInteger targetRow = targetBlock/7;
         
-        int targetX = targetColumn * (kVRGCalendarViewDayWidth+2) + 13;
-        int targetY = kVRGCalendarViewTopBarHeight + targetRow * (kVRGCalendarViewDayHeight+2) + 6;
+        NSInteger targetX = targetColumn * (kVRGCalendarViewDayWidth+2) + 13;
+        NSInteger targetY = kVRGCalendarViewTopBarHeight + targetRow * (kVRGCalendarViewDayHeight+2) + 6;
         
         if (selectedDate && targetBlock==selectedDateBlock)
         {
@@ -618,8 +618,8 @@
 //            CGContextSetFillColorWithColor(context,
 //                                           [UIColor whiteColor].CGColor);
         }
-        NSString *date = [NSString stringWithFormat:@"%i",targetDate];
-        [date drawInRect:CGRectMake(targetX+2, targetY+10, kVRGCalendarViewDayWidth, kVRGCalendarViewDayHeight) withFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:17] lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentCenter];
+        NSString *date = [NSString stringWithFormat:@"%li",(long)targetDate];
+        [date drawInRect:CGRectMake(targetX+2, targetY+10, kVRGCalendarViewDayWidth, kVRGCalendarViewDayHeight) withFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:17] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
         
     }
     
@@ -635,7 +635,7 @@
     for (int i = 0; i<[self.markedqueqinDates count]; i++) {
         id markedDateObj = [self.markedqueqinDates objectAtIndex:i];
         
-        int targetDate;
+        NSInteger targetDate;
         if ([markedDateObj isKindOfClass:[NSNumber class]]) {
             targetDate = [(NSNumber *)markedDateObj intValue];
         } else if ([markedDateObj isKindOfClass:[NSDate class]]) {
@@ -647,12 +647,12 @@
         
         
         
-        int targetBlock = firstWeekDay + (targetDate-1);
-        int targetColumn = targetBlock%7;
-        int targetRow = targetBlock/7;
+        NSInteger targetBlock = firstWeekDay + (targetDate-1);
+        NSInteger targetColumn = targetBlock%7;
+        NSInteger targetRow = targetBlock/7;
         
-        int targetX = targetColumn * (kVRGCalendarViewDayWidth+2) +45;
-        int targetY = kVRGCalendarViewTopBarHeight + targetRow * (kVRGCalendarViewDayHeight+2)+8;
+        NSInteger targetX = targetColumn * (kVRGCalendarViewDayWidth+2) +45;
+        NSInteger targetY = kVRGCalendarViewTopBarHeight + targetRow * (kVRGCalendarViewDayHeight+2)+8;
         // 图片
         
         
@@ -684,7 +684,7 @@
     for (int i = 0; i<[self.markedBudengDates count]; i++) {
         id markedDateObj = [self.markedBudengDates objectAtIndex:i];
         
-        int targetDate;
+        NSInteger targetDate;
         if ([markedDateObj isKindOfClass:[NSNumber class]]) {
             targetDate = [(NSNumber *)markedDateObj intValue];
         } else if ([markedDateObj isKindOfClass:[NSDate class]]) {
@@ -696,12 +696,12 @@
         
         
         
-        int targetBlock = firstWeekDay + (targetDate-1);
-        int targetColumn = targetBlock%7;
-        int targetRow = targetBlock/7;
+        NSInteger targetBlock = firstWeekDay + (targetDate-1);
+        NSInteger targetColumn = targetBlock%7;
+        NSInteger targetRow = targetBlock/7;
         
-        int targetX = targetColumn * (kVRGCalendarViewDayWidth+2) +45;
-        int targetY = kVRGCalendarViewTopBarHeight + targetRow * (kVRGCalendarViewDayHeight+2)+8;
+        NSInteger targetX = targetColumn * (kVRGCalendarViewDayWidth+2) +45;
+        NSInteger targetY = kVRGCalendarViewTopBarHeight + targetRow * (kVRGCalendarViewDayHeight+2)+8;
         // 图片
         
         
@@ -738,7 +738,7 @@
     for (int i = 0; i<[self.markedDates count]; i++) {
         id markedDateObj = [self.markedDates objectAtIndex:i];
         
-        int targetDate;
+        NSInteger targetDate;
         if ([markedDateObj isKindOfClass:[NSNumber class]]) {
             targetDate = [(NSNumber *)markedDateObj intValue];
         } else if ([markedDateObj isKindOfClass:[NSDate class]]) {
@@ -750,12 +750,12 @@
         
         
         
-        int targetBlock = firstWeekDay + (targetDate-1);
-        int targetColumn = targetBlock%7;
-        int targetRow = targetBlock/7;
+        NSInteger targetBlock = firstWeekDay + (targetDate-1);
+        NSInteger targetColumn = targetBlock%7;
+        NSInteger targetRow = targetBlock/7;
         
-        int targetX = targetColumn * (kVRGCalendarViewDayWidth+2) +45;
-        int targetY = kVRGCalendarViewTopBarHeight + targetRow * (kVRGCalendarViewDayHeight+2)+8;
+        NSInteger targetX = targetColumn * (kVRGCalendarViewDayWidth+2) +45;
+        NSInteger targetY = kVRGCalendarViewTopBarHeight + targetRow * (kVRGCalendarViewDayHeight+2)+8;
     // 图片
         
         
@@ -818,7 +818,7 @@
         labelCurrentMonth.backgroundColor=[UIColor clearColor];
         labelCurrentMonth.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
         labelCurrentMonth.textColor = [UIColor blackColor];
-        labelCurrentMonth.textAlignment = UITextAlignmentCenter;
+        labelCurrentMonth.textAlignment = NSTextAlignmentCenter;
         
         [self performSelector:@selector(reset) withObject:nil afterDelay:0.1]; //so delegate can be set after init and still get called on init
         //        [self reset];

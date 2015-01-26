@@ -103,7 +103,7 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
 //    [middleView release];
     
     middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-50, 13 + (ios7 ? 20 : 0), 100, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text=LOCAL(@"body", @"");
     middleLabel.backgroundColor=[UIColor clearColor];
@@ -123,13 +123,13 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     UIView *contentView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
     contentView.backgroundColor = CELLCOLOR;
     
-    CGSize size=[shareContent.shareTitle sizeWithFont:[UIFont systemFontOfSize:TITLEFONTSIZE] constrainedToSize:CGSizeMake(280, 1000) lineBreakMode:UILineBreakModeWordWrap];
+    CGSize size=[shareContent.shareTitle sizeWithFont:[UIFont systemFontOfSize:TITLEFONTSIZE] constrainedToSize:CGSizeMake(280, 1000) lineBreakMode:NSLineBreakByWordWrapping];
     
     UILabel *labelTitle=[[UILabel alloc]initWithFrame:CGRectMake(30, 10, 280, size.height)];
     labelTitle.backgroundColor=[UIColor clearColor];
     labelTitle.numberOfLines=0;
 //    labelTitle.textColor = [UIColor colorWithRed:0 green:80/255.0f blue:146/255.0f alpha:1.0f];
-    labelTitle.lineBreakMode=UILineBreakModeWordWrap;
+    labelTitle.lineBreakMode=NSLineBreakByWordWrapping;
     labelTitle.font=[UIFont systemFontOfSize:TITLEFONTSIZE];
     labelTitle.text=shareContent.shareTitle;
     [contentView addSubview:labelTitle];
@@ -182,18 +182,18 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     timeLabel.backgroundColor=[UIColor clearColor];
     timeLabel.font=[UIFont systemFontOfSize:TIMEFONTSIZE];
     timeLabel.textColor = TIMETEXTCOLOR;
-    timeLabel.textAlignment=UITextAlignmentLeft;
+    timeLabel.textAlignment=NSTextAlignmentLeft;
     [contentView addSubview:timeLabel];
     [timeLabel release];
     
     
-    size=[shareContent.shareContent sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(280, 1000) lineBreakMode:UILineBreakModeWordWrap];
+    size=[shareContent.shareContent sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(280, 1000) lineBreakMode:NSLineBreakByWordWrapping];
     
     UILabel *contentLabel=[[UILabel alloc]initWithFrame:CGRectMake(30, labelTitle.frame.origin.y + labelTitle.frame.size.height + 5, 280, size.height)];
     contentLabel.numberOfLines=0;
     contentLabel.textColor = CONTENTTEXTCOLOR;
     contentLabel.backgroundColor=[UIColor clearColor];
-    contentLabel.lineBreakMode=UILineBreakModeWordWrap;
+    contentLabel.lineBreakMode=NSLineBreakByWordWrapping;
     contentLabel.font=[UIFont systemFontOfSize:CONTENTFONTSIZE];
     contentLabel.text=shareContent.shareContent;
     [contentView addSubview:contentLabel];
@@ -541,7 +541,7 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
 // 点击标签事件
 -(void)tagClick:(UIButton *)btn
 {
-    int i=btn.tag-3210;
+    NSInteger i=btn.tag-3210;
     
     NSDictionary *dic=[self.shareContent.tagArr objectAtIndex:i];
     
@@ -867,7 +867,10 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
     showBigVC.content=self.shareContent.shareContent;
     //[self presentModalViewController:showBigVC animated:YES];
     AppDelegate *aDelegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [aDelegate.bottomNav presentModalViewController:showBigVC animated:YES];
+    //[aDelegate.bottomNav presentModalViewController:showBigVC animated:YES];
+    [aDelegate.bottomNav presentViewController:showBigVC animated:YES completion:^{
+        
+    }];
     [showBigVC release];
 }
 

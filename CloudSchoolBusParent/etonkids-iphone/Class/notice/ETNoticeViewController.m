@@ -553,7 +553,11 @@
 //        showBigVC.content=content.shareContent;
         //[self presentModalViewController:showBigVC animated:YES];
         AppDelegate *aDelegate=(AppDelegate *)[[UIApplication sharedApplication]delegate];
-        [aDelegate.bottomNav presentModalViewController:showBigVC animated:YES];
+      //  [aDelegate.bottomNav presentModalViewController:showBigVC animated:YES];
+        [aDelegate.bottomNav presentViewController:showBigVC animated:YES completion:^{
+            
+        }];
+        
         [showBigVC release];
     }
 }
@@ -608,7 +612,10 @@
             picker.delegate=self;
             picker.allowsEditing = YES;
             picker.sourceType = sourceType;
-            [self presentModalViewController:picker animated:YES];
+            //[self presentModalViewController:picker animated:YES];
+            [self presentViewController:picker animated:YES completion:^{
+                
+            }];
             [picker release];
             
             
@@ -623,7 +630,10 @@
             picker.delegate = self;
             picker.allowsEditing = YES;
             picker.sourceType = sourceType;
-            [self presentModalViewController:picker animated:YES];
+           // [self presentModalViewController:picker animated:YES];
+            [self presentViewController:picker animated:YES completion:^{
+                
+            }];
             [picker release];
         }
         if(buttonIndex==2)
@@ -692,14 +702,19 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Hide", nil];
     [[NSNotificationCenter  defaultCenter]postNotificationName:@"TabBarHidden" object:nil userInfo:dic];
-    [picker dismissModalViewControllerAnimated:YES];
+    //[picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     [self performSelector:@selector(saveImage:)
                withObject:image
                afterDelay:0.5];
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Hide", nil];
     [[NSNotificationCenter  defaultCenter]postNotificationName:@"TabBarHidden" object:nil userInfo:dic];
     
@@ -761,7 +776,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 //        cell.textLabel.text = LOCAL(@"defaultdata", @"");
 //        cell.textLabel.font=[UIFont systemFontOfSize:28];
 //        cell.textLabel.textColor=[UIColor grayColor];
-//        cell.textLabel.textAlignment=UITextAlignmentCenter;
+//        cell.textLabel.textAlignment=NSTextAlignmentCenter;
         
         UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 151, 131)];
         imgV.image = [UIImage imageNamed:@"nodata.png"];
@@ -842,7 +857,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     for (int i = 0; i < cell.photoImgVArr.count; i++) {
         
         UIImageView *imgV = [cell.photoImgVArr objectAtIndex:i];
-        int picCount = info.pictures.count;
+        NSInteger picCount = info.pictures.count;
         if (i < picCount)
         {
             NSDictionary *dic = [info.pictures objectAtIndex:i];
@@ -1033,7 +1048,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     NoticeInfo *info=[self.dataList objectAtIndex:indexPath.row];
     
     
-    int calculateHeight = 0; // add up height.
+    NSInteger calculateHeight = 0; // add up height.
     
     CGSize tSize;
     if ([info.isconfirm isEqualToString:@"1"] && [info.haveisconfirm isEqualToString:@"0"]) //需要确认回执

@@ -18,7 +18,7 @@
 - (NSInteger)getTextWidth:(NSString *)textNumber {
 	CGSize detailSize = [textNumber sizeWithFont:[UIFont systemFontOfSize:LabelFontSize] 
                                constrainedToSize:CGSizeMake(100, MAXFLOAT) 
-                                   lineBreakMode:UILineBreakModeWordWrap];
+                                   lineBreakMode:NSLineBreakByWordWrapping];
 	return detailSize.width;
 }
 

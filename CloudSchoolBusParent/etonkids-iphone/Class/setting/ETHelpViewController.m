@@ -68,7 +68,7 @@
     
     
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-80, 13 + (ios7 ? 20 : 0), 160, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text = LOCAL(@"setting_help", @"");
     middleLabel.backgroundColor=[UIColor clearColor];

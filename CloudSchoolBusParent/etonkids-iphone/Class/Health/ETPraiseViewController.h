@@ -15,7 +15,7 @@
 {
     UIView * topView;
     UIView *bottomView;
-    int star;
+    NSInteger star;
     
     MBProgressHUD *HUD;
     UILabel *startlabl;

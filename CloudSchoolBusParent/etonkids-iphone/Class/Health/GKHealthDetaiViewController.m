@@ -161,7 +161,7 @@
     
     
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text = NSLocalizedString(@"doctor_tiwendetail", @"提问详情");
     middleLabel.backgroundColor=[UIColor clearColor];
@@ -289,7 +289,7 @@
 //            if([[[UIDevice currentDevice] systemVersion] floatValue]>=6.0)
 //                label.textAlignment=NSTextAlignmentCenter;
 //            else
-//                label.textAlignment=UITextAlignmentCenter;
+//                label.textAlignment=NSTextAlignmentCenter;
             [inputView addSubview:btn];
           //  [label release];
             
@@ -299,10 +299,9 @@
             UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 57)];
             label.text=NSLocalizedString(@"problem_closed", @"");
             label.textColor=[UIColor whiteColor];
-            if([[[UIDevice currentDevice] systemVersion] floatValue]>=6.0)
-                label.textAlignment=NSTextAlignmentCenter;
-            else
-                label.textAlignment=UITextAlignmentCenter;
+     
+            label.textAlignment=NSTextAlignmentCenter;
+         
             [inputView addSubview:label];
             [label release];
         }
@@ -457,8 +456,10 @@
 {
     
     NSLog(@"%@",info);
-    [picker dismissModalViewControllerAnimated:YES];
-    
+  //  [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     //  self.photoImage=image;
     //[_tableView reloadData];
@@ -502,7 +503,10 @@
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [picker dismissModalViewControllerAnimated:YES];
+   // [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 -(void)upClick:(UIButton *)btn
 {

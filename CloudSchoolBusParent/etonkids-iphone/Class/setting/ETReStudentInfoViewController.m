@@ -504,7 +504,9 @@
         picker.delegate = self;
         picker.allowsEditing = YES;
         picker.sourceType = sourceType;
-        [self presentModalViewController:picker animated:YES];
+        [self presentViewController:picker animated:YES completion:^{
+            
+        }];
         [picker release];
         
         
@@ -519,7 +521,9 @@
         picker.delegate = self;
         picker.allowsEditing = YES;
         picker.sourceType = sourceType;
-        [self presentModalViewController:picker animated:YES];
+        [self presentViewController:picker animated:YES completion:^{
+            
+        }];
         [picker release];
     }
     if(buttonIndex==2)
@@ -572,14 +576,18 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Hide", nil];
     [[NSNotificationCenter  defaultCenter]postNotificationName:@"TabBarHidden" object:nil userInfo:dic];
-    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     [self performSelector:@selector(saveImage:)
                withObject:image
                afterDelay:0.5];
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Hide", nil];
     [[NSNotificationCenter  defaultCenter]postNotificationName:@"TabBarHidden" object:nil userInfo:dic];
 }

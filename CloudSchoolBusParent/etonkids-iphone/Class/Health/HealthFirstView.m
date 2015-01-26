@@ -58,8 +58,8 @@
         }
         else
         {
-            topLabel.textAlignment=UITextAlignmentCenter;
-              topLabel1.textAlignment=UITextAlignmentCenter;
+            topLabel.textAlignment=NSTextAlignmentCenter;
+              topLabel1.textAlignment=NSTextAlignmentCenter;
         }
      //   health_bg_pic
         

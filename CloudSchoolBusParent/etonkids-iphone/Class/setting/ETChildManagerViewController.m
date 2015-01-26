@@ -72,7 +72,7 @@
     
     
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-50, 13+ (ios7 ? 20 : 0), 100, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text=LOCAL(@"childmanager", @"");
     middleLabel.backgroundColor=[UIColor clearColor];
@@ -232,7 +232,9 @@
                 
                 AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
                 
-                [delegate.bottomNav dismissModalViewControllerAnimated:NO];
+                [delegate.bottomNav dismissViewControllerAnimated:NO completion:^{
+                    
+                }];
                 
                 
                 ETBottomViewController *bVC = [[ETBottomViewController alloc] init];
@@ -242,8 +244,13 @@
                 ETBottomNavigationController *bNC = [[ETBottomNavigationController alloc] initWithRootViewController:delegate.bottomVC];
                 delegate.bottomNav = bNC;
                 [bNC release];
-                
-                [delegate.loginViewController presentModalViewController:delegate.bottomNav animated:YES];
+           
+               // [self presentViewController:<#(UIViewController *)#> animated:<#(BOOL)#> completion:<#^(void)completion#>];
+               // [delegate.loginViewController presentModalViewController:delegate.bottomNav animated:YES];
+                //[delegate.loginViewController ];
+                [delegate.loginViewController presentViewController:delegate.bottomNav animated:YES completion:^{
+                    
+                }];
             }
             
         }];

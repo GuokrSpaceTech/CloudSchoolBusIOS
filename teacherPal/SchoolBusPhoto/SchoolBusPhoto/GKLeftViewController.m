@@ -163,10 +163,10 @@
         _selectIdnex = 0;
     }
     
-    badgeView=[[GKBadgeView alloc]initWithFrame:CGRectMake(150, (iOS7?75+2*50:55+2*50), 16, 16)];
+    badgeView=[[GKBadgeView alloc]initWithFrame:CGRectMake(150, (iOS7?75+50-10:55+50-10), 16, 16)];
     badgeView.backgroundColor=[UIColor clearColor];
-    badgeView.bagde=0;
-    [self.view addSubview:badgeView];
+   // badgeView.bagde=1;
+    [scroller addSubview:badgeView];
     [badgeView release];
     
  
@@ -174,7 +174,7 @@
     
     [usr addObserver:self forKeyPath:@"badgeNumber" options:NSKeyValueObservingOptionNew context:NULL];
     usr=[GKUserLogin currentLogin];
-  //  usr.badgeNumber=[NSNumber numberWithInt:1];
+   // usr.badgeNumber=[NSNumber numberWithInt:1];
     badgeView.bagde=[usr.badgeNumber integerValue];
     
 
@@ -293,8 +293,6 @@
         
         return [nav autorelease];
         
-        
-
     }
     if(index==2)
     {
@@ -311,11 +309,11 @@
     {
         //系统消息
         
-//        NSUserDefaults *defaultuser=[NSUserDefaults standardUserDefaults];
-//        [defaultuser setObject:[NSNumber numberWithInt:0]forKey:@"BADGE"];
-//        
-//        GKUserLogin *user=[GKUserLogin currentLogin];
-//        user.badgeNumber=[NSNumber numberWithInt:0];
+        NSUserDefaults *defaultuser=[NSUserDefaults standardUserDefaults];
+        [defaultuser setObject:[NSNumber numberWithInt:0]forKey:@"BADGE"];
+        
+        GKUserLogin *user=[GKUserLogin currentLogin];
+        user.badgeNumber=[NSNumber numberWithInt:0];
         
         GKLastLetterViewController *letterVC=[[GKLastLetterViewController alloc]init];
         KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:letterVC];
@@ -355,12 +353,6 @@
     if(index==6)
     {
         //报告
-        
-//        GKNoticeListViewController *noticeVC=[[GKNoticeListViewController alloc]init];
-//        KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:noticeVC];
-//        [noticeVC release];
-//        
-//        return [nav autorelease];
         
         GKReportViewController *noticeVC=[[GKReportViewController alloc]init];
         KKNavigationController *nav= [[KKNavigationController alloc] initWithRootViewController:noticeVC];

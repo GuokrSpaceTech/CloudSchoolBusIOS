@@ -110,7 +110,7 @@
                     beginPoint=imageview.center;
                     self.currentImage=imageview;
                     imageview.choose=YES;
-                    [arr addObject:[NSNumber numberWithInt:imageview.tag-1000]];
+                    [arr addObject:[NSNumber numberWithInteger:imageview.tag-1000]];
                     
                     [selectPointArr addObject:[NSValue valueWithCGPoint:beginPoint]];
                     

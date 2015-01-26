@@ -132,7 +132,7 @@
 //    [popGes release];
     
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text =  NSLocalizedString(@"doctor_con", @"医生咨询");
     middleLabel.backgroundColor=[UIColor clearColor];
@@ -225,7 +225,7 @@
     [self loadData:0];
     isUpfresh=YES;
 }
--(void)loadData:(int)number
+-(void)loadData:(NSInteger)number
 {
     if(HUD==nil)
     {
@@ -248,7 +248,7 @@
     NSString *sign=[MD5 md5:string];
     
     NSString *atime= [NSString stringWithFormat:@"%d",time];
-    NSString *parm=[NSString stringWithFormat:@"user_id=%@&sign=%@&atime=%@&start_num=%@&count=%@",user.username,sign,atime,[NSNumber numberWithInt:number],@"20"];
+    NSString *parm=[NSString stringWithFormat:@"user_id=%@&sign=%@&atime=%@&start_num=%@&count=%@",user.username,sign,atime,[NSNumber numberWithInteger:number],@"20"];
     
     NSURL *url=[NSURL URLWithString:[NSString stringWithFormat:@"http://yzxc.summer2.chunyu.me/partner/yzxc/problem/list/my?%@",parm]];
     

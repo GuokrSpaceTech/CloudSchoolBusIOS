@@ -223,7 +223,6 @@
 		78378EFC17F5726E00AAAE5A /* copyright.png in Resources */ = {isa = PBXBuildFile; fileRef = 78378EFB17F5726E00AAAE5A /* copyright.png */; };
 		78378F0017F579A500AAAE5A /* clean.png in Resources */ = {isa = PBXBuildFile; fileRef = 78378EFF17F579A500AAAE5A /* clean.png */; };
 		78378F0317F58B5F00AAAE5A /* ETCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78378F0217F58B5F00AAAE5A /* ETCustomAlertView.m */; };
-		783BD306181514C600687D31 /* deleteTag.png in Resources */ = {isa = PBXBuildFile; fileRef = 783BD305181514C600687D31 /* deleteTag.png */; };
 		784086AC17F7FBC100BCDAFD /* ETNotice.m in Sources */ = {isa = PBXBuildFile; fileRef = 784086AB17F7FBC100BCDAFD /* ETNotice.m */; };
 		784086AE17F8087300BCDAFD /* ageBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 784086AD17F8087300BCDAFD /* ageBack.png */; };
 		7841CF5817DF2E3A003E0DB2 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7841CF5617DF2E3A003E0DB2 /* ActivityViewController.m */; };
@@ -1186,7 +1185,6 @@
 		78378EFF17F579A500AAAE5A /* clean.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clean.png; sourceTree = "<group>"; };
 		78378F0117F58B5F00AAAE5A /* ETCustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETCustomAlertView.h; sourceTree = "<group>"; };
 		78378F0217F58B5F00AAAE5A /* ETCustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETCustomAlertView.m; sourceTree = "<group>"; };
-		783BD305181514C600687D31 /* deleteTag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteTag.png; sourceTree = "<group>"; };
 		784086AA17F7FBC000BCDAFD /* ETNotice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETNotice.h; sourceTree = "<group>"; };
 		784086AB17F7FBC100BCDAFD /* ETNotice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETNotice.m; sourceTree = "<group>"; };
 		784086AD17F8087300BCDAFD /* ageBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ageBack.png; sourceTree = "<group>"; };
@@ -2989,7 +2987,6 @@
 				78A41FE61820EF6200D0DE50 /* birthdayIcon.png */,
 				11C9F59A19641B6A00C65B7A /* health_point.png */,
 				11C9F59C19641BD300C65B7A /* health_cellBG.png */,
-				783BD305181514C600687D31 /* deleteTag.png */,
 				1141430F196541D3007267D6 /* health_doctor_content.png */,
 				78C2ADB617E06F2900E6A5CD /* V3.0 */,
 				78A358A217D997A0005D11A2 /* email.png */,
@@ -3795,7 +3792,6 @@
 				F950240416DCB61B0079A05E /* separatorLine.png in Resources */,
 				F950240516DCB61B0079A05E /* separatorLine@2x.png in Resources */,
 				F950240616DCB61B0079A05E /* test.png in Resources */,
-				783BD306181514C600687D31 /* deleteTag.png in Resources */,
 				F950240716DCB61B0079A05E /* test@2x.png in Resources */,
 				F9DB03F116E46F930094A679 /* ETShareViewController.xib in Resources */,
 				78952FF7184C718C001C30D2 /* navRightBtn_selected.png in Resources */,
@@ -4411,8 +4407,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: kai yang (E76KEG2YY8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kai yang (E76KEG2YY8)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -4427,7 +4423,7 @@
 					"$(SRCROOT)/etonkids-iphone/Third/Alpay",
 				);
 				INFOPLIST_FILE = "etonkids-iphone/etonkids-iphone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/**",
@@ -4443,8 +4439,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3a994eb4-c160-4cf9-abdf-86a24b07598b";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3a994eb4-c160-4cf9-abdf-86a24b07598b";
+				PROVISIONING_PROFILE = "f1f03cf6-fd15-45aa-92c0-0afbe608d3fe";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "f1f03cf6-fd15-45aa-92c0-0afbe608d3fe";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -4459,8 +4455,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: kai yang (E76KEG2YY8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kai yang (E76KEG2YY8)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -4475,7 +4471,7 @@
 					"$(SRCROOT)/etonkids-iphone/Third/Alpay",
 				);
 				INFOPLIST_FILE = "etonkids-iphone/etonkids-iphone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/etonkids-iphone/Third/weiBoSdk/**",
@@ -4491,8 +4487,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3a994eb4-c160-4cf9-abdf-86a24b07598b";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3a994eb4-c160-4cf9-abdf-86a24b07598b";
+				PROVISIONING_PROFILE = "f1f03cf6-fd15-45aa-92c0-0afbe608d3fe";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "f1f03cf6-fd15-45aa-92c0-0afbe608d3fe";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;

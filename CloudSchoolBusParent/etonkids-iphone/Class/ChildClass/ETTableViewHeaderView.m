@@ -102,7 +102,7 @@
         ageLabel.text=@"";
         ageLabel.font=[UIFont systemFontOfSize:12];
         ageLabel.adjustsFontSizeToFitWidth = YES;
-        ageLabel.textAlignment = UITextAlignmentCenter;
+        ageLabel.textAlignment = NSTextAlignmentCenter;
         ageLabel.textColor=[UIColor whiteColor];
         ageLabel.backgroundColor=[UIColor clearColor];
         [ageBack addSubview:ageLabel];
@@ -115,7 +115,7 @@
         classLabel.font=[UIFont systemFontOfSize:14];
         classLabel.textColor=[UIColor whiteColor];
         classLabel.backgroundColor=[UIColor clearColor];
-        classLabel.textAlignment=UITextAlignmentRight;
+        classLabel.textAlignment=NSTextAlignmentRight;
         [self addSubview:classLabel];
         
         [classLabel release];
@@ -277,7 +277,10 @@
 #pragma mark Camera View Delegate Methods
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    [picker dismissModalViewControllerAnimated:YES];
+ //   [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     [self performSelector:@selector(saveImage:)
                withObject:image
@@ -285,7 +288,9 @@
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
@@ -364,7 +369,10 @@
         picker.allowsEditing = YES;
         picker.sourceType = sourceType;
         AppDelegate *del= SHARED_APP_DELEGATE;
-        [del.bottomNav presentModalViewController:picker animated:YES];
+       // [del.bottomNav presentModalViewController:picker animated:YES];
+        [del.bottomNav presentViewController:picker animated:YES completion:^{
+            
+        }];
         [picker release];
         
         
@@ -380,7 +388,10 @@
         picker.allowsEditing = YES;
         picker.sourceType = sourceType;
         AppDelegate *del= SHARED_APP_DELEGATE;
-        [del.bottomNav presentModalViewController:picker animated:YES];
+       // [del.bottomNav presentModalViewController:picker animated:YES];
+        [del.bottomNav presentViewController:picker animated:YES completion:^{
+            
+        }];
         [picker release];
     }
 }

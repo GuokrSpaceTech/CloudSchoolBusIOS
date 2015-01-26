@@ -157,7 +157,7 @@
 
     NSString *response=[NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"GB2312\" standalone=\"yes\"?> <TYPE>StartStream</TYPE>\
                         <DVRName>%@</DVRName>\
-                        <ChnNo>%@</ChnNo> <StreamType>1/StreamType>",dvrObj.dvr_name,dvrObj.channelid];
+                        <ChnNo>%@</ChnNo> <StreamType>1</StreamType>",dvrObj.dvr_name,dvrObj.channelid];
     NSStringEncoding encoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
     NSData *data = [[[NSData alloc] initWithData:[response dataUsingEncoding:encoding]] autorelease];
 

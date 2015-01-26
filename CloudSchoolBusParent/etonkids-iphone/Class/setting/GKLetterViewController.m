@@ -80,7 +80,10 @@
   
     GKShowReceiveBigImageViewController *showVC=[[GKShowReceiveBigImageViewController alloc]init];
     showVC.path=path;
-    [self presentModalViewController:showVC animated:YES];
+  //  [self presentModalViewController:showVC animated:YES];
+    [self presentViewController:showVC animated:YES completion:^{
+        
+    }];
     [showVC release];
 }
 -(void)keyboarShow:(NSNotification *)noti
@@ -176,7 +179,7 @@
     
     
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text = _contactObj.cnname;
     middleLabel.backgroundColor=[UIColor clearColor];

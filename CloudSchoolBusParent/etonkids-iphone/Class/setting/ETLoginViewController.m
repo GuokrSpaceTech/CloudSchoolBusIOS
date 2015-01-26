@@ -82,7 +82,10 @@
     ETForgetPasswordViewController *forget = [[ETForgetPasswordViewController alloc] init];
     forget.isBind = NO;
     ETNavigationController *nav = [[ETNavigationController alloc] initWithRootViewController:forget];
-    [self presentModalViewController:nav animated:YES];
+   // [self presentModalViewController:nav animated:YES];
+    [self presentViewController:nav animated:YES completion:^{
+        
+    }];
     [forget release];
     [nav release];
     
@@ -672,8 +675,10 @@
     [bNC release];
     
     
-    [self presentModalViewController:delegate.bottomNav animated:YES];
-    
+   // [self presentModalViewController:delegate.bottomNav animated:YES];
+    [self presentViewController:delegate.bottomNav animated:YES completion:^{
+        
+    }];
     [delegate bind]; // 绑定推送
 //    ETClassViewController *classVC = [[delegate.bottomVC.leveyTabBarController viewControllers] objectAtIndex:0];
 //    [classVC slimeStartLoading];

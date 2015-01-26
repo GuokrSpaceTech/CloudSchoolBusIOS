@@ -65,7 +65,7 @@
     [self.view addSubview:leftButton];
     
     middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-50, 13+ (ios7 ? 20 : 0), 100, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text=LOCAL(@"Background",@"");
     middleLabel.backgroundColor=[UIColor clearColor];
@@ -222,7 +222,10 @@
     picker.delegate = self;
     picker.allowsEditing = YES;
     picker.sourceType = sourceType;
-    [self presentModalViewController:picker animated:YES];
+    //[self presentModalViewController:picker animated:YES];
+    [self presentViewController:picker animated:YES completion:^{
+        
+    }];
     [picker release];
  
 }
@@ -242,7 +245,10 @@
     picker.delegate = self;
     picker.allowsEditing = YES;
     picker.sourceType = sourceType;
-    [self presentModalViewController:picker animated:YES];
+    //[self presentModalViewController:picker animated:YES];
+    [self presentViewController:picker animated:YES completion:^{
+        
+    }];
     [picker release];
 
 }
@@ -297,7 +303,9 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     
-    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     [self performSelector:@selector(saveImage:)
                withObject:image
@@ -305,7 +313,9 @@
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 

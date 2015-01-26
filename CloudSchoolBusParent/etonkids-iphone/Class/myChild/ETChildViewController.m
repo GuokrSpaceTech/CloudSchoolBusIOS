@@ -222,7 +222,7 @@
             numlabel.tag = 2000 ;
             numlabel.textColor=[UIColor whiteColor];
             numlabel.font=[UIFont systemFontOfSize:12];
-            numlabel.textAlignment=UITextAlignmentCenter;
+            numlabel.textAlignment=NSTextAlignmentCenter;
             [imageView addSubview:numlabel];
             [numlabel release];
             

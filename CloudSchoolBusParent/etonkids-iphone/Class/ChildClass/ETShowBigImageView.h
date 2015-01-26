@@ -55,7 +55,7 @@
 
 @interface ETShowBigImageView:UIView<UIScrollViewDelegate,UIActionSheetDelegate,WeiboSignInDelegate,WeiboRequestDelegate,MTCustomActionSheetDelegate,MFMailComposeViewControllerDelegate,ETZoomScrollViewDelegate>
 {
-    int originShowNum;
+    NSInteger originShowNum;
     UILabel *item;
     MBProgressHUD *saveHUD;
     
@@ -89,7 +89,7 @@
  *
  *	@return	返回实例.
  */
-- (id)initWithFrame:(CGRect)frame AndShowImageNum:(int)num dataArr:(NSArray *)array content:(NSString *)content;
+- (id)initWithFrame:(CGRect)frame AndShowImageNum:(NSInteger)num dataArr:(NSArray *)array content:(NSString *)content;
 
 
 

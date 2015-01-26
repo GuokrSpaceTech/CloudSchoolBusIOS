@@ -54,7 +54,7 @@
 		[label setBackgroundColor:[UIColor clearColor]];
 		[label setTextColor:[UIColor whiteColor]];
 		[label setFont:[UIFont systemFontOfSize:16]];
-		[label setTextAlignment:UITextAlignmentCenter];
+		[label setTextAlignment:NSTextAlignmentCenter];
          
 		[self addSubview:label];
 		[label release];

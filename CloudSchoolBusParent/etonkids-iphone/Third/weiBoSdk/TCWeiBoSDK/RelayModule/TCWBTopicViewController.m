@@ -249,7 +249,9 @@
 
     }
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 
@@ -291,7 +293,9 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     
     [searchBar resignFirstResponder];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 

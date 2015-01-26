@@ -90,7 +90,7 @@
 //    [popGes release];
     
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text =@"搜索结果";//  NSLocalizedString(@"doctor_con", @"医生咨询");
     middleLabel.backgroundColor=[UIColor clearColor];

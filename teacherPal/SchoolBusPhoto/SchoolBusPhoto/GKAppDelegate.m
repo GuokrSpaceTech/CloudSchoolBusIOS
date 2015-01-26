@@ -52,7 +52,7 @@
     [BPush setupChannel:launchOptions];
     [BPush setDelegate:self];
    
-    //application.applicationIconBadgeNumber = 0;
+    application.applicationIconBadgeNumber = 0;
     
 #ifdef __IPHONE_8_0
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge
@@ -82,6 +82,9 @@
     [reachability startNotifier];
     
  
+//    NSDictionary *dic=@{@"machine":@"111111111"};
+    
+  //  [[EKRequest Instance]EKHTTPRequest:nfcallinfo parameters:dic requestMethod:GET forDelegate:self];
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -202,10 +205,6 @@
     
     //NSString *pushStr = [NSString stringWithFormat:@"%@",[userInfo objectForKey:@"key"]];
     [BPush handleNotification:userInfo];
-    
-  //  NSNotification *noti=[NSNotification notificationWithName:@"UPDATEDATA" object:pushStr];
-  //  [[NSNotificationCenter defaultCenter] postNotification:noti];
-    
     GKUserLogin *user=[GKUserLogin currentLogin];
     
     user.badgeNumber=[NSNumber numberWithInteger:[user.badgeNumber integerValue]+1];
@@ -251,7 +250,7 @@
 }
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method parm:(NSDictionary *)parm resultCode:(int)code
 {
-    //NSLog(@"%@",[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding]);
+  //  NSLog(@"%@",[[NSString alloc]initWithData:response encoding:NSUTF8StringEncoding]);
 //    
     //NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
     //NSLog(@"%@",dic);

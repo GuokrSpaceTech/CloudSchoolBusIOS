@@ -143,7 +143,7 @@ static float		g_keyboardFrameHeightLastTime = 216;		// 默认初始键盘高度
     [labelTitle setBackgroundColor:[UIColor clearColor]];
     [labelTitle setFont:[UIFont systemFontOfSize:17]];
     [labelTitle setTextColor:[UIColor whiteColor]];
-    [labelTitle setTextAlignment:UITextAlignmentCenter];
+    [labelTitle setTextAlignment:NSTextAlignmentCenter];
     
     NSBundle *main = [NSBundle mainBundle];
     NSString *strRebroadcast = [main localizedStringForKey:kLanguageRebroadcast value:nil table:kTCWBTable];    
@@ -392,7 +392,9 @@ static float		g_keyboardFrameHeightLastTime = 216;		// 默认初始键盘高度
 
 // 取消
 - (void)cancelCompose:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 // 完成编译，发表
@@ -423,7 +425,9 @@ static float		g_keyboardFrameHeightLastTime = 216;		// 默认初始键盘高度
         }
         // 发送内容不包含图片，直接发送文字
         if (imageReadyPost == nil && bImageLocal == NO) {
-            [self dismissModalViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
             id delegate = ((DelegateObject *)[self.myDict objectForKey:@"requestDelegate"]).delegate;
             SEL postStartCallback = NSSelectorFromString([self.myDict objectForKey:@"postStartCallback"]);
             if ([delegate respondsToSelector:postStartCallback]) {
@@ -475,7 +479,9 @@ static float		g_keyboardFrameHeightLastTime = 216;		// 默认初始键盘高度
                 [dic setObject:strLatitude forKey:@"latitude"];
             }
             bImageLocal = NO;
-            [self dismissModalViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
             id delegate = ((DelegateObject *)[self.myDict objectForKey:@"requestDelegate"]).delegate;
             SEL postStartCallback = NSSelectorFromString([self.myDict objectForKey:@"postStartCallback"]);
             if ([delegate respondsToSelector:postStartCallback]) {
@@ -522,7 +528,10 @@ static float		g_keyboardFrameHeightLastTime = 216;		// 默认初始键盘高度
     
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tcWBFriendViewController];
-    [self presentModalViewController:navigationController animated:YES];
+   // [self presentModalViewController:navigationController animated:YES];
+    [self presentViewController:navigationController animated:YES completion:^{
+        
+    }];
     
     [tcWBFriendViewController release];
     [navigationController release];
@@ -541,7 +550,9 @@ static float		g_keyboardFrameHeightLastTime = 216;		// 默认初始键盘高度
     [tcWBTopicViewController setTopic:arrTopic];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tcWBTopicViewController];
-    [self presentModalViewController:navigationController animated:YES];
+    [self presentViewController:navigationController animated:YES completion:^{
+        
+    }];
     [tcWBTopicViewController release];
     [navigationController release];
     
@@ -555,7 +566,9 @@ static float		g_keyboardFrameHeightLastTime = 216;		// 默认初始键盘高度
         imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;		
         self.imagePickerController = imagePicker;
         self.imagePickerController.delegate = self;
-        [self presentModalViewController:self.imagePickerController animated:YES];
+        [self presentViewController:self.imagePickerController animated:YES completion:^{
+            
+        }];
         [imagePicker release];
     }
     else {
@@ -635,12 +648,16 @@ static float		g_keyboardFrameHeightLastTime = 216;		// 默认初始键盘高度
 	[viewImage setAttachedImage:imageReadyPost];
     UIButton *button = (UIButton *)[self.view viewWithTag:ButtonRightTag];
     button.enabled = YES;
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
-    [self dismissModalViewControllerAnimated:YES];
-}    
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
 
 
 - (void)viewWillAppear:(BOOL)animate {
@@ -855,7 +872,11 @@ static float		g_keyboardFrameHeightLastTime = 216;		// 默认初始键盘高度
                 UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
                 imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;		
                 imagePicker.delegate = self;
-                [self presentModalViewController:imagePicker animated:YES];
+               // [self presentModalViewController:imagePicker animated:YES];
+                [self presentViewController:imagePicker animated:YES completion:^{
+                    
+                }];
+                
                 [imagePicker release];
                 
             }
@@ -865,7 +886,11 @@ static float		g_keyboardFrameHeightLastTime = 216;		// 默认初始键盘高度
                 imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;		
                 self.imagePickerController = imagePicker;
                 self.imagePickerController.delegate = self;
-                [self presentModalViewController:self.imagePickerController animated:YES];
+                //[self presentModalViewController:self.imagePickerController animated:YES];
+                [self presentViewController:self.imagePickerController animated:YES completion:^{
+                    
+                }];
+                
                 [imagePicker release];
                 
             }

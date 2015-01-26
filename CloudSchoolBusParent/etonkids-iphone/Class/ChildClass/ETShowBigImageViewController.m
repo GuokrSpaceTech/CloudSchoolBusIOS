@@ -162,7 +162,9 @@
                 
                 NSData *data = UIImagePNGRepresentation(image);
                 [mc addAttachmentData:data mimeType:@"image/png" fileName:@"SharePicture.png"];
-                [self presentModalViewController:mc animated:YES];
+                [self presentViewController:mc animated:YES completion:^{
+                    
+                }];
                 [mc release];
             }else
             {
@@ -186,7 +188,9 @@
         shareController.shareType=shareType;
         shareController.content=shareCOn;
         shareController.imageData = UIImageJPEGRepresentation(image, 0.5f);
-        [self presentModalViewController:shareController animated:YES];
+        [self presentViewController:shareController animated:YES completion:^{
+            
+        }];
     }
     
     
@@ -254,7 +258,9 @@
         default:
             break;
     }
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 
@@ -373,7 +379,9 @@
 
 - (void)didClickBackButton
 {
-        [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning

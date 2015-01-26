@@ -225,7 +225,10 @@
             picker.delegate=self;
             picker.allowsEditing = YES;
             picker.sourceType = sourceType;
-            [self presentModalViewController:picker animated:YES];
+           // [self presentModalViewController:picker animated:YES];
+            [self presentViewController:picker animated:YES completion:^{
+                
+            }];
             [picker release];
             
             
@@ -237,7 +240,9 @@
             picker.delegate = self;
             picker.allowsEditing = YES;
             picker.sourceType = sourceType;
-            [self presentModalViewController:picker animated:YES];
+            [self presentViewController:picker animated:YES completion:^{
+                
+            }];
             [picker release];
         }
         if(buttonIndex==2)
@@ -648,7 +653,10 @@
         showBigVC.content=content.shareContent;
         //[self presentModalViewController:showBigVC animated:YES];
         AppDelegate *aDelegate=(AppDelegate *)[[UIApplication sharedApplication]delegate];
-        [aDelegate.bottomNav presentModalViewController:showBigVC animated:YES];
+       // [aDelegate.bottomNav presentModalViewController:showBigVC animated:YES];
+        [aDelegate.bottomNav presentViewController:showBigVC animated:YES completion:^{
+            
+        }];
         [showBigVC release];
     }
     
@@ -737,7 +745,7 @@
                 
                 int calculateHeight = 0; // add up height.
                 
-                CGSize contentSize = [sContent.shareContent sizeWithFont:[UIFont systemFontOfSize:CONTENTFONTSIZE] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:UILineBreakModeWordWrap];
+                CGSize contentSize = [sContent.shareContent sizeWithFont:[UIFont systemFontOfSize:CONTENTFONTSIZE] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:NSLineBreakByWordWrapping];
                 
                 // 内容高度 contentsize.height
                 [cell.contentLabel setFrame:CGRectMake(10,
@@ -926,7 +934,7 @@
                 float calculateHeight = 0; // add up height.
                 
   
-                CGSize contentSize = [sContent.shareContent sizeWithFont:[UIFont systemFontOfSize:CONTENTFONTSIZE] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:UILineBreakModeWordWrap];
+                CGSize contentSize = [sContent.shareContent sizeWithFont:[UIFont systemFontOfSize:CONTENTFONTSIZE] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:NSLineBreakByWordWrapping];
 
 //                
                 [cell.contentLabel setFrame:CGRectMake(10,
@@ -1162,7 +1170,7 @@
     
     int calculateHeight = 0; // add up height.
     
-    CGSize contentSize = [sContent.shareContent sizeWithFont:[UIFont systemFontOfSize:CONTENTFONTSIZE] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:UILineBreakModeWordWrap];
+    CGSize contentSize = [sContent.shareContent sizeWithFont:[UIFont systemFontOfSize:CONTENTFONTSIZE] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:NSLineBreakByWordWrapping];
 
     if ([sContent.shareContent isEqualToString:@""] || sContent.shareContent==nil)
         calculateHeight=0;

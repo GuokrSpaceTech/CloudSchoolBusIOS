@@ -105,7 +105,7 @@
 //        noDataLabel.text=LOCAL(@"default", @"暂无食谱安排");
 //        noDataLabel.font=[UIFont systemFontOfSize:28];
 //        noDataLabel.textColor=[UIColor grayColor];
-//        noDataLabel.textAlignment=UITextAlignmentCenter;
+//        noDataLabel.textAlignment=NSTextAlignmentCenter;
 //        [self addSubview:noDataLabel];
 //        [noDataLabel release];
         

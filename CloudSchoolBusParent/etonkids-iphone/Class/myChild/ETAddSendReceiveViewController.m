@@ -75,7 +75,7 @@
 //    [popGes release];
     
     UILabel *middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text = NSLocalizedString(@"add", @"");
     middleLabel.backgroundColor=[UIColor clearColor];
@@ -180,7 +180,10 @@
             picker.sourceType = sourceType;
             
             AppDelegate *appDel = SHARED_APP_DELEGATE;
-            [appDel.bottomNav presentModalViewController:picker animated:YES];
+            //[appDel.bottomNav presentModalViewController:picker animated:YES];
+            [appDel.bottomNav presentViewController:picker animated:YES completion:^{
+                
+            }];
             [picker release];
         }
         else if (index == 1)
@@ -193,7 +196,10 @@
             picker.sourceType = sourceType;
             
             AppDelegate *appDel = SHARED_APP_DELEGATE;
-            [appDel.bottomNav presentModalViewController:picker animated:YES];
+           // [appDel.bottomNav presentModalViewController:picker animated:YES];
+            [appDel.bottomNav presentViewController:picker animated:YES completion:^{
+                
+            }];
             [picker release];
         }
     }
@@ -201,7 +207,9 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     
-    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
@@ -218,7 +226,9 @@
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 - (void)saveImage:(UIImage *)image
 {

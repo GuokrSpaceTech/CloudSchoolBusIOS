@@ -64,7 +64,7 @@
     [self.view addSubview:leftButton];
     
     middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-50, 13+ (ios7 ? 20 : 0), 100, 20)];
-    middleLabel.textAlignment=UITextAlignmentCenter;
+    middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     middleLabel.text=LOCAL(@"Background",@"");
     middleLabel.backgroundColor=[UIColor clearColor];

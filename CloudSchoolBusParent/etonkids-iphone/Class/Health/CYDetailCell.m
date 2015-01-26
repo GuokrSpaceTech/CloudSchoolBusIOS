@@ -47,7 +47,7 @@
         if([[[UIDevice currentDevice] systemVersion] floatValue]>=6.0)
             namelabel.textAlignment=NSTextAlignmentCenter;
         else
-            namelabel.textAlignment=UITextAlignmentCenter;
+            namelabel.textAlignment=NSTextAlignmentCenter;
         
         levelLabel=[[UILabel alloc]initWithFrame:CGRectZero];
         levelLabel.backgroundColor=[UIColor clearColor];
@@ -57,7 +57,7 @@
         if([[[UIDevice currentDevice] systemVersion] floatValue]>=6.0)
             levelLabel.textAlignment=NSTextAlignmentCenter;
         else
-            levelLabel.textAlignment=UITextAlignmentCenter;
+            levelLabel.textAlignment=NSTextAlignmentCenter;
         
         
         timelabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
@@ -68,7 +68,7 @@
         if([[[UIDevice currentDevice] systemVersion] floatValue]>=6.0)
             timelabel.textAlignment=NSTextAlignmentCenter;
         else
-            timelabel.textAlignment=UITextAlignmentCenter;
+            timelabel.textAlignment=NSTextAlignmentCenter;
         [self.contentView addSubview:timelabel];
         
         labelcontent=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
@@ -82,7 +82,7 @@
         if([[[UIDevice currentDevice] systemVersion] floatValue]>=6.0)
             labelcontent.lineBreakMode=NSLineBreakByWordWrapping;
         else
-            labelcontent.lineBreakMode=UILineBreakModeWordWrap;
+            labelcontent.lineBreakMode=NSLineBreakByWordWrapping;
         [self.contentView addSubview:labelcontent];
     }
     return self;

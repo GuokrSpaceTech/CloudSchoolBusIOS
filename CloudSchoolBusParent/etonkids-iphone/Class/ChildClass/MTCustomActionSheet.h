@@ -30,7 +30,7 @@
 {
     UIView *mainView;
     UIButton *cancelBtn;
-    int count;
+    NSInteger count;
     UIDatePicker *datepicker;
 }
 

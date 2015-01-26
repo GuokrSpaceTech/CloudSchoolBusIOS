@@ -254,7 +254,10 @@
 //    appDel.loginViewController.autoImgV.hidden = YES;
     
     
-    [appDel.bottomNav dismissModalViewControllerAnimated:YES];
+  //  [appDel.bottomNav dismissModalViewControllerAnimated:YES];
+    [appDel.bottomNav dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 + (void)clearUserMessage

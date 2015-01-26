@@ -13,7 +13,7 @@
 #import "GKWriteHealthViewController.h"
 @interface GKHealthListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,SRRefreshDelegate,EGORefreshTableDelegate,writeHealthVCdelegate>
 {
-    int  currentnumber;
+    NSInteger  currentnumber;
     BOOL hasmore;
     
     BOOL isLoading;

@@ -15,7 +15,7 @@
 
         _dayLabel.textColor=[UIColor colorWithRed:24/255.0 green:117/255.0 blue:176/255.0 alpha:1];
       
-        _dayLabel.textAlignment=UITextAlignmentCenter;
+        _dayLabel.textAlignment=NSTextAlignmentCenter;
         _dayLabel.font=[UIFont fontWithName:@"Arial" size:40];
         _dayLabel.backgroundColor=[UIColor clearColor];
         self.dayLabel = _dayLabel;

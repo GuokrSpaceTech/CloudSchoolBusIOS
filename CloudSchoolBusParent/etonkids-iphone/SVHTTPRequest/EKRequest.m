@@ -12,7 +12,7 @@
 //#define SERVERURL @"http://apitest.yunxiaoche.com/"
 //#define SERVERURL @"http://222.128.71.186:81/"
 #define SERVERURLHOST @"http://api35.yunxiaoche.com:81/"
-#define VERSION @"3.4.5"
+#define VERSION @"3.4.6"
 @interface EKRequest()
 
 -(NSString *) getFunction:(RequestFunction) fun;

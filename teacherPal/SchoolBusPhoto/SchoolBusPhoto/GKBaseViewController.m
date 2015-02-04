@@ -74,10 +74,10 @@
     titlelabel.textColor=[UIColor whiteColor];
     [navigationView addSubview:titlelabel];
 
-    if(IOSVERSION>=6.0)
+    //if(IOSVERSION>=6.0)
         titlelabel.textAlignment=NSTextAlignmentCenter;
-    else
-        titlelabel.textAlignment=UITextAlignmentCenter;
+    //else
+       // titlelabel.textAlignment=UITextAlignmentCenter;
     
 	// Do any additional setup after loading the view.
 }

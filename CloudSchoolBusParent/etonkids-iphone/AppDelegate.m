@@ -100,7 +100,7 @@
     [reachabiltiy startNotifier];
     
     [MobClick startWithAppkey:@"53a150c056240b8a53094d52" reportPolicy:SEND_INTERVAL   channelId:@""];
-    [MobClick setAppVersion:@"3.4.5"];
+    [MobClick setAppVersion:@"3.4.6"];
 
     
     NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
@@ -115,10 +115,18 @@
     //application.applicationIconBadgeNumber = 0;
     
 #ifdef __IPHONE_8_0
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge
-                                                                                         |UIUserNotificationTypeSound
-                                                                                         |UIUserNotificationTypeAlert) categories:nil];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    if([[[UIDevice currentDevice] systemVersion] floatValue]>=8.0)
+    {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge
+                                                                                             |UIUserNotificationTypeSound
+                                                                                             |UIUserNotificationTypeAlert) categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    }
+    else
+    {
+         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
+    }
+
 
 #else
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];

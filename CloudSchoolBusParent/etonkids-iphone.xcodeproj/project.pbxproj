@@ -4407,8 +4407,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -4439,8 +4439,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f1f03cf6-fd15-45aa-92c0-0afbe608d3fe";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "f1f03cf6-fd15-45aa-92c0-0afbe608d3fe";
+				PROVISIONING_PROFILE = "ff6986fa-d7c6-49db-8dff-46af39cca698";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ff6986fa-d7c6-49db-8dff-46af39cca698";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -4455,8 +4455,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Kai Yang (24QP873G9R)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kai Yang (24QP873G9R)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kai Yang (6W79MPUU9K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kai Yang (6W79MPUU9K)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"/**",
@@ -4487,8 +4487,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f1f03cf6-fd15-45aa-92c0-0afbe608d3fe";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "f1f03cf6-fd15-45aa-92c0-0afbe608d3fe";
+				PROVISIONING_PROFILE = "ff6986fa-d7c6-49db-8dff-46af39cca698";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ff6986fa-d7c6-49db-8dff-46af39cca698";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;

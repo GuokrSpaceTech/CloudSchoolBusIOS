@@ -18,7 +18,9 @@
     UITextView *contentTV;
     UILabel *calWordsLab;
     UIImageView *thumbImgV;
+    BOOL isMove;
 }
+@property (nonatomic,retain)NSString *istrain;
 
 @property (nonatomic, retain) UIImage *sourcePicture;
 @property (nonatomic, retain) NSString *moviePath;

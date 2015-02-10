@@ -46,15 +46,9 @@
     labeltip.backgroundColor=[UIColor clearColor];
     labeltip.text=NSLocalizedString(@"studentinput", @"");
     labeltip.font=[UIFont systemFontOfSize:15];
-    if(IOSVERSION>=6.0)
-    {
-        labeltip.textAlignment=NSTextAlignmentCenter;
-    }
-    else
-    {
-        labeltip.textAlignment=UITextAlignmentCenter;
-    }
-    labeltip.textAlignment=UITextAlignmentCenter;
+
+    labeltip.textAlignment=NSTextAlignmentCenter;
+
     [self.view addSubview:labeltip];
     [labeltip release];
    
@@ -76,14 +70,10 @@
     nameField.borderStyle=UITextBorderStyleNone;
     nameField.placeholder=NSLocalizedString(@"nameinput", @"");
     nameField.textColor=[UIColor colorWithRed:149/255.0 green:149/255.0 blue:149/255.0 alpha:1];
-    if(IOSVERSION>=6.0)
-    {
-        nameField.textAlignment=NSTextAlignmentCenter;
-    }
-    else
-    {
-        nameField.textAlignment=UITextAlignmentCenter;
-    }
+   
+    nameField.textAlignment=NSTextAlignmentCenter;
+    
+
     
     [contentView addSubview:nameField];
     
@@ -91,14 +81,9 @@
     telField.borderStyle=UITextBorderStyleNone;
     telField.placeholder=NSLocalizedString(@"telinput", @"");
     telField.textColor=[UIColor colorWithRed:149/255.0 green:149/255.0 blue:149/255.0 alpha:1];;
-    if(IOSVERSION>=6.0)
-    {
-        telField.textAlignment=NSTextAlignmentCenter;
-    }
-    else
-    {
-        telField.textAlignment=UITextAlignmentCenter;
-    }
+   
+    telField.textAlignment=NSTextAlignmentCenter;
+
     
     [contentView addSubview:telField];
     

@@ -108,6 +108,7 @@ static GKUpQueue *gkqueue=nil;
     [request addPostValue:classid forKey:@"uid"];
     [request addPostValue:intro forKey:@"intro"];
     [request addPostValue:tag forKey:@"tag"];
+    [request addPostValue:@"1" forKey:@"register"];
     [request addPostValue:teacherid forKey:@"teacherid"];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:nameId,@"nameid",path,@"path",nil]];
     [request addPostValue:[self fileName] forKey:@"pickey"];

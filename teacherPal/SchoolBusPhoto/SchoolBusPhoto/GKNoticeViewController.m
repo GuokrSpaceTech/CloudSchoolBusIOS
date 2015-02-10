@@ -266,8 +266,10 @@
 {
 
     @autoreleasepool {
-        [picker dismissModalViewControllerAnimated:YES];
-        
+      //  [picker dismissModalViewControllerAnimated:YES];
+        [picker dismissViewControllerAnimated:YES completion:^{
+            
+        }];
         UIImage *theImage;
         if ([picker allowsEditing]){
             //获取用户编辑之后的图像
@@ -382,7 +384,10 @@
             picker.allowsEditing = NO;
             picker.sourceType = sourceType;
          
-            [self presentModalViewController:picker animated:YES];
+           // [self presentModalViewController:picker animated:YES];
+            [self presentViewController:picker animated:YES completion:^{
+                
+            }];
             [picker release];
         }
         else if (buttonIndex == 1)
@@ -395,7 +400,9 @@
             picker.sourceType = sourceType;
             
             
-            [self presentModalViewController:picker animated:YES];
+            [self presentViewController:picker animated:YES completion:^{
+                
+            }];
             [picker release];
         }
     }

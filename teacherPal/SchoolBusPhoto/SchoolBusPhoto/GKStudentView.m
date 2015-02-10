@@ -118,10 +118,9 @@
             UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(button.frame.origin.x, button.frame.origin.y+40, 74, 15)];
             label.font=[UIFont systemFontOfSize:12];
             label.tag= i + BTNTAG - 1 + 10000;
-            if(IOSVERSION>=6.0)
-                label.textAlignment=NSTextAlignmentCenter;
-            else
-                label.textAlignment=UITextAlignmentCenter;
+           
+            label.textAlignment=NSTextAlignmentCenter;
+     
             label.text=st.enname;
             [scroller addSubview:label];
             [label release];

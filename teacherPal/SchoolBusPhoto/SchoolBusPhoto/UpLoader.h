@@ -2,8 +2,8 @@
 //  UpLoader.h
 //  SchoolBusPhoto
 //
-//  Created by wen peifang on 14-5-9.
-//  Copyright (c) 2014年 mactop. All rights reserved.
+//  Created by wen peifang on 15-2-10.
+//  Copyright (c) 2015年 mactop. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -24,5 +24,6 @@
 @property (nonatomic, retain) NSString * studentId;
 @property (nonatomic, retain) NSString * tag;
 @property (nonatomic, retain) NSNumber * teacherid;
+@property (nonatomic, retain) NSNumber * istrain;
 
 @end

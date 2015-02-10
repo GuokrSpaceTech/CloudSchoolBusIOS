@@ -359,8 +359,8 @@
     {
         NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
         
-        NSLog(@"%@",dic);
-        
+     //   NSLog(@"%@",dic);
+    
         NSDictionary *classInformation=[dic objectForKey:@"classinfo"];
         ClassInfo *info=[[ClassInfo alloc]init];
         info.address=[classInformation objectForKey:@"address"];
@@ -374,6 +374,7 @@
         user.classInfo=info;
         [info release];
 
+        user.istrain=[[dic objectForKey:@"istrain"] integerValue];
         
         NSDictionary *teacherInfo=[dic objectForKey:@"teacher"];
         GKTeacher *teacher=[[GKTeacher alloc]init];

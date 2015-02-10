@@ -219,7 +219,6 @@ static EKRequest * instance = nil;
                  return;
              }
              
-           
              NSDictionary * allHeaderInfo = [urlResponse allHeaderFields];
              int code = [[allHeaderInfo objectForKey:@"Code"] intValue];
              if(code==-2000)

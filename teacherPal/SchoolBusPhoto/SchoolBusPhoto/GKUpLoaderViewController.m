@@ -157,10 +157,9 @@
     instancelabel.backgroundColor=[UIColor clearColor];
     instancelabel.numberOfLines=0;
     instancelabel.textColor=[UIColor colorWithRed:93/255.0 green:177/255.0 blue:201/255.0 alpha:1];
-    if(IOSVERSION>=6.0)
-        instancelabel.textAlignment=NSTextAlignmentCenter;
-    else
-        instancelabel.textAlignment=UITextAlignmentCenter;
+
+    instancelabel.textAlignment=NSTextAlignmentCenter;
+
     NSString *contentstr=NSLocalizedString(@"uploadsuccess", @"");
     
     CGSize size=[contentstr sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(280, 100) lineBreakMode:NSLineBreakByWordWrapping];

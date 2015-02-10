@@ -25,6 +25,7 @@ typedef enum {LOGINSERVER,LOGINOFF} LoginState;
     NSString *sid;
     
 }
+@property (nonatomic)NSInteger istrain;
 @property (nonatomic,copy) NSString * _userName;
 @property (nonatomic,copy) NSString * _passWord;
 @property (nonatomic) LoginState _loginState;

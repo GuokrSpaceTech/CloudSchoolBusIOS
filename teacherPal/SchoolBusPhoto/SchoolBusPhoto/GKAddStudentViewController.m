@@ -269,7 +269,10 @@
             picker.allowsEditing = YES;
             picker.sourceType = sourceType;
             
-            [self presentModalViewController:picker animated:YES];
+          //  [self presentModalViewController:picker animated:YES];
+            [self presentViewController:picker animated:YES completion:^{
+                
+            }];
             [picker release];
         }
         else if (buttonIndex == 1)
@@ -282,7 +285,9 @@
             picker.sourceType = sourceType;
             
             
-            [self presentModalViewController:picker animated:YES];
+            [self presentViewController:picker animated:YES completion:^{
+                
+            }];
             [picker release];
         }
 
@@ -290,11 +295,16 @@
 }
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [picker dismissModalViewControllerAnimated:YES];
+  //  [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     NSData *date=UIImageJPEGRepresentation(image, 0.5);
     self.imagedata=date;

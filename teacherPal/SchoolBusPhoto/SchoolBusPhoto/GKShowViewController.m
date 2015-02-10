@@ -67,6 +67,11 @@
     currentpage=0;
     
 
+    _registerArr=[[NSMutableArray alloc]init];
+    
+    for (int i=0; i<[self.assetArr count]; i++) {
+        [_registerArr addObject:@"0"];
+    }
     
     UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(0, navigationView.frame.size.height+navigationView.frame.origin.y, 320, self.view.frame.size.height -navigationView.frame.size.height-navigationView.frame.origin.y)];
     bgView.backgroundColor=[UIColor whiteColor];
@@ -89,27 +94,12 @@
     [photobutton addTarget:self action:@selector(OKClick:) forControlEvents:UIControlEventTouchUpInside];
     [navigationView addSubview:photobutton];
     
-//    photobutton=[UIButton buttonWithType:UIButtonTypeCustom];
-//    photobutton.frame=CGRectMake(280, 5, 35, 35);
-//    [photobutton setBackgroundImage:[UIImage imageNamed:@"upNormal.png"] forState:UIControlStateNormal];
-//    [photobutton setBackgroundImage:[UIImage imageNamed:@"upHight.png"] forState:UIControlStateHighlighted];
-//    [photobutton addTarget:self action:@selector(OKClick:) forControlEvents:UIControlEventTouchUpInside];
-//    [navigationView addSubview:photobutton];
     
     titlelabel.text=NSLocalizedString(@"who", @"");
     [numbeLabel release];
-    float aa=[[[UIDevice currentDevice]systemVersion]floatValue];
-    if(aa>=6.0)
-    {
-        titlelabel.textAlignment=NSTextAlignmentCenter;
-    }
 
-    else
-    {
-        titlelabel.textAlignment=UITextAlignmentCenter;
-        numbeLabel.textAlignment=UITextAlignmentRight;
-    }
-    
+    titlelabel.textAlignment=NSTextAlignmentCenter;
+ 
     GKUserLogin *user=[GKUserLogin currentLogin];
     NSInteger col=([user.studentArr count] )/4; //行
     NSInteger y = MIN(col+1, 4);
@@ -212,10 +202,9 @@
     numbeLabel.text=[NSString stringWithFormat:@"1/%lu",(unsigned long)[assetArr count]];
     numbeLabel.font=[UIFont systemFontOfSize:15];
  
-    if(IOSVERSION>=6.0)
-        numbeLabel.textAlignment=NSTextAlignmentCenter;
-    else
-        numbeLabel.textAlignment=UITextAlignmentCenter;
+
+    numbeLabel.textAlignment=NSTextAlignmentCenter;
+ 
     [numView addSubview:numbeLabel];
     [numbeLabel release];
 
@@ -228,8 +217,42 @@
     [picView addSubview:editBtn];
     
     
+    
+    if(user.istrain==1)
+    {
+        UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [registerBtn setBackgroundImage:[UIImage imageNamed:@"zhushi1.png"] forState:UIControlStateNormal];
+        [registerBtn setBackgroundImage:[UIImage imageNamed:@"zhushi.png"] forState:UIControlStateHighlighted];
+        [registerBtn setFrame:CGRectMake(10, picView.frame.size.height-80, 50, 50)];
+        [registerBtn addTarget:self action:@selector(registerBtbClicik:) forControlEvents:UIControlEventTouchUpInside];
+        [picView addSubview:registerBtn];
+    }
+    
+
+    
 
 
+}
+-(void)registerBtbClicik:(UIButton *)btn
+{
+    int i= currentpage;
+    
+    NSString *train=[self.registerArr objectAtIndex:i];
+    
+    if([train isEqualToString:@"0"]) //
+    {
+        //赋值为1
+        //图标变为 签到状态
+        [self.registerArr replaceObjectAtIndex:i withObject:@"1"];
+        
+    }
+    else
+    {
+        //赋值为0
+        //图标变为 未签到状态
+        [self.registerArr replaceObjectAtIndex:i withObject:@"0"];
+    }
+    
 }
 // 计算字体长度
 - (int)textLength:(NSString *)text//计算字符串长度
@@ -495,7 +518,10 @@
             picker.allowsEditing = YES;
             picker.sourceType = sourceType;
             
-            [self presentModalViewController:picker animated:YES];
+            //[self presentModalViewController:picker animated:YES];
+            [self presentViewController:picker animated:YES completion:^{
+                
+            }];
             [picker release];
         }
         else if (buttonIndex == 1)
@@ -507,8 +533,10 @@
             picker.allowsEditing = YES;
             picker.sourceType = sourceType;
             
-            
-            [self presentModalViewController:picker animated:YES];
+            [self presentViewController:picker animated:YES completion:^{
+                
+            }];
+            //[self presentModalViewController:picker animated:YES];
             [picker release];
         }
         else if (buttonIndex == 2)
@@ -525,7 +553,10 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    [picker dismissModalViewControllerAnimated:YES];
+    //[picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     [self saveImage:image];
 }
@@ -716,7 +747,10 @@
     showBigVC.Image = imgv.image;
     showBigVC.type=1;
     showBigVC.delegate=self;
-    [self presentModalViewController:showBigVC animated:YES];
+    //[self presentModalViewController:showBigVC animated:YES];
+    [self presentViewController:showBigVC animated:YES completion:^{
+        
+    }];
     [showBigVC release];
 }
 // 删除图片
@@ -729,7 +763,7 @@
 //
     
     // 找到当前照片的关联学生 然后删除
-    
+    [self.registerArr removeObjectAtIndex:currentpage];
     NSString *key=[NSString stringWithFormat:@"%d",currentpage];
     for (int i=0; i<[stuList count]; i++) {
         NSDictionary *dic=[stuList objectAtIndex:i];
@@ -931,17 +965,11 @@
             if(error || offset==0)
             {
                 // 如果写文件失败 跳过上传该文件
-                NSLog(@"？？？？？？？？？？？？？？？？？？？？写文件失败");
                 continue;
                // return;
             }
-           NSLog(@"？？？？？？？？？？？？？？？？？？？？写文件成功");
-     
-           // NSLog(@"%@",photo.date);
-            
+
             NSDate *date= [photo.asset valueForProperty:ALAssetPropertyDate];
-//                photo.date=date;
-            
             int ftime=[date timeIntervalSince1970];
             if(ftime==0)
             {
@@ -952,6 +980,7 @@
             NSString *key=[NSString stringWithFormat:@"%d",i];
             NSString *introduce = @"";
             NSString *tagcontent=@"";
+            NSString *registerStr=@"0";
             for (int j=0; j<[stuList count]; j++)
             {
                 
@@ -964,7 +993,6 @@
                 }
             }
         
-        NSLog(@"studentId:??????????????????????????????????%@",studentId);
             for (int j = 0; j < [picTextArr count]; j++) {
                 NSDictionary *introduceDic = [picTextArr objectAtIndex:j];
                 NSString *txtKey = [[introduceDic allKeys] lastObject];
@@ -1001,27 +1029,27 @@
                             tagcontent=[temp autorelease];
                         }
                   
-//                        
-//                        if(tagcontent==nil)
-//                            tagcontent=@"";
-//                        
-//                        if(tmptag)
-//                            tagcontent=tmptag;
-//                        else
-//                            tagcontent=@"";
                         
                     }
                     break;
                 }
             }
-        NSLog(@"introduce:??????????????????????????????????%@",introduce);
         
 
+        
+        // 签到
+        registerStr=[_registerArr objectAtIndex:i];
+        
+    
         NSNumber *teacherid=[NSNumber numberWithLong:[user.teacher.teacherid integerValue]];
+        
+  
+        
         [[DBManager shareInstance]insertObject:^(NSManagedObject *object) {
             UpLoader *aa=(UpLoader *)object;
             aa.image=filenamePath; //路径
             aa.nameID=photo.nameId;
+            aa.istrain=[NSNumber numberWithInteger:[registerStr integerValue]];
             aa.teacherid=teacherid;
             aa.classUid=[NSNumber numberWithLong:[user.classInfo.uid integerValue]];
             aa.name=representation.filename;
@@ -1045,21 +1073,14 @@
               NSLog(@"ssssbbbbbbb");
         }];
         
-        //[manager addNewPicToCoreData:filename name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithInt:representation.size] classID:[NSNumber numberWithInt:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:@""];// 图片tag
-        
             [pool release];
         }
-     
     
-
-    
-     NSLog(@"？？？？？？？？？？？？？？？？？？？？循环完毕");
     [self performSelectorOnMainThread:@selector(toMainThread) withObject:nil waitUntilDone:YES];
 
 }
 -(void)toMainThread
 {
-     NSLog(@"？？？？？？？？？？？？？？？？？？？进入主线程");
     disappearView.textLabel.text=NSLocalizedString(@"processingafter", @"");
     [disappearView setactiveStop:YES];
     [self.navigationController popViewControllerAnimated:YES];
@@ -1146,16 +1167,13 @@
                 }
                 NSDictionary *adddic=[NSMutableDictionary dictionaryWithObjectsAndKeys:sayView.contextView.text,@"text", nil];
                 [self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:adddic,key, nil]];
-                //[self.picTextArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:sayView.contextView.text,key, nil]];
+                
             }
 
             titlelabel.text=NSLocalizedString(@"who", @"");
 
             [sayView.contextView resignFirstResponder];
             [self doEditText:nil];
-            
-            
-            
             
         }else{
             

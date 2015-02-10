@@ -35,10 +35,9 @@
         countLabel.text=@"1";
         countLabel.backgroundColor=[UIColor clearColor];
         [self addSubview:countLabel];
-        if(IOSVERSION>=6.0)
-            countLabel.textAlignment=NSTextAlignmentCenter;
-        else
-            countLabel.textAlignment=UITextAlignmentCenter;
+      
+        countLabel.textAlignment=NSTextAlignmentCenter;
+     
         [countLabel release];
         
         count=1;

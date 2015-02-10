@@ -217,7 +217,10 @@
         sendMediaVC.moviePath = draft.moviepath;
         sendMediaVC.thumbnail = [UIImage imageWithData:draft.thumbnail];
         sendMediaVC.isPresent = YES;
-        [self presentModalViewController:sendMediaVC animated:YES];
+        //[self presentModalViewController:sendMediaVC animated:YES];
+        [self presentViewController:sendMediaVC animated:YES completion:^{
+            
+        }];
         [sendMediaVC release];
     }
     else

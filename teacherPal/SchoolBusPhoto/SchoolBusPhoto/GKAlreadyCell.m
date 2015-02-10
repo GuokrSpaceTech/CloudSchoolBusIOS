@@ -42,25 +42,16 @@
         jifenlabel.backgroundColor=[UIColor clearColor];
         //jifenlabel.text=@"-5000积分";
         jifenlabel.font=[UIFont systemFontOfSize:12];
-        if (IOSVERSION>=6.0) {
-            jifenlabel.textAlignment=NSTextAlignmentRight;
-        }
-        else
-        {
-             jifenlabel.textAlignment=UITextAlignmentRight;
-        }
+       
+        jifenlabel.textAlignment=NSTextAlignmentRight;
+
         [self.contentView addSubview:jifenlabel];
         
         stateLabel=[[UILabel alloc]initWithFrame:CGRectMake(200, 30, 110, 20)];
         stateLabel.backgroundColor=[UIColor clearColor];
         //stateLabel.text=@"等待处理";
-        if (IOSVERSION>=6.0) {
-            stateLabel.textAlignment=NSTextAlignmentRight;
-        }
-        else
-        {
-            stateLabel.textAlignment=UITextAlignmentRight;
-        }
+        stateLabel.textAlignment=NSTextAlignmentRight;
+    
 
         stateLabel.textColor=[UIColor redColor];
         stateLabel.font=[UIFont systemFontOfSize:12];

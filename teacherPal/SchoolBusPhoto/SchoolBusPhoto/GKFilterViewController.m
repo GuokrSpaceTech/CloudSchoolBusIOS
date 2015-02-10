@@ -437,7 +437,10 @@
         
 //        NSLog(@"save draft : %d",success);
         
-        [self.navigationController dismissModalViewControllerAnimated:YES];
+       // [self.navigationController dismissModalViewControllerAnimated:YES];
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
     }
     
 }

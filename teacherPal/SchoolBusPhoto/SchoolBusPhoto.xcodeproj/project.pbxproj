@@ -89,6 +89,7 @@
 		116F88D01A23143F00A3AFDA /* cellComment.png in Resources */ = {isa = PBXBuildFile; fileRef = 116F88CC1A23143F00A3AFDA /* cellComment.png */; };
 		116F88D11A23143F00A3AFDA /* cellline.png in Resources */ = {isa = PBXBuildFile; fileRef = 116F88CD1A23143F00A3AFDA /* cellline.png */; };
 		116F88D21A23143F00A3AFDA /* cellPraise_disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 116F88CE1A23143F00A3AFDA /* cellPraise_disable.png */; };
+		1188ABC81A8A214100C711E1 /* UpLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1188ABC71A8A214100C711E1 /* UpLoader.m */; };
 		118AE7EE188E69840034AE63 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 118AE7ED188E69840034AE63 /* DBManager.m */; };
 		1192B7721829E8900082D37B /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1192B7711829E8900082D37B /* libBPush.a */; };
 		1192B7741829E8A70082D37B /* BPushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1192B7731829E8A70082D37B /* BPushConfig.plist */; };
@@ -252,7 +253,6 @@
 		11B269BF193DB61500E5369E /* GKAttentanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B269BE193DB61500E5369E /* GKAttentanceViewController.m */; };
 		11B269C2193DC94600E5369E /* GKAttentance.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B269C1193DC94600E5369E /* GKAttentance.m */; };
 		11B364BA191CB62C003E087E /* GKTeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B364B9191CB62C003E087E /* GKTeacher.m */; };
-		11B364BE191CBF1F003E087E /* UpLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B364BD191CBF1F003E087E /* UpLoader.m */; };
 		11B3E222193EC21500A96ACF /* GKTempature.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B3E221193EC21500A96ACF /* GKTempature.m */; };
 		11B405141918C82400E56A59 /* GKAddStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B405131918C82400E56A59 /* GKAddStudentViewController.m */; };
 		11B405171918C85400E56A59 /* GKSearchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B405161918C85400E56A59 /* GKSearchListViewController.m */; };
@@ -630,6 +630,9 @@
 		116F88CC1A23143F00A3AFDA /* cellComment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellComment.png; sourceTree = "<group>"; };
 		116F88CD1A23143F00A3AFDA /* cellline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellline.png; sourceTree = "<group>"; };
 		116F88CE1A23143F00A3AFDA /* cellPraise_disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellPraise_disable.png; sourceTree = "<group>"; };
+		1188ABC51A8A20D000C711E1 /* SchoolBusPhoto 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 6.xcdatamodel"; sourceTree = "<group>"; };
+		1188ABC61A8A214100C711E1 /* UpLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpLoader.h; sourceTree = "<group>"; };
+		1188ABC71A8A214100C711E1 /* UpLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpLoader.m; sourceTree = "<group>"; };
 		118AE7EC188E69840034AE63 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		118AE7ED188E69840034AE63 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		1192B7701829E8900082D37B /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
@@ -879,8 +882,6 @@
 		11B364B8191CB62C003E087E /* GKTeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKTeacher.h; sourceTree = "<group>"; };
 		11B364B9191CB62C003E087E /* GKTeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKTeacher.m; sourceTree = "<group>"; };
 		11B364BB191CBD05003E087E /* SchoolBusPhoto 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SchoolBusPhoto 5.xcdatamodel"; sourceTree = "<group>"; };
-		11B364BC191CBF1F003E087E /* UpLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpLoader.h; sourceTree = "<group>"; };
-		11B364BD191CBF1F003E087E /* UpLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpLoader.m; sourceTree = "<group>"; };
 		11B3E220193EC21400A96ACF /* GKTempature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKTempature.h; sourceTree = "<group>"; };
 		11B3E221193EC21500A96ACF /* GKTempature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKTempature.m; sourceTree = "<group>"; };
 		11B405121918C82400E56A59 /* GKAddStudentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAddStudentViewController.h; sourceTree = "<group>"; };
@@ -1514,14 +1515,14 @@
 				11B4051D1918D09E00E56A59 /* GKStudentAdd.m */,
 				11B364B8191CB62C003E087E /* GKTeacher.h */,
 				11B364B9191CB62C003E087E /* GKTeacher.m */,
-				11B364BC191CBF1F003E087E /* UpLoader.h */,
-				11B364BD191CBF1F003E087E /* UpLoader.m */,
 				11B269C0193DC94600E5369E /* GKAttentance.h */,
 				11B269C1193DC94600E5369E /* GKAttentance.m */,
 				11B3E220193EC21400A96ACF /* GKTempature.h */,
 				11B3E221193EC21500A96ACF /* GKTempature.m */,
 				11C2328D1980F7410079F282 /* GKSchoolTag.h */,
 				11C2328E1980F7410079F282 /* GKSchoolTag.m */,
+				1188ABC61A8A214100C711E1 /* UpLoader.h */,
+				1188ABC71A8A214100C711E1 /* UpLoader.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -2730,6 +2731,7 @@
 				111E8CE6181E532400234014 /* SDWebImagePrefetcher.m in Sources */,
 				114DEFA7190A73B3008413DE /* GKAddStudentSearchViewController.m in Sources */,
 				119E96191814C5A300866DE8 /* ASIDataCompressor.m in Sources */,
+				1188ABC81A8A214100C711E1 /* UpLoader.m in Sources */,
 				11EFE1F21817EEF7009CE69F /* SRSlimeView.m in Sources */,
 				11CB883B19878CA400A2A080 /* GKReportHistoryViewController.m in Sources */,
 				119E962E1814C5A300866DE8 /* ASIS3Request.m in Sources */,
@@ -2763,7 +2765,6 @@
 				111E51201988E616007D9C6E /* GKReportQuestion.m in Sources */,
 				2A32A58118122C25007CAA8E /* GKLoginViewController.m in Sources */,
 				78709C32187D2F4A009250FB /* GKPhotoTagScrollView.m in Sources */,
-				11B364BE191CBF1F003E087E /* UpLoader.m in Sources */,
 				119EA9CF181649C20070DBF1 /* GKInfoViewController.m in Sources */,
 				11B1E1D91A39747D00FFE39A /* GKEventListViewController.m in Sources */,
 				119E963D1814E2C800866DE8 /* GKUpWraper.m in Sources */,
@@ -2984,13 +2985,14 @@
 		119AC2711839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				1188ABC51A8A20D000C711E1 /* SchoolBusPhoto 6.xcdatamodel */,
 				11B364BB191CBD05003E087E /* SchoolBusPhoto 5.xcdatamodel */,
 				7870A0FE187E454F009250FB /* SchoolBusPhoto 4.xcdatamodel */,
 				11AC07F4186A8BD70080FCC4 /* SchoolBusPhoto 3.xcdatamodel */,
 				119AC2741839C39300ED19D3 /* SchoolBusPhoto 2.xcdatamodel */,
 				119AC2721839C36C00ED19D3 /* SchoolBusPhoto.xcdatamodel */,
 			);
-			currentVersion = 11B364BB191CBD05003E087E /* SchoolBusPhoto 5.xcdatamodel */;
+			currentVersion = 1188ABC51A8A20D000C711E1 /* SchoolBusPhoto 6.xcdatamodel */;
 			path = SchoolBusPhoto.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

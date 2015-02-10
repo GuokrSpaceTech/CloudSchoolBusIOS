@@ -130,10 +130,9 @@
             UILabel *reallabel=[[UILabel alloc]initWithFrame:CGRectMake(180, 11, 100, 20)];
             reallabel.backgroundColor=[UIColor clearColor];
             reallabel.tag=TAGCELL+1;
-            if(IOSVERSION>=6.0)
-                reallabel.textAlignment=NSTextAlignmentRight;
-            else
-                reallabel.textAlignment=UITextAlignmentRight;
+  
+            reallabel.textAlignment=NSTextAlignmentRight;
+ 
             if(IOSVERSION<7.0)
             {
                 reallabel.frame=CGRectMake(170, 11, 100, 20);
@@ -512,7 +511,10 @@
             picker.allowsEditing = YES;
             picker.sourceType = sourceType;
             
-            [self presentModalViewController:picker animated:YES];
+          //  [self presentModalViewController:picker animated:YES];
+            [self presentViewController:picker animated:YES completion:^{
+                
+            }];
             [picker release];
         }
         else if (buttonIndex == 1)
@@ -525,7 +527,10 @@
             picker.sourceType = sourceType;
             
             
-            [self presentModalViewController:picker animated:YES];
+            //[self presentModalViewController:picker animated:YES];
+            [self presentViewController:picker animated:YES completion:^{
+                
+            }];
             [picker release];
         }
 
@@ -622,11 +627,17 @@
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-     [picker dismissModalViewControllerAnimated:YES];
+   
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     [self saveImage:image];
 }

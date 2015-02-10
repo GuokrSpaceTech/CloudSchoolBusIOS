@@ -193,10 +193,9 @@
     timelagelabel.font=[UIFont systemFontOfSize:10];
     timelagelabel.text=[self timeStr:notice.addtime];
     
-    if(IOSVERSION>=6.0)
-        timelagelabel.textAlignment=NSTextAlignmentRight;
-    else
-        timelagelabel.textAlignment=UITextAlignmentRight;
+
+    timelagelabel.textAlignment=NSTextAlignmentRight;
+  
     timelagelabel.textColor=[UIColor colorWithRed:123/255.0 green:123/255.0 blue:123/255.0 alpha:1];
     [headView addSubview:timelagelabel];
     [timelagelabel release];
@@ -379,14 +378,9 @@
         huizlabel.font=[UIFont systemFontOfSize:14];
         [view addSubview:huizlabel];
         huizlabel.textColor=[UIColor whiteColor];
-        if(IOSVERSION>=6.0)
-        {
-            huizlabel.textAlignment=NSTextAlignmentRight;
-        }
-        else
-        {
-             huizlabel.textAlignment=UITextAlignmentRight;
-        }
+
+        huizlabel.textAlignment=NSTextAlignmentRight;
+
         [huizlabel release];
         huizlabel.text=NSLocalizedString(@"huizhi",@"");
     }

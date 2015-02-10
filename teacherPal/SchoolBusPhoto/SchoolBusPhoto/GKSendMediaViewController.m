@@ -38,7 +38,7 @@
 {
     [super viewDidLoad];
     
-
+    isMove=NO;
     if (ios7) {
         [self setNeedsStatusBarAppearanceUpdate];
     }
@@ -52,7 +52,7 @@
     {
         self.titlelabel.text = NSLocalizedString(@"UpPic", @"");
     }
-    
+    self.istrain=@"0";
     
     UIButton *buttonBack=[UIButton buttonWithType:UIButtonTypeCustom];
     buttonBack.frame=CGRectMake(10, 5, 34, 35);
@@ -95,18 +95,7 @@
     }
     [presetBtn addTarget:self action:@selector(presetMedia:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:presetBtn];
-    
-    
-    // 输入框
-    
-//    UIView *inputView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-//    inputView.backgroundColor = [UIColor clearColor];
-//    UIButton *inputBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [inputBtn setTitle:@"图" forState:UIControlStateNormal];
-//    [inputBtn setBackgroundImage:[UIImage imageNamed:@"applyAll.png"] forState:UIControlStateNormal];
-//    [inputBtn setFrame:CGRectMake(320 - 50, 0, 50, 40)];
-//    [inputBtn addTarget:self action:@selector(endEdit:) forControlEvents:UIControlEventTouchUpInside];
-//    [inputView addSubview:inputBtn];
+
     
     contentTV = [[UITextView alloc] initWithFrame:CGRectMake(thumbImgV.frame.origin.x + thumbImgV.frame.size.width + 10, thumbImgV.frame.origin.y - 7, 200, 90)];
     contentTV.text = NSLocalizedString(@"descripe", @"");
@@ -131,32 +120,6 @@
     
       GKUserLogin *user=[GKUserLogin currentLogin];
     
-//    GKPhotoTagScrollView *tagView = [[GKPhotoTagScrollView alloc] initWithFrame:CGRectMake(boardImageView.frame.origin.x - 5, boardImageView.frame.origin.y + boardImageView.frame.size.height + 5, boardImageView.frame.size.width + 10, iphone5 ? boardImageView.frame.size.height : 85)];
-//    tagView.backgroundColor = [UIColor clearColor];
-//    tagView.tagDelegate = self;
-//    [self.view addSubview:tagView];
-//    [tagView release];
-//    
-//    
-//  
-//    
-//    NSString* strLanguage = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
-//    //        NSLog(@"%@",strLanguage);
-//    if ([strLanguage isEqualToString:@"zh-Hans"])
-//    {
-//        if (nil != [user.photoTagArray objectAtIndex:0] && [[user.photoTagArray objectAtIndex:0] isKindOfClass:[NSArray class]])
-//        {
-//            [tagView setPhotoTags:[user.photoTagArray objectAtIndex:0]];
-//        }
-//    }
-//    else
-//    {
-//        if (nil != [user.photoTagArray objectAtIndex:1] && [[user.photoTagArray objectAtIndex:1] isKindOfClass:[NSArray class]])
-//        {
-//            [tagView setPhotoTags:[user.photoTagArray objectAtIndex:1]];
-//        }
-//        
-//    }
     
     NSInteger col=([user.studentArr count] )/4; //行
     //int row=([user.studentArr count] )%4;
@@ -169,18 +132,6 @@
     studentView.studentArr=user.studentArr;
     [self.view addSubview:studentView];
     [studentView release];
-    
-    
-//    NSLog(@"%f--%f--%f---%f",self.view.frame.size.height,studentView.frame.size.height,boardImageView.frame.size.height,boardImageView.frame.origin.y);
-    
-//    NSLog(@"%f",self.view.frame.size.height-studentView.frame.size.height-boardImageView.frame.size.height-boardImageView.frame.origin.y);
-    
-//    GKPhotoTagScrollView *tagView = [[GKPhotoTagScrollView alloc] initWithFrame:CGRectMake(boardImageView.frame.origin.x - 5, boardImageView.frame.origin.y + boardImageView.frame.size.height + 5, boardImageView.frame.size.width + 10,(iphone5 ? 548 : 460) + (ios7 ? 20 : 0)-studentView.frame.size.height-boardImageView.frame.size.height-boardImageView.frame.origin.y-5)];
-//    tagView.backgroundColor = [UIColor clearColor];
-//    tagView.tagDelegate = self;
-//    [self.view addSubview:tagView];
-//    [tagView release];
-
 
     GKPhotoTagScrollView *tagView = [[GKPhotoTagScrollView alloc] initWithFrame:CGRectMake(boardImageView.frame.origin.x - 5, boardImageView.frame.origin.y + boardImageView.frame.size.height + 5, boardImageView.frame.size.width + 10,(iphone5 ? 548 : 460) + (ios7 ? 20 : 0)-studentView.frame.size.height-boardImageView.frame.size.height-boardImageView.frame.origin.y-5)];
 
@@ -196,13 +147,51 @@
     [tagView setPhotoTags:user.photoTagArray];
     
 
+  //  if(user.istrain==1)
+  //  {
+        UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [registerBtn setBackgroundImage:[UIImage imageNamed:@"zhushi1.png"] forState:UIControlStateNormal];
+        [registerBtn setBackgroundImage:[UIImage imageNamed:@"zhushi.png"] forState:UIControlStateHighlighted];
+        [registerBtn setFrame:CGRectMake(10, 100, 50, 50)];
+        [registerBtn addTarget:self action:@selector(registerBtbClicik:) forControlEvents:UIControlEventTouchUpInside];
+        [registerBtn addTarget:self action:@selector(dragMoving:withEvent: )forControlEvents: UIControlEventTouchDragInside];
+        [registerBtn addTarget:self action:@selector(dragEnded:withEvent: )forControlEvents: UIControlEventTouchDragExit];
+        [self.view addSubview:registerBtn];
+   // }
+    
 
     self.photoTag=[NSMutableArray array];
 
     self.stuList = [NSMutableArray array];
     
 }
+-(void)registerBtbClicik:(UIButton *)btn
+{
+    if(isMove==NO)
+    {
+        if([self.istrain isEqualToString:@"0"])
+        {
+            self.istrain=@"1";
+        }
+        else
+        {
+            self.istrain=@"0";
+        }
+        NSLog(@"单击");
+    }
+    isMove=NO;
+}
+- (void) dragMoving: (UIControl *) c withEvent:(UIEvent *)ev
+{
+    NSLog(@"移动");
+    isMove=YES;
+    c.center = [[[ev allTouches] anyObject] locationInView:self.view];
+}
 
+- (void) dragEnded: (UIControl *) c withEvent:(UIEvent *)ev
+{
+    c.center = [[[ev allTouches] anyObject] locationInView:self.view];
+}
 - (void)endEdit:(id)sender
 {
     [self.view endEditing:YES];
@@ -303,7 +292,11 @@
         
         fvc.moviePath = filenamePath;
     }
-    [self presentModalViewController:fvc animated:YES];
+    //[self presentModalViewController:fvc animated:YES];
+    
+    [self presentViewController:fvc animated:YES completion:^{
+        
+    }];
     [fvc release];
     
 }
@@ -447,6 +440,7 @@
     [[DBManager shareInstance]insertObject:^(NSManagedObject *object) {
         UpLoader *aa=(UpLoader *)object;
         aa.image=filePath;
+        aa.istrain=[NSNumber numberWithInteger:[self.istrain integerValue]];
         aa.nameID=[NSString stringWithFormat:@"draft%@",timestamp];
         aa.classUid=[NSNumber numberWithInteger:[user.classInfo.uid integerValue]];
         aa.name=imageName;
@@ -487,11 +481,17 @@
     
     if (self.isPresent)
     {
-        [self dismissModalViewControllerAnimated:YES];
+      //  [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
     }
     else
     {
-        [self.navigationController dismissModalViewControllerAnimated:YES];
+       // [self.navigationController dismissModalViewControllerAnimated:YES];
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
     }
     
     
@@ -506,7 +506,9 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
     }
 }
 
@@ -521,7 +523,9 @@
             return;
         }
         
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
         return;
     }
     
@@ -533,7 +537,9 @@
     }
     else
     {
-        [self.navigationController dismissModalViewControllerAnimated:YES];
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
         return;
     }
 }
@@ -567,7 +573,10 @@
         }];
         
         
-        [self.navigationController dismissModalViewControllerAnimated:YES];
+       // [self.navigationController dismissModalViewControllerAnimated:YES];
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
     }
     else if (buttonIndex == 1)
     {
@@ -575,7 +584,10 @@
 //        NSString* path = [NSTemporaryDirectory() stringByAppendingPathComponent:filename];
         [[NSFileManager defaultManager] removeItemAtPath:self.moviePath error:nil];
         
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        //[self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
     }
 }
 

@@ -67,7 +67,7 @@
     UILabel *labelTitle=[[UILabel alloc]initWithFrame:CGRectMake(30, 10, 280, size.height)];
     labelTitle.backgroundColor=[UIColor clearColor];
     labelTitle.numberOfLines=0;
-    labelTitle.lineBreakMode=UILineBreakModeWordWrap;
+    labelTitle.lineBreakMode=NSLineBreakByWordWrapping;
     labelTitle.font=[UIFont systemFontOfSize:16];
     labelTitle.text=shareContent.shareTitle;
     [contentView addSubview:labelTitle];
@@ -79,7 +79,7 @@
     timeLabel.font=[UIFont systemFontOfSize:12];
     timeLabel.text=timeStr;
     timeLabel.textColor = [UIColor colorWithRed:128/255.0 green:128/255.0 blue:128/255.0 alpha:1.0f];
-    timeLabel.textAlignment=UITextAlignmentLeft;
+    timeLabel.textAlignment=NSTextAlignmentLeft;
     [contentView addSubview:timeLabel];
     [timeLabel release];
     size=[shareContent.shareContent sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(280, 1000) lineBreakMode:NSLineBreakByWordWrapping];

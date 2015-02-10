@@ -43,10 +43,9 @@
     
         textLabel.font=[UIFont systemFontOfSize:15];
         textLabel.textColor=[UIColor whiteColor];
-        if(IOSVERSION>=6.0)
-            textLabel.textAlignment=NSTextAlignmentCenter;
-        else
-            textLabel.textAlignment=UITextAlignmentCenter;
+      
+        textLabel.textAlignment=NSTextAlignmentCenter;
+       
         [imageView addSubview:textLabel];
     
     }

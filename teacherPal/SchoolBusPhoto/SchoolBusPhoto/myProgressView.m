@@ -35,7 +35,7 @@
         processLabel.backgroundColor=[UIColor clearColor];
         processLabel.font=[UIFont systemFontOfSize:10];
         processLabel.textColor=[UIColor colorWithRed:74/255.0 green:154/255.0 blue:177/255.0 alpha:1];
-        processLabel.textAlignment=UITextAlignmentCenter;
+        processLabel.textAlignment=NSTextAlignmentCenter;
         processLabel.text=@"0%";
         [self addSubview:processLabel];
         

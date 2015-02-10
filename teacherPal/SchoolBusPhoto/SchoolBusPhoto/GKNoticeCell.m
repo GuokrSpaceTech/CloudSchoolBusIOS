@@ -69,10 +69,9 @@
         huizhiLabel=[[UILabel alloc]initWithFrame:CGRectZero];
         huizhiLabel.backgroundColor=[UIColor clearColor];
         huizhiLabel.font=[UIFont systemFontOfSize:10];;
-        if(IOSVERSION>=6.0)
-            huizhiLabel.textAlignment=NSTextAlignmentRight;
-        else
-            huizhiLabel.textAlignment=UITextAlignmentRight;
+       
+        huizhiLabel.textAlignment=NSTextAlignmentRight;
+     
         [self.contentView addSubview:huizhiLabel];
         
         contentlabel=[[HTCopyableLabel alloc]initWithFrame:CGRectZero];

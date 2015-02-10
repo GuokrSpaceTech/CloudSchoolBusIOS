@@ -236,7 +236,11 @@
     NSString *emailBody = @"";
     [mailPicker setMessageBody:emailBody isHTML:YES];
     
-    [self presentModalViewController: mailPicker animated:YES];
+    //[self presentModalViewController: mailPicker animated:YES];
+    [self presentViewController:mailPicker animated:YES completion:^{
+        
+    }];
+    
     [mailPicker release];
 }
 - (void)mailComposeController:(MFMailComposeViewController *)controller

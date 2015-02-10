@@ -56,7 +56,12 @@
    // NSMutableArray *alreadyArr;
     
   //  NSDictionary * stuList;
+    
+    
+    
 }
+
+@property (nonatomic,retain)NSMutableArray *registerArr;
 //@property int type;
 @property (nonatomic,assign)id<showViewController>delegate;
 @property (nonatomic,retain)NSMutableArray *assetArr;

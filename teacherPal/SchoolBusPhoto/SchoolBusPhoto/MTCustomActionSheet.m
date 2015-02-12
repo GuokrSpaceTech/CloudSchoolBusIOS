@@ -63,7 +63,7 @@
             label.tag = 888 + i;
             label.lineBreakMode = NSLineBreakByWordWrapping;
             label.numberOfLines = 0;
-            label.textAlignment = UITextAlignmentCenter;
+            label.textAlignment = NSTextAlignmentCenter;;
             [mainView addSubview:label];
             [label release];
         }
@@ -144,7 +144,7 @@
             UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 10, 320 - 50, 30)];
             titleLabel.text = title;
             titleLabel.backgroundColor = [UIColor clearColor];
-            titleLabel.textAlignment = UITextAlignmentCenter;
+            titleLabel.textAlignment = NSTextAlignmentCenter;;
             [mainView addSubview:titleLabel];
             [titleLabel release];
             

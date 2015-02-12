@@ -120,6 +120,7 @@ static GKLoaderManager *manager=nil;
                 wraper.classid=loader.classUid;
                 wraper.teacherid=loader.teacherid;
                 wraper.imageData=loader.smallImage;
+                wraper.isregister=loader.istrain;
                 [upArr addObject:wraper];
                 [GKFindWraper addUpWrapper:wraper Key:loader.nameID];
                 
@@ -129,7 +130,7 @@ static GKLoaderManager *manager=nil;
                 //        [[GKUpQueue creatQueue] addRequestToQueue:loader.image name:loader.name nameid:loader.nameID studentid:loader.studentId time:loader.ftime fize:loader.fsize classID:loader.classUid];
                 
                 
-                [[GKUpQueue creatQueue]addRequestToQueue:wraper.path name:wraper.name nameid:wraper.nameid studentid:wraper.tid time:wraper.time fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag teacherid:wraper.teacherid];
+                [[GKUpQueue creatQueue]addRequestToQueue:wraper.path name:wraper.name nameid:wraper.nameid studentid:wraper.tid time:wraper.time fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag teacherid:wraper.teacherid resgister:wraper.isregister];
                 [wraper release];
             }
         });
@@ -161,7 +162,7 @@ static GKLoaderManager *manager=nil;
     return [arr objectAtIndex:0];
 
 }
--(void)addWraperToArr:(NSString *)path name:(NSString *)name iSloading:(NSNumber *)isUploading nameId:(NSString *)nameId studentId:(NSString *)tid time:(NSNumber *)time fsize:(NSNumber *)fize classID:(NSNumber *)classid intro:(NSString *)intro data:(NSData *)imageData tag:(NSString *)tag teacherid:(NSNumber*)teacherid
+-(void)addWraperToArr:(NSString *)path name:(NSString *)name iSloading:(NSNumber *)isUploading nameId:(NSString *)nameId studentId:(NSString *)tid time:(NSNumber *)time fsize:(NSNumber *)fize classID:(NSNumber *)classid intro:(NSString *)intro data:(NSData *)imageData tag:(NSString *)tag teacherid:(NSNumber*)teacherid isregister:(NSNumber *)istrain
 {
     if([GKFindWraper getBookWrapper:nameId]==nil)
     {
@@ -181,12 +182,13 @@ static GKLoaderManager *manager=nil;
         wraper.imageData=imageData;
         wraper.tag = tag;
         wraper.teacherid=teacherid;
+        wraper.isregister=istrain;
         [upArr addObject:wraper];
         [wraper release];
         [GKFindWraper addUpWrapper:wraper Key:nameId];
         
 
-        [[GKUpQueue creatQueue]addRequestToQueue:wraper.path name:wraper.name nameid:wraper.nameid studentid:wraper.tid time:wraper.time fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag teacherid:teacherid];
+        [[GKUpQueue creatQueue]addRequestToQueue:wraper.path name:wraper.name nameid:wraper.nameid studentid:wraper.tid time:wraper.time fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag teacherid:teacherid resgister:wraper.isregister];
        // [[GKUpQueue creatQueue] addRequestToQueue:path name:imageName nameid:nameId studentid:tid time:time fize:fize classID:classid];
         
         
@@ -288,7 +290,7 @@ static GKLoaderManager *manager=nil;
     
     for (int i=0; i<[upArr count]; i++) {
         GKUpWraper *wraper=[upArr objectAtIndex:i];
-        [[GKUpQueue creatQueue]   addRequestToQueue:wraper.path name:wraper.name   nameid:wraper.nameid studentid:wraper.tid time:wraper.time   fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag teacherid:wraper.teacherid];
+        [[GKUpQueue creatQueue]   addRequestToQueue:wraper.path name:wraper.name   nameid:wraper.nameid studentid:wraper.tid time:wraper.time   fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag teacherid:wraper.teacherid resgister:wraper.isregister];
 
     }
     
@@ -322,7 +324,7 @@ static GKLoaderManager *manager=nil;
     if([wraper.isUploading integerValue]!=10)
     {
         wraper.isUploading=[NSNumber numberWithInt:10];
-        [[GKUpQueue creatQueue]   addRequestToQueue:wraper.path name:wraper.name   nameid:wraper.nameid studentid:wraper.tid time:wraper.time   fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag teacherid:wraper.teacherid];
+        [[GKUpQueue creatQueue]   addRequestToQueue:wraper.path name:wraper.name   nameid:wraper.nameid studentid:wraper.tid time:wraper.time   fize:wraper.fize classID:wraper.classid intro:wraper.intro tag:wraper.tag teacherid:wraper.teacherid resgister:wraper.isregister];
     }
     
     

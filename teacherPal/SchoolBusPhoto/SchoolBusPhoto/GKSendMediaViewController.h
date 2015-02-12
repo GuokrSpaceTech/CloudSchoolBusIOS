@@ -14,7 +14,7 @@
 
 @interface GKSendMediaViewController : GKBaseViewController<UIActionSheetDelegate,studentViewDelegate,UITextViewDelegate,GKPhotoTagScrollViewDelegate,UIAlertViewDelegate>
 {
-    
+    UIButton *registerBtn;
     UITextView *contentTV;
     UILabel *calWordsLab;
     UIImageView *thumbImgV;

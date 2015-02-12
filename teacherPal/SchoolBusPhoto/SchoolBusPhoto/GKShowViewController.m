@@ -220,11 +220,10 @@
     
     if(user.istrain==1)
     {
-        UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [registerBtn setBackgroundImage:[UIImage imageNamed:@"zhushi1.png"] forState:UIControlStateNormal];
-        [registerBtn setBackgroundImage:[UIImage imageNamed:@"zhushi.png"] forState:UIControlStateHighlighted];
+        registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [registerBtn setBackgroundImage:[UIImage imageNamed:@"register.png"] forState:UIControlStateNormal];
         [registerBtn setFrame:CGRectMake(10, picView.frame.size.height-80, 50, 50)];
-        [registerBtn addTarget:self action:@selector(registerBtbClicik:) forControlEvents:UIControlEventTouchUpInside];
+        [registerBtn addTarget:self action:@selector(registerBtbClicik1:) forControlEvents:UIControlEventTouchUpInside];
         [picView addSubview:registerBtn];
     }
     
@@ -233,7 +232,7 @@
 
 
 }
--(void)registerBtbClicik:(UIButton *)btn
+-(void)registerBtbClicik1:(UIButton *)btn
 {
     int i= currentpage;
     
@@ -243,6 +242,7 @@
     {
         //赋值为1
         //图标变为 签到状态
+        [registerBtn setBackgroundImage:[UIImage imageNamed:@"registerH.png"] forState:UIControlStateNormal];
         [self.registerArr replaceObjectAtIndex:i withObject:@"1"];
         
     }
@@ -250,6 +250,7 @@
     {
         //赋值为0
         //图标变为 未签到状态
+        [registerBtn setBackgroundImage:[UIImage imageNamed:@"register.png"] forState:UIControlStateNormal];
         [self.registerArr replaceObjectAtIndex:i withObject:@"0"];
     }
     
@@ -370,10 +371,6 @@
             [tempDic  setObject:tagIdArr forKey:@"tagid"];
             [tempDic setObject:tagStrArr forKey:@"tag"];
             
-            //[tempDic setObject:tagTxt forKey:@"tag"];
-            //[tempDic setObject:[NSNumber numberWithInt:_tagid] forKey:@"tagid"];
-            
-           // sayView.contextView.text=[[dic objectForKey:key] objectForKey:@"text"];
             break;
         }
  
@@ -1066,7 +1063,7 @@
             
             NSLog(@"写数据库成功 ----------------------上传数据");
             
-        [manager addWraperToArr:filenamePath name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithLong:representation.size] classID:[NSNumber numberWithLong:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:tagcontent teacherid:teacherid];
+        [manager addWraperToArr:filenamePath name:representation.filename iSloading:[NSNumber numberWithInt:1] nameId:photo.nameId studentId:studentId time:[NSNumber numberWithInt:ftime] fsize:[NSNumber numberWithLong:representation.size] classID:[NSNumber numberWithLong:[user.classInfo.uid integerValue]] intro:introduce data:UIImageJPEGRepresentation(thumbiamge, 0.5) tag:tagcontent teacherid:teacherid isregister:[NSNumber numberWithInteger:[registerStr integerValue]]];
 
             
         } failed:^(NSError *err) {
@@ -1229,7 +1226,7 @@
         // 设置 选过的页面
         //[self reloadScrollerImage];
         [self setAlreayStudent];
-        
+        [self setistrain];
         [self addImageViewToScroller:currentpage - 1];
         [self addImageViewToScroller:currentpage];
         [self addImageViewToScroller:currentpage + 1];
@@ -1251,7 +1248,18 @@
     
     
 }
-
+-(void)setistrain
+{
+    NSString *istrain=[_registerArr objectAtIndex:currentpage];
+    if([istrain isEqualToString:@"0"])
+    {
+          [registerBtn setBackgroundImage:[UIImage imageNamed:@"register.png"] forState:UIControlStateNormal];
+    }
+    if([istrain isEqualToString:@"1"])
+    {
+          [registerBtn setBackgroundImage:[UIImage imageNamed:@"registerH.png"] forState:UIControlStateNormal];
+    }
+}
 -(void)setAlreayStudent
 {
     

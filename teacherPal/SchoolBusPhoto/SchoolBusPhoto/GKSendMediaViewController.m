@@ -147,17 +147,16 @@
     [tagView setPhotoTags:user.photoTagArray];
     
 
-  //  if(user.istrain==1)
-  //  {
-        UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [registerBtn setBackgroundImage:[UIImage imageNamed:@"zhushi1.png"] forState:UIControlStateNormal];
-        [registerBtn setBackgroundImage:[UIImage imageNamed:@"zhushi.png"] forState:UIControlStateHighlighted];
+    if(user.istrain==1)
+    {
+        registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [registerBtn setBackgroundImage:[UIImage imageNamed:@"register.png"] forState:UIControlStateNormal];
         [registerBtn setFrame:CGRectMake(10, 100, 50, 50)];
         [registerBtn addTarget:self action:@selector(registerBtbClicik:) forControlEvents:UIControlEventTouchUpInside];
         [registerBtn addTarget:self action:@selector(dragMoving:withEvent: )forControlEvents: UIControlEventTouchDragInside];
         [registerBtn addTarget:self action:@selector(dragEnded:withEvent: )forControlEvents: UIControlEventTouchDragExit];
         [self.view addSubview:registerBtn];
-   // }
+    }
     
 
     self.photoTag=[NSMutableArray array];
@@ -172,10 +171,12 @@
         if([self.istrain isEqualToString:@"0"])
         {
             self.istrain=@"1";
+            [registerBtn setBackgroundImage:[UIImage imageNamed:@"registerH.png"] forState:UIControlStateNormal];
         }
         else
         {
             self.istrain=@"0";
+            [registerBtn setBackgroundImage:[UIImage imageNamed:@"register.png"] forState:UIControlStateNormal];
         }
         NSLog(@"单击");
     }
@@ -457,7 +458,7 @@
         
         NSLog(@"cccccfggggg");
         
-        [manager addWraperToArr:filePath name:imageName iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInteger:fise] classID:[NSNumber numberWithInteger:[user.classInfo.uid integerValue]] intro:([contentTV.text isEqualToString:NSLocalizedString(@"descripe", @"")] ? @"" : contentTV.text) data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(([photoTag count]==0)?@"":temp) teacherid:teacherid];
+        [manager addWraperToArr:filePath name:imageName iSloading:[NSNumber numberWithInt:1] nameId:[NSString stringWithFormat:@"draft%@",timestamp] studentId:students time:[NSNumber numberWithInt:[timestamp intValue]] fsize:[NSNumber numberWithInteger:fise] classID:[NSNumber numberWithInteger:[user.classInfo.uid integerValue]] intro:([contentTV.text isEqualToString:NSLocalizedString(@"descripe", @"")] ? @"" : contentTV.text) data:UIImageJPEGRepresentation(thumbImgV.image, 0.1) tag:(([photoTag count]==0)?@"":temp) teacherid:teacherid isregister:[NSNumber numberWithInteger:[self.istrain integerValue]]];
         
         
     } failed:^(NSError *err) {

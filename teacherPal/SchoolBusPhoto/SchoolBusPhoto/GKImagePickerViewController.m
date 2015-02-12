@@ -195,14 +195,9 @@
             UILabel *label =(UILabel *)view;
             if(![label.text isEqualToString:NSLocalizedString(@"ignore", @"")])
             {
-                if(IOSVERSION>=6.0)
-                {
-                    label.textAlignment=NSTextAlignmentLeft;
-                }
-                else
-                {
-                    label.textAlignment=UITextAlignmentLeft;
-                }
+
+                label.textAlignment=NSTextAlignmentLeft;
+
 
             }
         }

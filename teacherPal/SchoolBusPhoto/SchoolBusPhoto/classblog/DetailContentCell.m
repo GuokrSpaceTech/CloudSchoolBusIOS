@@ -66,7 +66,7 @@
         rLabel.textColor = [UIColor colorWithRed:145/255.0f green:166/255.0f blue:179/255.0f alpha:1.0f];
         rLabel.backgroundColor = [UIColor clearColor];
         rLabel.font=[UIFont systemFontOfSize:15];
-        rLabel.lineBreakMode=UILineBreakModeWordWrap|UILineBreakModeTailTruncation;
+        rLabel.lineBreakMode=NSLineBreakByWordWrapping|NSLineBreakByTruncatingTail;
         rLabel.hidden = NO;
         [self.contentView addSubview:rLabel];
         [rLabel release];
@@ -77,7 +77,7 @@
         ctntLabel.textColor = [UIColor colorWithRed:80/255.0 green:80/255.0 blue:80/255.0 alpha:1.0f];
         ctntLabel.font=[UIFont systemFontOfSize:15];
         ctntLabel.numberOfLines = 0;
-        ctntLabel.lineBreakMode=UILineBreakModeWordWrap|UILineBreakModeTailTruncation;
+        ctntLabel.lineBreakMode=NSLineBreakByWordWrapping|NSLineBreakByTruncatingTail;
         ctntLabel.hidden = NO;
         [self.contentView addSubview:ctntLabel];
         [ctntLabel release];
@@ -85,7 +85,7 @@
         
         UILabel *timeLab = [[UILabel alloc] initWithFrame:CGRectMake(self.titleLabel.frame.origin.x + self.titleLabel.frame.size.width + 5, self.titleLabel.frame.origin.y, 105, 20)];
         timeLab.textColor = [UIColor colorWithRed:128/255.0 green:128/255.0 blue:128/255.0 alpha:1.0f];
-        timeLab.textAlignment = UITextAlignmentRight;
+        timeLab.textAlignment = NSTextAlignmentRight;
         timeLab.font=[UIFont systemFontOfSize:12];
         timeLab.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:timeLab];

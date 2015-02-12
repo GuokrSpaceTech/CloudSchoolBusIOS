@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSNumber * fize;
 @property (nonatomic, retain) NSNumber * classid;
 @property (nonatomic, retain) NSNumber * teacherid;
+@property (nonatomic, retain) NSNumber * isregister;
 @property (nonatomic,retain)NSString *intro;
 @property (nonatomic,retain)myProgressView *_progressView;
 @property (nonatomic,retain)NSData *imageData;

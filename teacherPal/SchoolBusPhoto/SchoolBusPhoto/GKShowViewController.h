@@ -56,7 +56,7 @@
    // NSMutableArray *alreadyArr;
     
   //  NSDictionary * stuList;
-    
+    UIButton *registerBtn ;
     
     
 }

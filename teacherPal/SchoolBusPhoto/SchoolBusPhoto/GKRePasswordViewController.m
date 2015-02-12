@@ -83,10 +83,8 @@
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(20, 20+(ios7?(20+hight):hight) + i*(20+30), 100, 30)];
         label.backgroundColor=[UIColor clearColor];
         label.text=[arrlable objectAtIndex:i];
-        if(IOSVERSION<6.0)
-            label.textAlignment=UITextAlignmentLeft;
-        else
-            label.textAlignment=NSTextAlignmentLeft;
+
+        label.textAlignment=NSTextAlignmentLeft;
         label.font=[UIFont systemFontOfSize:15];
         [self.view addSubview:label];
         [label release];

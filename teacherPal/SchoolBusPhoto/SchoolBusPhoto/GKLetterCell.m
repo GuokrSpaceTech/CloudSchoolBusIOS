@@ -46,10 +46,9 @@
         
            
         labelcontent.numberOfLines=0;
-        if(IOSVERSION>=6.0)
-            labelcontent.lineBreakMode=NSLineBreakByWordWrapping;
-        else
-            labelcontent.lineBreakMode=UILineBreakModeWordWrap;
+       
+        labelcontent.lineBreakMode=NSLineBreakByWordWrapping;
+   
         [self.contentView addSubview:labelcontent];
         
     }

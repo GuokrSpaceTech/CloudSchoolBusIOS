@@ -60,7 +60,7 @@ static GKUpQueue *gkqueue=nil;
 
     }
 }
--(void)addRequestToQueue:(NSString *)path name:(NSString *)name nameid:(NSString *)nameId studentid:(NSString *)std time:(NSNumber *)time fize:(NSNumber *)fsize classID:(NSNumber *)classid intro:(NSString *)intro tag:(NSString *)tag teacherid:(NSNumber *)teacherid
+-(void)addRequestToQueue:(NSString *)path name:(NSString *)name nameid:(NSString *)nameId studentid:(NSString *)std time:(NSNumber *)time fize:(NSNumber *)fsize classID:(NSNumber *)classid intro:(NSString *)intro tag:(NSString *)tag teacherid:(NSNumber *)teacherid resgister:(NSNumber *)resgister
 {
     //NSLog(@"%@",tag);
     
@@ -108,7 +108,7 @@ static GKUpQueue *gkqueue=nil;
     [request addPostValue:classid forKey:@"uid"];
     [request addPostValue:intro forKey:@"intro"];
     [request addPostValue:tag forKey:@"tag"];
-    [request addPostValue:@"1" forKey:@"register"];
+    [request addPostValue:resgister forKey:@"register"];
     [request addPostValue:teacherid forKey:@"teacherid"];
     [request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:nameId,@"nameid",path,@"path",nil]];
     [request addPostValue:[self fileName] forKey:@"pickey"];

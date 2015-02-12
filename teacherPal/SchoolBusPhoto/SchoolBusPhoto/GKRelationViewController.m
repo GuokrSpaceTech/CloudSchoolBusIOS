@@ -116,10 +116,9 @@
     UILabel *labeltip=[[UILabel alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-40, self.view.frame.size.width, 30)];
     labeltip.userInteractionEnabled=YES;
     labeltip.backgroundColor=[UIColor clearColor];
-    if(IOS7OFFSET>=6.0)
-        labeltip.textAlignment=NSTextAlignmentCenter;
-    else
-        labeltip.textAlignment=UITextAlignmentCenter;
+  
+    labeltip.textAlignment=NSTextAlignmentCenter;
+
     labeltip.text=NSLocalizedString(@"telhelpdiffient", @"");
     labeltip.font=[UIFont systemFontOfSize:12];
     [self.view addSubview:labeltip];

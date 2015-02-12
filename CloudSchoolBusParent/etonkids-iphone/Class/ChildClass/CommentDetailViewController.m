@@ -904,14 +904,12 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
 
 -(void) getEKResponse:(id) response forMethod:(RequestFunction) method resultCode:(int) code withParam:(NSDictionary *)param
 {
-    
     UserLogin * user = [UserLogin currentLogin];
     
     if (user.can_comment_action != nil && [user.can_comment_action isEqualToString:@"1"]) {
         upBtn.userInteractionEnabled = YES; //重置 防止点击多次
     }
-
-    else if (code == -1115)
+    if (code == -1115)
     {
         ETCustomAlertView *alert=[[ETCustomAlertView alloc]initWithTitle:LOCAL(@"alert", @"提示") message:LOCAL(@"fufei", @"") delegate:nil cancelButtonTitle:LOCAL(@"ok", @"确定") otherButtonTitles:nil, nil];
         [alert show];
@@ -937,10 +935,6 @@ PicArr,shareContent,comList,upList,upAI,cmtAI,movieBackView,radial,downloader,mP
                 [cmtAI stopAnimating];
                 self.comList = [NSMutableArray arrayWithArray:result];
                 
-//                self.shareContent.commentnum = [NSNumber numberWithInt:self.comList.count];
-                
-                
-                                
             }
             else if ([isGet isEqualToString:@"1"]) {
                 // 赞列表.

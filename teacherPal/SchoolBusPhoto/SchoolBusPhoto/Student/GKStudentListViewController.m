@@ -80,10 +80,9 @@
     numLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
     numLabel.backgroundColor=[UIColor clearColor];
     numLabel.textColor=[UIColor whiteColor];
-    if(IOSVERSION>=6.0)
-        numLabel.textAlignment=NSTextAlignmentCenter;
-    else
-        numLabel.textAlignment=UITextAlignmentCenter;
+
+    numLabel.textAlignment=NSTextAlignmentCenter;
+
     numLabel.font=[UIFont systemFontOfSize:14];
     numLabel.text=[NSString stringWithFormat:@"%@%lu",NSLocalizedString(@"studentCount", @""),(unsigned long)self.studentArr.count];
     [bottomView addSubview:numLabel];

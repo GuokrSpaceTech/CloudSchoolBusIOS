@@ -53,10 +53,8 @@
     _versionLabel.textColor=[UIColor whiteColor];
     _versionLabel.font=[UIFont systemFontOfSize:12];
     _versionLabel.backgroundColor=[UIColor clearColor];
-    if(IOSVERSION>=6.0)
-        _versionLabel.textAlignment=NSTextAlignmentCenter;
-    else
-        _versionLabel.textAlignment=UITextAlignmentCenter;
+    _versionLabel.textAlignment=NSTextAlignmentCenter;
+
     _versionLabel.text=[NSString stringWithFormat:@"V%@",CURRENTVERSION];
     [_iconImageView addSubview:_versionLabel];
     [_versionLabel release];
@@ -274,8 +272,10 @@
         default:
             break;
     }
-    
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+   // [self dismissModalViewControllerAnimated:YES];
 }
 - (void) alertWithTitle: (NSString *)_title_ msg: (NSString *)msg
 {

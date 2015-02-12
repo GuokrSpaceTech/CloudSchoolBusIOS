@@ -140,14 +140,9 @@
         UILabel *lable=[[UILabel alloc]initWithFrame:CGRectMake(130, 110+50*i, 150, 30)];
         lable.backgroundColor=[UIColor clearColor];
         lable.tag=LABELTAG+i;
-        if(IOSVERSION>=6.0)
-        {
-            lable.textAlignment=NSTextAlignmentCenter;
-        }
-        else
-        {
-            lable.textAlignment=UITextAlignmentCenter;
-        }
+  
+        lable.textAlignment=NSTextAlignmentCenter;
+  
         UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClick:)];
         tap.numberOfTapsRequired=1;
         [lable addGestureRecognizer:tap];

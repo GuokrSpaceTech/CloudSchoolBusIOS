@@ -229,6 +229,7 @@
                 NSArray * tagList=[myDic objectForKey:@"taglist"];
                 share.tagArr=tagList;
                 share.shareContent=[myDic objectForKey:@"content"];
+                share.isregister=[[myDic objectForKey:@"isregister"] integerValue];
                 share.shareTitle=[myDic objectForKey:@"title"];
                 share.upnum=[myDic objectForKey:@"upnum"];
                 share.shareKey = [myDic objectForKey:@"articlekey"];
@@ -591,7 +592,14 @@
             cell.tag = indexPath.row;
             GKClassBlog *sContent=[self.list objectAtIndex:indexPath.row];
             float calculateHeight = 0; // add up height.
-            
+            if(sContent.isregister==1)
+            {
+                cell.photoRegisterView.hidden=NO;
+            }
+            else
+            {
+                cell.photoRegisterView.hidden=YES;
+            }
             
             CGSize contentSize = [sContent.shareContent sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:NSLineBreakByWordWrapping];
             
@@ -658,7 +666,7 @@
                 }];
                 
                 cell.picImageView.frame = CGRectMake(5, calculateHeight + 10 , _tableView.frame.size.width-10, 200);
-                
+                cell.photoRegisterView.frame=CGRectMake(5, calculateHeight + 10+5, 57, 46);
             }
             else
             {

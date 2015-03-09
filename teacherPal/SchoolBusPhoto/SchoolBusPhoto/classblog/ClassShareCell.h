@@ -66,7 +66,7 @@ typedef enum{
     
     
 }
-
+@property (nonatomic,retain)    UIImageView * photoRegisterView;
 @property(nonatomic,assign) id<ClassShareCellDelegate>delegate;
 @property(nonatomic,retain) UILabel *titleLabel;
 @property(nonatomic,retain) UILabel *contentLabel;

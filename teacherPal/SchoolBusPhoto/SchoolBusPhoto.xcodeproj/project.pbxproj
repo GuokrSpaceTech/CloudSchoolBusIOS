@@ -391,6 +391,7 @@
 		11E27F92183C709700CAE0BB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11E27F91183C709700CAE0BB /* MessageUI.framework */; };
 		11E27F94183C72FC00CAE0BB /* clean.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E27F93183C72FC00CAE0BB /* clean.png */; };
 		11E27F96183C731F00CAE0BB /* textfield123.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E27F95183C731F00CAE0BB /* textfield123.png */; };
+		11E79D331AA475C5001B5E3C /* photo_register@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E79D321AA475C5001B5E3C /* photo_register@2x.png */; };
 		11E933F619AB2F55000CB50C /* defaultattendance.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E933F519AB2F55000CB50C /* defaultattendance.png */; };
 		11ECEDD01946E3AC00BFB85A /* GKImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11ECEDCF1946E3AC00BFB85A /* GKImageView.m */; };
 		11EFE1D71817ACA3009CE69F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11EFE1D61817ACA3009CE69F /* QuartzCore.framework */; };
@@ -1079,6 +1080,7 @@
 		11E27F91183C709700CAE0BB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		11E27F93183C72FC00CAE0BB /* clean.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clean.png; sourceTree = "<group>"; };
 		11E27F95183C731F00CAE0BB /* textfield123.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textfield123.png; sourceTree = "<group>"; };
+		11E79D321AA475C5001B5E3C /* photo_register@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_register@2x.png"; sourceTree = "<group>"; };
 		11E933F519AB2F55000CB50C /* defaultattendance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultattendance.png; sourceTree = "<group>"; };
 		11ECEDCE1946E3AC00BFB85A /* GKImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKImageView.h; sourceTree = "<group>"; };
 		11ECEDCF1946E3AC00BFB85A /* GKImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKImageView.m; sourceTree = "<group>"; };
@@ -1649,6 +1651,7 @@
 		119EA9CA1816444C0070DBF1 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				11E79D321AA475C5001B5E3C /* photo_register@2x.png */,
 				11A1DC941A8C80BE005A03C1 /* register.png */,
 				11A1DC951A8C80BE005A03C1 /* registerH.png */,
 				111A48071A42C6A000C483B7 /* yellowPoint.png */,
@@ -2356,6 +2359,7 @@
 				11B470D81925CB5300CFFEC3 /* headplaceholder_big.png in Resources */,
 				11AF3B0B18168C0200B36176 /* loginback3.0.png in Resources */,
 				78709C1A187D1733009250FB /* navbar-button-back-black-alt-active@2x.png in Resources */,
+				11E79D331AA475C5001B5E3C /* photo_register@2x.png in Resources */,
 				119F0CA3181A216100A5910C /* about.png in Resources */,
 				1193A6D2182C8653004011BC /* loginBG.png in Resources */,
 				11AF3B1118168D5C00B36176 /* aa.png in Resources */,

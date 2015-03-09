@@ -73,6 +73,19 @@
     _tableView.backgroundColor=[UIColor colorWithRed:232/255.0 green:229/255.0 blue:220/255.0 alpha:1];
     [self.view addSubview:_tableView];
 
+    
+    headView=[[UIView alloc]initWithFrame:CGRectZero];
+    headView.backgroundColor=[UIColor colorWithRed:103/255.0 green:183/255.0 blue:204/255.0 alpha:1];
+    
+    summeryLabel=[[UILabel alloc]initWithFrame:CGRectZero];
+    summeryLabel.backgroundColor=[UIColor clearColor];
+    summeryLabel.numberOfLines=0;
+    summeryLabel.textColor=[UIColor whiteColor];
+    summeryLabel.font=[UIFont systemFontOfSize:12];
+    [headView addSubview:summeryLabel];
+    [summeryLabel release];
+    _tableView.tableHeaderView=[headView autorelease];
+    
     // 显示一共多少学生的View
    // NSLog(@"%@",self.view.frame.size.height);
     UIView *bottomView=[[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-20, 320, 20)];
@@ -119,7 +132,10 @@
         if(code==1)
         {
           //  [_tempatureArr removeAllObjects];
-            NSArray *arr=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
+            
+            NSDictionary *alldic=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
+            
+            NSArray *arr=[alldic objectForKey:@"reminder"];
             for (int i=0; i<[arr count]; i++) {
                 NSDictionary *dic=[arr objectAtIndex:i];
                 
@@ -141,6 +157,31 @@
                 
             }
             
+            
+            NSArray *sumeryArr=[alldic objectForKey:@"summery"];
+            NSMutableString *temstr=[[NSMutableString alloc]initWithString:@""];
+            for (int i=0; i<sumeryArr.count; i++) {
+                NSDictionary *dic=[sumeryArr objectAtIndex:i];
+                
+                
+                [temstr appendFormat:@"%@:%@ 人 ",[dic objectForKey:@"title"],[dic objectForKey:@"num"]];
+                
+                
+            }
+            
+            if([temstr isEqualToString:@""])
+            {
+                
+            }
+            else
+            {
+                CGSize size=[temstr sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(self.view.frame.size.width-10, 200) lineBreakMode:NSLineBreakByWordWrapping];
+                
+                summeryLabel.frame=CGRectMake(5, 0, self.view.frame.size.width-10, size.height+5);
+                headView.frame=CGRectMake(5, 0, self.view.frame.size.width-10, size.height+5);
+                summeryLabel.text=temstr;
+            }
+ 
             [self._tableView reloadData];
             //
         }
@@ -203,31 +244,7 @@
         [cell.contentView addSubview:nameLabel];
         [nameLabel release];
         
-//        UILabel *ageLabel=[[UILabel alloc]initWithFrame:CGRectMake(150 , 5, 60, 20)];
-//        ageLabel.backgroundColor=[UIColor clearColor];
-//        ageLabel.font=[UIFont systemFontOfSize:14];
-//        if(IOSVERSION>=6.0)
-//            ageLabel.textAlignment=NSTextAlignmentCenter;
-//        else
-//            ageLabel.textAlignment=UITextAlignmentCenter;
-//        ageLabel.tag=CELLTAG+2;
-//        [cell.contentView addSubview:ageLabel];
-//        [ageLabel release];
-        
-//        UILabel *priceLabel=[[UILabel alloc]initWithFrame:CGRectMake(220, 5, 70, 20)];
-//        priceLabel.backgroundColor=[UIColor clearColor];
-//        priceLabel.tag=CELLTAG+3;
-//        priceLabel.font=[UIFont systemFontOfSize:14];
-//        [cell.contentView addSubview:priceLabel];
-//        [priceLabel release];
-        
-//        UILabel *inschoolLabel=[[UILabel alloc]initWithFrame:CGRectMake(220, 5, 70, 20)];
-//        inschoolLabel.backgroundColor=[UIColor clearColor];
-//        inschoolLabel.tag=CELLTAG+3;
-//        inschoolLabel.font=[UIFont systemFontOfSize:14];
-//        [cell.contentView addSubview:inschoolLabel];
-//        [inschoolLabel release];
-        
+
         UIImageView *stateImageView=[[UIImageView alloc]initWithFrame:CGRectMake(280, 10, 8, 8)];
         stateImageView.backgroundColor=[UIColor clearColor];
         stateImageView.tag=CELLTAG+3;
@@ -311,11 +328,11 @@
     if([st.inSchoolHealth integerValue]==0)
     {
         //bu
-        stateImageView.image=[UIImage imageNamed:@"redPoint.png"];
+        stateImageView.image=[UIImage imageNamed:@"greenPoint.png"];
     }
     else if([st.inSchoolHealth integerValue]==1)
     {
-        stateImageView.image=[UIImage imageNamed:@"greenPoint.png"];
+        stateImageView.image=[UIImage imageNamed:@"redPoint.png"];
     }
     else
     {

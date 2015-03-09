@@ -14,6 +14,7 @@
 @synthesize audio;
 @synthesize sharePicArr;
 @synthesize tagArr;
+@synthesize isregister;
 @synthesize upnum,havezan,commentnum,publishtime,shareKey;
 -(void)dealloc
 {

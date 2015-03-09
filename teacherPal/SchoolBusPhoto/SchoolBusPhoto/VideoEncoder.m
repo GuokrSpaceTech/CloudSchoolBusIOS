@@ -74,10 +74,10 @@
 //    [_writer finishWritingWithCompletionHandler:^{
 //         handler();
 //    }];;
-    BOOL success = [_writer finishWriting];
-    if (success) {
-        handler();
-    }
+//    BOOL success = [_writer finishWriting];
+//    if (success) {
+//        handler();
+//    }
     [_writer finishWritingWithCompletionHandler: handler];
 }
 

@@ -19,6 +19,7 @@
 @property(nonatomic,retain)NSArray * tagArr;
 @property (nonatomic, retain)NSString *shareKey;
 @property BOOL isMore;
+@property (nonatomic)NSInteger isregister;
 @property(nonatomic,retain)NSString *shareTime;
 @property(nonatomic,retain)NSString *checkuserid;
 @property(nonatomic,retain)NSNumber *upnum;

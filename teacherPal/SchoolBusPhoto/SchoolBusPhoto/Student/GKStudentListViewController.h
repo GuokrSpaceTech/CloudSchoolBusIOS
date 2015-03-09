@@ -12,6 +12,9 @@
 @interface GKStudentListViewController : GKBaseViewController<UITableViewDataSource,UITableViewDelegate,EKProtocol>
 {
     UILabel *numLabel;
+    
+    UILabel *summeryLabel;
+    UIView *headView;
 }
 @property (nonatomic,retain)UITableView *_tableView;
 @property (nonatomic,retain)NSMutableArray *studentArr;

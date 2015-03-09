@@ -30,15 +30,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        // self.contentView.backgroundColor=[UIColor redColor];
-        
         self.contentView.backgroundColor = [UIColor colorWithRed:240/255.0f green:238/255.0f blue:227/255.0f alpha:1.0f];
-        
-//        UIImageView *carImgV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 25, 23)];
-//        carImgV.image = [UIImage imageNamed:@"car.png"];
-//        [self addSubview:carImgV];
-//        [carImgV release];
-        
         
         UILabel *tLabel=[[UILabel alloc]initWithFrame:CGRectMake(40, 10, 250, 23)];
         tLabel.backgroundColor=[UIColor clearColor];
@@ -61,23 +53,6 @@
         
         self.timeLabel = timeLab;
         
-//        UIImageView *tImgV = [[UIImageView alloc] initWithFrame:CGRectZero];
-//        tImgV.image = [UIImage imageNamed:@"triangle.png"];
-//        [self addSubview:tImgV];
-//        [tImgV release];
-//        
-//        self.triangle = tImgV;
-        
-//        UIImageView *bImgV = [[UIImageView alloc] initWithFrame:CGRectMake(40, 0, 270, 0)];
-////        UIImage *img = [UIImage imageNamed:@"popback"];
-////        backImgV.image = [img resizableImageWithCapInsets:UIEdgeInsetsMake(50, 30, 30, 15)];
-//        bImgV.backgroundColor = [UIColor whiteColor];
-//        bImgV.layer.cornerRadius = 10;
-//        [self addSubview:bImgV];
-//        [bImgV release];
-//        
-//        self.backImgV = bImgV;
-        
         
         UILabel *ctntLabel=[[UILabel alloc]initWithFrame:CGRectZero];
         ctntLabel.backgroundColor=[UIColor clearColor];
@@ -87,9 +62,7 @@
         ctntLabel.lineBreakMode=NSLineBreakByWordWrapping|NSLineBreakByTruncatingTail;
         [self addSubview:ctntLabel];
         [ctntLabel release];
-        
         self.contentLabel = ctntLabel;
-        
         
         UIImageView *pImgV = [[UIImageView alloc] initWithFrame:CGRectZero];
         pImgV.image = [UIImage imageNamed:@"cellPraise.png"];
@@ -101,7 +74,6 @@
         UILabel *pLab = [[UILabel alloc] initWithFrame:CGRectZero];
         pLab.backgroundColor=[UIColor clearColor];
         pLab.textAlignment = NSTextAlignmentCenter;
-//        praiseLab.adjustsFontSizeToFitWidth = YES;
         pLab.font=[UIFont systemFontOfSize:15];
         pLab.textColor = [UIColor colorWithRed:80/255.0 green:80/255.0 blue:80/255.0 alpha:1.0f];
         [self addSubview:pLab];
@@ -119,7 +91,6 @@
         UILabel *cmtLab = [[UILabel alloc] initWithFrame:CGRectZero];
         cmtLab.backgroundColor=[UIColor clearColor];
         cmtLab.textAlignment = NSTextAlignmentCenter;
-//        commentLab.adjustsFontSizeToFitWidth = YES;
         cmtLab.font=[UIFont systemFontOfSize:15];
         cmtLab.textColor = [UIColor colorWithRed:80/255.0 green:80/255.0 blue:80/255.0 alpha:1.0f];
         [self addSubview:cmtLab];
@@ -130,40 +101,18 @@
         
         UIButton *pButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [pButton setFrame:CGRectMake(185, 0, 70, 30)];
-//        praiseButton.backgroundColor = [UIColor redColor];
         [pButton addTarget:self action:@selector(praise:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:pButton];
         
         self.praiseButton = pButton;
         
         UIButton *cmtButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        commentsButton.backgroundColor = [UIColor blueColor];
         [cmtButton setFrame:CGRectMake(255, 0, 70, 30)];
-//        commentsButton.alpha = 0.2f;
-//        commentsButton.hidden = NO;
         [cmtButton addTarget:self action:@selector(comments:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:cmtButton];
         
         self.commentsButton = cmtButton;
         
-        
-     //   self.photoImgVArr = [NSMutableArray array];
-        
-//        for (int i = 0; i < MAX_IMAGECOUNT; i++) {
-//            UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectZero];
-//            imgV.userInteractionEnabled = YES;
-////            imgV.contentMode = UIViewContentModeScaleAspectFit;
-//            imgV.tag = TAPIMAGETAG + i;
-//            [self addSubview:imgV];
-//            [imgV release];
-//            
-//            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageView:)];
-//            [imgV addGestureRecognizer:tap];
-//            [tap release];
-//            
-//         //   [self.photoImgVArr addObject:imgV];
-//        }
-//
         
         
         picImageView= [[UIImageView alloc] initWithFrame:CGRectZero];
@@ -184,8 +133,12 @@
         [l release];
         
         self.line = l;
-    
-      
+    //114/92
+        _photoRegisterView= [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 56, 41)];
+        _photoRegisterView.image=[UIImage imageNamed:@"photo_register.png"];
+        [self addSubview:_photoRegisterView];
+       // photoImageView.hidden=YES;
+        [_photoRegisterView release];
     }
     return self;
 }
@@ -295,7 +248,7 @@
     self.line = nil;
     self.picImageView=nil;
     self.triangle = nil;
-    
+    self.photoRegisterView=nil;
     [super dealloc];
     
 }

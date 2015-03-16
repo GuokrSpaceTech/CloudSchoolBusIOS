@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EKRequest.h"
+#import "GKRoute.h"
 #import "MBProgressHUD.h"
 @protocol AllStopDelegate;
 @interface GKAllStopViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,EKProtocol>
@@ -19,6 +20,7 @@
 @property (nonatomic,retain)UITableView *_tableView;
 @property (nonatomic,retain)NSMutableArray *arrList;
 @property (nonatomic,retain)NSString * currentId;
+@property (nonatomic,retain)GKRoute *route;
 @end
 
 @protocol AllStopDelegate <NSObject>

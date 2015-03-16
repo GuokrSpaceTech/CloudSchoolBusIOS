@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "EKRequest.h"
 #import "GKSocket.h"
+#import "MBProgressHUD.h"
 @interface GKChildCameraViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,EKProtocol>
+{
+    MBProgressHUD *HUD;
+}
 @property (nonatomic,retain)NSMutableArray *arrList;
 @property (nonatomic,retain)UITableView *tableView;
 

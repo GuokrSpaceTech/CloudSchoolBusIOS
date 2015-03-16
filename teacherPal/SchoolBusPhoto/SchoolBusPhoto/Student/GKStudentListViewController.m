@@ -74,17 +74,7 @@
     [self.view addSubview:_tableView];
 
     
-    headView=[[UIView alloc]initWithFrame:CGRectZero];
-    headView.backgroundColor=[UIColor colorWithRed:103/255.0 green:183/255.0 blue:204/255.0 alpha:1];
-    
-    summeryLabel=[[UILabel alloc]initWithFrame:CGRectZero];
-    summeryLabel.backgroundColor=[UIColor clearColor];
-    summeryLabel.numberOfLines=0;
-    summeryLabel.textColor=[UIColor whiteColor];
-    summeryLabel.font=[UIFont systemFontOfSize:12];
-    [headView addSubview:summeryLabel];
-    [summeryLabel release];
-    _tableView.tableHeaderView=[headView autorelease];
+ 
     
     // 显示一共多少学生的View
    // NSLog(@"%@",self.view.frame.size.height);
@@ -177,9 +167,35 @@
             {
                 CGSize size=[temstr sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(self.view.frame.size.width-10, 200) lineBreakMode:NSLineBreakByWordWrapping];
                 
-                summeryLabel.frame=CGRectMake(5, 0, self.view.frame.size.width-10, size.height+5);
-                headView.frame=CGRectMake(5, 0, self.view.frame.size.width-10, size.height+5);
-                summeryLabel.text=temstr;
+                
+                if(headView)
+                {
+                    [headView removeFromSuperview];
+                    headView=nil;
+                }
+                if(headView==nil)
+                {
+                    headView=[[UIView alloc]initWithFrame:CGRectZero];
+                    headView.backgroundColor=[UIColor colorWithRed:103/255.0 green:183/255.0 blue:204/255.0 alpha:1];
+                    
+                    summeryLabel=[[UILabel alloc]initWithFrame:CGRectZero];
+                    summeryLabel.backgroundColor=[UIColor clearColor];
+                    summeryLabel.numberOfLines=0;
+                    summeryLabel.textColor=[UIColor whiteColor];
+                    summeryLabel.font=[UIFont systemFontOfSize:12];
+                    [headView addSubview:summeryLabel];
+                    [summeryLabel release];
+                    summeryLabel.frame=CGRectMake(5, 0, self.view.frame.size.width-10, size.height+5);
+                    headView.frame=CGRectMake(5, 0, self.view.frame.size.width-10, size.height+5);
+                    summeryLabel.text=temstr;
+                    _tableView.tableHeaderView=[headView autorelease];
+                }
+                
+             
+                
+                
+                
+               
             }
  
             [self._tableView reloadData];

@@ -145,7 +145,7 @@
             {
                 if(indexPath.row==0)
                 {
-                    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(205, 10, 65, 40)];
+                    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(220, 5, 50, 50)];
                     imageView.backgroundColor=[UIColor clearColor];
                     [cell.contentView addSubview:imageView];
                     imageView.tag=TAGCELL+2;

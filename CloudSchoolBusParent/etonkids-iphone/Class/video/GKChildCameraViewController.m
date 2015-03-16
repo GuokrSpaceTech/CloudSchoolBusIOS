@@ -103,7 +103,22 @@
 {
     [[EKRequest Instance]EKHTTPRequest:camera parameters:nil requestMethod:GET forDelegate:self];
 }
-
+-(void)showHUD
+{
+    if(HUD==nil)
+    {
+        HUD=[[MBProgressHUD alloc]initWithView:self.view];
+        HUD.labelText=@"请稍等";
+        [self.view addSubview:HUD];
+        [HUD release];
+        [HUD show:YES];
+    }
+}
+-(void)hidHUD
+{
+    [HUD removeFromSuperview];
+    HUD=nil;
+}
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
 {
     if(code==1 && method==camera)
@@ -201,6 +216,7 @@
 //    
     GKSocket *socket=[[[GKSocket alloc]init] autorelease];
      //222.128.71.186
+    [self showHUD];
     [socket connectwithddns:user.ddns port:user.port isConnect:YES  block:^(BOOL success, NSString *result) {
         if(success)
         {
@@ -294,7 +310,7 @@
 
                         
                         dispatch_async(dispatch_get_main_queue(), ^{
-                  
+                            [self hidHUD];
                             if(code==-1)
                             {
                                 UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"设备不在线" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];

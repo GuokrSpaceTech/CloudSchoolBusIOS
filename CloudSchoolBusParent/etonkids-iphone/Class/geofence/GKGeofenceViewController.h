@@ -10,7 +10,8 @@
 #import "EKRequest.h"
 #import "MBProgressHUD.h"
 #import "GKAllStopViewController.h"
-@interface GKGeofenceViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,EKProtocol,AllStopDelegate>
+#import "GKRouteViewController.h"
+@interface GKGeofenceViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,EKProtocol,AllStopDelegate,routeDelegate,UIAlertViewDelegate>
 {
 
     UILabel *middleLabel;

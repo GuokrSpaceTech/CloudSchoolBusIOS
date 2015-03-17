@@ -177,8 +177,8 @@
             {
                 CGSize size=[temstr sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(self.view.frame.size.width-10, 200) lineBreakMode:NSLineBreakByWordWrapping];
                 
-                summeryLabel.frame=CGRectMake(5, 0, self.view.frame.size.width-10, size.height+5);
-                headView.frame=CGRectMake(5, 0, self.view.frame.size.width-10, size.height+5);
+                summeryLabel.frame=CGRectMake(5, 0, self.view.frame.size.width-10, size.height);
+                headView.frame=CGRectMake(0, 0, self.view.frame.size.width, size.height+5);
                 summeryLabel.text=temstr;
             }
  

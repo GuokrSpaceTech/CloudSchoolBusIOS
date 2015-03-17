@@ -9,6 +9,7 @@
 #import "GKAllStopViewController.h"
 #import "ETKids.h"
 #import "GKGeofence.h"
+#import "GKGeofenceViewController.h"
 @interface GKAllStopViewController ()
 
 @end
@@ -76,15 +77,15 @@
    // arrList=[[NSMutableArray alloc]init];
  
     
-    UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setTitle:@"删除当前围栏" forState:UIControlStateNormal];
-
-    [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-
-    btn.frame=CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, 40);
-    [btn addTarget:self action:@selector(changeGeofence:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
-    _tableView= [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0)+40, self.view.frame.size.width, self.view.frame.size.height - NAVIHEIGHT-(ios7 ? 20 : 0)-40) style:UITableViewStylePlain];
+//    UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
+//    [btn setTitle:@"删除当前围栏" forState:UIControlStateNormal];
+//
+//    [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+//
+//    btn.frame=CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, 40);
+//    [btn addTarget:self action:@selector(changeGeofence:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:btn];
+    _tableView= [[UITableView alloc] initWithFrame:CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height - NAVIHEIGHT-(ios7 ? 20 : 0)-40) style:UITableViewStylePlain];
     _tableView.backgroundView = nil;
     _tableView.backgroundColor = CELLCOLOR;
     _tableView.delegate = self;
@@ -118,13 +119,13 @@
         HUD=nil;
     }
 }
--(void)changeGeofence:(UIButton *)btn
-{
-    [self showHUB];
-    
-    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:self.currentId,@"geofenceid",@"2",@"state", nil];
-    [[EKRequest Instance]EKHTTPRequest:geofenceparents parameters:dic requestMethod:POST forDelegate:self];
-}
+//-(void)changeGeofence:(UIButton *)btn
+//{
+//    [self showHUB];
+//    
+//    NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:self.currentId,@"geofenceid",@"2",@"state", nil];
+//    [[EKRequest Instance]EKHTTPRequest:geofenceparents parameters:dic requestMethod:POST forDelegate:self];
+//}
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
 {
 
@@ -152,7 +153,18 @@
                     [alert release];
                 }
             }
-            [self.navigationController popViewControllerAnimated:YES];
+            
+            NSArray *arr=[self.navigationController viewControllers];
+            for (int i=0; i<arr.count; i++) {
+                UIViewController *controller=[arr objectAtIndex:i];
+                
+                if([controller isKindOfClass:[GKGeofenceViewController class]])
+                {
+                    [self.navigationController popToViewController:controller animated:YES];
+                    break;
+                }
+            }
+            //[self.navigationController popToViewController:<#(UIViewController *)#> animated:<#(BOOL)#>:YES];
         }
     }
 }
@@ -173,7 +185,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [arrList count];
+    return [_route.stationList count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -195,7 +207,7 @@
         
     }
     
-    GKGeofence *geofence=[arrList objectAtIndex:indexPath.row];
+    GKGeofence *geofence=[_route.stationList objectAtIndex:indexPath.row];
     
     cell.textLabel.text=geofence.name;
     
@@ -208,7 +220,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self showHUB];
-    GKGeofence *geofence=[arrList objectAtIndex:indexPath.row];
+      GKGeofence *geofence=[_route.stationList objectAtIndex:indexPath.row];
     NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:geofence.geofenceid,@"geofenceid",@"1",@"state", nil];
     [[EKRequest Instance]EKHTTPRequest:geofenceparents parameters:dic requestMethod:POST forDelegate:self];
 

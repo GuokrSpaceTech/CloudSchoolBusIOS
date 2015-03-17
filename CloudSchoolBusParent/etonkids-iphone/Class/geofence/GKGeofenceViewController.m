@@ -9,6 +9,8 @@
 #import "GKGeofenceViewController.h"
 #import "ETKids.h"
 #import "GKGeofence.h"
+#import "GKRoute.h"
+#import "GKAllStopViewController.h"
 
 @interface GKGeofenceViewController ()
 
@@ -64,18 +66,21 @@
     [leftButton setImage:[UIImage imageNamed:@"backBtnSel_3.0.png"] forState:UIControlStateHighlighted];
     [leftButton addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:leftButton];
-//    UISwipeGestureRecognizer *popGes = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftButtonClick:)];
-//    popGes.direction = UISwipeGestureRecognizerDirectionRight;
-//    [self.view addGestureRecognizer:popGes];
-//    [popGes release];
-    
+
     middleLabel=[[UILabel alloc]initWithFrame:CGRectMake(160-100, 13 + (ios7 ? 20 : 0), 200, 20)];
     middleLabel.textAlignment=NSTextAlignmentCenter;
     middleLabel.textColor=[UIColor whiteColor];
     //middleLabel.text =NSLocalizedString(@"classribao", @"");//  NSLocalizedString(@"doctor_con", @"医生咨询");
     middleLabel.backgroundColor=[UIColor clearColor];
+    middleLabel.userInteractionEnabled=YES;
     [self.view addSubview:middleLabel];
     [middleLabel release];
+    
+    
+    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickMindle:)];
+    tap.numberOfTapsRequired=1;
+    [middleLabel addGestureRecognizer:tap];
+    [tap release];
     
     
     rightButton =[UIButton buttonWithType:UIButtonTypeCustom];
@@ -97,26 +102,7 @@
     _tableView.dataSource = self;
     _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
-    
 
-//    topView=[[UIView alloc]initWithFrame:CGRectMake(0, -40, self.view.frame.size.width, 40)];
-//    topView.backgroundColor=[UIColor grayColor];
-//    [self.view addSubview:topView];
-//    [topView release];
-//
-//    currentStopLabel=[[UILabel alloc]initWithFrame:CGRectMake(5, 10, 200, 20)];
-//    currentStopLabel.backgroundColor=[UIColor clearColor];
-//    currentStopLabel.textColor=[UIColor whiteColor];
-//    [topView addSubview:currentStopLabel];
-//    [currentStopLabel release];
-//    
-//    
-//    UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
-//    [btn setTitle:@"更改" forState:UIControlStateNormal];
-//    btn.frame=CGRectMake(self.view.frame.size.width-100, 5, 40, 30);
-//    [btn addTarget:self action:@selector(change:) forControlEvents:UIControlEventTouchUpInside];
-//    [topView addSubview:btn];
-    
 
     [self showHUB];
     [[EKRequest Instance]EKHTTPRequest:geofenceparents parameters:nil requestMethod:GET forDelegate:self];
@@ -124,6 +110,25 @@
 
 }
 
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex==1)
+    {
+        NSLog(@"fdfd");
+         NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:self.currentStopid,@"geofenceid",@"2",@"state", nil];
+        [[EKRequest Instance]EKHTTPRequest:geofenceparents parameters:dic requestMethod:POST forDelegate:self];
+        
+    }
+}
+-(void)clickMindle:(UIGestureRecognizer *)ta
+{
+    if(self.currentStopid)
+    {
+
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"确认删除？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alert show];
+    }
+}
 -(void)backRefresh
 {
     [self showHUB];
@@ -131,12 +136,19 @@
 }
 -(void)change:(UIButton *)btn
 {
-    GKAllStopViewController *VC=[[GKAllStopViewController alloc]init];
+    GKRouteViewController *VC=[[GKRouteViewController alloc]init];
+    VC.list=self.arrTempList;
     VC.delegate=self;
-    VC.arrList=arrTempList;
-    VC.currentId=self.currentStopid;
+//    VC.arrList=arrTempList;
+//    VC.currentId=self.currentStopid;
     [self.navigationController pushViewController:VC animated:YES];
     [VC release];
+}
+
+-(void)refreshVC
+{
+    [self showHUB];
+    [[EKRequest Instance]EKHTTPRequest:geofenceparents parameters:nil requestMethod:GET forDelegate:self];
 }
 -(void)leftButtonClick:(id)sender
 {
@@ -164,8 +176,6 @@
 }
 -(void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
 {
-
-    
     NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
     if(method==geofenceparents)
     {
@@ -180,7 +190,7 @@
                     [alert show];
                     [alert release];
                     
-                    [[EKRequest Instance]EKHTTPRequest:geofenceparents parameters:nil requestMethod:GET forDelegate:self];
+                   
                     
                     
                     
@@ -192,14 +202,12 @@
                     [alert show];
                     [alert release];
                 }
+                 [[EKRequest Instance]EKHTTPRequest:geofenceparents parameters:nil requestMethod:GET forDelegate:self];
             }
             else
             {
                 [self hiddenHUB];
 
-            
-             //   topView.frame=CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, 40);
-//                  topView.hidden=NO;
                 rightButton.hidden=NO;
                 _tableView.frame=CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), self.view.frame.size.width, self.view.frame.size.height - NAVIHEIGHT-(ios7 ? 20 : 0));
 
@@ -208,13 +216,27 @@
                 [arrTempList removeAllObjects];
                 
                 NSArray *allArr=[dic objectForKey:@"allstop"];
+                
                 for (int i=0; i<[allArr count]; i++) {
-                    GKGeofence *geofence=[[GKGeofence alloc]init];
-                    geofence.geofenceid=[NSString stringWithFormat:@"%@",[[allArr objectAtIndex:i] objectForKey:@"geofenceid"]];
-                    geofence.name=[[allArr objectAtIndex:i] objectForKey:@"name"];
-                    [arrTempList addObject:geofence];
-                    [geofence release];
-
+                    NSDictionary *routedic=[allArr objectAtIndex:i];
+                    GKRoute *route=[[GKRoute alloc]init];
+                    route.routename=[routedic objectForKey:@"linename"];
+                    
+                    NSArray *stationArr=[routedic objectForKey:@"stop"];
+                    
+                    for (int j=0; j<stationArr.count; j++) {
+                        GKGeofence *geofence=[[GKGeofence alloc]init];
+                        geofence.geofenceid=[NSString stringWithFormat:@"%@",[[stationArr objectAtIndex:j] objectForKey:@"geofenceid"]];
+                        geofence.name=[[stationArr objectAtIndex:j] objectForKey:@"name"];
+                        
+                        [route.stationList addObject:geofence];
+                        [geofence release];
+                        
+                    }
+                    
+                    [arrTempList addObject:route];
+                    [route release];
+                    
                 }
                 NSArray *noticeArr=[dic objectForKey:@"notice"];
                 for (int i=0; i<[noticeArr count]; i++) {
@@ -241,7 +263,7 @@
             // 没有设置站点
             [self hiddenHUB];
 
-            middleLabel.text=@"选择校车站点";
+            middleLabel.text=@"选择线路";
             [arrList removeAllObjects];
             [arrTempList removeAllObjects];
             
@@ -254,13 +276,34 @@
             NSArray *allArr=[dic objectForKey:@"allstop"];
             
             for (int i=0; i<[allArr count]; i++) {
-                GKGeofence *geofence=[[GKGeofence alloc]init];
-                geofence.geofenceid=[NSString stringWithFormat:@"%@",[[allArr objectAtIndex:i] objectForKey:@"geofenceid"]];
-                geofence.name=[[allArr objectAtIndex:i] objectForKey:@"name"];
-                [arrList addObject:geofence];
-                [geofence release];
+                NSDictionary *routedic=[allArr objectAtIndex:i];
+                GKRoute *route=[[GKRoute alloc]init];
+                route.routename=[routedic objectForKey:@"linename"];
+                
+                NSArray *stationArr=[routedic objectForKey:@"stop"];
+                
+                for (int j=0; j<stationArr.count; j++) {
+                    GKGeofence *geofence=[[GKGeofence alloc]init];
+                    geofence.geofenceid=[NSString stringWithFormat:@"%@",[[stationArr objectAtIndex:j] objectForKey:@"geofenceid"]];
+                    geofence.name=[[stationArr objectAtIndex:j] objectForKey:@"name"];
+
+                    [route.stationList addObject:geofence];
+                    [geofence release];
+                }
+                
+                [arrList addObject:route];
+                [route release];
                 
             }
+//            
+//            for (int i=0; i<[allArr count]; i++) {
+//                GKGeofence *geofence=[[GKGeofence alloc]init];
+//                geofence.geofenceid=[NSString stringWithFormat:@"%@",[[allArr objectAtIndex:i] objectForKey:@"geofenceid"]];
+//                geofence.name=[[allArr objectAtIndex:i] objectForKey:@"name"];
+//                [arrList addObject:geofence];
+//                [geofence release];
+//                
+//            }
             [_tableView reloadData];
             
         }
@@ -302,10 +345,10 @@
     }
     
     id obj=[arrList objectAtIndex:indexPath.row];
-    if([obj isKindOfClass:[GKGeofence class]])
+    if([obj isKindOfClass:[GKRoute class]])
     {
-        GKGeofence *geofence=obj;
-        cell.textLabel.text=geofence.name;
+        GKRoute *geofence=obj;
+        cell.textLabel.text=geofence.routename;
     }
     else
     {
@@ -321,13 +364,19 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id obj=[arrList objectAtIndex:indexPath.row];
-    if([obj isKindOfClass:[GKGeofence class]])
+    if([obj isKindOfClass:[GKRoute class]])
     {
         [self showHUB];
-        GKGeofence *geofence=obj;
-        
-        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:geofence.geofenceid,@"geofenceid",@"1",@"state", nil];
-        [[EKRequest Instance]EKHTTPRequest:geofenceparents parameters:dic requestMethod:POST forDelegate:self];
+        GKRoute *geofence=obj;
+        GKAllStopViewController *gkAllVC=[[GKAllStopViewController alloc]init];
+        gkAllVC.route=geofence;
+
+        gkAllVC.delegate=self;
+        gkAllVC.currentId=@"";
+        [self.navigationController pushViewController:gkAllVC animated:YES];
+        [gkAllVC release];
+//        NSDictionary *dic=[NSDictionary dictionaryWithObjectsAndKeys:geofence.geofenceid,@"geofenceid",@"1",@"state", nil];
+//        [[EKRequest Instance]EKHTTPRequest:geofenceparents parameters:dic requestMethod:POST forDelegate:self];
         
         // 关注 选择 站点
         

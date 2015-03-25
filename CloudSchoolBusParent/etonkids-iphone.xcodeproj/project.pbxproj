@@ -29,7 +29,6 @@
 		113194601A4AD3310008F894 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 113193FB1A4AD3310008F894 /* libcrypto.a */; };
 		113194611A4AD3310008F894 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 113193FC1A4AD3310008F894 /* libssl.a */; };
 		113194621A4AD3310008F894 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 1131944A1A4AD3310008F894 /* Order.m */; };
-		113194631A4AD3310008F894 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1131944E1A4AD3310008F894 /* base64.m */; };
 		113194641A4AD3310008F894 /* DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 113194511A4AD3310008F894 /* DataSigner.m */; };
 		113194651A4AD3310008F894 /* DataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 113194531A4AD3310008F894 /* DataVerifier.m */; };
 		113194661A4AD3310008F894 /* MD5DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 113194551A4AD3310008F894 /* MD5DataSigner.m */; };
@@ -679,6 +678,7 @@
 		F9838F1816BF68B30088DEEB /* ETRePassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9838F1616BF68B30088DEEB /* ETRePassWordViewController.m */; };
 		F9838F1916BF68B30088DEEB /* ETRePassWordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9838F1716BF68B30088DEEB /* ETRePassWordViewController.xib */; };
 		F99196D516BD0F9B005FF6CA /* greenPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = F99196D316BD0F9B005FF6CA /* greenPoint.png */; };
+		F994847B1ABE880800768487 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = F994847A1ABE880800768487 /* Base64.m */; };
 		F9DB03F016E46F930094A679 /* ETShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DB03EE16E46F930094A679 /* ETShareViewController.m */; };
 		F9DB03F116E46F930094A679 /* ETShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DB03EF16E46F930094A679 /* ETShareViewController.xib */; };
 		F9E0FA6B16DF5E4E00206925 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9E0FA6A16DF5E4E00206925 /* MessageUI.framework */; };
@@ -801,8 +801,6 @@
 		113194491A4AD3310008F894 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
 		1131944A1A4AD3310008F894 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 		1131944B1A4AD3310008F894 /* PartnerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartnerConfig.h; sourceTree = "<group>"; };
-		1131944D1A4AD3310008F894 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
-		1131944E1A4AD3310008F894 /* base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = base64.m; sourceTree = "<group>"; };
 		1131944F1A4AD3310008F894 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		113194501A4AD3310008F894 /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
 		113194511A4AD3310008F894 /* DataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSigner.m; sourceTree = "<group>"; };
@@ -1825,6 +1823,7 @@
 		F9838F1616BF68B30088DEEB /* ETRePassWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETRePassWordViewController.m; sourceTree = "<group>"; };
 		F9838F1716BF68B30088DEEB /* ETRePassWordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ETRePassWordViewController.xib; sourceTree = "<group>"; };
 		F99196D316BD0F9B005FF6CA /* greenPoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenPoint.png; sourceTree = "<group>"; };
+		F994847A1ABE880800768487 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		F9ADD1531749C1C200E44E04 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F9DB03ED16E46F930094A679 /* ETShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETShareViewController.h; sourceTree = "<group>"; };
 		F9DB03EE16E46F930094A679 /* ETShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETShareViewController.m; sourceTree = "<group>"; };
@@ -1921,6 +1920,7 @@
 		113192F21A4AA85F0008F894 /* opensource */ = {
 			isa = PBXGroup;
 			children = (
+				F994847A1ABE880800768487 /* Base64.m */,
 				113192F31A4AA85F0008F894 /* Base64.h */,
 				113192F51A4AA85F0008F894 /* Base64Defines.h */,
 				113192F61A4AA85F0008F894 /* BPushClass.h */,
@@ -2034,8 +2034,6 @@
 		1131944C1A4AD3310008F894 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				1131944D1A4AD3310008F894 /* base64.h */,
-				1131944E1A4AD3310008F894 /* base64.m */,
 				1131944F1A4AD3310008F894 /* config.h */,
 				113194501A4AD3310008F894 /* DataSigner.h */,
 				113194511A4AD3310008F894 /* DataSigner.m */,
@@ -4128,6 +4126,7 @@
 				113194621A4AD3310008F894 /* Order.m in Sources */,
 				F95021D216DCAF640079A05E /* WeiboSignInViewController.m in Sources */,
 				789EAA52183A0CE70029D4B0 /* ETNavigationController.m in Sources */,
+				F994847B1ABE880800768487 /* Base64.m in Sources */,
 				11BEDCCA1982630600BB0249 /* ETClassShare.m in Sources */,
 				F95021DA16DCB1640079A05E /* JSONKit.m in Sources */,
 				113194641A4AD3310008F894 /* DataSigner.m in Sources */,
@@ -4276,7 +4275,6 @@
 				78C78F2617C448F5008AE873 /* ETForgetPasswordViewController.m in Sources */,
 				78F396AA17DF1934004A37D7 /* ETBottomViewController.m in Sources */,
 				7841CF5817DF2E3A003E0DB2 /* ActivityViewController.m in Sources */,
-				113194631A4AD3310008F894 /* base64.m in Sources */,
 				78C2ADF317E152F200E6A5CD /* etonkids-iphone.xcdatamodeld in Sources */,
 				78C2ADF917E15BCF00E6A5CD /* ETClass.m in Sources */,
 				11E10EA319C932C000228B12 /* GKDevice.m in Sources */,
@@ -4451,8 +4449,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a90bf72a-924e-4928-bd0f-2a7b55c94c3b";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "a90bf72a-924e-4928-bd0f-2a7b55c94c3b";
+				PROVISIONING_PROFILE = "5e89b944-be84-4d65-ae6f-edc2639b998c";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5e89b944-be84-4d65-ae6f-edc2639b998c";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -4499,8 +4497,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a90bf72a-924e-4928-bd0f-2a7b55c94c3b";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "a90bf72a-924e-4928-bd0f-2a7b55c94c3b";
+				PROVISIONING_PROFILE = "5e89b944-be84-4d65-ae6f-edc2639b998c";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5e89b944-be84-4d65-ae6f-edc2639b998c";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;

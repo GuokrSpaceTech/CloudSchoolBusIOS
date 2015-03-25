@@ -295,6 +295,7 @@
                     if(found==YES)
                     {
                         dispatch_async(dispatch_get_main_queue(), ^{
+                            [self hidHUD];
                             GKVideoViewController *VC=[[GKVideoViewController alloc]init];
                             AppDelegate *appDel=SHARED_APP_DELEGATE;
                             VC.socket=socket;

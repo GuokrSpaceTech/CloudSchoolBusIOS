@@ -220,8 +220,9 @@
     [socket connectwithddns:user.ddns port:user.port isConnect:YES  block:^(BOOL success, NSString *result) {
         if(success)
         {
-            NSString *response  =@"<TYPE>GetDeviceList</TYPE>";
+         //   NSString *response  =@"<TYPE>GetDeviceList</TYPE>";
             
+            NSString * response = [NSString stringWithFormat:@"<TYPE>GetDeviceInfo</TYPE><DVRName>%@</DVRName><DVCID></DVCID>",obj.dvr_name];
             
             NSData *data = [[[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]] autorelease];
 
@@ -229,111 +230,86 @@
             [socket sendData:(char *)[data bytes] length:(int)[data length] type:9 isConnect:NO block:^(BOOL success, NSString *result) {
                 if(success)
                 {
-                    // 验证用户
-              
-                    BOOL found=NO;
-                    
-                    NSInteger code=0;
-                    NSInteger channel=0;
-                    
-                    TBXML * tbxml = [TBXML newTBXMLWithXMLString:result error:nil];
-                    TBXMLElement *root = tbxml.rootXMLElement;
-                    TBXMLElement *device = [TBXML childElementNamed:@"device" parentElement:root];
-                    
-                    while (device) {
-                        TBXMLElement *svrname = [TBXML childElementNamed:@"svrname" parentElement:device];
-                        TBXMLElement *chnsname=[TBXML childElementNamed:@"svrchns" parentElement:device];
-                        if(chnsname)
+                    NSLog(@"-----%@",result);
+                    if(result)
+                    {
+                        if([result containsString:@"error"])
                         {
-                             channel=[[TBXML textForElement:chnsname] integerValue];
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self hidHUD];
+                                UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"设备不在线" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                                [alert show];
+                                [alert release];
+                            });
+
                         }
-                        if(svrname)
+                        else
                         {
-                            NSString *svrnameStr=[TBXML textForElement:svrname];
-                            
-                            NSString *stateStr= [TBXML valueOfAttributeNamed:@"Status" forElement:svrname];
-                            
-                            //  deviceObj.status=stateStr;
-                            
-                            if([obj.dvr_name isEqualToString:svrnameStr])
+                            TBXML * tbxml = [TBXML newTBXMLWithXMLString:result error:nil];
+                            TBXMLElement *root = tbxml.rootXMLElement;
+                            TBXMLElement *svrname=[TBXML childElementNamed:@"svrname" parentElement:root];
+                            NSString * state = @"";
+                            if(svrname)
                             {
-                                //if(stateStr)
-                                if([stateStr isEqualToString:@"1"])
+                                state = [TBXML valueOfAttributeNamed:@"Status" forElement:svrname];
+                                
+                            }
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self hidHUD];
+                                if([state intValue] == 1)
                                 {
-                                    found=YES;
-                                    break;
+                                    NSLog(@"zaix");
+                                    GKVideoViewController *VC=[[GKVideoViewController alloc]init];
+                                    AppDelegate *appDel=SHARED_APP_DELEGATE;
+                                    VC.socket=socket;
+                                    VC.dvrObj=obj;
+                                    [appDel.bottomNav pushViewController:VC animated:YES];
+                                    // [socket release];
+                                    [VC release];
                                 }
                                 else
                                 {
-                                    code=-1;//不在线
-                                    break;
+                                    NSLog(@"离线");
+                                    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"设备不在线" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                                    [alert show];
+                                    [alert release];
                                 }
-                            }
-                            else
-                            {
-                                code=2;// 无设备
-                            }
-                            
-                            
-                            
-                            NSLog(@"%@",stateStr);
+                            });
                         }
-                        device = [TBXML nextSiblingNamed:@"device" searchFromElement:device];
                         
-                    }
-                    
-                    
-                    if(channel==0)
-                    {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                         
-                            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"学校摄像头没配置成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                            [alert show];
-                            [alert release];
-                        });
-                    }
-                    if(found==YES)
-                    {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [self hidHUD];
-                            GKVideoViewController *VC=[[GKVideoViewController alloc]init];
-                            AppDelegate *appDel=SHARED_APP_DELEGATE;
-                            VC.socket=socket;
-                            VC.dvrObj=obj;
-                            [appDel.bottomNav pushViewController:VC animated:YES];
-                           // [socket release];
-                            [VC release];
-                        });
-               
+
+
                     }
                     else
                     {
-
-                        
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            [self hidHUD];
-                            if(code==-1)
-                            {
-                                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"设备不在线" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                                [alert show];
-                                [alert release];
-                                return ;
-                            }
-                            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"学校摄像头没配置成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                             [self hidHUD];
+                            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"设备不在线" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                             [alert show];
                             [alert release];
                         });
                     }
-                    
-                    
+                   
+
                 }
             } streamBlock:^(NSData *data, int length, NSError *error) {
-                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self hidHUD];
+                    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"设备不在线" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                    [alert show];
+                    [alert release];
+                });
             }];
         }
         else
         {
             NSLog(@"sbb");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self hidHUD];
+                UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"设备不在线" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alert show];
+                [alert release];
+            });
         }
     }];
 

@@ -4449,8 +4449,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e89b944-be84-4d65-ae6f-edc2639b998c";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5e89b944-be84-4d65-ae6f-edc2639b998c";
+				PROVISIONING_PROFILE = "b553ae98-a4c6-4209-ba60-56cb1c1a1ce0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "b553ae98-a4c6-4209-ba60-56cb1c1a1ce0";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -4497,8 +4497,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e89b944-be84-4d65-ae6f-edc2639b998c";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5e89b944-be84-4d65-ae6f-edc2639b998c";
+				PROVISIONING_PROFILE = "b553ae98-a4c6-4209-ba60-56cb1c1a1ce0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "b553ae98-a4c6-4209-ba60-56cb1c1a1ce0";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;

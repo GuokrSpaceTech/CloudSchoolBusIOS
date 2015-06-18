@@ -55,9 +55,9 @@
         inputView.frame=CGRectMake(0, self.view.frame.size.height-rect.size.height-57, rect.size.width, rect.size.height);
         __tableView.frame= CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), 320, (iphone5 ? 548 : 460) - NAVIHEIGHT - (ios7 ? 20 : 0)-40-rect.size.height);
         
-        if([_dataArr count]>0)
-            [__tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[_dataArr count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
-        
+//        if([_dataArr count]>0)
+//            [__tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[_dataArr count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+//        
         
     }];
     
@@ -69,8 +69,8 @@
     [UIView animateWithDuration:0.2 animations:^{
         inputView.frame=CGRectMake(0, self.view.frame.size.height-57, 320, 57);
         __tableView.frame= CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), 320, (iphone5 ? 548 : 460) - NAVIHEIGHT - (ios7 ? 20 : 0)-40);
-        if([_dataArr count]>0)
-            [__tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[_dataArr count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+//        if([_dataArr count]>0)
+//            [__tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[_dataArr count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
     }];
     
 }
@@ -96,8 +96,8 @@
         inputView.frame=CGRectMake(0, self.view.frame.size.height-rect.size.height-57, rect.size.width, rect.size.height);
         
         __tableView.frame= CGRectMake(0, NAVIHEIGHT + (ios7 ? 20 : 0), 320, (iphone5 ? 548 : 460) - NAVIHEIGHT - (ios7 ? 20 : 0)-40-rect.size.height);
-        if([_dataArr count]>0)
-            [__tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[_dataArr count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+//        if([_dataArr count]>0)
+//            [__tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[_dataArr count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
         
     }];
     

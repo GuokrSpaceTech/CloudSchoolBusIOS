@@ -34,6 +34,7 @@
 		816446E61BF97BDB00A34D00 /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 816446E11BF97BDB00A34D00 /* FPPopoverController.m */; };
 		816446E71BF97BDB00A34D00 /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 816446E31BF97BDB00A34D00 /* FPPopoverView.m */; };
 		816446E81BF97BDB00A34D00 /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 816446E51BF97BDB00A34D00 /* FPTouchView.m */; };
+		81BECE451BFC1747006DAA8D /* ClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BECE441BFC1747006DAA8D /* ClassifyViewController.m */; };
 		81C6A5921BE9AD2E00160F2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C6A5911BE9AD2E00160F2D /* main.m */; };
 		81C6A5951BE9AD2E00160F2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C6A5941BE9AD2E00160F2D /* AppDelegate.m */; };
 		81C6A59B1BE9AD2E00160F2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81C6A5991BE9AD2E00160F2D /* Main.storyboard */; };
@@ -202,6 +203,8 @@
 		816446E31BF97BDB00A34D00 /* FPPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverView.m; sourceTree = "<group>"; };
 		816446E41BF97BDB00A34D00 /* FPTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTouchView.h; sourceTree = "<group>"; };
 		816446E51BF97BDB00A34D00 /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
+		81BECE431BFC1747006DAA8D /* ClassifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyViewController.h; sourceTree = "<group>"; };
+		81BECE441BFC1747006DAA8D /* ClassifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyViewController.m; sourceTree = "<group>"; };
 		81C6A58C1BE9AD2E00160F2D /* CloudBusParent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudBusParent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C6A5901BE9AD2E00160F2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81C6A5911BE9AD2E00160F2D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -356,6 +359,8 @@
 		812A8BF51BF30488009CE43E /* Find */ = {
 			isa = PBXGroup;
 			children = (
+				81BECE431BFC1747006DAA8D /* ClassifyViewController.h */,
+				81BECE441BFC1747006DAA8D /* ClassifyViewController.m */,
 				812A8BFC1BF31647009CE43E /* view */,
 				812A8BF61BF304B3009CE43E /* CBFindTableViewController.h */,
 				812A8BF71BF304B3009CE43E /* CBFindTableViewController.m */,
@@ -862,6 +867,7 @@
 				81D48C681BF5BB5000146AA6 /* MineHeaderView.m in Sources */,
 				816446E61BF97BDB00A34D00 /* FPPopoverController.m in Sources */,
 				812A8BF41BF2FD42009CE43E /* CBTeacherTableViewCell.m in Sources */,
+				81BECE451BFC1747006DAA8D /* ClassifyViewController.m in Sources */,
 				81D405141BF04A8200B5A176 /* Teacher.m in Sources */,
 				81065C121BEB3977009CE107 /* SVHTTPRequest.m in Sources */,
 				81065C151BEB4327009CE107 /* CBDateBase.m in Sources */,

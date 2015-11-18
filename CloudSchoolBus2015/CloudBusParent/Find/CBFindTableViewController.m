@@ -13,9 +13,12 @@
 #import "FindNoticeTableViewCell.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "FPPopoverController.h"
+#import "ClassifyViewController.h"
 static NSString * cellidenty = @"listcell";
 @interface CBFindTableViewController ()<EKProtocol>
-
+{
+     FPPopoverController *popover;
+}
 @end
 
 @implementation CBFindTableViewController
@@ -43,8 +46,9 @@ static NSString * cellidenty = @"listcell";
     
   //  UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithImage:nil style:UIBarButtonItemStylePlain target:self action:@selector(itemClick:)];
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setTitle:@"dd" forState:UIControlStateNormal];
-    btn.frame = CGRectMake(0, 0, 100, 100);
+    [btn setTitle:@"分类" forState:UIControlStateNormal];
+    btn.frame = CGRectMake(0, 0, 50, 50);
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(itemClick:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem = item;
@@ -61,14 +65,21 @@ static NSString * cellidenty = @"listcell";
 }
 -(void)itemClick:(id)sender
 {
-    UIViewController * vc = [[UIViewController alloc]init];
+    ClassifyViewController * vc = [[ClassifyViewController alloc]init];
     vc.title = nil;
-    FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:vc];
+    vc.delegate = self;
+    popover = [[FPPopoverController alloc] initWithViewController:vc];
     popover.border = NO;
     popover.tint = FPPopoverWhiteTint;
-    //the popover will be presented from the okButton view
+    popover.contentSize = CGSizeMake(150, 300);
     [popover presentPopoverFromPoint:CGPointMake(self.view.frame.size.width - 20, 20)];
 }
+-(void)selectedTableRow:(NSUInteger)rowNum
+{
+    NSLog(@"SELECTED ROW %lu",(unsigned long)rowNum);
+    [popover dismissPopoverAnimated:YES];
+}
+
 -(void) getErrorInfo:(NSError *) error forMethod:(RequestFunction) method
 {
     

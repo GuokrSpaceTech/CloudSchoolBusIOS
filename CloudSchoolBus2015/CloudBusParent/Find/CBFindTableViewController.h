@@ -10,4 +10,5 @@
 
 @interface CBFindTableViewController : UITableViewController
 @property (nonatomic,strong)NSMutableArray * dataList;
+-(void)selectedTableRow:(NSUInteger)rowNum;
 @end

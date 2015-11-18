@@ -12,7 +12,9 @@
 #import "ClassObj.h"
 #import "Teacher.h"
 #import "CBTeacherTableViewCell.h"
-
+#import "RCIM.h"
+#import "CB.h"
+#import "CBChatViewController.h"
 static NSString * cellinentify = @"teachercell";
 
 
@@ -119,7 +121,16 @@ static NSString * cellinentify = @"teachercell";
 //}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    Teacher *teacher = [_tearcherArr objectAtIndex:indexPath.row];
+   // 此处处理连接成功。
+        // 创建单聊视图控制器。
+        CBChatViewController *chatViewController = [[RCIM sharedRCIM]createPrivateChat:teacher.teacherid title:teacher.name completion:^(){
+            // 创建 ViewController 后，调用的 Block，可以用来实现自定义行为。
+        }];
+        // 把单聊视图控制器添加到导航栈。
+    chatViewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:chatViewController animated:YES];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

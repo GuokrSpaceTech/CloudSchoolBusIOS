@@ -14,6 +14,7 @@
 #import "CB.h"
 #import "RCIM.h"
 #import "RCIMClient.h"
+
 @interface AppDelegate ()
 
 @end
@@ -23,10 +24,9 @@
 
 -(void)makeMainViewController
 {
-    
+    // 连接融云服务器
+    [[CBLoginInfo shareInstance] connectRongYun];
     CBTabbarViewController *main = [[CBTabbarViewController alloc] init];
-    
-    
     self.window.rootViewController = main;
     
 }
@@ -75,6 +75,7 @@
     {
         //主页面
          info.state = LoginOn;
+        
         [self makeMainViewController];
         
     }

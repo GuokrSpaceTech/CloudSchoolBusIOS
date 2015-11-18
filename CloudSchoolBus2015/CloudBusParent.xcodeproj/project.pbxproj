@@ -35,8 +35,10 @@
 		816446E71BF97BDB00A34D00 /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 816446E31BF97BDB00A34D00 /* FPPopoverView.m */; };
 		816446E81BF97BDB00A34D00 /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 816446E51BF97BDB00A34D00 /* FPTouchView.m */; };
 		81BECE451BFC1747006DAA8D /* ClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BECE441BFC1747006DAA8D /* ClassifyViewController.m */; };
+		81BECE491BFC4465006DAA8D /* CBChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BECE481BFC4465006DAA8D /* CBChatViewController.m */; };
+		81BECE4C1BFC4908006DAA8D /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BECE4B1BFC4908006DAA8D /* BaseNavigationController.m */; };
+		81BECE4E1BFC4B89006DAA8D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BECE4D1BFC4B89006DAA8D /* AppDelegate.m */; };
 		81C6A5921BE9AD2E00160F2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C6A5911BE9AD2E00160F2D /* main.m */; };
-		81C6A5951BE9AD2E00160F2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C6A5941BE9AD2E00160F2D /* AppDelegate.m */; };
 		81C6A59B1BE9AD2E00160F2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81C6A5991BE9AD2E00160F2D /* Main.storyboard */; };
 		81C6A59D1BE9AD2E00160F2D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81C6A59C1BE9AD2E00160F2D /* Images.xcassets */; };
 		81C6A5A01BE9AD2E00160F2D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C6A59E1BE9AD2E00160F2D /* LaunchScreen.xib */; };
@@ -205,11 +207,15 @@
 		816446E51BF97BDB00A34D00 /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
 		81BECE431BFC1747006DAA8D /* ClassifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyViewController.h; sourceTree = "<group>"; };
 		81BECE441BFC1747006DAA8D /* ClassifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyViewController.m; sourceTree = "<group>"; };
+		81BECE471BFC4465006DAA8D /* CBChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBChatViewController.h; sourceTree = "<group>"; };
+		81BECE481BFC4465006DAA8D /* CBChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBChatViewController.m; sourceTree = "<group>"; };
+		81BECE4A1BFC4908006DAA8D /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
+		81BECE4B1BFC4908006DAA8D /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
+		81BECE4D1BFC4B89006DAA8D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		81C6A58C1BE9AD2E00160F2D /* CloudBusParent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudBusParent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C6A5901BE9AD2E00160F2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81C6A5911BE9AD2E00160F2D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		81C6A5931BE9AD2E00160F2D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		81C6A5941BE9AD2E00160F2D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		81C6A59A1BE9AD2E00160F2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81C6A59C1BE9AD2E00160F2D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		81C6A59F1BE9AD2E00160F2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -340,9 +346,12 @@
 		812A8BF01BF2FD18009CE43E /* Rongyun */ = {
 			isa = PBXGroup;
 			children = (
+				81BECE461BFC257E006DAA8D /* Model */,
 				812A8BF91BF304DA009CE43E /* TeacherViewController.h */,
 				812A8BFA1BF304DA009CE43E /* TeacherViewController.m */,
 				812A8BF11BF2FD2A009CE43E /* View */,
+				81BECE471BFC4465006DAA8D /* CBChatViewController.h */,
+				81BECE481BFC4465006DAA8D /* CBChatViewController.m */,
 			);
 			path = Rongyun;
 			sourceTree = "<group>";
@@ -567,6 +576,13 @@
 			path = FPPopover;
 			sourceTree = "<group>";
 		};
+		81BECE461BFC257E006DAA8D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		81C6A5831BE9AD2E00160F2D = {
 			isa = PBXGroup;
 			children = (
@@ -598,7 +614,7 @@
 				81065BE51BEB0142009CE107 /* Third */,
 				81065BDF1BEAF60C009CE107 /* Login */,
 				81C6A5931BE9AD2E00160F2D /* AppDelegate.h */,
-				81C6A5941BE9AD2E00160F2D /* AppDelegate.m */,
+				81BECE4D1BFC4B89006DAA8D /* AppDelegate.m */,
 				81C6A5991BE9AD2E00160F2D /* Main.storyboard */,
 				81C6A59C1BE9AD2E00160F2D /* Images.xcassets */,
 				81C6A59E1BE9AD2E00160F2D /* LaunchScreen.xib */,
@@ -636,6 +652,8 @@
 		81D4050B1BF0498F00B5A176 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				81BECE4A1BFC4908006DAA8D /* BaseNavigationController.h */,
+				81BECE4B1BFC4908006DAA8D /* BaseNavigationController.m */,
 				81D4050C1BF049CB00B5A176 /* School.h */,
 				81D4050D1BF049CB00B5A176 /* School.m */,
 				81D405151BF04AD300B5A176 /* Student.h */,
@@ -857,6 +875,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81D4051D1BF069BB00B5A176 /* CBHobbyViewController.m in Sources */,
+				81BECE491BFC4465006DAA8D /* CBChatViewController.m in Sources */,
 				816446E81BF97BDB00A34D00 /* FPTouchView.m in Sources */,
 				81E32B571BF49C4100EA3D7A /* UITableView+FDTemplateLayoutCell.m in Sources */,
 				812A8BEC1BF2D6EC009CE43E /* Sender.m in Sources */,
@@ -873,7 +892,6 @@
 				81065C151BEB4327009CE107 /* CBDateBase.m in Sources */,
 				81D48C631BF5BB1100146AA6 /* CBMineViewController.m in Sources */,
 				81E32B561BF49C4100EA3D7A /* UITableView+FDKeyedHeightCache.m in Sources */,
-				81C6A5951BE9AD2E00160F2D /* AppDelegate.m in Sources */,
 				81D405111BF049E500B5A176 /* ClassObj.m in Sources */,
 				812A8BF81BF304B3009CE43E /* CBFindTableViewController.m in Sources */,
 				81065C111BEB3977009CE107 /* SVHTTPClient.m in Sources */,
@@ -881,11 +899,13 @@
 				81E32B551BF49C4100EA3D7A /* UITableView+FDIndexPathHeightCache.m in Sources */,
 				81D431D71BFB05870089239A /* MineCell.m in Sources */,
 				816446DD1BF978CC00A34D00 /* OpenGLView20.m in Sources */,
+				81BECE4E1BFC4B89006DAA8D /* AppDelegate.m in Sources */,
 				81065C191BEB60AA009CE107 /* CBLoginInfo.m in Sources */,
 				81D4050E1BF049CB00B5A176 /* School.m in Sources */,
 				81E32B581BF49C4100EA3D7A /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
 				F95025501BF0E952009C970A /* Tag.m in Sources */,
 				812A8BE91BF2D395009CE43E /* Message.m in Sources */,
+				81BECE4C1BFC4908006DAA8D /* BaseNavigationController.m in Sources */,
 				81065BE91BEB019A009CE107 /* CBLoginViewController.m in Sources */,
 				F92FA3481BF4EFE500E76A17 /* Calculate.m in Sources */,
 				81C6A5921BE9AD2E00160F2D /* main.m in Sources */,

@@ -11,6 +11,7 @@
 #import "CBFindTableViewController.h"
 #import "TeacherViewController.h"
 #import "CBHobbyViewController.h"
+#import "BaseNavigationController.h"
 @interface CBTabbarViewController ()
 
 @end
@@ -22,17 +23,17 @@
     // Do any additional setup after loading the view.
     
     CBFindTableViewController * findVC = [[CBFindTableViewController alloc]init];
-    UINavigationController * findNav = [[UINavigationController alloc]initWithRootViewController:findVC];
+    BaseNavigationController * findNav = [[BaseNavigationController alloc]initWithRootViewController:findVC];
     findNav.tabBarItem.title = @"发现";
     
     TeacherViewController * teacherVC = [[TeacherViewController alloc]init];
-    UINavigationController * teacherNav = [[UINavigationController alloc]initWithRootViewController:teacherVC];
+    BaseNavigationController * teacherNav = [[BaseNavigationController alloc]initWithRootViewController:teacherVC];
     teacherNav.tabBarItem.title = @"班级教师";
     CBHobbyViewController * hobbyVC = [[CBHobbyViewController alloc]init];
-    UINavigationController * hobbyNav = [[UINavigationController alloc]initWithRootViewController:hobbyVC];
+    BaseNavigationController * hobbyNav = [[BaseNavigationController alloc]initWithRootViewController:hobbyVC];
     hobbyNav.tabBarItem.title = @"兴趣爱好";
     CBMineViewController * mineVC = [[CBMineViewController alloc]initWithNibName:@"CBMineViewController" bundle:nil];
-    UINavigationController * mainNav = [[UINavigationController alloc]initWithRootViewController:mineVC];
+    BaseNavigationController * mainNav = [[BaseNavigationController alloc]initWithRootViewController:mineVC];
     mainNav.tabBarItem.title = @"我的";
     
     NSArray * arr = @[findNav,teacherNav,hobbyNav,mainNav];

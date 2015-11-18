@@ -35,4 +35,5 @@ typedef enum {
 
 -(void)loginSid:(loginSuccess)block;
 -(void)baseInfoIsExist:(sessionNotOver)block; // 如果session 没有过期 调用获取最新的baseinfo 信息
+-(void)connectRongYun;
 @end

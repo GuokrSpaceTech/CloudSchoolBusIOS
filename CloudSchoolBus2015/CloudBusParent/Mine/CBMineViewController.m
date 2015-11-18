@@ -41,6 +41,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
    [self.tableView registerClass:[MineCell class] forCellReuseIdentifier:@"cell"];
     self.tableView.scrollEnabled = NO;
+    self.tableView.rowHeight = 44;
     headeView = [[MineHeaderView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 120)];
 
     [self currentStudent];

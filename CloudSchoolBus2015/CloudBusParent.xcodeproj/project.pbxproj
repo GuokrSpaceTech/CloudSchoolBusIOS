@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A9745251BFBFA8A008C8A7B /* UIColor+RCColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9745241BFBFA8A008C8A7B /* UIColor+RCColor.m */; settings = {ASSET_TAGS = (); }; };
 		43A7B6B7133E7159766C99EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7299EA4EE1E968A90534B5D /* libPods.a */; };
 		81065BE91BEB019A009CE107 /* CBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81065BE71BEB019A009CE107 /* CBLoginViewController.m */; };
 		81065BEA1BEB019A009CE107 /* CBLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81065BE81BEB019A009CE107 /* CBLoginViewController.xib */; };
@@ -70,6 +71,8 @@
 
 /* Begin PBXFileReference section */
 		1E144438A15607A7BE09809F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		2A9745231BFBFA8A008C8A7B /* UIColor+RCColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RCColor.h"; sourceTree = "<group>"; };
+		2A9745241BFBFA8A008C8A7B /* UIColor+RCColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RCColor.m"; sourceTree = "<group>"; };
 		81065BE61BEB019A009CE107 /* CBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBLoginViewController.h; path = CloudBusParent/Login/CBLoginViewController.h; sourceTree = SOURCE_ROOT; };
 		81065BE71BEB019A009CE107 /* CBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBLoginViewController.m; path = CloudBusParent/Login/CBLoginViewController.m; sourceTree = SOURCE_ROOT; };
 		81065BE81BEB019A009CE107 /* CBLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CBLoginViewController.xib; path = CloudBusParent/Login/CBLoginViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -274,6 +277,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A9745221BFBFA6B008C8A7B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2A9745231BFBFA8A008C8A7B /* UIColor+RCColor.h */,
+				2A9745241BFBFA8A008C8A7B /* UIColor+RCColor.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		379435B51CA828ADA6C83917 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -585,6 +597,7 @@
 		81C6A58E1BE9AD2E00160F2D /* CloudBusParent */ = {
 			isa = PBXGroup;
 			children = (
+				2A9745221BFBFA6B008C8A7B /* Utils */,
 				81D48C5F1BF5BAE100146AA6 /* Mine */,
 				812A8BF51BF30488009CE43E /* Find */,
 				812A8BF01BF2FD18009CE43E /* Rongyun */,
@@ -872,6 +885,7 @@
 				812A8BF81BF304B3009CE43E /* CBFindTableViewController.m in Sources */,
 				81065C111BEB3977009CE107 /* SVHTTPClient.m in Sources */,
 				81D405171BF04AD300B5A176 /* Student.m in Sources */,
+				2A9745251BFBFA8A008C8A7B /* UIColor+RCColor.m in Sources */,
 				81E32B551BF49C4100EA3D7A /* UITableView+FDIndexPathHeightCache.m in Sources */,
 				81D431D71BFB05870089239A /* MineCell.m in Sources */,
 				816446DD1BF978CC00A34D00 /* OpenGLView20.m in Sources */,

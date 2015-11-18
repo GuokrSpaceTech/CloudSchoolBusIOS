@@ -13,6 +13,8 @@
 #import "FindNoticeTableViewCell.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "FPPopoverController.h"
+#import "UIColor+RCColor.h"
+
 static NSString * cellidenty = @"listcell";
 @interface CBFindTableViewController ()<EKProtocol>
 
@@ -29,6 +31,18 @@ static NSString * cellidenty = @"listcell";
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.title = @"发现";
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+        // iOS 6.1 or earlier
+        self.navigationController.navigationBar.tintColor = [UIColor colorWithHexString:@"F3A139" alpha:1.0f];
+    } else {
+        // iOS 7.0 or later
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"F3A139" alpha:1.0f];
+        self.navigationController.navigationBar.translucent = NO;
+    }
+    
     _dataList = [NSMutableArray array];
     self.view.backgroundColor = [UIColor whiteColor];
     self.refreshControl = [[UIRefreshControl alloc] init];

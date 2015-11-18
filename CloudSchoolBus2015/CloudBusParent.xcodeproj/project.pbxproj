@@ -38,6 +38,9 @@
 		81BECE491BFC4465006DAA8D /* CBChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BECE481BFC4465006DAA8D /* CBChatViewController.m */; };
 		81BECE4C1BFC4908006DAA8D /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BECE4B1BFC4908006DAA8D /* BaseNavigationController.m */; };
 		81BECE4E1BFC4B89006DAA8D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BECE4D1BFC4B89006DAA8D /* AppDelegate.m */; };
+		81BECE571BFC5E80006DAA8D /* RYMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BECE561BFC5E80006DAA8D /* RYMessage.m */; };
+		81BECE5A1BFC619E006DAA8D /* MessageState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BECE591BFC619E006DAA8D /* MessageState.m */; };
+		81BECE5D1BFC6E77006DAA8D /* RedPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BECE5C1BFC6E77006DAA8D /* RedPointView.m */; };
 		81C6A5921BE9AD2E00160F2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C6A5911BE9AD2E00160F2D /* main.m */; };
 		81C6A59B1BE9AD2E00160F2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81C6A5991BE9AD2E00160F2D /* Main.storyboard */; };
 		81C6A59D1BE9AD2E00160F2D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81C6A59C1BE9AD2E00160F2D /* Images.xcassets */; };
@@ -212,6 +215,12 @@
 		81BECE4A1BFC4908006DAA8D /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		81BECE4B1BFC4908006DAA8D /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		81BECE4D1BFC4B89006DAA8D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		81BECE551BFC5E80006DAA8D /* RYMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYMessage.h; sourceTree = "<group>"; };
+		81BECE561BFC5E80006DAA8D /* RYMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYMessage.m; sourceTree = "<group>"; };
+		81BECE581BFC619E006DAA8D /* MessageState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageState.h; sourceTree = "<group>"; };
+		81BECE591BFC619E006DAA8D /* MessageState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageState.m; sourceTree = "<group>"; };
+		81BECE5B1BFC6E77006DAA8D /* RedPointView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedPointView.h; sourceTree = "<group>"; };
+		81BECE5C1BFC6E77006DAA8D /* RedPointView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedPointView.m; sourceTree = "<group>"; };
 		81C6A58C1BE9AD2E00160F2D /* CloudBusParent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudBusParent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C6A5901BE9AD2E00160F2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81C6A5911BE9AD2E00160F2D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -361,6 +370,8 @@
 			children = (
 				812A8BF21BF2FD42009CE43E /* CBTeacherTableViewCell.h */,
 				812A8BF31BF2FD42009CE43E /* CBTeacherTableViewCell.m */,
+				81BECE5B1BFC6E77006DAA8D /* RedPointView.h */,
+				81BECE5C1BFC6E77006DAA8D /* RedPointView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -579,6 +590,10 @@
 		81BECE461BFC257E006DAA8D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				81BECE551BFC5E80006DAA8D /* RYMessage.h */,
+				81BECE561BFC5E80006DAA8D /* RYMessage.m */,
+				81BECE581BFC619E006DAA8D /* MessageState.h */,
+				81BECE591BFC619E006DAA8D /* MessageState.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -886,10 +901,12 @@
 				81D48C681BF5BB5000146AA6 /* MineHeaderView.m in Sources */,
 				816446E61BF97BDB00A34D00 /* FPPopoverController.m in Sources */,
 				812A8BF41BF2FD42009CE43E /* CBTeacherTableViewCell.m in Sources */,
+				81BECE571BFC5E80006DAA8D /* RYMessage.m in Sources */,
 				81BECE451BFC1747006DAA8D /* ClassifyViewController.m in Sources */,
 				81D405141BF04A8200B5A176 /* Teacher.m in Sources */,
 				81065C121BEB3977009CE107 /* SVHTTPRequest.m in Sources */,
 				81065C151BEB4327009CE107 /* CBDateBase.m in Sources */,
+				81BECE5D1BFC6E77006DAA8D /* RedPointView.m in Sources */,
 				81D48C631BF5BB1100146AA6 /* CBMineViewController.m in Sources */,
 				81E32B561BF49C4100EA3D7A /* UITableView+FDKeyedHeightCache.m in Sources */,
 				81D405111BF049E500B5A176 /* ClassObj.m in Sources */,
@@ -902,6 +919,7 @@
 				81BECE4E1BFC4B89006DAA8D /* AppDelegate.m in Sources */,
 				81065C191BEB60AA009CE107 /* CBLoginInfo.m in Sources */,
 				81D4050E1BF049CB00B5A176 /* School.m in Sources */,
+				81BECE5A1BFC619E006DAA8D /* MessageState.m in Sources */,
 				81E32B581BF49C4100EA3D7A /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
 				F95025501BF0E952009C970A /* Tag.m in Sources */,
 				812A8BE91BF2D395009CE43E /* Message.m in Sources */,

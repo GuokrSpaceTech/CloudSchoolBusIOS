@@ -14,19 +14,76 @@
 #import "CB.h"
 #import "RCIM.h"
 #import "RCIMClient.h"
-
-@interface AppDelegate ()
-
+#import "RCTextMessage.h"
+#import "RYMessage.h"
+#import "MessageState.h"
+@interface AppDelegate ()<RCIMReceiveMessageDelegate>
+{
+    CBTabbarViewController *main;
+}
 @end
 
 @implementation AppDelegate
-
+-(void)didReceivedMessage:(RCMessage*)message left:(int)left
+{
+    if(message.conversationType == ConversationType_PRIVATE && message.messageDirection == MessageDirection_RECEIVE)
+    {
+        //发送者id
+        NSString * senderid = [NSString stringWithFormat:@"%@",message.senderUserId];
+        NSString * sendertime = [NSString stringWithFormat:@"%lld",message.sentTime];
+        //[senderid isKindOfClass:<#(__unsafe_unretained Class)#>]
+        NSString * objType = @"";
+        NSString * content = @"";
+        if([message.objectName isEqualToString:@"RC:TxtMsg"])
+        {
+            objType = @"txt";
+            RCTextMessage * obj =(RCTextMessage *)message.content;
+            content = obj.content;
+        }
+        else if([message.objectName isEqualToString:@"RC:ImgMsg"])
+        {
+            objType = @"pic";
+            content = @"图片";
+        }
+        else if([message.objectName isEqualToString:@"RC:VcMsg"])
+        {
+             content = @"语音";
+        }
+        else if([message.objectName isEqualToString:@"RC:LBSMsg"])
+        {
+            content = @"位置消息";
+        }
+        else
+        {
+            content = @"其他";
+        }
+        
+        RYMessage * message = [[RYMessage alloc]init];
+        message.senderid = senderid;
+        message.sendertime = sendertime;
+        message.messagetype = objType;
+        message.messagecontent = content;
+        message.isRead = NO;
+        //[MessageState addObjectToArr:message];
+       // [[NSNotificationCenter defaultCenter]postNotificationName:@"MESSAGETEACHER" object:nil];
+        CBLoginInfo * info = [CBLoginInfo shareInstance];
+        if(info.teacherVCIsLoading) // teacher页面已加载 并且有教师信息
+        {
+            // 直接发通知
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"MESSAGETEACHER" object:message];
+        }
+        else
+        {
+            [MessageState addObjectToArr:message];
+        }
+    }
+}
 
 -(void)makeMainViewController
 {
     // 连接融云服务器
     [[CBLoginInfo shareInstance] connectRongYun];
-    CBTabbarViewController *main = [[CBTabbarViewController alloc] init];
+    main = [[CBTabbarViewController alloc] init];
     self.window.rootViewController = main;
     
 }
@@ -58,8 +115,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [RCIM initWithAppKey:RONGCLOUND_IM_APPKEY deviceToken:nil];
+
     [self setRegisterForRemoteNotification:application];
-    
+    [[RCIM sharedRCIM] setReceiveMessageDelegate:self];
     
     [[CBDateBase sharedDatabase]selectFormTableLoginInfo];
     

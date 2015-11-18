@@ -117,6 +117,7 @@ static CBLoginInfo * logininfo = nil;
         _studentArr = [[NSMutableArray alloc]init];
         _state = LoginOff;
         _isRequesBaseInfo = NO;
+        _teacherVCIsLoading = NO;
     }
     return self;
 }

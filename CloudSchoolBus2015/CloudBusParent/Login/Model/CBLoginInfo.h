@@ -31,6 +31,9 @@ typedef enum {
 @property (nonatomic,strong)NSMutableArray * schoolArr;
 @property (nonatomic,strong)NSMutableArray * studentArr;
 @property (nonatomic,assign)BOOL isRequesBaseInfo;
+
+@property (nonatomic,assign)BOOL teacherVCIsLoading;
+
 + (CBLoginInfo*)shareInstance;
 
 -(void)loginSid:(loginSuccess)block;

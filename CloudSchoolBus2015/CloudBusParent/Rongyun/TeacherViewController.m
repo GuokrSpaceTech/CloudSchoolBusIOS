@@ -15,6 +15,7 @@
 #import "RCIM.h"
 #import "CB.h"
 #import "CBChatViewController.h"
+#import "RYMessage.h"
 static NSString * cellinentify = @"teachercell";
 
 
@@ -25,6 +26,7 @@ static NSString * cellinentify = @"teachercell";
 @end
 
 @implementation TeacherViewController
+
 -(void)loadTeacherArr
 {
     CBLoginInfo * info = [CBLoginInfo shareInstance];
@@ -74,17 +76,67 @@ static NSString * cellinentify = @"teachercell";
             
         }
     }
+    if(_tearcherArr.count != 0)
+    {
+        info.teacherVCIsLoading = YES;
+    }
+    [self.refreshControl endRefreshing];
     [self.tableView reloadData];
+}
+-(void)receiveMessage:(NSNotification *)noti
+{
+    RYMessage * message = noti.object;
+    
+    for (Teacher * teacher in _tearcherArr) {
+        
+        if([teacher.teacherid isEqualToString:message.senderid])
+        {
+            teacher.contentlatest = message.messagecontent;
+            teacher.typeLatest = message.messagetype;
+            teacher.latestTime = message.sendertime;
+            teacher.noReadCount = teacher.noReadCount + 1;
+        }
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+         [self.tableView reloadData];
+    });
+   
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //[[NSNotificationCenter defaultCenter]postNotificationName:@"MESSAGETEACHER" object:message];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(receiveMessage:) name:@"MESSAGETEACHER" object:nil];
+    
     self.navigationItem.title = @"班级教师";
     [self.tableView registerClass:[CBTeacherTableViewCell class] forCellReuseIdentifier:cellinentify];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.rowHeight = 60;
+    self.tableView.rowHeight = 80;
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"努力加载中……"];
+    self.refreshControl.tintColor = [UIColor grayColor];
+    [self.refreshControl addTarget:self action:@selector(refreshAction) forControlEvents:UIControlEventValueChanged];
+    
     _tearcherArr = [[NSMutableArray alloc]init];
+    
+    
+    
+    
     [self loadTeacherArr];
     // Do any additional setup after loading the view.
+}
+- (void)refreshAction{
+    
+    
+    // 请求数据
+    
+    // 结束刷新
+    [self loadTeacherArr];
+
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
@@ -98,9 +150,7 @@ static NSString * cellinentify = @"teachercell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
   //  cell.fd_enforceFrameLayout = NO;
     Teacher *teacher = [_tearcherArr objectAtIndex:indexPath.row];
-//    [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:teacher.avatar] placeholderImage:nil];
-//    cell.nameLabel.text = teacher.name;
-//    cell.classNameLabel.text = teacher.className;
+
     cell.teacher = teacher;
     return cell;
 }
@@ -124,7 +174,7 @@ static NSString * cellinentify = @"teachercell";
     Teacher *teacher = [_tearcherArr objectAtIndex:indexPath.row];
    // 此处处理连接成功。
         // 创建单聊视图控制器。
-        CBChatViewController *chatViewController = [[RCIM sharedRCIM]createPrivateChat:teacher.teacherid title:teacher.name completion:^(){
+        RCChatViewController *chatViewController = [[RCIM sharedRCIM]createPrivateChat:teacher.teacherid title:teacher.name completion:^(){
             // 创建 ViewController 后，调用的 Block，可以用来实现自定义行为。
         }];
         // 把单聊视图控制器添加到导航栈。

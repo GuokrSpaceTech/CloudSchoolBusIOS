@@ -12,6 +12,7 @@
 #import "TeacherViewController.h"
 #import "CBHobbyViewController.h"
 #import "BaseNavigationController.h"
+
 @interface CBTabbarViewController ()
 
 @end
@@ -22,14 +23,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.tabBar.translucent = NO;
+    
     CBFindTableViewController * findVC = [[CBFindTableViewController alloc]init];
     BaseNavigationController * findNav = [[BaseNavigationController alloc]initWithRootViewController:findVC];
     findNav.tabBarItem.title = @"发现";
-    
     TeacherViewController * teacherVC = [[TeacherViewController alloc]init];
     BaseNavigationController * teacherNav = [[BaseNavigationController alloc]initWithRootViewController:teacherVC];
     teacherNav.tabBarItem.title = @"班级教师";
+
     CBHobbyViewController * hobbyVC = [[CBHobbyViewController alloc]init];
+    
     BaseNavigationController * hobbyNav = [[BaseNavigationController alloc]initWithRootViewController:hobbyVC];
     hobbyNav.tabBarItem.title = @"兴趣爱好";
     CBMineViewController * mineVC = [[CBMineViewController alloc]initWithNibName:@"CBMineViewController" bundle:nil];

@@ -30,6 +30,10 @@ static NSString * cellinentify = @"teachercell";
 {
     [super viewDidAppear:animated];
     isIntoChat = NO;
+    
+    
+    
+    //
 }
 -(void)loadTeacherArr
 {

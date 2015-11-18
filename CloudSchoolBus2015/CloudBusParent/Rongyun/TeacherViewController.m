@@ -26,7 +26,11 @@ static NSString * cellinentify = @"teachercell";
 @end
 
 @implementation TeacherViewController
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    isIntoChat = NO;
+}
 -(void)loadTeacherArr
 {
     CBLoginInfo * info = [CBLoginInfo shareInstance];
@@ -94,7 +98,16 @@ static NSString * cellinentify = @"teachercell";
             teacher.contentlatest = message.messagecontent;
             teacher.typeLatest = message.messagetype;
             teacher.latestTime = message.sendertime;
-            teacher.noReadCount = teacher.noReadCount + 1;
+            if(isIntoChat == NO)
+            {
+                 teacher.noReadCount = teacher.noReadCount + 1;
+            }
+            else
+            {
+                
+            }
+        
+           
         }
     }
     
@@ -171,7 +184,10 @@ static NSString * cellinentify = @"teachercell";
 //}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    isIntoChat = YES;
     Teacher *teacher = [_tearcherArr objectAtIndex:indexPath.row];
+    teacher.noReadCount = 0;
+    [self.tableView reloadData];
    // 此处处理连接成功。
         // 创建单聊视图控制器。
         RCChatViewController *chatViewController = [[RCIM sharedRCIM]createPrivateChat:teacher.teacherid title:teacher.name completion:^(){

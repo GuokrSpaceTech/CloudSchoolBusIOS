@@ -13,9 +13,12 @@
 #import "FindNoticeTableViewCell.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "FPPopoverController.h"
+<<<<<<< HEAD
 #import "UIColor+RCColor.h"
 
+=======
 #import "ClassifyViewController.h"
+>>>>>>> 5a680f7a284cee35b185e144a127e2f487893f39
 static NSString * cellidenty = @"listcell";
 @interface CBFindTableViewController ()<EKProtocol>
 {

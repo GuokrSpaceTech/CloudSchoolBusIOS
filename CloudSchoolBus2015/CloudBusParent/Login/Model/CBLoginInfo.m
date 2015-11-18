@@ -9,6 +9,7 @@
 #import "CBLoginInfo.h"
 #import "School.h"
 #import "Student.h"
+#import "RCIM.h"
 #import "CBDateBase.h"
 @implementation CBLoginInfo
 static CBLoginInfo * logininfo = nil;
@@ -54,10 +55,18 @@ static CBLoginInfo * logininfo = nil;
     {
         if(code == 1)
         {
+            
             NSDictionary * dic = response;
             NSString * sid = dic[@"sid"];
+           
+            NSString * rogngyuntoken =dic[@"rongtoken"];
+            self.rongToken = rogngyuntoken;
+        
             _sid = sid;
             _state = LoginOn;
+            [[CBDateBase sharedDatabase] insertDataToLoginInfoTable:@([self.userid intValue]) token:self.token phone:self.phone sid:self.sid rong:self.rongToken];
+            
+            [self connectRongYun];
             self.successBlock(YES);
         }
         else
@@ -124,6 +133,7 @@ static CBLoginInfo * logininfo = nil;
         _studentArr = [[NSMutableArray alloc]init];
         _state = LoginOff;
         _hasValidBaseInfo = NO;
+        _teacherVCIsLoading = NO;
     }
     return self;
 }
@@ -166,5 +176,14 @@ static CBLoginInfo * logininfo = nil;
 -(void)getSid
 {
     
+}
+-(void)connectRongYun
+{
+    [[RCIM sharedRCIM] disconnect];
+    [RCIM connectWithToken:self.rongToken completion:^(NSString *userId) {
+        NSLog(@"--------  %@ ------",userId);
+    } error:^(RCConnectErrorCode status) {
+        
+    }];
 }
 @end

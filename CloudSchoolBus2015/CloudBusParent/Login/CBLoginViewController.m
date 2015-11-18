@@ -204,7 +204,7 @@
             
             [[CBDateBase sharedDatabase] insertDataToLoginInfoTable:@([info.userid intValue]) token:info.token phone:info.phone sid:info.sid rong:info.rongToken];
              //[[CBDateBase sharedDatabase] insertDataToLoginInfoTable:@(info.userid integerValue]) token:info.token phone:in];
-            
+            [[CBLoginInfo shareInstance] connectRongYun];
             [self getBaseInfo];
             
         }

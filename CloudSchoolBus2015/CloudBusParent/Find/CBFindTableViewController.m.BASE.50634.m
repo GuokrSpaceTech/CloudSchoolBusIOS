@@ -13,14 +13,9 @@
 #import "FindNoticeTableViewCell.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "FPPopoverController.h"
-#import "UIColor+RCColor.h"
-
-#import "ClassifyViewController.h"
 static NSString * cellidenty = @"listcell";
 @interface CBFindTableViewController ()<EKProtocol>
-{
-     FPPopoverController *popover;
-}
+
 @end
 
 @implementation CBFindTableViewController
@@ -34,18 +29,6 @@ static NSString * cellidenty = @"listcell";
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.title = @"发现";
-    
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    
-    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
-        // iOS 6.1 or earlier
-        self.navigationController.navigationBar.tintColor = [UIColor colorWithHexString:@"F3A139" alpha:1.0f];
-    } else {
-        // iOS 7.0 or later
-        self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"F3A139" alpha:1.0f];
-        self.navigationController.navigationBar.translucent = NO;
-    }
-    
     _dataList = [NSMutableArray array];
     self.view.backgroundColor = [UIColor whiteColor];
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -60,9 +43,8 @@ static NSString * cellidenty = @"listcell";
     
   //  UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithImage:nil style:UIBarButtonItemStylePlain target:self action:@selector(itemClick:)];
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setTitle:@"分类" forState:UIControlStateNormal];
-    btn.frame = CGRectMake(0, 0, 50, 50);
-    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn setTitle:@"dd" forState:UIControlStateNormal];
+    btn.frame = CGRectMake(0, 0, 100, 100);
     [btn addTarget:self action:@selector(itemClick:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem = item;
@@ -79,21 +61,14 @@ static NSString * cellidenty = @"listcell";
 }
 -(void)itemClick:(id)sender
 {
-    ClassifyViewController * vc = [[ClassifyViewController alloc]init];
+    UIViewController * vc = [[UIViewController alloc]init];
     vc.title = nil;
-    vc.delegate = self;
-    popover = [[FPPopoverController alloc] initWithViewController:vc];
+    FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:vc];
     popover.border = NO;
     popover.tint = FPPopoverWhiteTint;
-    popover.contentSize = CGSizeMake(150, 300);
+    //the popover will be presented from the okButton view
     [popover presentPopoverFromPoint:CGPointMake(self.view.frame.size.width - 20, 20)];
 }
--(void)selectedTableRow:(NSUInteger)rowNum
-{
-    NSLog(@"SELECTED ROW %lu",(unsigned long)rowNum);
-    [popover dismissPopoverAnimated:YES];
-}
-
 -(void) getErrorInfo:(NSError *) error forMethod:(RequestFunction) method
 {
     

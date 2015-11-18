@@ -12,6 +12,8 @@
 #import "TeacherViewController.h"
 #import "CBHobbyViewController.h"
 #import "UIColor+RCColor.h"
+#import "BaseNavigationController.h"
+
 @interface CBTabbarViewController ()
 
 @end
@@ -55,6 +57,7 @@
     mineVC.tabBarItem.selectedImage = selectedImage;
     mineVC.tabBarItem.title = @"我";
     
+    self.tabBar.translucent = NO;
 
     UINavigationController * mainNav = [[UINavigationController alloc]initWithRootViewController:mineVC];
     UINavigationController * hobbyNav = [[UINavigationController alloc]initWithRootViewController:hobbyVC];

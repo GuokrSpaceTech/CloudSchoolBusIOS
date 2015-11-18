@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface TeacherViewController : UITableViewController
+{
+    BOOL isIntoChat;
+}
 @property (nonatomic,strong)NSMutableArray * tearcherArr;
 @property (nonatomic,strong)NSMutableDictionary * offscreenCells;
 @end

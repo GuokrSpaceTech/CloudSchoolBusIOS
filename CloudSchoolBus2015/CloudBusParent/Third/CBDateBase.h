@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FMDB.h"
+#import "CBLoginInfo.h"
 @interface CBDateBase : NSObject
 {
     FMDatabaseQueue *queue;
@@ -16,4 +17,6 @@
 
 -(void)insertDataToLoginInfoTable:(NSNumber *)cid token:(NSString *)token phone:(NSString *)phone sid:(NSString *)sid rong:(NSString *)rongCloudToken;
 -(void)selectFormTableLoginInfo;
+-(void)insertDataToBaseInfoTable:(NSNumber *)cid withBaseinfo:(NSString *)baseinfoString;
+-(void)selectFormTableBaseinfo:(sessionNotOver)block;
 @end

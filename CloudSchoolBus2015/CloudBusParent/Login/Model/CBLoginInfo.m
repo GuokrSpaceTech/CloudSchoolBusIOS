@@ -9,6 +9,7 @@
 #import "CBLoginInfo.h"
 #import "School.h"
 #import "Student.h"
+#import "CBDateBase.h"
 @implementation CBLoginInfo
 static CBLoginInfo * logininfo = nil;
 + (CBLoginInfo*)shareInstance
@@ -23,9 +24,12 @@ static CBLoginInfo * logininfo = nil;
 {
     [[EKRequest Instance] EKHTTPRequest:login parameters:parm requestMethod:POST forDelegate:self];
 }
--(void)getBaseInfo
+-(void)getBaseInfo:(sessionNotOver)block
 {
-    [[EKRequest Instance] EKHTTPRequest:baseinfo  parameters:nil requestMethod:POST forDelegate:self];
+    //Try to load form DB first
+    [[CBDateBase sharedDatabase] selectFormTableBaseinfo:block];
+    
+//    [[EKRequest Instance] EKHTTPRequest:baseinfo  parameters:nil requestMethod:POST forDelegate:self];
 }
 -(void) getErrorInfo:(NSError *) error forMethod:(RequestFunction) method
 {
@@ -66,13 +70,27 @@ static CBLoginInfo * logininfo = nil;
         if(code == 1)
         {
             NSDictionary * baseinfo = response;
+            
+            //Save baseinfo to DB
+            NSError *error;
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:response
+                                options:(NSJSONWritingOptions) 0
+                                error:&error];
+
+            if (!jsonData) {
+                NSLog(@"Json Serilisation: error: %@", error.localizedDescription);
+                self.baseInfoBlock(NO);
+            } else {
+                NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                [[CBDateBase sharedDatabase] insertDataToBaseInfoTable:@1 withBaseinfo:jsonString];
+            }
+            
             NSArray * schoolarr = baseinfo[@"schools"];
             for (int i = 0; i < schoolarr.count; i++) {
                 NSDictionary * schooldic = schoolarr[i];
                 School * school = [[School alloc]initWithSchoolDic:schooldic];
                 [_schoolArr addObject:school];
             }
-            
             
             NSArray * stuArr = baseinfo[@"students"];
             for (int i=0; i<stuArr.count; i++) {
@@ -83,9 +101,8 @@ static CBLoginInfo * logininfo = nil;
                 }
                 [_studentArr addObject:st];
             }
-            _isRequesBaseInfo = YES;
+            _hasValidBaseInfo = YES;
             self.baseInfoBlock(YES);
-            
         }
         else
         {
@@ -106,7 +123,7 @@ static CBLoginInfo * logininfo = nil;
         _schoolArr = [[NSMutableArray alloc]init];
         _studentArr = [[NSMutableArray alloc]init];
         _state = LoginOff;
-        _isRequesBaseInfo = NO;
+        _hasValidBaseInfo = NO;
     }
     return self;
 }
@@ -117,14 +134,15 @@ static CBLoginInfo * logininfo = nil;
     [self loginSid:^(BOOL isLogin) {
         if(isLogin)
         {
-            if(_isRequesBaseInfo)
-            {
-                self.baseInfoBlock(YES);
-            }
-            else
-            {
-                [self getBaseInfo];
-            }
+            [self getBaseInfo:block];
+//            if(_hasValidBaseInfo)
+//            {
+//                self.baseInfoBlock(YES);
+//            }
+//            else
+//            {
+//                [self getBaseInfo];
+//            }
         }
     }];
     

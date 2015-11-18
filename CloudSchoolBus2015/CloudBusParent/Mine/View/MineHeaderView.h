@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PaddingUILabel.h"
 
 @interface MineHeaderView : UIView
 {
@@ -14,5 +15,5 @@
 }
 @property (nonatomic,strong)UIImageView * avatarImageView;
 @property (nonatomic,strong)UILabel * nameLabel;
-@property (nonatomic,strong)UILabel * schoolLabel;
+@property (nonatomic,strong)PaddingUILabel * schoolLabel;
 @end

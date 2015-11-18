@@ -19,11 +19,14 @@
         _avatarImageView = [[UIImageView alloc]init];
         _avatarImageView.backgroundColor = [UIColor grayColor];
         [self.contentView addSubview:_avatarImageView];
+        
         _nameLabel = [[UILabel alloc]init];
         _nameLabel.backgroundColor = [UIColor clearColor];
+        _nameLabel.font = [UIFont systemFontOfSize:16.0f];
         [self.contentView addSubview:_nameLabel];
         
         _classNameLabel = [[UILabel alloc]init];
+        _classNameLabel.font = [UIFont systemFontOfSize:14.0f];
         [self.contentView addSubview:_classNameLabel];
         
         _timeLabel = [[UILabel alloc]init];
@@ -37,9 +40,7 @@
         [_avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.contentView.mas_left).offset(10);
             make.top.equalTo(self.contentView.mas_top).offset(5);
-            //make.bottom.equalTo(self.contentView.mas_bottom).offset(-5);
-            make.width.mas_equalTo(@(80));
-            make.height.mas_equalTo(@(50));
+            make.size.mas_equalTo(CGSizeMake(50.0f, 50.f));
         }];
         [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_avatarImageView.mas_right).offset(10);

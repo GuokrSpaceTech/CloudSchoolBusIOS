@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2A9745251BFBFA8A008C8A7B /* UIColor+RCColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9745241BFBFA8A008C8A7B /* UIColor+RCColor.m */; settings = {ASSET_TAGS = (); }; };
+		2A9745281BFC3BAB008C8A7B /* PaddingUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9745271BFC3BAB008C8A7B /* PaddingUILabel.m */; settings = {ASSET_TAGS = (); }; };
 		43A7B6B7133E7159766C99EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7299EA4EE1E968A90534B5D /* libPods.a */; };
 		81065BE91BEB019A009CE107 /* CBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81065BE71BEB019A009CE107 /* CBLoginViewController.m */; };
 		81065BEA1BEB019A009CE107 /* CBLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81065BE81BEB019A009CE107 /* CBLoginViewController.xib */; };
@@ -73,6 +74,8 @@
 		1E144438A15607A7BE09809F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2A9745231BFBFA8A008C8A7B /* UIColor+RCColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RCColor.h"; sourceTree = "<group>"; };
 		2A9745241BFBFA8A008C8A7B /* UIColor+RCColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RCColor.m"; sourceTree = "<group>"; };
+		2A9745261BFC3BAB008C8A7B /* PaddingUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaddingUILabel.h; sourceTree = "<group>"; };
+		2A9745271BFC3BAB008C8A7B /* PaddingUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaddingUILabel.m; sourceTree = "<group>"; };
 		81065BE61BEB019A009CE107 /* CBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBLoginViewController.h; path = CloudBusParent/Login/CBLoginViewController.h; sourceTree = SOURCE_ROOT; };
 		81065BE71BEB019A009CE107 /* CBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBLoginViewController.m; path = CloudBusParent/Login/CBLoginViewController.m; sourceTree = SOURCE_ROOT; };
 		81065BE81BEB019A009CE107 /* CBLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CBLoginViewController.xib; path = CloudBusParent/Login/CBLoginViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -683,6 +686,8 @@
 				81D48C671BF5BB5000146AA6 /* MineHeaderView.m */,
 				81D431D51BFB05870089239A /* MineCell.h */,
 				81D431D61BFB05870089239A /* MineCell.m */,
+				2A9745261BFC3BAB008C8A7B /* PaddingUILabel.h */,
+				2A9745271BFC3BAB008C8A7B /* PaddingUILabel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -872,6 +877,7 @@
 				812A8BFF1BF31BAC009CE43E /* FindCellTopView.m in Sources */,
 				81065BED1BEB01CA009CE107 /* EKRequest.m in Sources */,
 				816446E71BF97BDB00A34D00 /* FPPopoverView.m in Sources */,
+				2A9745281BFC3BAB008C8A7B /* PaddingUILabel.m in Sources */,
 				81D48C681BF5BB5000146AA6 /* MineHeaderView.m in Sources */,
 				816446E61BF97BDB00A34D00 /* FPPopoverController.m in Sources */,
 				812A8BF41BF2FD42009CE43E /* CBTeacherTableViewCell.m in Sources */,

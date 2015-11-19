@@ -119,10 +119,10 @@
     [self setRegisterForRemoteNotification:application];
     [[RCIM sharedRCIM] setReceiveMessageDelegate:self];
     
-    [[CBDateBase sharedDatabase]selectFormTableLoginInfo];
+    [[CBDateBase sharedDatabase] selectFormTableLoginInfo];
     
+    CBLoginInfo *info = [CBLoginInfo shareInstance];
     
-    CBLoginInfo * info = [CBLoginInfo shareInstance];
     if(info.sid == nil)
     {
         //登陆页面

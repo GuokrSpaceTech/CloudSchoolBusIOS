@@ -26,7 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-
+    
     
     UIImageView * bgImageView = [[UIImageView alloc]init];
     bgImageView.backgroundColor = [UIColor clearColor];
@@ -44,7 +44,7 @@
     UIView * phoneView = [[UIView alloc]init];
     phoneView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:phoneView];
-   // 家长 13700000005 验证码 1111
+    // 家长 13700000005 验证码 1111
     _usernameField = [[UITextField alloc]init];
     _usernameField.borderStyle = UITextBorderStyleNone;
     _usernameField.placeholder = @"输入手机号";
@@ -57,7 +57,7 @@
     [codeButton addTarget:self action:@selector(codeClick:) forControlEvents:UIControlEventTouchUpInside];
     [codeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.view addSubview:codeButton];
-
+    
     
     UIView * passwordView = [[UIView alloc]init];
     passwordView.backgroundColor = [UIColor whiteColor];
@@ -123,13 +123,13 @@
         make.bottom.equalTo(passwordView.mas_bottom);
         make.right.equalTo(passwordView.mas_right).offset(-5);
     }];
-
+    
     [registerButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left).offset(20);
         make.right.equalTo(self.view.mas_right).offset(-20);;
         make.height.mas_equalTo(30);
         make.top.equalTo(passwordView.mas_bottom).offset(10);;
-
+        
     }];
 }
 
@@ -155,13 +155,9 @@
 }
 -(void)getBaseInfo
 {
-    [[CBDateBase sharedDatabase] selectFormTableBaseinfo:^(BOOL isExist) {
-        //进入主页面
-        
-        AppDelegate * delegate = [UIApplication sharedApplication].delegate;
-        [delegate makeMainViewController];
-    }];
+    [[EKRequest Instance] EKHTTPRequest:baseinfo  parameters:nil requestMethod:POST forDelegate:self];
 }
+
 -(void) getEKResponse:(id) response forMethod:(RequestFunction) method resultCode:(int) code withParam:(NSDictionary *)param
 {
     CBLoginInfo * info = [CBLoginInfo shareInstance];
@@ -169,6 +165,19 @@
     {
         if(code == 1)
         {
+            //Save baseinfo to DB
+            NSError *error;
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:response
+                                                               options:(NSJSONWritingOptions) 0
+                                                                 error:&error];
+            
+            if (!jsonData) {
+                NSLog(@"Json Serilisation: error: %@", error.localizedDescription);
+            } else {
+                NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                [[CBDateBase sharedDatabase] insertDataToBaseInfoTable:@1 withBaseinfo:jsonString];
+            }
+            
             NSDictionary * baseinfo = response;
             NSArray * schoolarr = baseinfo[@"schools"];
             for (int i = 0; i < schoolarr.count; i++) {
@@ -205,10 +214,9 @@
             // 获得基本信息
             
             [[CBDateBase sharedDatabase] insertDataToLoginInfoTable:@([info.userid intValue]) token:info.token phone:info.phone sid:info.sid rong:info.rongToken];
-             //[[CBDateBase sharedDatabase] insertDataToLoginInfoTable:@(info.userid integerValue]) token:info.token phone:in];
+            //[[CBDateBase sharedDatabase] insertDataToLoginInfoTable:@(info.userid integerValue]) token:info.token phone:in];
             [[CBLoginInfo shareInstance] connectRongYun];
             [self getBaseInfo];
-            
         }
         else
         {
@@ -225,20 +233,20 @@
         else if(code == 1)
         {
             NSDictionary * result = response;
-//            {
-//                rongtoken = "AwqyYBn3zjOSEcuW4Nj2iWt7WeHtVwu+Kx3KhVH1Ufgmd/ZEM+HQ+SbyTaxa/XHOF00dnvXtplI=";
-//                sid = pfu340ti757fkmirj679l62q80;
-//                token = 774de7225e4af0a7093fe94f273b4ebbd9782549;
-//                userid = 12;
-//            }
+            //            {
+            //                rongtoken = "AwqyYBn3zjOSEcuW4Nj2iWt7WeHtVwu+Kx3KhVH1Ufgmd/ZEM+HQ+SbyTaxa/XHOF00dnvXtplI=";
+            //                sid = pfu340ti757fkmirj679l62q80;
+            //                token = 774de7225e4af0a7093fe94f273b4ebbd9782549;
+            //                userid = 12;
+            //            }
             info.token = result[@"token"];
             info.phone = _usernameField.text;
             info.userid = [NSString stringWithFormat:@"%@",result[@"userid"]];
             
-           
+            
             NSDictionary * dic = @{@"mobile":_usernameField.text,@"token":result[@"token"]};
             [self getSid:dic];
-
+            
         }
         else
         {
@@ -261,7 +269,7 @@
             
         }
     }
-
+    
 }
 -(void) getErrorInfo:(NSError *) error forMethod:(RequestFunction) method
 {

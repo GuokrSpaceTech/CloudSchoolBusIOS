@@ -43,7 +43,7 @@
         sqlStr = @"CREATE TABLE IF NOT EXISTS messagesTbl('messageid' int,'desc' text,'apptype' text,'ismass' text,'body' text, 'sendtime' text, 'title' text, 'tag' text, 'isconfirm' text, 'isreaded' text, 'senderid' int, 'studentid' text);";
         [db executeUpdate:sqlStr];
         
-        sqlStr = @"CREATE TABLE IF NOT EXISTS senderTbl('senderid' int, 'classname' text, 'name' text, 'role' text, 'avatar' text);";
+        sqlStr = @"CREATE TABLE IF NOT EXISTS senderTbl('senderid' INT NOT NULL PRIMARY KEY, 'classname' text, 'name' text, 'role' text, 'avatar' text);";
         [db executeUpdate:sqlStr];
         
     }];
@@ -171,7 +171,7 @@
 
 -(void)fetchMessagesFromDB:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles
 {
-    NSMutableArray *messageArray = nil;
+    NSMutableArray *messageArray = [[NSMutableArray alloc] init];
     [queue inDatabase:^(FMDatabase *db) {
         FMResultSet * messageSet = [db executeQuery:@"SELECT * FROM messagesTbl ORDER BY messageid DESC"];
         while ([messageSet next]) {
@@ -205,8 +205,8 @@
             message.studentid = [messageSet stringForColumn:@"studentid"];
             
             [messageArray addObject:message];
-            postMessageFetchHandles(messageArray);
         }
+        postMessageFetchHandles(messageArray);
     }];
 }
 @end

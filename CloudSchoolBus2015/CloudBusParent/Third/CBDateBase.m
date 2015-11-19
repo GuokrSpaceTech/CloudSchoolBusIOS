@@ -40,12 +40,12 @@
         sqlStr = @"CREATE TABLE IF NOT EXISTS baseInfo('c_id' int, 'baseinfoJsonStr' text);";
         [db executeUpdate:sqlStr];
         
-        sqlStr = @"CREATE TABLE IF NOT EXISTS messagesTbl('messageid' int,'desc' text,'apptype' text,'ismass' text,'body' text, 'sendtime' text, 'title' text, 'tag' text, 'isconfirm' text, ∞'isreaded' text, 'senderid' int, 'studentid' text);";
+        sqlStr = @"CREATE TABLE IF NOT EXISTS messagesTbl('messageid' int,'desc' text,'apptype' text,'ismass' text,'body' text, 'sendtime' text, 'title' text, 'tag' text, 'isconfirm' text, 'isreaded' text, 'senderid' int, 'studentid' text);";
         [db executeUpdate:sqlStr];
         
         sqlStr = @"CREATE TABLE IF NOT EXISTS senderTbl('senderid' int, 'classname' text, 'name' text, 'role' text, 'avatar' text);";
         [db executeUpdate:sqlStr];
-    
+        
     }];
 }
 +(CBDateBase*) sharedDatabase
@@ -113,8 +113,8 @@
                 NSError *jsonError;
                 NSData *objectData = [baseinfoStr dataUsingEncoding:NSUTF8StringEncoding];
                 NSDictionary *baseinfoDict = [NSJSONSerialization JSONObjectWithData:objectData
-                                                              options:NSJSONReadingMutableContainers
-                                                              error:&jsonError];
+                                                                             options:NSJSONReadingMutableContainers
+                                                                               error:&jsonError];
                 if(!baseinfoDict)
                 {
                     NSLog(@"Json Deserialisation error %@", jsonError.localizedDescription);
@@ -131,10 +131,10 @@
                         Student * st = [[Student alloc]initWithDic:stuArr[i]];
                         if(i == 0)
                         {
-                           [[CBLoginInfo shareInstance] setCurrentStudentId:st.studentid];
+                            [[CBLoginInfo shareInstance] setCurrentStudentId:st.studentid];
                         }
                         [[[CBLoginInfo shareInstance] studentArr] addObject:st];
-                    
+                        
                         isBaseInfoValid = true;
                     }
                     
@@ -157,17 +157,14 @@
     for( Message *message in messageArray )
     {
         [queue inDatabase:^(FMDatabase *db) {
-            [db executeUpdate:
-                @"insert into messagesTbl(messageid, desc, apptype, ismass, body, sendtime, title, tag, isconfirm, isreaded, senderid, studentid) values(?,?,?,?,?,?,?,?,?,?,?,?)",
-                  [message.messageid intValue], message.desc, message.apptype, message.ismass,
-                   message.body, message.sendtime, message.title, message.tag,
-                   message.isconfirm, message.isreaded, [message.sender.senderid intValue],message.studentid ];
-        }];
-        
-        Sender *sender = message.sender;
-        [queue inDatabase:^(FMDatabase *db) {
-            [db executeUpdate:@"INSERT OR REPLACE INTO senderTbl(senderid, classname, name, role, avatar) VALUES(?,?,?,?,?)",
-               [sender.senderid intValue], sender.classname, sender.name,sender.role, sender.avatar];
+            NSNumber *messageid = [[NSNumber alloc] initWithInt:[message.messageid intValue]];
+            NSNumber *senderid  = [[NSNumber alloc] initWithInt:[message.sender.senderid intValue]];
+
+            [db executeUpdate:@"INSERT INTO messagesTbl(messageid, desc, apptype, ismass, body, sendtime, title, tag, isconfirm, isreaded, senderid, studentid) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", messageid, message.desc, message.apptype, message.ismass, message.body, message.sendtime, message.title, message.tag,message.isconfirm, message.isreaded, senderid, message.studentid];
+            
+            Sender *sender = message.sender;
+            
+            [db executeUpdate:@"INSERT OR REPLACE INTO senderTbl(senderid, classname, name, role, avatar) VALUES(?,?,?,?,?)", senderid, sender.classname, sender.name,sender.role, sender.avatar];
         }];
     }
 }

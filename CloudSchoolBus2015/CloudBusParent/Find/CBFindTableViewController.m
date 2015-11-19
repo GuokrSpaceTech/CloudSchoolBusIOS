@@ -75,11 +75,16 @@ static NSString * cellidenty = @"listcell";
             } else {
                 NSString *lastestMessageId = [[_dataList lastObject] messageid];
                 paramDict = @{@"newid":lastestMessageId};
-                
             }
             
             [[EKRequest Instance] EKHTTPRequest:getmessage parameters:paramDict requestMethod:GET forDelegate:self];
             });
+        } else {
+            NSString *token = [[CBLoginInfo shareInstance] token];
+            NSString *mobile = [[CBLoginInfo shareInstance] phone];
+            NSDictionary *paramDict = @{@"token":token, @"mobile":mobile};
+            //Session Expired
+            [[EKRequest Instance] EKHTTPRequest:login parameters:paramDict requestMethod:POST forDelegate:[CBLoginInfo shareInstance]];
         }
     }];
     

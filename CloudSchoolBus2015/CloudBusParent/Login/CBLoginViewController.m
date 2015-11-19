@@ -155,7 +155,12 @@
 }
 -(void)getBaseInfo
 {
-//    [[CBDateBase sharedDatabase] selectFormTableBaseinfo];
+    [[CBDateBase sharedDatabase] selectFormTableBaseinfo:^(BOOL isExist) {
+        //进入主页面
+        
+        AppDelegate * delegate = [UIApplication sharedApplication].delegate;
+        [delegate makeMainViewController];
+    }];
 }
 -(void) getEKResponse:(id) response forMethod:(RequestFunction) method resultCode:(int) code withParam:(NSDictionary *)param
 {
@@ -172,7 +177,6 @@
                 [info.schoolArr addObject:school];
             }
             
-            
             NSArray * stuArr = baseinfo[@"students"];
             for (int i=0; i<stuArr.count; i++) {
                 Student * st = [[Student alloc]initWithDic:stuArr[i]];
@@ -182,8 +186,6 @@
                 }
                 [info.studentArr addObject:st];
             }
-            
-        
             
             info.state = LoginOn;
             //进入主页面

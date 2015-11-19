@@ -10,6 +10,7 @@
 #import "CBLoginInfo.h"
 #import "School.h"
 #import "Student.h"
+#import "Message.h"
 @implementation CBDateBase
 
 -(NSString *)datebasePath
@@ -37,6 +38,12 @@
         [db executeUpdate:sqlStr];
         
         sqlStr = @"CREATE TABLE IF NOT EXISTS baseInfo('c_id' int, 'baseinfoJsonStr' text);";
+        [db executeUpdate:sqlStr];
+        
+        sqlStr = @"CREATE TABLE IF NOT EXISTS messagesTbl('messageid' int,'desc' text,'apptype' text,'ismass' text,'body' text, 'sendtime' text, 'title' text, 'tag' text, 'isconfirm' text, ∞'isreaded' text, 'senderid' int, 'studentid' text);";
+        [db executeUpdate:sqlStr];
+        
+        sqlStr = @"CREATE TABLE IF NOT EXISTS senderTbl('senderid' int, 'classname' text, 'name' text, 'role' text, 'avatar' text);";
         [db executeUpdate:sqlStr];
     
     }];
@@ -134,8 +141,6 @@
                     [[CBLoginInfo shareInstance] setHasValidBaseInfo:YES];
                     
                     block(YES);
-                    
-//                    self.baseInfoBlock(YES); //TBCorrected, check session expiration when server returns error
                 }
             }
         } //End of while
@@ -144,6 +149,67 @@
             [[EKRequest Instance] EKHTTPRequest:baseinfo  parameters:nil requestMethod:POST forDelegate:[CBLoginInfo shareInstance]];
         }
         
+    }];
+}
+
+-(void)insertMessagesData:(NSMutableArray *)messageArray
+{
+    for( Message *message in messageArray )
+    {
+        [queue inDatabase:^(FMDatabase *db) {
+            [db executeUpdate:
+                @"insert into messagesTbl(messageid, desc, apptype, ismass, body, sendtime, title, tag, isconfirm, isreaded, senderid, studentid) values(?,?,?,?,?,?,?,?,?,?,?,?)",
+                  [message.messageid intValue], message.desc, message.apptype, message.ismass,
+                   message.body, message.sendtime, message.title, message.tag,
+                   message.isconfirm, message.isreaded, [message.sender.senderid intValue],message.studentid ];
+        }];
+        
+        Sender *sender = message.sender;
+        [queue inDatabase:^(FMDatabase *db) {
+            [db executeUpdate:@"INSERT OR REPLACE INTO senderTbl(senderid, classname, name, role, avatar) VALUES(?,?,?,?,?)",
+               [sender.senderid intValue], sender.classname, sender.name,sender.role, sender.avatar];
+        }];
+    }
+}
+
+-(void)fetchMessagesFromDB:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles
+{
+    NSMutableArray *messageArray = nil;
+    [queue inDatabase:^(FMDatabase *db) {
+        FMResultSet * messageSet = [db executeQuery:@"SELECT * FROM messagesTbl ORDER BY messageid DESC"];
+        while ([messageSet next]) {
+            int senderid = [[messageSet stringForColumn:@"senderid"] intValue];
+            
+            NSString *queryStr = [[NSString alloc] initWithFormat: @"SELECT * FROM senderTbl WHERE senderid = %d LIMIT 1", senderid];
+            FMResultSet * senderSet = [db executeQuery:queryStr];
+            
+            Sender *sender = [[Sender alloc] init];
+            while([senderSet next]){
+                sender.senderid = [[NSString alloc] initWithFormat:@"%d",senderid];
+                sender.classname = [senderSet stringForColumn:@"classname"];
+                sender.name = [senderSet stringForColumn:@"name"];
+                sender.role = [senderSet stringForColumn:@"role"];
+                sender.avatar = [senderSet stringForColumn:@"avatar"];
+            }
+            
+            Message *message = [[Message alloc] init];
+            message.sender = sender;
+            int messageid = [messageSet intForColumn:@"messageid"];
+            message.messageid = [[NSString alloc] initWithFormat:@"%d",messageid];
+            message.desc = [messageSet stringForColumn:@"desc"];
+            message.apptype = [messageSet stringForColumn:@"apptype"];
+            message.ismass = [messageSet stringForColumn:@"ismass"];
+            message.body = [messageSet stringForColumn:@"body"];
+            message.sendtime = [messageSet stringForColumn:@"sendtime"];
+            message.title = [messageSet stringForColumn:@"title"];
+            message.tag = [messageSet stringForColumn:@"tag"];
+            message.isconfirm = [messageSet stringForColumn:@"isconfirm"];
+            message.isreaded = [messageSet stringForColumn:@"isreaded"];
+            message.studentid = [messageSet stringForColumn:@"studentid"];
+            
+            [messageArray addObject:message];
+            postMessageFetchHandles(messageArray);
+        }
     }];
 }
 @end

@@ -19,4 +19,6 @@
 -(void)selectFormTableLoginInfo;
 -(void)insertDataToBaseInfoTable:(NSNumber *)cid withBaseinfo:(NSString *)baseinfoString;
 -(void)selectFormTableBaseinfo:(sessionNotOver)block;
+-(void)insertMessagesData:(NSMutableArray *)messageArray;
+-(void)fetchMessagesFromDB:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
 @end

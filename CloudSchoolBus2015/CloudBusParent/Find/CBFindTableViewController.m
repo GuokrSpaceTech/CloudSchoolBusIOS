@@ -14,12 +14,12 @@
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "FPPopoverController.h"
 #import "UIColor+RCColor.h"
-
+#import "CBDateBase.h"
 #import "ClassifyViewController.h"
 static NSString * cellidenty = @"listcell";
 @interface CBFindTableViewController ()<EKProtocol>
 {
-     FPPopoverController *popover;
+    FPPopoverController *popover;
 }
 @end
 
@@ -28,37 +28,27 @@ static NSString * cellidenty = @"listcell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.navigationItem.title = @"发现";
-    
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    
-    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
-        // iOS 6.1 or earlier
-        self.navigationController.navigationBar.tintColor = [UIColor colorWithHexString:@"F3A139" alpha:1.0f];
-    } else {
-        // iOS 7.0 or later
-        self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"F3A139" alpha:1.0f];
-        self.navigationController.navigationBar.translucent = NO;
-    }
-    
+    //Init Data
     _dataList = [NSMutableArray array];
+    
+    
+    /*
+     * Init UI
+     */
+    //Background
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    //Pull to refresh
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"努力加载中……"];
     self.refreshControl.tintColor = [UIColor grayColor];
     [self.refreshControl addTarget:self action:@selector(refreshAction) forControlEvents:UIControlEventValueChanged];
+    
+    //Tableview
     [self.tableView registerClass:[FindNoticeTableViewCell class] forCellReuseIdentifier:cellidenty];
     self.tableView.separatorColor = UITableViewCellSeparatorStyleNone;
-    //判断是否登录
-
-    // 右侧按钮
     
-  //  UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithImage:nil style:UIBarButtonItemStylePlain target:self action:@selector(itemClick:)];
+    //Filter Button
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:@"分类" forState:UIControlStateNormal];
     btn.frame = CGRectMake(0, 0, 50, 50);
@@ -67,12 +57,29 @@ static NSString * cellidenty = @"listcell";
     UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem = item;
     
+    //Check if we have logged in
     [[CBLoginInfo shareInstance] baseInfoIsExist:^(BOOL isExist) {
         if(isExist)
         {
-            NSDictionary * dic = @{@"newid":@"0"};
-            [[EKRequest Instance] EKHTTPRequest:getmessage parameters:dic requestMethod:GET forDelegate:self];
-
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            //先从数据库里读出消息
+            [[CBDateBase sharedDatabase] fetchMessagesFromDB:^(NSMutableArray *messageArray) {
+                _dataList = messageArray;
+            }];
+            
+            //如果数据库为空，从头开始获取。否则从本地最新的一条开始获取。
+            NSDictionary * paramDict;
+            if([_dataList count]==0)
+            {
+                paramDict = @{@"newid":@"0"};
+            } else {
+                NSString *lastestMessageId = [[_dataList lastObject] messageid];
+                paramDict = @{@"newid":lastestMessageId};
+                
+            }
+            
+            [[EKRequest Instance] EKHTTPRequest:getmessage parameters:paramDict requestMethod:GET forDelegate:self];
+            });
         }
     }];
     
@@ -107,21 +114,26 @@ static NSString * cellidenty = @"listcell";
         {
             return;
         }
+        
         for (int i = 0; i < arr.count; i++) {
             Message *message = [[Message alloc]initWithDic:arr[i]];
             [_dataList insertObject:message atIndex:0];
         }
+        
+        //Save messages to DB
+        [[CBDateBase sharedDatabase] insertMessagesData:_dataList];
+        
         [self.tableView reloadData];
     }
-
+    
 }
 - (void)refreshAction{
-   
+    
     
     // 请求数据
-
+    
     // 结束刷新
-   
+    
     [self.refreshControl endRefreshing];
 }
 - (void)didReceiveMemoryWarning {
@@ -134,7 +146,7 @@ static NSString * cellidenty = @"listcell";
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+    
     // Return the number of rows in the section.
     return [_dataList count];
 }
@@ -145,10 +157,11 @@ static NSString * cellidenty = @"listcell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.fd_enforceFrameLayout = NO;
     Message *message = [_dataList objectAtIndex:indexPath.row];
-//    cell.textLabel.text  =message.body;
+    //    cell.textLabel.text  =message.body;
     cell.messsage = message;
     return cell;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Message *message = [_dataList objectAtIndex:indexPath.row];
@@ -162,47 +175,47 @@ static NSString * cellidenty = @"listcell";
     //return 120+20;
 }
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

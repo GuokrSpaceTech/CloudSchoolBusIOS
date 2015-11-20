@@ -10,4 +10,6 @@
 
 @interface PaddingUILabel : UILabel
 
+- (void)adjustSize;
+
 @end

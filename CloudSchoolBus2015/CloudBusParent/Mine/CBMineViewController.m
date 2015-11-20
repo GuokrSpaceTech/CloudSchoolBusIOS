@@ -121,7 +121,7 @@
         [headeView.schoolLabel.layer setBorderWidth:2.0f];//Set border width of label.
         [headeView.schoolLabel  setClipsToBounds:YES];//Set its to YES for Corner radius to work.
         [headeView.schoolLabel.layer setBorderColor:[UIColor whiteColor].CGColor];//Set Border color.
-        [headeView.schoolLabel  setBackgroundColor:[UIColor colorWithHexString:@"ED7426" alpha:1.0f]];
+        [headeView.schoolLabel  setBackgroundColor:[UIColor colorWithHexString:@"#ED7426" alpha:1.0f]];
         
     }
 }

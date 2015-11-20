@@ -73,7 +73,7 @@ static NSString * cellidenty = @"listcell";
             {
                 paramDict = @{@"newid":@"0"};
             } else {
-                NSString *lastestMessageId = [[_dataList lastObject] messageid];
+                NSString *lastestMessageId = [[_dataList firstObject] messageid];
                 paramDict = @{@"newid":lastestMessageId};
             }
             
@@ -117,16 +117,20 @@ static NSString * cellidenty = @"listcell";
         NSArray * arr = response;
         if(![arr isKindOfClass:[NSArray class]])
         {
+            [self.tableView reloadData];
             return;
         }
         
+        NSMutableArray *newMessagesArray =[[NSMutableArray alloc] init];
         for (int i = 0; i < arr.count; i++) {
             Message *message = [[Message alloc]initWithDic:arr[i]];
+            [newMessagesArray addObject:message];
             [_dataList insertObject:message atIndex:0];
         }
         
-        //Save messages to DB
-        [[CBDateBase sharedDatabase] insertMessagesData:_dataList];
+        //Save new messages to DB
+        [[CBDateBase sharedDatabase] insertMessagesData:newMessagesArray];
+    
         
         [self.tableView reloadData];
     }

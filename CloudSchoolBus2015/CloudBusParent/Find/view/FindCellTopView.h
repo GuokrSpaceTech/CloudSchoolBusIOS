@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PaddingUILabel.h"
 
 @interface FindCellTopView : UIView
 @property (nonatomic,strong)UIImageView * avatarImageView;
 @property (nonatomic,strong) UILabel * nameLabel;
 @property (nonatomic,strong) UILabel * classNamelabel;
 @property (nonatomic,strong) UILabel * timeLabel;
+@property (nonatomic,strong) UIView  * typeLabelContainer;
 @property (nonatomic,strong) UILabel * typeLabel;
 @end

@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "Calculate.h"
 #import "UIImageView+WebCache.h"
+#import "UIColor+RCColor.h"
 #define PICWIDTH 75
 #define PADDING 10
 @implementation FindNoticeTableViewCell
@@ -17,7 +18,7 @@
 {
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
-        _topView = [[FindCellTopView alloc]init];
+        _topView = [[FindCellTopView alloc] init];
         _topView.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:_topView];
         [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -184,9 +185,6 @@
     {
          _topView.typeLabel.text = @"通知";
     }
-    
-
-    
 }
 - (void)awakeFromNib {
     // Initialization code

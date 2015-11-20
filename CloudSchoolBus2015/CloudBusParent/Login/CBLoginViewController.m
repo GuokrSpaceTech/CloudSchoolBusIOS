@@ -17,7 +17,11 @@
 #import "AppDelegate.h"
 #import "FindCellTopView.h"
 @interface CBLoginViewController ()<EKProtocol>
+@property (weak) NSTimer *repeatingTimer;
+@property NSUInteger timerCount;
+@property (nonatomic,strong) UIButton *codeButton;
 
+- (void)countedTimerAction:(NSTimer*)theTimer;
 @end
 
 @implementation CBLoginViewController
@@ -25,8 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    
     
     UIImageView * bgImageView = [[UIImageView alloc]init];
     bgImageView.backgroundColor = [UIColor clearColor];
@@ -52,11 +54,11 @@
     _usernameField.text = @"13700000005";
     [self.view addSubview:_usernameField];
     
-    UIButton * codeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [codeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
-    [codeButton addTarget:self action:@selector(codeClick:) forControlEvents:UIControlEventTouchUpInside];
-    [codeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [self.view addSubview:codeButton];
+    _codeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_codeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+    [_codeButton addTarget:self action:@selector(registerAction:) forControlEvents:UIControlEventTouchUpInside];
+    [_codeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [self.view addSubview:_codeButton];
     
     
     UIView * passwordView = [[UIView alloc]init];
@@ -72,7 +74,7 @@
     UIButton * registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [registerButton setTitle:@"注册" forState:UIControlStateNormal];
     [registerButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [registerButton addTarget:self action:@selector(registerClick:) forControlEvents:UIControlEventTouchUpInside];
+    [registerButton addTarget:self action:@selector(verifyUserAction:) forControlEvents:UIControlEventTouchUpInside];
     //[registerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:registerButton];
     
@@ -104,9 +106,9 @@
         make.left.equalTo(phoneView.mas_left).offset(5);
         make.top.equalTo(phoneView.mas_top);
         make.bottom.equalTo(phoneView.mas_bottom);
-        make.right.equalTo(codeButton.mas_left).offset(-10);
+        make.right.equalTo(_codeButton.mas_left).offset(-10);
     }];
-    [codeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_codeButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(phoneView.mas_right).offset(-5);
         make.top.equalTo(phoneView.mas_top);
         make.bottom.equalTo(phoneView.mas_bottom);
@@ -133,22 +135,39 @@
     }];
 }
 
--(void)registerClick:(id)sender
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - IBActions
+-(void)verifyUserAction:(id)sender
 {
     if([_usernameField.text isEqualToString:@""])
     {
         return;
     }
+    
     NSDictionary * dic = @{@"mobile":_usernameField.text,@"verifycode":_passwordField.text};
     [[EKRequest Instance] EKHTTPRequest:verify parameters:dic requestMethod:POST forDelegate:self];
 }
--(void)codeClick:(id)sender
+-(void)registerAction:(id)sender
 {
     //13700000005
     NSDictionary * dic = @{@"mobile":_usernameField.text};
+    
+    self.timerCount = 30;
+    self.repeatingTimer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                           target:self selector:@selector(countedTimerAction:) userInfo:nil repeats:YES];
+    
     [[EKRequest Instance] EKHTTPRequest:REGISTER parameters:dic requestMethod:GET forDelegate:self];
 }
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
 
+#pragma mark - NETWORK REQUEST AND RESPONSE
 -(void)getSid:(NSDictionary *)parm
 {
     [[EKRequest Instance] EKHTTPRequest:login parameters:parm requestMethod:POST forDelegate:self];
@@ -275,13 +294,24 @@
 {
     
 }
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+
+#pragma mark - TIMER Handles
+
+-(void)countedTimerAction:(NSTimer *)timer
 {
-    [self.view endEditing:YES];
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.timerCount --;
+    
+    NSString *timeLeftStr = [[NSString alloc] initWithFormat:@"%d 秒",_timerCount];
+    [_codeButton setTitle:timeLeftStr forState:UIControlStateNormal];
+    [_codeButton setEnabled:false];
+    
+    if(self.timerCount==0)
+    {
+        [_codeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [_codeButton setEnabled:true];
+        [timer invalidate];
+        self.repeatingTimer = nil;
+    }
 }
 
 /*

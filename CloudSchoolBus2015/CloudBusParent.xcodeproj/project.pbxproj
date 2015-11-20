@@ -80,8 +80,8 @@
 		1E144438A15607A7BE09809F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2A9745231BFBFA8A008C8A7B /* UIColor+RCColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RCColor.h"; sourceTree = "<group>"; };
 		2A9745241BFBFA8A008C8A7B /* UIColor+RCColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RCColor.m"; sourceTree = "<group>"; };
-		2A9745261BFC3BAB008C8A7B /* PaddingUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaddingUILabel.h; sourceTree = "<group>"; };
-		2A9745271BFC3BAB008C8A7B /* PaddingUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaddingUILabel.m; sourceTree = "<group>"; };
+		2A9745261BFC3BAB008C8A7B /* PaddingUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaddingUILabel.h; path = ../Mine/View/PaddingUILabel.h; sourceTree = "<group>"; };
+		2A9745271BFC3BAB008C8A7B /* PaddingUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaddingUILabel.m; path = ../Mine/View/PaddingUILabel.m; sourceTree = "<group>"; };
 		81065BE61BEB019A009CE107 /* CBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBLoginViewController.h; path = CloudBusParent/Login/CBLoginViewController.h; sourceTree = SOURCE_ROOT; };
 		81065BE71BEB019A009CE107 /* CBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBLoginViewController.m; path = CloudBusParent/Login/CBLoginViewController.m; sourceTree = SOURCE_ROOT; };
 		81065BE81BEB019A009CE107 /* CBLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CBLoginViewController.xib; path = CloudBusParent/Login/CBLoginViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -301,6 +301,8 @@
 		2A9745221BFBFA6B008C8A7B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				2A9745261BFC3BAB008C8A7B /* PaddingUILabel.h */,
+				2A9745271BFC3BAB008C8A7B /* PaddingUILabel.m */,
 				2A9745231BFBFA8A008C8A7B /* UIColor+RCColor.h */,
 				2A9745241BFBFA8A008C8A7B /* UIColor+RCColor.m */,
 			);
@@ -724,8 +726,6 @@
 				81D48C671BF5BB5000146AA6 /* MineHeaderView.m */,
 				81D431D51BFB05870089239A /* MineCell.h */,
 				81D431D61BFB05870089239A /* MineCell.m */,
-				2A9745261BFC3BAB008C8A7B /* PaddingUILabel.h */,
-				2A9745271BFC3BAB008C8A7B /* PaddingUILabel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";

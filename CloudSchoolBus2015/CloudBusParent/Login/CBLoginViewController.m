@@ -301,7 +301,7 @@
 {
     self.timerCount --;
     
-    NSString *timeLeftStr = [[NSString alloc] initWithFormat:@"%d 秒",_timerCount];
+    NSString *timeLeftStr = [[NSString alloc] initWithFormat:@"%d 秒",(int)_timerCount];
     [_codeButton setTitle:timeLeftStr forState:UIControlStateNormal];
     [_codeButton setEnabled:false];
     

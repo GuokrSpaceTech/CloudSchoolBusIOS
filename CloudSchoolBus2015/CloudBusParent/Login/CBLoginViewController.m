@@ -31,8 +31,23 @@
     // Do any additional setup after loading the view from its nib.
     
     UIImageView * bgImageView = [[UIImageView alloc]init];
-    bgImageView.backgroundColor = [UIColor clearColor];
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"login_background"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    bgImageView.backgroundColor = [UIColor colorWithPatternImage:image];
     [self.view addSubview:bgImageView];
+    
+    UIImage *imageLogo = [UIImage imageNamed:@"云中校车logo-1"];
+    UIImageView *imageLogoView = [[UIImageView alloc] init];
+    [imageLogoView setImage:imageLogo];
+    [self.view addSubview: imageLogoView];
+    
+    UIImage * imageapp = [UIImage imageNamed:@"“家长端”"];
+    UIImageView *imageappView = [[UIImageView alloc] init];
+    [imageappView setImage:imageapp];
+    [self.view addSubview: imageappView];
+    
     
     UIImageView * iconImageView = [[UIImageView alloc]init];
     iconImageView.backgroundColor = [UIColor clearColor];
@@ -84,7 +99,23 @@
         make.top.equalTo(self.view.mas_top);
         make.bottom.equalTo(self.view.mas_bottom);
     }];
-    [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    
+    [imageLogoView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).offset(40);
+         make.centerX.equalTo(self.view.mas_centerX)
+        
+    }];
+    
+    
+    [imageappView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).offset(80);
+        make.right.equalTo(self.view.mas_right).offset(50);
+        
+        
+    }];
+
+    
+        [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top).offset(50);
         make.centerX.equalTo(self.view.mas_centerX);
         make.size.mas_equalTo(CGSizeMake(100, 100));

@@ -110,6 +110,7 @@ static CBLoginInfo * logininfo = nil;
                 }
                 [_studentArr addObject:st];
             }
+            
             _hasValidBaseInfo = YES;
             self.baseInfoBlock(YES);
         }

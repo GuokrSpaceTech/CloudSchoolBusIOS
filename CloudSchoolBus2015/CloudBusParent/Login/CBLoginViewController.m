@@ -102,7 +102,7 @@
     
     [imageLogoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top).offset(40);
-         make.centerX.equalTo(self.view.mas_centerX)
+        make.centerX.equalTo(self.view.mas_centerX);
         
     }];
     

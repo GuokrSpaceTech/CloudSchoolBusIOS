@@ -109,7 +109,7 @@
         
         [articleView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_topView.mas_bottom).offset(20);
-            make.left.equalTo(self.contentView.mas_left).offset(50);
+            make.left.equalTo(self.contentView.mas_left).offset(30);
             make.height.equalTo([articleView height]);
             make.width.equalTo([articleView width]);
             make.right.equalTo(self.contentView.mas_right).offset(-10);

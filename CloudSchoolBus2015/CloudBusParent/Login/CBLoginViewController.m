@@ -16,20 +16,47 @@
 #import "Tag.h"
 #import "AppDelegate.h"
 #import "FindCellTopView.h"
-@interface CBLoginViewController ()<EKProtocol>
+#import "UIColor+RCColor.h"
+
+static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
+static const CGFloat MINIMUM_SCROLL_FRACTION = 0.2;
+static const CGFloat MAXIMUM_SCROLL_FRACTION = 0.8;
+static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216;
+static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
+
+@interface CBLoginViewController ()<EKProtocol, UITextFieldDelegate>
+
 @property (weak) NSTimer *repeatingTimer;
 @property NSUInteger timerCount;
 @property (nonatomic,strong) UIButton *codeButton;
 
+
 - (void)countedTimerAction:(NSTimer*)theTimer;
+
 @end
+
+CGFloat animatedDistance;
 
 @implementation CBLoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+     
+    [self.navigationController.navigationBar
+         setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
+    // Do any additional setup after loading the view from its nib.
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+        // iOS 6.1 or earlier
+        self.navigationController.navigationBar.tintColor = [UIColor colorWithHexString:@"F3A139" alpha:1.0f];
+    } else {
+        // iOS 7.0 or later
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"F3A139" alpha:1.0f];
+        self.navigationController.navigationBar.translucent = NO;
+    }
+    
+    self.navigationItem.title = @"登录";
+
     UIImageView * bgImageView = [[UIImageView alloc]init];
     UIGraphicsBeginImageContext(self.view.frame.size);
     [[UIImage imageNamed:@"login_background"] drawInRect:self.view.bounds];
@@ -39,42 +66,39 @@
     [self.view addSubview:bgImageView];
     
     UIImage *imageLogo = [UIImage imageNamed:@"云中校车logo-1"];
-    UIImageView *imageLogoView = [[UIImageView alloc] init];
-    [imageLogoView setImage:imageLogo];
-    [self.view addSubview: imageLogoView];
+    UIImageView *iconImageView = [[UIImageView alloc] init];
+    [iconImageView setImage:imageLogo];
+    [self.view addSubview: iconImageView];
     
-    UIImage * imageapp = [UIImage imageNamed:@"“家长端”"];
+    UIImage * imageapp = [UIImage imageNamed:@"name_tag"];
     UIImageView *imageappView = [[UIImageView alloc] init];
     [imageappView setImage:imageapp];
     [self.view addSubview: imageappView];
     
-    
-    UIImageView * iconImageView = [[UIImageView alloc]init];
-    iconImageView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:iconImageView];
-    
     UILabel * label = [[UILabel alloc]init];
     label.text = @"云中校车";
+    label.font = [UIFont boldSystemFontOfSize:20];
+    label.textColor = [UIColor colorWithHexString:@"1E5268" alpha:1.0f];
     [self.view addSubview:label];
-    
     
     UIView * phoneView = [[UIView alloc]init];
     phoneView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:phoneView];
-    // 家长 13700000005 验证码 1111
     _usernameField = [[UITextField alloc]init];
     _usernameField.borderStyle = UITextBorderStyleNone;
     _usernameField.placeholder = @"输入手机号";
-    //_usernameField.text  = @"13700000001";
-    _usernameField.text = @"13700000005";
+    [_usernameField setDelegate:self];
     [self.view addSubview:_usernameField];
     
     _codeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_codeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+    [_codeButton setBackgroundColor:[UIColor colorWithHexString:@"6FC8EF" alpha:1.0f]];
+    [_codeButton setTitle:@" 获取验证码 " forState:UIControlStateNormal];
+    _codeButton.titleLabel.font = [UIFont systemFontOfSize:12];
     [_codeButton addTarget:self action:@selector(registerAction:) forControlEvents:UIControlEventTouchUpInside];
-    [_codeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [_codeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [[_codeButton layer] setCornerRadius:0.5f];
+    [_codeButton setClipsToBounds:true];
     [self.view addSubview:_codeButton];
-    
     
     UIView * passwordView = [[UIView alloc]init];
     passwordView.backgroundColor = [UIColor whiteColor];
@@ -83,12 +107,13 @@
     _passwordField = [[UITextField alloc]init];
     _passwordField.borderStyle = UITextBorderStyleNone;
     _passwordField.placeholder = @"输入验证码";
-    _passwordField.text = @"1111";
+    [_passwordField setDelegate:self];
     [self.view addSubview:_passwordField];
     
     UIButton * registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [registerButton setTitle:@"注册" forState:UIControlStateNormal];
-    [registerButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    registerButton.backgroundColor = [UIColor whiteColor];
+    [registerButton setTitle:@"登录" forState:UIControlStateNormal];
+    [registerButton setTitleColor:[UIColor colorWithHexString:@"1E5268" alpha:1.0f] forState:UIControlStateNormal];
     [registerButton addTarget:self action:@selector(verifyUserAction:) forControlEvents:UIControlEventTouchUpInside];
     //[registerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:registerButton];
@@ -100,56 +125,49 @@
         make.bottom.equalTo(self.view.mas_bottom);
     }];
     
-    [imageLogoView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top).offset(40);
-         make.centerX.equalTo(self.view.mas_centerX)
-        
-    }];
-    
-    
-    [imageappView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top).offset(80);
-        make.right.equalTo(self.view.mas_right).offset(50);
-        
-        
-    }];
-
-    
-        [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top).offset(50);
+    [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).offset(30);
         make.centerX.equalTo(self.view.mas_centerX);
         make.size.mas_equalTo(CGSizeMake(100, 100));
     }];
     
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view.mas_centerX);
-        make.top.equalTo(iconImageView.mas_bottom).offset(20);
+        make.top.equalTo(iconImageView.mas_bottom).offset(10);
     }];
     
+    [imageappView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(label.mas_top).offset(-5);
+        make.left.equalTo(label.mas_right).offset(5);
+    }];
     
     [phoneView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view.mas_left).offset(20);
-        make.right.equalTo(self.view.mas_right).offset(-20);;
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
         make.height.mas_equalTo(40);
         make.top.equalTo(label.mas_bottom).offset(20);;
     }];
+    
     [_usernameField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(phoneView.mas_left).offset(5);
         make.top.equalTo(phoneView.mas_top);
         make.bottom.equalTo(phoneView.mas_bottom);
         make.right.equalTo(_codeButton.mas_left).offset(-10);
     }];
+    
     [_codeButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(phoneView.mas_right).offset(-5);
-        make.top.equalTo(phoneView.mas_top);
-        make.bottom.equalTo(phoneView.mas_bottom);
+        make.top.equalTo(phoneView.mas_top).offset(5);
+        make.bottom.equalTo(phoneView.mas_bottom).offset(-5);
     }];
+    
     [passwordView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view.mas_left).offset(20);
-        make.right.equalTo(self.view.mas_right).offset(-20);;
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
         make.height.mas_equalTo(40);
-        make.top.equalTo(phoneView.mas_bottom).offset(10);;
+        make.top.equalTo(phoneView.mas_bottom).offset(5);;
     }];
+    
     [_passwordField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(passwordView.mas_left).offset(5);
         make.top.equalTo(passwordView.mas_top);
@@ -158,11 +176,10 @@
     }];
     
     [registerButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view.mas_left).offset(20);
-        make.right.equalTo(self.view.mas_right).offset(-20);;
-        make.height.mas_equalTo(30);
-        make.top.equalTo(passwordView.mas_bottom).offset(10);;
-        
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.height.mas_equalTo(40);
+        make.top.equalTo(passwordView.mas_bottom).offset(20);;
     }];
 }
 
@@ -332,9 +349,10 @@
 {
     self.timerCount --;
     
-    NSString *timeLeftStr = [[NSString alloc] initWithFormat:@"%d 秒",(int)_timerCount];
+    NSString *timeLeftStr = [[NSString alloc] initWithFormat:@"      %02d秒      ",(int)_timerCount];
     [_codeButton setTitle:timeLeftStr forState:UIControlStateNormal];
     [_codeButton setEnabled:false];
+    [_passwordField becomeFirstResponder];
     
     if(self.timerCount==0)
     {
@@ -345,14 +363,83 @@
     }
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+#pragma mark - Softkey Up and hide handles
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    CGRect textFieldRect =
+    [self.view.window convertRect:textField.bounds fromView:textField];
+    CGRect viewRect =
+    [self.view.window convertRect:self.view.bounds fromView:self.view];
+    CGFloat midline = textFieldRect.origin.y + 0.5 * textFieldRect.size.height;
+    CGFloat numerator =
+    midline - viewRect.origin.y
+    - MINIMUM_SCROLL_FRACTION * viewRect.size.height;
+    CGFloat denominator =
+    (MAXIMUM_SCROLL_FRACTION - MINIMUM_SCROLL_FRACTION)
+    * viewRect.size.height;
+    CGFloat heightFraction = numerator / denominator;
+    if (heightFraction < 0.0)
+    {
+        heightFraction = 0.0;
+    }
+    else if (heightFraction > 1.0)
+    {
+        heightFraction = 1.0;
+    }
+    UIInterfaceOrientation orientation =
+    [[UIApplication sharedApplication] statusBarOrientation];
+    if (orientation == UIInterfaceOrientationPortrait ||
+        orientation == UIInterfaceOrientationPortraitUpsideDown)
+    {
+        animatedDistance = floor(PORTRAIT_KEYBOARD_HEIGHT * heightFraction);
+    }
+    else
+    {
+        animatedDistance = floor(LANDSCAPE_KEYBOARD_HEIGHT * heightFraction);
+    }
+    CGRect viewFrame = self.view.frame;
+    viewFrame.origin.y -= animatedDistance;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:KEYBOARD_ANIMATION_DURATION];
+    
+    [self.view setFrame:viewFrame];
+    
+    [UIView commitAnimations];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textfield{
+    
+    CGRect viewFrame = self.view.frame;
+    viewFrame.origin.y += animatedDistance;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:KEYBOARD_ANIMATION_DURATION];
+    
+    [self.view setFrame:viewFrame];
+    
+    [UIView commitAnimations];
+}
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    // Assign new frame to your view
+    CGRect oldFrame = self.view.frame;
+    CGRect newFrame = CGRectMake(oldFrame.origin.x, oldFrame.origin.y - 110,
+                                 oldFrame.size.width, oldFrame.size.height);
+    
+    [self.view setFrame:newFrame];
+    
+}
+
+-(void)keyboardDidHide:(NSNotification *)notification
+{
+    CGRect oldFrame = self.view.frame;
+    CGRect newFrame = CGRectMake(oldFrame.origin.x, oldFrame.origin.y + 110,
+                                 oldFrame.size.width, oldFrame.size.height);
+    [self.view setFrame:newFrame];
+}
 
 @end

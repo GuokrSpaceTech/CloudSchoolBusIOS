@@ -103,15 +103,15 @@
             return;
         }
 #if 1
-        AriticleView *articleView = [[AriticleView alloc] init];
-        [articleView setMessage:messsage];
-        [self.contentView addSubview:articleView];
+        _articleView = [[AriticleView alloc] init];
+        [_articleView setMessage:messsage];
+        [self.contentView addSubview:_articleView];
         
-        [articleView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [_articleView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_topView.mas_bottom).offset(20);
             make.left.equalTo(self.contentView.mas_left).offset(30);
-            make.height.equalTo([articleView height]);
-            make.width.equalTo([articleView width]);
+            make.height.equalTo([_articleView height]);
+            make.width.equalTo([_articleView width]);
             make.right.equalTo(self.contentView.mas_right).offset(-10);
             make.bottom.equalTo(self.contentView.mas_bottom).offset(-10);
         }];

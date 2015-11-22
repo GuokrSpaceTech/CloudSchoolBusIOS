@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Message.h"
 
+@protocol ArticleViewDelegate <NSObject>
+@required
+
+-(void) userSelectedPicture:(NSString *) picture pictureArray:(NSMutableArray *)picArray indexAt:(int)index;
+
+@end
+
 @interface AriticleView : UIView
 @property (nonatomic,strong) Message *message;
 @property (nonatomic,strong) NSMutableArray *imageViews;
@@ -16,6 +23,8 @@
 @property (nonatomic,strong) UILabel  *descLabel;
 @property (nonatomic,strong) NSNumber *height;
 @property (nonatomic,strong) NSNumber *width;
+
+@property (nonatomic, weak) id <ArticleViewDelegate> delegate;
 
 -(void)tagButtonClick:(id)sender;
 @end

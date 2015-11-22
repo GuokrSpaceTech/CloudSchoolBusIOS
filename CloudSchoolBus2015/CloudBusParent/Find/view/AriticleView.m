@@ -19,6 +19,12 @@
 #define COL_TAG 4
 #define COL_PIC 3
 
+@interface AriticleView()
+{
+    NSMutableArray *picArray;
+}
+@end
+
 @implementation AriticleView
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -38,8 +44,8 @@
 {
     _message = message;
     NSDictionary * dic = [_message bodyObject];
-    NSArray * picArr = dic[@"PList"];
-    if(![picArr isKindOfClass:[NSArray class]])
+    picArray = dic[@"PList"];
+    if(![picArray isKindOfClass:[NSArray class]])
     {
         return;
     }
@@ -47,18 +53,26 @@
     //Add all ImageViews
     _imageViews = [[NSMutableArray alloc] init];
     int i = 0;
-    for(NSString *picPath in picArr){
+    for(NSString *picPath in picArray){
         if([picPath containsString:@"://"])
         {
             UIImageView * imageView = [[UIImageView alloc]init];
-            NSMutableString *thumbUrlStr =  [[NSMutableString alloc] initWithString:picArr[i]];
+            NSMutableString *thumbUrlStr =  [[NSMutableString alloc] initWithString:picArray[i]];
             [thumbUrlStr appendString:@".tiny.jpg"];
             imageView.contentMode = UIViewContentModeScaleAspectFit;
             imageView.clipsToBounds = YES;
             
             [imageView sd_setImageWithURL:[NSURL URLWithString:thumbUrlStr]
                        placeholderImage:nil completed:^(UIImage *image, NSError *error,
-                       SDImageCacheType cacheType, NSURL *imageURL) {}];
+                       SDImageCacheType cacheType, NSURL *imageURL){
+            }];
+            
+            UITapGestureRecognizer *newTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pictureClick:)];
+            
+            [imageView setUserInteractionEnabled:YES];
+            [imageView addGestureRecognizer:newTap];
+            [imageView setTag:i];
+        
             
             [self addSubview:imageView];
             
@@ -119,8 +133,6 @@
             }
         }
     }
-    
-
     
     if(isFound)
     {
@@ -221,5 +233,12 @@
 -(void)tagButtonClick:(id)sender
 {
     NSLog(@"");
+}
+
+-(void)pictureClick:(id)sender
+{
+    UIImageView *view = (UIImageView *)[sender view];
+    int index = view.tag;
+    [_delegate userSelectedPicture:[picArray objectAtIndex:index] pictureArray:picArray indexAt:index];
 }
 @end

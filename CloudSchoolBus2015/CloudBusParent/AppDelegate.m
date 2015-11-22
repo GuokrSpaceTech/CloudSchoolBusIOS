@@ -90,7 +90,8 @@
 -(void)makeLoginViewController
 {
     CBLoginViewController * loginVC = [[CBLoginViewController alloc]initWithNibName:@"CBLoginViewController" bundle:nil];
-    self.window.rootViewController = loginVC;
+    UINavigationController * logginNav = [[UINavigationController alloc]initWithRootViewController:loginVC];
+    self.window.rootViewController = logginNav;
 }
 -(void)setRegisterForRemoteNotification:(UIApplication *)application
 {

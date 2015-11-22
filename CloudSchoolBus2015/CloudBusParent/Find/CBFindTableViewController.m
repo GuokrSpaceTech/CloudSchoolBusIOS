@@ -37,6 +37,7 @@ static NSString * cellidenty = @"listcell";
      */
     //Background
     self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.title = @"发现";
     
     //Pull to refresh
     self.refreshControl = [[UIRefreshControl alloc] init];

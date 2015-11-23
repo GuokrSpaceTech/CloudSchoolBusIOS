@@ -1,20 +1,21 @@
 //
-//  CBHobbyViewController.m
+//  CBWebViewController.m
 //  CloudBusParent
 //
-//  Created by HELLO  on 15/11/9.
+//  Created by HELLO  on 15/11/23.
 //  Copyright (c) 2015年 BeiJingYinChuang. All rights reserved.
 //
 
-#import "CBHobbyViewController.h"
+#import "CBWebViewController.h"
 #import "CB.h"
-@interface CBHobbyViewController ()<UIWebViewDelegate,WKNavigationDelegate,WKUIDelegate>
+#import "Masonry.h"
+@interface CBWebViewController ()<UIWebViewDelegate,WKNavigationDelegate,WKUIDelegate>
 {
-      UIProgressView * processView ;
+     UIProgressView * processView ;
 }
 @end
 
-@implementation CBHobbyViewController
+@implementation CBWebViewController
 -(void)dealloc
 {
     if(iOS8)
@@ -28,44 +29,22 @@
         processView.progress = [process floatValue];
     }
 }
--(void)itemClick:(id)sender
-{
-    NSURLRequest * quest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com"]];
-    if(iOS8)
-    {
-
-        [_wkWebview loadRequest:quest];
-    }
-    else
-    {
-        [_webview loadRequest:quest];
-    }
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"兴趣爱好";
     // Do any additional setup after loading the view.
-    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setTitle:@"刷新" forState:UIControlStateNormal];
-    btn.frame = CGRectMake(0, 0, 50, 50);
-    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(itemClick:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithCustomView:btn];
-    self.navigationItem.rightBarButtonItem = item;
+    self.navigationItem.title = self.titleStr;
+    NSURLRequest * quest = [NSURLRequest requestWithURL:[NSURL URLWithString:_urlStr]];
 
-    NSURLRequest * quest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com"]];
-    
     if(iOS8)
     {
         WKWebViewConfiguration * configuration = [[WKWebViewConfiguration alloc]init];
         configuration.allowsInlineMediaPlayback = YES;
         configuration.mediaPlaybackRequiresUserAction = NO;
-        _wkWebview  = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-64-49) configuration:configuration];
-        _wkWebview.allowsBackForwardNavigationGestures = YES;
+        _wkWebview  = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-64) configuration:configuration];
         _wkWebview.navigationDelegate = self;
         _wkWebview.UIDelegate = self;
         [self.view addSubview:_wkWebview];
-        [_wkWebview loadRequest:quest];
+         [_wkWebview loadRequest:quest];
         [_wkWebview addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
         //[_kwWebView loadRequest:request];
     }
@@ -79,15 +58,18 @@
         // [_webView loadRequest:request];
         [_webview loadRequest:quest];
     }
+    
+    
 }
+
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    // [commond ycShowProgressWithImage:_webView];
+   // [commond ycShowProgressWithImage:_webView];
     //  [MBProgressHUD showHUDAddedTo:_webView animated:YES];
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    // [MBProgressHUD hideAllHUDsForView:_webView animated:YES];
+   // [MBProgressHUD hideAllHUDsForView:_webView animated:YES];
 }
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation
@@ -107,16 +89,6 @@
     processView = nil;
 }
 
-- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
-{
-    NSURL * url = navigationAction.request.URL;
-    NSString * urlstring = [url absoluteString];
-    NSLog(@">>>>>>>>>>>>>>%@<<<<<<<<<<<<<<<<<<<<<",urlstring);
-    
-    //NSRange range = [urlstring rangeOfString:@"wv.17mf.com"];
-decisionHandler(WKNavigationActionPolicyAllow);
-    
-}
 - (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures
 {
     // _kwWebView.configuration = configuration;
@@ -128,7 +100,6 @@ decisionHandler(WKNavigationActionPolicyAllow);
     NSURLRequest * request = [NSURLRequest requestWithURL:url];
     [_wkWebview loadRequest:request];
     [self.view addSubview:_wkWebview];
-    _wkWebview.allowsBackForwardNavigationGestures = YES;
     [_wkWebview addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     return _wkWebview;
 }

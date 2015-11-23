@@ -14,7 +14,7 @@
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "FPPopoverController.h"
 #import "UIColor+RCColor.h"
-
+#import "CBWebViewController.h"
 #import "ClassifyViewController.h"
 static NSString * cellidenty = @"listcell";
 @interface CBFindTableViewController ()<EKProtocol>
@@ -160,6 +160,10 @@ static NSString * cellidenty = @"listcell";
     }];
     
     //return 120+20;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
 }
 /*
 // Override to support conditional editing of the table view.

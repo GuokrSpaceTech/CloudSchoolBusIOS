@@ -12,8 +12,10 @@
 #import "UIImageView+WebCache.h"
 #import "UIColor+RCColor.h"
 #import "AriticleView.h"
+
 #define PICWIDTH 75
 #define PADDING 10
+
 @implementation FindNoticeTableViewCell
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -50,6 +52,7 @@
     _topView.timeLabel.text = [Calculate dateFromTimeStamp:[_messsage.sendtime intValue]];
 
     //Food
+#if 0
     if([messsage.apptype isEqualToString:@"Food"])
     {
         _topView.typeLabel.text = @"食谱";
@@ -92,9 +95,10 @@
             make.bottom.equalTo(self.contentView.mas_bottom).offset(-10);
         }];
     }
-    else if([messsage.apptype isEqualToString:@"Article"])
+    else
+#endif
+    if([messsage.apptype isEqualToString:@"Article"])
     {
-
         _topView.typeLabel.text = @"照片";
         NSDictionary * dic = [messsage bodyObject];
         NSArray * picArr = dic[@"PList"];
@@ -201,11 +205,13 @@
             }];
 
         }
-#endif
     }
+    
     else if([messsage.apptype isEqualToString:@"Notice"])
     {
          _topView.typeLabel.text = @"通知";
+    }
+#endif
     }
 }
 - (void)awakeFromNib {

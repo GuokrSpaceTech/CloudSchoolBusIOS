@@ -189,7 +189,7 @@
     for( UIImageView *imageView in _imageViews)
     {
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            float left = 50 + (picWidth + PADDING)*(i%col);
+            float left = 30 + (picWidth + PADDING)*(i%col);
             float top = (picWidth + PADDING)*(i/row);
             make.left.equalTo(self.mas_left).offset(left);
             make.top.equalTo(self.mas_top).offset(top);
@@ -204,7 +204,7 @@
     float buttonHeight = 20;
     for( UIButton *button in _tagButtons)
     {
-        float left = 50 + (buttonWidth + PADDING)* (i%COL_TAG);
+        float left = 30 + (buttonWidth + PADDING)* (i%COL_TAG);
         int row = i / COL_TAG;
         float top  = PADDING * (row + 1) + buttonHeight * (row);
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -227,8 +227,8 @@
             UIImageView *lastImageView = [_imageViews lastObject];
             make.top.equalTo(lastImageView.mas_bottom).offset(10);
         }
-        make.left.equalTo(self).offset(50);
-        make.right.equalTo(self).offset(-50);
+        make.left.equalTo(self).offset(30);
+        make.right.equalTo(self).offset(-30);
         make.bottom.equalTo(self.mas_bottom).offset(-10);
     }];
     

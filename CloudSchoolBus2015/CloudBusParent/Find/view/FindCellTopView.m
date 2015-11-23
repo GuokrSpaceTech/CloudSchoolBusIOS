@@ -30,9 +30,8 @@
 
 -(void)initUI
 {
-    
     _avatarImageView = [[UIImageView alloc]init];
-    _avatarImageView.layer.cornerRadius = 34;
+    _avatarImageView.layer.cornerRadius = 25;
     _avatarImageView.clipsToBounds = YES;
     _avatarImageView.backgroundColor = [UIColor grayColor];
     [self addSubview:_avatarImageView];
@@ -70,8 +69,8 @@
     [_avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.mas_left).offset(20);
         make.top.equalTo(self.mas_top).offset(20);
-        make.width.mas_equalTo(@(68));
-        make.height.mas_equalTo(@(68));
+        make.width.mas_equalTo(@(50));
+        make.height.mas_equalTo(@(50));
     }];
     
     //Top Right
@@ -105,12 +104,4 @@
     
     [super updateConstraints];
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 @end

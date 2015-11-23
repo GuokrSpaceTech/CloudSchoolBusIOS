@@ -55,8 +55,8 @@ static NSString * cellidenty = @"listcell";
     
     //Filter Button
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setTitle:@"分类" forState:UIControlStateNormal];
-    btn.frame = CGRectMake(0, 0, 50, 50);
+    [btn setBackgroundImage:[UIImage imageNamed:@"ic_list_white"] forState:UIControlStateNormal];
+    btn.frame = CGRectMake(0, 0, 30, 30);
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(itemClick:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithCustomView:btn];
@@ -81,6 +81,7 @@ static NSString * cellidenty = @"listcell";
                 NSString *lastestMessageId = [[_dataList firstObject] messageid];
                 paramDict = @{@"newid":lastestMessageId};
             }
+                
             
             [[EKRequest Instance] EKHTTPRequest:getmessage parameters:paramDict requestMethod:GET forDelegate:self];
             });
@@ -113,7 +114,7 @@ static NSString * cellidenty = @"listcell";
 
 -(void) getErrorInfo:(NSError *) error forMethod:(RequestFunction) method
 {
-    
+    [self.tableView reloadData];
 }
 -(void) getEKResponse:(id) response forMethod:(RequestFunction) method resultCode:(int) code withParam:(NSDictionary *)param
 {

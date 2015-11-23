@@ -14,7 +14,7 @@
 {
     UIImageView * currentImageView; //记录第几个图片
 }
-@property (nonatomic,strong)FindCellTopView * topView;
+@property (nonatomic,strong) FindCellTopView * topView;
 @property (nonatomic,strong) Message *messsage;
 @property (nonatomic,strong) AriticleView *articleView;
 @end

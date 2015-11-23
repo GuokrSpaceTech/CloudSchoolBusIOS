@@ -7,9 +7,11 @@
 //
 
 #import "ClassifyViewController.h"
+#import "ClassifyTableViewCell.h"
 @interface ClassifyViewController ()
 {
-    NSArray * clasifyArr;
+    NSArray *clasifyArr;
+    NSArray *iconImageArr;
 }
 @end
 
@@ -17,13 +19,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    clasifyArr = @[@"班级通知",@"今日考勤",@"视频公开课",@"班级报告",@"课程表",@"食谱",@"相册",@"活动"];
+    clasifyArr = @[@"班级通知",@"今日考勤",@"视频公开课",@"班级报告",@"相册"];
+    iconImageArr = @[ [UIImage imageNamed:@"notice"],[UIImage imageNamed:@"timecard"], [UIImage imageNamed:@"video"],[UIImage imageNamed:@"report"],[UIImage imageNamed:@"picture"] ];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+//    [self.tableView registerClass:[ClassifyTableViewCell class] forCellReuseIdentifier:@"cell"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,10 +44,18 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+- (ClassifyTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    cell.textLabel.text = clasifyArr[indexPath.row];
+    ClassifyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    if (cell == nil) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ClassifyTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    
+    [cell.imageIconView setImage:iconImageArr[indexPath.row]];
+    cell.label.text = clasifyArr[indexPath.row];
+    
     
     return cell;
 }

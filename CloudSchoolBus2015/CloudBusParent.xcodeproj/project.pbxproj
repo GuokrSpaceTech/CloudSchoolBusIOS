@@ -10,6 +10,8 @@
 		2A09F5261BFF108800B7BB72 /* AriticleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A09F5251BFF108800B7BB72 /* AriticleView.m */; settings = {ASSET_TAGS = (); }; };
 		2A25CA3E1C01BD9900C81EE9 /* CBPagedImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A25CA3C1C01BD9900C81EE9 /* CBPagedImageViewController.m */; settings = {ASSET_TAGS = (); }; };
 		2A25CA3F1C01BD9900C81EE9 /* CBPagedImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A25CA3D1C01BD9900C81EE9 /* CBPagedImageViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		2A25CA431C03589F00C81EE9 /* ClassifyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A25CA411C03589F00C81EE9 /* ClassifyTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		2A25CA441C03589F00C81EE9 /* ClassifyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A25CA421C03589F00C81EE9 /* ClassifyTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		2A9745251BFBFA8A008C8A7B /* UIColor+RCColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9745241BFBFA8A008C8A7B /* UIColor+RCColor.m */; settings = {ASSET_TAGS = (); }; };
 		2A9745281BFC3BAB008C8A7B /* PaddingUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9745271BFC3BAB008C8A7B /* PaddingUILabel.m */; settings = {ASSET_TAGS = (); }; };
 		43A7B6B7133E7159766C99EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7299EA4EE1E968A90534B5D /* libPods.a */; };
@@ -86,6 +88,9 @@
 		2A25CA3B1C01BD9900C81EE9 /* CBPagedImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBPagedImageViewController.h; sourceTree = "<group>"; };
 		2A25CA3C1C01BD9900C81EE9 /* CBPagedImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBPagedImageViewController.m; sourceTree = "<group>"; };
 		2A25CA3D1C01BD9900C81EE9 /* CBPagedImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBPagedImageViewController.xib; sourceTree = "<group>"; };
+		2A25CA401C03589F00C81EE9 /* ClassifyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyTableViewCell.h; sourceTree = "<group>"; };
+		2A25CA411C03589F00C81EE9 /* ClassifyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyTableViewCell.m; sourceTree = "<group>"; };
+		2A25CA421C03589F00C81EE9 /* ClassifyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassifyTableViewCell.xib; sourceTree = "<group>"; };
 		2A9745231BFBFA8A008C8A7B /* UIColor+RCColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RCColor.h"; sourceTree = "<group>"; };
 		2A9745241BFBFA8A008C8A7B /* UIColor+RCColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RCColor.m"; sourceTree = "<group>"; };
 		2A9745261BFC3BAB008C8A7B /* PaddingUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaddingUILabel.h; path = ../Mine/View/PaddingUILabel.h; sourceTree = "<group>"; };
@@ -404,9 +409,9 @@
 		812A8BF51BF30488009CE43E /* Find */ = {
 			isa = PBXGroup;
 			children = (
+				812A8BFC1BF31647009CE43E /* view */,
 				81BECE431BFC1747006DAA8D /* ClassifyViewController.h */,
 				81BECE441BFC1747006DAA8D /* ClassifyViewController.m */,
-				812A8BFC1BF31647009CE43E /* view */,
 				812A8BF61BF304B3009CE43E /* CBFindTableViewController.h */,
 				812A8BF71BF304B3009CE43E /* CBFindTableViewController.m */,
 				2A25CA3B1C01BD9900C81EE9 /* CBPagedImageViewController.h */,
@@ -425,6 +430,9 @@
 				812A8C011BF33F1A009CE43E /* FindNoticeTableViewCell.m */,
 				2A09F5241BFF108800B7BB72 /* AriticleView.h */,
 				2A09F5251BFF108800B7BB72 /* AriticleView.m */,
+				2A25CA401C03589F00C81EE9 /* ClassifyTableViewCell.h */,
+				2A25CA411C03589F00C81EE9 /* ClassifyTableViewCell.m */,
+				2A25CA421C03589F00C81EE9 /* ClassifyTableViewCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -857,6 +865,7 @@
 				2A25CA3F1C01BD9900C81EE9 /* CBPagedImageViewController.xib in Resources */,
 				81065BEA1BEB019A009CE107 /* CBLoginViewController.xib in Resources */,
 				81D48C641BF5BB1100146AA6 /* CBMineViewController.xib in Resources */,
+				2A25CA441C03589F00C81EE9 /* ClassifyTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -934,6 +943,7 @@
 				81065BED1BEB01CA009CE107 /* EKRequest.m in Sources */,
 				816446E71BF97BDB00A34D00 /* FPPopoverView.m in Sources */,
 				2A9745281BFC3BAB008C8A7B /* PaddingUILabel.m in Sources */,
+				2A25CA431C03589F00C81EE9 /* ClassifyTableViewCell.m in Sources */,
 				81D48C681BF5BB5000146AA6 /* MineHeaderView.m in Sources */,
 				816446E61BF97BDB00A34D00 /* FPPopoverController.m in Sources */,
 				812A8BF41BF2FD42009CE43E /* CBTeacherTableViewCell.m in Sources */,

@@ -22,6 +22,7 @@
 @interface AriticleView()
 {
     NSMutableArray *picArray;
+    NSArray *tagArrary;
 }
 @end
 
@@ -113,14 +114,17 @@
     }
     
     BOOL isFound = false;
+    i = 0;
     for(NSString *tagid in tagIds)
     {
         School *school = [[[CBLoginInfo shareInstance] schoolArr] objectAtIndex:0];
-        for(Tag *tag in [school tagsArr])
+        tagArrary = [school tagsArr];
+        for(Tag *tag in tagArrary)
         {
             if( [[tag tagid] compare:tagid] == NSOrderedSame )
             {
                 UIButton *tagButton = [[UIButton alloc] init];
+                tagButton.tag = i;
                 [tagButton addTarget:self action:@selector(tagButtonClick:) forControlEvents:UIControlEventTouchUpInside];
                 [tagButton setTitle:[tag tagname] forState:UIControlStateNormal];
                 tagButton.titleLabel.font = [UIFont systemFontOfSize:12];
@@ -132,6 +136,7 @@
                 isFound = true;
             }
         }
+        i++;
     }
     
     if(isFound)
@@ -232,7 +237,10 @@
 
 -(void)tagButtonClick:(id)sender
 {
-    NSLog(@"");
+    UIButton *button = sender;
+    int index = button.tag;
+    NSString *tagDesc = [[tagArrary objectAtIndex:index] tagnamedesc];
+    [_delegate userSelectedTag:tagDesc];
 }
 
 -(void)pictureClick:(id)sender

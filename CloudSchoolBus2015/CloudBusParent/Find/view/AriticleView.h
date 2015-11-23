@@ -12,7 +12,8 @@
 @protocol ArticleViewDelegate <NSObject>
 @required
 
--(void) userSelectedPicture:(NSString *) picture pictureArray:(NSMutableArray *)picArray indexAt:(int)index;
+-(void) userSelectedPicture:(NSString *)picture pictureArray:(NSMutableArray *)picArray indexAt:(int)index;
+-(void) userSelectedTag:(NSString *)tagDesc;
 
 @end
 
@@ -25,6 +26,4 @@
 @property (nonatomic,strong) NSNumber *width;
 
 @property (nonatomic, weak) id <ArticleViewDelegate> delegate;
-
--(void)tagButtonClick:(id)sender;
 @end

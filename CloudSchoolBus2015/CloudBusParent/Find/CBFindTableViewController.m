@@ -18,6 +18,8 @@
 #import "CBDateBase.h"
 #import "ClassifyViewController.h"
 #import "AriticleView.h"
+#import "SCLAlertView.h"
+
 static NSString * cellidenty = @"listcell";
 @interface CBFindTableViewController ()<EKProtocol, ArticleViewDelegate>
 {
@@ -195,5 +197,12 @@ static NSString * cellidenty = @"listcell";
     [imageGallery setStartIndex:@(index)];
     [imageGallery setPageImages:picArray];
     [[self navigationController] pushViewController:imageGallery animated:YES];
+}
+
+-(void) userSelectedTag:(NSString *)tagDesc
+{
+    SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
+    
+    [alert showNotice:self title:@"" subTitle:tagDesc closeButtonTitle:@"OK" duration:0.0f];
 }
 @end

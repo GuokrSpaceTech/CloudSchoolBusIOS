@@ -55,8 +55,6 @@
 		81C6A59D1BE9AD2E00160F2D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81C6A59C1BE9AD2E00160F2D /* Images.xcassets */; };
 		81C6A5A01BE9AD2E00160F2D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C6A59E1BE9AD2E00160F2D /* LaunchScreen.xib */; };
 		81C6A5AC1BE9AD2E00160F2D /* CloudBusParentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C6A5AB1BE9AD2E00160F2D /* CloudBusParentTests.m */; };
-		81C8A4D21C02E9C200F37C08 /* CBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C8A4D11C02E9C200F37C08 /* CBWebViewController.m */; };
-		81C8A4D41C02EBE700F37C08 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81C8A4D31C02EBE700F37C08 /* WebKit.framework */; };
 		81D4050E1BF049CB00B5A176 /* School.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D4050D1BF049CB00B5A176 /* School.m */; };
 		81D405111BF049E500B5A176 /* ClassObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D405101BF049E500B5A176 /* ClassObj.m */; };
 		81D405141BF04A8200B5A176 /* Teacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D405131BF04A8200B5A176 /* Teacher.m */; };
@@ -257,9 +255,6 @@
 		81C6A5A51BE9AD2E00160F2D /* CloudBusParentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CloudBusParentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C6A5AA1BE9AD2E00160F2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81C6A5AB1BE9AD2E00160F2D /* CloudBusParentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CloudBusParentTests.m; sourceTree = "<group>"; };
-		81C8A4D01C02E9C200F37C08 /* CBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWebViewController.h; sourceTree = "<group>"; };
-		81C8A4D11C02E9C200F37C08 /* CBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWebViewController.m; sourceTree = "<group>"; };
-		81C8A4D31C02EBE700F37C08 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		81D4050C1BF049CB00B5A176 /* School.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = School.h; sourceTree = "<group>"; };
 		81D4050D1BF049CB00B5A176 /* School.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = School.m; sourceTree = "<group>"; };
 		81D4050F1BF049E500B5A176 /* ClassObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassObj.h; sourceTree = "<group>"; };
@@ -299,7 +294,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81C8A4D41C02EBE700F37C08 /* WebKit.framework in Frameworks */,
 				81D431D91BFB072D0089239A /* libiconv.dylib in Frameworks */,
 				816446D81BF9787E00A34D00 /* libavutil.a in Frameworks */,
 				816446D61BF9787E00A34D00 /* libavfilter.a in Frameworks */,
@@ -336,7 +330,6 @@
 		379435B51CA828ADA6C83917 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				81C8A4D31C02EBE700F37C08 /* WebKit.framework */,
 				81D431D81BFB072D0089239A /* libiconv.dylib */,
 				E7299EA4EE1E968A90534B5D /* libPods.a */,
 			);
@@ -688,8 +681,6 @@
 				81C6A59C1BE9AD2E00160F2D /* Images.xcassets */,
 				81C6A59E1BE9AD2E00160F2D /* LaunchScreen.xib */,
 				81C6A58F1BE9AD2E00160F2D /* Supporting Files */,
-				81C8A4D01C02E9C200F37C08 /* CBWebViewController.h */,
-				81C8A4D11C02E9C200F37C08 /* CBWebViewController.m */,
 			);
 			path = CloudBusParent;
 			sourceTree = "<group>";
@@ -949,7 +940,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81C8A4D21C02E9C200F37C08 /* CBWebViewController.m in Sources */,
 				2A950C661C04063E009D6211 /* NoticeView.m in Sources */,
 				81D4051D1BF069BB00B5A176 /* CBHobbyViewController.m in Sources */,
 				81BECE491BFC4465006DAA8D /* CBChatViewController.m in Sources */,
@@ -1075,7 +1065,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;

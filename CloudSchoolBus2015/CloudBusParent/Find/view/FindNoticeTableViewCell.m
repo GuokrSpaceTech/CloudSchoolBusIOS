@@ -120,10 +120,11 @@
             make.bottom.equalTo(self.contentView.mas_bottom).offset(-10);
         }];
     } else if([messsage.apptype isEqualToString:@"Notice"]) {
-         _topView.typeLabel.text = @"通知";
+        _topView.typeLabel.text = @"通知";
         
         NSArray *bundle = [[NSBundle mainBundle] loadNibNamed:@"NoticeView"
                                                         owner:self options:nil];
+        
         NoticeView *noticeView = [bundle objectAtIndex:0];
         
         [noticeView setMessage:messsage];

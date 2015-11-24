@@ -26,6 +26,8 @@
 
 -(void)setMessage:(Message *)message
 {
+    float VERTICAL_SPACING = 10;
+
     _message = message;
     _title.text = message.title;
     _content.text = message.desc;
@@ -51,32 +53,7 @@
         }
     }
     _confirmButton.backgroundColor = [UIColor colorWithHexString:@"2661F7" alpha:1.0f];
-}
-
--(void)updateConstraints
-{
-    float VERTICAL_SPACING = 10;
-    float imageHeight;
-    [super updateConstraints];
-
-    self.height = @(self.frame.size.height);
-    self.width = @(self.frame.size.width);
     
-    NSLog(@"");
-    
-    if(hasValidImage)
-    [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(@60);
-        make.width.mas_equalTo(@60);
-        imageHeight = 60;
-    }];
-    else{
-        [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(@0);
-            make.width.mas_equalTo(@0);
-        }];
-        imageHeight = 0;
-    }
     
     CGRect titleRect = [_title.text
                         boundingRectWithSize:CGSizeMake(200, 0)
@@ -84,11 +61,36 @@
                         attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16.0]}
                         context:nil];
     CGRect contentRect = [_title.text
-                        boundingRectWithSize:CGSizeMake(200, 0)
-                        options:NSStringDrawingUsesLineFragmentOrigin
-                        attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16.0]}
-                        context:nil];
+                          boundingRectWithSize:CGSizeMake(200, 0)
+                          options:NSStringDrawingUsesLineFragmentOrigin
+                          attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16.0]}
+                          context:nil];
+    
+    float imageHeight;
+    
+    if(hasValidImage)
+        imageHeight = 60;
+    else{
+        imageHeight = 0;
+    }
+    
     self.height = @(VERTICAL_SPACING + titleRect.size.height + VERTICAL_SPACING + contentRect.size.height + imageHeight+VERTICAL_SPACING+_confirmButton.frame.size.height);
 }
 
+-(void)updateConstraints
+{
+    [super updateConstraints];
+    
+    if(hasValidImage)
+    [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(@60);
+        make.width.mas_equalTo(@60);
+    }];
+    else{
+        [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(@0);
+            make.width.mas_equalTo(@0);
+        }];
+    }
+}
 @end

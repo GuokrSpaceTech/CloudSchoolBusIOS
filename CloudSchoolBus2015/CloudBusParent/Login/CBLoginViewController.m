@@ -223,6 +223,7 @@ CGFloat animatedDistance;
 -(void)getBaseInfo
 {
     [[EKRequest Instance] EKHTTPRequest:baseinfo  parameters:nil requestMethod:POST forDelegate:self];
+//    [[CBDateBase sharedDatabase] selectFormTableBaseinfo];
 }
 
 -(void) getEKResponse:(id) response forMethod:(RequestFunction) method resultCode:(int) code withParam:(NSDictionary *)param

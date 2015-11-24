@@ -15,39 +15,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picture" translatesAutoresizingMaskIntoConstraints="NO" id="Ovo-Mg-FIX">
-                        <rect key="frame" x="14" y="13" width="50" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="50" id="Bg3-hP-whb"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVt-gR-Jfz">
-                        <rect key="frame" x="69" y="13" width="240" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="240" id="rdA-LF-HXQ"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="43" y="13" width="264" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picture" translatesAutoresizingMaskIntoConstraints="NO" id="Ovo-Mg-FIX">
+                        <rect key="frame" x="13" y="9" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="Osp-bR-zjr"/>
+                            <constraint firstAttribute="height" constant="25" id="gCt-3h-uDa"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Ovo-Mg-FIX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="2hi-1f-Bou"/>
-                    <constraint firstItem="bVt-gR-Jfz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="LHA-27-2DC"/>
-                    <constraint firstItem="Ovo-Mg-FIX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="jHF-0F-ZzI"/>
-                    <constraint firstItem="bVt-gR-Jfz" firstAttribute="leading" secondItem="Ovo-Mg-FIX" secondAttribute="trailing" constant="5" id="jkR-yF-Uc5"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="bVt-gR-Jfz" secondAttribute="bottom" constant="5" id="k6A-8z-9Fa"/>
-                    <constraint firstItem="bVt-gR-Jfz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="kmK-gx-S61"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="bVt-gR-Jfz" secondAttribute="trailing" constant="5" id="m73-mc-ERY"/>
-                    <constraint firstItem="bVt-gR-Jfz" firstAttribute="leading" secondItem="Ovo-Mg-FIX" secondAttribute="trailing" constant="5" id="oCu-cr-2o1"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="bVt-gR-Jfz" secondAttribute="trailing" constant="5" id="q8F-jD-Msk"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Ovo-Mg-FIX" secondAttribute="bottom" constant="5" id="vfF-Xe-cgb"/>
+                    <constraint firstItem="Ovo-Mg-FIX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="25R-7U-1Kv"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="bVt-gR-Jfz" secondAttribute="trailing" constant="5" id="Afh-aa-iWF"/>
+                    <constraint firstItem="bVt-gR-Jfz" firstAttribute="leading" secondItem="Ovo-Mg-FIX" secondAttribute="trailing" constant="5" id="Pia-ys-4RF"/>
+                    <constraint firstItem="bVt-gR-Jfz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="XDB-1d-2Cw"/>
+                    <constraint firstItem="Ovo-Mg-FIX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="zBl-qQ-Ou1"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="imageIconView" destination="Ovo-Mg-FIX" id="XpR-xc-0Ju"/>
                 <outlet property="label" destination="bVt-gR-Jfz" id="Vkv-gy-Qmj"/>
             </connections>
+            <point key="canvasLocation" x="356" y="358"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -12,6 +12,7 @@
 #import "UIImageView+WebCache.h"
 #import "UIColor+RCColor.h"
 #import "AriticleView.h"
+#import "NoticeView.h"
 
 #define PICWIDTH 75
 #define PADDING 10
@@ -106,7 +107,6 @@
         {
             return;
         }
-#if 1
         _articleView = [[AriticleView alloc] init];
         [_articleView setMessage:messsage];
         [self.contentView addSubview:_articleView];
@@ -119,100 +119,28 @@
             make.right.equalTo(self.contentView.mas_right).offset(-10);
             make.bottom.equalTo(self.contentView.mas_bottom).offset(-10);
         }];
-#else
- 
-        if(picArr.count == 1)
-        {
-            UIImageView * imageView = [[UIImageView alloc]init];
-            NSMutableString *thumbUrlStr =  [[NSMutableString alloc] initWithString:picArr[0]];
-            [thumbUrlStr appendString:@".tiny.jpg"];
-            imageView.contentMode = UIViewContentModeScaleAspectFit;
-            imageView.clipsToBounds = YES;
-            
-            [imageView sd_setImageWithURL:[NSURL URLWithString:thumbUrlStr]
-                         placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {}];
-            
-            [self.contentView addSubview:imageView];
-            
-            UILabel * descLabel = [[UILabel alloc]init];
-            descLabel.numberOfLines = 0;
-            descLabel.text = messsage.desc;
-            descLabel.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 100;
-            [self.contentView addSubview:descLabel];
-            
-            [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(self.contentView).offset(20);
-                make.top.equalTo(_topView.mas_bottom).offset(20);
-                make.height.mas_equalTo(@(120));
-                make.bottom.equalTo(descLabel.mas_top).offset(-10);
-                
-            }];
-            [descLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(self.contentView).offset(50);
-                make.right.equalTo(self.contentView).offset(-50);
-                make.bottom.equalTo(self.contentView.mas_bottom).offset(-10);
-            }];
-        } else if (picArr.count == 2) {
-            
-        } else if(picArr.count > 1){
-            for (int i = 0; i < picArr.count; i++) {
-                
-                UIImageView *imageView = [[UIImageView alloc]init];
-                NSMutableString *thumbUrlStr =  [[NSMutableString alloc] initWithString:picArr[i]];
-                [thumbUrlStr appendString:@".tiny.jpg"];
-                [imageView sd_setImageWithURL:[NSURL URLWithString:thumbUrlStr] placeholderImage:nil];
-                [self.contentView addSubview:imageView];
-                currentImageView = imageView;
-                imageView.contentMode = UIViewContentModeCenter;
-                imageView.clipsToBounds = YES;
-                //每张图片大小为70*70
-                
-                float width = (([UIScreen mainScreen].bounds.size.width - 80) - PADDING * 2) / 3.0;
-                [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-                    if(i == 0)
-                    {
-                        make.left.equalTo(self.contentView.mas_left).offset(50);
-                        make.top.equalTo(_topView.mas_bottom).offset(10);
-                        make.width.mas_equalTo(@(width));
-                        make.height.mas_equalTo(@(width));
-                    }
-                    else
-                    {
-                        int col = i%3;
-                        int row = i/3;
-                    
-                        float left = 50 + (width + PADDING)*col;
-                        float top = (width+PADDING)*row;
-                        make.left.equalTo(self.contentView.mas_left).offset(left);
-                        make.top.equalTo(_topView.mas_bottom).offset(10 + top);;
-                        make.width.mas_equalTo(@(width));
-                        make.height.mas_equalTo(@(width));
-                    }
-                }];
-                
-            }
-            UILabel * descLabel = [[UILabel alloc]init];
-            descLabel.numberOfLines = 0;
-            descLabel.text = messsage.desc;
-            descLabel.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 100;
-            [self.contentView addSubview:descLabel];
-            
-            [descLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(self.contentView).offset(50);
-                make.right.equalTo(self.contentView).offset(-50);
-                make.top.equalTo(currentImageView.mas_bottom).offset(10);
-                make.bottom.equalTo(self.contentView.mas_bottom).offset(-10);
-            }];
+    } else if([messsage.apptype isEqualToString:@"Notice"]) {
+         _topView.typeLabel.text = @"通知";
+        
+        NSArray *bundle = [[NSBundle mainBundle] loadNibNamed:@"NoticeView"
+                                                        owner:self options:nil];
+        NoticeView *noticeView = [bundle objectAtIndex:0];
+        
+        [noticeView setMessage:messsage];
+        
+        [self.contentView addSubview:noticeView];
+        
+        [noticeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_topView.mas_bottom).offset(10);
+        make.left.equalTo(self.contentView.mas_left).offset(40);
+        make.right.equalTo(self.contentView.mas_right).offset(-10);;
+        make.height.mas_equalTo(noticeView.height);
+        make.bottom.equalTo(self.contentView.mas_bottom).offset(-10);
+        }];
+    
 
-        }
     }
     
-    else if([messsage.apptype isEqualToString:@"Notice"])
-    {
-         _topView.typeLabel.text = @"通知";
-    }
-#endif
-    }
 }
 - (void)awakeFromNib {
     // Initialization code

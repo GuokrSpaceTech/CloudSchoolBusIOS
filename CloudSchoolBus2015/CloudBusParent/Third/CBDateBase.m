@@ -209,4 +209,48 @@
         postMessageFetchHandles(messageArray);
     }];
 }
+
+
+-(void)fetchMessagesFromDB:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles withType:(NSString *)apptype
+{
+    NSMutableArray *messageArray = [[NSMutableArray alloc] init];
+    [queue inDatabase:^(FMDatabase *db) {
+        NSString *queryStr = [[NSString alloc] initWithFormat:@"SELECT * FROM messagesTbl WHERE apptype = '%@' ORDER BY messageid DESC", apptype];
+        FMResultSet * messageSet = [db executeQuery:queryStr];
+        while ([messageSet next]) {
+            int senderid = [[messageSet stringForColumn:@"senderid"] intValue];
+            
+            NSString *queryStr = [[NSString alloc] initWithFormat: @"SELECT * FROM senderTbl WHERE senderid = %d AND  LIMIT 1 ", senderid];
+            FMResultSet * senderSet = [db executeQuery:queryStr];
+            
+            Sender *sender = [[Sender alloc] init];
+            while([senderSet next]){
+                sender.senderid = [[NSString alloc] initWithFormat:@"%d",senderid];
+                sender.classname = [senderSet stringForColumn:@"classname"];
+                sender.name = [senderSet stringForColumn:@"name"];
+                sender.role = [senderSet stringForColumn:@"role"];
+                sender.avatar = [senderSet stringForColumn:@"avatar"];
+            }
+            
+            Message *message = [[Message alloc] init];
+            message.sender = sender;
+            int messageid = [messageSet intForColumn:@"messageid"];
+            message.messageid = [[NSString alloc] initWithFormat:@"%d",messageid];
+            message.desc = [messageSet stringForColumn:@"desc"];
+            message.apptype = [messageSet stringForColumn:@"apptype"];
+            message.ismass = [messageSet stringForColumn:@"ismass"];
+            message.body = [messageSet stringForColumn:@"body"];
+            message.sendtime = [messageSet stringForColumn:@"sendtime"];
+            message.title = [messageSet stringForColumn:@"title"];
+            message.tag = [messageSet stringForColumn:@"tag"];
+            message.isconfirm = [messageSet stringForColumn:@"isconfirm"];
+            message.isreaded = [messageSet stringForColumn:@"isreaded"];
+            message.studentid = [messageSet stringForColumn:@"studentid"];
+            
+            [messageArray addObject:message];
+        }
+        postMessageFetchHandles(messageArray);
+    }];
+}
+
 @end

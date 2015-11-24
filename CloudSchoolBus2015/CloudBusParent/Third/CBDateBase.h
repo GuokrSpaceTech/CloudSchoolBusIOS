@@ -21,4 +21,5 @@
 -(void)selectFormTableBaseinfo:(sessionNotOver)block;
 -(void)insertMessagesData:(NSMutableArray *)messageArray;
 -(void)fetchMessagesFromDB:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
+-(void)fetchMessagesFromDB:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles withType:(NSString *)apptype;
 @end

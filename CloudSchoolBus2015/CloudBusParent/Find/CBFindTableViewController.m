@@ -103,12 +103,30 @@ static NSString * cellidenty = @"listcell";
     popover = [[FPPopoverController alloc] initWithViewController:vc];
     popover.border = NO;
     popover.tint = FPPopoverWhiteTint;
-    popover.contentSize = CGSizeMake(150, 300);
+    popover.contentSize = CGSizeMake(150, 270);
     [popover presentPopoverFromPoint:CGPointMake(self.view.frame.size.width - 20, 20)];
 }
 -(void)selectedTableRow:(NSUInteger)rowNum
 {
     NSLog(@"SELECTED ROW %lu",(unsigned long)rowNum);
+    NSString *apptype;
+    if(rowNum == 0) {
+        apptype = @"Notice";
+    } else if (rowNum == 1) {
+        apptype = @"Punch";
+    } else if (rowNum == 2) {
+        apptype = @"Streaming";
+    } else if (rowNum == 3) {
+        apptype = @"Report";
+    } else if (rowNum == 4) {
+        apptype = @"Article";
+    }
+    
+    [[CBDateBase sharedDatabase] fetchMessagesFromDB:^(NSMutableArray *messageArray) {
+        _dataList = messageArray;
+        [self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.0];
+    } withType:apptype];
+    
     [popover dismissPopoverAnimated:YES];
 }
 

@@ -238,7 +238,7 @@
 -(void)tagButtonClick:(id)sender
 {
     UIButton *button = sender;
-    int index = button.tag;
+    int index = (int)button.tag;
     NSString *tagDesc = [[tagArrary objectAtIndex:index] tagnamedesc];
     [_delegate userSelectedTag:tagDesc];
 }
@@ -246,7 +246,7 @@
 -(void)pictureClick:(id)sender
 {
     UIImageView *view = (UIImageView *)[sender view];
-    int index = view.tag;
+    int index = (int)view.tag;
     [_delegate userSelectedPicture:[picArray objectAtIndex:index] pictureArray:picArray indexAt:index];
 }
 @end

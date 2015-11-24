@@ -176,7 +176,6 @@ static CBLoginInfo * logininfo = nil;
 }
 -(void)getSid
 {
-    
 }
 -(void)connectRongYun
 {

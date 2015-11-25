@@ -73,6 +73,8 @@
 		81E32B581BF49C4100EA3D7A /* UITableView+FDTemplateLayoutCellDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E32B541BF49C4100EA3D7A /* UITableView+FDTemplateLayoutCellDebug.m */; };
 		F92FA3481BF4EFE500E76A17 /* Calculate.m in Sources */ = {isa = PBXBuildFile; fileRef = F92FA3471BF4EFE500E76A17 /* Calculate.m */; };
 		F95025501BF0E952009C970A /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = F950254F1BF0E952009C970A /* Tag.m */; };
+		FA5FAFB71C0555780046051B /* URLLinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5FAFB61C0555780046051B /* URLLinkView.m */; settings = {ASSET_TAGS = (); }; };
+		FA5FAFB91C0555C20046051B /* URLLinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5FAFB81C0555C20046051B /* URLLinkView.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -292,6 +294,9 @@
 		F92FA3471BF4EFE500E76A17 /* Calculate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculate.m; sourceTree = "<group>"; };
 		F950254E1BF0E952009C970A /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		F950254F1BF0E952009C970A /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
+		FA5FAFB51C0555780046051B /* URLLinkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLLinkView.h; sourceTree = "<group>"; };
+		FA5FAFB61C0555780046051B /* URLLinkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLLinkView.m; sourceTree = "<group>"; };
+		FA5FAFB81C0555C20046051B /* URLLinkView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = URLLinkView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -436,6 +441,9 @@
 		812A8BFC1BF31647009CE43E /* view */ = {
 			isa = PBXGroup;
 			children = (
+				FA5FAFB51C0555780046051B /* URLLinkView.h */,
+				FA5FAFB61C0555780046051B /* URLLinkView.m */,
+				FA5FAFB81C0555C20046051B /* URLLinkView.xib */,
 				812A8BFD1BF31BAC009CE43E /* FindCellTopView.h */,
 				812A8BFE1BF31BAC009CE43E /* FindCellTopView.m */,
 				812A8C001BF33F1A009CE43E /* FindNoticeTableViewCell.h */,
@@ -883,6 +891,7 @@
 				2A950C681C040660009D6211 /* NoticeView.xib in Resources */,
 				81065BEA1BEB019A009CE107 /* CBLoginViewController.xib in Resources */,
 				81D48C641BF5BB1100146AA6 /* CBMineViewController.xib in Resources */,
+				FA5FAFB91C0555C20046051B /* URLLinkView.xib in Resources */,
 				2A25CA441C03589F00C81EE9 /* ClassifyTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -953,6 +962,7 @@
 				2A950C661C04063E009D6211 /* NoticeView.m in Sources */,
 				81D4051D1BF069BB00B5A176 /* CBHobbyViewController.m in Sources */,
 				81BECE491BFC4465006DAA8D /* CBChatViewController.m in Sources */,
+				FA5FAFB71C0555780046051B /* URLLinkView.m in Sources */,
 				816446E81BF97BDB00A34D00 /* FPTouchView.m in Sources */,
 				2A09F5261BFF108800B7BB72 /* AriticleView.m in Sources */,
 				81E32B571BF49C4100EA3D7A /* UITableView+FDTemplateLayoutCell.m in Sources */,

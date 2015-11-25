@@ -19,10 +19,11 @@
 #import "CBDateBase.h"
 #import "ClassifyViewController.h"
 #import "AriticleView.h"
+#import "URLLinkView.h"
 #import "SCLAlertView.h"
 
 static NSString * cellidenty = @"listcell";
-@interface CBFindTableViewController ()<EKProtocol, ArticleViewDelegate>
+@interface CBFindTableViewController ()<EKProtocol, ArticleViewDelegate, URLLinkViewDelegate>
 {
     FPPopoverController *popover;
 }
@@ -194,6 +195,8 @@ static NSString * cellidenty = @"listcell";
     //    cell.textLabel.text  =message.body;
     cell.messsage = message;
     [cell.articleView setDelegate:self];
+    [cell.linkView setDelegate:self];
+    
     return cell;
 }
 
@@ -249,5 +252,15 @@ static NSString * cellidenty = @"listcell";
     SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
     
     [alert showNotice:self title:@"" subTitle:tagDesc closeButtonTitle:@"OK" duration:0.0f];
+}
+
+#pragma mark - URLLinkView Action
+- (void)userTapHandles:(NSString *)title withURL:(NSString *)urlString
+{
+    CBWebViewController *webVC = [[CBWebViewController alloc] init];
+    webVC.titleStr = title;
+    webVC.urlStr = urlString;
+    
+    [[self navigationController] pushViewController:webVC animated:NO];
 }
 @end

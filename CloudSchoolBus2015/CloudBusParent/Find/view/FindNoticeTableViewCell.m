@@ -13,6 +13,7 @@
 #import "UIColor+RCColor.h"
 #import "AriticleView.h"
 #import "NoticeView.h"
+#import "URLLinkView.h"
 
 #define PICWIDTH 75
 #define PADDING 10
@@ -138,8 +139,22 @@
         make.height.mas_equalTo(noticeView.height);
         make.bottom.equalTo(self.contentView.mas_bottom).offset(-10);
         }];
-    
-
+    } else if ([messsage.apptype isEqualToString:@"Report"]) {
+        _topView.typeLabel.text = @"报告";
+        NSArray *bundle = [[NSBundle mainBundle] loadNibNamed:@"URLLinkView"
+                                                        owner:self options:nil];
+         _linkView = [bundle objectAtIndex:0];
+        
+        [_linkView setMessage:messsage];
+        [self.contentView addSubview:_linkView];
+        
+        [_linkView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_topView.mas_bottom).offset(10);
+            make.left.equalTo(self.contentView.mas_left).offset(40);
+            make.right.equalTo(self.contentView.mas_right).offset(-10);;
+            make.height.mas_equalTo(@70);
+            make.bottom.equalTo(self.contentView.mas_bottom).offset(-10);
+        }];
     }
     
 }

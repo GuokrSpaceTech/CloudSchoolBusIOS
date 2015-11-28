@@ -11,6 +11,7 @@
 #import "Message.h"
 #import "AriticleView.h"
 #import "URLLinkView.h"
+#import "AttendanceView.h"
 
 @interface FindNoticeTableViewCell : UITableViewCell
 {
@@ -20,4 +21,5 @@
 @property (nonatomic,strong) Message *messsage;
 @property (nonatomic,strong) AriticleView *articleView;
 @property (nonatomic,strong) URLLinkView *linkView;
+@property (nonatomic,strong) AttendanceView *attendanceView;
 @end

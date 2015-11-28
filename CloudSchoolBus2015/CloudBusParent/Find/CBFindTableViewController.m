@@ -37,7 +37,6 @@ static NSString * cellidenty = @"listcell";
     //Init Data
     _dataList = [NSMutableArray array];
     
-    
     /*
      * Init UI
      */
@@ -60,7 +59,7 @@ static NSString * cellidenty = @"listcell";
     [btn setBackgroundImage:[UIImage imageNamed:@"ic_list_white"] forState:UIControlStateNormal];
     btn.frame = CGRectMake(0, 0, 30, 30);
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(itemClick:) forControlEvents:UIControlEventTouchUpInside];
+    [btn addTarget:self action:@selector(filterButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem = item;
     
@@ -69,35 +68,90 @@ static NSString * cellidenty = @"listcell";
         if(isExist)
         {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            //先从数据库里读出消息
-            [[CBDateBase sharedDatabase] fetchMessagesFromDB:^(NSMutableArray *messageArray) {
-                _dataList = messageArray;
-            }];
-            
-            //如果数据库为空，从头开始获取。否则从本地最新的一条开始获取。
-            NSDictionary * paramDict;
-            if([_dataList count]==0)
-            {
-                paramDict = @{@"newid":@"0"};
-            } else {
-                NSString *lastestMessageId = [[_dataList firstObject] messageid];
-                paramDict = @{@"newid":lastestMessageId};
-            }
+                //先从数据库里读出消息
+                [[CBDateBase sharedDatabase] fetchMessagesFromDB:^(NSMutableArray *messageArray) {
+                    _dataList = messageArray;
+                }];
                 
-            
-            [[EKRequest Instance] EKHTTPRequest:getmessage parameters:paramDict requestMethod:GET forDelegate:self];
+                //如果数据库为空，从头开始获取。否则从本地最新的一条开始获取。
+                NSDictionary * paramDict;
+                if([_dataList count]==0)
+                {
+                    paramDict = @{@"newid":@"0"};
+                } else {
+                    [self.tableView
+                     performSelectorOnMainThread:@selector(reloadData)
+                     withObject:nil
+                     waitUntilDone:NO
+                     ];
+                    NSString *lastestMessageId = [[_dataList firstObject] messageid];
+                    paramDict = @{@"newid":lastestMessageId};
+                }
+                
+                [[EKRequest Instance] EKHTTPRequest:getmessage parameters:paramDict requestMethod:GET forDelegate:self];
             });
-        } else {
+            
+        } else { //Session Expired
             NSString *token = [[CBLoginInfo shareInstance] token];
             NSString *mobile = [[CBLoginInfo shareInstance] phone];
             NSDictionary *paramDict = @{@"token":token, @"mobile":mobile};
-            //Session Expired
             [[EKRequest Instance] EKHTTPRequest:login parameters:paramDict requestMethod:POST forDelegate:[CBLoginInfo shareInstance]];
         }
     }];
-    
 }
--(void)itemClick:(id)sender
+
+-(void)viewDidAppear:(BOOL)animated
+{
+//    [self.tableView reloadData];
+}
+
+-(void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark HTTP Deledates
+-(void) getErrorInfo:(NSError *) error forMethod:(RequestFunction) method
+{
+    [self.tableView reloadData];
+}
+
+-(void) getEKResponse:(id) response forMethod:(RequestFunction) method resultCode:(int) code withParam:(NSDictionary *)param
+{
+    if(method == getmessage && code == 1)
+    {
+        NSArray * arr = response;
+        if(![arr isKindOfClass:[NSArray class]])
+        {
+            [self.tableView reloadData];
+            return;
+        }
+        
+        NSMutableArray *newMessagesArray =[[NSMutableArray alloc] init];
+        for (int i = 0; i < arr.count; i++) {
+            Message *message = [[Message alloc]initWithDic:arr[i]];
+            [newMessagesArray addObject:message];
+            [_dataList insertObject:message atIndex:0];
+        }
+        
+        //Save new messages to DB
+        [[CBDateBase sharedDatabase] insertMessagesData:newMessagesArray];
+        
+        [self.tableView reloadData];
+    }
+}
+
+#pragma mark UI Interfactions
+- (void)refreshAction{
+    
+    // 请求数据
+    
+    // 结束刷新
+    
+    [self.refreshControl endRefreshing];
+}
+
+-(void)filterButtonClick:(id)sender
 {
     ClassifyViewController * vc = [[ClassifyViewController alloc]init];
     vc.title = nil;
@@ -108,6 +162,7 @@ static NSString * cellidenty = @"listcell";
     popover.contentSize = CGSizeMake(150, 270);
     [popover presentPopoverFromPoint:CGPointMake(self.view.frame.size.width - 20, 20)];
 }
+
 -(void)selectedTableRow:(NSUInteger)rowNum
 {
     NSLog(@"SELECTED ROW %lu",(unsigned long)rowNum);
@@ -132,52 +187,7 @@ static NSString * cellidenty = @"listcell";
     [popover dismissPopoverAnimated:YES];
 }
 
--(void) getErrorInfo:(NSError *) error forMethod:(RequestFunction) method
-{
-    [self.tableView reloadData];
-}
--(void) getEKResponse:(id) response forMethod:(RequestFunction) method resultCode:(int) code withParam:(NSDictionary *)param
-{
-    if(method == getmessage && code == 1)
-    {
-        NSArray * arr = response;
-        if(![arr isKindOfClass:[NSArray class]])
-        {
-            [self.tableView reloadData];
-            return;
-        }
-        
-        NSMutableArray *newMessagesArray =[[NSMutableArray alloc] init];
-        for (int i = 0; i < arr.count; i++) {
-            Message *message = [[Message alloc]initWithDic:arr[i]];
-            [newMessagesArray addObject:message];
-            [_dataList insertObject:message atIndex:0];
-        }
-        
-        //Save new messages to DB
-        [[CBDateBase sharedDatabase] insertMessagesData:newMessagesArray];
-    
-        
-        [self.tableView reloadData];
-    }
-    
-}
-- (void)refreshAction{
-    
-    
-    // 请求数据
-    
-    // 结束刷新
-    
-    [self.refreshControl endRefreshing];
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Table view data source
-
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -208,36 +218,34 @@ static NSString * cellidenty = @"listcell";
         cell.fd_enforceFrameLayout = NO;
         cell.messsage = message;
     }];
-    
-    //return 120+20;
 }
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ }
+ */
 
-#pragma mark - ArticelViewAction
+#pragma mark - ArticelView Delegate
 -(void) userSelectedPicture:(NSString *)picture pictureArray:(NSMutableArray *)picArray indexAt:(int)index
 {
     CBPagedImageViewController *imageGallery = [[CBPagedImageViewController alloc] initWithNibName:@"CBPagedImageViewController" bundle:nil];
@@ -254,7 +262,7 @@ static NSString * cellidenty = @"listcell";
     [alert showNotice:self title:@"" subTitle:tagDesc closeButtonTitle:@"OK" duration:0.0f];
 }
 
-#pragma mark - URLLinkView Action
+#pragma mark - URLLinkView Delegate
 - (void)userTapHandles:(NSString *)title withURL:(NSString *)urlString
 {
     CBWebViewController *webVC = [[CBWebViewController alloc] init];

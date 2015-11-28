@@ -27,10 +27,11 @@
 -(void)setMessage:(Message *)message
 {
     float VERTICAL_SPACING = 10;
+    float BUTTON_HEIGHT = 25;
 
     _message = message;
-    _title.text = message.title;
-    _content.text = message.desc;
+    _title.text = _message.title;
+    _content.text = _message.desc;
     
     NSDictionary *bodyDict = [_message bodyObject];
     picArray = bodyDict[@"PList"];
@@ -55,42 +56,44 @@
     _confirmButton.backgroundColor = [UIColor colorWithHexString:@"2661F7" alpha:1.0f];
     
     
-    CGRect titleRect = [_title.text
-                        boundingRectWithSize:CGSizeMake(200, 0)
+    CGRect titleRect = [_message.title
+                        boundingRectWithSize:CGSizeMake(300, 0)
                         options:NSStringDrawingUsesLineFragmentOrigin
                         attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16.0]}
                         context:nil];
-    CGRect contentRect = [_title.text
-                          boundingRectWithSize:CGSizeMake(200, 0)
-                          options:NSStringDrawingUsesLineFragmentOrigin
-                          attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16.0]}
+    
+    //http://stackoverflow.com/questions/20602491/boundingrectwithsize-does-not-respect-word-wrapping
+    CGRect contentRect = [_message.desc
+                          boundingRectWithSize:CGSizeMake(300, 0)
+                          options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                          attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14.0]}
                           context:nil];
     
     float imageHeight;
     
-    if(hasValidImage)
+    if(hasValidImage){
         imageHeight = 60;
-    else{
+    }else{
         imageHeight = 0;
     }
     
-    self.height = @(VERTICAL_SPACING + titleRect.size.height + VERTICAL_SPACING + contentRect.size.height + imageHeight+VERTICAL_SPACING+_confirmButton.frame.size.height);
+    self.height = @(VERTICAL_SPACING + ceil(titleRect.size.height) + VERTICAL_SPACING + ceil(contentRect.size.height) + imageHeight + VERTICAL_SPACING + BUTTON_HEIGHT + 25);
 }
 
 -(void)updateConstraints
 {
     [super updateConstraints];
     
-    if(hasValidImage)
-    [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(@60);
-        make.width.mas_equalTo(@60);
-    }];
-    else{
-        [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(@0);
-            make.width.mas_equalTo(@0);
-        }];
+    for(NSLayoutConstraint *constraint in _imageView.constraints)
+    {
+        if([constraint.identifier isEqualToString:@"image_height"]){
+            if(hasValidImage)
+                constraint.constant = 60;
+            else
+                constraint.constant = 0;
+        }
     }
 }
+
+
 @end

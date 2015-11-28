@@ -220,7 +220,7 @@
         while ([messageSet next]) {
             int senderid = [[messageSet stringForColumn:@"senderid"] intValue];
             
-            NSString *queryStr = [[NSString alloc] initWithFormat: @"SELECT * FROM senderTbl WHERE senderid = %d AND  LIMIT 1 ", senderid];
+            NSString *queryStr = [[NSString alloc] initWithFormat: @"SELECT * FROM senderTbl WHERE senderid = %d LIMIT 1 ", senderid];
             FMResultSet * senderSet = [db executeQuery:queryStr];
             
             Sender *sender = [[Sender alloc] init];

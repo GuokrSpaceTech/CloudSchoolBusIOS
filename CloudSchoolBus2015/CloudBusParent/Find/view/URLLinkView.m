@@ -29,7 +29,7 @@
     
     NSDictionary *bodyDict = [_message bodyObject];
  
-    urlString = bodyDict[@"PList"];
+    urlString = bodyDict[@"reportUrl"];
     
     NSString *sid = [[CBLoginInfo shareInstance] sid];
     urlString = [[NSString alloc] initWithFormat: @"%@?sid=%@", urlString, sid];

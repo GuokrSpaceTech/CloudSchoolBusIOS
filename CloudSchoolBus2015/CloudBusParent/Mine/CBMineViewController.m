@@ -18,6 +18,8 @@
 #import "Calculate.h"
 #import "CB.h"
 #import "UIColor+RCColor.h"
+#import "CBWebViewController.h"
+
 @interface CBMineViewController ()
 {
     MineHeaderView * headeView;
@@ -177,9 +179,17 @@
         [Calculate clearTmpPics:^{
              [self.tableView reloadData];
         }];
-       
+    }
+    else if(indexPath.row == 2)
+    {
+        CBWebViewController *webVC = [[CBWebViewController alloc] init];
+        webVC.titleStr = @"云中校车";
+        webVC.urlStr =  @"http://www.yunxiaoche.com/about_us.html";
+        
+        [[self navigationController] pushViewController:webVC animated:YES];
     }
 }
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

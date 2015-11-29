@@ -69,11 +69,11 @@ static NSString * cellidenty = @"listcell";
         {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 //先从数据库里读出消息
-                [[CBDateBase sharedDatabase] fetchMessagesFromDB:^(NSMutableArray *messageArray) {
+                [[CBDateBase sharedDatabase] fetchMessagesFromDBfromMessageId:0 postHandle:^(NSMutableArray *messageArray) {
                     _dataList = messageArray;
                 }];
                 
-                //如果数据库为空，从头开始获取。否则从本地最新的一条开始获取。
+                //如果数据库为空，从头开始获取网络数据。
                 NSDictionary * paramDict;
                 if([_dataList count]==0)
                 {
@@ -84,11 +84,7 @@ static NSString * cellidenty = @"listcell";
                      withObject:nil
                      waitUntilDone:NO
                      ];
-                    NSString *lastestMessageId = [[_dataList firstObject] messageid];
-                    paramDict = @{@"newid":lastestMessageId};
                 }
-                
-                [[EKRequest Instance] EKHTTPRequest:getmessage parameters:paramDict requestMethod:GET forDelegate:self];
             });
             
         } else { //Session Expired
@@ -102,7 +98,13 @@ static NSString * cellidenty = @"listcell";
 
 -(void)viewDidAppear:(BOOL)animated
 {
-//    [self.tableView reloadData];
+    //    [self.tableView
+    //     performSelectorOnMainThread:@selector(reloadData)
+    //     withObject:nil
+    //     waitUntilDone:NO
+    //     ];
+    //
+    //
 }
 
 -(void)didReceiveMemoryWarning {
@@ -143,8 +145,30 @@ static NSString * cellidenty = @"listcell";
 
 #pragma mark UI Interfactions
 - (void)refreshAction{
+    //请求本地数据
+    int lastestMessageId;
+    if([_dataList count]>0)
+    {
+        lastestMessageId = [[_dataList[0] messageid] intValue];
+    }else {
+        lastestMessageId = 0;
+    }
     
-    // 请求数据
+    [[CBDateBase sharedDatabase] fetchMessagesFromDBfromMessageId:lastestMessageId postHandle:^(NSMutableArray *messageArray) {
+        if([messageArray count]>0)
+        {
+            _dataList = messageArray;
+            [self.tableView
+             performSelectorOnMainThread:@selector(reloadData)
+             withObject:nil
+             waitUntilDone:NO
+             ];
+        } else {
+            NSString *lastestMessageId = [[_dataList firstObject] messageid];
+            NSDictionary *paramDict = @{@"newid":lastestMessageId};
+            [[EKRequest Instance] EKHTTPRequest:getmessage parameters:paramDict requestMethod:GET forDelegate:self];
+        }
+    }];
     
     // 结束刷新
     
@@ -179,12 +203,20 @@ static NSString * cellidenty = @"listcell";
         apptype = @"Article";
     }
     
-    [[CBDateBase sharedDatabase] fetchMessagesFromDB:^(NSMutableArray *messageArray) {
-        _dataList = messageArray;
-        [self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.0];
-    } withType:apptype];
+    //    [[CBDateBase sharedDatabase] fetchMessagesFromDB:^(NSMutableArray *messageArray) {
+    //        _dataList = messageArray;
+    //        [self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.0];
+    //    } withType:apptype];
     
     [popover dismissPopoverAnimated:YES];
+}
+
+-(void)selectAllMessages
+{
+    //    [[CBDateBase sharedDatabase] fetchMessagesFromDB:^(NSMutableArray *messageArray) {
+    //        _dataList = messageArray;
+    //        [self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.0];
+    //    } withType:@"All"];
 }
 
 #pragma mark - Table view data source
@@ -202,7 +234,6 @@ static NSString * cellidenty = @"listcell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.fd_enforceFrameLayout = NO;
     Message *message = [_dataList objectAtIndex:indexPath.row];
-    //    cell.textLabel.text  =message.body;
     cell.messsage = message;
     [cell.articleView setDelegate:self];
     [cell.linkView setDelegate:self];
@@ -213,37 +244,18 @@ static NSString * cellidenty = @"listcell";
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Message *message = [_dataList objectAtIndex:indexPath.row];
+    //
+    //    return [tableView fd_heightForCellWithIdentifier:cellidenty configuration:^(FindNoticeTableViewCell * cell) {
+    //        cell.fd_enforceFrameLayout = NO;
+    //        cell.messsage = message;
+    //    }];
     
-    return [tableView fd_heightForCellWithIdentifier:cellidenty configuration:^(FindNoticeTableViewCell * cell) {
-        cell.fd_enforceFrameLayout = NO;
-        cell.messsage = message;
-    }];
+    return [tableView fd_heightForCellWithIdentifier:cellidenty cacheByKey:message.messageid configuration:^(FindNoticeTableViewCell * cell)
+            {
+                cell.fd_enforceFrameLayout = NO;
+                cell.messsage = message;
+            }];
 }
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
 
 #pragma mark - ArticelView Delegate
 -(void) userSelectedPicture:(NSString *)picture pictureArray:(NSMutableArray *)picArray indexAt:(int)index

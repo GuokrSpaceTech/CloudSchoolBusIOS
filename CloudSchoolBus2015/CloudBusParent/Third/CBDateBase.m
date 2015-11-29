@@ -169,15 +169,17 @@
     }
 }
 
--(void)fetchMessagesFromDB:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles
+-(void)fetchMessagesFromDBfromMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles
 {
     NSMutableArray *messageArray = [[NSMutableArray alloc] init];
     [queue inDatabase:^(FMDatabase *db) {
-        FMResultSet * messageSet = [db executeQuery:@"SELECT * FROM messagesTbl ORDER BY messageid DESC"];
+        NSString *queryStr = [[NSString alloc] initWithFormat:@"SELECT * from (SELECT * FROM messagesTbl where messageid>%d ORDER BY messageid ASC LIMIT 100)"
+                                                            "sub ORDER BY messageid DESC", messageid];
+        FMResultSet * messageSet = [db executeQuery:queryStr];
         while ([messageSet next]) {
             int senderid = [[messageSet stringForColumn:@"senderid"] intValue];
             
-            NSString *queryStr = [[NSString alloc] initWithFormat: @"SELECT * FROM senderTbl WHERE senderid = %d LIMIT 1", senderid];
+            queryStr = [[NSString alloc] initWithFormat: @"SELECT * FROM senderTbl WHERE senderid = %d LIMIT 1", senderid];
             FMResultSet * senderSet = [db executeQuery:queryStr];
             
             Sender *sender = [[Sender alloc] init];
@@ -211,11 +213,18 @@
 }
 
 
--(void)fetchMessagesFromDB:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles withType:(NSString *)apptype
+-(void)fetchMessagesFromDBwithType:(NSString *)apptype fromMessageId:(NSNumber *)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles
 {
     NSMutableArray *messageArray = [[NSMutableArray alloc] init];
     [queue inDatabase:^(FMDatabase *db) {
-        NSString *queryStr = [[NSString alloc] initWithFormat:@"SELECT * FROM messagesTbl WHERE apptype = '%@' ORDER BY messageid DESC", apptype];
+        NSString *queryStr;
+        
+        if([apptype isEqualToString:@"All"]) {
+            queryStr = [[NSString alloc] initWithFormat:@"SELECT * FROM messagesTbl LIMIT 100 ORDER BY messageid DESC "];
+        } else {
+            queryStr = [[NSString alloc] initWithFormat:@"SELECT * FROM messagesTbl WHERE apptype = '%@' LIMIT 100 ORDER BY messageid DESC", apptype];
+        }
+        
         FMResultSet * messageSet = [db executeQuery:queryStr];
         while ([messageSet next]) {
             int senderid = [[messageSet stringForColumn:@"senderid"] intValue];

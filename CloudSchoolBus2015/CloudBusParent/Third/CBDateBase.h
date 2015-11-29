@@ -17,9 +17,11 @@
 
 -(void)insertDataToLoginInfoTable:(NSNumber *)cid token:(NSString *)token phone:(NSString *)phone sid:(NSString *)sid rong:(NSString *)rongCloudToken;
 -(void)selectFormTableLoginInfo;
+
 -(void)insertDataToBaseInfoTable:(NSNumber *)cid withBaseinfo:(NSString *)baseinfoString;
 -(void)selectFormTableBaseinfo:(sessionNotOver)block;
+
 -(void)insertMessagesData:(NSMutableArray *)messageArray;
--(void)fetchMessagesFromDB:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
--(void)fetchMessagesFromDB:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles withType:(NSString *)apptype;
+-(void)fetchMessagesFromDBfromMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
+-(void)fetchMessagesFromDBwithType:(NSString *)apptype fromMessageId:(NSNumber *)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
 @end

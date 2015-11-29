@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "CBLoginViewController.h"
 #import "CBTabbarViewController.h"
+#import "CBFindTableViewController.h"
 #import "CBDateBase.h"
 #import "CBLoginInfo.h"
 #import "CB.h"
@@ -145,6 +146,25 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+-(void) tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    NSLog(@"Selected INDEX OF TAB-BAR ==> %i", tabBarController.selectedIndex);
+    
+    //First Tab
+    if (tabBarController.selectedIndex == 0) {
+        UINavigationController *nav = (UINavigationController *)viewController;
+        CBFindTableViewController *findVC = [[nav viewControllers] objectAtIndex:0];
+        if(findVC)
+        {
+            if([findVC respondsToSelector:@selector(selectAllMessages)])
+            {
+                [findVC selectAllMessages];
+            }
+        }
+    }
+}
+
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
     // register to receive notifications
     [application registerForRemoteNotifications];

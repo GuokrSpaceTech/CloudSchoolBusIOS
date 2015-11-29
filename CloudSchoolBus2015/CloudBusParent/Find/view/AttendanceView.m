@@ -35,16 +35,16 @@
     
     _message = message;
     
-    _timeLabel = [[UILabel alloc] init];
+//    _timeLabel = [[UILabel alloc] init];
     _timeLabel.text = _message.title;
-    [self addSubview:_timeLabel];
+//    [self addSubview:_timeLabel];
     
     NSDictionary *bodyDict = [_message bodyObject];
     NSString *picUrlStr = bodyDict[@"picture"];
     
     if(![picUrlStr isEqual:[NSNull null]])
     {
-        _timeCardImageView = [[UIImageView alloc] init];
+//        _timeCardImageView = [[UIImageView alloc] init];
         _timeCardImageView.clipsToBounds = YES;
         _timeCardImageView.contentMode = UIViewContentModeScaleAspectFit;
         
@@ -54,7 +54,7 @@
                           NSLog(@"");
                       }];
         
-        [self addSubview:_timeCardImageView];
+//        [self addSubview:_timeCardImageView];
         hasValidPicture = true;
         _height = @240;
     } else {

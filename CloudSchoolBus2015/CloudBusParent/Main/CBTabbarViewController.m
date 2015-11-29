@@ -6,6 +6,7 @@
 //  Copyright (c) 2015年 BeiJingYinChuang. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "CBTabbarViewController.h"
 #import "CBMineViewController.h"
 #import "CBFindTableViewController.h"
@@ -13,8 +14,12 @@
 #import "CBHobbyViewController.h"
 #import "UIColor+RCColor.h"
 #import "BaseNavigationController.h"
+#import "CBDateBase.h"
 
 @interface CBTabbarViewController ()
+{
+    CBFindTableViewController * findVC;
+}
 
 @end
 
@@ -24,9 +29,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.delegate = appDelegate;
+    
     self.tabBar.tintColor = [UIColor colorWithHexString:@"F3A139" alpha:1.0f];
     
-    CBFindTableViewController * findVC = [[CBFindTableViewController alloc]init];
+    findVC = [[CBFindTableViewController alloc]init];
 
     UIImage *image = [UIImage imageNamed:@"explore_unselected"];
     UIImage *selectedImage = [UIImage imageNamed:@"explore"];
@@ -59,11 +67,11 @@
     
     self.tabBar.translucent = NO;
 
-    UINavigationController * mainNav = [[UINavigationController alloc]initWithRootViewController:mineVC];
-    UINavigationController * hobbyNav = [[UINavigationController alloc]initWithRootViewController:hobbyVC];
-    UINavigationController * teacherNav = [[UINavigationController alloc]initWithRootViewController:teacherVC];
-    UINavigationController * findNav = [[UINavigationController alloc]initWithRootViewController:findVC];
-    NSArray * arr = @[findNav,teacherNav,hobbyNav,mainNav];
+    UINavigationController *mainNav = [[UINavigationController alloc] initWithRootViewController:mineVC];
+    UINavigationController *hobbyNav = [[UINavigationController alloc] initWithRootViewController:hobbyVC];
+    UINavigationController *teacherNav = [[UINavigationController alloc] initWithRootViewController:teacherVC];
+    UINavigationController *findNav = [[UINavigationController alloc] initWithRootViewController:findVC];
+    NSArray *arr = @[findNav,teacherNav,hobbyNav,mainNav];
     
     //Change the background color and tile color
     for(int i=0; i<[arr count]; i++)
@@ -80,8 +88,6 @@
             nav.navigationBar.translucent = NO;
         }
     }
-    
-    
     
     //init the tab
     self.viewControllers = arr;

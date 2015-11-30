@@ -149,7 +149,7 @@ static NSString * cellidenty = @"listcell";
     int lastestMessageId;
     if([_dataList count]>0)
     {
-        lastestMessageId = [[_dataList[0] messageid] intValue];
+        lastestMessageId = [[[_dataList firstObject] messageid] intValue];
     }else {
         lastestMessageId = 0;
     }
@@ -173,6 +173,28 @@ static NSString * cellidenty = @"listcell";
     // 结束刷新
     
     [self.refreshControl endRefreshing];
+}
+
+-(void)loadMoreAction
+{
+    int firstMessageId;
+    if([_dataList count]>0)
+    {
+        firstMessageId = [[[_dataList lastObject] messageid] intValue];
+
+        [[CBDateBase sharedDatabase] fetchMessagesFromDBBeforeMessageId:firstMessageId postHandle:^(NSMutableArray *messageArray) {
+            if([messageArray count]>0)
+            {
+                [self.tableView setContentOffset:CGPointZero];
+                _dataList = messageArray;
+                [self.tableView
+                 performSelectorOnMainThread:@selector(reloadData)
+                 withObject:nil
+                 waitUntilDone:NO
+                 ];
+            }
+        }];
+    }
 }
 
 -(void)filterButtonClick:(id)sender
@@ -237,6 +259,12 @@ static NSString * cellidenty = @"listcell";
     cell.messsage = message;
     [cell.articleView setDelegate:self];
     [cell.linkView setDelegate:self];
+    
+    if (indexPath.row == [_dataList count] - 1)
+    {
+        [self loadMoreAction];
+    }
+    
     
     return cell;
 }

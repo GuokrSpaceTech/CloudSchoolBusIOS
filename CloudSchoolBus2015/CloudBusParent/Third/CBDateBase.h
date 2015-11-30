@@ -24,4 +24,5 @@
 -(void)insertMessagesData:(NSMutableArray *)messageArray;
 -(void)fetchMessagesFromDBfromMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
 -(void)fetchMessagesFromDBwithType:(NSString *)apptype fromMessageId:(NSNumber *)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
+-(void)fetchMessagesFromDBBeforeMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
 @end

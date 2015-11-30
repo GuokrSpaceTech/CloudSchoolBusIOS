@@ -26,6 +26,7 @@ static NSString * cellidenty = @"listcell";
 @interface CBFindTableViewController ()<EKProtocol, ArticleViewDelegate, URLLinkViewDelegate>
 {
     FPPopoverController *popover;
+    NSString *apptype;
 }
 @end
 
@@ -63,22 +64,24 @@ static NSString * cellidenty = @"listcell";
     UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem = item;
     
+    apptype = @"All";
+    
     //Check if we have logged in
     [[CBLoginInfo shareInstance] baseInfoIsExist:^(BOOL isExist) {
         if(isExist)
         {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 //先从数据库里读出消息
-                [[CBDateBase sharedDatabase] fetchMessagesFromDBfromMessageId:0 postHandle:^(NSMutableArray *messageArray) {
-                    _dataList = messageArray;
-                }];
+                [self initQueues];
                 
                 //如果数据库为空，从头开始获取网络数据。
                 NSDictionary * paramDict;
-                if([_dataList count]==0)
+                if([_dataList_all count]==0)
                 {
                     paramDict = @{@"newid":@"0"};
+                    [[EKRequest Instance] EKHTTPRequest:getmessage parameters:paramDict requestMethod:GET forDelegate:self];
                 } else {
+                    _dataList = _dataList_all;
                     [self.tableView
                      performSelectorOnMainThread:@selector(reloadData)
                      withObject:nil
@@ -94,6 +97,8 @@ static NSString * cellidenty = @"listcell";
             [[EKRequest Instance] EKHTTPRequest:login parameters:paramDict requestMethod:POST forDelegate:[CBLoginInfo shareInstance]];
         }
     }];
+    
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -105,6 +110,42 @@ static NSString * cellidenty = @"listcell";
     //     ];
     //
     //
+}
+
+-(void) initQueues
+{
+    apptype = @"All";
+    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype postHandle:^(NSMutableArray *messageArray) {
+        _dataList_all = messageArray;
+    }];
+    
+    apptype = @"Notice";
+    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype postHandle:^(NSMutableArray *messageArray) {
+        _dataList_notice = messageArray;
+    }];
+    
+    apptype = @"Report";
+    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype postHandle:^(NSMutableArray *messageArray) {
+        _dataList_report = messageArray;
+    }];
+    
+    apptype = @"Punch";
+    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype postHandle:^(NSMutableArray *messageArray) {
+        _dataList_attendance = messageArray;
+    }];
+    
+    apptype = @"Article";
+    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype postHandle:^(NSMutableArray *messageArray) {
+        _dataList_article = messageArray;
+    }];
+    
+    apptype = @"Streaming";
+    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype postHandle:^(NSMutableArray *messageArray) {
+        _dataList_streaming = messageArray;
+    }];
+    
+    apptype = @"All";
+    
 }
 
 -(void)didReceiveMemoryWarning {
@@ -133,11 +174,15 @@ static NSString * cellidenty = @"listcell";
         for (int i = 0; i < arr.count; i++) {
             Message *message = [[Message alloc]initWithDic:arr[i]];
             [newMessagesArray addObject:message];
-            [_dataList insertObject:message atIndex:0];
+            [_dataList_all insertObject:message atIndex:0];
         }
         
         //Save new messages to DB
         [[CBDateBase sharedDatabase] insertMessagesData:newMessagesArray];
+        
+        [self initQueues];
+        
+        _dataList = [self messageQueuewithType:apptype];
         
         [self.tableView reloadData];
     }
@@ -145,26 +190,32 @@ static NSString * cellidenty = @"listcell";
 
 #pragma mark UI Interfactions
 - (void)refreshAction{
+    
+    NSMutableArray *queue = [self  messageQueuewithType:apptype];
+    
     //请求本地数据
     int lastestMessageId;
-    if([_dataList count]>0)
+    if([queue count]>0)
     {
-        lastestMessageId = [[[_dataList firstObject] messageid] intValue];
+        lastestMessageId = [[[queue firstObject] messageid] intValue];
     }else {
         lastestMessageId = 0;
     }
     
-    [[CBDateBase sharedDatabase] fetchMessagesFromDBfromMessageId:lastestMessageId postHandle:^(NSMutableArray *messageArray) {
+    [[CBDateBase sharedDatabase] fetchMessagesFromDBwithType:apptype fromMessageId:lastestMessageId postHandle:^(NSMutableArray *messageArray) {
         if([messageArray count]>0)
         {
+            [self upateQueueWithQueueType:apptype withArray:messageArray];
+            
             _dataList = messageArray;
+            
             [self.tableView
              performSelectorOnMainThread:@selector(reloadData)
              withObject:nil
              waitUntilDone:NO
              ];
         } else {
-            NSString *lastestMessageId = [[_dataList firstObject] messageid];
+            NSString *lastestMessageId = [[_dataList_all firstObject] messageid];
             NSDictionary *paramDict = @{@"newid":lastestMessageId};
             [[EKRequest Instance] EKHTTPRequest:getmessage parameters:paramDict requestMethod:GET forDelegate:self];
         }
@@ -177,23 +228,85 @@ static NSString * cellidenty = @"listcell";
 
 -(void)loadMoreAction
 {
+    NSMutableArray *queue = [self  messageQueuewithType:apptype];
     int firstMessageId;
-    if([_dataList count]>0)
+    if([queue count]>0)
     {
-        firstMessageId = [[[_dataList lastObject] messageid] intValue];
+        firstMessageId = [[[queue lastObject] messageid] intValue];
 
-        [[CBDateBase sharedDatabase] fetchMessagesFromDBBeforeMessageId:firstMessageId postHandle:^(NSMutableArray *messageArray) {
+        [[CBDateBase sharedDatabase] fetchMessagesFromDBwithType:apptype belowMessageId:firstMessageId postHandle:^(NSMutableArray *messageArray) {
             if([messageArray count]>0)
             {
-                [self.tableView setContentOffset:CGPointZero];
+                [self upateQueueWithQueueType:apptype withArray:messageArray];
+                
                 _dataList = messageArray;
+                
                 [self.tableView
                  performSelectorOnMainThread:@selector(reloadData)
                  withObject:nil
                  waitUntilDone:NO
                  ];
+                
+                [self.tableView setContentOffset:CGPointZero];
+
             }
         }];
+    }
+}
+
+-(void)upateQueueWithQueueType:(NSString *)type withArray:(NSMutableArray *)messages
+{
+    if([type isEqualToString:@"All"])
+    {
+        _dataList_all = messages;
+    }
+    else if([type isEqualToString:@"Notice"])
+    {
+        _dataList_notice = messages;
+    }
+    else if([type isEqualToString:@"Article"])
+    {
+        _dataList_article = messages;
+    }
+    else if([type isEqualToString:@"Punch"])
+    {
+        _dataList_attendance = messages;
+    }
+    else if([type isEqualToString:@"Report"])
+    {
+        _dataList_report = messages;
+    }
+    else if([type isEqualToString:@"Streaming"])
+    {
+        _dataList_streaming = messages;
+    }
+}
+
+-(NSMutableArray *)messageQueuewithType:(NSString *)type
+{
+    if([type isEqualToString:@"All"])
+    {
+        return _dataList_all;
+    }
+    else if([type isEqualToString:@"Notice"])
+    {
+        return _dataList_notice;
+    }
+    else if([type isEqualToString:@"Article"])
+    {
+        return _dataList_article;
+    }
+    else if([type isEqualToString:@"Punch"])
+    {
+        return _dataList_attendance;
+    }
+    else if([type isEqualToString:@"Report"])
+    {
+        return _dataList_report;
+    }
+    else
+    {
+        return _dataList_streaming;
     }
 }
 
@@ -212,33 +325,43 @@ static NSString * cellidenty = @"listcell";
 -(void)selectedTableRow:(NSUInteger)rowNum
 {
     NSLog(@"SELECTED ROW %lu",(unsigned long)rowNum);
-    NSString *apptype;
     if(rowNum == 0) {
         apptype = @"Notice";
+        _dataList = _dataList_notice;
     } else if (rowNum == 1) {
         apptype = @"Punch";
+        _dataList = _dataList_attendance;
     } else if (rowNum == 2) {
         apptype = @"Streaming";
+        _dataList = _dataList_streaming;
     } else if (rowNum == 3) {
         apptype = @"Report";
+        _dataList = _dataList_report;
     } else if (rowNum == 4) {
         apptype = @"Article";
+        _dataList = _dataList_article;
     }
     
-    //    [[CBDateBase sharedDatabase] fetchMessagesFromDB:^(NSMutableArray *messageArray) {
-    //        _dataList = messageArray;
-    //        [self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.0];
-    //    } withType:apptype];
+    [self.tableView
+     performSelectorOnMainThread:@selector(reloadData)
+     withObject:nil
+     waitUntilDone:NO
+     ];
+    
     
     [popover dismissPopoverAnimated:YES];
 }
 
 -(void)selectAllMessages
 {
-    //    [[CBDateBase sharedDatabase] fetchMessagesFromDB:^(NSMutableArray *messageArray) {
-    //        _dataList = messageArray;
-    //        [self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.0];
-    //    } withType:@"All"];
+    apptype = @"All";
+    _dataList = _dataList_all;
+
+    [self.tableView
+     performSelectorOnMainThread:@selector(reloadData)
+     withObject:nil
+     waitUntilDone:NO
+     ];
 }
 
 #pragma mark - Table view data source
@@ -265,24 +388,23 @@ static NSString * cellidenty = @"listcell";
         [self loadMoreAction];
     }
     
-    
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Message *message = [_dataList objectAtIndex:indexPath.row];
-    //
-    //    return [tableView fd_heightForCellWithIdentifier:cellidenty configuration:^(FindNoticeTableViewCell * cell) {
-    //        cell.fd_enforceFrameLayout = NO;
-    //        cell.messsage = message;
-    //    }];
-    
-    return [tableView fd_heightForCellWithIdentifier:cellidenty cacheByKey:message.messageid configuration:^(FindNoticeTableViewCell * cell)
-            {
-                cell.fd_enforceFrameLayout = NO;
-                cell.messsage = message;
-            }];
+    if(indexPath.row <= [_dataList count])
+    {
+        Message *message = [_dataList objectAtIndex:indexPath.row];
+        
+        return [tableView fd_heightForCellWithIdentifier:cellidenty cacheByKey:message.messageid configuration:^(FindNoticeTableViewCell * cell)
+                {
+                    cell.fd_enforceFrameLayout = NO;
+                    cell.messsage = message;
+                }];
+    } else {
+        return 0;
+    }
 }
 
 #pragma mark - ArticelView Delegate

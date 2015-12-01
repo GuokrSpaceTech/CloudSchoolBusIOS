@@ -254,18 +254,18 @@
     }];
 }
 
--(void)fetchMessagesFromDBwithType:(NSString *)apptype fromMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles
+-(void)fetchMessagesFromDBwithType:(NSString *)apptype forStudent:(NSString *)studentid fromMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles
 {
     NSMutableArray *messageArray = [[NSMutableArray alloc] init];
     [queue inDatabase:^(FMDatabase *db) {
         NSString *queryStr;
         
         if([apptype isEqualToString:@"All"]) {
-            queryStr = [[NSString alloc] initWithFormat:@"SELECT * from (SELECT * FROM messagesTbl where messageid>%d ORDER BY messageid ASC LIMIT 100)"
-                                  "sub ORDER BY messageid DESC", messageid];
+            queryStr = [[NSString alloc] initWithFormat:@"SELECT * from (SELECT * FROM messagesTbl where messageid>%d AND studentid='%@' ORDER BY messageid ASC LIMIT 100)"
+                "sub ORDER BY messageid DESC", messageid, studentid];
         } else {
-            queryStr = [[NSString alloc] initWithFormat:@"SELECT * from (SELECT * FROM messagesTbl where messageid>%d AND apptype='%@' ORDER BY messageid ASC LIMIT 100)"
-                                  "sub ORDER BY messageid DESC", messageid, apptype];
+            queryStr = [[NSString alloc] initWithFormat:@"SELECT * from (SELECT * FROM messagesTbl where messageid>%d AND apptype='%@' AND studentid='%@' ORDER BY messageid ASC LIMIT 100)"
+                "sub ORDER BY messageid DESC", messageid, apptype, studentid];
         }
         
         FMResultSet * messageSet = [db executeQuery:queryStr];
@@ -305,16 +305,16 @@
     }];
 }
 
--(void)fetchMessagesFromDBwithType:(NSString *)apptype belowMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles
+-(void)fetchMessagesFromDBwithType:(NSString *)apptype forStudent:(NSString *)studentid belowMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles
 {
     NSMutableArray *messageArray = [[NSMutableArray alloc] init];
     [queue inDatabase:^(FMDatabase *db) {
         NSString *queryStr;
         
         if([apptype isEqualToString:@"All"]) {
-            queryStr = [[NSString alloc] initWithFormat:@"SELECT * FROM messagesTbl WHERE messageid<%d ORDER BY messageid DESC LIMIT 100", messageid];
+            queryStr = [[NSString alloc] initWithFormat:@"SELECT * FROM messagesTbl WHERE messageid<%d AND studentid='%@' ORDER BY messageid DESC LIMIT 100", messageid,studentid];
         } else {
-            queryStr = [[NSString alloc] initWithFormat:@"SELECT * FROM messagesTbl WHERE messageid<%d AND apptype='%@' ORDER BY messageid DESC LIMIT 100", messageid, apptype];
+            queryStr = [[NSString alloc] initWithFormat:@"SELECT * FROM messagesTbl WHERE messageid<%d AND apptype='%@' AND studentid='%@' ORDER BY messageid DESC LIMIT 100", messageid, apptype, studentid];
         }
         
         FMResultSet * messageSet = [db executeQuery:queryStr];
@@ -355,7 +355,7 @@
 }
 
 
--(void)initMessageQueueWithType:(NSString *)apptype postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles
+-(void)initMessageQueueWithType:(NSString *)apptype withStudentId:(NSString *)studentid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles
 {
     NSMutableArray *messageArray = [[NSMutableArray alloc] init];
     [queue inDatabase:^(FMDatabase *db) {
@@ -363,9 +363,9 @@
         
         //Calculate the total number of records
         if([apptype isEqualToString:@"All"]) {
-            queryStr = [[NSString alloc] initWithFormat:@"SELECT count(messageid) FROM messagesTbl  ORDER BY messageid DESC"];
+            queryStr = [[NSString alloc] initWithFormat:@"SELECT count(messageid) FROM messagesTbl WHERE studentid='%@' ORDER BY messageid DESC", studentid];
         } else {
-            queryStr = [[NSString alloc] initWithFormat:@"SELECT count(messageid) FROM messagesTbl WHERE apptype='%@' ORDER BY messageid DESC", apptype];
+            queryStr = [[NSString alloc] initWithFormat:@"SELECT count(messageid) FROM messagesTbl WHERE apptype='%@' AND studentid='%@' ORDER BY messageid DESC", apptype, studentid];
         }
         
         int count = [db intForQuery:queryStr];
@@ -392,9 +392,9 @@
         
         //Query the rows
         if([apptype isEqualToString:@"All"]) {
-            queryStr = [[NSString alloc] initWithFormat:@"SELECT * FROM messagesTbl ORDER BY messageid DESC LIMIT %d, %d", rowStart, limitNumber];
+            queryStr = [[NSString alloc] initWithFormat:@"SELECT * FROM messagesTbl WHERE studentid='%@' ORDER BY messageid DESC LIMIT %d, %d", studentid, rowStart, limitNumber];
         } else {
-            queryStr = [[NSString alloc] initWithFormat:@"SELECT * FROM messagesTbl where apptype='%@' ORDER BY messageid DESC LIMIT %d, %d", apptype, rowStart, limitNumber];
+            queryStr = [[NSString alloc] initWithFormat:@"SELECT * FROM messagesTbl WHERE apptype='%@' AND studentid='%@' ORDER BY messageid DESC LIMIT %d, %d", apptype, studentid, rowStart, limitNumber];
         }
         
         FMResultSet * messageSet = [db executeQuery:queryStr];

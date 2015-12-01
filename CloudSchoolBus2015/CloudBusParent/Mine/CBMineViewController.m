@@ -19,11 +19,16 @@
 #import "CB.h"
 #import "UIColor+RCColor.h"
 #import "CBWebViewController.h"
+#import "KLCPopup.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface CBMineViewController ()
 {
     MineHeaderView * headeView;
+    KLCPopup* popup;
 }
+-(void)postChildSwitchNotification:(NSString *)currentStudent;
+-(void)handleSingleTap:(id)sender;
 @end
 
 @implementation CBMineViewController
@@ -35,11 +40,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.title = @"我的";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
    [self.tableView registerClass:[MineCell class] forCellReuseIdentifier:@"cell"];
@@ -51,7 +51,6 @@
     
     self.tableView.tableHeaderView  = headeView;
 
-    
     //退出按钮
     
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -68,6 +67,8 @@
         make.height.mas_equalTo(@(40));
         make.centerX.equalTo(self.view.mas_centerX);
     }];
+    
+    
 }
 -(void)quit:(UIButton *)btn
 {
@@ -172,7 +173,19 @@
 {
     if(indexPath.row == 0)
     {
+        UIView *contentView = [self generateChildrenSwitchView];
         
+        // Show in popup
+        KLCPopupLayout layout = KLCPopupLayoutMake(KLCPopupHorizontalLayoutCenter, KLCPopupVerticalLayoutCenter);
+        
+        popup = [KLCPopup popupWithContentView:contentView
+                                                showType:KLCPopupShowTypeFadeIn
+                                             dismissType:KLCPopupDismissTypeFadeOut
+                                                maskType:KLCPopupMaskTypeDimmed
+                                dismissOnBackgroundTouch:YES
+                                   dismissOnContentTouch:NO];
+        
+        [popup showWithLayout:layout];
     }
     else if(indexPath.row == 1)
     {
@@ -190,6 +203,106 @@
     }
 }
 
+-(UIView *)generateChildrenSwitchView
+{
+    NSNumber *avatarViewWidth  = @60;
+    NSNumber *avatarViewHeight = @60;
+    static double   PADDING = 10;
+    double left=0.0;
+    double contentViewWidth=0.0;
+    double contentViewHeight=0.0;
+    
+    UIView* contentView = [[UIView alloc] init];
+    contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    contentView.backgroundColor = [UIColor whiteColor];
+    contentView.layer.cornerRadius = 12.0;
+    
+    CBLoginInfo * info = [CBLoginInfo shareInstance];
+    int i = 0;
+    for (Student *st in info.studentArr) {
+        
+        left = left + i*([avatarViewWidth doubleValue]) + PADDING;
+
+        UIButton *avatarView = [[UIButton alloc] init];
+        avatarView.translatesAutoresizingMaskIntoConstraints = NO;
+        avatarView.backgroundColor = [UIColor clearColor];
+        [avatarView addTarget:self action:@selector(handleSingleTap:) forControlEvents:UIControlEventTouchUpInside];
+        
+        UILabel *nameLabel = [[UILabel alloc] init];
+        nameLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        nameLabel.backgroundColor = [UIColor clearColor];
+        nameLabel.textColor = [UIColor blackColor];
+        nameLabel.font = [UIFont boldSystemFontOfSize:12.0];
+   
+        [contentView addSubview:avatarView];
+        [contentView addSubview:nameLabel];
+        
+        [avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.leading.equalTo(contentView.mas_leading).offset(left);
+            make.top.equalTo(contentView.mas_top).offset(PADDING);
+            make.height.equalTo(avatarViewHeight);
+            make.width.equalTo(avatarViewWidth);
+        }];
+        
+        [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(avatarView.mas_centerX);
+            make.top.equalTo(avatarView.mas_bottom).offset(PADDING);
+        }];
+        
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:[NSURL URLWithString:st.avatar]
+                              options:0
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                 // progression tracking code
+                             }
+                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                if (image) {
+                                    [avatarView setImage:image forState:UIControlStateNormal];
+                                    [avatarView setTag:i];
+                                }
+                            }];
+        
+        nameLabel.text = st.cnname;
+        
+        i++;
+    }
+    
+    contentViewWidth =  i*(PADDING + [avatarViewWidth doubleValue]) + PADDING;
+    contentViewHeight = PADDING*3 + [avatarViewHeight doubleValue] + 20;
+    
+    [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(contentViewWidth);
+        make.height.mas_equalTo(contentViewHeight);
+    }];
+    
+    return contentView;
+}
+
+-(void)handleSingleTap:(id)sender
+{
+    UIButton *button = sender;
+    int i = [button tag];
+    
+    CBLoginInfo * info = [CBLoginInfo shareInstance];
+    
+    Student *student = info.studentArr[i];
+    info.currentStudentId = [student studentid];
+    
+    [self postChildSwitchNotification:info.currentStudentId];
+    
+    [headeView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:student.avatar] placeholderImage:nil];
+    
+    headeView.nameLabel.text = student.cnname;
+    
+    [popup dismiss:YES];
+}
+
+-(void)postChildSwitchNotification:(NSString *)currentStudent
+{
+    NSDictionary *userInfoDict = [NSDictionary dictionaryWithObjectsAndKeys:currentStudent,@"current", nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"studentswitch" object:nil userInfo:userInfoDict];
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

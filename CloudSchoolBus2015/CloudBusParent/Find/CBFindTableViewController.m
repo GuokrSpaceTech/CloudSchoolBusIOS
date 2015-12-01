@@ -27,7 +27,10 @@ static NSString * cellidenty = @"listcell";
 {
     FPPopoverController *popover;
     NSString *apptype;
+    NSString *studentid;
+    int lastestMessageIdInLocalDB;
 }
+-(void)studentSwitchHandle:(NSDictionary *)userInfo;
 @end
 
 @implementation CBFindTableViewController
@@ -64,13 +67,16 @@ static NSString * cellidenty = @"listcell";
     UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem = item;
     
-    apptype = @"All";
-    
     //Check if we have logged in
     [[CBLoginInfo shareInstance] baseInfoIsExist:^(BOOL isExist) {
         if(isExist)
         {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                
+                apptype = @"All";
+                studentid = [[CBLoginInfo shareInstance] currentStudentId];
+                lastestMessageIdInLocalDB = 0;
+                
                 //先从数据库里读出消息
                 [self initQueues];
                 
@@ -98,7 +104,13 @@ static NSString * cellidenty = @"listcell";
         }
     }];
     
+    NSString *notificationName = @"studentswitch";
     
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(studentSwitchHandle:)
+     name:notificationName
+     object:nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -115,42 +127,60 @@ static NSString * cellidenty = @"listcell";
 -(void) initQueues
 {
     apptype = @"All";
-    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype postHandle:^(NSMutableArray *messageArray) {
+    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype withStudentId:studentid postHandle:^(NSMutableArray *messageArray) {
         _dataList_all = messageArray;
     }];
     
     apptype = @"Notice";
-    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype postHandle:^(NSMutableArray *messageArray) {
+    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype withStudentId:studentid postHandle:^(NSMutableArray *messageArray) {
         _dataList_notice = messageArray;
     }];
     
     apptype = @"Report";
-    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype postHandle:^(NSMutableArray *messageArray) {
+    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype withStudentId:studentid postHandle:^(NSMutableArray *messageArray) {
         _dataList_report = messageArray;
     }];
     
     apptype = @"Punch";
-    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype postHandle:^(NSMutableArray *messageArray) {
+    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype withStudentId:studentid postHandle:^(NSMutableArray *messageArray) {
         _dataList_attendance = messageArray;
     }];
     
     apptype = @"Article";
-    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype postHandle:^(NSMutableArray *messageArray) {
+    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype withStudentId:studentid postHandle:^(NSMutableArray *messageArray) {
         _dataList_article = messageArray;
     }];
     
     apptype = @"Streaming";
-    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype postHandle:^(NSMutableArray *messageArray) {
+    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype withStudentId:studentid postHandle:^(NSMutableArray *messageArray) {
         _dataList_streaming = messageArray;
     }];
     
     apptype = @"All";
-    
+    NSString *newMessageId = [[_dataList_all firstObject] messageid];
+    if ([newMessageId intValue] > lastestMessageIdInLocalDB)
+    {
+        lastestMessageIdInLocalDB = [newMessageId intValue];
+    }
 }
 
 -(void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark Private
+-(void)studentSwitchHandle:(NSNotification *)notification
+{
+    NSDictionary *userInfo = [notification userInfo];
+    studentid = [userInfo objectForKey:@"current"];
+    [self initQueues];
+    [self.tableView reloadData];
 }
 
 #pragma mark HTTP Deledates
@@ -202,7 +232,7 @@ static NSString * cellidenty = @"listcell";
         lastestMessageId = 0;
     }
     
-    [[CBDateBase sharedDatabase] fetchMessagesFromDBwithType:apptype fromMessageId:lastestMessageId postHandle:^(NSMutableArray *messageArray) {
+    [[CBDateBase sharedDatabase] fetchMessagesFromDBwithType:apptype forStudent:studentid fromMessageId:lastestMessageId postHandle:^(NSMutableArray *messageArray) {
         if([messageArray count]>0)
         {
             [self upateQueueWithQueueType:apptype withArray:messageArray];
@@ -215,7 +245,7 @@ static NSString * cellidenty = @"listcell";
              waitUntilDone:NO
              ];
         } else {
-            NSString *lastestMessageId = [[_dataList_all firstObject] messageid];
+            NSString *lastestMessageId = [NSString stringWithFormat:@"%d",lastestMessageIdInLocalDB];
             NSDictionary *paramDict = @{@"newid":lastestMessageId};
             [[EKRequest Instance] EKHTTPRequest:getmessage parameters:paramDict requestMethod:GET forDelegate:self];
         }
@@ -234,7 +264,7 @@ static NSString * cellidenty = @"listcell";
     {
         firstMessageId = [[[queue lastObject] messageid] intValue];
 
-        [[CBDateBase sharedDatabase] fetchMessagesFromDBwithType:apptype belowMessageId:firstMessageId postHandle:^(NSMutableArray *messageArray) {
+        [[CBDateBase sharedDatabase] fetchMessagesFromDBwithType:apptype forStudent:studentid belowMessageId:firstMessageId postHandle:^(NSMutableArray *messageArray) {
             if([messageArray count]>0)
             {
                 [self upateQueueWithQueueType:apptype withArray:messageArray];
@@ -248,7 +278,6 @@ static NSString * cellidenty = @"listcell";
                  ];
                 
                 [self.tableView setContentOffset:CGPointZero];
-
             }
         }];
     }

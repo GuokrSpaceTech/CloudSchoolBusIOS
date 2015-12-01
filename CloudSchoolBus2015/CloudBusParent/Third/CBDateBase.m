@@ -37,7 +37,7 @@
         NSString *sqlStr = @"CREATE TABLE IF NOT EXISTS loginInfo('c_id' int,'token' text,'phone' text,'sid' text,'rongtoken' text);";
         [db executeUpdate:sqlStr];
         
-        sqlStr = @"CREATE TABLE IF NOT EXISTS baseInfo('c_id' int, 'baseinfoJsonStr' text);";
+        sqlStr = @"CREATE TABLE IF NOT EXISTS baseInfo('baseinfoJsonStr' text);";
         [db executeUpdate:sqlStr];
         
         sqlStr = @"CREATE TABLE IF NOT EXISTS messagesTbl('messageid' int,'desc' text,'apptype' text,'ismass' text,'body' text, 'sendtime' text, 'title' text, 'tag' text, 'isconfirm' text, 'isreaded' text, 'senderid' int, 'studentid' text);";
@@ -89,12 +89,12 @@
     }];
 }
 
--(void)insertDataToBaseInfoTable:(NSNumber *)cid withBaseinfo:(NSString *)baseinfoString
+-(void)insertDataToBaseInfoTableWithBaseinfo:(NSString *)baseinfoString
 {
     
     [queue inDatabase:^(FMDatabase *db) {
         [db executeUpdate:@"delete from baseInfo"];
-        [db executeUpdate:@"insert into baseInfo(c_id, baseinfoJsonStr) values(?,?)",cid,baseinfoString];
+        [db executeUpdate:@"insert into baseInfo(baseinfoJsonStr) values(?)",baseinfoString];
     }];
 }
 
@@ -139,6 +139,8 @@
                     }
                     
                     [[CBLoginInfo shareInstance] setHasValidBaseInfo:YES];
+                    
+                    [[CBLoginInfo shareInstance] setBaseInfoJsonString:baseinfoStr];
                     
                     block(YES);
                 }

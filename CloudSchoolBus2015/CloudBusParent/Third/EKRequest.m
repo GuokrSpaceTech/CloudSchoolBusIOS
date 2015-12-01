@@ -43,13 +43,11 @@ static EKRequest * instance = nil;
             result[12], result[13], result[14], result[15]
             ];
 }
+
 -(void) clearSid
 {
     NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault removeObjectForKey:@"sid"];
-    
-
-    
 }
 
 - (NSString *)userSid
@@ -57,6 +55,7 @@ static EKRequest * instance = nil;
     NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
     return [userDefault objectForKey:@"sid"];
 }
+
 - (void)saveUserSid:(NSString *)sid
 {
     NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
@@ -77,6 +76,8 @@ static EKRequest * instance = nil;
             return @"baseinfo";
         case getmessage:
             return @"getmessage";
+        case uploadAvatar:
+            return @"setStudentAvatar";
         default:
             
             return nil;

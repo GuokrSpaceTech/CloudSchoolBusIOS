@@ -243,7 +243,7 @@ CGFloat animatedDistance;
                 NSLog(@"Json Serilisation: error: %@", error.localizedDescription);
             } else {
                 NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-                [[CBDateBase sharedDatabase] insertDataToBaseInfoTable:@1 withBaseinfo:jsonString];
+                [[CBDateBase sharedDatabase] insertDataToBaseInfoTableWithBaseinfo:jsonString];
             }
             
             NSDictionary * baseinfo = response;

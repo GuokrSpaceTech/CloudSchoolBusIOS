@@ -91,7 +91,7 @@ static CBLoginInfo * logininfo = nil;
                 self.baseInfoBlock(NO);
             } else {
                 NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-                [[CBDateBase sharedDatabase] insertDataToBaseInfoTable:@1 withBaseinfo:jsonString];
+                [[CBDateBase sharedDatabase] insertDataToBaseInfoTableWithBaseinfo:jsonString];
             }
             
             NSArray * schoolarr = baseinfo[@"schools"];

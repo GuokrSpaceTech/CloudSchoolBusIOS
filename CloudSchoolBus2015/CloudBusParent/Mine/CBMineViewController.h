@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CBMineViewController : UITableViewController
+@interface CBMineViewController : UITableViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @end

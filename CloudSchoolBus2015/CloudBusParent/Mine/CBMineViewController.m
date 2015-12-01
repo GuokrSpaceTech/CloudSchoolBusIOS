@@ -7,7 +7,9 @@
 //
 
 #import "CBMineViewController.h"
+#import "EKRequest.h"
 #import "MineHeaderView.h"
+#import "CBDateBase.h"
 #import "Masonry.h"
 #import "CBLoginInfo.h"
 #import "Student.h"
@@ -22,13 +24,14 @@
 #import "KLCPopup.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface CBMineViewController ()
+@interface CBMineViewController ()<EKProtocol>
 {
     MineHeaderView * headeView;
     KLCPopup* popup;
 }
 -(void)postChildSwitchNotification:(NSString *)currentStudent;
 -(void)handleSingleTap:(id)sender;
+-(void)changeAvatar:(id)sender;
 @end
 
 @implementation CBMineViewController
@@ -68,6 +71,9 @@
         make.centerX.equalTo(self.view.mas_centerX);
     }];
     
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeAvatar:)];
+    [headeView.avatarImageView addGestureRecognizer:tapGesture];
+    [headeView.avatarImageView setUserInteractionEnabled:YES];
     
 }
 -(void)quit:(UIButton *)btn
@@ -278,6 +284,7 @@
     return contentView;
 }
 
+#pragma mark User Actions
 -(void)handleSingleTap:(id)sender
 {
     UIButton *button = sender;
@@ -296,12 +303,113 @@
     
     [popup dismiss:YES];
 }
+-(void)changeAvatar:(id)sender
+{
+    //构建图像选择器
+    UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
+    //设置代理为本身（实现了UIImagePickerControllerDelegate协议）
+    pickerController.delegate = self;
+    //是否允许对选中的图片进行编辑
+    pickerController.allowsEditing = YES;
+    
+    //设置图像来源类型(先判断系统中哪种图像源是可用的)
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }else if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]){
+        pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }else {
+        pickerController.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    }
+    
+    pickerController.allowsEditing = true;
+    
+    //打开模态视图控制器选择图像
+    [self presentViewController:pickerController animated:YES completion:^{
+        
+    }];
+}
 
 -(void)postChildSwitchNotification:(NSString *)currentStudent
 {
     NSDictionary *userInfoDict = [NSDictionary dictionaryWithObjectsAndKeys:currentStudent,@"current", nil];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"studentswitch" object:nil userInfo:userInfoDict];
+}
+
+#pragma mark - ImagePickerDelegate
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
+{
+    [picker dismissModalViewControllerAnimated:YES];
+    
+    NSData *base64String = UIImageJPEGRepresentation(image, 0.8);
+    
+    NSString *studentid = [[CBLoginInfo shareInstance] currentStudentId];
+    
+    NSDictionary *paramDict = @{@"studentid":studentid, @"fbody":base64String};
+    
+    [[EKRequest Instance] EKHTTPRequest:uploadAvatar parameters:paramDict requestMethod:POST forDelegate:self];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    NSLog(@"取消选择");
+//    [picker dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark EKRequest Delegate
+-(void)getEKResponse:(id)response forMethod:(RequestFunction)method resultCode:(int)code withParam:(NSDictionary *)param
+{
+    NSDictionary *returnDict = (NSDictionary *)response;
+    NSString *filePath = [returnDict objectForKey:@"filepath"];
+    
+    if([filePath containsString:@"://"])
+    {
+        //Update UI
+        [headeView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:filePath] placeholderImage:nil];
+    
+        //Update Memory
+        NSMutableArray *studentArray = [[CBLoginInfo shareInstance] studentArr];
+        for (int i=0; i<[studentArray count]; i++) {
+            
+            Student *student = studentArray[i];
+            NSString *current = [[CBLoginInfo shareInstance] currentStudentId];
+            if([[student studentid] isEqualToString:current])
+            {
+                [student setAvatar:filePath];
+                
+                [[[CBLoginInfo shareInstance] studentArr] replaceObjectAtIndex:i withObject:student];
+            
+        
+                //Update DB
+                //Json to Dict
+                NSString *baseInfoJson = [[CBLoginInfo shareInstance] baseInfoJsonString];
+                NSError *jsonError;
+                NSData *objectData = [baseInfoJson dataUsingEncoding:NSUTF8StringEncoding];
+                NSDictionary *baseInfoDict = [NSJSONSerialization JSONObjectWithData:objectData
+                                                                             options:NSJSONReadingMutableContainers
+                                                                               error:&jsonError];
+                [[[baseInfoDict objectForKey:@"students"] objectAtIndex:i] setValue:filePath forKey:@"avatar"];
+                
+                //Dict to Json
+                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:baseInfoDict
+                                                                   options:NSJSONWritingPrettyPrinted
+                                                                     error:&jsonError];
+                if (! jsonData) {
+                    NSLog(@"JsonConvertion Error: %@", jsonError.localizedDescription);
+                } else {
+                    baseInfoJson = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                    [[CBDateBase sharedDatabase] insertDataToBaseInfoTableWithBaseinfo:baseInfoJson];
+                }
+            }
+        }
+    }
+    
+    
+}
+
+-(void)getErrorInfo:(NSError *)error forMethod:(RequestFunction)method
+{
+    NSLog(@"");
 }
 /*
 // Override to support conditional editing of the table view.

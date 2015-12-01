@@ -33,6 +33,7 @@ typedef enum {
 
 @property (nonatomic,assign)BOOL hasValidBaseInfo;
 @property (nonatomic,assign)BOOL teacherVCIsLoading;
+@property (nonatomic,strong) NSString *baseInfoJsonString;
 
 + (CBLoginInfo*)shareInstance;
 

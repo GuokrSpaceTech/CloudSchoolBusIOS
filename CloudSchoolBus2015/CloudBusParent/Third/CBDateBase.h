@@ -18,7 +18,7 @@
 -(void)insertDataToLoginInfoTable:(NSNumber *)cid token:(NSString *)token phone:(NSString *)phone sid:(NSString *)sid rong:(NSString *)rongCloudToken;
 -(void)selectFormTableLoginInfo;
 
--(void)insertDataToBaseInfoTable:(NSNumber *)cid withBaseinfo:(NSString *)baseinfoString;
+-(void)insertDataToBaseInfoTableWithBaseinfo:(NSString *)baseinfoString;
 -(void)selectFormTableBaseinfo:(sessionNotOver)block;
 
 -(void)insertMessagesData:(NSMutableArray *)messageArray;

@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Message.h"
 
+@protocol NoticeViewDelegate <NSObject>
+@required
+
+-(void) userConfirm:(NSString *)messageid;
+
+@end
+
 @interface NoticeView : UIView
 @property (nonatomic,strong) IBOutlet UILabel *title;
 @property (nonatomic,strong) IBOutlet UILabel *content;
@@ -18,4 +25,6 @@
 @property (nonatomic,strong) Message *message;
 @property (nonatomic,strong) NSNumber *height;
 @property (nonatomic,strong) NSNumber *width;
+
+@property (nonatomic,weak)   id<NoticeViewDelegate> delegate;
 @end

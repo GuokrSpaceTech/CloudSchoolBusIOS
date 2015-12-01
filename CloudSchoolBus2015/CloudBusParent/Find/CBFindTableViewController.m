@@ -23,7 +23,7 @@
 #import "SCLAlertView.h"
 
 static NSString * cellidenty = @"listcell";
-@interface CBFindTableViewController ()<EKProtocol, ArticleViewDelegate, URLLinkViewDelegate>
+@interface CBFindTableViewController ()<EKProtocol, ArticleViewDelegate, URLLinkViewDelegate, NoticeViewDelegate>
 {
     FPPopoverController *popover;
     NSString *apptype;
@@ -40,7 +40,8 @@ static NSString * cellidenty = @"listcell";
     
     //Init Data
     _dataList = [NSMutableArray array];
-    
+    apptype = @"All";
+
     /*
      * Init UI
      */
@@ -156,7 +157,6 @@ static NSString * cellidenty = @"listcell";
         _dataList_streaming = messageArray;
     }];
     
-    apptype = @"All";
     NSString *newMessageId = [[_dataList_all firstObject] messageid];
     if ([newMessageId intValue] > lastestMessageIdInLocalDB)
     {
@@ -215,6 +215,26 @@ static NSString * cellidenty = @"listcell";
         _dataList = [self messageQueuewithType:apptype];
         
         [self.tableView reloadData];
+    }else if(method == confirm && code == 1)
+    {
+        NSString *messageid = [param objectForKey:@"messageid"];
+        
+        //Update Memory
+        for(int i=0; i<[_dataList_notice count]; i++)
+        {
+            Message *message = _dataList_notice[i];
+            if([message.messageid isEqualToString:messageid])
+            {
+                [_dataList_notice[i] setIsconfirm:@"2"]; //已经回执
+            }
+            _dataList = _dataList_notice;
+            
+            //Update DB
+            [[CBDateBase sharedDatabase] updateMessageConfirmStatus:@"2" withMessageId:[messageid intValue]];
+        
+            //Update UI
+            [self.tableView reloadData];
+        }
     }
 }
 
@@ -411,6 +431,7 @@ static NSString * cellidenty = @"listcell";
     cell.messsage = message;
     [cell.articleView setDelegate:self];
     [cell.linkView setDelegate:self];
+    [cell.noticeView setDelegate:self];
     
     if (indexPath.row == [_dataList count] - 1)
     {
@@ -461,5 +482,12 @@ static NSString * cellidenty = @"listcell";
     webVC.urlStr = urlString;
     
     [[self navigationController] pushViewController:webVC animated:NO];
+}
+
+#pragma mark - NoticeView Delegate
+- (void)userConfirm:(NSString *)messageid
+{
+    NSDictionary *paramDict = @{@"messageid":messageid};
+    [[EKRequest Instance] EKHTTPRequest:confirm parameters:paramDict requestMethod:POST forDelegate:self];
 }
 @end

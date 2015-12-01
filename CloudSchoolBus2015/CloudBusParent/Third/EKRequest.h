@@ -16,7 +16,8 @@ enum RequestFunction
     login,
     baseinfo,
     getmessage,
-    uploadAvatar
+    uploadAvatar,
+    confirm
 
     
 };

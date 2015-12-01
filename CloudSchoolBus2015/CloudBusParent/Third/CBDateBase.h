@@ -22,6 +22,7 @@
 -(void)selectFormTableBaseinfo:(sessionNotOver)block;
 
 -(void)insertMessagesData:(NSMutableArray *)messageArray;
+-(void)updateMessageConfirmStatus:(NSString *)status withMessageId:(int)messageid;
 
 -(void)fetchMessagesFromDBfromMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
 -(void)fetchMessagesFromDBBeforeMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;

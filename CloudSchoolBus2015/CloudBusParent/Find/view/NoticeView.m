@@ -15,6 +15,7 @@
     NSArray *picArray;
     bool hasValidImage;
 }
+-(void)confirmAction:(id)sender;
 @end
 
 @implementation NoticeView
@@ -53,7 +54,24 @@
                          }];
         }
     }
-    _confirmButton.backgroundColor = [UIColor colorWithHexString:@"2661F7" alpha:1.0f];
+    
+    if([message.isconfirm isEqualToString:@"0"]) //No need confirm
+    {
+        _confirmButton.backgroundColor = [UIColor colorWithHexString:@"2661F7" alpha:0.0f];
+        _confirmButton.enabled = false;
+    }
+    else if([message.isconfirm isEqualToString:@"1"]) //Need Confirm
+    {
+        _confirmButton.backgroundColor = [UIColor colorWithHexString:@"2661F7" alpha:1.0f];
+        _confirmButton.enabled = true;
+    }
+    else if([message.isconfirm isEqualToString:@"2"]) //Confirmed
+    {
+        _confirmButton.backgroundColor = [UIColor lightGrayColor];
+        _confirmButton.titleLabel.text = @"已确认";
+        _confirmButton.enabled = false;
+    }
+    [_confirmButton addTarget:self action:@selector(confirmAction:) forControlEvents:UIControlEventTouchUpInside];
     
     
     CGRect titleRect = [_message.title
@@ -95,5 +113,10 @@
     }
 }
 
+-(void)confirmAction:(id)sender
+{
+    if([_delegate respondsToSelector:@selector(userConfirm:)])
+       [_delegate userConfirm:[_message messageid]];
+}
 
 @end

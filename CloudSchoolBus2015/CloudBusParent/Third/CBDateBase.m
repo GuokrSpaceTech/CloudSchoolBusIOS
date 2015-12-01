@@ -190,6 +190,14 @@
     }
 }
 
+-(void)updateMessageConfirmStatus:(NSString *)status withMessageId:(int)messageid
+{
+    [queue inDatabase:^(FMDatabase *db) {
+        NSString *queryStr = [[NSString alloc] initWithFormat:@"UPDATE messagesTbl SET isconfirm=%@ WHERE messageid=%d",status,messageid];
+        [db executeUpdate:queryStr];
+    }];
+}
+
 -(void)fetchMessagesFromDBfromMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles
 {
     NSMutableArray *messageArray = [[NSMutableArray alloc] init];

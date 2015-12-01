@@ -137,21 +137,21 @@
         
         NSArray *bundle = [[NSBundle mainBundle] loadNibNamed:@"NoticeView" owner:self options:nil];
         
-        NoticeView *noticeView = [bundle objectAtIndex:0];
+        _noticeView = [bundle objectAtIndex:0];
         
-        [self.contentView addSubview:noticeView];
+        [self.contentView addSubview:_noticeView];
         
-        [noticeView setMessage:messsage];
+        [_noticeView setMessage:messsage];
         
-        [noticeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [_noticeView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_topView.mas_bottom).offset(10);
             make.left.equalTo(self.contentView.mas_left).offset(40);
             make.right.equalTo(self.contentView.mas_right).offset(-10);;
-            make.height.mas_equalTo(noticeView.height);
+            make.height.mas_equalTo(_noticeView.height);
             make.bottom.equalTo(self.contentView.mas_bottom).offset(-10);
         }];
         
-        contentViewHeight = [noticeView.height doubleValue];
+        contentViewHeight = [_noticeView.height doubleValue];
         
     }
     else if ([messsage.apptype isEqualToString:@"Report"]

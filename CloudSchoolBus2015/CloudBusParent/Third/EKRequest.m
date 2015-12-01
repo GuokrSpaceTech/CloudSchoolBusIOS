@@ -78,6 +78,8 @@ static EKRequest * instance = nil;
             return @"getmessage";
         case uploadAvatar:
             return @"setStudentAvatar";
+        case confirm:
+            return @"confirm";
         default:
             
             return nil;

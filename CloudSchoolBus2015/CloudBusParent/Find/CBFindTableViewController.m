@@ -127,6 +127,8 @@ static NSString * cellidenty = @"listcell";
 
 -(void) initQueues
 {
+    NSString *currentAppType = apptype;
+    
     apptype = @"All";
     [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype withStudentId:studentid postHandle:^(NSMutableArray *messageArray) {
         _dataList_all = messageArray;
@@ -162,6 +164,8 @@ static NSString * cellidenty = @"listcell";
     {
         lastestMessageIdInLocalDB = [newMessageId intValue];
     }
+    
+    apptype = currentAppType;
 }
 
 -(void)didReceiveMemoryWarning {

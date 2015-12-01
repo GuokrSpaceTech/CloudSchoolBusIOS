@@ -48,6 +48,25 @@
         
     }];
 }
+
+-(void)clearTable
+{
+    [queue inDatabase:^(FMDatabase *db) {
+        NSString *sqlStr = @"delete from loginInfo;";
+        [db executeUpdate:sqlStr];
+        
+        sqlStr = @"delete from baseInfo;";
+        [db executeUpdate:sqlStr];
+        
+        sqlStr = @"delete from messagesTbl;";
+        [db executeUpdate:sqlStr];
+        
+        sqlStr = @"delete from senderTbl;";
+        [db executeUpdate:sqlStr];
+        
+    }];
+}
+
 +(CBDateBase*) sharedDatabase
 {
     
@@ -434,6 +453,7 @@
         postMessageFetchHandles(messageArray);
     }];
 }
+
 
 
 @end

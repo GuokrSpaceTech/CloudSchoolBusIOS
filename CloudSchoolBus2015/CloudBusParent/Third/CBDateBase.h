@@ -30,4 +30,6 @@
 -(void)fetchMessagesFromDBwithType:(NSString *)apptype belowMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
 
 -(void)initMessageQueueWithType:(NSString *)apptype postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
+
+-(void)clearTable;
 @end

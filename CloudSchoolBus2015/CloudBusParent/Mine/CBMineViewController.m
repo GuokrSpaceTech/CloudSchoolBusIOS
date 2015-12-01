@@ -19,6 +19,8 @@
 #import "CB.h"
 #import "UIColor+RCColor.h"
 #import "CBWebViewController.h"
+#import "CBDateBase.h"
+#import "AppDelegate.h"
 
 @interface CBMineViewController ()
 {
@@ -53,7 +55,6 @@
 
     
     //退出按钮
-    
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
     //button.frame = CGRectMake(0, 0, 100, 100);
     [button addTarget:self action:@selector(quit:) forControlEvents:UIControlEventTouchUpInside];
@@ -61,7 +62,6 @@
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     button.backgroundColor = [UIColor redColor];
     [self.view addSubview:button];
-   // [self.tableView bringSubviewToFront:button];
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(@(SCREENWIDTH-40));
         make.top.equalTo(self.view.mas_top).offset(280);
@@ -71,6 +71,11 @@
 }
 -(void)quit:(UIButton *)btn
 {
+    [[CBDateBase sharedDatabase] clearTable];
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [[delegate.window.rootViewController navigationController] popToRootViewControllerAnimated:YES];
+    [delegate makeLoginViewController];
     
 }
 -(void)currentStudent
@@ -96,9 +101,8 @@
         {
             NSArray * arr = sc.classesArr;
             
-            for (ClassObj * cla in arr) {
-                //cla.studentidArr
-            
+            for (ClassObj * cla in arr)
+            {
                 if([cla.studentidArr containsObject:info.currentStudentId])
                 {
                     schoolname = [NSString stringWithFormat:@"%@",sc.schoolName];

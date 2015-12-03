@@ -160,11 +160,9 @@ static NSString * cellidenty = @"listcell";
         _dataList_streaming = messageArray;
     }];
     
-    NSString *newMessageId = [[_dataList_all firstObject] messageid];
-    if ([newMessageId intValue] > lastestMessageIdInLocalDB)
-    {
-        lastestMessageIdInLocalDB = [newMessageId intValue];
-    }
+    [[CBDateBase sharedDatabase] selectLastestMessageId:^(int lastestMessageId) {
+        lastestMessageIdInLocalDB = lastestMessageId;
+    }];
     
     apptype = currentAppType;
 }
@@ -220,7 +218,8 @@ static NSString * cellidenty = @"listcell";
         _dataList = [self messageQueuewithType:apptype];
         
         [self.tableView reloadData];
-    }else if(method == confirm && code == 1)
+    }
+    else if(method == confirm && code == 1)
     {
         NSString *messageid = [param objectForKey:@"messageid"];
         
@@ -239,6 +238,29 @@ static NSString * cellidenty = @"listcell";
         
             //Update UI
             [self.tableView reloadData];
+        }
+    }
+    else if(method == login && code == 1)
+    {
+        NSDictionary *retDict = (NSDictionary *)response;
+        NSString *rongToken = [retDict objectForKey:@"rongtoken"];
+        NSString *sid = [retDict objectForKey:@"sid"];
+        
+        [[CBLoginInfo shareInstance] setSid:sid];
+        [[CBLoginInfo shareInstance] setRongToken:rongToken];
+        
+        [[CBDateBase sharedDatabase] updateLoginInfoSid:sid rong:rongToken];
+    }
+    else if(code == -1 )
+    {
+        NSDictionary *responseDict = (NSDictionary *)response;
+        NSString *errorMessage = [responseDict objectForKey:@"err_message"];
+        if(errorMessage!=nil && [errorMessage containsString:@"SESSION"])
+        {
+            NSString *mobile = [[CBLoginInfo shareInstance] phone];
+            NSString *token = [[CBLoginInfo shareInstance] token];
+            NSDictionary *paramDict = @{@"mobile":mobile, @"token":token};
+            [[EKRequest Instance] EKHTTPRequest:login parameters:paramDict requestMethod:GET forDelegate:self];
         }
     }
 }
@@ -474,9 +496,6 @@ static NSString * cellidenty = @"listcell";
 
 -(void) userSelectedTag:(NSString *)tagDesc onButton:(UIButton *)button
 {
-//    SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
-//    
-//    [alert showNotice:self title:@"" subTitle:tagDesc closeButtonTitle:@"OK" duration:0.0f];
     CMPopTipView *popTipView = [[CMPopTipView alloc] initWithMessage:tagDesc];
     popTipView.animation = arc4random() % 2;
     popTipView.has3DStyle = (BOOL)(arc4random() % 2);

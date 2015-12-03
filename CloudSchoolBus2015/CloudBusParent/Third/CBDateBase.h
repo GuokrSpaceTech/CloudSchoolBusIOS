@@ -17,12 +17,15 @@
 
 -(void)insertDataToLoginInfoTable:(NSNumber *)cid token:(NSString *)token phone:(NSString *)phone sid:(NSString *)sid rong:(NSString *)rongCloudToken;
 -(void)selectFormTableLoginInfo;
+-(void)updateLoginInfoSid:(NSString *)sid rong:(NSString *)rongCloudToken;
+
 
 -(void)insertDataToBaseInfoTableWithBaseinfo:(NSString *)baseinfoString;
 -(void)selectFormTableBaseinfo:(sessionNotOver)block;
 
 -(void)insertMessagesData:(NSMutableArray *)messageArray;
 -(void)updateMessageConfirmStatus:(NSString *)status withMessageId:(int)messageid;
+-(void)selectLastestMessageId:(void (^)(int lastestMessageId))postQueryHandles;
 
 -(void)fetchMessagesFromDBfromMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
 -(void)fetchMessagesFromDBBeforeMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;

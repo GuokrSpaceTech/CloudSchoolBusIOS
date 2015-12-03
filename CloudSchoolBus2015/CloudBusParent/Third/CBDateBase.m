@@ -87,6 +87,14 @@
         [db executeUpdate:@"insert into loginInfo(c_id,token,phone,sid,rongtoken) values(?,?,?,?,?)",cid,token,phone,sid,rongCloudToken];
     }];
 }
+
+-(void)updateLoginInfoSid:(NSString *)sid rong:(NSString *)rongCloudToken
+{
+    [queue inDatabase:^(FMDatabase *db) {
+        [db executeUpdate:@"UPDATE loginInfo SET sid=? AND rongtoken=?",sid,rongCloudToken];
+    }];
+}
+
 -(void)selectFormTableLoginInfo
 {
     [queue inDatabase:^(FMDatabase *db) {
@@ -195,6 +203,21 @@
     [queue inDatabase:^(FMDatabase *db) {
         NSString *queryStr = [[NSString alloc] initWithFormat:@"UPDATE messagesTbl SET isconfirm=%@ WHERE messageid=%d",status,messageid];
         [db executeUpdate:queryStr];
+    }];
+}
+
+-(void)selectLastestMessageId:(void (^)(int lastestMessageId))postQueryHandles
+{
+    [queue inDatabase:^(FMDatabase *db) {
+        int messageid = 0;
+        NSString *queryStr = @"SELECT MAX(messageid) AS messageid FROM messagesTbl";
+        
+        FMResultSet *resultSet = [db executeQuery:queryStr];
+        while ([resultSet next]) {
+            messageid = [resultSet intForColumn:@"messageid"];
+        }
+        
+        postQueryHandles(messageid);
     }];
 }
 

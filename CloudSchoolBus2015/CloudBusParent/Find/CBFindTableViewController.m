@@ -21,6 +21,7 @@
 #import "AriticleView.h"
 #import "URLLinkView.h"
 #import "SCLAlertView.h"
+#import "CMPopTipView.h"
 
 static NSString * cellidenty = @"listcell";
 @interface CBFindTableViewController ()<EKProtocol, ArticleViewDelegate, URLLinkViewDelegate, NoticeViewDelegate>
@@ -471,11 +472,20 @@ static NSString * cellidenty = @"listcell";
     [[self navigationController] pushViewController:imageGallery animated:YES];
 }
 
--(void) userSelectedTag:(NSString *)tagDesc
+-(void) userSelectedTag:(NSString *)tagDesc onButton:(UIButton *)button
 {
-    SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
+//    SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
+//    
+//    [alert showNotice:self title:@"" subTitle:tagDesc closeButtonTitle:@"OK" duration:0.0f];
+    CMPopTipView *popTipView = [[CMPopTipView alloc] initWithMessage:tagDesc];
+    popTipView.animation = arc4random() % 2;
+    popTipView.has3DStyle = (BOOL)(arc4random() % 2);
     
-    [alert showNotice:self title:@"" subTitle:tagDesc closeButtonTitle:@"OK" duration:0.0f];
+    popTipView.dismissTapAnywhere = YES;
+    [popTipView autoDismissAnimated:YES atTimeInterval:3.0];
+    
+    [popTipView presentPointingAtView:button inView:self.view animated:YES];;
+
 }
 
 #pragma mark - URLLinkView Delegate

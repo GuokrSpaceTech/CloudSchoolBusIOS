@@ -240,7 +240,7 @@
     UIButton *button = sender;
     int index = (int)button.tag;
     NSString *tagDesc = [[tagArrary objectAtIndex:index] tagnamedesc];
-    [_delegate userSelectedTag:tagDesc];
+    [_delegate userSelectedTag:tagDesc onButton:button];
 }
 
 -(void)pictureClick:(id)sender

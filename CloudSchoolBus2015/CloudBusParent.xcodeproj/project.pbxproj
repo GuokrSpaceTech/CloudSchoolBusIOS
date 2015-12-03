@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A09F5261BFF108800B7BB72 /* AriticleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A09F5251BFF108800B7BB72 /* AriticleView.m */; settings = {ASSET_TAGS = (); }; };
-		2A25CA3E1C01BD9900C81EE9 /* CBPagedImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A25CA3C1C01BD9900C81EE9 /* CBPagedImageViewController.m */; settings = {ASSET_TAGS = (); }; };
-		2A25CA3F1C01BD9900C81EE9 /* CBPagedImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A25CA3D1C01BD9900C81EE9 /* CBPagedImageViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		2A25CA431C03589F00C81EE9 /* ClassifyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A25CA411C03589F00C81EE9 /* ClassifyTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		2A25CA441C03589F00C81EE9 /* ClassifyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A25CA421C03589F00C81EE9 /* ClassifyTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		2A950C661C04063E009D6211 /* NoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A950C651C04063E009D6211 /* NoticeView.m */; settings = {ASSET_TAGS = (); }; };
-		2A950C681C040660009D6211 /* NoticeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A950C671C040660009D6211 /* NoticeView.xib */; settings = {ASSET_TAGS = (); }; };
-		2A9745251BFBFA8A008C8A7B /* UIColor+RCColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9745241BFBFA8A008C8A7B /* UIColor+RCColor.m */; settings = {ASSET_TAGS = (); }; };
-		2A9745281BFC3BAB008C8A7B /* PaddingUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9745271BFC3BAB008C8A7B /* PaddingUILabel.m */; settings = {ASSET_TAGS = (); }; };
+		2A09F5261BFF108800B7BB72 /* AriticleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A09F5251BFF108800B7BB72 /* AriticleView.m */; };
+		2A25CA3E1C01BD9900C81EE9 /* CBPagedImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A25CA3C1C01BD9900C81EE9 /* CBPagedImageViewController.m */; };
+		2A25CA3F1C01BD9900C81EE9 /* CBPagedImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A25CA3D1C01BD9900C81EE9 /* CBPagedImageViewController.xib */; };
+		2A25CA431C03589F00C81EE9 /* ClassifyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A25CA411C03589F00C81EE9 /* ClassifyTableViewCell.m */; };
+		2A25CA441C03589F00C81EE9 /* ClassifyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A25CA421C03589F00C81EE9 /* ClassifyTableViewCell.xib */; };
+		2A4C2D961C102F3A0062AB68 /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4C2D951C102F3A0062AB68 /* CMPopTipView.m */; };
+		2A950C661C04063E009D6211 /* NoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A950C651C04063E009D6211 /* NoticeView.m */; };
+		2A950C681C040660009D6211 /* NoticeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A950C671C040660009D6211 /* NoticeView.xib */; };
+		2A9745251BFBFA8A008C8A7B /* UIColor+RCColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9745241BFBFA8A008C8A7B /* UIColor+RCColor.m */; };
+		2A9745281BFC3BAB008C8A7B /* PaddingUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9745271BFC3BAB008C8A7B /* PaddingUILabel.m */; };
 		43A7B6B7133E7159766C99EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7299EA4EE1E968A90534B5D /* libPods.a */; };
 		81065BE91BEB019A009CE107 /* CBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81065BE71BEB019A009CE107 /* CBLoginViewController.m */; };
 		81065BEA1BEB019A009CE107 /* CBLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81065BE81BEB019A009CE107 /* CBLoginViewController.xib */; };
@@ -73,10 +74,10 @@
 		81E32B581BF49C4100EA3D7A /* UITableView+FDTemplateLayoutCellDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E32B541BF49C4100EA3D7A /* UITableView+FDTemplateLayoutCellDebug.m */; };
 		F92FA3481BF4EFE500E76A17 /* Calculate.m in Sources */ = {isa = PBXBuildFile; fileRef = F92FA3471BF4EFE500E76A17 /* Calculate.m */; };
 		F95025501BF0E952009C970A /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = F950254F1BF0E952009C970A /* Tag.m */; };
-		FA5FAFB71C0555780046051B /* URLLinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5FAFB61C0555780046051B /* URLLinkView.m */; settings = {ASSET_TAGS = (); }; };
-		FA5FAFB91C0555C20046051B /* URLLinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5FAFB81C0555C20046051B /* URLLinkView.xib */; settings = {ASSET_TAGS = (); }; };
-		FAFFBE281C09AEC600B17F3E /* AttendanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFFBE271C09AEC600B17F3E /* AttendanceView.xib */; settings = {ASSET_TAGS = (); }; };
-		FAFFBE2B1C09B24700B17F3E /* AttendanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFFBE2A1C09B24700B17F3E /* AttendanceView.m */; settings = {ASSET_TAGS = (); }; };
+		FA5FAFB71C0555780046051B /* URLLinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5FAFB61C0555780046051B /* URLLinkView.m */; };
+		FA5FAFB91C0555C20046051B /* URLLinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5FAFB81C0555C20046051B /* URLLinkView.xib */; };
+		FAFFBE281C09AEC600B17F3E /* AttendanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFFBE271C09AEC600B17F3E /* AttendanceView.xib */; };
+		FAFFBE2B1C09B24700B17F3E /* AttendanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFFBE2A1C09B24700B17F3E /* AttendanceView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,8 @@
 		2A25CA401C03589F00C81EE9 /* ClassifyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyTableViewCell.h; sourceTree = "<group>"; };
 		2A25CA411C03589F00C81EE9 /* ClassifyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyTableViewCell.m; sourceTree = "<group>"; };
 		2A25CA421C03589F00C81EE9 /* ClassifyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassifyTableViewCell.xib; sourceTree = "<group>"; };
+		2A4C2D941C102F3A0062AB68 /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
+		2A4C2D951C102F3A0062AB68 /* CMPopTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPopTipView.m; sourceTree = "<group>"; };
 		2A950C641C04063E009D6211 /* NoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeView.h; sourceTree = "<group>"; };
 		2A950C651C04063E009D6211 /* NoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeView.m; sourceTree = "<group>"; };
 		2A950C671C040660009D6211 /* NoticeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoticeView.xib; sourceTree = "<group>"; };
@@ -332,6 +335,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A4C2D931C102F3A0062AB68 /* CMPopTipView */ = {
+			isa = PBXGroup;
+			children = (
+				2A4C2D941C102F3A0062AB68 /* CMPopTipView.h */,
+				2A4C2D951C102F3A0062AB68 /* CMPopTipView.m */,
+			);
+			path = CMPopTipView;
+			sourceTree = "<group>";
+		};
 		2A9745221BFBFA6B008C8A7B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +380,7 @@
 		81065BE51BEB0142009CE107 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				2A4C2D931C102F3A0062AB68 /* CMPopTipView */,
 				816446DE1BF97B9200A34D00 /* FPPopover */,
 				8164466D1BF9787E00A34D00 /* ffmpeg */,
 				81E32B401BF49A9A00EA3D7A /* FDTemplateLayoutCell */,
@@ -971,6 +984,7 @@
 				2A950C661C04063E009D6211 /* NoticeView.m in Sources */,
 				81D4051D1BF069BB00B5A176 /* CBHobbyViewController.m in Sources */,
 				81BECE491BFC4465006DAA8D /* CBChatViewController.m in Sources */,
+				2A4C2D961C102F3A0062AB68 /* CMPopTipView.m in Sources */,
 				FA5FAFB71C0555780046051B /* URLLinkView.m in Sources */,
 				816446E81BF97BDB00A34D00 /* FPTouchView.m in Sources */,
 				2A09F5261BFF108800B7BB72 /* AriticleView.m in Sources */,

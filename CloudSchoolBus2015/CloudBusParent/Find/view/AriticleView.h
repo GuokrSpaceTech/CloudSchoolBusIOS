@@ -13,7 +13,7 @@
 @required
 
 -(void) userSelectedPicture:(NSString *)picture pictureArray:(NSMutableArray *)picArray indexAt:(int)index;
--(void) userSelectedTag:(NSString *)tagDesc;
+-(void) userSelectedTag:(NSString *)tagDesc onButton:(UIButton *)button;
 
 @end
 

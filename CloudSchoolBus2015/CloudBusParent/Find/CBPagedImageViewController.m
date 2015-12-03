@@ -9,12 +9,16 @@
 #import "CBPagedImageViewController.h"
 #import "UIImageView+WebCache.h"
 
-@interface CBPagedImageViewController ()
+@interface CBPagedImageViewController () <UIActionSheetDelegate, UIGestureRecognizerDelegate>
+{
+    int currentPageIndex;
+}
 @property (nonatomic, strong) NSMutableArray *pageViews;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, assign) BOOL isZoomed;
+@property (nonatomic, assign) BOOL maximumZoomScale;
 
-- (void)loadVisiblePages;
 - (void)loadPage:(NSInteger)page;
-- (void)purgePage:(NSInteger)page;
 @end
 
 @implementation CBPagedImageViewController
@@ -25,71 +29,9 @@
 
 #pragma mark -
 
-- (void)loadVisiblePages {
-    // First, determine which page is currently visible
-    CGFloat pageWidth = self.scrollView.frame.size.width;
-    NSInteger page = (NSInteger)floor((self.scrollView.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
-    
-    // Update the page control
-    self.pageControl.currentPage = page;
-    
-    // Work out which pages we want to load
-    NSInteger firstPage = page - 1;
-    NSInteger lastPage = page + 1;
-    
-    // Purge anything before the first page
-    for (NSInteger i=0; i<firstPage; i++) {
-        [self purgePage:i];
-    }
-    for (NSInteger i=firstPage; i<=lastPage; i++) {
-        [self loadPage:i];
-    }
-    for (NSInteger i=lastPage+1; i<self.pageImages.count; i++) {
-        [self purgePage:i];
-    }
-}
+#define ZOOM_VIEW_TAG 100
 
-- (void)loadPage:(NSInteger)page {
-    if (page < 0 || page >= self.pageImages.count) {
-        // If it's outside the range of what we have to display, then do nothing
-        return;
-    }
-    
-    // Load an individual page, first seeing if we've already loaded it
-    UIView *pageView = [self.pageViews objectAtIndex:page];
-    if ((NSNull*)pageView == [NSNull null]) {
-        CGRect frame = self.scrollView.bounds;
-        frame.origin.x = frame.size.width * page;
-        frame.origin.y = 0.0f;
-        
-        UIImageView *newPageView = [[UIImageView alloc] init];
-        
-        NSString *imageUrl = [_pageImages objectAtIndex:page];
-        
-        [newPageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]
-                     placeholderImage:nil completed:^(UIImage *image, NSError *error,
-                                                      SDImageCacheType cacheType, NSURL *imageURL){}];
-        
-        newPageView.contentMode = UIViewContentModeScaleAspectFit;
-        newPageView.frame = frame;
-        [self.scrollView addSubview:newPageView];
-        [self.pageViews replaceObjectAtIndex:page withObject:newPageView];
-    }
-}
 
-- (void)purgePage:(NSInteger)page {
-    if (page < 0 || page >= self.pageImages.count) {
-        // If it's outside the range of what we have to display, then do nothing
-        return;
-    }
-    
-    // Remove a page from the scroll view and reset the container array
-    UIView *pageView = [self.pageViews objectAtIndex:page];
-    if ((NSNull*)pageView != [NSNull null]) {
-        [pageView removeFromSuperview];
-        [self.pageViews replaceObjectAtIndex:page withObject:[NSNull null]];
-    }
-}
 
 
 - (void)viewDidLoad {
@@ -109,15 +51,74 @@
             [self.pageViews addObject:[NSNull null]];
         }
     }
+    
+    [[self navigationController] setNavigationBarHidden:YES];
+    
+    UITapGestureRecognizer *singletap = [[UITapGestureRecognizer alloc]
+                                         initWithTarget:self
+                                         action:@selector(singleTap:)];
+    singletap.numberOfTapsRequired = 1;
+    singletap.numberOfTouchesRequired = 1;
+    
+    [self.scrollView addGestureRecognizer:singletap];
+    
+    
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc]
+                                         initWithTarget:self
+                                         action:@selector(doubleTap:)];
+    doubleTap.numberOfTapsRequired = 2;
+    doubleTap.numberOfTouchesRequired = 1;
+    
+    [self.scrollView addGestureRecognizer:doubleTap];
+    
+    UILongPressGestureRecognizer* longPress = [ [ UILongPressGestureRecognizer alloc ] initWithTarget:self action:@selector(longPressEvent:)];
+    [self.scrollView addGestureRecognizer:longPress];
+    
+    UISwipeGestureRecognizer *swipeGestureRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGestureHandle:)];
+    [self.scrollView addGestureRecognizer:swipeGestureRight];
+    
+    UISwipeGestureRecognizer *swipeGestureLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGestureHandle:)];
+    [swipeGestureLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [self.scrollView addGestureRecognizer:swipeGestureLeft];
+    
+    [singletap requireGestureRecognizerToFail:doubleTap];
+    [singletap requireGestureRecognizerToFail:longPress];
+    [longPress requireGestureRecognizerToFail:swipeGestureLeft];
+    [longPress requireGestureRecognizerToFail:swipeGestureRight];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     // Set up the content size of the scroll view
-    CGSize pagesScrollViewSize = self.scrollView.frame.size;
-    self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * self.pageImages.count, pagesScrollViewSize.height);
+//    CGSize pagesScrollViewSize = self.scrollView.frame.size;
+//    self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width, pagesScrollViewSize.height);
+    
     // Load the initial set of pages that are on screen
-    [self loadVisiblePages];
+    
+    self.maximumZoomScale = 2;
+    
+    CGRect frame = self.scrollView.bounds;
+    [self.scrollView setContentSize:frame.size];
+    frame.size.width= frame.size.width * self.maximumZoomScale;
+    frame.size.height = frame.size.height * self.maximumZoomScale;
+    
+    _imageView = [[UIImageView alloc] initWithFrame:frame];
+    _imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [_imageView setTag:ZOOM_VIEW_TAG];
+    [self.scrollView addSubview:_imageView];
+    
+    // calculate minimum scale to perfectly fit image width, and begin at that scale
+    self.scrollView.delegate = self;
+    float minimumScale = [_scrollView  frame].size.width  / [_imageView frame].size.width;
+    [_scrollView setMinimumZoomScale:minimumScale];
+    [_scrollView setZoomScale:minimumScale];
+    
+    self.isZoomed = false;
+    
+    currentPageIndex = [self.startIndex intValue];
+    
+    [self loadPage:currentPageIndex];
 }
 
 -(void)viewDidUnload
@@ -134,13 +135,132 @@
 }
 
 
+#pragma mark - private functions
+- (void)loadPage:(NSInteger)page {
+    if (page < 0 || page >= self.pageImages.count) {
+        // If it's outside the range of what we have to display, then do nothing
+        return;
+    }
+    
+    NSString *imageUrl = [_pageImages objectAtIndex:page];
+    
+    [_imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]
+                  placeholderImage:nil completed:^(UIImage *image, NSError *error,SDImageCacheType cacheType, NSURL *imageURL){
+                  }];
+}
 
+- (void)zoomToPoint:(CGPoint)point
+{
+    CGRect zoomRect;
+    if(self.isZoomed )
+    {
+        [_scrollView setZoomScale:0.5 animated:YES];
+    } else {
+        zoomRect = [self zoomRectForScale:1 withCenter:point];
+        [self.scrollView zoomToRect:zoomRect animated:YES];
+    }
+    
+}
+
+- (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center
+{
+    CGRect zoomRect = self.scrollView.frame;
+    
+    zoomRect.size.height /= scale;
+    zoomRect.size.width /= scale;
+    
+    //the origin of a rect is it's top left corner,
+    //so subtract half the width and height of the rect from it's center point to get to that x,y
+    zoomRect.origin.x = center.x;
+    zoomRect.origin.y = center.y;
+    
+    return zoomRect;
+}
+
+
+
+#pragma mark - User Actions
+-(void)singleTap:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)doubleTap:(UIGestureRecognizer *)sender
+{
+    [self zoomToPoint:[sender locationInView:sender.view]];
+    self.isZoomed = !self.isZoomed;
+    
+//    [self.scrollView zoomToRect:<#(CGRect)#> animated:YES];
+}
+
+-(void)longPressEvent:(id)sender
+{
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"图像操作" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+        // Cancel button tappped.
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }]];
+
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"保存到本地相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        // OK button tapped.
+        if (_imageView) {
+            UIImage *imageToBeSaved = _imageView.image;
+            UIImageWriteToSavedPhotosAlbum(imageToBeSaved, nil, nil, nil);
+        }
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }]];
+    
+    // Present action sheet.
+    [self presentViewController:actionSheet animated:YES completion:nil];
+}
+
+-(void)swipeGestureHandle:(UISwipeGestureRecognizer *)sender
+{
+    if(sender.direction == UISwipeGestureRecognizerDirectionRight)
+    {
+        currentPageIndex --;
+        if(currentPageIndex < 0)
+            currentPageIndex = [_pageImages count] - 1;
+    }
+    else
+    {
+        currentPageIndex ++;
+        if(currentPageIndex == [_pageImages count])
+            currentPageIndex = 0;
+    }
+    
+    [self loadPage:currentPageIndex];
+    
+    self.pageControl.currentPage = currentPageIndex;
+}
 
 #pragma mark - UIScrollViewDelegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    // Load the pages which are now on screen
-    [self loadVisiblePages];
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return [_scrollView viewWithTag:ZOOM_VIEW_TAG];
+
+}
+
+#pragma mark - ActionSheet Delegate
+- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
+}
+
+
+#pragma mark - Gesture Delegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    return YES;
 }
 
 @end

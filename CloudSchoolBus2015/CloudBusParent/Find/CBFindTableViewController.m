@@ -20,8 +20,8 @@
 #import "ClassifyViewController.h"
 #import "AriticleView.h"
 #import "URLLinkView.h"
-#import "SCLAlertView.h"
 #import "CMPopTipView.h"
+#import "Reachability.h"
 
 static NSString * cellidenty = @"listcell";
 @interface CBFindTableViewController ()<EKProtocol, ArticleViewDelegate, URLLinkViewDelegate, NoticeViewDelegate>
@@ -30,7 +30,10 @@ static NSString * cellidenty = @"listcell";
     NSString *apptype;
     NSString *studentid;
     int lastestMessageIdInLocalDB;
+    BOOL isNetworkAvailable;
 }
+
+
 -(void)studentSwitchHandle:(NSDictionary *)userInfo;
 @end
 
@@ -113,6 +116,23 @@ static NSString * cellidenty = @"listcell";
      selector:@selector(studentSwitchHandle:)
      name:notificationName
      object:nil];
+    
+    /*
+     Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the method reachabilityChanged will be called.
+     */
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+    
+    //Change the host name here to change the server you want to monitor.
+    NSString *remoteHostName = @"api36.yunxiaoche.com";
+    
+    self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
+    [self.hostReachability startNotifier];
+    
+    self.internetReachability = [Reachability reachabilityForInternetConnection];
+    [self.internetReachability startNotifier];
+    
+    self.wifiReachability = [Reachability reachabilityForLocalWiFi];
+    [self.wifiReachability startNotifier];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -292,9 +312,14 @@ static NSString * cellidenty = @"listcell";
              waitUntilDone:NO
              ];
         } else {
-            NSString *lastestMessageId = [NSString stringWithFormat:@"%d",lastestMessageIdInLocalDB];
-            NSDictionary *paramDict = @{@"newid":lastestMessageId};
-            [[EKRequest Instance] EKHTTPRequest:getmessage parameters:paramDict requestMethod:GET forDelegate:self];
+            if(isNetworkAvailable){
+                NSString *lastestMessageId = [NSString stringWithFormat:@"%d",lastestMessageIdInLocalDB];
+                NSDictionary *paramDict = @{@"newid":lastestMessageId};
+                [[EKRequest Instance] EKHTTPRequest:getmessage parameters:paramDict requestMethod:GET forDelegate:self];
+            } else {
+                UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"" message:@"网络不可用，请检查网络设置" delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
+                [alertview show];
+            }
         }
     }];
     
@@ -522,5 +547,49 @@ static NSString * cellidenty = @"listcell";
 {
     NSDictionary *paramDict = @{@"messageid":messageid};
     [[EKRequest Instance] EKHTTPRequest:confirm parameters:paramDict requestMethod:POST forDelegate:self];
+}
+
+#pragma mark Reachability
+/*!
+ * Called by Reachability whenever status changes.
+ */
+- (void) reachabilityChanged:(NSNotification *)note
+{
+    Reachability* curReach = [note object];
+    //    NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
+    
+    NetworkStatus netStatus = [curReach currentReachabilityStatus];
+    BOOL connectionRequired = [curReach connectionRequired];
+    NSString* statusString = @"";
+    
+    switch (netStatus)
+    {
+        case NotReachable:        {
+            statusString = NSLocalizedString(@"网络不可用", @"Network access is not available");
+            /*
+             Minor interface detail- connectionRequired may return YES even when the host is unreachable. We cover that up here...
+             */
+            connectionRequired = NO;
+            isNetworkAvailable = false;
+
+            break;
+        }
+            
+        case ReachableViaWWAN:        {
+            statusString = NSLocalizedString(@"Reachable WWAN", @"");
+            isNetworkAvailable = true;
+            break;
+        }
+        case ReachableViaWiFi:        {
+            isNetworkAvailable = true;
+            statusString= NSLocalizedString(@"Reachable WiFi", @"");
+            break;
+        }
+    }
+    //    if (connectionRequired)
+    //    {
+    //        NSString *connectionRequiredFormatString = NSLocalizedString(@"%@, Connection Required", @"Concatenation of status string with connection requirement");
+    //        statusString= [NSString stringWithFormat:connectionRequiredFormatString, statusString];
+    //    }
 }
 @end

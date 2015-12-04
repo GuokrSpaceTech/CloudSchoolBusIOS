@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Reachability.h"
 
 @interface CBFindTableViewController : UITableViewController
 @property (nonatomic,strong)NSMutableArray * dataList;
@@ -17,6 +18,9 @@
 @property (nonatomic,strong)NSMutableArray * dataList_report;
 @property (nonatomic,strong)NSMutableArray * dataList_streaming;
 @property (nonatomic,strong)NSMutableArray * dataList_attendance;
+@property (nonatomic) Reachability *hostReachability;
+@property (nonatomic) Reachability *internetReachability;
+@property (nonatomic) Reachability *wifiReachability;
 
 -(void)selectedTableRow:(NSUInteger)rowNum;
 -(void)selectAllMessages;

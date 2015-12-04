@@ -151,12 +151,17 @@
     //Add Description if have any
     if(_message.desc!=nil && [_message.desc length]>0)
     {
-        float descHeight = 20 + PADDING;
         _descLabel = [[UILabel alloc]init];
-        _descLabel.numberOfLines = 0;
+        _descLabel.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 160;
+        CGRect contentRect = [_message.desc
+                              boundingRectWithSize:CGSizeMake(_descLabel.preferredMaxLayoutWidth, 0)
+                              options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                              attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14.0]}
+                              context:nil];
+        _descLabel.font = [UIFont systemFontOfSize:14.0];
         _descLabel.text = _message.desc;
-        _descLabel.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 100;
-        self.height = @([self.height intValue] + descHeight );
+        _descLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        self.height = @([self.height intValue] + contentRect.size.height + PADDING);
         [self addSubview:_descLabel];
     }
 }

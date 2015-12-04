@@ -17,6 +17,8 @@
 #import "AppDelegate.h"
 #import "FindCellTopView.h"
 #import "UIColor+RCColor.h"
+#import "KLCPopup.h"
+#import "Reachability.h"
 
 static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
 static const CGFloat MINIMUM_SCROLL_FRACTION = 0.2;
@@ -25,10 +27,19 @@ static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216;
 static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 @interface CBLoginViewController ()<EKProtocol, UITextFieldDelegate>
+{
+    KLCPopup* popup;
+}
+
 
 @property (weak) NSTimer *repeatingTimer;
 @property NSUInteger timerCount;
 @property (nonatomic,strong) UIButton *codeButton;
+@property (nonatomic) Reachability *hostReachability;
+@property (nonatomic) Reachability *internetReachability;
+@property (nonatomic) Reachability *wifiReachability;
+@property (nonatomic,strong) UILabel *labelStatusNotice;
+@property (nonatomic,assign) BOOL isNetworkAvailable;
 
 
 - (void)countedTimerAction:(NSTimer*)theTimer;
@@ -56,6 +67,15 @@ CGFloat animatedDistance;
     }
     
     self.navigationItem.title = @"登录";
+    
+    _labelStatusNotice = [[UILabel alloc]init];
+    _labelStatusNotice.text=@"";
+    _labelStatusNotice.font = [UIFont boldSystemFontOfSize:16];
+    _labelStatusNotice.textColor = [UIColor redColor];
+    _labelStatusNotice.backgroundColor = [UIColor lightGrayColor];
+    _labelStatusNotice.textAlignment = NSTextAlignmentCenter;
+    _labelStatusNotice.hidden = true;
+    [self.view addSubview:_labelStatusNotice];
 
     UIImageView * bgImageView = [[UIImageView alloc]init];
     UIGraphicsBeginImageContext(self.view.frame.size);
@@ -87,12 +107,13 @@ CGFloat animatedDistance;
     _usernameField = [[UITextField alloc]init];
     _usernameField.borderStyle = UITextBorderStyleNone;
     _usernameField.placeholder = @"输入手机号";
+    _usernameField.keyboardType = UIKeyboardTypeNumberPad;
     [_usernameField setDelegate:self];
     [self.view addSubview:_usernameField];
     
     _codeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_codeButton setBackgroundColor:[UIColor colorWithHexString:@"6FC8EF" alpha:1.0f]];
-    [_codeButton setTitle:@" 获取验证码 " forState:UIControlStateNormal];
+    [_codeButton setTitle:@"  获取验证码  " forState:UIControlStateNormal];
     _codeButton.titleLabel.font = [UIFont systemFontOfSize:12];
     [_codeButton addTarget:self action:@selector(registerAction:) forControlEvents:UIControlEventTouchUpInside];
     [_codeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -108,6 +129,7 @@ CGFloat animatedDistance;
     _passwordField.borderStyle = UITextBorderStyleNone;
     _passwordField.placeholder = @"输入验证码";
     [_passwordField setDelegate:self];
+    _passwordField.keyboardType = UIKeyboardTypeNumberPad;
     [self.view addSubview:_passwordField];
     
     UIButton * registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -117,6 +139,12 @@ CGFloat animatedDistance;
     [registerButton addTarget:self action:@selector(verifyUserAction:) forControlEvents:UIControlEventTouchUpInside];
     //[registerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:registerButton];
+    
+    [_labelStatusNotice mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.top.equalTo(self.view.mas_top);
+    }];
     
     [bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left);
@@ -181,6 +209,31 @@ CGFloat animatedDistance;
         make.height.mas_equalTo(40);
         make.top.equalTo(passwordView.mas_bottom).offset(20);;
     }];
+    
+    /*
+     * Init the popup alert
+     */
+    
+    
+    
+    /*
+     Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the method reachabilityChanged will be called.
+     */
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+    
+    //Change the host name here to change the server you want to monitor.
+    NSString *remoteHostName = @"api36.yunxiaoche.com";
+    
+    self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
+    [self.hostReachability startNotifier];
+    
+    self.internetReachability = [Reachability reachabilityForInternetConnection];
+    [self.internetReachability startNotifier];
+    
+    self.wifiReachability = [Reachability reachabilityForLocalWiFi];
+    [self.wifiReachability startNotifier];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -191,24 +244,30 @@ CGFloat animatedDistance;
 #pragma mark - IBActions
 -(void)verifyUserAction:(id)sender
 {
-    if([_usernameField.text isEqualToString:@""])
+    if(_isNetworkAvailable)
     {
-        return;
+        if([_usernameField.text isEqualToString:@""])
+        {
+            return;
+        }
+        
+        NSDictionary * dic = @{@"mobile":_usernameField.text,@"verifycode":_passwordField.text};
+        [[EKRequest Instance] EKHTTPRequest:verify parameters:dic requestMethod:POST forDelegate:self];
+        
+
     }
-    
-    NSDictionary * dic = @{@"mobile":_usernameField.text,@"verifycode":_passwordField.text};
-    [[EKRequest Instance] EKHTTPRequest:verify parameters:dic requestMethod:POST forDelegate:self];
 }
 -(void)registerAction:(id)sender
 {
-    //13700000005
-    NSDictionary * dic = @{@"mobile":_usernameField.text};
-    
-    self.timerCount = 30;
-    self.repeatingTimer = [NSTimer scheduledTimerWithTimeInterval:1
-                                                           target:self selector:@selector(countedTimerAction:) userInfo:nil repeats:YES];
-    
-    [[EKRequest Instance] EKHTTPRequest:REGISTER parameters:dic requestMethod:GET forDelegate:self];
+    if(_isNetworkAvailable)
+    {
+        NSDictionary * dic = @{@"mobile":_usernameField.text};
+        
+        [[EKRequest Instance] EKHTTPRequest:REGISTER parameters:dic requestMethod:GET forDelegate:self];
+        
+        [_passwordField becomeFirstResponder];
+
+    }
 }
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -267,7 +326,7 @@ CGFloat animatedDistance;
             info.state = LoginOn;
             //进入主页面
             
-            AppDelegate * delegate = [UIApplication sharedApplication].delegate;
+            AppDelegate * delegate = [[UIApplication sharedApplication] delegate];
             [delegate makeMainViewController];
         }
     }
@@ -296,29 +355,23 @@ CGFloat animatedDistance;
         //手机校验
         if(code == -1118)
         {
-            //验证码错误
+            UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"" message:@"校验码错误" delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
+            [alertview show];
         }
         else if(code == 1)
         {
             NSDictionary * result = response;
-            //            {
-            //                rongtoken = "AwqyYBn3zjOSEcuW4Nj2iWt7WeHtVwu+Kx3KhVH1Ufgmd/ZEM+HQ+SbyTaxa/XHOF00dnvXtplI=";
-            //                sid = pfu340ti757fkmirj679l62q80;
-            //                token = 774de7225e4af0a7093fe94f273b4ebbd9782549;
-            //                userid = 12;
-            //            }
             info.token = result[@"token"];
             info.phone = _usernameField.text;
             info.userid = [NSString stringWithFormat:@"%@",result[@"userid"]];
-            
-            
+         
             NSDictionary * dic = @{@"mobile":_usernameField.text,@"token":result[@"token"]};
             [self getSid:dic];
-            
         }
         else
         {
-            // 不正确
+            UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"" message:@"未知错误" delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
+            [alertview show];
         }
     }
     else if(method == REGISTER)
@@ -326,22 +379,28 @@ CGFloat animatedDistance;
         //获取验证码
         if(code == -1117)
         {
-            //手机号不存在
+            UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"" message:@"手机未在学校登记" delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
+            [alertview show];
+            [_usernameField becomeFirstResponder];
         }
         else if(code == 1)
         {
-            
+            //Kick off the timer
+            self.timerCount = 30;
+            self.repeatingTimer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                                   target:self selector:@selector(countedTimerAction:) userInfo:nil repeats:YES];
         }
         else
         {
-            
+            UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"" message:@"未知登陆错误" delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
+            [alertview show];
         }
     }
     
 }
 -(void) getErrorInfo:(NSError *) error forMethod:(RequestFunction) method
 {
-    
+    NSLog(@"");
 }
 
 #pragma mark - TIMER Handles
@@ -350,18 +409,20 @@ CGFloat animatedDistance;
 {
     self.timerCount --;
     
-    NSString *timeLeftStr = [[NSString alloc] initWithFormat:@"      %02d秒      ",(int)_timerCount];
-    [_codeButton setTitle:timeLeftStr forState:UIControlStateNormal];
-    [_codeButton setEnabled:false];
-    [_passwordField becomeFirstResponder];
-    
-    if(self.timerCount==0)
+    if(self.timerCount<=0)
     {
         [_codeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
         [_codeButton setEnabled:true];
         [timer invalidate];
         self.repeatingTimer = nil;
+        return;
     }
+    
+    NSString *timeLeftStr = [[NSString alloc] initWithFormat:@"      %02d秒      ",(int)_timerCount];
+    [_codeButton setTitle:timeLeftStr forState:UIControlStateNormal];
+    [_codeButton setEnabled:false];
+    
+
 }
 
 #pragma mark - Softkey Up and hide handles
@@ -442,5 +503,53 @@ CGFloat animatedDistance;
                                  oldFrame.size.width, oldFrame.size.height);
     [self.view setFrame:newFrame];
 }
+
+#pragma mark Reachability
+/*!
+ * Called by Reachability whenever status changes.
+ */
+- (void) reachabilityChanged:(NSNotification *)note
+{
+    Reachability* curReach = [note object];
+//    NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
+    
+    NetworkStatus netStatus = [curReach currentReachabilityStatus];
+    BOOL connectionRequired = [curReach connectionRequired];
+    NSString* statusString = @"";
+    
+    switch (netStatus)
+    {
+        case NotReachable:        {
+            statusString = NSLocalizedString(@"网络不可用", @"Network access is not available");
+            /*
+             Minor interface detail- connectionRequired may return YES even when the host is unreachable. We cover that up here...
+             */
+            connectionRequired = NO;
+            _isNetworkAvailable = false;
+            _labelStatusNotice.hidden = false;
+            _labelStatusNotice.text= statusString;
+            break;
+        }
+            
+        case ReachableViaWWAN:        {
+            _labelStatusNotice.hidden = true;
+            statusString = NSLocalizedString(@"Reachable WWAN", @"");
+            _isNetworkAvailable = true;
+            break;
+        }
+        case ReachableViaWiFi:        {
+            _labelStatusNotice.hidden = true;
+            _isNetworkAvailable = true;
+            statusString= NSLocalizedString(@"Reachable WiFi", @"");
+            break;
+        }
+    }
+//    if (connectionRequired)
+//    {
+//        NSString *connectionRequiredFormatString = NSLocalizedString(@"%@, Connection Required", @"Concatenation of status string with connection requirement");
+//        statusString= [NSString stringWithFormat:connectionRequiredFormatString, statusString];
+//    }
+}
+
 
 @end

@@ -33,6 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = self.titleStr;
+    [self.navigationItem.leftBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
     NSURLRequest * quest = [NSURLRequest requestWithURL:[NSURL URLWithString:_urlStr]];
 
     if(iOS8)

@@ -75,14 +75,14 @@
     
     
     CGRect titleRect = [_message.title
-                        boundingRectWithSize:CGSizeMake(300, 0)
+                        boundingRectWithSize:CGSizeMake(220, 0)
                         options:NSStringDrawingUsesLineFragmentOrigin
                         attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16.0]}
                         context:nil];
     
     //http://stackoverflow.com/questions/20602491/boundingrectwithsize-does-not-respect-word-wrapping
     CGRect contentRect = [_message.desc
-                          boundingRectWithSize:CGSizeMake(300, 0)
+                          boundingRectWithSize:CGSizeMake(220, 0)
                           options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
                           attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14.0]}
                           context:nil];
@@ -95,7 +95,7 @@
         imageHeight = 0;
     }
     
-    self.height = @(VERTICAL_SPACING + ceil(titleRect.size.height) + VERTICAL_SPACING + ceil(contentRect.size.height) + imageHeight + VERTICAL_SPACING + BUTTON_HEIGHT + 25);
+    self.height = @(VERTICAL_SPACING + ceil(titleRect.size.height) + VERTICAL_SPACING + ceil(contentRect.size.height) + imageHeight + VERTICAL_SPACING + BUTTON_HEIGHT + VERTICAL_SPACING);
 }
 
 -(void)updateConstraints

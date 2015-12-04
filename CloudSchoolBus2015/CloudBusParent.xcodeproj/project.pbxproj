@@ -13,6 +13,8 @@
 		2A25CA431C03589F00C81EE9 /* ClassifyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A25CA411C03589F00C81EE9 /* ClassifyTableViewCell.m */; };
 		2A25CA441C03589F00C81EE9 /* ClassifyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A25CA421C03589F00C81EE9 /* ClassifyTableViewCell.xib */; };
 		2A4C2D961C102F3A0062AB68 /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4C2D951C102F3A0062AB68 /* CMPopTipView.m */; };
+		2A4C2D981C1089F40062AB68 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4C2D971C1089F40062AB68 /* SystemConfiguration.framework */; };
+		2A4C2D9B1C11682B0062AB68 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4C2D9A1C11682B0062AB68 /* Reachability.m */; };
 		2A950C661C04063E009D6211 /* NoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A950C651C04063E009D6211 /* NoticeView.m */; };
 		2A950C681C040660009D6211 /* NoticeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A950C671C040660009D6211 /* NoticeView.xib */; };
 		2A9745251BFBFA8A008C8A7B /* UIColor+RCColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9745241BFBFA8A008C8A7B /* UIColor+RCColor.m */; };
@@ -102,6 +104,9 @@
 		2A25CA421C03589F00C81EE9 /* ClassifyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassifyTableViewCell.xib; sourceTree = "<group>"; };
 		2A4C2D941C102F3A0062AB68 /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
 		2A4C2D951C102F3A0062AB68 /* CMPopTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPopTipView.m; sourceTree = "<group>"; };
+		2A4C2D971C1089F40062AB68 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		2A4C2D991C11682B0062AB68 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		2A4C2D9A1C11682B0062AB68 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		2A950C641C04063E009D6211 /* NoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeView.h; sourceTree = "<group>"; };
 		2A950C651C04063E009D6211 /* NoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeView.m; sourceTree = "<group>"; };
 		2A950C671C040660009D6211 /* NoticeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoticeView.xib; sourceTree = "<group>"; };
@@ -312,14 +317,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A4C2D981C1089F40062AB68 /* SystemConfiguration.framework in Frameworks */,
 				81C8A4D41C02EBE700F37C08 /* WebKit.framework in Frameworks */,
 				81D431D91BFB072D0089239A /* libiconv.dylib in Frameworks */,
+				816446D71BF9787E00A34D00 /* libavformat.a in Frameworks */,
 				816446D81BF9787E00A34D00 /* libavutil.a in Frameworks */,
 				816446D61BF9787E00A34D00 /* libavfilter.a in Frameworks */,
 				43A7B6B7133E7159766C99EF /* libPods.a in Frameworks */,
 				816446D51BF9787E00A34D00 /* libavdevice.a in Frameworks */,
 				816446DA1BF9787E00A34D00 /* libswscale.a in Frameworks */,
-				816446D71BF9787E00A34D00 /* libavformat.a in Frameworks */,
 				816446D91BF9787E00A34D00 /* libswresample.a in Frameworks */,
 				816446D41BF9787E00A34D00 /* libavcodec.a in Frameworks */,
 			);
@@ -358,6 +364,7 @@
 		379435B51CA828ADA6C83917 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2A4C2D971C1089F40062AB68 /* SystemConfiguration.framework */,
 				81C8A4D31C02EBE700F37C08 /* WebKit.framework */,
 				81D431D81BFB072D0089239A /* libiconv.dylib */,
 				E7299EA4EE1E968A90534B5D /* libPods.a */,
@@ -380,6 +387,8 @@
 		81065BE51BEB0142009CE107 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				2A4C2D991C11682B0062AB68 /* Reachability.h */,
+				2A4C2D9A1C11682B0062AB68 /* Reachability.m */,
 				2A4C2D931C102F3A0062AB68 /* CMPopTipView */,
 				816446DE1BF97B9200A34D00 /* FPPopover */,
 				8164466D1BF9787E00A34D00 /* ffmpeg */,
@@ -996,6 +1005,7 @@
 				81065BED1BEB01CA009CE107 /* EKRequest.m in Sources */,
 				816446E71BF97BDB00A34D00 /* FPPopoverView.m in Sources */,
 				2A9745281BFC3BAB008C8A7B /* PaddingUILabel.m in Sources */,
+				2A4C2D9B1C11682B0062AB68 /* Reachability.m in Sources */,
 				2A25CA431C03589F00C81EE9 /* ClassifyTableViewCell.m in Sources */,
 				81D48C681BF5BB5000146AA6 /* MineHeaderView.m in Sources */,
 				816446E61BF97BDB00A34D00 /* FPPopoverController.m in Sources */,
@@ -1182,6 +1192,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/CloudBusParent/Third/ffmpeg/lib",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.guokrspace.cloudschoolbus.parents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1214,6 +1225,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/CloudBusParent/Third/ffmpeg/lib",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.guokrspace.cloudschoolbus.parents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

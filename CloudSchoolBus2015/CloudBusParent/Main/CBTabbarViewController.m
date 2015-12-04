@@ -86,6 +86,7 @@
             // iOS 7.0 or later
             nav.navigationBar.barTintColor = [UIColor colorWithHexString:@"F3A139" alpha:1.0f];
             nav.navigationBar.translucent = NO;
+            [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
         }
     }
     

@@ -400,8 +400,8 @@ CGFloat animatedDistance;
 }
 -(void) getErrorInfo:(NSError *) error forMethod:(RequestFunction) method
 {
-    NSLog(@"");
-}
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"" message:@"未知登陆错误，请稍后再试" delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
+    [alertview show];}
 
 #pragma mark - TIMER Handles
 

@@ -1186,15 +1186,15 @@
 					"\"$(PROJECT_DIR)/CloudBusParent/Third/ffmpeg/include\"",
 				);
 				INFOPLIST_FILE = CloudBusParent/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CloudBusParent/Third/ffmpeg/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.guokrspace.cloudschoolbus.parents;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mactop.mobi.etonkids;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1dd03ea6-52b3-4b3f-af3b-e38e9b0f3d30";
 			};
 			name = Debug;
 		};
@@ -1219,15 +1219,15 @@
 					"\"$(PROJECT_DIR)/CloudBusParent/Third/ffmpeg/include\"",
 				);
 				INFOPLIST_FILE = CloudBusParent/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CloudBusParent/Third/ffmpeg/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.guokrspace.cloudschoolbus.parents;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mactop.mobi.etonkids;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "1dd03ea6-52b3-4b3f-af3b-e38e9b0f3d30";
 			};
 			name = Release;
 		};

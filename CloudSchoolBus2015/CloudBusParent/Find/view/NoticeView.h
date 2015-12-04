@@ -13,6 +13,7 @@
 @required
 
 -(void) userConfirm:(NSString *)messageid;
+-(void) pictureClick:(NSArray *)pictureUrlArray;
 
 @end
 

@@ -25,15 +25,15 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bk0-Mj-mHG">
-                    <rect key="frame" x="75" y="87" width="60" height="60"/>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bk0-Mj-mHG">
+                    <rect key="frame" x="75" y="87" width="120" height="120"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" identifier="image_height" id="1yh-Af-P4y"/>
-                        <constraint firstAttribute="width" constant="60" id="5CE-Ks-8sj"/>
+                        <constraint firstAttribute="height" constant="120" identifier="image_height" id="1yh-Af-P4y"/>
+                        <constraint firstAttribute="width" constant="120" id="5CE-Ks-8sj"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wpn-Yg-MDp">
-                    <rect key="frame" x="530" y="157" width="50" height="25"/>
+                    <rect key="frame" x="530" y="217" width="50" height="25"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <accessibility key="accessibilityConfiguration" identifier="confirm"/>
                     <constraints>

@@ -31,9 +31,6 @@
 
 #define ZOOM_VIEW_TAG 100
 
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -182,7 +179,15 @@
 #pragma mark - User Actions
 -(void)singleTap:(id)sender
 {
+    CATransition *transition = [CATransition animation];
+    transition.duration = 1.0f;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFade;
+    transition.subtype = kCATransitionFade;
+    transition.delegate = self;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
     [self.navigationController popViewControllerAnimated:YES];
+    [[self navigationController] setNavigationBarHidden:NO];
 }
 
 -(void)doubleTap:(UIGestureRecognizer *)sender

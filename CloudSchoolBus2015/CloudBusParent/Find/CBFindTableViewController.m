@@ -516,6 +516,14 @@ static NSString * cellidenty = @"listcell";
     imageGallery.hidesBottomBarWhenPushed = YES;
     [imageGallery setStartIndex:@(index)];
     [imageGallery setPageImages:picArray];
+    
+    CATransition *transition = [CATransition animation];
+    transition.duration = 1.0f;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionReveal;
+    transition.subtype = kCATransitionReveal;
+    transition.delegate = self;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
     [[self navigationController] pushViewController:imageGallery animated:YES];
 }
 
@@ -548,7 +556,23 @@ static NSString * cellidenty = @"listcell";
     NSDictionary *paramDict = @{@"messageid":messageid};
     [[EKRequest Instance] EKHTTPRequest:confirm parameters:paramDict requestMethod:POST forDelegate:self];
 }
-
+- (void)pictureClick:(NSArray *)pictureUrlArray
+{
+    CBPagedImageViewController *imageGallery = [[CBPagedImageViewController alloc] initWithNibName:@"CBPagedImageViewController" bundle:nil];
+    imageGallery.hidesBottomBarWhenPushed = YES;
+    [imageGallery setStartIndex:@(0)];
+    [imageGallery setPageImages:pictureUrlArray];
+    
+    CATransition *transition = [CATransition animation];
+    transition.duration = 1.0f;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionReveal;
+    transition.subtype = kCATransitionReveal;
+    transition.delegate = self;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    
+    [[self navigationController] pushViewController:imageGallery animated:YES];
+}
 #pragma mark Reachability
 /*!
  * Called by Reachability whenever status changes.

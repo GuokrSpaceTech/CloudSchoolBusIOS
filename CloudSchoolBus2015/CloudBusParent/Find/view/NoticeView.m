@@ -41,17 +41,21 @@
     {
         for(NSString *picUrlStr in picArray)
         {
-            [_imageView sd_setImageWithURL:[NSURL URLWithString:picUrlStr]
-                         placeholderImage:nil completed:^(UIImage *image, NSError *error,
-                         SDImageCacheType cacheType, NSURL *imageURL){
-                             NSLog(@"");
-                             if(error!=nil & image==nil)
-                             {
-                                 hasValidImage = false;
-                             } else {
-                                 hasValidImage = true;
-                             }
-                         }];
+            if([picUrlStr containsString:@"http://"])
+            {
+                hasValidImage = true;
+            
+                [_imageView sd_setImageWithURL:[NSURL URLWithString:picUrlStr]
+                              placeholderImage:nil completed:^(UIImage *image, NSError *error,
+                                                               SDImageCacheType cacheType, NSURL *imageURL){
+                              }];
+                
+                UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pictureClick:)];
+                [_imageView addGestureRecognizer:gesture];
+            
+            } else {
+                hasValidImage = false;
+            }
         }
     }
     
@@ -90,12 +94,12 @@
     float imageHeight;
     
     if(hasValidImage){
-        imageHeight = 60;
+        imageHeight = 120;
     }else{
         imageHeight = 0;
     }
     
-    self.height = @(VERTICAL_SPACING + ceil(titleRect.size.height) + VERTICAL_SPACING + ceil(contentRect.size.height) + imageHeight + VERTICAL_SPACING + BUTTON_HEIGHT + VERTICAL_SPACING);
+    self.height = @(VERTICAL_SPACING + ceil(titleRect.size.height) + VERTICAL_SPACING + ceil(contentRect.size.height) + imageHeight + VERTICAL_SPACING + BUTTON_HEIGHT + VERTICAL_SPACING + VERTICAL_SPACING);
 }
 
 -(void)updateConstraints
@@ -106,7 +110,7 @@
     {
         if([constraint.identifier isEqualToString:@"image_height"]){
             if(hasValidImage)
-                constraint.constant = 60;
+                constraint.constant = 120;
             else
                 constraint.constant = 0;
         }
@@ -117,6 +121,12 @@
 {
     if([_delegate respondsToSelector:@selector(userConfirm:)])
        [_delegate userConfirm:[_message messageid]];
+}
+
+-(void)pictureClick:(id)sender
+{
+    if([_delegate respondsToSelector:@selector(pictureClick:)])
+        [_delegate pictureClick:picArray];
 }
 
 @end

@@ -326,7 +326,7 @@ CGFloat animatedDistance;
             info.state = LoginOn;
             //进入主页面
             
-            AppDelegate * delegate = [[UIApplication sharedApplication] delegate];
+            AppDelegate * delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             [delegate makeMainViewController];
         }
     }

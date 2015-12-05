@@ -149,7 +149,7 @@
 
 -(void) tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
-    NSLog(@"Selected INDEX OF TAB-BAR ==> %i", tabBarController.selectedIndex);
+//    NSLog(@"Selected INDEX OF TAB-BAR ==> %i", tabBarController.selectedIndex);
     
     //First Tab
     if (tabBarController.selectedIndex == 0) {

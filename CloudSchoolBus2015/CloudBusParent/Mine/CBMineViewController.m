@@ -292,7 +292,7 @@
 -(void)handleSingleTap:(id)sender
 {
     UIButton *button = sender;
-    int i = [button tag];
+    int i = (int)[button tag];
     
     CBLoginInfo * info = [CBLoginInfo shareInstance];
     

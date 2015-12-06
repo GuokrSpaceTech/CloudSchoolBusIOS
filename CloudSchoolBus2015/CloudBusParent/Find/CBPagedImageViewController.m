@@ -232,7 +232,7 @@
     {
         currentPageIndex --;
         if(currentPageIndex < 0)
-            currentPageIndex = [_pageImages count] - 1;
+            currentPageIndex = (int)[_pageImages count] - 1;
     }
     else
     {

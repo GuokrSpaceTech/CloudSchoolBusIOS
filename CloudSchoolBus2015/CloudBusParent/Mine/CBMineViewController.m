@@ -329,7 +329,7 @@
     
     //打开模态视图控制器选择图像
     [self presentViewController:pickerController animated:YES completion:^{
-        
+        NSLog(@"");
     }];
 }
 
@@ -356,8 +356,9 @@
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    NSLog(@"取消选择");
-//    [picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"取消选择");
+    }];
 }
 
 #pragma mark EKRequest Delegate

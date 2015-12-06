@@ -26,7 +26,7 @@
 #import "CBDateBase.h"
 #import "AppDelegate.h"
 
-@interface CBMineViewController ()<EKProtocol>
+@interface CBMineViewController ()<EKProtocol, UIAlertViewDelegate>
 {
     MineHeaderView * headeView;
     KLCPopup* popup;
@@ -47,15 +47,15 @@
     
     self.navigationItem.title = @"我的";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-   [self.tableView registerClass:[MineCell class] forCellReuseIdentifier:@"cell"];
+    [self.tableView registerClass:[MineCell class] forCellReuseIdentifier:@"cell"];
     self.tableView.scrollEnabled = NO;
     self.tableView.rowHeight = 44;
     headeView = [[MineHeaderView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 120)];
-
+    
     [self currentStudent];
     
     self.tableView.tableHeaderView  = headeView;
-
+    
     //退出按钮
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
     //button.frame = CGRectMake(0, 0, 100, 100);
@@ -76,18 +76,9 @@
     [headeView.avatarImageView setUserInteractionEnabled:YES];
     
 }
--(void)quit:(UIButton *)btn
-{
-    [[CBDateBase sharedDatabase] clearTable];
-    
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [[delegate.window.rootViewController navigationController] popToRootViewControllerAnimated:YES];
-    [delegate makeLoginViewController];
-    
-}
 -(void)currentStudent
 {
-      CBLoginInfo * info = [CBLoginInfo shareInstance];
+    CBLoginInfo * info = [CBLoginInfo shareInstance];
     
     Student * student = nil;
     
@@ -189,18 +180,18 @@
         KLCPopupLayout layout = KLCPopupLayoutMake(KLCPopupHorizontalLayoutCenter, KLCPopupVerticalLayoutCenter);
         
         popup = [KLCPopup popupWithContentView:contentView
-                                                showType:KLCPopupShowTypeFadeIn
-                                             dismissType:KLCPopupDismissTypeFadeOut
-                                                maskType:KLCPopupMaskTypeDimmed
-                                dismissOnBackgroundTouch:YES
-                                   dismissOnContentTouch:NO];
+                                      showType:KLCPopupShowTypeFadeIn
+                                   dismissType:KLCPopupDismissTypeFadeOut
+                                      maskType:KLCPopupMaskTypeDimmed
+                      dismissOnBackgroundTouch:YES
+                         dismissOnContentTouch:NO];
         
         [popup showWithLayout:layout];
     }
     else if(indexPath.row == 1)
     {
         [Calculate clearTmpPics:^{
-             [self.tableView reloadData];
+            [self.tableView reloadData];
         }];
     }
     else if(indexPath.row == 2)
@@ -232,7 +223,7 @@
     for (Student *st in info.studentArr) {
         
         left = left + i*([avatarViewWidth doubleValue]) + PADDING;
-
+        
         UIButton *avatarView = [[UIButton alloc] init];
         avatarView.translatesAutoresizingMaskIntoConstraints = NO;
         avatarView.backgroundColor = [UIColor clearColor];
@@ -243,7 +234,7 @@
         nameLabel.backgroundColor = [UIColor clearColor];
         nameLabel.textColor = [UIColor blackColor];
         nameLabel.font = [UIFont boldSystemFontOfSize:12.0];
-   
+        
         [contentView addSubview:avatarView];
         [contentView addSubview:nameLabel];
         
@@ -289,6 +280,14 @@
 }
 
 #pragma mark User Actions
+-(void)quit:(UIButton *)btn
+{
+    [[CBDateBase sharedDatabase] clearTable];
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [[delegate.window.rootViewController navigationController] popToRootViewControllerAnimated:YES];
+    [delegate makeLoginViewController];
+}
 -(void)handleSingleTap:(id)sender
 {
     UIButton *button = sender;
@@ -367,45 +366,70 @@
     NSDictionary *returnDict = (NSDictionary *)response;
     NSString *filePath = [returnDict objectForKey:@"filepath"];
     
-    if([filePath containsString:@"://"])
+    if(code == 1 && method == uploadAvatar)
     {
-        //Update UI
-        [headeView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:filePath] placeholderImage:nil];
-    
-        //Update Memory
-        NSMutableArray *studentArray = [[CBLoginInfo shareInstance] studentArr];
-        for (int i=0; i<[studentArray count]; i++) {
+        if([filePath containsString:@"://"])
+        {
+            //Update UI
+            [headeView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:filePath] placeholderImage:nil];
             
-            Student *student = studentArray[i];
-            NSString *current = [[CBLoginInfo shareInstance] currentStudentId];
-            if([[student studentid] isEqualToString:current])
-            {
-                [student setAvatar:filePath];
+            //Update Memory
+            NSMutableArray *studentArray = [[CBLoginInfo shareInstance] studentArr];
+            for (int i=0; i<[studentArray count]; i++) {
                 
-                [[[CBLoginInfo shareInstance] studentArr] replaceObjectAtIndex:i withObject:student];
-            
-        
-                //Update DB
-                //Json to Dict
-                NSString *baseInfoJson = [[CBLoginInfo shareInstance] baseInfoJsonString];
-                NSError *jsonError;
-                NSData *objectData = [baseInfoJson dataUsingEncoding:NSUTF8StringEncoding];
-                NSDictionary *baseInfoDict = [NSJSONSerialization JSONObjectWithData:objectData
-                                                                             options:NSJSONReadingMutableContainers
-                                                                               error:&jsonError];
-                [[[baseInfoDict objectForKey:@"students"] objectAtIndex:i] setValue:filePath forKey:@"avatar"];
-                
-                //Dict to Json
-                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:baseInfoDict
-                                                                   options:NSJSONWritingPrettyPrinted
-                                                                     error:&jsonError];
-                if (! jsonData) {
-                    NSLog(@"JsonConvertion Error: %@", jsonError.localizedDescription);
-                } else {
-                    baseInfoJson = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-                    [[CBDateBase sharedDatabase] insertDataToBaseInfoTableWithBaseinfo:baseInfoJson];
+                Student *student = studentArray[i];
+                NSString *current = [[CBLoginInfo shareInstance] currentStudentId];
+                if([[student studentid] isEqualToString:current])
+                {
+                    [student setAvatar:filePath];
+                    
+                    [[[CBLoginInfo shareInstance] studentArr] replaceObjectAtIndex:i withObject:student];
+                    
+                    
+                    //Update DB
+                    //Json to Dict
+                    NSString *baseInfoJson = [[CBLoginInfo shareInstance] baseInfoJsonString];
+                    NSError *jsonError;
+                    NSData *objectData = [baseInfoJson dataUsingEncoding:NSUTF8StringEncoding];
+                    NSDictionary *baseInfoDict = [NSJSONSerialization JSONObjectWithData:objectData
+                                                                                 options:NSJSONReadingMutableContainers
+                                                                                   error:&jsonError];
+                    [[[baseInfoDict objectForKey:@"students"] objectAtIndex:i] setValue:filePath forKey:@"avatar"];
+                    
+                    //Dict to Json
+                    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:baseInfoDict
+                                                                       options:NSJSONWritingPrettyPrinted
+                                                                         error:&jsonError];
+                    if (! jsonData) {
+                        NSLog(@"JsonConvertion Error: %@", jsonError.localizedDescription);
+                    } else {
+                        baseInfoJson = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                        [[CBDateBase sharedDatabase] insertDataToBaseInfoTableWithBaseinfo:baseInfoJson];
+                    }
                 }
             }
+        }
+    }
+    else if (code == 1 && method == login)
+    {
+        
+    }
+    else if(code < 0)
+    {
+        //SESSION 超时
+        NSDictionary *responseDict = (NSDictionary *)response;
+        NSString *errorMessage = [responseDict objectForKey:@"err_message"];
+        if(errorMessage!=nil && [errorMessage containsString:@"SESSION"])
+        {
+            NSString *mobile = [[CBLoginInfo shareInstance] phone];
+            NSString *token = [[CBLoginInfo shareInstance] token];
+            NSDictionary *paramDict = @{@"mobile":mobile, @"token":token};
+            [[EKRequest Instance] EKHTTPRequest:login parameters:paramDict requestMethod:GET forDelegate:self];
+        }
+        else if(code == -1118)
+        {
+            UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"" message:@"检测到多用户登录，系统自动退出" delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
+            [alertview show];
         }
     }
     
@@ -417,63 +441,69 @@
     NSLog(@"");
 }
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 /*
-#pragma mark - Table view delegate
-
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
-    
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-}
-*/
+ #pragma mark - Table view delegate
+ 
+ // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
+ - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Navigation logic may go here, for example:
+ // Create the next view controller.
+ <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+ 
+ // Pass the selected object to the new view controller.
+ 
+ // Push the view controller.
+ [self.navigationController pushViewController:detailViewController animated:YES];
+ }
+ */
 
 /*
-#pragma mark - Navigation
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma AlertView Delegate
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self quit:nil];
 }
-*/
 
 @end

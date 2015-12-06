@@ -95,6 +95,7 @@ static CBLoginInfo * logininfo = nil;
             }
             
             NSArray * schoolarr = baseinfo[@"schools"];
+            [_schoolArr removeAllObjects];
             for (int i = 0; i < schoolarr.count; i++) {
                 NSDictionary * schooldic = schoolarr[i];
                 School * school = [[School alloc]initWithSchoolDic:schooldic];
@@ -102,6 +103,7 @@ static CBLoginInfo * logininfo = nil;
             }
             
             NSArray * stuArr = baseinfo[@"students"];
+            [_studentArr removeAllObjects];
             for (int i=0; i<stuArr.count; i++) {
                 Student * st = [[Student alloc]initWithDic:stuArr[i]];
                 if(i == 0)

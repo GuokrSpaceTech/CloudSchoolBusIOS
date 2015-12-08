@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NoticeView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NgP-8b-3lW">
+                    <rect key="frame" x="20" y="20" width="28" height="20"/>
+                    <accessibility key="accessibilityConfiguration" identifier="title"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="content" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m87-92-4NF">
+                    <rect key="frame" x="20" y="60" width="560" height="17"/>
+                    <accessibility key="accessibilityConfiguration" identifier="content"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bk0-Mj-mHG">
+                    <rect key="frame" x="75" y="87" width="120" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" identifier="image_height" id="1yh-Af-P4y"/>
+                        <constraint firstAttribute="width" constant="120" id="5CE-Ks-8sj"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wpn-Yg-MDp">
+                    <rect key="frame" x="530" y="217" width="50" height="25"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <accessibility key="accessibilityConfiguration" identifier="confirm"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="YLe-t5-atO"/>
+                        <constraint firstAttribute="width" constant="50" id="ZDl-3N-thu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                    <state key="normal" title="确认">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Bk0-Mj-mHG" firstAttribute="top" secondItem="m87-92-4NF" secondAttribute="bottom" constant="10" id="1kD-zC-ep8"/>
+                <constraint firstItem="m87-92-4NF" firstAttribute="leading" secondItem="NgP-8b-3lW" secondAttribute="leading" id="CyQ-fE-sRh"/>
+                <constraint firstItem="Wpn-Yg-MDp" firstAttribute="top" secondItem="Bk0-Mj-mHG" secondAttribute="bottom" constant="10" id="Jeh-ds-ejq"/>
+                <constraint firstItem="Wpn-Yg-MDp" firstAttribute="trailing" secondItem="m87-92-4NF" secondAttribute="trailing" id="MHT-gf-fEj"/>
+                <constraint firstItem="NgP-8b-3lW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Qzp-gj-2JW"/>
+                <constraint firstItem="NgP-8b-3lW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="bqp-bd-oN5"/>
+                <constraint firstAttribute="trailing" secondItem="m87-92-4NF" secondAttribute="trailing" constant="20" id="g8B-F8-MHE"/>
+                <constraint firstItem="m87-92-4NF" firstAttribute="top" secondItem="NgP-8b-3lW" secondAttribute="bottom" constant="20" id="lbJ-pf-Hj7"/>
+                <constraint firstItem="Bk0-Mj-mHG" firstAttribute="leading" secondItem="m87-92-4NF" secondAttribute="leading" constant="55" id="lwk-MK-Qd2"/>
+            </constraints>
+            <connections>
+                <outlet property="confirmButton" destination="Wpn-Yg-MDp" id="a1G-mf-kaa"/>
+                <outlet property="content" destination="m87-92-4NF" id="tvS-mP-8Ri"/>
+                <outlet property="imageView" destination="Bk0-Mj-mHG" id="Eus-Zr-0wO"/>
+                <outlet property="title" destination="NgP-8b-3lW" id="Wc6-M8-cwD"/>
+            </connections>
+            <point key="canvasLocation" x="391" y="256"/>
+        </view>
+    </objects>
+</document>

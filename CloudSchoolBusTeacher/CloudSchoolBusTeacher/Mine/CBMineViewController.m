@@ -103,7 +103,7 @@
             {
                 if([cla.studentidArr containsObject:info.currentStudentId])
                 {
-                    schoolname = [NSString stringWithFormat:@"%@",sc.schoolName];
+                    schoolname = [NSString stringWithFormat:@"%@",sc.name];
                 }
             }
         }

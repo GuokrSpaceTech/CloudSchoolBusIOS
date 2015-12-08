@@ -12,6 +12,7 @@
 		2A25CA3F1C01BD9900C81EE9 /* CBPagedImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A25CA3D1C01BD9900C81EE9 /* CBPagedImageViewController.xib */; };
 		2A25CA431C03589F00C81EE9 /* ClassifyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A25CA411C03589F00C81EE9 /* ClassifyTableViewCell.m */; };
 		2A25CA441C03589F00C81EE9 /* ClassifyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A25CA421C03589F00C81EE9 /* ClassifyTableViewCell.xib */; };
+		2A26236D1C16D0FE005683FA /* ClassModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A26236C1C16D0FE005683FA /* ClassModule.m */; };
 		2A4C2D961C102F3A0062AB68 /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4C2D951C102F3A0062AB68 /* CMPopTipView.m */; };
 		2A4C2D981C1089F40062AB68 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4C2D971C1089F40062AB68 /* SystemConfiguration.framework */; };
 		2A4C2D9B1C11682B0062AB68 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4C2D9A1C11682B0062AB68 /* Reachability.m */; };
@@ -102,6 +103,8 @@
 		2A25CA401C03589F00C81EE9 /* ClassifyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyTableViewCell.h; sourceTree = "<group>"; };
 		2A25CA411C03589F00C81EE9 /* ClassifyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyTableViewCell.m; sourceTree = "<group>"; };
 		2A25CA421C03589F00C81EE9 /* ClassifyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassifyTableViewCell.xib; sourceTree = "<group>"; };
+		2A26236B1C16D0FE005683FA /* ClassModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassModule.h; sourceTree = "<group>"; };
+		2A26236C1C16D0FE005683FA /* ClassModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassModule.m; sourceTree = "<group>"; };
 		2A4C2D941C102F3A0062AB68 /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
 		2A4C2D951C102F3A0062AB68 /* CMPopTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPopTipView.m; sourceTree = "<group>"; };
 		2A4C2D971C1089F40062AB68 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -780,6 +783,8 @@
 				812A8BED1BF2E219009CE43E /* CB.h */,
 				F92FA3461BF4EFE400E76A17 /* Calculate.h */,
 				F92FA3471BF4EFE500E76A17 /* Calculate.m */,
+				2A26236B1C16D0FE005683FA /* ClassModule.h */,
+				2A26236C1C16D0FE005683FA /* ClassModule.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1037,6 +1042,7 @@
 				81BECE4C1BFC4908006DAA8D /* BaseNavigationController.m in Sources */,
 				81065BE91BEB019A009CE107 /* CBLoginViewController.m in Sources */,
 				F92FA3481BF4EFE500E76A17 /* Calculate.m in Sources */,
+				2A26236D1C16D0FE005683FA /* ClassModule.m in Sources */,
 				81C6A5921BE9AD2E00160F2D /* main.m in Sources */,
 				812A8BFB1BF304DA009CE43E /* TeacherViewController.m in Sources */,
 				812A8C021BF33F1A009CE43E /* FindNoticeTableViewCell.m in Sources */,

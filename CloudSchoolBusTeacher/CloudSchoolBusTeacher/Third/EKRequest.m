@@ -8,7 +8,7 @@
 //#define SERVERURL @"http://apitest.yunxiaoche.com/"
 //#define SERVERURL @"http://apitest.yunxiaoche.com/"
 //#define SERVERURL @"http://222.128.71.186:81/"
-#define SERVERURLHOST @"http://api36.yunxiaoche.com/api/parent/"
+#define SERVERURLHOST @"http://api36.yunxiaoche.com/api/teacher/"
 #define VERSION @"4.0.0"
 @interface EKRequest()
 

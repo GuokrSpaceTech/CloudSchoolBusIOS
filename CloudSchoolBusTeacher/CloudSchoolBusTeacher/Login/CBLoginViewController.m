@@ -211,12 +211,6 @@ CGFloat animatedDistance;
     }];
     
     /*
-     * Init the popup alert
-     */
-    
-    
-    
-    /*
      Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the method reachabilityChanged will be called.
      */
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
@@ -306,12 +300,16 @@ CGFloat animatedDistance;
             }
             
             NSDictionary * baseinfo = response;
-            NSArray * schoolarr = baseinfo[@"schools"];
-            for (int i = 0; i < schoolarr.count; i++) {
-                NSDictionary * schooldic = schoolarr[i];
-                School * school = [[School alloc]initWithSchoolDic:schooldic];
+            NSDictionary * schoolDictionary = baseinfo[@"schools"];
+            [schoolDictionary enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                 School * school = [[School alloc]initWithSchoolDic:obj];
                 [info.schoolArr addObject:school];
-            }
+            }];
+//            for (int i = 0; i < schoolarr.count; i++) {
+//                NSDictionary * schooldic = schoolarr[i];
+//                School * school = [[School alloc]initWithSchoolDic:schooldic];
+//                [info.schoolArr addObject:school];
+//            }
             
             NSArray * stuArr = baseinfo[@"students"];
             for (int i=0; i<stuArr.count; i++) {

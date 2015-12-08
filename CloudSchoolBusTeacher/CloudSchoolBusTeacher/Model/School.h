@@ -9,12 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @interface School : NSObject
+@property (nonatomic,copy) NSString * remark;
 @property (nonatomic,copy) NSString * address;
-@property (nonatomic,copy) NSString * schoolid;
-@property (nonatomic,strong) NSMutableArray * classesArr;
-@property (nonatomic,copy) NSString * schoolName;
+@property (nonatomic,copy) NSString * groupid;
+@property (nonatomic,copy) NSString * id;
+@property (nonatomic,strong) NSMutableArray * tags;
 @property (nonatomic,copy) NSString * cover;
-@property (nonatomic,strong) NSMutableArray * tagsArr;
-@property (nonatomic,copy)NSString *logo;
+@property (nonatomic,strong) NSMutableArray * messageTypeArr;
+@property (nonatomic,strong) NSMutableArray * classModuleArr;
+@property (nonatomic,copy) NSString * name;
+@property (nonatomic,copy) NSString *logo;
 -(instancetype)initWithSchoolDic:(NSDictionary *)schooldic;
 @end

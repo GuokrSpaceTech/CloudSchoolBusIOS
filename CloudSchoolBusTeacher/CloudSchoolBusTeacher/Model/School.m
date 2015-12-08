@@ -7,37 +7,39 @@
 //
 
 #import "School.h"
-#import "ClassObj.h"
+#import "ClassModule.h"
 #import "Tag.h"
 @implementation School
--(instancetype)initWithSchoolDic:(NSDictionary *)schooldic
+-(instancetype)initWithSchoolDic:(NSDictionary *)schooldict
 {
     if(self = [super init])
     {
-        _classesArr = [[NSMutableArray alloc]init];
-        _tagsArr = [[NSMutableArray alloc]init];
-        
-        _address = schooldic[@"address"];
-        
-        NSArray *classArr = schooldic[@"classes"];
-        for (int i = 0; i < classArr.count; i++) {
-            ClassObj *obj = [[ClassObj alloc]initWithClassDic:classArr[i]];
-            
-            [_classesArr addObject:obj];
+        _remark = schooldict[@"remark"];
+        _address = schooldict[@"address"];
+        _groupid = schooldict[@"groupid"];
+        _id = schooldict[@"id"];
+        _tags = [[NSMutableArray alloc]init];
+        NSArray *tagsArr = schooldict[@"tags"];
+        for (int i = 0; i < tagsArr.count; i++) {
+            Tag *tag = [[Tag alloc]initWithDic:tagsArr[i]];
+            [_tags addObject:tag];
         }
         
-        _schoolid = [NSString stringWithFormat:@"%@",schooldic[@"schoolid"]];
-        _schoolName = schooldic[@"schoolname"];
-        _cover = schooldic[@"cover"];
-        _logo = schooldic[@"logo"];
-        
-        NSArray *tagarr = schooldic[@"tags"];
-        
-        for (int i = 0; i < tagarr.count; i++) {
-            Tag *tag = [[Tag alloc]initWithDic:tagarr[i]];
-            [_tagsArr addObject:tag];
+        NSDictionary *settings=schooldict[@"settings"];
+        NSArray *classModuleDictArr = settings[@"class_module"];
+        _classModuleArr = [[NSMutableArray alloc] init];
+        for(int i=0; i<classModuleDictArr.count; i++)
+        {
+            ClassModule *module = [[ClassModule alloc]initWithModuleDict:classModuleDictArr[i]];
+            [_classModuleArr addObject:module];
         }
         
+        _messageTypeArr = [[NSMutableArray alloc] init];
+        _messageTypeArr = settings[@"message_type"];
+        
+        _cover = schooldict[@"cover"];
+        _name = schooldict[@"name"];
+        _logo = schooldict[@"logo"];
     }
     return self;
 }

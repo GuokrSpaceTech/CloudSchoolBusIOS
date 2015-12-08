@@ -16,7 +16,7 @@
 -(NSString *)datebasePath
 {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    return [[paths objectAtIndex:0] stringByAppendingPathComponent:@"CloudBusParent.sqlite"];
+    return [[paths objectAtIndex:0] stringByAppendingPathComponent:@"CloudSchoolBusTeacher.sqlite"];
 }
 -(id) init
 {

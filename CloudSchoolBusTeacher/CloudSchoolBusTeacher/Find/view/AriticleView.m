@@ -118,7 +118,7 @@
     for(NSString *tagid in tagIds)
     {
         School *school = [[[CBLoginInfo shareInstance] schoolArr] objectAtIndex:0];
-        tagArrary = [school tagsArr];
+        tagArrary = [school tags];
         for(Tag *tag in tagArrary)
         {
             if( [[tag tagid] compare:tagid] == NSOrderedSame )

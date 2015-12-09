@@ -18,7 +18,10 @@
         _cnname = [NSString stringWithFormat:@"%@",dic[@"cnname"]];
         _avatar = [NSString stringWithFormat:@"%@",dic[@"avatar"]];
         _nickname = [NSString stringWithFormat:@"%@",dic[@"nickname"]];
+        _classid = dic[@"classid"];
+        _classids = dic[@"classids"];
         _birthday = [NSString stringWithFormat:@"%@",dic[@"birthday"]];
+        _pictureid = dic[@"pictureid"];
         _relaton = [NSString stringWithFormat:@"%@",dic[@"relation"]];
     }
     return self;

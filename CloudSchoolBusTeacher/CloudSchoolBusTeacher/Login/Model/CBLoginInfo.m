@@ -11,6 +11,10 @@
 #import "Student.h"
 #import "RCIM.h"
 #import "CBDateBase.h"
+#import "ClassObj.h"
+#import "Parents.h"
+#import "Teacher.h"
+
 @implementation CBLoginInfo
 static CBLoginInfo * logininfo = nil;
 + (CBLoginInfo*)shareInstance
@@ -31,6 +35,48 @@ static CBLoginInfo * logininfo = nil;
     [[CBDateBase sharedDatabase] selectFormTableBaseinfo:block];
     
 //    [[EKRequest Instance] EKHTTPRequest:baseinfo  parameters:nil requestMethod:POST forDelegate:self];
+}
+
+-(BOOL)parseBaseInfo:(NSDictionary *)baseinfo
+{
+    NSDictionary * schoolDictionary = baseinfo[@"schools"];
+    [schoolDictionary enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        School * school = [[School alloc]initWithSchoolDic:obj];
+        [self.schoolArr addObject:school];
+    }];
+    
+    NSArray *classArr = baseinfo[@"classes"];
+    for(int i=0; i<classArr.count; i++)
+    {
+        ClassObj *classObj = [[ClassObj alloc] initWithClassDic:classArr[i]];
+        [self.classArr addObject:classObj];
+    }
+    
+    NSArray *teacherArr = baseinfo[@"teachers"];
+    for(int i=0; i<teacherArr.count; i++)
+    {
+        Teacher *teacher = [[Teacher alloc] initWithDic:teacherArr[i]];
+        [self.teacherArr addObject:teacher];
+    }
+    
+    NSArray *parentsArr = baseinfo[@"parents"];
+    for(int i=0; i<parentsArr.count; i++)
+    {
+        Parents *parents = [[Parents alloc] initWithParentsDict:parentsArr[i]];
+        [self.parentsArr addObject:parents];
+    }
+    
+    NSArray * stuArr = baseinfo[@"students"];
+    for (int i=0; i<stuArr.count; i++) {
+        Student * st = [[Student alloc]initWithDic:stuArr[i]];
+        if(i == 0)
+        {
+            self.currentStudentId = st.studentid;
+        }
+        [self.studentArr addObject:st];
+    }
+    
+    return true;
 }
 -(void) getErrorInfo:(NSError *) error forMethod:(RequestFunction) method
 {
@@ -132,8 +178,11 @@ static CBLoginInfo * logininfo = nil;
 {
     if(self = [super init])
     {
-        _schoolArr = [[NSMutableArray alloc]init];
-        _studentArr = [[NSMutableArray alloc]init];
+        _schoolArr = [[NSMutableArray alloc] init];
+        _studentArr = [[NSMutableArray alloc] init];
+        _classArr = [[NSMutableArray alloc] init];
+        _teacherArr = [[NSMutableArray alloc] init];
+        _parentsArr = [[NSMutableArray alloc] init];
         _state = LoginOff;
         _hasValidBaseInfo = NO;
         _teacherVCIsLoading = NO;

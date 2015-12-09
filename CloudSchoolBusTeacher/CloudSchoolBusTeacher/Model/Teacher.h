@@ -9,9 +9,18 @@
 #import <Foundation/Foundation.h>
 
 @interface Teacher : NSObject
+@property (nonatomic,copy)NSString * dutyid;
+@property (nonatomic,copy)NSString * mobile;
+@property (nonatomic,copy)NSString * schoolid;
+@property (nonatomic,copy)NSString * nickname;
 @property (nonatomic,copy)NSString * avatar;
+@property (nonatomic,copy)NSArray  * classes;
+@property (nonatomic,copy)NSString * teacherid;
+@property (nonatomic,copy)NSString * realname;
 @property (nonatomic,copy)NSString * duty;
-@property (nonatomic,copy)NSString *teacherid;
+@property (nonatomic,copy)NSString * sex;
+@property (nonatomic,copy)NSString * pictureid;
+
 @property (nonatomic,copy)NSString *name;
 @property (nonatomic,copy)NSString * className;
 

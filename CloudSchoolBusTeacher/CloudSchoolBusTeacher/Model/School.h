@@ -17,6 +17,7 @@
 @property (nonatomic,copy) NSString * cover;
 @property (nonatomic,strong) NSMutableArray * messageTypeArr;
 @property (nonatomic,strong) NSMutableArray * classModuleArr;
+@property (nonatomic,strong) NSMutableArray * classArr;
 @property (nonatomic,copy) NSString * name;
 @property (nonatomic,copy) NSString *logo;
 -(instancetype)initWithSchoolDic:(NSDictionary *)schooldic;

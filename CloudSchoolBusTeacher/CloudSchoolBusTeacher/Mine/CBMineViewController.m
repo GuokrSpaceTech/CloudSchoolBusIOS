@@ -97,7 +97,7 @@
         NSString * schoolname = @"";
         for(School * sc in info.schoolArr)
         {
-            NSArray * arr = sc.classesArr;
+            NSArray * arr = sc.classModuleArr;
             
             for (ClassObj * cla in arr)
             {

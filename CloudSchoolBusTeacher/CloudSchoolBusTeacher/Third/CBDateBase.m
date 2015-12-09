@@ -146,24 +146,26 @@
                 {
                     NSLog(@"Json Deserialisation error %@", jsonError.localizedDescription);
                 } else {
-                    NSArray * schoolarr = baseinfoDict[@"schools"];
-                    for (int i = 0; i < schoolarr.count; i++) {
-                        NSDictionary * schooldic = schoolarr[i];
-                        School *school = [[School alloc]initWithSchoolDic:schooldic];
-                        [[[CBLoginInfo shareInstance] schoolArr] addObject:school];
-                    }
+//                    NSArray * schoolarr = baseinfoDict[@"schools"];
+//                    for (int i = 0; i < schoolarr.count; i++) {
+//                        NSDictionary * schooldic = schoolarr[i];
+//                        School *school = [[School alloc]initWithSchoolDic:schooldic];
+//                        [[[CBLoginInfo shareInstance] schoolArr] addObject:school];
+//                    }
+//                    
+//                    NSArray * stuArr = baseinfoDict[@"students"];
+//                    for (int i=0; i<stuArr.count; i++) {
+//                        Student * st = [[Student alloc]initWithDic:stuArr[i]];
+//                        if(i == 0)
+//                        {
+//                            [[CBLoginInfo shareInstance] setCurrentStudentId:st.studentid];
+//                        }
+//                        [[[CBLoginInfo shareInstance] studentArr] addObject:st];
+//                        
+//                        isBaseInfoValid = true;
+//                    }
                     
-                    NSArray * stuArr = baseinfoDict[@"students"];
-                    for (int i=0; i<stuArr.count; i++) {
-                        Student * st = [[Student alloc]initWithDic:stuArr[i]];
-                        if(i == 0)
-                        {
-                            [[CBLoginInfo shareInstance] setCurrentStudentId:st.studentid];
-                        }
-                        [[[CBLoginInfo shareInstance] studentArr] addObject:st];
-                        
-                        isBaseInfoValid = true;
-                    }
+                    isBaseInfoValid = [[CBLoginInfo shareInstance] parseBaseInfo:baseinfoDict];
                     
                     [[CBLoginInfo shareInstance] setHasValidBaseInfo:YES];
                     

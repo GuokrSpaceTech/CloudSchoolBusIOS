@@ -30,6 +30,9 @@ typedef enum {
 @property (nonatomic,copy) NSString * sid;
 @property (nonatomic,strong)NSMutableArray * schoolArr;
 @property (nonatomic,strong)NSMutableArray * studentArr;
+@property (nonatomic,strong)NSMutableArray * classArr;
+@property (nonatomic,strong)NSMutableArray * teacherArr;
+@property (nonatomic,strong)NSMutableArray * parentsArr;
 
 @property (nonatomic,assign)BOOL hasValidBaseInfo;
 @property (nonatomic,assign)BOOL teacherVCIsLoading;
@@ -40,4 +43,5 @@ typedef enum {
 -(void)loginSid:(loginSuccess)block;
 -(void)baseInfoIsExist:(sessionNotOver)block; // 如果session 没有过期 调用获取最新的baseinfo 信息
 -(void)connectRongYun;
+-(BOOL)parseBaseInfo:(NSDictionary *)baseinfo;
 @end

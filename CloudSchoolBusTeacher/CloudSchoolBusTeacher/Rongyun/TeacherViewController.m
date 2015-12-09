@@ -41,7 +41,7 @@ static NSString * cellinentify = @"teachercell";
     // 判断当前学生是哪个学校的
     for (int i = 0; i < info.schoolArr.count; i++) {
         School * school = info.schoolArr[i];
-        NSArray * classarr = school.classesArr;
+        NSArray * classarr = school.classArr;
         for (int j = 0; j < classarr.count; j++) {
             ClassObj * classobj = classarr[j];
             NSArray * studentidArr = classobj.studentidArr;
@@ -74,14 +74,9 @@ static NSString * cellinentify = @"teachercell";
                         {
                             [_tearcherArr addObject:cteacher];
                         }
-                        
                     }
-                    
                 }
             }
-            
-            
-            
         }
     }
     if(_tearcherArr.count != 0)

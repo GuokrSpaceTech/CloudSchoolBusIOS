@@ -15,9 +15,12 @@
     {
         _teacherArr = [[NSMutableArray alloc]init];
         
-        
-        _classid = [NSString stringWithFormat:@"%@",dic[@"classid"]];
+        _classid = dic[@"classid"];
         _className = dic[@"classname"];
+        _schoolid = dic[@"schoolid"];
+        _dutyid = dic[@"dutyid"];
+        _remark = dic[@"remark"];
+        
         _studentidArr = dic[@"student"];
         
         NSArray * arr = dic[@"teacher"];

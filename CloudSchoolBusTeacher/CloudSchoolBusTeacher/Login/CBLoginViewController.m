@@ -13,12 +13,15 @@
 #import "CBLoginInfo.h"
 #import "School.h"
 #import "Student.h"
+#import "Teacher.h"
 #import "Tag.h"
 #import "AppDelegate.h"
 #import "FindCellTopView.h"
 #import "UIColor+RCColor.h"
 #import "KLCPopup.h"
 #import "Reachability.h"
+#import "ClassObj.h"
+#import "Parents.h"
 
 static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
 static const CGFloat MINIMUM_SCROLL_FRACTION = 0.2;
@@ -305,11 +308,27 @@ CGFloat animatedDistance;
                  School * school = [[School alloc]initWithSchoolDic:obj];
                 [info.schoolArr addObject:school];
             }];
-//            for (int i = 0; i < schoolarr.count; i++) {
-//                NSDictionary * schooldic = schoolarr[i];
-//                School * school = [[School alloc]initWithSchoolDic:schooldic];
-//                [info.schoolArr addObject:school];
-//            }
+
+            NSArray *classArr = baseinfo[@"classes"];
+            for(int i=0; i<classArr.count; i++)
+            {
+                ClassObj *classObj = [[ClassObj alloc] initWithClassDic:classArr[i]];
+                [info.classArr addObject:classObj];
+            }
+            
+            NSArray *teacherArr = baseinfo[@"teachers"];
+            for(int i=0; i<teacherArr.count; i++)
+            {
+                Teacher *teacher = [[Teacher alloc] initWithDic:teacherArr[i]];
+                [info.teacherArr addObject:teacher];
+            }
+            
+            NSArray *parentsArr = baseinfo[@"parents"];
+            for(int i=0; i<parentsArr.count; i++)
+            {
+                Parents *parents = [[Parents alloc] initWithParentsDict:parentsArr[i]];
+                [info.parentsArr addObject:parents];
+            }
             
             NSArray * stuArr = baseinfo[@"students"];
             for (int i=0; i<stuArr.count; i++) {

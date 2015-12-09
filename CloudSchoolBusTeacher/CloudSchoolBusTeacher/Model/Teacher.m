@@ -13,9 +13,18 @@
 {
     if(self = [super init])
     {
+        _dutyid = dic[@"dutyid"];
+        _mobile = dic[@"mobile"];
+        _schoolid = dic[@"schoolid"];
+        _nickname = dic[@"nickname"];
         _avatar = dic[@"avatar"];
+        _classes = dic[@"classes"];
+        _teacherid = dic[@"teacherid"];
+        _realname = dic[@"realname"];
         _duty = dic[@"duty"];
-        _teacherid = [NSString stringWithFormat:@"%@",dic[@"id"]];
+        _sex = dic[@"sex"];
+        _pictureid = dic[@"pictureid"];
+        
         _name = dic[@"name"];
     }
     return self;

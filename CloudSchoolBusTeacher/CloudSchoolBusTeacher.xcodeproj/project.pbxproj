@@ -20,6 +20,12 @@
 		2A950C681C040660009D6211 /* NoticeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A950C671C040660009D6211 /* NoticeView.xib */; };
 		2A9745251BFBFA8A008C8A7B /* UIColor+RCColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9745241BFBFA8A008C8A7B /* UIColor+RCColor.m */; };
 		2A9745281BFC3BAB008C8A7B /* PaddingUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9745271BFC3BAB008C8A7B /* PaddingUILabel.m */; };
+		2A9826AB1C1EB121004AA080 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9826A91C1EB121004AA080 /* CommentsViewController.m */; };
+		2A9826AC1C1EB121004AA080 /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A9826AA1C1EB121004AA080 /* CommentsViewController.xib */; };
+		2A9826B01C1EDCEB004AA080 /* TagCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9826AE1C1EDCEB004AA080 /* TagCollectionViewCell.m */; };
+		2A9826B11C1EDCEB004AA080 /* TagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A9826AF1C1EDCEB004AA080 /* TagCollectionViewCell.xib */; };
+		2A9826B51C1EDCFF004AA080 /* StudentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9826B31C1EDCFF004AA080 /* StudentCollectionViewCell.m */; };
+		2A9826B61C1EDCFF004AA080 /* StudentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A9826B41C1EDCFF004AA080 /* StudentCollectionViewCell.xib */; };
 		2AE6E94F1C17C20F00CB9584 /* Parents.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE6E94E1C17C20F00CB9584 /* Parents.m */; };
 		43A7B6B7133E7159766C99EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7299EA4EE1E968A90534B5D /* libPods.a */; };
 		81065BE91BEB019A009CE107 /* CBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81065BE71BEB019A009CE107 /* CBLoginViewController.m */; };
@@ -124,6 +130,15 @@
 		2A9745241BFBFA8A008C8A7B /* UIColor+RCColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RCColor.m"; sourceTree = "<group>"; };
 		2A9745261BFC3BAB008C8A7B /* PaddingUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaddingUILabel.h; path = ../Mine/View/PaddingUILabel.h; sourceTree = "<group>"; };
 		2A9745271BFC3BAB008C8A7B /* PaddingUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaddingUILabel.m; path = ../Mine/View/PaddingUILabel.m; sourceTree = "<group>"; };
+		2A9826A81C1EB121004AA080 /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
+		2A9826A91C1EB121004AA080 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
+		2A9826AA1C1EB121004AA080 /* CommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
+		2A9826AD1C1EDCEB004AA080 /* TagCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCollectionViewCell.h; sourceTree = "<group>"; };
+		2A9826AE1C1EDCEB004AA080 /* TagCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCollectionViewCell.m; sourceTree = "<group>"; };
+		2A9826AF1C1EDCEB004AA080 /* TagCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagCollectionViewCell.xib; sourceTree = "<group>"; };
+		2A9826B21C1EDCFF004AA080 /* StudentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentCollectionViewCell.h; sourceTree = "<group>"; };
+		2A9826B31C1EDCFF004AA080 /* StudentCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentCollectionViewCell.m; sourceTree = "<group>"; };
+		2A9826B41C1EDCFF004AA080 /* StudentCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentCollectionViewCell.xib; sourceTree = "<group>"; };
 		2AE6E94D1C17C20F00CB9584 /* Parents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parents.h; sourceTree = "<group>"; };
 		2AE6E94E1C17C20F00CB9584 /* Parents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parents.m; sourceTree = "<group>"; };
 		81065BE61BEB019A009CE107 /* CBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBLoginViewController.h; path = CloudSchoolBusTeacher/Login/CBLoginViewController.h; sourceTree = SOURCE_ROOT; };
@@ -490,6 +505,9 @@
 				81E8D4C11C1E851C00E09EF2 /* AlbumViewController.m */,
 				81E8D4C81C1E8F7500E09EF2 /* PhotoViewController.h */,
 				81E8D4C91C1E8F7500E09EF2 /* PhotoViewController.m */,
+				2A9826A81C1EB121004AA080 /* CommentsViewController.h */,
+				2A9826A91C1EB121004AA080 /* CommentsViewController.m */,
+				2A9826AA1C1EB121004AA080 /* CommentsViewController.xib */,
 			);
 			path = Find;
 			sourceTree = "<group>";
@@ -519,6 +537,12 @@
 				81E8D4C61C1E8C3300E09EF2 /* AlbumViewCell.m */,
 				81E8D4CD1C1E90BA00E09EF2 /* PhotoViewCell.h */,
 				81E8D4CE1C1E90BA00E09EF2 /* PhotoViewCell.m */,
+				2A9826AD1C1EDCEB004AA080 /* TagCollectionViewCell.h */,
+				2A9826AE1C1EDCEB004AA080 /* TagCollectionViewCell.m */,
+				2A9826AF1C1EDCEB004AA080 /* TagCollectionViewCell.xib */,
+				2A9826B21C1EDCFF004AA080 /* StudentCollectionViewCell.h */,
+				2A9826B31C1EDCFF004AA080 /* StudentCollectionViewCell.m */,
+				2A9826B41C1EDCFF004AA080 /* StudentCollectionViewCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -955,12 +979,15 @@
 			files = (
 				81C6A59B1BE9AD2E00160F2D /* Main.storyboard in Resources */,
 				81C6A5A01BE9AD2E00160F2D /* LaunchScreen.xib in Resources */,
+				2A9826AC1C1EB121004AA080 /* CommentsViewController.xib in Resources */,
 				81C6A59D1BE9AD2E00160F2D /* Images.xcassets in Resources */,
+				2A9826B61C1EDCFF004AA080 /* StudentCollectionViewCell.xib in Resources */,
 				2A25CA3F1C01BD9900C81EE9 /* CBPagedImageViewController.xib in Resources */,
 				2A950C681C040660009D6211 /* NoticeView.xib in Resources */,
 				FAFFBE281C09AEC600B17F3E /* AttendanceView.xib in Resources */,
 				81065BEA1BEB019A009CE107 /* CBLoginViewController.xib in Resources */,
 				81D48C641BF5BB1100146AA6 /* CBMineViewController.xib in Resources */,
+				2A9826B11C1EDCEB004AA080 /* TagCollectionViewCell.xib in Resources */,
 				FA5FAFB91C0555C20046051B /* URLLinkView.xib in Resources */,
 				2A25CA441C03589F00C81EE9 /* ClassifyTableViewCell.xib in Resources */,
 			);
@@ -1032,6 +1059,7 @@
 				2A950C661C04063E009D6211 /* NoticeView.m in Sources */,
 				81D4051D1BF069BB00B5A176 /* CBHobbyViewController.m in Sources */,
 				81BECE491BFC4465006DAA8D /* CBChatViewController.m in Sources */,
+				2A9826AB1C1EB121004AA080 /* CommentsViewController.m in Sources */,
 				2A4C2D961C102F3A0062AB68 /* CMPopTipView.m in Sources */,
 				81E8D4CF1C1E90BA00E09EF2 /* PhotoViewCell.m in Sources */,
 				FA5FAFB71C0555780046051B /* URLLinkView.m in Sources */,
@@ -1054,6 +1082,7 @@
 				812A8BF41BF2FD42009CE43E /* CBTeacherTableViewCell.m in Sources */,
 				81BECE571BFC5E80006DAA8D /* RYMessage.m in Sources */,
 				81BECE451BFC1747006DAA8D /* ClassifyViewController.m in Sources */,
+				2A9826B51C1EDCFF004AA080 /* StudentCollectionViewCell.m in Sources */,
 				81D405141BF04A8200B5A176 /* Teacher.m in Sources */,
 				81065C121BEB3977009CE107 /* SVHTTPRequest.m in Sources */,
 				816C9C1A1C1E9D20008AA22F /* Photo.m in Sources */,
@@ -1076,6 +1105,7 @@
 				81D4050E1BF049CB00B5A176 /* School.m in Sources */,
 				81BECE5A1BFC619E006DAA8D /* MessageState.m in Sources */,
 				81E32B581BF49C4100EA3D7A /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
+				2A9826B01C1EDCEB004AA080 /* TagCollectionViewCell.m in Sources */,
 				F95025501BF0E952009C970A /* Tag.m in Sources */,
 				812A8BE91BF2D395009CE43E /* Message.m in Sources */,
 				81BECE4C1BFC4908006DAA8D /* BaseNavigationController.m in Sources */,

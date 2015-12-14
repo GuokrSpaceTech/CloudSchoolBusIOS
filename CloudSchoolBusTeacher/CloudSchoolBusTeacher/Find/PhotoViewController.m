@@ -9,9 +9,14 @@
 #import "PhotoViewController.h"
 #import "PhotoViewCell.h"
 #import "Photo.h"
+#import "CommentsViewController.h"
+#import "CBLoginInfo.h"
+#import "School.h"
+
 @interface PhotoViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 {
     UICollectionView * _mCollectionView;
+    NSMutableArray *photoSelection;
 }
 @end
 
@@ -19,8 +24,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    //Cameral Button
+    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [nextButton setBackgroundImage:[UIImage imageNamed:@"ic_list_white"] forState:UIControlStateNormal];
+    nextButton.frame = CGRectMake(0, 0, 30, 30);
+    [nextButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [nextButton addTarget:self action:@selector(nextButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem * nextItem = [[UIBarButtonItem alloc]initWithCustomView:nextButton];
+    self.navigationItem.rightBarButtonItem = nextItem;
+    
     _list = [[NSMutableArray alloc]init];
+    photoSelection = [[NSMutableArray alloc]init];
     
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     flowLayout.minimumInteritemSpacing = 0;
@@ -57,7 +72,6 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return [_list count];
-    
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -101,6 +115,14 @@
     Photo * photo = _list[indexPath.row];
    
     photo.isSelected = !photo.isSelected;
+   
+    if(photo.isSelected)
+    {
+        [photoSelection addObject:photo];
+    } else {
+        [photoSelection removeObject:photo];
+    }
+    
     [_mCollectionView reloadData];
 }
 
@@ -118,5 +140,17 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(void)nextButtonClick:(id)sender
+{
+    CommentsViewController *commentsVC = [[CommentsViewController alloc]initWithNibName:@"CommentsViewController" bundle:nil];
+
+    School *school = [[[CBLoginInfo shareInstance] schoolArr] objectAtIndex:0];
+    commentsVC.tagArray = school.tags;
+    commentsVC.pictureArray = photoSelection;
+    commentsVC.studentArray = [[CBLoginInfo shareInstance] studentArr];
+    
+    [self.navigationController pushViewController:commentsVC animated:YES];
+}
 
 @end

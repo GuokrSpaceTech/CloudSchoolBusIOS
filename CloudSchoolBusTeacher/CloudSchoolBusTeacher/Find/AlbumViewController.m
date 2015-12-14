@@ -20,6 +20,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    //Cameral Button
+    UIButton * nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [nextButton setBackgroundImage:[UIImage imageNamed:@"ic_list_white"] forState:UIControlStateNormal];
+    nextButton.frame = CGRectMake(0, 0, 30, 30);
+    [nextButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [nextButton addTarget:self action:@selector(camButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem * nextItem = [[UIBarButtonItem alloc]initWithCustomView:nextButton];
+    self.navigationItem.rightBarButtonItem = nextItem;
+    
     _listArr = [[NSMutableArray alloc]init];
     // Do any additional setup after loading the view.
     _assetsLibrary = [[ALAssetsLibrary alloc]init];
@@ -82,5 +93,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark
+#pragma mark == User Action
+-(void)nextButton:(id)sender
+{
+    
+}
 
 @end

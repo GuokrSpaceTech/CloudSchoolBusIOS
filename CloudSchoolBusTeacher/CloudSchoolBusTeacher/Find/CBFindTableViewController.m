@@ -12,6 +12,7 @@
 #import "Message.h"
 #import "FindNoticeTableViewCell.h"
 #import "UITableView+FDTemplateLayoutCell.h"
+#import "AlbumViewController.h"
 #import "CBPagedImageViewController.h"
 #import "FPPopoverController.h"
 #import "UIColor+RCColor.h"
@@ -70,7 +71,16 @@ static NSString * cellidenty = @"listcell";
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(filterButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithCustomView:btn];
-    self.navigationItem.rightBarButtonItem = item;
+    self.navigationItem.leftBarButtonItem = item;
+    
+    //Cameral Button
+    UIButton * camButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [camButton setBackgroundImage:[UIImage imageNamed:@"ic_list_white"] forState:UIControlStateNormal];
+    camButton.frame = CGRectMake(0, 0, 30, 30);
+    [camButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [camButton addTarget:self action:@selector(camButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem * camItem = [[UIBarButtonItem alloc]initWithCustomView:camButton];
+    self.navigationItem.rightBarButtonItem = camItem;
     
     //Check if we have logged in
     [[CBLoginInfo shareInstance] baseInfoIsExist:^(BOOL isExist) {
@@ -420,7 +430,13 @@ static NSString * cellidenty = @"listcell";
     popover.border = NO;
     popover.tint = FPPopoverWhiteTint;
     popover.contentSize = CGSizeMake(150, 270);
-    [popover presentPopoverFromPoint:CGPointMake(self.view.frame.size.width - 20, 20)];
+    [popover presentPopoverFromPoint:CGPointMake(20, 20)];
+}
+
+-(void)camButtonClick:(id)sender
+{
+    AlbumViewController *albumVC = [[AlbumViewController alloc]init];
+    [self.navigationController pushViewController:albumVC animated:YES];
 }
 
 -(void)selectedTableRow:(NSUInteger)rowNum

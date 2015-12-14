@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="StudentCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="60" height="110"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="60" height="110"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X2e-5E-c1Z">
+                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="X2e-5E-c1Z" secondAttribute="height" multiplier="1:1" id="aKs-CZ-Oml"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkN-v1-4dN">
+                        <rect key="frame" x="0.0" y="64" width="60" height="46"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="X2e-5E-c1Z" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="8rr-H8-zys"/>
+                <constraint firstItem="tkN-v1-4dN" firstAttribute="leading" secondItem="X2e-5E-c1Z" secondAttribute="leading" id="Ail-gM-Emq"/>
+                <constraint firstItem="tkN-v1-4dN" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="Gfw-Y9-sRh"/>
+                <constraint firstAttribute="bottom" secondItem="tkN-v1-4dN" secondAttribute="bottom" id="aP6-23-XX1"/>
+                <constraint firstItem="X2e-5E-c1Z" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ihm-2V-7fe"/>
+                <constraint firstItem="tkN-v1-4dN" firstAttribute="top" secondItem="X2e-5E-c1Z" secondAttribute="bottom" constant="4" id="kaT-xE-xGh"/>
+                <constraint firstItem="X2e-5E-c1Z" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="x9t-eu-8NW"/>
+            </constraints>
+            <size key="customSize" width="60" height="110"/>
+            <connections>
+                <outlet property="avatarImageView" destination="X2e-5E-c1Z" id="YCQ-v2-zf2"/>
+                <outlet property="studentNameLabel" destination="tkN-v1-4dN" id="Ln1-L5-OyT"/>
+            </connections>
+            <point key="canvasLocation" x="145" y="488"/>
+        </collectionViewCell>
+    </objects>
+</document>

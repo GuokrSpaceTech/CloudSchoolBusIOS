@@ -219,7 +219,7 @@ CGFloat animatedDistance;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
     
     //Change the host name here to change the server you want to monitor.
-    NSString *remoteHostName = @"api36.yunxiaoche.com";
+    NSString *remoteHostName = @"www.yunxiaoche.com";
     
     self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
     [self.hostReachability startNotifier];

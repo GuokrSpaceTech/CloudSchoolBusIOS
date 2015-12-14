@@ -48,6 +48,7 @@
 		816446E61BF97BDB00A34D00 /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 816446E11BF97BDB00A34D00 /* FPPopoverController.m */; };
 		816446E71BF97BDB00A34D00 /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 816446E31BF97BDB00A34D00 /* FPPopoverView.m */; };
 		816446E81BF97BDB00A34D00 /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 816446E51BF97BDB00A34D00 /* FPTouchView.m */; };
+		816C9C1A1C1E9D20008AA22F /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 816C9C191C1E9D20008AA22F /* Photo.m */; };
 		81BECE451BFC1747006DAA8D /* ClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BECE441BFC1747006DAA8D /* ClassifyViewController.m */; };
 		81BECE491BFC4465006DAA8D /* CBChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BECE481BFC4465006DAA8D /* CBChatViewController.m */; };
 		81BECE4C1BFC4908006DAA8D /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BECE4B1BFC4908006DAA8D /* BaseNavigationController.m */; };
@@ -76,6 +77,11 @@
 		81E32B561BF49C4100EA3D7A /* UITableView+FDKeyedHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E32B501BF49C4100EA3D7A /* UITableView+FDKeyedHeightCache.m */; };
 		81E32B571BF49C4100EA3D7A /* UITableView+FDTemplateLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E32B521BF49C4100EA3D7A /* UITableView+FDTemplateLayoutCell.m */; };
 		81E32B581BF49C4100EA3D7A /* UITableView+FDTemplateLayoutCellDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E32B541BF49C4100EA3D7A /* UITableView+FDTemplateLayoutCellDebug.m */; };
+		81E8D4C21C1E851C00E09EF2 /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E8D4C11C1E851C00E09EF2 /* AlbumViewController.m */; };
+		81E8D4C41C1E85DD00E09EF2 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81E8D4C31C1E85DD00E09EF2 /* Photos.framework */; };
+		81E8D4C71C1E8C3300E09EF2 /* AlbumViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E8D4C61C1E8C3300E09EF2 /* AlbumViewCell.m */; };
+		81E8D4CB1C1E8F7500E09EF2 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E8D4C91C1E8F7500E09EF2 /* PhotoViewController.m */; };
+		81E8D4CF1C1E90BA00E09EF2 /* PhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E8D4CE1C1E90BA00E09EF2 /* PhotoViewCell.m */; };
 		F92FA3481BF4EFE500E76A17 /* Calculate.m in Sources */ = {isa = PBXBuildFile; fileRef = F92FA3471BF4EFE500E76A17 /* Calculate.m */; };
 		F95025501BF0E952009C970A /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = F950254F1BF0E952009C970A /* Tag.m */; };
 		FA5FAFB71C0555780046051B /* URLLinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5FAFB61C0555780046051B /* URLLinkView.m */; };
@@ -252,6 +258,8 @@
 		816446E31BF97BDB00A34D00 /* FPPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverView.m; sourceTree = "<group>"; };
 		816446E41BF97BDB00A34D00 /* FPTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTouchView.h; sourceTree = "<group>"; };
 		816446E51BF97BDB00A34D00 /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
+		816C9C181C1E9D20008AA22F /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		816C9C191C1E9D20008AA22F /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		81BECE431BFC1747006DAA8D /* ClassifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyViewController.h; sourceTree = "<group>"; };
 		81BECE441BFC1747006DAA8D /* ClassifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyViewController.m; sourceTree = "<group>"; };
 		81BECE471BFC4465006DAA8D /* CBChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBChatViewController.h; sourceTree = "<group>"; };
@@ -304,6 +312,15 @@
 		81E32B521BF49C4100EA3D7A /* UITableView+FDTemplateLayoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDTemplateLayoutCell.m"; sourceTree = "<group>"; };
 		81E32B531BF49C4100EA3D7A /* UITableView+FDTemplateLayoutCellDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDTemplateLayoutCellDebug.h"; sourceTree = "<group>"; };
 		81E32B541BF49C4100EA3D7A /* UITableView+FDTemplateLayoutCellDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDTemplateLayoutCellDebug.m"; sourceTree = "<group>"; };
+		81E8D4C01C1E851C00E09EF2 /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
+		81E8D4C11C1E851C00E09EF2 /* AlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumViewController.m; sourceTree = "<group>"; };
+		81E8D4C31C1E85DD00E09EF2 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		81E8D4C51C1E8C3300E09EF2 /* AlbumViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewCell.h; sourceTree = "<group>"; };
+		81E8D4C61C1E8C3300E09EF2 /* AlbumViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumViewCell.m; sourceTree = "<group>"; };
+		81E8D4C81C1E8F7500E09EF2 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		81E8D4C91C1E8F7500E09EF2 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		81E8D4CD1C1E90BA00E09EF2 /* PhotoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewCell.h; sourceTree = "<group>"; };
+		81E8D4CE1C1E90BA00E09EF2 /* PhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewCell.m; sourceTree = "<group>"; };
 		DD86123FC4F9EED1F181A423 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E7299EA4EE1E968A90534B5D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F92FA3461BF4EFE400E76A17 /* Calculate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculate.h; sourceTree = "<group>"; };
@@ -323,6 +340,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81E8D4C41C1E85DD00E09EF2 /* Photos.framework in Frameworks */,
 				2A4C2D981C1089F40062AB68 /* SystemConfiguration.framework in Frameworks */,
 				81C8A4D41C02EBE700F37C08 /* WebKit.framework in Frameworks */,
 				81D431D91BFB072D0089239A /* libiconv.dylib in Frameworks */,
@@ -370,6 +388,7 @@
 		379435B51CA828ADA6C83917 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81E8D4C31C1E85DD00E09EF2 /* Photos.framework */,
 				2A4C2D971C1089F40062AB68 /* SystemConfiguration.framework */,
 				81C8A4D31C02EBE700F37C08 /* WebKit.framework */,
 				81D431D81BFB072D0089239A /* libiconv.dylib */,
@@ -467,6 +486,10 @@
 				2A25CA3B1C01BD9900C81EE9 /* CBPagedImageViewController.h */,
 				2A25CA3C1C01BD9900C81EE9 /* CBPagedImageViewController.m */,
 				2A25CA3D1C01BD9900C81EE9 /* CBPagedImageViewController.xib */,
+				81E8D4C01C1E851C00E09EF2 /* AlbumViewController.h */,
+				81E8D4C11C1E851C00E09EF2 /* AlbumViewController.m */,
+				81E8D4C81C1E8F7500E09EF2 /* PhotoViewController.h */,
+				81E8D4C91C1E8F7500E09EF2 /* PhotoViewController.m */,
 			);
 			path = Find;
 			sourceTree = "<group>";
@@ -492,6 +515,10 @@
 				FAFFBE291C09B24700B17F3E /* AttendanceView.h */,
 				FAFFBE2A1C09B24700B17F3E /* AttendanceView.m */,
 				FAFFBE271C09AEC600B17F3E /* AttendanceView.xib */,
+				81E8D4C51C1E8C3300E09EF2 /* AlbumViewCell.h */,
+				81E8D4C61C1E8C3300E09EF2 /* AlbumViewCell.m */,
+				81E8D4CD1C1E90BA00E09EF2 /* PhotoViewCell.h */,
+				81E8D4CE1C1E90BA00E09EF2 /* PhotoViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -790,6 +817,8 @@
 				2A26236C1C16D0FE005683FA /* ClassModule.m */,
 				2AE6E94D1C17C20F00CB9584 /* Parents.h */,
 				2AE6E94E1C17C20F00CB9584 /* Parents.m */,
+				816C9C181C1E9D20008AA22F /* Photo.h */,
+				816C9C191C1E9D20008AA22F /* Photo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1004,6 +1033,7 @@
 				81D4051D1BF069BB00B5A176 /* CBHobbyViewController.m in Sources */,
 				81BECE491BFC4465006DAA8D /* CBChatViewController.m in Sources */,
 				2A4C2D961C102F3A0062AB68 /* CMPopTipView.m in Sources */,
+				81E8D4CF1C1E90BA00E09EF2 /* PhotoViewCell.m in Sources */,
 				FA5FAFB71C0555780046051B /* URLLinkView.m in Sources */,
 				816446E81BF97BDB00A34D00 /* FPTouchView.m in Sources */,
 				2A09F5261BFF108800B7BB72 /* AriticleView.m in Sources */,
@@ -1017,19 +1047,23 @@
 				2A9745281BFC3BAB008C8A7B /* PaddingUILabel.m in Sources */,
 				2A4C2D9B1C11682B0062AB68 /* Reachability.m in Sources */,
 				2A25CA431C03589F00C81EE9 /* ClassifyTableViewCell.m in Sources */,
+				81E8D4C71C1E8C3300E09EF2 /* AlbumViewCell.m in Sources */,
 				81D48C681BF5BB5000146AA6 /* MineHeaderView.m in Sources */,
 				816446E61BF97BDB00A34D00 /* FPPopoverController.m in Sources */,
+				81E8D4C21C1E851C00E09EF2 /* AlbumViewController.m in Sources */,
 				812A8BF41BF2FD42009CE43E /* CBTeacherTableViewCell.m in Sources */,
 				81BECE571BFC5E80006DAA8D /* RYMessage.m in Sources */,
 				81BECE451BFC1747006DAA8D /* ClassifyViewController.m in Sources */,
 				81D405141BF04A8200B5A176 /* Teacher.m in Sources */,
 				81065C121BEB3977009CE107 /* SVHTTPRequest.m in Sources */,
+				816C9C1A1C1E9D20008AA22F /* Photo.m in Sources */,
 				81065C151BEB4327009CE107 /* CBDateBase.m in Sources */,
 				81BECE5D1BFC6E77006DAA8D /* RedPointView.m in Sources */,
 				81D48C631BF5BB1100146AA6 /* CBMineViewController.m in Sources */,
 				81E32B561BF49C4100EA3D7A /* UITableView+FDKeyedHeightCache.m in Sources */,
 				81D405111BF049E500B5A176 /* ClassObj.m in Sources */,
 				812A8BF81BF304B3009CE43E /* CBFindTableViewController.m in Sources */,
+				81E8D4CB1C1E8F7500E09EF2 /* PhotoViewController.m in Sources */,
 				81065C111BEB3977009CE107 /* SVHTTPClient.m in Sources */,
 				81D405171BF04AD300B5A176 /* Student.m in Sources */,
 				2A9745251BFBFA8A008C8A7B /* UIColor+RCColor.m in Sources */,

@@ -11,12 +11,19 @@
 #import "StudentCollectionViewCell.h"
 #import "TagCollectionViewCell.h"
 #import "UIImageView+WebCache.h"
+#import "CBLoginInfo.h"
 #import "Student.h"
 #import "Tag.h"
 #import "Photo.h"
+#import "UploadRecord.h"
 
 @interface CommentsViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
-
+{
+    NSString *comments;
+    NSMutableArray *studentsSelection;
+    NSMutableArray *tagsSelection;
+}
+-(NSString *)timeStamp;
 @end
 
 @implementation CommentsViewController
@@ -35,6 +42,14 @@
     [_studentCollectionView registerNib:[UINib nibWithNibName:@"StudentCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"cellstudent"];
     [_tagCollectionView registerNib:[UINib nibWithNibName:@"TagCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"celltag"];
     [_pictureCollectionView registerClass:[PhotoViewCell class] forCellWithReuseIdentifier:@"cellpicture"];
+    
+    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [nextButton setBackgroundImage:[UIImage imageNamed:@"ic_list_white"] forState:UIControlStateNormal];
+    nextButton.frame = CGRectMake(0, 0, 30, 30);
+    [nextButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [nextButton addTarget:self action:@selector(nextButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem * nextItem = [[UIBarButtonItem alloc]initWithCustomView:nextButton];
+    self.navigationItem.rightBarButtonItem = nextItem;
 
 }
 
@@ -43,6 +58,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark
+#pragma mark == Collection View Datasource and Delegate
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
@@ -123,4 +140,76 @@
 {
 }
 
+#pragma mark
+#pragma mark == User Actions
+-(void)nextButtonClick:(id)sender
+{
+    NSString *studentids = @"";
+    int i = 0;
+    for(Student *student in studentsSelection)
+    {
+        [studentids stringByAppendingString:student.studentid];
+        if(i<(studentsSelection.count-1))
+        {
+            [studentids stringByAppendingString:@","];
+        }
+        i++;
+    }
+    
+    i = 0;
+    NSString *tagids = @"";
+    for(Tag *tag in tagsSelection)
+    {
+        [tagids stringByAppendingString:tag.tagid];
+        if(i<(tagsSelection.count-1))
+        {
+            [tagids stringByAppendingString:@","];
+        }
+        i++;
+    }
+    
+    for(Photo *photo in _pictureArray)
+    {
+        NSString *pickey = [NSString stringWithFormat:@"%@%@", [self timeStamp], [[CBLoginInfo shareInstance] userid] ];
+        NSString *pictype = @"article";
+        NSString *classid = [[[[CBLoginInfo shareInstance] classArr] objectAtIndex: 0] classid];
+        NSString *fbody = [photo.asset valueForProperty:ALAssetPropertyAssetURL];
+//        ALAssetsLibrary * library = [[ALAssetsLibrary alloc] init];
+//        [library assetForURL:assetURL resultBlock:^(ALAsset *asset )
+        NSString *teacherid = [[CBLoginInfo shareInstance] userid];
+        ALAssetRepresentation *rep = [photo.asset defaultRepresentation];
+        NSString *fname = [rep filename];
+        
+        NSDate* date = [photo.asset valueForProperty:ALAssetPropertyDate];
+        NSString *ftime = [NSString stringWithFormat:@"%d", (int)[date timeIntervalSince1970]];
+        NSString *status = @"2"; //0,fail, 1,success, 2,waiting 3,uploading
+        NSString *content = _commentTextView.text;
+        
+        //Write to DB
+        UploadRecord *uploadRecord = [[UploadRecord alloc] init];
+        uploadRecord.pickey = pickey;
+        uploadRecord.pictype = pictype;
+        uploadRecord.classid = classid;
+        uploadRecord.fbody = fbody;
+        uploadRecord.teacherid = teacherid;
+        uploadRecord.fname = fname;
+        uploadRecord.ftime = ftime;
+        uploadRecord.status = status;
+        uploadRecord.content = content;
+        uploadRecord.studentids = studentids;
+        uploadRecord.tagids = tagids;
+    }
+    
+    //Open Up GCD Upload
+}
+
+- (NSString *) timeStamp
+{
+    return [NSString stringWithFormat:@"%d",(int)[[NSDate date] timeIntervalSince1970]];
+}
+
+-(void)upload
+{
+    
+}
 @end

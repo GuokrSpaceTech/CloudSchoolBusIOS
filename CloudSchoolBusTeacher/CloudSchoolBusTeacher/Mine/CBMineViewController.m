@@ -83,7 +83,7 @@
     Student * student = nil;
     
     for (Student *st in info.studentArr) {
-        if([st.studentid isEqualToString:info.currentStudentId])
+        if([st.studentid isEqualToString:info.currentClassId])
         {
             student = st;
             break;
@@ -101,7 +101,7 @@
             
             for (ClassObj * cla in arr)
             {
-                if([cla.studentidArr containsObject:info.currentStudentId])
+                if([cla.studentidArr containsObject:info.currentClassId])
                 {
                     schoolname = [NSString stringWithFormat:@"%@",sc.name];
                 }
@@ -296,9 +296,9 @@
     CBLoginInfo * info = [CBLoginInfo shareInstance];
     
     Student *student = info.studentArr[i];
-    info.currentStudentId = [student studentid];
+    info.currentClassId = [student studentid];
     
-    [self postChildSwitchNotification:info.currentStudentId];
+    [self postChildSwitchNotification:info.currentClassId];
     
     [headeView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:student.avatar] placeholderImage:nil];
     
@@ -346,7 +346,7 @@
     
     NSData *baseString = UIImageJPEGRepresentation(image, 0.8);
     
-    NSString *studentid = [[CBLoginInfo shareInstance] currentStudentId];
+    NSString *studentid = [[CBLoginInfo shareInstance] currentClassId];
     
     NSDictionary *paramDict = @{@"studentid":studentid, @"fbody":baseString};
     
@@ -378,7 +378,7 @@
             for (int i=0; i<[studentArray count]; i++) {
                 
                 Student *student = studentArray[i];
-                NSString *current = [[CBLoginInfo shareInstance] currentStudentId];
+                NSString *current = [[CBLoginInfo shareInstance] currentClassId];
                 if([[student studentid] isEqualToString:current])
                 {
                     [student setAvatar:filePath];

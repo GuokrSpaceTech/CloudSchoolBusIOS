@@ -89,7 +89,7 @@ static NSString * cellidenty = @"listcell";
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 
                 apptype = @"All";
-                studentid = [[CBLoginInfo shareInstance] currentStudentId];
+                studentid = [[CBLoginInfo shareInstance] currentClassId];
                 lastestMessageIdInLocalDB = 0;
                 
                 //先从数据库里读出消息

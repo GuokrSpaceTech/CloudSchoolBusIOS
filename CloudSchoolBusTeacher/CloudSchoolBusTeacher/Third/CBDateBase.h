@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FMDB.h"
 #import "CBLoginInfo.h"
+#import "UploadRecord.h"
 @interface CBDateBase : NSObject
 {
     FMDatabaseQueue *queue;
@@ -34,6 +35,10 @@
 -(void)fetchMessagesFromDBwithType:(NSString *)apptype forStudent:(NSString *)studentid belowMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
 
 -(void)initMessageQueueWithType:(NSString *)apptype withStudentId:(NSString *)studentid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
+
+-(void)countUnsentRecordsWithPickkey:(NSString *)pickey completion:(void (^)(int))handles;
+-(void)fetchUploadRecord:(void (^)(UploadRecord *))postQueryHandle;
+-(void)insertRecordToUploadQueue:(UploadRecord *)record;
 
 -(void)clearTable;
 @end

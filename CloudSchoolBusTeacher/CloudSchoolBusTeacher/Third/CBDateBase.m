@@ -46,6 +46,8 @@
         sqlStr = @"CREATE TABLE IF NOT EXISTS senderTbl('senderid' INT NOT NULL PRIMARY KEY, 'classname' text, 'name' text, 'role' text, 'avatar' text);";
         [db executeUpdate:sqlStr];
         
+        sqlStr = @"CREATE TABLE IF NOT EXISTS uploadRecordTbl('pickey' text NOT NULL PRIMARY KEY, 'pictype' text, 'classid' text, 'fbody' text, 'teacherid' text, 'fname' text, 'ftime' text, 'status' text, 'content' text, 'studentids' text, 'tagids' text);";
+        [db executeUpdate:sqlStr];
     }];
 }
 
@@ -146,24 +148,6 @@
                 {
                     NSLog(@"Json Deserialisation error %@", jsonError.localizedDescription);
                 } else {
-//                    NSArray * schoolarr = baseinfoDict[@"schools"];
-//                    for (int i = 0; i < schoolarr.count; i++) {
-//                        NSDictionary * schooldic = schoolarr[i];
-//                        School *school = [[School alloc]initWithSchoolDic:schooldic];
-//                        [[[CBLoginInfo shareInstance] schoolArr] addObject:school];
-//                    }
-//                    
-//                    NSArray * stuArr = baseinfoDict[@"students"];
-//                    for (int i=0; i<stuArr.count; i++) {
-//                        Student * st = [[Student alloc]initWithDic:stuArr[i]];
-//                        if(i == 0)
-//                        {
-//                            [[CBLoginInfo shareInstance] setCurrentStudentId:st.studentid];
-//                        }
-//                        [[[CBLoginInfo shareInstance] studentArr] addObject:st];
-//                        
-//                        isBaseInfoValid = true;
-//                    }
                     
                     isBaseInfoValid = [[CBLoginInfo shareInstance] parseBaseInfo:baseinfoDict];
                     
@@ -180,6 +164,47 @@
             [[EKRequest Instance] EKHTTPRequest:baseinfo  parameters:nil requestMethod:POST forDelegate:[CBLoginInfo shareInstance]];
         }
         
+    }];
+}
+
+-(void)insertRecordToUploadQueue:(UploadRecord *)record
+{
+    
+    [queue inDatabase:^(FMDatabase *db) {
+        [db executeUpdate:@"delete from uploadRecordTbl"];
+        [db executeUpdate:@"insert into uploadRecordTbl(pickey, pictype, classid, fbody, teacherid, fname, ftime, status, content, studentids, tagids) values(?,?,?,?,?,?,?,?,?,?,?)", record.pickey, record.pictype, record.classid, record.fbody,record.teacherid, record.fname,record.ftime, record.status,record.content, record.studentids,record.tagids];
+    }];
+}
+-(void)fetchUploadRecord:(void (^)(UploadRecord *))postQueryHandle
+{
+    [queue inDatabase:^(FMDatabase *db) {
+        NSString *query = [NSString stringWithFormat:@"SELECT * FROM uploadRecordTbl WHERE status = '%@' OR status = '%@' LIMIT 1", @"0", @"2" ];
+        __block UploadRecord *record = [[UploadRecord alloc]init];
+        FMResultSet *result = [db executeQuery:query];
+        while([result next])
+        {
+            record.pickey = [result stringForColumn:@"pickkey"];
+            record.pictype = [result stringForColumn:@"pictype"];
+            record.classid = [result stringForColumn:@"classid"];
+            record.fbody = [result stringForColumn:@"fbody"];
+            record.teacherid = [result stringForColumn:@"teacherid"];
+            record.fname = [result stringForColumn:@"fname"];
+            record.ftime = [result stringForColumn:@"ftime"];
+            record.status = [result stringForColumn:@"status"];
+            record.content = [result stringForColumn:@"content"];
+            record.studentids = [result stringForColumn:@"studentids"];
+            record.tagids = [result stringForColumn:@"tagids"];
+            
+            postQueryHandle(record);
+        }
+    }];
+}
+-(void)countUnsentRecordsWithPickkey:(NSString *)pickey completion:(void (^)(int))handles
+{
+    [queue inDatabase:^(FMDatabase *db) {
+        NSString *query = [NSString stringWithFormat:@"SELECT count(*) FROM uploadRecordTbl WHERE status <> '%@' AND pickkey = '%@'", @"1", pickey];
+        int result = [db intForQuery:query];
+        handles(result);
     }];
 }
 

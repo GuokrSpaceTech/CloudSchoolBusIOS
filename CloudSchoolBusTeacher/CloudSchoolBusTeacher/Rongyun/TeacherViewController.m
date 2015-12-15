@@ -48,7 +48,7 @@ static NSString * cellinentify = @"teachercell";
             
             for (int z =0; z < studentidArr.count; z++) {
                 NSString * studentid = studentidArr[z];
-                if([studentid intValue] == [info.currentStudentId intValue])
+                if([studentid intValue] == [info.currentClassId intValue])
                 {
                     //当前用户
                     NSArray * teacherArr =  classobj.teacherArr;

@@ -71,7 +71,7 @@ static CBLoginInfo * logininfo = nil;
         Student * st = [[Student alloc]initWithDic:stuArr[i]];
         if(i == 0)
         {
-            self.currentStudentId = st.studentid;
+            self.currentClassId = st.studentid;
         }
         [self.studentArr addObject:st];
     }
@@ -154,7 +154,7 @@ static CBLoginInfo * logininfo = nil;
                 Student * st = [[Student alloc]initWithDic:stuArr[i]];
                 if(i == 0)
                 {
-                    _currentStudentId = st.studentid;
+                    _currentClassId = st.studentid;
                 }
                 [_studentArr addObject:st];
             }

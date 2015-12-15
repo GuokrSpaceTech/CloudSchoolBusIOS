@@ -335,7 +335,7 @@ CGFloat animatedDistance;
                 Student * st = [[Student alloc]initWithDic:stuArr[i]];
                 if(i == 0)
                 {
-                    info.currentStudentId = st.studentid;
+                    info.currentClassId = st.studentid;
                 }
                 [info.studentArr addObject:st];
             }

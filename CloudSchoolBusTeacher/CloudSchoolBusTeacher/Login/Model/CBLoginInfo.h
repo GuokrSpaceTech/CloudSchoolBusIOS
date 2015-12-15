@@ -19,7 +19,7 @@ typedef enum {
 {
     
 }
-@property (nonatomic,strong)NSString * currentStudentId; // 当前孩子id
+@property (nonatomic,strong)NSString * currentClassId; //
 @property (nonatomic,copy) loginSuccess successBlock;
 @property (nonatomic,copy) sessionNotOver baseInfoBlock;
 @property (nonatomic,assign)LoginState state;

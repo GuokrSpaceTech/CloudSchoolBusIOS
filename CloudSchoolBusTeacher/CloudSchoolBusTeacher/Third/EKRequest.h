@@ -17,9 +17,9 @@ enum RequestFunction
     baseinfo,
     getmessage,
     uploadAvatar,
-    confirm
-
-    
+    confirm,
+    UPLOAD,
+    UPLOADOVER,
 };
 typedef NSUInteger RequestFunction;
 

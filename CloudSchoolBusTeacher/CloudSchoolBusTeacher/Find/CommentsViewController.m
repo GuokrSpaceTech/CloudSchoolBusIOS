@@ -10,12 +10,14 @@
 #import "PhotoViewCell.h"
 #import "StudentCollectionViewCell.h"
 #import "TagCollectionViewCell.h"
+#import "CBDateBase.h"
 #import "UIImageView+WebCache.h"
 #import "CBLoginInfo.h"
 #import "Student.h"
 #import "Tag.h"
 #import "Photo.h"
 #import "UploadRecord.h"
+#import "UploadWrapper.h"
 
 @interface CommentsViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
 {
@@ -50,6 +52,9 @@
     [nextButton addTarget:self action:@selector(nextButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * nextItem = [[UIBarButtonItem alloc]initWithCustomView:nextButton];
     self.navigationItem.rightBarButtonItem = nextItem;
+    
+    tagsSelection = [[NSMutableArray alloc]init];
+    studentsSelection = [[NSMutableArray alloc]init];
 
 }
 
@@ -138,6 +143,10 @@
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(collectionView == _studentCollectionView)
+    {
+        [studentsSelection addObject:_studentArray[indexPath.row]];
+    }
 }
 
 #pragma mark
@@ -148,10 +157,10 @@
     int i = 0;
     for(Student *student in studentsSelection)
     {
-        [studentids stringByAppendingString:student.studentid];
+        studentids = [studentids stringByAppendingString:student.studentid];
         if(i<(studentsSelection.count-1))
         {
-            [studentids stringByAppendingString:@","];
+            studentids = [studentids stringByAppendingString:@","];
         }
         i++;
     }
@@ -160,10 +169,10 @@
     NSString *tagids = @"";
     for(Tag *tag in tagsSelection)
     {
-        [tagids stringByAppendingString:tag.tagid];
+        tagids = [tagids stringByAppendingString:tag.tagid];
         if(i<(tagsSelection.count-1))
         {
-            [tagids stringByAppendingString:@","];
+            tagids = [tagids stringByAppendingString:@","];
         }
         i++;
     }
@@ -198,18 +207,18 @@
         uploadRecord.content = content;
         uploadRecord.studentids = studentids;
         uploadRecord.tagids = tagids;
+        
+        [[CBDateBase sharedDatabase] insertRecordToUploadQueue:uploadRecord];
     }
     
     //Open Up GCD Upload
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [[UploadWrapper shareInstance] uploadFile];
+    });
 }
 
 - (NSString *) timeStamp
 {
     return [NSString stringWithFormat:@"%d",(int)[[NSDate date] timeIntervalSince1970]];
-}
-
--(void)upload
-{
-    
 }
 @end

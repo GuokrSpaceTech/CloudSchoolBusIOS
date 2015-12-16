@@ -39,6 +39,8 @@
 -(void)countUnsentRecordsWithPickkey:(NSString *)pickey completion:(void (^)(int))handles;
 -(void)fetchUploadRecord:(void (^)(UploadRecord *))postQueryHandle;
 -(void)insertRecordToUploadQueue:(UploadRecord *)record;
+-(void)updateUploadRecordPickey:(NSString *)pickey fileName:(NSString *)fname status:(NSString *)status;
+-(void)removeUploadRecordWithPickey:(NSString *)pickey;
 
 -(void)clearTable;
 @end

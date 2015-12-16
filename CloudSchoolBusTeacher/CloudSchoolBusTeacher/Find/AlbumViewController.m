@@ -27,7 +27,7 @@
     [nextButton setBackgroundImage:[UIImage imageNamed:@"ic_list_white"] forState:UIControlStateNormal];
     nextButton.frame = CGRectMake(0, 0, 30, 30);
     [nextButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [nextButton addTarget:self action:@selector(camButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [nextButton addTarget:self action:@selector(nextButton:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * nextItem = [[UIBarButtonItem alloc]initWithCustomView:nextButton];
     self.navigationItem.rightBarButtonItem = nextItem;
     

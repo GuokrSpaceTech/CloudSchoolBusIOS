@@ -9,6 +9,7 @@
 //#define SERVERURL @"http://apitest.yunxiaoche.com/"
 //#define SERVERURL @"http://222.128.71.186:81/"
 #define SERVERURLHOST @"http://api36.yunxiaoche.com/api/teacher/"
+#define SERVERURLHOST_UPLOAD @"http://upload36.yunxiaoche.com:81/"
 #define VERSION @"4.0.0"
 @interface EKRequest()
 
@@ -80,6 +81,10 @@ static EKRequest * instance = nil;
             return @"setStudentAvatar";
         case confirm:
             return @"confirm";
+        case UPLOAD:
+            return @"upload";
+        case UPLOADOVER:
+            return @"over";
         default:
             
             return nil;
@@ -102,11 +107,17 @@ static EKRequest * instance = nil;
         
     }
     
-    NSString * address = [SERVERURLHOST stringByAppendingFormat:@"%@",[self getFunction:function]];
+    NSString * address;
+    if(function == UPLOAD || function == UPLOADOVER)
+    {
+        address = [SERVERURLHOST_UPLOAD stringByAppendingFormat:@"%@",[self getFunction:function]];
+    } else {
+        address = [SERVERURLHOST stringByAppendingFormat:@"%@",[self getFunction:function]];
+    }
+    
     //GET请求
     if(method == GET)
     {
-
         [SVHTTPRequest GET:address parameters:param customHeader:header completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error)
          {
              if(error != nil)
@@ -159,11 +170,7 @@ static EKRequest * instance = nil;
              [delegate getEKResponse:response forMethod:function resultCode:code withParam:param];
          }];
     }
-    
-    
-    
 }
-
 
 -(void)addPostNotification
 {

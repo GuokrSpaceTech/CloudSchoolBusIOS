@@ -46,7 +46,7 @@
         sqlStr = @"CREATE TABLE IF NOT EXISTS senderTbl('senderid' INT NOT NULL PRIMARY KEY, 'classname' text, 'name' text, 'role' text, 'avatar' text);";
         [db executeUpdate:sqlStr];
         
-        sqlStr = @"CREATE TABLE IF NOT EXISTS uploadRecordTbl('pickey' text NOT NULL PRIMARY KEY, 'pictype' text, 'classid' text, 'fbody' text, 'teacherid' text, 'fname' text, 'ftime' text, 'status' text, 'content' text, 'studentids' text, 'tagids' text);";
+        sqlStr = @"CREATE TABLE IF NOT EXISTS uploadRecordTbl('pickey' text NOT NULL, 'pictype' text, 'classid' text, 'fbody' text, 'teacherid' text, 'fname' text, 'ftime' text, 'status' text, 'content' text, 'studentids' text, 'tagids' text);";
         [db executeUpdate:sqlStr];
     }];
 }
@@ -171,7 +171,6 @@
 {
     
     [queue inDatabase:^(FMDatabase *db) {
-        [db executeUpdate:@"delete from uploadRecordTbl"];
         [db executeUpdate:@"insert into uploadRecordTbl(pickey, pictype, classid, fbody, teacherid, fname, ftime, status, content, studentids, tagids) values(?,?,?,?,?,?,?,?,?,?,?)", record.pickey, record.pictype, record.classid, record.fbody,record.teacherid, record.fname,record.ftime, record.status,record.content, record.studentids,record.tagids];
     }];
 }
@@ -183,7 +182,7 @@
         FMResultSet *result = [db executeQuery:query];
         while([result next])
         {
-            record.pickey = [result stringForColumn:@"pickkey"];
+            record.pickey = [result stringForColumn:@"pickey"];
             record.pictype = [result stringForColumn:@"pictype"];
             record.classid = [result stringForColumn:@"classid"];
             record.fbody = [result stringForColumn:@"fbody"];
@@ -202,9 +201,24 @@
 -(void)countUnsentRecordsWithPickkey:(NSString *)pickey completion:(void (^)(int))handles
 {
     [queue inDatabase:^(FMDatabase *db) {
-        NSString *query = [NSString stringWithFormat:@"SELECT count(*) FROM uploadRecordTbl WHERE status <> '%@' AND pickkey = '%@'", @"1", pickey];
+        NSString *query = [NSString stringWithFormat:@"SELECT count(*) FROM uploadRecordTbl WHERE status <> '%@' AND pickey = '%@'", @"1", pickey];
         int result = [db intForQuery:query];
         handles(result);
+    }];
+}
+
+-(void)updateUploadRecordPickey:(NSString *)pickey fileName:(NSString *)fname status:(NSString *)status
+{
+    [queue inDatabase:^(FMDatabase *db) {
+        NSString *queryStr = [[NSString alloc] initWithFormat:@"UPDATE uploadRecordTbl SET status='%@' WHERE pickey='%@' AND fname='%@'",status,pickey,fname];
+        [db executeUpdate:queryStr];
+    }];
+}
+
+-(void)removeUploadRecordWithPickey:(NSString *)pickey
+{
+    [queue inDatabase:^(FMDatabase *db) {
+        [db executeUpdate:@"DELETE FROM uploadRecordTbl WHERE pickey = ?", pickey];
     }];
 }
 

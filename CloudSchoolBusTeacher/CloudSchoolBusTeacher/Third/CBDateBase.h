@@ -41,6 +41,8 @@
 -(void)insertRecordToUploadQueue:(UploadRecord *)record;
 -(void)updateUploadRecordPickey:(NSString *)pickey fileName:(NSString *)fname status:(NSString *)status;
 -(void)removeUploadRecordWithPickey:(NSString *)pickey;
+-(void)readUploadQueue:(void (^)(NSMutableArray *recordList))postQueryHandle
+;
 
 -(void)clearTable;
 @end

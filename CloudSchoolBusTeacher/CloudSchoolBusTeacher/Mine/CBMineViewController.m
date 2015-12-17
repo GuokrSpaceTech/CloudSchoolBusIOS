@@ -21,6 +21,7 @@
 #import "CB.h"
 #import "UIColor+RCColor.h"
 #import "CBWebViewController.h"
+#import "UploadingTableViewController.h"
 #import "KLCPopup.h"
 #import <QuartzCore/QuartzCore.h>
 #import "CBDateBase.h"
@@ -52,7 +53,7 @@
     self.tableView.rowHeight = 44;
     headeView = [[MineHeaderView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 120)];
     
-    [self currentStudent];
+//    [self currentStudent];
     
     self.tableView.tableHeaderView  = headeView;
     
@@ -138,7 +139,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 3;
+    return 4;
 }
 
 
@@ -159,6 +160,13 @@
         cell.iconImageView.image = [UIImage imageNamed:@"ic_settings"];
         cell.iconImageView.contentMode = UIViewContentModeCenter;
         cell.detailLabel.text = [NSString stringWithFormat:@"%0.2fM",[Calculate checkTmpSize]];;
+    }
+    else if(indexPath.row == 2)
+    {
+        cell.titleLabel.text = @"正在上传";
+        cell.iconImageView.image = [UIImage imageNamed:@"ic_info_outline"];
+        cell.iconImageView.contentMode = UIViewContentModeCenter;
+        cell.detailLabel.text = @"";
     }
     else
     {
@@ -195,6 +203,11 @@
         }];
     }
     else if(indexPath.row == 2)
+    {
+        UploadingTableViewController *uploadVC = [[UploadingTableViewController alloc]initWithNibName:@"UploadingTableViewController" bundle:nil];
+        [self.navigationController pushViewController:uploadVC animated:YES];
+    }
+    else if(indexPath.row == 3)
     {
         CBWebViewController *webVC = [[CBWebViewController alloc] init];
         webVC.titleStr = @"云中校车";

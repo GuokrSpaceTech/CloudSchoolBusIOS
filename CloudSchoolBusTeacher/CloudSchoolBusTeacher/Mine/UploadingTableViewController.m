@@ -7,8 +7,16 @@
 //
 
 #import "UploadingTableViewController.h"
+#import "UploadingTableViewCell.h"
+#import "UploadRecord.h"
+#import "CBDateBase.h"
 
 @interface UploadingTableViewController ()
+{
+    NSMutableArray   *uploadArticles;
+}
+
+-(void)updateUploadQ;
 
 @end
 
@@ -16,6 +24,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    uploadArticles = [[NSMutableArray alloc]init];
+
+    [self updateUploadQ];
+    
+    //Read the uploading Queue as the Datasource
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"UploadingTableViewCell" bundle:nil] forCellReuseIdentifier:@"uploadcell"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -32,25 +48,26 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return [uploadArticles count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UploadingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"uploadcell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    [cell setUploadingRecords:uploadArticles[indexPath.row]];
     
     return cell;
 }
-*/
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 200;
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -111,4 +128,39 @@
 }
 */
 
+-(void)updateUploadQ
+{
+    [uploadArticles removeAllObjects];
+
+    [[CBDateBase sharedDatabase] readUploadQueue:^(NSMutableArray *recordList) {
+        
+        if(recordList.count == 0)
+        {
+            return;
+        }
+        
+        //初始化key和Object
+        NSString *pickey= ((UploadRecord *)recordList[0]).pickey;
+        NSMutableArray *picArrOfArticle = [[NSMutableArray alloc]init];
+
+        //开始遍历数组
+        for(int i=0; i<recordList.count; i++)
+        {
+            UploadRecord *record = recordList[i];
+            [picArrOfArticle addObject:record];
+            
+            //如果发现pickey变化或者遍历结束，就增加字典的一条记录
+            if((![record.pickey isEqualToString:pickey]) || (i==recordList.count-1))
+            {
+                [uploadArticles addObject:picArrOfArticle];
+            
+                //更新key
+                pickey = record.pickey;
+                
+                //更新key对应的Object
+                picArrOfArticle = [[NSMutableArray alloc]init];
+            }
+        }
+    }];
+}
 @end

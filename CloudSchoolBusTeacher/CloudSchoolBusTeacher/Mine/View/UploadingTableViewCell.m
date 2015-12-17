@@ -23,13 +23,12 @@
 @implementation UploadingTableViewCell
 
 - (void)awakeFromNib {
-    [_imagesCollectionView  registerNib:[UINib nibWithNibName:@"StudentCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"uploadingCell"];
+    [_imagesCollectionView  registerNib:[UINib nibWithNibName:@"UploadingPictureCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"uploadingCell"];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
 }
 
 - (void)setUploadingRecords:(NSMutableArray *)records

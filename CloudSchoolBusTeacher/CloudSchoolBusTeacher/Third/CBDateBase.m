@@ -198,6 +198,35 @@
         }
     }];
 }
+
+-(void)readUploadQueue:(void (^)(NSMutableArray *records))postQueryHandle
+{
+    [queue inDatabase:^(FMDatabase *db) {
+        NSString *query = [NSString stringWithFormat:@"SELECT * FROM uploadRecordTbl ORDER BY pickey"];
+        __block UploadRecord *record = [[UploadRecord alloc]init];
+        __block NSMutableArray *recordList = [[NSMutableArray alloc]init];
+        FMResultSet *result = [db executeQuery:query];
+        while([result next])
+        {
+            record.pickey = [result stringForColumn:@"pickey"];
+            record.pictype = [result stringForColumn:@"pictype"];
+            record.classid = [result stringForColumn:@"classid"];
+            record.fbody = [result stringForColumn:@"fbody"];
+            record.teacherid = [result stringForColumn:@"teacherid"];
+            record.fname = [result stringForColumn:@"fname"];
+            record.ftime = [result stringForColumn:@"ftime"];
+            record.status = [result stringForColumn:@"status"];
+            record.content = [result stringForColumn:@"content"];
+            record.studentids = [result stringForColumn:@"studentids"];
+            record.tagids = [result stringForColumn:@"tagids"];
+            
+            [recordList addObject:record];
+        }
+        
+        postQueryHandle(recordList);
+    }];
+}
+
 -(void)countUnsentRecordsWithPickkey:(NSString *)pickey completion:(void (^)(int))handles
 {
     [queue inDatabase:^(FMDatabase *db) {

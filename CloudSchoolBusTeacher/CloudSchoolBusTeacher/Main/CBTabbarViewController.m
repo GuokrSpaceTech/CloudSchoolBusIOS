@@ -11,7 +11,7 @@
 #import "CBMineViewController.h"
 #import "CBFindTableViewController.h"
 #import "TeacherViewController.h"
-#import "CBHobbyViewController.h"
+#import "OperationCollectionViewController.h"
 #import "UIColor+RCColor.h"
 #import "BaseNavigationController.h"
 #import "CBDateBase.h"
@@ -49,14 +49,12 @@
     teacherVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"contact"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     teacherVC.tabBarItem.title = @"班级教师";
     
-    
-    CBHobbyViewController * hobbyVC = [[CBHobbyViewController alloc]init];
+    OperationCollectionViewController *operationVC = [[OperationCollectionViewController alloc]initWithNibName:@"OperationCollectionViewController" bundle:nil];
     image = [[UIImage imageNamed:@"hobby_unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];;
     selectedImage = [[UIImage imageNamed:@"hobby"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    hobbyVC.tabBarItem.image = image;
-    hobbyVC.tabBarItem.selectedImage = selectedImage;
-    hobbyVC.tabBarItem.title = @"兴趣爱好";
-    
+    operationVC.tabBarItem.image = image;
+    operationVC.tabBarItem.selectedImage = selectedImage;
+    operationVC.tabBarItem.title = @"兴趣爱好";
     
     CBMineViewController * mineVC = [[CBMineViewController alloc]initWithNibName:@"CBMineViewController" bundle:nil];
     image = [[UIImage imageNamed:@"me_unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -68,10 +66,10 @@
     self.tabBar.translucent = NO;
 
     UINavigationController *mainNav = [[UINavigationController alloc] initWithRootViewController:mineVC];
-    UINavigationController *hobbyNav = [[UINavigationController alloc] initWithRootViewController:hobbyVC];
+    UINavigationController *operationNav = [[UINavigationController alloc] initWithRootViewController:operationVC];
     UINavigationController *teacherNav = [[UINavigationController alloc] initWithRootViewController:teacherVC];
     UINavigationController *findNav = [[UINavigationController alloc] initWithRootViewController:findVC];
-    NSArray *arr = @[findNav,teacherNav,hobbyNav,mainNav];
+    NSArray *arr = @[findNav,teacherNav,operationNav,mainNav];
     
     //Change the background color and tile color
     for(int i=0; i<[arr count]; i++)

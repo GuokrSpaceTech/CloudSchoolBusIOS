@@ -63,6 +63,7 @@ static NSString * cellidenty = @"listcell";
     //Tableview
     [self.tableView registerClass:[FindNoticeTableViewCell class] forCellReuseIdentifier:cellidenty];
     self.tableView.separatorColor = UITableViewCellSeparatorStyleNone;
+    self.tableView.delegate = self;
     
     //Filter Button
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -99,7 +100,8 @@ static NSString * cellidenty = @"listcell";
                 NSDictionary * paramDict;
                 if([_dataList_all count]==0)
                 {
-                    paramDict = @{@"newid":@"0"};
+//                    paramDict = @{@"newid":@"0"};
+                    paramDict = @{@"oldid":@LONG_MAX};
                     [[EKRequest Instance] EKHTTPRequest:getmessage parameters:paramDict requestMethod:GET forDelegate:self];
                 } else {
                     _dataList = _dataList_all;
@@ -161,32 +163,32 @@ static NSString * cellidenty = @"listcell";
     NSString *currentAppType = apptype;
     
     apptype = @"All";
-    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype withStudentId:studentid postHandle:^(NSMutableArray *messageArray) {
+    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype postHandle:^(NSMutableArray *messageArray) {
         _dataList_all = messageArray;
     }];
     
     apptype = @"Notice";
-    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype withStudentId:studentid postHandle:^(NSMutableArray *messageArray) {
+    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype postHandle:^(NSMutableArray *messageArray) {
         _dataList_notice = messageArray;
     }];
     
     apptype = @"Report";
-    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype withStudentId:studentid postHandle:^(NSMutableArray *messageArray) {
+    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype postHandle:^(NSMutableArray *messageArray) {
         _dataList_report = messageArray;
     }];
     
     apptype = @"Punch";
-    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype withStudentId:studentid postHandle:^(NSMutableArray *messageArray) {
+    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype postHandle:^(NSMutableArray *messageArray) {
         _dataList_attendance = messageArray;
     }];
     
     apptype = @"Article";
-    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype withStudentId:studentid postHandle:^(NSMutableArray *messageArray) {
+    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype postHandle:^(NSMutableArray *messageArray) {
         _dataList_article = messageArray;
     }];
     
     apptype = @"Streaming";
-    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype withStudentId:studentid postHandle:^(NSMutableArray *messageArray) {
+    [[CBDateBase sharedDatabase] initMessageQueueWithType:apptype postHandle:^(NSMutableArray *messageArray) {
         _dataList_streaming = messageArray;
     }];
     
@@ -227,26 +229,30 @@ static NSString * cellidenty = @"listcell";
     if(method == getmessage && code == 1)
     {
         NSArray * arr = response;
+        
+        //收到错误内容返回，直接更新
         if(![arr isKindOfClass:[NSArray class]])
         {
             [self.tableView reloadData];
             return;
         }
         
+        //保存新数据到数据库
         NSMutableArray *newMessagesArray =[[NSMutableArray alloc] init];
         for (int i = 0; i < arr.count; i++) {
             Message *message = [[Message alloc]initWithDic:arr[i]];
             [newMessagesArray addObject:message];
             [_dataList_all insertObject:message atIndex:0];
         }
-        
-        //Save new messages to DB
         [[CBDateBase sharedDatabase] insertMessagesData:newMessagesArray];
         
+        //更新消息类型队列s
         [self initQueues];
         
+        //更新当前显示数据列表
         _dataList = [self messageQueuewithType:apptype];
         
+        //更新界面
         [self.tableView reloadData];
     }
     else if(method == confirm && code == 1)
@@ -309,7 +315,7 @@ static NSString * cellidenty = @"listcell";
         lastestMessageId = 0;
     }
     
-    [[CBDateBase sharedDatabase] fetchMessagesFromDBwithType:apptype forStudent:studentid fromMessageId:lastestMessageId postHandle:^(NSMutableArray *messageArray) {
+    [[CBDateBase sharedDatabase] fetchMessagesFromDBwithType:apptype fromMessageId:lastestMessageId postHandle:^(NSMutableArray *messageArray) {
         if([messageArray count]>0)
         {
             [self upateQueueWithQueueType:apptype withArray:messageArray];
@@ -346,7 +352,7 @@ static NSString * cellidenty = @"listcell";
     {
         firstMessageId = [[[queue lastObject] messageid] intValue];
 
-        [[CBDateBase sharedDatabase] fetchMessagesFromDBwithType:apptype forStudent:studentid belowMessageId:firstMessageId postHandle:^(NSMutableArray *messageArray) {
+        [[CBDateBase sharedDatabase] fetchMessagesFromDBwithType:apptype belowMessageId:firstMessageId postHandle:^(NSMutableArray *messageArray) {
             if([messageArray count]>0)
             {
                 [self upateQueueWithQueueType:apptype withArray:messageArray];
@@ -482,8 +488,6 @@ static NSString * cellidenty = @"listcell";
 }
 
 #pragma mark - Table view data source
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     // Return the number of rows in the section.

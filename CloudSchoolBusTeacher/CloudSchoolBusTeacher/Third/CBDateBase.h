@@ -31,10 +31,10 @@
 -(void)fetchMessagesFromDBfromMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
 -(void)fetchMessagesFromDBBeforeMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
 
--(void)fetchMessagesFromDBwithType:(NSString *)apptype forStudent:(NSString *)studentid fromMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
--(void)fetchMessagesFromDBwithType:(NSString *)apptype forStudent:(NSString *)studentid belowMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
+-(void)fetchMessagesFromDBwithType:(NSString *)apptype fromMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
+-(void)fetchMessagesFromDBwithType:(NSString *)apptype belowMessageId:(int)messageid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
 
--(void)initMessageQueueWithType:(NSString *)apptype withStudentId:(NSString *)studentid postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
+-(void)initMessageQueueWithType:(NSString *)apptype postHandle:(void (^)(NSMutableArray *messageArray))postMessageFetchHandles;
 
 -(void)countUnsentRecordsWithPickkey:(NSString *)pickey completion:(void (^)(int))handles;
 -(void)fetchUploadRecord:(void (^)(UploadRecord *))postQueryHandle;

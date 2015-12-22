@@ -30,14 +30,12 @@ static NSString * cellinentify = @"teachercell";
 {
     [super viewDidAppear:animated];
     isIntoChat = NO;
-    
-    
-    
-    //
 }
+
 -(void)loadTeacherArr
 {
     CBLoginInfo * info = [CBLoginInfo shareInstance];
+    
     // 判断当前学生是哪个学校的
     for (int i = 0; i < info.schoolArr.count; i++) {
         School * school = info.schoolArr[i];
@@ -62,7 +60,6 @@ static NSString * cellinentify = @"teachercell";
                             {
                                 found = YES;
                                 break;
-                                
                             }
                             else
                             {
@@ -105,8 +102,6 @@ static NSString * cellinentify = @"teachercell";
             {
                 
             }
-        
-           
         }
     }
     
@@ -134,9 +129,6 @@ static NSString * cellinentify = @"teachercell";
     [self.refreshControl addTarget:self action:@selector(refreshAction) forControlEvents:UIControlEventValueChanged];
     
     _tearcherArr = [[NSMutableArray alloc]init];
-    
-    
-    
     
     [self loadTeacherArr];
     // Do any additional setup after loading the view.

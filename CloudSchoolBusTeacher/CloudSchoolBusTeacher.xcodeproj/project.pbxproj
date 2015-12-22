@@ -101,6 +101,10 @@
 		FA3A67E21C21507E005DA0E8 /* UploadingPictureCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA3A67E01C21507E005DA0E8 /* UploadingPictureCollectionViewCell.xib */; };
 		FA5FAFB71C0555780046051B /* URLLinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5FAFB61C0555780046051B /* URLLinkView.m */; };
 		FA5FAFB91C0555C20046051B /* URLLinkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5FAFB81C0555C20046051B /* URLLinkView.xib */; };
+		FAAC59E41C29746000434598 /* OperationCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAC59E21C29746000434598 /* OperationCollectionViewController.m */; };
+		FAAC59E51C29746000434598 /* OperationCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAC59E31C29746000434598 /* OperationCollectionViewController.xib */; };
+		FAAC59EA1C2974A200434598 /* OperationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAC59E81C2974A200434598 /* OperationCollectionViewCell.m */; };
+		FAAC59EB1C2974A200434598 /* OperationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAC59E91C2974A200434598 /* OperationCollectionViewCell.xib */; };
 		FAFFBE281C09AEC600B17F3E /* AttendanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFFBE271C09AEC600B17F3E /* AttendanceView.xib */; };
 		FAFFBE2B1C09B24700B17F3E /* AttendanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFFBE2A1C09B24700B17F3E /* AttendanceView.m */; };
 /* End PBXBuildFile section */
@@ -368,6 +372,12 @@
 		FA5FAFB51C0555780046051B /* URLLinkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLLinkView.h; sourceTree = "<group>"; };
 		FA5FAFB61C0555780046051B /* URLLinkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLLinkView.m; sourceTree = "<group>"; };
 		FA5FAFB81C0555C20046051B /* URLLinkView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = URLLinkView.xib; sourceTree = "<group>"; };
+		FAAC59E11C29746000434598 /* OperationCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OperationCollectionViewController.h; path = Operation/OperationCollectionViewController.h; sourceTree = "<group>"; };
+		FAAC59E21C29746000434598 /* OperationCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OperationCollectionViewController.m; path = Operation/OperationCollectionViewController.m; sourceTree = "<group>"; };
+		FAAC59E31C29746000434598 /* OperationCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OperationCollectionViewController.xib; path = Operation/OperationCollectionViewController.xib; sourceTree = "<group>"; };
+		FAAC59E71C2974A200434598 /* OperationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OperationCollectionViewCell.h; path = Operation/OperationCollectionViewCell.h; sourceTree = "<group>"; };
+		FAAC59E81C2974A200434598 /* OperationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OperationCollectionViewCell.m; path = Operation/OperationCollectionViewCell.m; sourceTree = "<group>"; };
+		FAAC59E91C2974A200434598 /* OperationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OperationCollectionViewCell.xib; path = Operation/OperationCollectionViewCell.xib; sourceTree = "<group>"; };
 		FAFFBE271C09AEC600B17F3E /* AttendanceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendanceView.xib; sourceTree = "<group>"; };
 		FAFFBE291C09B24700B17F3E /* AttendanceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendanceView.h; sourceTree = "<group>"; };
 		FAFFBE2A1C09B24700B17F3E /* AttendanceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendanceView.m; sourceTree = "<group>"; };
@@ -796,6 +806,7 @@
 		81C6A58E1BE9AD2E00160F2D /* CloudSchoolBusTeacher */ = {
 			isa = PBXGroup;
 			children = (
+				FAAC59E01C2973B600434598 /* Operation */,
 				2A9745221BFBFA6B008C8A7B /* Utils */,
 				81D48C5F1BF5BAE100146AA6 /* Mine */,
 				812A8BF51BF30488009CE43E /* Find */,
@@ -931,6 +942,27 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FAAC59E01C2973B600434598 /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				FAAC59E61C29747A00434598 /* View */,
+				FAAC59E11C29746000434598 /* OperationCollectionViewController.h */,
+				FAAC59E21C29746000434598 /* OperationCollectionViewController.m */,
+				FAAC59E31C29746000434598 /* OperationCollectionViewController.xib */,
+			);
+			name = Operation;
+			sourceTree = "<group>";
+		};
+		FAAC59E61C29747A00434598 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAAC59E71C2974A200434598 /* OperationCollectionViewCell.h */,
+				FAAC59E81C2974A200434598 /* OperationCollectionViewCell.m */,
+				FAAC59E91C2974A200434598 /* OperationCollectionViewCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1025,8 +1057,10 @@
 				2A950C681C040660009D6211 /* NoticeView.xib in Resources */,
 				FAFFBE281C09AEC600B17F3E /* AttendanceView.xib in Resources */,
 				81065BEA1BEB019A009CE107 /* CBLoginViewController.xib in Resources */,
+				FAAC59EB1C2974A200434598 /* OperationCollectionViewCell.xib in Resources */,
 				81D48C641BF5BB1100146AA6 /* CBMineViewController.xib in Resources */,
 				2A9826B11C1EDCEB004AA080 /* TagCollectionViewCell.xib in Resources */,
+				FAAC59E51C29746000434598 /* OperationCollectionViewController.xib in Resources */,
 				FA5FAFB91C0555C20046051B /* URLLinkView.xib in Resources */,
 				FA3A67E21C21507E005DA0E8 /* UploadingPictureCollectionViewCell.xib in Resources */,
 				FA3A67D81C214F9E005DA0E8 /* UploadingTableViewController.xib in Resources */,
@@ -1100,6 +1134,7 @@
 				2A950C661C04063E009D6211 /* NoticeView.m in Sources */,
 				81D4051D1BF069BB00B5A176 /* CBHobbyViewController.m in Sources */,
 				FA3A67E11C21507E005DA0E8 /* UploadingPictureCollectionViewCell.m in Sources */,
+				FAAC59EA1C2974A200434598 /* OperationCollectionViewCell.m in Sources */,
 				FA3A67D71C214F9E005DA0E8 /* UploadingTableViewController.m in Sources */,
 				81BECE491BFC4465006DAA8D /* CBChatViewController.m in Sources */,
 				2A9826AB1C1EB121004AA080 /* CommentsViewController.m in Sources */,
@@ -1121,6 +1156,7 @@
 				81E8D4C71C1E8C3300E09EF2 /* AlbumViewCell.m in Sources */,
 				81D48C681BF5BB5000146AA6 /* MineHeaderView.m in Sources */,
 				816446E61BF97BDB00A34D00 /* FPPopoverController.m in Sources */,
+				FAAC59E41C29746000434598 /* OperationCollectionViewController.m in Sources */,
 				81E8D4C21C1E851C00E09EF2 /* AlbumViewController.m in Sources */,
 				812A8BF41BF2FD42009CE43E /* CBTeacherTableViewCell.m in Sources */,
 				81BECE571BFC5E80006DAA8D /* RYMessage.m in Sources */,

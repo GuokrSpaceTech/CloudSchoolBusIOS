@@ -69,10 +69,13 @@ static CBLoginInfo * logininfo = nil;
     NSArray * stuArr = baseinfo[@"students"];
     for (int i=0; i<stuArr.count; i++) {
         Student * st = [[Student alloc]initWithDic:stuArr[i]];
+        
+        //当前班级默认为第一个学生的班级
         if(i == 0)
         {
-            self.currentClassId = st.studentid;
+            self.currentClassId = st.classid;
         }
+        
         [self.studentArr addObject:st];
     }
     
@@ -152,9 +155,11 @@ static CBLoginInfo * logininfo = nil;
             [_studentArr removeAllObjects];
             for (int i=0; i<stuArr.count; i++) {
                 Student * st = [[Student alloc]initWithDic:stuArr[i]];
+               
+                //默认班级为第一个学生的班级
                 if(i == 0)
                 {
-                    _currentClassId = st.studentid;
+                    self.currentClassId = st.classid;
                 }
                 [_studentArr addObject:st];
             }

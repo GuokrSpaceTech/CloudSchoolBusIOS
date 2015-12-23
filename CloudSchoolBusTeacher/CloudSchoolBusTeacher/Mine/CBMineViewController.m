@@ -12,7 +12,7 @@
 #import "CBDateBase.h"
 #import "Masonry.h"
 #import "CBLoginInfo.h"
-#import "Student.h"
+#import "Teacher.h"
 #import "School.h"
 #import "ClassObj.h"
 #import "UIImageView+WebCache.h"
@@ -53,7 +53,7 @@
     self.tableView.rowHeight = 44;
     headeView = [[MineHeaderView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 120)];
     
-//    [self currentStudent];
+    [self currentTeacher];
     
     self.tableView.tableHeaderView  = headeView;
     
@@ -77,57 +77,40 @@
     [headeView.avatarImageView setUserInteractionEnabled:YES];
     
 }
--(void)currentStudent
+-(void)currentTeacher
 {
     CBLoginInfo * info = [CBLoginInfo shareInstance];
     
-    Student * student = nil;
-    
-    for (Student *st in info.studentArr) {
-        if([st.studentid isEqualToString:info.currentClassId])
-        {
-            student = st;
-            break;
-        }
-    }
-    
-    if(student != nil)
+    Teacher * teacher = [info findMe];
+    if(teacher)
     {
-        [headeView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:student.avatar] placeholderImage:nil];
-        headeView.nameLabel.text = student.cnname;
-        NSString * schoolname = @"";
-        for(School * sc in info.schoolArr)
+        [headeView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:teacher.avatar] placeholderImage:nil];
+        headeView.nameLabel.text = teacher.name;
+        School *school = [info.schoolArr objectAtIndex:0];
+        NSString *schoolname;
+        if(school)
         {
-            NSArray * arr = sc.classModuleArr;
-            
-            for (ClassObj * cla in arr)
-            {
-                if([cla.studentidArr containsObject:info.currentClassId])
-                {
-                    schoolname = [NSString stringWithFormat:@"%@",sc.name];
-                }
-            }
+            schoolname = school.name;
+            //Resize the label
+            headeView.schoolLabel.text = schoolname;
+            CGRect labelRect = [schoolname
+                                boundingRectWithSize:CGSizeMake(200, 0)
+                                options:NSStringDrawingUsesLineFragmentOrigin
+                                attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16.0]}
+                                context:nil];
+            headeView.schoolLabel.frame = labelRect;
+            headeView.schoolLabel.font = [UIFont systemFontOfSize:16.0f];
+            headeView.schoolLabel.textColor = [UIColor whiteColor];
+            headeView.schoolLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
+            headeView.schoolLabel.textAlignment = NSTextAlignmentCenter;
+            headeView.schoolLabel.adjustsFontSizeToFitWidth = YES;
+            [headeView.schoolLabel.layer setCornerRadius:10.0];//Set corner radius of label to change the shape.
+            [headeView.schoolLabel.layer setBorderWidth:2.0f];//Set border width of label.
+            [headeView.schoolLabel  setClipsToBounds:YES];//Set its to YES for Corner radius to work.
+            [headeView.schoolLabel.layer setBorderColor:[UIColor whiteColor].CGColor];//Set Border color.
+            [headeView.schoolLabel  setBackgroundColor:[UIColor colorWithHexString:@"#ED7426" alpha:1.0f]];
         }
-        
-        //Resize the label
-        headeView.schoolLabel.text = schoolname;
-        CGRect labelRect = [schoolname
-                            boundingRectWithSize:CGSizeMake(200, 0)
-                            options:NSStringDrawingUsesLineFragmentOrigin
-                            attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16.0]}
-                            context:nil];
-        headeView.schoolLabel.frame = labelRect;
-        headeView.schoolLabel.font = [UIFont systemFontOfSize:16.0f];
-        headeView.schoolLabel.textColor = [UIColor whiteColor];
-        headeView.schoolLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-        headeView.schoolLabel.textAlignment = NSTextAlignmentCenter;
-        headeView.schoolLabel.adjustsFontSizeToFitWidth = YES;
-        [headeView.schoolLabel.layer setCornerRadius:10.0];//Set corner radius of label to change the shape.
-        [headeView.schoolLabel.layer setBorderWidth:2.0f];//Set border width of label.
-        [headeView.schoolLabel  setClipsToBounds:YES];//Set its to YES for Corner radius to work.
-        [headeView.schoolLabel.layer setBorderColor:[UIColor whiteColor].CGColor];//Set Border color.
-        [headeView.schoolLabel  setBackgroundColor:[UIColor colorWithHexString:@"#ED7426" alpha:1.0f]];
-        
+        headeView.nameLabel.text = teacher.name;
     }
 }
 - (void)didReceiveMemoryWarning {
@@ -149,7 +132,7 @@
     //cell.textLabel.text = @"dd";
     if(indexPath.row == 0)
     {
-        cell.titleLabel.text = @"切换孩子";
+        cell.titleLabel.text = @"切换班级";
         cell.iconImageView.image = [UIImage imageNamed:@"ic_swap_horiz"];
         cell.iconImageView.contentMode = UIViewContentModeCenter;
         cell.detailLabel.text = @"";
@@ -233,7 +216,7 @@
     
     CBLoginInfo * info = [CBLoginInfo shareInstance];
     int i = 0;
-    for (Student *st in info.studentArr) {
+    for (ClassObj *classinfo in info.classArr) {
         
         left = left + i*([avatarViewWidth doubleValue]) + PADDING;
         
@@ -263,20 +246,20 @@
             make.top.equalTo(avatarView.mas_bottom).offset(PADDING);
         }];
         
-        SDWebImageManager *manager = [SDWebImageManager sharedManager];
-        [manager downloadImageWithURL:[NSURL URLWithString:st.avatar]
-                              options:0
-                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                 // progression tracking code
-                             }
-                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                                if (image) {
-                                    [avatarView setImage:image forState:UIControlStateNormal];
-                                    [avatarView setTag:i];
-                                }
-                            }];
+//        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+//        [manager downloadImageWithURL:[NSURL URLWithString:teacher.avatar]
+//                              options:0
+//                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+//                                 // progression tracking code
+//                             }
+//                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+//                                if (image) {
+//                                    [avatarView setImage:image forState:UIControlStateNormal];
+//                                    [avatarView setTag:i];
+//                                }
+//                            }];
         
-        nameLabel.text = st.cnname;
+        nameLabel.text = classinfo.className;
         
         i++;
     }
@@ -308,14 +291,10 @@
     
     CBLoginInfo * info = [CBLoginInfo shareInstance];
     
-    Student *student = info.studentArr[i];
-    info.currentClassId = [student studentid];
+    ClassObj *classinfo = [info.classArr objectAtIndex:i];
+    info.currentClassId = classinfo.classid;
     
     [self postChildSwitchNotification:info.currentClassId];
-    
-    [headeView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:student.avatar] placeholderImage:nil];
-    
-    headeView.nameLabel.text = student.cnname;
     
     [popup dismiss:YES];
 }
@@ -389,37 +368,37 @@
             //Update Memory
             NSMutableArray *studentArray = [[CBLoginInfo shareInstance] studentArr];
             for (int i=0; i<[studentArray count]; i++) {
-                
-                Student *student = studentArray[i];
-                NSString *current = [[CBLoginInfo shareInstance] currentClassId];
-                if([[student studentid] isEqualToString:current])
-                {
-                    [student setAvatar:filePath];
-                    
-                    [[[CBLoginInfo shareInstance] studentArr] replaceObjectAtIndex:i withObject:student];
-                    
-                    
-                    //Update DB
-                    //Json to Dict
-                    NSString *baseInfoJson = [[CBLoginInfo shareInstance] baseInfoJsonString];
-                    NSError *jsonError;
-                    NSData *objectData = [baseInfoJson dataUsingEncoding:NSUTF8StringEncoding];
-                    NSDictionary *baseInfoDict = [NSJSONSerialization JSONObjectWithData:objectData
-                                                                                 options:NSJSONReadingMutableContainers
-                                                                                   error:&jsonError];
-                    [[[baseInfoDict objectForKey:@"students"] objectAtIndex:i] setValue:filePath forKey:@"avatar"];
-                    
-                    //Dict to Json
-                    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:baseInfoDict
-                                                                       options:NSJSONWritingPrettyPrinted
-                                                                         error:&jsonError];
-                    if (! jsonData) {
-                        NSLog(@"JsonConvertion Error: %@", jsonError.localizedDescription);
-                    } else {
-                        baseInfoJson = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-                        [[CBDateBase sharedDatabase] insertDataToBaseInfoTableWithBaseinfo:baseInfoJson];
-                    }
-                }
+//                
+//                Student *student = studentArray[i];
+//                NSString *current = [[CBLoginInfo shareInstance] currentClassId];
+//                if([[student studentid] isEqualToString:current])
+//                {
+//                    [student setAvatar:filePath];
+//                    
+//                    [[[CBLoginInfo shareInstance] studentArr] replaceObjectAtIndex:i withObject:student];
+//                    
+//                    
+//                    //Update DB
+//                    //Json to Dict
+//                    NSString *baseInfoJson = [[CBLoginInfo shareInstance] baseInfoJsonString];
+//                    NSError *jsonError;
+//                    NSData *objectData = [baseInfoJson dataUsingEncoding:NSUTF8StringEncoding];
+//                    NSDictionary *baseInfoDict = [NSJSONSerialization JSONObjectWithData:objectData
+//                                                                                 options:NSJSONReadingMutableContainers
+//                                                                                   error:&jsonError];
+//                    [[[baseInfoDict objectForKey:@"students"] objectAtIndex:i] setValue:filePath forKey:@"avatar"];
+//                    
+//                    //Dict to Json
+//                    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:baseInfoDict
+//                                                                       options:NSJSONWritingPrettyPrinted
+//                                                                         error:&jsonError];
+//                    if (! jsonData) {
+//                        NSLog(@"JsonConvertion Error: %@", jsonError.localizedDescription);
+//                    } else {
+//                        baseInfoJson = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+//                        [[CBDateBase sharedDatabase] insertDataToBaseInfoTableWithBaseinfo:baseInfoJson];
+//                    }
+//                }
             }
         }
     }

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "EKRequest.h"
+#import "Teacher.h"
+
 typedef void (^loginSuccess)(BOOL isLogin);
 typedef void (^sessionNotOver)(BOOL isExist);
 typedef enum {
@@ -46,5 +48,6 @@ typedef enum {
 -(BOOL)parseBaseInfo:(NSDictionary *)baseinfo;
 
 -(NSArray *)findClassWithStudentid:(NSString *)studentid;
+-(Teacher *)findMe;
 
 @end

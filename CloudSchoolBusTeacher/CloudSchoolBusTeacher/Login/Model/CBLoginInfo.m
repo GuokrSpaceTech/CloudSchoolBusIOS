@@ -13,7 +13,6 @@
 #import "CBDateBase.h"
 #import "ClassObj.h"
 #import "Parents.h"
-#import "Teacher.h"
 
 @implementation CBLoginInfo
 static CBLoginInfo * logininfo = nil;
@@ -274,5 +273,18 @@ static CBLoginInfo * logininfo = nil;
     }
     
     return classArr;
+}
+
+-(Teacher *)findMe
+{
+    for(Teacher *teacher in _teacherArr)
+    {
+        if([teacher.mobile isEqualToString:_phone])
+        {
+            return teacher;
+        }
+    }
+    
+    return nil;
 }
 @end

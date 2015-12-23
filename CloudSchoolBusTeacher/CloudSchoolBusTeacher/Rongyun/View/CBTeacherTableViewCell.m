@@ -7,6 +7,10 @@
 //
 
 #import "CBTeacherTableViewCell.h"
+#import "CBLoginInfo.h"
+#import "Parents.h"
+#import "Teacher.h"
+#import "ClassObj.h"
 #import "Masonry.h"
 #import "CB.h"
 #import "Calculate.h"
@@ -95,28 +99,62 @@
     return self;
 }
 
--(void)setTeacher:(Teacher *)teacher
+-(void)setContact:(id)contact
 {
-    _teacher = teacher;
+    NSString *classname;
+    NSString *contactName;
+    NSString *timestampStr;
+    NSString *lastIMContent;
+    int       unreadCnt;
+    NSString *avatarStr;
     
-    [_avatarImageView sd_setImageWithURL:[NSURL URLWithString:teacher.avatar] placeholderImage:nil];
-    _nameLabel.text = teacher.name;
-    _classNameLabel.text = teacher.className;
-    
-    _contentLabel.text = teacher.contentlatest;
-    if([teacher.latestTime intValue] == 0)
-     _timeLabel.text  =@"";
+    _contact = contact;
+    //家长联系人
+    if([_contact isKindOfClass:[Parents class]])
+    {
+        Parents *parents = _contact;
+        contactName = parents.nickname;
+        
+        //获取班级名称
+        for(ClassObj *classinfo in [[CBLoginInfo shareInstance] classArr])
+        {
+            if([classinfo.classid isEqualToString:_classid])
+            {
+                classname = classinfo.className;
+            }
+        }
+        
+        timestampStr = [Calculate dateFromTimeStamp:[parents.latestTime intValue]];
+        lastIMContent = parents.contentlatest;
+        unreadCnt = parents.noReadCount;
+        avatarStr = parents.avatar;
+    }
+    //教师联系人
     else
-    _timeLabel.text = [Calculate dateFromTimeStamp:[teacher.latestTime intValue]];
+    {
+        Teacher *teacher = _contact;
+        contactName = teacher.nickname;
+        classname = teacher.className;
+        timestampStr = [Calculate dateFromTimeStamp:[teacher.latestTime intValue]];
+        lastIMContent = teacher.contentlatest;
+        unreadCnt = teacher.noReadCount;
+        avatarStr = teacher.avatar;
+    }
     
-    if(teacher.noReadCount == 0)
+    // Set up the UI
+    [_avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarStr] placeholderImage:nil];
+    _nameLabel.text = contactName;
+    _classNameLabel.text = classname;
+    _timeLabel.text = timestampStr;
+    _contentLabel.text = lastIMContent;
+    if(unreadCnt == 0)
     {
         noReadBtn.hidden = YES;
     }
     else
     {
         noReadBtn.hidden = NO;
-        [noReadBtn setTitle:[NSString stringWithFormat:@"%@",@(teacher.noReadCount)] forState:UIControlStateNormal];
+        [noReadBtn setTitle:[NSString stringWithFormat:@"%@",@(unreadCnt)] forState:UIControlStateNormal];
     }
 }
 

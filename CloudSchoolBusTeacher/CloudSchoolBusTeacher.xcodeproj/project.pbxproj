@@ -105,6 +105,9 @@
 		FAAC59E51C29746000434598 /* OperationCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAC59E31C29746000434598 /* OperationCollectionViewController.xib */; };
 		FAAC59EA1C2974A200434598 /* OperationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAC59E81C2974A200434598 /* OperationCollectionViewCell.m */; };
 		FAAC59EB1C2974A200434598 /* OperationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAC59E91C2974A200434598 /* OperationCollectionViewCell.xib */; };
+		FAC9FA9D1C2A439C003BB1DE /* ContactGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC9FA9B1C2A439C003BB1DE /* ContactGroupTableViewController.m */; };
+		FAC9FA9E1C2A439C003BB1DE /* ContactGroupTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC9FA9C1C2A439C003BB1DE /* ContactGroupTableViewController.xib */; };
+		FAC9FAA11C2A43CE003BB1DE /* ContactGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC9FAA01C2A43CE003BB1DE /* ContactGroupTableViewCell.m */; };
 		FAFFBE281C09AEC600B17F3E /* AttendanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFFBE271C09AEC600B17F3E /* AttendanceView.xib */; };
 		FAFFBE2B1C09B24700B17F3E /* AttendanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFFBE2A1C09B24700B17F3E /* AttendanceView.m */; };
 /* End PBXBuildFile section */
@@ -378,6 +381,11 @@
 		FAAC59E71C2974A200434598 /* OperationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OperationCollectionViewCell.h; path = Operation/OperationCollectionViewCell.h; sourceTree = "<group>"; };
 		FAAC59E81C2974A200434598 /* OperationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OperationCollectionViewCell.m; path = Operation/OperationCollectionViewCell.m; sourceTree = "<group>"; };
 		FAAC59E91C2974A200434598 /* OperationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OperationCollectionViewCell.xib; path = Operation/OperationCollectionViewCell.xib; sourceTree = "<group>"; };
+		FAC9FA9A1C2A439C003BB1DE /* ContactGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactGroupTableViewController.h; sourceTree = "<group>"; };
+		FAC9FA9B1C2A439C003BB1DE /* ContactGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactGroupTableViewController.m; sourceTree = "<group>"; };
+		FAC9FA9C1C2A439C003BB1DE /* ContactGroupTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactGroupTableViewController.xib; sourceTree = "<group>"; };
+		FAC9FA9F1C2A43CE003BB1DE /* ContactGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactGroupTableViewCell.h; sourceTree = "<group>"; };
+		FAC9FAA01C2A43CE003BB1DE /* ContactGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactGroupTableViewCell.m; sourceTree = "<group>"; };
 		FAFFBE271C09AEC600B17F3E /* AttendanceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendanceView.xib; sourceTree = "<group>"; };
 		FAFFBE291C09B24700B17F3E /* AttendanceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendanceView.h; sourceTree = "<group>"; };
 		FAFFBE2A1C09B24700B17F3E /* AttendanceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendanceView.m; sourceTree = "<group>"; };
@@ -510,6 +518,9 @@
 				812A8BF11BF2FD2A009CE43E /* View */,
 				81BECE471BFC4465006DAA8D /* CBChatViewController.h */,
 				81BECE481BFC4465006DAA8D /* CBChatViewController.m */,
+				FAC9FA9A1C2A439C003BB1DE /* ContactGroupTableViewController.h */,
+				FAC9FA9B1C2A439C003BB1DE /* ContactGroupTableViewController.m */,
+				FAC9FA9C1C2A439C003BB1DE /* ContactGroupTableViewController.xib */,
 			);
 			path = Rongyun;
 			sourceTree = "<group>";
@@ -521,6 +532,8 @@
 				812A8BF31BF2FD42009CE43E /* CBTeacherTableViewCell.m */,
 				81BECE5B1BFC6E77006DAA8D /* RedPointView.h */,
 				81BECE5C1BFC6E77006DAA8D /* RedPointView.m */,
+				FAC9FA9F1C2A43CE003BB1DE /* ContactGroupTableViewCell.h */,
+				FAC9FAA01C2A43CE003BB1DE /* ContactGroupTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1054,6 +1067,7 @@
 				81C6A59D1BE9AD2E00160F2D /* Images.xcassets in Resources */,
 				2A9826B61C1EDCFF004AA080 /* StudentCollectionViewCell.xib in Resources */,
 				2A25CA3F1C01BD9900C81EE9 /* CBPagedImageViewController.xib in Resources */,
+				FAC9FA9E1C2A439C003BB1DE /* ContactGroupTableViewController.xib in Resources */,
 				2A950C681C040660009D6211 /* NoticeView.xib in Resources */,
 				FAFFBE281C09AEC600B17F3E /* AttendanceView.xib in Resources */,
 				81065BEA1BEB019A009CE107 /* CBLoginViewController.xib in Resources */,
@@ -1168,6 +1182,7 @@
 				81065C151BEB4327009CE107 /* CBDateBase.m in Sources */,
 				81BECE5D1BFC6E77006DAA8D /* RedPointView.m in Sources */,
 				81D48C631BF5BB1100146AA6 /* CBMineViewController.m in Sources */,
+				FAC9FAA11C2A43CE003BB1DE /* ContactGroupTableViewCell.m in Sources */,
 				81E32B561BF49C4100EA3D7A /* UITableView+FDKeyedHeightCache.m in Sources */,
 				81D405111BF049E500B5A176 /* ClassObj.m in Sources */,
 				812A8BF81BF304B3009CE43E /* CBFindTableViewController.m in Sources */,
@@ -1188,6 +1203,7 @@
 				81E32B581BF49C4100EA3D7A /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
 				2A9826B01C1EDCEB004AA080 /* TagCollectionViewCell.m in Sources */,
 				F95025501BF0E952009C970A /* Tag.m in Sources */,
+				FAC9FA9D1C2A439C003BB1DE /* ContactGroupTableViewController.m in Sources */,
 				812A8BE91BF2D395009CE43E /* Message.m in Sources */,
 				81BECE4C1BFC4908006DAA8D /* BaseNavigationController.m in Sources */,
 				81065BE91BEB019A009CE107 /* CBLoginViewController.m in Sources */,

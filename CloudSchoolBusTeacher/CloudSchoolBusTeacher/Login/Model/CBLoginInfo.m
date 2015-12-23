@@ -242,4 +242,37 @@ static CBLoginInfo * logininfo = nil;
         
     }];
 }
+
+#pragma mark
+#pragma mark == 数据查询工具方法
+-(NSArray *)findClassWithStudentid:(NSString *)studentid
+{
+    NSMutableArray *classArr = [[NSMutableArray alloc]init];
+    NSArray *classids;
+    
+    //找到当前学生的班级（或多个班级
+    for(Student *student in _studentArr)
+    {
+        if([student.studentid isEqualToString:studentid])
+        {
+            classids = student.classids;
+            break;
+        }
+    }
+
+    //根据班级id找到班级的对象
+    for(ClassObj *classinfo in _classArr)
+    {
+        for(NSString *classid in classids)
+        {
+            if([classid isEqualToString:classinfo.classid])
+            {
+                //找到班级
+                [classArr addObject:classinfo];
+            }
+        }
+    }
+    
+    return classArr;
+}
 @end

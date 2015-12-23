@@ -12,6 +12,7 @@
 #import "CBFindTableViewController.h"
 #import "TeacherViewController.h"
 #import "OperationCollectionViewController.h"
+#import "ContactGroupTableViewController.h"
 #import "UIColor+RCColor.h"
 #import "BaseNavigationController.h"
 #import "CBDateBase.h"
@@ -44,10 +45,10 @@
     findVC.tabBarItem.selectedImage = selectedImage;
     findVC.tabBarItem.title = @"发现";
 
-    TeacherViewController * teacherVC = [[TeacherViewController alloc]init];
-    teacherVC.tabBarItem.image = [[UIImage imageNamed:@"contact_unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    teacherVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"contact"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    teacherVC.tabBarItem.title = @"班级教师";
+    ContactGroupTableViewController * contactGroupVC = [[ContactGroupTableViewController alloc]initWithNibName:@"ContactGroupTableViewController" bundle:nil];
+    contactGroupVC.tabBarItem.image = [[UIImage imageNamed:@"contact_unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    contactGroupVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"contact"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    contactGroupVC.tabBarItem.title = @"我的联系人";
     
     OperationCollectionViewController *operationVC = [[OperationCollectionViewController alloc]initWithNibName:@"OperationCollectionViewController" bundle:nil];
     image = [[UIImage imageNamed:@"hobby_unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];;
@@ -67,7 +68,7 @@
 
     UINavigationController *mainNav = [[UINavigationController alloc] initWithRootViewController:mineVC];
     UINavigationController *operationNav = [[UINavigationController alloc] initWithRootViewController:operationVC];
-    UINavigationController *teacherNav = [[UINavigationController alloc] initWithRootViewController:teacherVC];
+    UINavigationController *teacherNav = [[UINavigationController alloc] initWithRootViewController:contactGroupVC];
     UINavigationController *findNav = [[UINavigationController alloc] initWithRootViewController:findVC];
     NSArray *arr = @[findNav,teacherNav,operationNav,mainNav];
     

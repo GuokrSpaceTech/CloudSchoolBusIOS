@@ -16,6 +16,13 @@
 @property (nonatomic,copy) NSArray  *studentids;
 @property (nonatomic,copy) NSString *relationship;
 @property (nonatomic,copy) NSString *pictureid;
+@property (nonatomic,copy) NSString *lastestIM;
+
+// 收到融云消息
+@property (nonatomic,copy)NSString * contentlatest;
+@property (nonatomic,assign) int noReadCount;
+@property (nonatomic,copy)NSString * typeLatest;
+@property (nonatomic,copy) NSString * latestTime;
 
 -(instancetype)initWithParentsDict:(NSDictionary *)parentsDict;
 @end

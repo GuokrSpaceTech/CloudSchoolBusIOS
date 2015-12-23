@@ -16,8 +16,8 @@
 @property (nonatomic,strong)UILabel * nameLabel;
 @property (nonatomic,strong) UILabel *classNameLabel;
 
-@property (nonatomic,strong) Teacher *teacher;
-
+@property (nonatomic,strong) id contact;
+@property (nonatomic,strong) NSString *classid;
 
 @property (nonatomic,strong)UILabel * contentLabel;
 @property (nonatomic,strong) UILabel *timeLabel;

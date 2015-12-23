@@ -14,4 +14,5 @@
 }
 @property (nonatomic,strong)NSMutableArray * tearcherArr;
 @property (nonatomic,strong)NSMutableDictionary * offscreenCells;
+@property (nonatomic,strong)NSDictionary *classInfo;
 @end

@@ -11,6 +11,7 @@
 #import "School.h"
 #import "ClassObj.h"
 #import "Teacher.h"
+#import "Parents.h"
 #import "CBTeacherTableViewCell.h"
 #import "RCIM.h"
 #import "CB.h"
@@ -22,20 +23,93 @@ static NSString * cellinentify = @"teachercell";
 #import "UITableView+FDTemplateLayoutCell.h"
 
 @interface TeacherViewController ()
+{
+    NSMutableArray *contactArray;
+    NSString *classid;
+}
 
 @end
 
 @implementation TeacherViewController
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(receiveMessage:) name:@"MESSAGETEACHER" object:nil];
+    
+    self.navigationItem.title = @"班级教师";
+    [self.tableView registerClass:[CBTeacherTableViewCell class] forCellReuseIdentifier:cellinentify];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.rowHeight = 80;
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"努力加载中……"];
+    self.refreshControl.tintColor = [UIColor grayColor];
+    [self.refreshControl addTarget:self action:@selector(refreshAction) forControlEvents:UIControlEventValueChanged];
+    
+    _tearcherArr = [[NSMutableArray alloc]init];
+    contactArray = [[NSMutableArray alloc]init];
+    
+    [self loadContactsArray];
+    // Do any additional setup after loading the view.
+}
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     isIntoChat = NO;
 }
 
--(void)loadTeacherArr
+-(void)loadContactsArray
 {
     CBLoginInfo * info = [CBLoginInfo shareInstance];
     
+    NSString *role;
+    if(_classInfo)
+    {
+        role = [_classInfo objectForKey:@"role"];
+        classid = [_classInfo objectForKey:@"classid"];
+    }
+    
+    //家长联系人
+    if([role isEqualToString:@"parents"])
+    {
+        for(Parents *parents in info.parentsArr)
+        {
+            //找出该家长的孩子（孩子们）
+            for(NSString *studentid in parents.studentids)
+            {
+                //找出孩子所在班级
+                NSArray *classArr = [info findClassWithStudentid:studentid];
+                for(ClassObj *classinfo in classArr)
+                {
+                    if([classinfo.classid isEqualToString:classid])
+                    {
+                        //添加这个家长到联系人列表
+                        [contactArray addObject:parents];
+                    }
+                }
+            }
+        }
+    }
+    //教师联系人
+    else
+    {
+        for(Teacher *teacher in info.teacherArr)
+        {
+            for(NSDictionary *classInfoTeacherDict in teacher.classes)
+            {
+                NSString *classIdTeacher = [classInfoTeacherDict objectForKey:@"classid"];
+                if([classIdTeacher isEqualToString:classid])
+                {
+                    //添加这个教师到联系人列表
+                    [contactArray addObject:teacher];
+                }
+            }
+        }
+    }
+
+#if 0
     // 判断当前学生是哪个学校的
     for (int i = 0; i < info.schoolArr.count; i++) {
         School * school = info.schoolArr[i];
@@ -76,7 +150,9 @@ static NSString * cellinentify = @"teachercell";
             }
         }
     }
-    if(_tearcherArr.count != 0)
+#endif
+
+    if(contactArray.count != 0)
     {
         info.teacherVCIsLoading = YES;
     }
@@ -87,7 +163,7 @@ static NSString * cellinentify = @"teachercell";
 {
     RYMessage * message = noti.object;
     
-    for (Teacher * teacher in _tearcherArr) {
+    for (Teacher * teacher in contactArray) {
         
         if([teacher.teacherid isEqualToString:message.senderid])
         {
@@ -111,41 +187,20 @@ static NSString * cellinentify = @"teachercell";
    
     
 }
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    //[[NSNotificationCenter defaultCenter]postNotificationName:@"MESSAGETEACHER" object:message];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(receiveMessage:) name:@"MESSAGETEACHER" object:nil];
-    
-    self.navigationItem.title = @"班级教师";
-    [self.tableView registerClass:[CBTeacherTableViewCell class] forCellReuseIdentifier:cellinentify];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.rowHeight = 80;
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"努力加载中……"];
-    self.refreshControl.tintColor = [UIColor grayColor];
-    [self.refreshControl addTarget:self action:@selector(refreshAction) forControlEvents:UIControlEventValueChanged];
-    
-    _tearcherArr = [[NSMutableArray alloc]init];
-    
-    [self loadTeacherArr];
-    // Do any additional setup after loading the view.
-}
+
 - (void)refreshAction{
     
     
     // 请求数据
     
     // 结束刷新
-    [self loadTeacherArr];
+    [self loadContactsArray];
 
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     // Return the number of rows in the section.
-    return [_tearcherArr count];
+    return [contactArray count];
 }
 
 
@@ -153,9 +208,19 @@ static NSString * cellinentify = @"teachercell";
     CBTeacherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellinentify forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
   //  cell.fd_enforceFrameLayout = NO;
-    Teacher *teacher = [_tearcherArr objectAtIndex:indexPath.row];
-
-    cell.teacher = teacher;
+    if([[_classInfo objectForKey:@"role"] isEqualToString:@"parents"])
+    {
+        Parents *parents = [contactArray objectAtIndex:indexPath.row];
+        cell.classid = classid;
+        cell.contact = parents;
+    }
+    else
+    {
+        Teacher *teacher = [contactArray objectAtIndex:indexPath.row];
+        cell.classid = classid;
+        cell.contact = teacher;
+    }
+    
     return cell;
 }
 
@@ -173,21 +238,42 @@ static NSString * cellinentify = @"teachercell";
 //{
 //    return UITableViewAutomaticDimension;
 //}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    isIntoChat = YES;
-    Teacher *teacher = [_tearcherArr objectAtIndex:indexPath.row];
-    teacher.noReadCount = 0;
+    id contact = [contactArray objectAtIndex:indexPath.row];
+    NSString *username;
+    NSString *userid;
+
+    //家长用户
+    if([contact isKindOfClass:[Parents class]])
+    {
+        Parents *parents = contact;
+        parents.noReadCount = 0;
+        username = parents.nickname;
+        userid = parents.parentid;
+    }
+    //教师用户
+    else
+    {
+        Teacher *teacher = contact;
+        teacher.noReadCount = 0;
+        username = teacher.nickname;
+        userid = teacher.teacherid;
+    }
+    
+    // 创建单聊视图控制器。
+    RCChatViewController *chatViewController = [[RCIM sharedRCIM]createPrivateChat:userid title:username completion:^(){
+        // 创建 ViewController 后，调用的 Block，可以用来实现自定义行为。
+        isIntoChat = YES;
+    }];
+
+    //更新界面
     [self.tableView reloadData];
-   // 此处处理连接成功。
-        // 创建单聊视图控制器。
-        RCChatViewController *chatViewController = [[RCIM sharedRCIM]createPrivateChat:teacher.teacherid title:teacher.name completion:^(){
-            // 创建 ViewController 后，调用的 Block，可以用来实现自定义行为。
-        }];
-        // 把单聊视图控制器添加到导航栈。
+    
+    // 把单聊视图控制器添加到导航栈。
     chatViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:chatViewController animated:YES];
-
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -44,4 +44,7 @@ typedef enum {
 -(void)baseInfoIsExist:(sessionNotOver)block; // 如果session 没有过期 调用获取最新的baseinfo 信息
 -(void)connectRongYun;
 -(BOOL)parseBaseInfo:(NSDictionary *)baseinfo;
+
+-(NSArray *)findClassWithStudentid:(NSString *)studentid;
+
 @end

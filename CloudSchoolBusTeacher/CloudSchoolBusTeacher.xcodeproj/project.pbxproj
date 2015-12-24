@@ -91,6 +91,7 @@
 		81E8D4CF1C1E90BA00E09EF2 /* PhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E8D4CE1C1E90BA00E09EF2 /* PhotoViewCell.m */; };
 		F92FA3481BF4EFE500E76A17 /* Calculate.m in Sources */ = {isa = PBXBuildFile; fileRef = F92FA3471BF4EFE500E76A17 /* Calculate.m */; };
 		F95025501BF0E952009C970A /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = F950254F1BF0E952009C970A /* Tag.m */; };
+		FA08CBCF1C2AF1C700EDE049 /* BigImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA08CBCE1C2AF1C700EDE049 /* BigImageView.m */; };
 		FA3A67D11C2020CD005DA0E8 /* UploadWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3A67D01C2020CD005DA0E8 /* UploadWrapper.m */; };
 		FA3A67D31C20F0CB005DA0E8 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3A67D21C20F0CB005DA0E8 /* AssetsLibrary.framework */; };
 		FA3A67D71C214F9E005DA0E8 /* UploadingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3A67D51C214F9E005DA0E8 /* UploadingTableViewController.m */; };
@@ -360,6 +361,8 @@
 		F92FA3471BF4EFE500E76A17 /* Calculate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculate.m; sourceTree = "<group>"; };
 		F950254E1BF0E952009C970A /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		F950254F1BF0E952009C970A /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
+		FA08CBCD1C2AF1C700EDE049 /* BigImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigImageView.h; sourceTree = "<group>"; };
+		FA08CBCE1C2AF1C700EDE049 /* BigImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigImageView.m; sourceTree = "<group>"; };
 		FA3A67CF1C2020CD005DA0E8 /* UploadWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadWrapper.h; sourceTree = "<group>"; };
 		FA3A67D01C2020CD005DA0E8 /* UploadWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadWrapper.m; sourceTree = "<group>"; };
 		FA3A67D21C20F0CB005DA0E8 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -593,6 +596,8 @@
 				2A9826B21C1EDCFF004AA080 /* StudentCollectionViewCell.h */,
 				2A9826B31C1EDCFF004AA080 /* StudentCollectionViewCell.m */,
 				2A9826B41C1EDCFF004AA080 /* StudentCollectionViewCell.xib */,
+				FA08CBCD1C2AF1C700EDE049 /* BigImageView.h */,
+				FA08CBCE1C2AF1C700EDE049 /* BigImageView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1176,6 +1181,7 @@
 				81BECE571BFC5E80006DAA8D /* RYMessage.m in Sources */,
 				81BECE451BFC1747006DAA8D /* ClassifyViewController.m in Sources */,
 				2A9826B51C1EDCFF004AA080 /* StudentCollectionViewCell.m in Sources */,
+				FA08CBCF1C2AF1C700EDE049 /* BigImageView.m in Sources */,
 				81D405141BF04A8200B5A176 /* Teacher.m in Sources */,
 				81065C121BEB3977009CE107 /* SVHTTPRequest.m in Sources */,
 				816C9C1A1C1E9D20008AA22F /* Photo.m in Sources */,

@@ -9,6 +9,8 @@
 #import "CBMineViewController.h"
 #import "EKRequest.h"
 #import "MineHeaderView.h"
+#import "QRCodeReader.h"
+#import "QRCodeReaderViewController.h"
 #import "CBDateBase.h"
 #import "Masonry.h"
 #import "CBLoginInfo.h"
@@ -27,10 +29,11 @@
 #import "CBDateBase.h"
 #import "AppDelegate.h"
 
-@interface CBMineViewController ()<EKProtocol, UIAlertViewDelegate>
+@interface CBMineViewController ()<EKProtocol, UIAlertViewDelegate, QRCodeReaderDelegate>
 {
     MineHeaderView * headeView;
     KLCPopup* popup;
+    QRCodeReader *reader;
 }
 -(void)postChildSwitchNotification:(NSString *)currentStudent;
 -(void)handleSingleTap:(id)sender;
@@ -75,6 +78,24 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeAvatar:)];
     [headeView.avatarImageView addGestureRecognizer:tapGesture];
     [headeView.avatarImageView setUserInteractionEnabled:YES];
+    
+    //QRCode Object
+    // Create the reader object
+    reader = [QRCodeReader readerWithMetadataObjectTypes:@[AVMetadataObjectTypeQRCode]];
+    
+    // Instantiate the view controller
+    QRCodeReaderViewController *vc = [QRCodeReaderViewController readerWithCancelButtonTitle:@"Cancel" codeReader:reader startScanningAtLoad:YES showSwitchCameraButton:YES showTorchButton:YES];
+    
+    // Set the presentation style
+    vc.modalPresentationStyle = UIModalPresentationFormSheet;
+    
+    // Define the delegate receiver
+    vc.delegate = self;
+    
+    // Or use blocks
+    [reader setCompletionWithBlock:^(NSString *resultAsString) {
+        NSLog(@"%@", resultAsString);
+    }];
     
 }
 -(void)currentTeacher
@@ -122,7 +143,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 4;
+    return 5;
 }
 
 
@@ -139,12 +160,19 @@
     }
     else if(indexPath.row == 1)
     {
+        cell.titleLabel.text = @"扫一扫";
+        cell.iconImageView.image = [UIImage imageNamed:@"ic_settings"];
+        cell.iconImageView.contentMode = UIViewContentModeCenter;
+        cell.detailLabel.text = @"";
+    }
+    else if(indexPath.row == 2)
+    {
         cell.titleLabel.text = @"清除缓存";
         cell.iconImageView.image = [UIImage imageNamed:@"ic_settings"];
         cell.iconImageView.contentMode = UIViewContentModeCenter;
-        cell.detailLabel.text = [NSString stringWithFormat:@"%0.2fM",[Calculate checkTmpSize]];;
+        cell.detailLabel.text = [NSString stringWithFormat:@"%0.2fM",[Calculate checkTmpSize]];
     }
-    else if(indexPath.row == 2)
+    else if(indexPath.row == 3)
     {
         cell.titleLabel.text = @"正在上传";
         cell.iconImageView.image = [UIImage imageNamed:@"ic_info_outline"];
@@ -179,18 +207,24 @@
         
         [popup showWithLayout:layout];
     }
-    else if(indexPath.row == 1)
+    else if (indexPath.row == 1)
+    {
+        QRCodeReaderViewController *vc = [QRCodeReaderViewController readerWithCancelButtonTitle:@"Cancel" codeReader:reader startScanningAtLoad:YES showSwitchCameraButton:NO showTorchButton:YES];
+        vc.delegate = self;
+        [self presentViewController:vc animated:YES completion:NULL];
+    }
+    else if(indexPath.row == 2)
     {
         [Calculate clearTmpPics:^{
             [self.tableView reloadData];
         }];
     }
-    else if(indexPath.row == 2)
+    else if(indexPath.row == 3)
     {
         UploadingTableViewController *uploadVC = [[UploadingTableViewController alloc]initWithNibName:@"UploadingTableViewController" bundle:nil];
         [self.navigationController pushViewController:uploadVC animated:YES];
     }
-    else if(indexPath.row == 3)
+    else if(indexPath.row == 4)
     {
         CBWebViewController *webVC = [[CBWebViewController alloc] init];
         webVC.titleStr = @"云中校车";
@@ -496,6 +530,20 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self quit:nil];
+}
+
+#pragma mark - QRCodeReader Delegate Methods
+
+- (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"%@", result);
+    }];
+}
+
+- (void)readerDidCancel:(QRCodeReaderViewController *)reader
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

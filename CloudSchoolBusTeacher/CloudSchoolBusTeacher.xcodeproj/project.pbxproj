@@ -1375,7 +1375,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mactop.mobi.schoolbusteacher;
 				PRODUCT_NAME = CloudSchoolBusTeacher;
-				PROVISIONING_PROFILE = "1dd03ea6-52b3-4b3f-af3b-e38e9b0f3d30";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1408,7 +1408,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mactop.mobi.schoolbusteacher;
 				PRODUCT_NAME = CloudSchoolBusTeacher;
-				PROVISIONING_PROFILE = "1dd03ea6-52b3-4b3f-af3b-e38e9b0f3d30";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

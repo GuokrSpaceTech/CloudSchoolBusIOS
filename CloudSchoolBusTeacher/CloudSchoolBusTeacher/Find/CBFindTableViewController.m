@@ -530,21 +530,24 @@ static NSString * cellidenty = @"listcell";
 }
 
 #pragma mark - ArticelView Delegate
--(void) userSelectedPicture:(NSString *)picture pictureArray:(NSMutableArray *)picArray indexAt:(int)index
+-(void) userSelectedPicture:(NSString *)picture pictureArray:(NSMutableArray *)picArray indexAt:(int)index withComments:(NSString *)comments
 {
     CBPagedImageViewController *imageGallery = [[CBPagedImageViewController alloc] initWithNibName:@"CBPagedImageViewController" bundle:nil];
     imageGallery.hidesBottomBarWhenPushed = YES;
     [imageGallery setStartIndex:@(index)];
     [imageGallery setPageImages:picArray];
-    
+    imageGallery.comments = comments;
+
+#if 0
     CATransition *transition = [CATransition animation];
     transition.duration = 1.0f;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     transition.type = kCATransitionReveal;
     transition.subtype = kCATransitionReveal;
     transition.delegate = self;
-    [self.navigationController.view.layer addAnimation:transition forKey:nil];
-    [[self navigationController] pushViewController:imageGallery animated:YES];
+#endif
+    
+    [self presentViewController:imageGallery animated:YES completion:NULL];
 }
 
 -(void) userSelectedTag:(NSString *)tagDesc onButton:(UIButton *)button

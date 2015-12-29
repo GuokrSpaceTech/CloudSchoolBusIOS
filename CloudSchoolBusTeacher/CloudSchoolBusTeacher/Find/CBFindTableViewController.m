@@ -301,6 +301,7 @@ static NSString * cellidenty = @"listcell";
     }
 }
 
+#pragma mark
 #pragma mark UI Interfactions
 - (void)refreshAction{
     
@@ -442,7 +443,9 @@ static NSString * cellidenty = @"listcell";
 -(void)camButtonClick:(id)sender
 {
     AlbumViewController *albumVC = [[AlbumViewController alloc]init];
+    albumVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:albumVC animated:YES];
+
 }
 
 -(void)selectedTableRow:(NSUInteger)rowNum

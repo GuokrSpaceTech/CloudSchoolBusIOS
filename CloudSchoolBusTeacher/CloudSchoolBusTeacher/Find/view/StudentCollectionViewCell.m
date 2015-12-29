@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    _selectionIndicateView.hidden = YES;
 }
 
 @end

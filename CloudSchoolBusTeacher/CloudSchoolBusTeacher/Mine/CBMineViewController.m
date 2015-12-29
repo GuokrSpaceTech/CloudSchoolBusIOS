@@ -70,7 +70,7 @@
     [self.view addSubview:button];
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(@(SCREENWIDTH-40));
-        make.top.equalTo(self.view.mas_top).offset(280);
+        make.top.equalTo(self.view.mas_top).offset(400);
         make.height.mas_equalTo(@(40));
         make.centerX.equalTo(self.view.mas_centerX);
     }];

@@ -37,7 +37,7 @@
             make.width.width.height.mas_offset(@(20));
         }];
 
-        
+        _selectIamgeView.hidden = YES;
         
     }
     return self;

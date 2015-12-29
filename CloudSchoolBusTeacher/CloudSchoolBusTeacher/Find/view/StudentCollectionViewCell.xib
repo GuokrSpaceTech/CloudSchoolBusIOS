@@ -26,24 +26,38 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8U-Zw-4iD">
+                        <rect key="frame" x="43" y="0.0" width="17" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="17" id="6CI-Oe-MVf"/>
+                            <constraint firstAttribute="height" constant="17" id="hBa-Nz-fkb"/>
+                        </constraints>
+                        <state key="normal" title="Button" image="Message_red"/>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="S8U-Zw-4iD" secondAttribute="trailing" id="4hf-kR-dHa"/>
                 <constraint firstItem="X2e-5E-c1Z" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="8rr-H8-zys"/>
                 <constraint firstItem="tkN-v1-4dN" firstAttribute="leading" secondItem="X2e-5E-c1Z" secondAttribute="leading" id="Ail-gM-Emq"/>
                 <constraint firstItem="tkN-v1-4dN" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="Gfw-Y9-sRh"/>
                 <constraint firstAttribute="bottom" secondItem="tkN-v1-4dN" secondAttribute="bottom" id="aP6-23-XX1"/>
                 <constraint firstItem="X2e-5E-c1Z" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ihm-2V-7fe"/>
                 <constraint firstItem="tkN-v1-4dN" firstAttribute="top" secondItem="X2e-5E-c1Z" secondAttribute="bottom" constant="4" id="kaT-xE-xGh"/>
+                <constraint firstItem="S8U-Zw-4iD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="of7-DL-a0V"/>
                 <constraint firstItem="X2e-5E-c1Z" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="x9t-eu-8NW"/>
             </constraints>
             <size key="customSize" width="60" height="110"/>
             <connections>
                 <outlet property="avatarImageView" destination="X2e-5E-c1Z" id="YCQ-v2-zf2"/>
+                <outlet property="selectionIndicateView" destination="S8U-Zw-4iD" id="GdP-Yi-KI2"/>
                 <outlet property="studentNameLabel" destination="tkN-v1-4dN" id="Ln1-L5-OyT"/>
             </connections>
             <point key="canvasLocation" x="145" y="488"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="Message_red" width="17" height="17"/>
+    </resources>
 </document>

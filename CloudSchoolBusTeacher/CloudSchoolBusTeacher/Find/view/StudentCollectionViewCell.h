@@ -11,5 +11,6 @@
 @interface StudentCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *studentNameLabel;
+@property (weak, nonatomic) IBOutlet UIButton *selectionIndicateView;
 
 @end

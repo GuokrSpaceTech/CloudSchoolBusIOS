@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.title = @"我的相册";
     
     //Cameral Button
     UIButton * nextButton = [UIButton buttonWithType:UIButtonTypeCustom];

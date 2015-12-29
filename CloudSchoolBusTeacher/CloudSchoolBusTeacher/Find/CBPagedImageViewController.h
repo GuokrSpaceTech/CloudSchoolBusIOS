@@ -13,4 +13,5 @@
 @property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
 @property (nonatomic, strong) NSArray *pageImages;
 @property (nonatomic, strong) NSNumber *startIndex;
+@property (nonatomic, strong) NSString *desc;
 @end

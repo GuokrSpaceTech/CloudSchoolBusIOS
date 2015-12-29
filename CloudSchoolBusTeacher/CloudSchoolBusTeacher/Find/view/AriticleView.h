@@ -12,7 +12,7 @@
 @protocol ArticleViewDelegate <NSObject>
 @required
 
--(void) userSelectedPicture:(NSString *)picture pictureArray:(NSMutableArray *)picArray indexAt:(int)index;
+-(void) userSelectedPicture:(NSString *)picture pictureArray:(NSMutableArray *)picArray indexAt:(int)index desc:(NSString *)description;
 -(void) userSelectedTag:(NSString *)tagDesc onButton:(UIButton *)button;
 
 @end

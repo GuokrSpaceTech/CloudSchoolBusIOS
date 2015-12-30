@@ -317,6 +317,26 @@ static CBLoginInfo * logininfo = nil;
     return role;
 }
 
+-(ClassObj *)myClass
+{
+    ClassObj *myclass = nil;
+    for(ClassObj *classinfo in _classArr)
+    {
+        if([classinfo.classid isEqualToString:_currentClassId])
+        {
+            myclass = classinfo;
+        }
+    }
+    
+    return myclass;
+}
+
+//目前不支持学校的切换
+-(School *)mySchool
+{
+    return [_schoolArr objectAtIndex:0];
+}
+
 -(void)buildUpContactGroups
 {
     for(ClassObj *classinfo in _classArr)

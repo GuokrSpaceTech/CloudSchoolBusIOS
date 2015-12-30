@@ -14,15 +14,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="167" height="155"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YRz-zu-cHD">
-                        <rect key="frame" x="53" y="8" width="60" height="60"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="60" id="Iyd-51-388"/>
-                            <constraint firstAttribute="width" constant="60" id="VEt-9w-9UA"/>
-                        </constraints>
+                        <rect key="frame" x="12" y="20" width="143" height="98"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gq3-hP-GDv">
-                        <rect key="frame" x="62" y="76" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gq3-hP-GDv">
+                        <rect key="frame" x="8" y="130" width="151" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -30,12 +26,21 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstItem="YRz-zu-cHD" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="UaS-hW-Aa0"/>
-                <constraint firstItem="Gq3-hP-GDv" firstAttribute="top" secondItem="YRz-zu-cHD" secondAttribute="bottom" constant="8" id="Ulh-7e-L3s"/>
-                <constraint firstItem="Gq3-hP-GDv" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="XDD-SZ-WIN"/>
-                <constraint firstItem="YRz-zu-cHD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="Zla-kd-QSb"/>
+                <constraint firstItem="YRz-zu-cHD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="1au-wZ-3qv"/>
+                <constraint firstItem="Gq3-hP-GDv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="4sM-Zq-d5C"/>
+                <constraint firstAttribute="trailing" secondItem="YRz-zu-cHD" secondAttribute="trailing" constant="12" id="5vr-UK-geJ"/>
+                <constraint firstItem="YRz-zu-cHD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="Ig8-2J-FxS"/>
+                <constraint firstItem="Gq3-hP-GDv" firstAttribute="top" secondItem="YRz-zu-cHD" secondAttribute="bottom" constant="12" id="MWf-Dp-o7E"/>
+                <constraint firstAttribute="trailing" secondItem="Gq3-hP-GDv" secondAttribute="trailing" constant="8" id="fLo-gN-xlj"/>
+                <constraint firstItem="Gq3-hP-GDv" firstAttribute="top" secondItem="YRz-zu-cHD" secondAttribute="bottom" constant="4" id="i98-T8-PCS"/>
+                <constraint firstAttribute="bottom" secondItem="Gq3-hP-GDv" secondAttribute="bottom" constant="8" id="ojh-ZA-iJh"/>
             </constraints>
             <size key="customSize" width="167" height="155"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="i98-T8-PCS"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="iconImageView" destination="YRz-zu-cHD" id="wiM-zQ-YNf"/>
                 <outlet property="itemTitleLabel" destination="Gq3-hP-GDv" id="3la-M0-itX"/>

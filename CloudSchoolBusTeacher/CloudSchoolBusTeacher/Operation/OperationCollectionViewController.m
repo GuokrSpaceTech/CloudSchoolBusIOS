@@ -5,9 +5,10 @@
 //  Created by macbook on 15/12/22.
 //  Copyright © 2015年 BeiJingYinChuang. All rights reserved.
 //
-
+#import "CB.h"
 #import "OperationCollectionViewController.h"
 #import "OperationCollectionViewCell.h"
+#import "HeaderCollectionReusableView.h"
 #import "CBWebViewController.h"
 #import "CBLoginInfo.h"
 #import "School.h"
@@ -22,6 +23,7 @@
 @implementation OperationCollectionViewController
 
 static NSString * const reuseIdentifier = @"ClassOperationCell";
+static NSString * const reuseHeaderIdentifier = @"ClassOperationHeaderCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,8 +38,9 @@ static NSString * const reuseIdentifier = @"ClassOperationCell";
     School *school = [CBLoginInfo shareInstance].schoolArr[0];
     classModuleArr = school.classModuleArr;
 
-    // Register cell classes
+    // Register cell nib and header nib
     [self.collectionView registerNib:[UINib nibWithNibName:@"OperationCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"HeaderCollectionReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:reuseHeaderIdentifier];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,24 +74,45 @@ static NSString * const reuseIdentifier = @"ClassOperationCell";
     
     cell.module = classModuleArr[indexPath.row];
     
+    cell.layer.borderColor=[UIColor darkGrayColor].CGColor;
+    cell.layer.borderWidth=0.3;
+    
     return cell;
+}
+
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *reusableview = nil;
+    CBLoginInfo *info = [CBLoginInfo shareInstance];
+    
+    if (kind == UICollectionElementKindSectionHeader){
+        
+        HeaderCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:reuseHeaderIdentifier forIndexPath:indexPath];
+        
+        headerView.classLabel.text = [[info myClass] className];
+        headerView.schoolLabel.text = [[info mySchool] name];
+        NSString *avatarUrl = [[info findMe] avatar];
+        [headerView.teacherAvatar sd_setImageWithURL:[NSURL URLWithString:avatarUrl] placeholderImage:nil];
+        
+        reusableview = headerView;
+    }
+    
+    return reusableview;
 }
 
 #pragma mark <UICollectionViewDelegate>
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    return CGSizeZero;
+    CGSize size = {SCREENWIDTH, SCREENHEIGHT/4};
+    return size;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
 {
-    return CGSizeZero;;
+    return CGSizeZero;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    return CGSizeMake(self.view.frame.size.width/4.0 ,self.view.frame.size.width/4.0);
-    
-    // return CGSizeMake(50, 50);
+    return CGSizeMake(SCREENWIDTH/4 ,SCREENHEIGHT*3/4/4);
 }
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {

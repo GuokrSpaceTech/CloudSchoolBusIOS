@@ -110,6 +110,8 @@
 		FAC9FA9D1C2A439C003BB1DE /* ContactGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC9FA9B1C2A439C003BB1DE /* ContactGroupTableViewController.m */; };
 		FAC9FA9E1C2A439C003BB1DE /* ContactGroupTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC9FA9C1C2A439C003BB1DE /* ContactGroupTableViewController.xib */; };
 		FAC9FAA11C2A43CE003BB1DE /* ContactGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC9FAA01C2A43CE003BB1DE /* ContactGroupTableViewCell.m */; };
+		FAD7E28C1C3385C10025F07F /* HeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD7E28A1C3385C10025F07F /* HeaderCollectionReusableView.m */; };
+		FAD7E28D1C3385C10025F07F /* HeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD7E28B1C3385C10025F07F /* HeaderCollectionReusableView.xib */; };
 		FAFFBE281C09AEC600B17F3E /* AttendanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFFBE271C09AEC600B17F3E /* AttendanceView.xib */; };
 		FAFFBE2B1C09B24700B17F3E /* AttendanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFFBE2A1C09B24700B17F3E /* AttendanceView.m */; };
 /* End PBXBuildFile section */
@@ -392,6 +394,9 @@
 		FAC9FA9C1C2A439C003BB1DE /* ContactGroupTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactGroupTableViewController.xib; sourceTree = "<group>"; };
 		FAC9FA9F1C2A43CE003BB1DE /* ContactGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactGroupTableViewCell.h; sourceTree = "<group>"; };
 		FAC9FAA01C2A43CE003BB1DE /* ContactGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactGroupTableViewCell.m; sourceTree = "<group>"; };
+		FAD7E2891C3385C10025F07F /* HeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeaderCollectionReusableView.h; path = Operation/HeaderCollectionReusableView.h; sourceTree = "<group>"; };
+		FAD7E28A1C3385C10025F07F /* HeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeaderCollectionReusableView.m; path = Operation/HeaderCollectionReusableView.m; sourceTree = "<group>"; };
+		FAD7E28B1C3385C10025F07F /* HeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HeaderCollectionReusableView.xib; path = Operation/HeaderCollectionReusableView.xib; sourceTree = "<group>"; };
 		FAFFBE271C09AEC600B17F3E /* AttendanceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendanceView.xib; sourceTree = "<group>"; };
 		FAFFBE291C09B24700B17F3E /* AttendanceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendanceView.h; sourceTree = "<group>"; };
 		FAFFBE2A1C09B24700B17F3E /* AttendanceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendanceView.m; sourceTree = "<group>"; };
@@ -982,6 +987,9 @@
 				FAAC59E71C2974A200434598 /* OperationCollectionViewCell.h */,
 				FAAC59E81C2974A200434598 /* OperationCollectionViewCell.m */,
 				FAAC59E91C2974A200434598 /* OperationCollectionViewCell.xib */,
+				FAD7E2891C3385C10025F07F /* HeaderCollectionReusableView.h */,
+				FAD7E28A1C3385C10025F07F /* HeaderCollectionReusableView.m */,
+				FAD7E28B1C3385C10025F07F /* HeaderCollectionReusableView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1086,6 +1094,7 @@
 				2A9826B11C1EDCEB004AA080 /* TagCollectionViewCell.xib in Resources */,
 				FAAC59E51C29746000434598 /* OperationCollectionViewController.xib in Resources */,
 				FA5FAFB91C0555C20046051B /* URLLinkView.xib in Resources */,
+				FAD7E28D1C3385C10025F07F /* HeaderCollectionReusableView.xib in Resources */,
 				FA3A67E21C21507E005DA0E8 /* UploadingPictureCollectionViewCell.xib in Resources */,
 				FA3A67D81C214F9E005DA0E8 /* UploadingTableViewController.xib in Resources */,
 				2A25CA441C03589F00C81EE9 /* ClassifyTableViewCell.xib in Resources */,
@@ -1183,6 +1192,7 @@
 				FAAC59E41C29746000434598 /* OperationCollectionViewController.m in Sources */,
 				81E8D4C21C1E851C00E09EF2 /* AlbumViewController.m in Sources */,
 				812A8BF41BF2FD42009CE43E /* CBTeacherTableViewCell.m in Sources */,
+				FAD7E28C1C3385C10025F07F /* HeaderCollectionReusableView.m in Sources */,
 				81BECE571BFC5E80006DAA8D /* RYMessage.m in Sources */,
 				81BECE451BFC1747006DAA8D /* ClassifyViewController.m in Sources */,
 				2A9826B51C1EDCFF004AA080 /* StudentCollectionViewCell.m in Sources */,

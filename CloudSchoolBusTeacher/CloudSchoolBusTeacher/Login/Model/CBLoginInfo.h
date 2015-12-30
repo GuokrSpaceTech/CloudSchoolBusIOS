@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "EKRequest.h"
 #import "Teacher.h"
+#import "ClassObj.h"
+#import "School.h"
 
 typedef void (^loginSuccess)(BOOL isLogin);
 typedef void (^sessionNotOver)(BOOL isExist);
@@ -55,4 +57,6 @@ typedef enum {
 -(NSString *)findRoleBasedOnId:(NSString *)userid;
 -(void)buildUpContactGroups;
 
+-(School *)mySchool;
+-(ClassObj *)myClass;
 @end

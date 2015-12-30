@@ -63,6 +63,17 @@
     [self.scrollView addSubview:_imageView];
     
     _scrollView.contentSize = _imageView.frame.size;
+
+    //Description Label
+    _descriptionLabel = [[UILabel alloc]init];
+    [self addSubview:_descriptionLabel];
+    _descriptionLabel.font = [UIFont systemFontOfSize:14.0f];
+    _descriptionLabel.backgroundColor = [UIColor clearColor];
+    _descriptionLabel.textColor = [UIColor whiteColor];
+    [_descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.mas_left).offset(8);
+        make.bottom.equalTo(self.mas_bottom).offset(-40);
+    }];
     
     // 设置代理
     self.scrollView.delegate = self;
@@ -87,6 +98,8 @@
                                          action:@selector(doubleTap:)];
     doubleTap.numberOfTapsRequired = 2;
     doubleTap.numberOfTouchesRequired = 1;
+    [singletap requireGestureRecognizerToFail:doubleTap];
+    
     
     [self.scrollView addGestureRecognizer:doubleTap];
     
@@ -102,9 +115,20 @@
 #pragma mark - private functions
 - (void)loadPage:(NSString *)imageUrl
 {
-    [_imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]
+    NSString *imageUrlThumb = [imageUrl stringByAppendingString:@".tiny.jpg"];
+    
+//    SDWebImageDownloader *manager = [[SDWebImageDownloader alloc]init];
+//    [manager downloadImageWithURL:[NSURL URLWithString:imageUrlThumb] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+//    } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+//    }];
+    
+    
+    [_imageView sd_setImageWithURL:[NSURL URLWithString:imageUrlThumb]
                   placeholderImage:nil completed:^(UIImage *image, NSError *error,SDImageCacheType cacheType, NSURL *imageURL){
                   }];
+    
+    [_imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:nil];
+
 }
 
 - (void)zoomToPoint:(CGPoint)point
@@ -150,15 +174,7 @@
 #pragma mark - User Actions
 -(void)singleTap:(id)sender
 {
-    CATransition *transition = [CATransition animation];
-    transition.duration = 1.0f;
-    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    transition.type = kCATransitionFade;
-    transition.subtype = kCATransitionFade;
-    transition.delegate = self;
-//    [self.navigationController.view.layer addAnimation:transition forKey:nil];
-//    [self.navigationController popViewControllerAnimated:YES];
-//    [[self navigationController] setNavigationBarHidden:NO];
+    [_delegate exitGalleryMode];
 }
 
 -(void)doubleTap:(UIGestureRecognizer *)sender
@@ -169,34 +185,7 @@
 
 -(void)longPressEvent:(id)sender
 {
-//    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"图像操作" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
-//    
-//    [actionSheet addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-//        
-//        // Cancel button tappped.
-//        [self dismissViewControllerAnimated:YES completion:^{
-//        }];
-//    }]];
-    
-    
-//    [actionSheet addAction:[UIAlertAction actionWithTitle:@"保存到本地相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//        
-//        // OK button tapped.
-//        if (_imageView) {
-//            UIImage *imageToBeSaved = _imageView.image;
-//            UIImageWriteToSavedPhotosAlbum(imageToBeSaved, nil, nil, nil);
-//        }
-//        
-//        [self dismissViewControllerAnimated:YES completion:^{
-//        }];
-//    }]];
-//    
-//    // Present action sheet.
-//    [self presentViewController:actionSheet animated:YES completion:nil];
-}
-
-#pragma mark - ActionSheet Delegate
-- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [_delegate actionSheetPopup:_imageView.image];
 }
 
 @end

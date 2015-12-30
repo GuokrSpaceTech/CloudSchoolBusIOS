@@ -25,6 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.navigationItem.title = @"选择图片";
+    
     //Cameral Button
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [nextButton setBackgroundImage:[UIImage imageNamed:@"ic_list_white"] forState:UIControlStateNormal];
@@ -101,10 +103,7 @@
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-
     return CGSizeMake(self.view.frame.size.width/4.0 ,self.view.frame.size.width/4.0);
-    
-   // return CGSizeMake(50, 50);
 }
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
@@ -141,6 +140,8 @@
 }
 */
 
+#pragma mark
+#pragma mark == User Actions
 -(void)nextButtonClick:(id)sender
 {
     CommentsViewController *commentsVC = [[CommentsViewController alloc]initWithNibName:@"CommentsViewController" bundle:nil];

@@ -343,6 +343,8 @@ CGFloat animatedDistance;
             info.state = LoginOn;
             //进入主页面
             
+            [info buildUpContactGroups];
+            
             AppDelegate * delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             [delegate makeMainViewController];
         }

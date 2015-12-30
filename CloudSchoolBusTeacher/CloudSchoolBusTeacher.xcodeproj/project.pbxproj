@@ -16,6 +16,7 @@
 		2A4C2D961C102F3A0062AB68 /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4C2D951C102F3A0062AB68 /* CMPopTipView.m */; };
 		2A4C2D981C1089F40062AB68 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4C2D971C1089F40062AB68 /* SystemConfiguration.framework */; };
 		2A4C2D9B1C11682B0062AB68 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4C2D9A1C11682B0062AB68 /* Reachability.m */; };
+		2A75B4EB1C328E39004DFCCA /* ContactGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A75B4EA1C328E39004DFCCA /* ContactGroup.m */; };
 		2A950C661C04063E009D6211 /* NoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A950C651C04063E009D6211 /* NoticeView.m */; };
 		2A950C681C040660009D6211 /* NoticeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A950C671C040660009D6211 /* NoticeView.xib */; };
 		2A9745251BFBFA8A008C8A7B /* UIColor+RCColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A9745241BFBFA8A008C8A7B /* UIColor+RCColor.m */; };
@@ -140,6 +141,8 @@
 		2A4C2D971C1089F40062AB68 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2A4C2D991C11682B0062AB68 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		2A4C2D9A1C11682B0062AB68 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		2A75B4E91C328E39004DFCCA /* ContactGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactGroup.h; sourceTree = "<group>"; };
+		2A75B4EA1C328E39004DFCCA /* ContactGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactGroup.m; sourceTree = "<group>"; };
 		2A950C641C04063E009D6211 /* NoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeView.h; sourceTree = "<group>"; };
 		2A950C651C04063E009D6211 /* NoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeView.m; sourceTree = "<group>"; };
 		2A950C671C040660009D6211 /* NoticeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoticeView.xib; sourceTree = "<group>"; };
@@ -901,6 +904,8 @@
 				816C9C191C1E9D20008AA22F /* Photo.m */,
 				2A9826B71C1FBB0A004AA080 /* UploadRecord.h */,
 				2A9826B81C1FBB0A004AA080 /* UploadRecord.m */,
+				2A75B4E91C328E39004DFCCA /* ContactGroup.h */,
+				2A75B4EA1C328E39004DFCCA /* ContactGroup.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1183,6 +1188,7 @@
 				2A9826B51C1EDCFF004AA080 /* StudentCollectionViewCell.m in Sources */,
 				FA08CBCF1C2AF1C700EDE049 /* BigImageView.m in Sources */,
 				81D405141BF04A8200B5A176 /* Teacher.m in Sources */,
+				2A75B4EB1C328E39004DFCCA /* ContactGroup.m in Sources */,
 				81065C121BEB3977009CE107 /* SVHTTPRequest.m in Sources */,
 				816C9C1A1C1E9D20008AA22F /* Photo.m in Sources */,
 				81065C151BEB4327009CE107 /* CBDateBase.m in Sources */,

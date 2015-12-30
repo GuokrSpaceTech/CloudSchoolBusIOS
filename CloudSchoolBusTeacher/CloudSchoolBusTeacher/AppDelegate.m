@@ -18,6 +18,9 @@
 #import "RCTextMessage.h"
 #import "RYMessage.h"
 #import "MessageState.h"
+#import "Parents.h"
+#import "Teacher.h"
+#import "ContactGroup.h"
 @interface AppDelegate ()<RCIMReceiveMessageDelegate>
 {
     CBTabbarViewController *main;
@@ -66,17 +69,43 @@
         message.messagecontent = content;
         message.isRead = NO;
         //[MessageState addObjectToArr:message];
-       // [[NSNotificationCenter defaultCenter]postNotificationName:@"MESSAGETEACHER" object:nil];
+        //[[NSNotificationCenter defaultCenter]postNotificationName:@"MESSAGETEACHER" object:nil];
         CBLoginInfo * info = [CBLoginInfo shareInstance];
-        if(info.teacherVCIsLoading) // teacher页面已加载 并且有教师信息
+        
+        //Travers the contactGroupList
+        for(int i=0; i<info.contactGroupArr.count; i++)
         {
-            // 直接发通知
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"MESSAGETEACHER" object:message];
+            ContactGroup *contactGroup = info.contactGroupArr[i];
+            for(int j=0; j<contactGroup.contactList.count; j++)
+            {
+                if([contactGroup.role isEqualToString:@"parents"])
+                {
+                    Parents *parents = contactGroup.contactList[j];
+                    if([senderid isEqualToString:parents.parentid])
+                    {
+                        parents.contentlatest = content;
+                        parents.latestTime = sendertime;
+                        parents.noReadCount++;
+                        contactGroup.messagecnt++;
+                    }
+                }
+                else
+                {
+                    Teacher *teacher = contactGroup.contactList[j];
+                    if([senderid isEqualToString:teacher.teacherid])
+                    {
+                        teacher.contentlatest = content;
+                        teacher.latestTime = sendertime;
+                        teacher.noReadCount++;
+                        contactGroup.messagecnt++;
+                    }
+                }
+            }
         }
-        else
-        {
-            [MessageState addObjectToArr:message];
-        }
+        
+        // 直接发通知
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"MESSAGETEACHER" object:message];
+
     }
 }
 
@@ -136,13 +165,9 @@
     {
         //主页面
          info.state = LoginOn;
-        
         [self makeMainViewController];
-        
     }
     
- 
-
     // [self makeLoginViewController];
     [self.window makeKeyAndVisible];
     return YES;
@@ -170,10 +195,12 @@
     // register to receive notifications
     [application registerForRemoteNotifications];
 }
+
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
    // [[RCIMClient sharedRCIMClient] setDeviceToken:token];
     [[RCIM sharedRCIM] setDeviceToken:deviceToken];
 }
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

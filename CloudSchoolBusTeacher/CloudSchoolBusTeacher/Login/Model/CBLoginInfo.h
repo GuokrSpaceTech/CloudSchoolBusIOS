@@ -30,11 +30,14 @@ typedef enum {
 @property (nonatomic,copy) NSString * token;
 @property (nonatomic,copy) NSString * rongToken;
 @property (nonatomic,copy) NSString * sid;
+
 @property (nonatomic,strong)NSMutableArray * schoolArr;
 @property (nonatomic,strong)NSMutableArray * studentArr;
 @property (nonatomic,strong)NSMutableArray * classArr;
 @property (nonatomic,strong)NSMutableArray * teacherArr;
 @property (nonatomic,strong)NSMutableArray * parentsArr;
+
+@property (nonatomic,strong)NSMutableArray * contactGroupArr;
 
 @property (nonatomic,assign)BOOL hasValidBaseInfo;
 @property (nonatomic,assign)BOOL teacherVCIsLoading;
@@ -49,5 +52,7 @@ typedef enum {
 
 -(NSArray *)findClassWithStudentid:(NSString *)studentid;
 -(Teacher *)findMe;
+-(NSString *)findRoleBasedOnId:(NSString *)userid;
+-(void)buildUpContactGroups;
 
 @end

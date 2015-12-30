@@ -4,6 +4,7 @@ PODS:
   - FMDB/common (2.5)
   - FMDB/standard (2.5):
     - FMDB/common
+  - JSBadgeView (1.4.1)
   - KLCPopup (1.0)
   - Masonry (0.6.1)
   - MBProgressHUD (0.9.1)
@@ -17,6 +18,7 @@ PODS:
 
 DEPENDENCIES:
   - FMDB
+  - JSBadgeView
   - KLCPopup
   - Masonry
   - MBProgressHUD (~> 0.9.1)
@@ -28,6 +30,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
+  JSBadgeView: 3861ddee41094284d9468e6d0af5107f703aaac5
   KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
   Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad

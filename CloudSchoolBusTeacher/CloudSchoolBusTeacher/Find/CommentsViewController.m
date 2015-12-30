@@ -112,6 +112,16 @@
         [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:student.avatar] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         }];
         cell.studentNameLabel.text = student.cnname;
+        
+        cell.selectionIndicateView.hidden = YES;
+        for(Student *stu in studentsSelection)
+        {
+            if([stu.studentid isEqualToString:student.studentid])
+            {
+                cell.selectionIndicateView.hidden = NO;
+            }
+        }
+
         return cell;
     }
     else
@@ -145,8 +155,27 @@
 {
     if(collectionView == _studentCollectionView)
     {
-        [studentsSelection addObject:_studentArray[indexPath.row]];
+        BOOL found=NO;
+        Student *student = _studentArray[indexPath.row];
+        for(Student *stu in studentsSelection)
+        {
+            if([stu.studentid isEqualToString:student.studentid])
+            {
+                found = YES;
+                break;
+            }
+        }
+        if(found)
+        {
+            [studentsSelection removeObject:student];
+        }
+        else
+        {
+            [studentsSelection addObject:student];
+        }
     }
+    
+    [self.studentCollectionView reloadData];
 }
 
 #pragma mark
@@ -215,6 +244,8 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [[UploadWrapper shareInstance] uploadFile];
     });
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (NSString *) timeStamp

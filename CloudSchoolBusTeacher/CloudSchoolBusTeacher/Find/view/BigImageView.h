@@ -11,7 +11,7 @@
 @protocol BigImageViewDelegate <NSObject>
 @required
 -(void) exitGalleryMode;
--(void) actionSheetPopup;
+-(void) actionSheetPopup:(UIImage *)image;
 @end
 
 
@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIImageView *imageView;
 @property (assign, nonatomic) int maxZoomLevel;
+@property (strong, nonatomic) UILabel *descriptionLabel;
 @property (nonatomic,strong) id<BigImageViewDelegate> delegate;
 
 - (void)loadPage:(NSString *)imageUrl;

@@ -11,4 +11,7 @@
 @interface ContactGroupTableViewCell : UITableViewCell
 
 @property UILabel *groupNameLabel;
+
+- (void)setBadge:(int)number;
+- (void)clearBadge;
 @end

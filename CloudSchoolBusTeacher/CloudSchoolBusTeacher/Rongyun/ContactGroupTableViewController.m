@@ -11,49 +11,36 @@
 #import "ContactGroupTableViewCell.h"
 #import "CBLoginInfo.h"
 #import "ClassObj.h"
+#import "RYMessage.h"
+#import "JSBadgeView.h"
+#import "MessageState.h"
+#import "ContactGroup.h"
 
 @interface ContactGroupTableViewController ()
 {
-    NSMutableArray *contactGroupArr;
 }
 
 @end
 
 @implementation ContactGroupTableViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
+    self.navigationItem.title = @"联系人分组";
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    /*
-     * Load the contact group array
-     */
-    contactGroupArr = [[NSMutableArray alloc]init];
-    for(ClassObj *classinfo in [CBLoginInfo shareInstance].classArr)
-    {
-        NSString *className = classinfo.className;
-        NSString *classId   = classinfo.classid;
-        
-        //家长组
-        NSArray *keyArr = [[NSArray alloc]initWithObjects:@"classname",@"classid",@"role",nil];
-        NSArray *parentsObjectArr = [[NSArray alloc]initWithObjects:className,classId,@"parents", nil];
-        NSDictionary *classParentsDict = [NSDictionary dictionaryWithObjects:parentsObjectArr forKeys:keyArr];
-        [contactGroupArr addObject:classParentsDict];
-        
-        //教师组
-        NSArray *teacherObjectArr = [[NSArray alloc]initWithObjects:className,classId,@"teacher", nil];
-        NSDictionary *classTeacherDict = [NSDictionary dictionaryWithObjects:teacherObjectArr forKeys:keyArr];
-        [contactGroupArr addObject:classTeacherDict];
-        
-    }
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(receiveMessage:) name:@"MESSAGETEACHER" object:nil];
     
     //Register the Cell Class
     [self.tableView registerClass:[ContactGroupTableViewCell class] forCellReuseIdentifier:@"contactgroupcell"];
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,28 +55,59 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return contactGroupArr.count;
+    return [CBLoginInfo shareInstance].contactGroupArr.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ContactGroupTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"contactgroupcell" forIndexPath:indexPath];
     
-    NSString *labelText = [contactGroupArr[indexPath.row] objectForKey:@"classname"];
-    if([[contactGroupArr[indexPath.row] objectForKey:@"role"] isEqualToString:@"parents"])
+    ContactGroup *contactGroup = [CBLoginInfo shareInstance].contactGroupArr[indexPath.row];
+    
+    NSString *labelText = contactGroup.classname;
+    
+    if([contactGroup.role isEqualToString:@"parents"])
     {
-        labelText = [labelText stringByAppendingString:@" 家长"];
+        labelText = [labelText stringByAppendingString:@"家长"];
     }
     else
     {
-        labelText = [labelText stringByAppendingString:@" 教师"];
+        labelText =	 [labelText stringByAppendingString:@"教师"];
     }
     
     cell.groupNameLabel.text = labelText;
     
+    if(contactGroup.messagecnt>0)
+    {
+        [cell setBadge:contactGroup.messagecnt];
+    } else {
+        [cell clearBadge];
+    }
+    
     return cell;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ContactGroup *contactGroup = [CBLoginInfo shareInstance].contactGroupArr[indexPath.row];
+    contactGroup.messagecnt = 0;
+    
+    [tableView reloadData];
+    
+    TeacherViewController *teacherVC = [[TeacherViewController alloc] init];
+    teacherVC.contactArray = contactGroup.contactList;
+    teacherVC.viewTitle = contactGroup.classname;
+    
+    // Push the view controller.
+    [self.navigationController pushViewController:teacherVC animated:YES];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -125,17 +143,17 @@
 }
 */
 
-#pragma mark - Table view delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    TeacherViewController *teacherVC = [[TeacherViewController alloc] init];
-    teacherVC.classInfo = contactGroupArr[indexPath.row];
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:teacherVC animated:YES];
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
+//#pragma mark - Table view delegate
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//
+//    TeacherViewController *teacherVC = [[TeacherViewController alloc] init];
+//    teacherVC.classInfo = contactGroupArr[indexPath.row];
+//    
+//    // Push the view controller.
+//    [self.navigationController pushViewController:teacherVC animated:YES];
+//    
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//}
 
 
 /*
@@ -147,5 +165,14 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark
+#pragma mark == Notification Receiver
+-(void)receiveMessage:(NSNotification *)noti
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
+}
 
 @end

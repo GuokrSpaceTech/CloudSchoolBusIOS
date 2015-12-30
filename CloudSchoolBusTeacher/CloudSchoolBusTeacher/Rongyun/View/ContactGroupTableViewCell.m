@@ -8,6 +8,15 @@
 
 #import "ContactGroupTableViewCell.h"
 #import "Masonry.h"
+#import "JSBadgeView.h"
+
+@interface ContactGroupTableViewCell()
+{
+    UIImageView *groupIcon;
+    JSBadgeView *badgeView;
+}
+
+@end
 
 @implementation ContactGroupTableViewCell
 
@@ -15,7 +24,7 @@
 {
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
-        UIImageView *groupIcon = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"contact_unselected"]];
+        groupIcon = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"contact_unselected"]];
         groupIcon.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView addSubview:groupIcon];
         
@@ -35,6 +44,9 @@
             make.left.equalTo(groupIcon.mas_right).offset(8);
             make.centerY.equalTo(self.contentView.mas_centerY);
         }];
+        
+        badgeView = [[JSBadgeView alloc] initWithParentView:groupIcon alignment:JSBadgeViewAlignmentTopRight];
+        badgeView.hidden = YES;
     }
     
     return self;
@@ -44,6 +56,16 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setBadge:(int)number
+{
+    badgeView.badgeText = [[NSString alloc]initWithFormat:@"%d",number];
+    badgeView.hidden = NO;
+}
+- (void)clearBadge
+{
+    badgeView.hidden = YES;
 }
 
 @end

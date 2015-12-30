@@ -252,6 +252,6 @@
 {
     UIImageView *view = (UIImageView *)[sender view];
     int index = (int)view.tag;
-    [_delegate userSelectedPicture:[picArray objectAtIndex:index] pictureArray:picArray indexAt:index withComments:_message.desc];
+    [_delegate userSelectedPicture:[picArray objectAtIndex:index] pictureArray:picArray indexAt:index];
 }
 @end

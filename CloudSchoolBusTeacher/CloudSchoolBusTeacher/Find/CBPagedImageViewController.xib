@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EuJ-f2-WrS">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="2" translatesAutoresizingMaskIntoConstraints="NO" id="EuJ-f2-WrS">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
@@ -26,7 +26,7 @@
                 </scrollView>
                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="d5K-zz-FC1">
                     <rect key="frame" x="281" y="523" width="39" height="37"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </pageControl>
             </subviews>
@@ -39,7 +39,6 @@
                 <constraint firstItem="d5K-zz-FC1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lmF-x6-az1"/>
                 <constraint firstItem="EuJ-f2-WrS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nuL-jP-DEQ"/>
             </constraints>
-            <point key="canvasLocation" x="222" y="286"/>
         </view>
     </objects>
 </document>

@@ -11,7 +11,6 @@
 @interface CBPagedImageViewController : UIViewController <UIScrollViewDelegate>
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
-@property (strong, nonatomic) NSString *comments;
 @property (nonatomic, strong) NSArray *pageImages;
 @property (nonatomic, strong) NSNumber *startIndex;
 @end

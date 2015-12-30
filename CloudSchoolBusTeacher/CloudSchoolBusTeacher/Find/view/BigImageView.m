@@ -19,14 +19,14 @@
 
 @implementation BigImageView
 
-//-(instancetype)initWithCoder:(NSCoder *)aDecoder
-//{
-//    if(self = [super initWithCoder:aDecoder])
-//    {
+-(instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if(self = [super initWithCoder:aDecoder])
+    {
 //        [self initUI];
-//    }
-//    return self;
-//}
+    }
+    return self;
+}
 
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -64,30 +64,6 @@
     
     _scrollView.contentSize = _imageView.frame.size;
     
-    /*
-     * Comments Label
-     */
-    _commentsLabel = [[UILabel alloc]init];
-    _commentsLabel.backgroundColor = [UIColor clearColor];
-    _commentsLabel.font =[UIFont systemFontOfSize:14.0f];
-    _commentsLabel.textColor = [UIColor whiteColor];
-    [self addSubview:_commentsLabel];
-    [_commentsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.mas_left).offset(8);
-        make.bottom.equalTo(self.mas_bottom).offset(-30);
-    }];
-    
-    /*
-     * ThumbNail
-     */
-    _thumbNailView = [[UIImageView alloc]init];
-    [self addSubview:_thumbNailView];
-    [_thumbNailView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self);
-        make.height.equalTo(@60);
-        make.width.equalTo(@60);
-    }];
-    
     // 设置代理
     self.scrollView.delegate = self;
     
@@ -111,11 +87,13 @@
                                          action:@selector(doubleTap:)];
     doubleTap.numberOfTapsRequired = 2;
     doubleTap.numberOfTouchesRequired = 1;
-    [singletap requireGestureRecognizerToFail:doubleTap];
+    
     [self.scrollView addGestureRecognizer:doubleTap];
     
     UILongPressGestureRecognizer* longPress = [ [ UILongPressGestureRecognizer alloc ] initWithTarget:self action:@selector(longPressEvent:)];
     [self.scrollView addGestureRecognizer:longPress];
+    
+
     
     // Init Vars
     isZoomed = NO;
@@ -124,13 +102,9 @@
 #pragma mark - private functions
 - (void)loadPage:(NSString *)imageUrl
 {
-    NSString *thumbNailStr = [imageUrl stringByAppendingString:@".tiny.jpg"];
-    [_thumbNailView sd_setImageWithURL:[NSURL URLWithString:thumbNailStr] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        [_imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]
-                      placeholderImage:nil completed:^(UIImage *image, NSError *error,SDImageCacheType cacheType, NSURL *imageURL){
-                          _thumbNailView.hidden = YES;
-                      }];
-    }];
+    [_imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]
+                  placeholderImage:nil completed:^(UIImage *image, NSError *error,SDImageCacheType cacheType, NSURL *imageURL){
+                  }];
 }
 
 - (void)zoomToPoint:(CGPoint)point
@@ -176,14 +150,12 @@
 #pragma mark - User Actions
 -(void)singleTap:(id)sender
 {
-//    CATransition *transition = [CATransition animation];
-//    transition.duration = 1.0f;
-//    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-//    transition.type = kCATransitionFade;
-//    transition.subtype = kCATransitionFade;
-//    transition.delegate = self;
-//    
-    [_delegate exitGalleryMode];
+    CATransition *transition = [CATransition animation];
+    transition.duration = 1.0f;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFade;
+    transition.subtype = kCATransitionFade;
+    transition.delegate = self;
 //    [self.navigationController.view.layer addAnimation:transition forKey:nil];
 //    [self.navigationController popViewControllerAnimated:YES];
 //    [[self navigationController] setNavigationBarHidden:NO];

@@ -11,11 +11,10 @@
 #import "BigImageView.h"
 #import "Masonry.h"
 
-@interface CBPagedImageViewController () <UIActionSheetDelegate, UIGestureRecognizerDelegate, BigImageViewDelegate>
+@interface CBPagedImageViewController () <UIActionSheetDelegate, UIGestureRecognizerDelegate>
 {
     int currentPageIndex;
     UIView *imageViewsContainer;
-    float scrollY;
 }
 @property (nonatomic, strong) NSMutableArray *pageViews;
 @property (nonatomic, strong) UIImageView *imageView;
@@ -60,19 +59,38 @@
         CGRect rect = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
         BigImageView *imageView = [[BigImageView alloc] initWithFrame:rect];
         imageView.tag = i;
-        imageView.commentsLabel.text = _comments;
         [imageView loadPage:_pageImages[i-1]];
-        imageView.delegate = self;
 
         [_scrollView addSubview:imageView];
     }
-    [self layoutScrollImages];
     
+    [self layoutScrollImages];
     
     [[self navigationController] setNavigationBarHidden:YES];
 }
 
 
+-(void)layoutScrollImages
+{
+    BigImageView *view = nil;
+    NSArray *subviews = [_scrollView subviews];
+    
+    // reposition all image subviews in a horizontal serial fashion
+    CGFloat curXLoc = 0;
+    for (view in subviews)
+    {
+        if ([view isKindOfClass:[BigImageView class]] && view.tag > 0)
+        {
+            CGRect frame = CGRectMake(curXLoc, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+            view.frame = frame;
+            
+            curXLoc += (frame.size.width);
+        }
+    }
+    
+    // set the content size so it can be scrollable
+    [_scrollView setContentSize:CGSizeMake((_pageImages.count * [[UIScreen mainScreen] bounds].size.width), [_scrollView bounds].size.height)];
+}
 
 -(void)viewDidUnload
 {
@@ -88,7 +106,27 @@
 }
 
 
-#pragma mark - private function
+#pragma mark - private functions
+- (void)addBigImageViews:(NSInteger)page {
+    if (page < 0 || page >= self.pageImages.count) {
+        // If it's outside the range of what we have to display, then do nothing
+        return;
+    }
+    
+    float left = 0;
+    for(int i=0; i<_pageImages.count;i++)
+    {
+        left = i*self.view.frame.size.width;
+        CGRect frame = CGRectMake(left, 0, self.view.frame.size.width, self.view.frame.size.height);
+        BigImageView *bigImageView = [[BigImageView alloc]initWithFrame:frame];
+        [imageViewsContainer addSubview:bigImageView];
+        
+        NSString *imageUrl = [_pageImages objectAtIndex:i];
+        
+        [bigImageView loadPage:imageUrl];
+    }
+}
+
 - (void)zoomToPoint:(CGPoint)point
 {
     CGRect zoomRect;
@@ -117,35 +155,74 @@
     return zoomRect;
 }
 
-
--(void)layoutScrollImages
+#pragma mark - User Actions
+-(void)singleTap:(id)sender
 {
-    BigImageView *view = nil;
-    NSArray *subviews = [_scrollView subviews];
-    float singleFrameWidth = [[UIScreen mainScreen] bounds].size.width;
-    float singleFrameHeight = [[UIScreen mainScreen] bounds].size.height;
+    CATransition *transition = [CATransition animation];
+    transition.duration = 1.0f;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFade;
+    transition.subtype = kCATransitionFade;
+    transition.delegate = self;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+    [[self navigationController] setNavigationBarHidden:NO];
+}
+
+-(void)doubleTap:(UIGestureRecognizer *)sender
+{
+    [self zoomToPoint:[sender locationInView:sender.view]];
+    self.isZoomed = !self.isZoomed;
     
-    // reposition all image subviews in a horizontal serial fashion
-    CGFloat curXLoc = 0;
-    for (view in subviews)
-    {
-        if ([view isKindOfClass:[BigImageView class]] && view.tag > 0)
-        {
-            CGRect frame = CGRectMake(curXLoc, 0, singleFrameWidth, singleFrameHeight);
-            view.frame = frame;
-            
-            curXLoc += (frame.size.width);
-            
+//    [self.scrollView zoomToRect:<#(CGRect)#> animated:YES];
+}
+
+-(void)longPressEvent:(id)sender
+{
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"图像操作" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+        // Cancel button tappped.
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }]];
+
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"保存到本地相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        // OK button tapped.
+        if (_imageView) {
+            UIImage *imageToBeSaved = _imageView.image;
+            UIImageWriteToSavedPhotosAlbum(imageToBeSaved, nil, nil, nil);
         }
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }]];
+    
+    // Present action sheet.
+    [self presentViewController:actionSheet animated:YES completion:nil];
+}
+
+-(void)swipeGestureHandle:(UISwipeGestureRecognizer *)sender
+{
+    if(sender.direction == UISwipeGestureRecognizerDirectionRight)
+    {
+        currentPageIndex --;
+        if(currentPageIndex < 0)
+            currentPageIndex = (int)[_pageImages count] - 1;
+    }
+    else
+    {
+        currentPageIndex ++;
+        if(currentPageIndex == [_pageImages count])
+            currentPageIndex = 0;
     }
     
-    // set the content size
-    [_scrollView setContentSize:CGSizeMake((_pageImages.count * singleFrameWidth), singleFrameHeight)];
+//    [self loadPage:currentPageIndex];
     
-    //Force Horizontal scroll to the same Y
-    scrollY = _scrollView.contentOffset.y;
-    
-    _scrollView.contentOffset = CGPointMake([_startIndex intValue] * singleFrameWidth, 0);
+    self.pageControl.currentPage = currentPageIndex;
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -154,20 +231,29 @@
     if (sView.tag == 1)
     {
         NSInteger index = fabs(sView.contentOffset.x) / sView.frame.size.width;
+        //NSLog(@"%d",index);
         [_pageControl setCurrentPage:index];
+//        featureLabel.text = [array objectAtIndex:index];
     }
 }
 
-#pragma mark
-#pragma mark == BigImageViewDelegate
--(void)exitGalleryMode
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    //Exit
-    [self dismissViewControllerAnimated:YES completion:^{
-    }];
+    int page = (scrollView.contentOffset.x / scrollView.bounds.size.width);
+    if(page != _pageControl.currentPage)
+    {
+        _pageControl.currentPage = page;
+    }
 }
--(void)actionSheetPopup
-{
-    
+
+#pragma mark - ActionSheet Delegate
+- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
 }
+
+
+#pragma mark - Gesture Delegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    return YES;
+}
+
 @end

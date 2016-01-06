@@ -13,8 +13,9 @@
 #import "CBLoginInfo.h"
 #import "School.h"
 #import "ClassModule.h"
+#import "UIColor+RCColor.h"
 
-@interface OperationCollectionViewController ()
+@interface OperationCollectionViewController () <UICollectionViewDelegateFlowLayout>
 {
     NSArray *classModuleArr;
 }
@@ -62,20 +63,17 @@ static NSString * const reuseHeaderIdentifier = @"ClassOperationHeaderCell";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionVie
 {
-    return 1;
+    return ceil(classModuleArr.count/3);
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return classModuleArr.count;
+    return 3;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     OperationCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     cell.module = classModuleArr[indexPath.row];
-    
-//    cell.layer.borderColor=[UIColor grayColor].CGColor;
-//    cell.layer.borderWidth=1;
     
     return cell;
 }
@@ -112,13 +110,21 @@ static NSString * const reuseHeaderIdentifier = @"ClassOperationHeaderCell";
 {
     return CGSizeZero;
 }
+
+-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0;
+}
+
+-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0;
+}
 //屏幕下部分为3行，3列
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    float cellWidth = (screenWidth)/ 3.0; //Replace the divisor with the column count requirement. Make sure to have it in float.
-    CGSize size = CGSizeMake(cellWidth-7, cellWidth-7);
+    float cellWidth = (collectionView.frame.size.width-2)/ 3.0; //Replace the divisor with the column count requirement. Make sure to have it in float.
+    CGSize size = CGSizeMake(cellWidth, cellWidth);
     
     return size;
 }
@@ -126,8 +132,11 @@ static NSString * const reuseHeaderIdentifier = @"ClassOperationHeaderCell";
 {
     return UIEdgeInsetsZero;
 }
+
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+
+    
     NSString *sid = [[CBLoginInfo shareInstance]sid];
     NSString *classid = [[CBLoginInfo shareInstance]currentClassId];
     ClassModule *module = classModuleArr[indexPath.row];
@@ -138,6 +147,20 @@ static NSString * const reuseHeaderIdentifier = @"ClassOperationHeaderCell";
     webview.titleStr = module.title;
     [self.navigationController pushViewController:webview animated:YES];
 }
+
+-(void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    cell.backgroundColor = [UIColor colorWithRed:169 green:169 blue:169 alpha:0];
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    cell.backgroundColor = [UIColor whiteColor];
+}
+
+
 
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking
@@ -167,5 +190,4 @@ static NSString * const reuseHeaderIdentifier = @"ClassOperationHeaderCell";
 	
 }
 */
-
 @end

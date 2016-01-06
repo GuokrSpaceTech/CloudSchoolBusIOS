@@ -14,7 +14,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="167" height="155"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YRz-zu-cHD">
-                        <rect key="frame" x="69" y="88" width="30" height="30"/>
+                        <rect key="frame" x="69" y="63" width="30" height="30"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="ct1-R9-Hlo"/>
                             <constraint firstAttribute="width" constant="30" id="wbD-KX-gv8"/>
@@ -32,10 +33,10 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="Gq3-hP-GDv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="4sM-Zq-d5C"/>
-                <constraint firstItem="Gq3-hP-GDv" firstAttribute="top" secondItem="YRz-zu-cHD" secondAttribute="bottom" constant="12" id="MWf-Dp-o7E"/>
+                <constraint firstItem="YRz-zu-cHD" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="FFe-Qm-J9x"/>
                 <constraint firstAttribute="trailing" secondItem="Gq3-hP-GDv" secondAttribute="trailing" constant="8" id="fLo-gN-xlj"/>
+                <constraint firstItem="YRz-zu-cHD" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="gIz-lw-2gi"/>
                 <constraint firstAttribute="bottom" secondItem="Gq3-hP-GDv" secondAttribute="bottom" constant="8" id="ojh-ZA-iJh"/>
-                <constraint firstItem="YRz-zu-cHD" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="r69-op-8tJ"/>
             </constraints>
             <size key="customSize" width="167" height="155"/>
             <connections>

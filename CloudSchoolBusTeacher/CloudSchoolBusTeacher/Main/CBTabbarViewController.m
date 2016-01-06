@@ -48,14 +48,14 @@
     ContactGroupTableViewController * contactGroupVC = [[ContactGroupTableViewController alloc]initWithNibName:@"ContactGroupTableViewController" bundle:nil];
     contactGroupVC.tabBarItem.image = [[UIImage imageNamed:@"contact_unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     contactGroupVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"contact"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    contactGroupVC.tabBarItem.title = @"我的联系人";
+    contactGroupVC.tabBarItem.title = @"联系人";
     
     OperationCollectionViewController *operationVC = [[OperationCollectionViewController alloc]initWithNibName:@"OperationCollectionViewController" bundle:nil];
     image = [[UIImage imageNamed:@"hobby_unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];;
     selectedImage = [[UIImage imageNamed:@"hobby"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     operationVC.tabBarItem.image = image;
     operationVC.tabBarItem.selectedImage = selectedImage;
-    operationVC.tabBarItem.title = @"兴趣爱好";
+    operationVC.tabBarItem.title = @"班务";
     
     CBMineViewController * mineVC = [[CBMineViewController alloc]initWithNibName:@"CBMineViewController" bundle:nil];
     image = [[UIImage imageNamed:@"me_unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -70,7 +70,7 @@
     UINavigationController *operationNav = [[UINavigationController alloc] initWithRootViewController:operationVC];
     UINavigationController *teacherNav = [[UINavigationController alloc] initWithRootViewController:contactGroupVC];
     UINavigationController *findNav = [[UINavigationController alloc] initWithRootViewController:findVC];
-    NSArray *arr = @[findNav,teacherNav,operationNav,mainNav];
+    NSArray *arr = @[findNav,operationNav,teacherNav,mainNav];
     
     //Change the background color and tile color
     for(int i=0; i<[arr count]; i++)

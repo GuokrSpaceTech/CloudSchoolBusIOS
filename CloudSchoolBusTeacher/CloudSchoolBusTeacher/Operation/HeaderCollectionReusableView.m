@@ -12,6 +12,8 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    _teacherAvatar.clipsToBounds = YES;
+    _teacherAvatar.layer.cornerRadius = 30;
 }
 
 @end

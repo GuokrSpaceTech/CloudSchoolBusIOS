@@ -76,7 +76,7 @@ static NSString * cellidenty = @"listcell";
     
     //Cameral Button
     UIButton * camButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [camButton setBackgroundImage:[UIImage imageNamed:@"ic_list_white"] forState:UIControlStateNormal];
+    [camButton setBackgroundImage:[UIImage imageNamed:@"ic_camera_alt_white"] forState:UIControlStateNormal];
     camButton.frame = CGRectMake(0, 0, 30, 30);
     [camButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [camButton addTarget:self action:@selector(camButtonClick:) forControlEvents:UIControlEventTouchUpInside];

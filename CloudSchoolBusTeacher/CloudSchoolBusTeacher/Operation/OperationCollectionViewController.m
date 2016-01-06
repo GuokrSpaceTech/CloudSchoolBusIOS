@@ -74,8 +74,8 @@ static NSString * const reuseHeaderIdentifier = @"ClassOperationHeaderCell";
     
     cell.module = classModuleArr[indexPath.row];
     
-    cell.layer.borderColor=[UIColor darkGrayColor].CGColor;
-    cell.layer.borderWidth=0.3;
+//    cell.layer.borderColor=[UIColor grayColor].CGColor;
+//    cell.layer.borderWidth=1;
     
     return cell;
 }
@@ -101,18 +101,26 @@ static NSString * const reuseHeaderIdentifier = @"ClassOperationHeaderCell";
 }
 
 #pragma mark <UICollectionViewDelegate>
+//Header占据1/5的屏幕高度
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    CGSize size = {SCREENWIDTH, SCREENHEIGHT/4};
+    CGSize size = {SCREENWIDTH, SCREENHEIGHT/5};
     return size;
 }
+//没有Footer
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
 {
     return CGSizeZero;
 }
+//屏幕下部分为3行，3列
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(SCREENWIDTH/4 ,SCREENHEIGHT*3/4/4);
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    float cellWidth = (screenWidth)/ 3.0; //Replace the divisor with the column count requirement. Make sure to have it in float.
+    CGSize size = CGSizeMake(cellWidth-7, cellWidth-7);
+    
+    return size;
 }
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {

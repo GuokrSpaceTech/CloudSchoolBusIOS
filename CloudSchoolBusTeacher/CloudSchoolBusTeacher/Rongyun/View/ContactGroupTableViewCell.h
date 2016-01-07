@@ -14,4 +14,5 @@
 
 - (void)setBadge:(int)number;
 - (void)clearBadge;
+-(void)setIcon:(UIImage *)iconImage;
 @end

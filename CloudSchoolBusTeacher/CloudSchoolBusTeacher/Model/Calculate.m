@@ -11,6 +11,9 @@
 @implementation Calculate
 +(NSString *)dateFromTimeStamp:(int)timeStamp
 {
+    if(timeStamp == 0)
+        return @"";
+    
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeStamp];
     NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"MM-dd HH:mm"];

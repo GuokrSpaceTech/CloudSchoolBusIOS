@@ -24,7 +24,7 @@
 {
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
-        groupIcon = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"contact_unselected"]];
+        groupIcon = [[UIImageView alloc]init];
         groupIcon.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView addSubview:groupIcon];
         
@@ -36,8 +36,8 @@
         [groupIcon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.contentView.mas_centerY);
             make.left.equalTo(self.contentView.mas_left).offset(8);
-            make.height.mas_equalTo(@40);
-            make.width.mas_equalTo(@40);
+            make.height.mas_equalTo(@24);
+            make.width.mas_equalTo(@24);
         }];
         
         [_groupNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -50,6 +50,11 @@
     }
     
     return self;
+}
+
+-(void)setIcon:(UIImage *)iconImage
+{
+    [groupIcon setImage:iconImage];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

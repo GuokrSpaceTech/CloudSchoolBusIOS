@@ -42,11 +42,20 @@ static NSString * const reuseHeaderIdentifier = @"ClassOperationHeaderCell";
     // Register cell nib and header nib
     [self.collectionView registerNib:[UINib nibWithNibName:@"OperationCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     [self.collectionView registerNib:[UINib nibWithNibName:@"HeaderCollectionReusableView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:reuseHeaderIdentifier];
+    
+    //Register Notification Receiver
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchclassHandle:) name:@"switchclass" object:nil];
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 /*
@@ -190,4 +199,12 @@ static NSString * const reuseHeaderIdentifier = @"ClassOperationHeaderCell";
 	
 }
 */
+#pragma mark
+#pragma mark == Notification handles
+-(void)switchclassHandle:(NSNotification *)notification
+{
+    [self.collectionView reloadData];
+}
+
 @end
+

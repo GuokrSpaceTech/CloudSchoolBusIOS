@@ -59,13 +59,6 @@ static CBLoginInfo * logininfo = nil;
         [self.teacherArr addObject:teacher];
     }
     
-    NSArray *parentsArr = baseinfo[@"parents"];
-    for(int i=0; i<parentsArr.count; i++)
-    {
-        Parents *parents = [[Parents alloc] initWithParentsDict:parentsArr[i]];
-        [self.parentsArr addObject:parents];
-    }
-    
     NSArray * stuArr = baseinfo[@"students"];
     for (int i=0; i<stuArr.count; i++) {
         Student * st = [[Student alloc]initWithDic:stuArr[i]];
@@ -79,10 +72,29 @@ static CBLoginInfo * logininfo = nil;
         [self.studentArr addObject:st];
     }
     
+    NSArray *parentsArr = baseinfo[@"parents"];
+    for(int i=0; i<parentsArr.count; i++)
+    {
+        Parents *parents = [[Parents alloc] initWithParentsDict:parentsArr[i]];
+        //家长的头像目前没有，用他的第一个孩子的头像代替，以后要用多个孩子头像组合
+        for(int j=0; j<stuArr.count; j++)
+        {
+            Student *student = [[Student alloc]initWithDic:stuArr[j]];
+            if( [parents.studentids containsObject:student.studentid])
+            {
+                parents.avatar = student.avatar;
+                break;
+            }
+        }
+        
+        [self.parentsArr addObject:parents];
+    }
+    
     [self buildUpContactGroups];
     
     return true;
 }
+    
 -(void) getErrorInfo:(NSError *) error forMethod:(RequestFunction) method
 {
     if(method == login)
@@ -334,7 +346,18 @@ static CBLoginInfo * logininfo = nil;
 //目前不支持学校的切换
 -(School *)mySchool
 {
-    return [_schoolArr objectAtIndex:0];
+    NSString *currentSchoolid = [self myClass].schoolid;
+    
+    for(int i=0; i<_schoolArr.count; i++)
+    {
+        School *school = [_schoolArr objectAtIndex:i];
+        if( [school.id isEqualToString:currentSchoolid])
+        {
+            return school;
+        }
+    }
+    
+    return nil;
 }
 
 -(void)buildUpContactGroups

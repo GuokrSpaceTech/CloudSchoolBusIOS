@@ -69,10 +69,12 @@
     if([contactGroup.role isEqualToString:@"parents"])
     {
         labelText = [labelText stringByAppendingString:@"家长"];
+        [cell setIcon:[UIImage imageNamed:@"ic_group"]];
     }
     else
     {
         labelText =	 [labelText stringByAppendingString:@"教师"];
+        [cell setIcon:[UIImage imageNamed:@"ic_school"]];
     }
     
     cell.groupNameLabel.text = labelText;

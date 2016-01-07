@@ -11,6 +11,7 @@
 #import "MineHeaderView.h"
 #import "QRCodeReader.h"
 #import "QRCodeReaderViewController.h"
+#import "ClassSwitchTableViewController.h"
 #import "CBDateBase.h"
 #import "Masonry.h"
 #import "CBLoginInfo.h"
@@ -49,15 +50,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //Title
     self.navigationItem.title = @"我的";
+    
+    //Talbe style
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerClass:[MineCell class] forCellReuseIdentifier:@"cell"];
     self.tableView.scrollEnabled = NO;
     self.tableView.rowHeight = 44;
+    
+    /*
+     *Header View
+     */
     headeView = [[MineHeaderView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 120)];
-    
     [self currentTeacher];
-    
     self.tableView.tableHeaderView  = headeView;
     
     //退出按钮
@@ -96,7 +102,6 @@
     [reader setCompletionWithBlock:^(NSString *resultAsString) {
         NSLog(@"%@", resultAsString);
     }];
-    
 }
 -(void)currentTeacher
 {
@@ -112,26 +117,15 @@
         if(school)
         {
             schoolname = school.name;
-            //Resize the label
-            headeView.schoolLabel.text = schoolname;
-            CGRect labelRect = [schoolname
-                                boundingRectWithSize:CGSizeMake(200, 0)
-                                options:NSStringDrawingUsesLineFragmentOrigin
-                                attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16.0]}
-                                context:nil];
-            headeView.schoolLabel.frame = labelRect;
-            headeView.schoolLabel.font = [UIFont systemFontOfSize:16.0f];
-            headeView.schoolLabel.textColor = [UIColor whiteColor];
-            headeView.schoolLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-            headeView.schoolLabel.textAlignment = NSTextAlignmentCenter;
-            headeView.schoolLabel.adjustsFontSizeToFitWidth = YES;
-            [headeView.schoolLabel.layer setCornerRadius:10.0];//Set corner radius of label to change the shape.
-            [headeView.schoolLabel.layer setBorderWidth:2.0f];//Set border width of label.
-            [headeView.schoolLabel  setClipsToBounds:YES];//Set its to YES for Corner radius to work.
-            [headeView.schoolLabel.layer setBorderColor:[UIColor whiteColor].CGColor];//Set Border color.
-            [headeView.schoolLabel  setBackgroundColor:[UIColor colorWithHexString:@"#ED7426" alpha:1.0f]];
+            [headeView.schoolLabel setTitle:[NSString stringWithFormat:@"  %@  ",schoolname] forState:UIControlStateNormal];
+            headeView.schoolLabel.titleLabel.font = [UIFont systemFontOfSize:12.0f];
+            headeView.schoolLabel.layer.borderWidth = 1;
+            headeView.schoolLabel.layer.borderColor = [UIColor whiteColor].CGColor;
+            headeView.schoolLabel.layer.cornerRadius = 12;
+            [headeView.schoolLabel setBackgroundColor:[UIColor colorWithHexString:@"#ED7426" alpha:1.0f]];
+
         }
-        headeView.nameLabel.text = teacher.name;
+        headeView.nameLabel.text = teacher.nickname;
     }
 }
 - (void)didReceiveMemoryWarning {
@@ -150,40 +144,39 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    //cell.textLabel.text = @"dd";
     if(indexPath.row == 0)
     {
         cell.titleLabel.text = @"切换班级";
         cell.iconImageView.image = [UIImage imageNamed:@"ic_swap_horiz"];
-        cell.iconImageView.contentMode = UIViewContentModeCenter;
+        cell.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
         cell.detailLabel.text = @"";
     }
     else if(indexPath.row == 1)
     {
         cell.titleLabel.text = @"扫一扫";
-        cell.iconImageView.image = [UIImage imageNamed:@"ic_settings"];
-        cell.iconImageView.contentMode = UIViewContentModeCenter;
+        cell.iconImageView.image = [UIImage imageNamed:@"ic_aspect_ratio"];
+        cell.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
         cell.detailLabel.text = @"";
     }
     else if(indexPath.row == 2)
     {
         cell.titleLabel.text = @"清除缓存";
         cell.iconImageView.image = [UIImage imageNamed:@"ic_settings"];
-        cell.iconImageView.contentMode = UIViewContentModeCenter;
+        cell.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
         cell.detailLabel.text = [NSString stringWithFormat:@"%0.2fM",[Calculate checkTmpSize]];
     }
     else if(indexPath.row == 3)
     {
         cell.titleLabel.text = @"正在上传";
-        cell.iconImageView.image = [UIImage imageNamed:@"ic_info_outline"];
-        cell.iconImageView.contentMode = UIViewContentModeCenter;
+        cell.iconImageView.image = [UIImage imageNamed:@"ic_filter"];
+        cell.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
         cell.detailLabel.text = @"";
     }
     else
     {
         cell.titleLabel.text = @"关于我们";
         cell.iconImageView.image = [UIImage imageNamed:@"ic_info_outline"];
-        cell.iconImageView.contentMode = UIViewContentModeCenter;
+        cell.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
         cell.detailLabel.text = @"";
     }
     return cell;
@@ -193,19 +186,23 @@
 {
     if(indexPath.row == 0)
     {
-        UIView *contentView = [self generateChildrenSwitchView];
-        
-        // Show in popup
-        KLCPopupLayout layout = KLCPopupLayoutMake(KLCPopupHorizontalLayoutCenter, KLCPopupVerticalLayoutCenter);
-        
-        popup = [KLCPopup popupWithContentView:contentView
-                                      showType:KLCPopupShowTypeFadeIn
-                                   dismissType:KLCPopupDismissTypeFadeOut
-                                      maskType:KLCPopupMaskTypeDimmed
-                      dismissOnBackgroundTouch:YES
-                         dismissOnContentTouch:NO];
-        
-        [popup showWithLayout:layout];
+//        UIView *contentView = [self generateChildrenSwitchView];
+//        
+//        // Show in popup
+//        KLCPopupLayout layout = KLCPopupLayoutMake(KLCPopupHorizontalLayoutCenter, KLCPopupVerticalLayoutCenter);
+//        
+//        popup = [KLCPopup popupWithContentView:contentView
+//                                      showType:KLCPopupShowTypeFadeIn
+//                                   dismissType:KLCPopupDismissTypeFadeOut
+//                                      maskType:KLCPopupMaskTypeDimmed
+//                      dismissOnBackgroundTouch:YES
+//                         dismissOnContentTouch:NO];
+//        
+//        [popup showWithLayout:layout];
+        ClassSwitchTableViewController *vc = [[ClassSwitchTableViewController alloc]initWithNibName:@"ClassSwitchTableViewController" bundle:nil];
+        vc.classArr = [CBLoginInfo shareInstance].classArr;
+        vc.schoolArr = [CBLoginInfo shareInstance].schoolArr;
+        [self.navigationController pushViewController:vc animated:YES];
     }
     else if (indexPath.row == 1)
     {

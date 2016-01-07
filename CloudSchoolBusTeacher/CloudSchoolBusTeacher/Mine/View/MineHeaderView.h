@@ -15,5 +15,5 @@
 }
 @property (nonatomic,strong)UIImageView * avatarImageView;
 @property (nonatomic,strong)UILabel * nameLabel;
-@property (nonatomic,strong)PaddingUILabel * schoolLabel;
+@property (nonatomic,strong)UIButton * schoolLabel;
 @end

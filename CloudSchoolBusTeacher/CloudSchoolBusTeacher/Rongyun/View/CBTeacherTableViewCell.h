@@ -14,7 +14,6 @@
 }
 @property (nonatomic,strong) UIImageView * avatarImageView;
 @property (nonatomic,strong)UILabel * nameLabel;
-@property (nonatomic,strong) UILabel *classNameLabel;
 
 @property (nonatomic,strong) id contact;
 @property (nonatomic,strong) NSString *classid;

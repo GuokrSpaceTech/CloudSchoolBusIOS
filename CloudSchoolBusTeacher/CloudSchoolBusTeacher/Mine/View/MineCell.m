@@ -38,6 +38,7 @@
             make.left.equalTo(self.contentView.mas_left).offset(20);
             make.top.equalTo(self.contentView.mas_top).offset(5);
             make.bottom.equalTo(self.contentView.mas_bottom).offset(-5);
+            make.width.mas_equalTo(@20);
         }];
         
         [nextIcon mas_makeConstraints:^(MASConstraintMaker *make) {

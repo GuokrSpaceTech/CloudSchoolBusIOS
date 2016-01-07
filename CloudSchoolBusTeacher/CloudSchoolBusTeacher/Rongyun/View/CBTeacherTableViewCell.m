@@ -22,16 +22,14 @@
     {
         _avatarImageView = [[UIImageView alloc]init];
         _avatarImageView.backgroundColor = [UIColor grayColor];
+        _avatarImageView.clipsToBounds = YES;
+        _avatarImageView.layer.cornerRadius = 25;
         [self.contentView addSubview:_avatarImageView];
         
         _nameLabel = [[UILabel alloc]init];
         _nameLabel.backgroundColor = [UIColor clearColor];
         _nameLabel.font = [UIFont systemFontOfSize:16.0f];
         [self.contentView addSubview:_nameLabel];
-        
-        _classNameLabel = [[UILabel alloc]init];
-        _classNameLabel.font = [UIFont systemFontOfSize:14.0f];
-        [self.contentView addSubview:_classNameLabel];
         
         _contentLabel = [[UILabel alloc]init];
         [self.contentView addSubview:_contentLabel];
@@ -69,14 +67,9 @@
             make.top.equalTo(_avatarImageView.mas_top);
         }];
         
-        [_classNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(_avatarImageView.mas_right).offset(10);
-            make.bottom.equalTo(_avatarImageView.mas_bottom);
-        }];
-        
         [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(_classNameLabel.mas_right).offset(5);
-            make.top.equalTo(_avatarImageView.mas_bottom).offset(5);
+            make.left.equalTo(_nameLabel.mas_left);
+            make.baseline.equalTo(_avatarImageView.mas_baseline);
         }];
        
         [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -144,9 +137,15 @@
     // Set up the UI
     [_avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarStr] placeholderImage:nil];
     _nameLabel.text = contactName;
-    _classNameLabel.text = classname;
     _timeLabel.text = timestampStr;
+    if(lastIMContent==nil || [lastIMContent isEqualToString:@""])
+    {
+        lastIMContent = @"没有信息";
+    }
     _contentLabel.text = lastIMContent;
+    _contentLabel.textColor = [UIColor grayColor];
+    _contentLabel.font = [UIFont systemFontOfSize:12.0f];
+    
     if(unreadCnt == 0)
     {
         noReadBtn.hidden = YES;

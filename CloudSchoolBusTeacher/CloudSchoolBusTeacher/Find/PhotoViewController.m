@@ -25,20 +25,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    /*
+     * Navigation
+     */
     self.navigationItem.title = @"选择图片";
     
-    //Cameral Button
+    //Next button
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [nextButton setBackgroundImage:[UIImage imageNamed:@"ic_list_white"] forState:UIControlStateNormal];
-    nextButton.frame = CGRectMake(0, 0, 30, 30);
-    [nextButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [nextButton setBackgroundImage:[UIImage imageNamed:@"ic_navigate_next_white"] forState:UIControlStateNormal];
+    [nextButton setTitle:@"下一步" forState:UIControlStateNormal];
+    nextButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+    nextButton.frame = CGRectMake(0, 0, 50, 40);
+    [nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [nextButton addTarget:self action:@selector(nextButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * nextItem = [[UIBarButtonItem alloc]initWithCustomView:nextButton];
     self.navigationItem.rightBarButtonItem = nextItem;
     
-    _list = [[NSMutableArray alloc]init];
-    photoSelection = [[NSMutableArray alloc]init];
-    
+
+    //Init Collection View
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     flowLayout.minimumInteritemSpacing = 0;
     flowLayout.minimumLineSpacing = 0;
@@ -49,6 +53,11 @@
     [self.view addSubview:_mCollectionView];
     [_mCollectionView registerClass:[PhotoViewCell class] forCellWithReuseIdentifier:@"cellchanel"];
     
+    //Init the data vars
+    _list = [[NSMutableArray alloc]init];
+    photoSelection = [[NSMutableArray alloc]init];
+    
+    //Init Photos
     [_grop setAssetsFilter:[ALAssetsFilter allPhotos]];
     
     [_grop enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
@@ -144,6 +153,14 @@
 #pragma mark == User Actions
 -(void)nextButtonClick:(id)sender
 {
+    if(photoSelection.count == 0)
+    {
+        UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"云中校车" message:@"请选择图片" delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        return;
+    }
+    
     CommentsViewController *commentsVC = [[CommentsViewController alloc]initWithNibName:@"CommentsViewController" bundle:nil];
 
     School *school = [[[CBLoginInfo shareInstance] schoolArr] objectAtIndex:0];

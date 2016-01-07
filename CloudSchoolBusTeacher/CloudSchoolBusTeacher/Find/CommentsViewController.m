@@ -18,8 +18,9 @@
 #import "Photo.h"
 #import "UploadRecord.h"
 #import "UploadWrapper.h"
+#import "UIColor+RCColor.h"
 
-@interface CommentsViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
+@interface CommentsViewController () <UICollectionViewDataSource,UICollectionViewDelegate, UITextViewDelegate>
 {
     NSString *comments;
     NSMutableArray *studentsSelection;
@@ -32,6 +33,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    /*
+     * Navigation Bar
+     */
+    self.navigationItem.title = @"添加信息";
+    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    //    [nextButton setBackgroundImage:[UIImage imageNamed:@"ic_navigate_next_white"] forState:UIControlStateNormal];
+    [nextButton setTitle:@"下一步" forState:UIControlStateNormal];
+    nextButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+    nextButton.frame = CGRectMake(0, 0, 50, 40);
+    [nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [nextButton addTarget:self action:@selector(nextButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem * nextItem = [[UIBarButtonItem alloc]initWithCustomView:nextButton];
+    self.navigationItem.rightBarButtonItem = nextItem;
+    
+    //Set delegates
     _studentCollectionView.delegate = self;
     _studentCollectionView.dataSource = self;
 
@@ -41,21 +58,21 @@
     _pictureCollectionView.delegate = self;
     _pictureCollectionView.dataSource = self;
     
+    _commentTextView.delegate = self;
+    
+    //Register Cell nibs or classes
     [_studentCollectionView registerNib:[UINib nibWithNibName:@"StudentCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"cellstudent"];
     [_tagCollectionView registerNib:[UINib nibWithNibName:@"TagCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"celltag"];
     [_pictureCollectionView registerClass:[PhotoViewCell class] forCellWithReuseIdentifier:@"cellpicture"];
     
-    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [nextButton setBackgroundImage:[UIImage imageNamed:@"ic_list_white"] forState:UIControlStateNormal];
-    nextButton.frame = CGRectMake(0, 0, 30, 30);
-    [nextButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [nextButton addTarget:self action:@selector(nextButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem * nextItem = [[UIBarButtonItem alloc]initWithCustomView:nextButton];
-    self.navigationItem.rightBarButtonItem = nextItem;
-    
+    //Init Selection data
     tagsSelection = [[NSMutableArray alloc]init];
     studentsSelection = [[NSMutableArray alloc]init];
-
+    
+    //Init tap gesture
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
+    tapGesture.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tapGesture];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -102,7 +119,8 @@
     {
         TagCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"celltag" forIndexPath:indexPath];
         Tag *tag = _tagArray[indexPath.row];
-        cell.tagLabel.text=tag.tagname;
+        cell.tagLabel.text= tag.tagname;
+        cell.tagLabel.backgroundColor = [UIColor colorWithHexString:@"#C1C1C1" alpha:1.0f];
         return cell;
     }
     else if(collectionView == _studentCollectionView)
@@ -145,6 +163,10 @@
     {
         return CGSizeMake(self.view.frame.size.width/6.0 ,self.view.frame.size.width/5.0);
     }
+    else if(collectionView == _tagCollectionView)
+    {
+        return CGSizeMake(self.view.frame.size.width/6.0,30);
+    }
     return CGSizeMake(self.view.frame.size.width/6.0 ,self.view.frame.size.width/6.0);
 }
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -173,9 +195,24 @@
         {
             [studentsSelection addObject:student];
         }
+        [self.studentCollectionView reloadData];
+    } else if (collectionView == _tagCollectionView)
+    {
+        TagCollectionViewCell *tagView = (TagCollectionViewCell *)[self.tagCollectionView cellForItemAtIndexPath:indexPath];
+
+        Tag *tag = [_tagArray objectAtIndex:indexPath.row];
+        
+        if([tagsSelection containsObject:tag]){
+            [tagsSelection removeObject:tag];
+            tagView.tagLabel.backgroundColor = [UIColor colorWithHexString:@"#C1C1C1" alpha:1.0f];
+        }
+        else
+        {
+            [tagsSelection addObject:tag];
+            tagView.tagLabel.backgroundColor = [UIColor lightGrayColor];
+        }
     }
     
-    [self.studentCollectionView reloadData];
 }
 
 #pragma mark
@@ -251,5 +288,38 @@
 - (NSString *) timeStamp
 {
     return [NSString stringWithFormat:@"%d",(int)[[NSDate date] timeIntervalSince1970]];
+}
+
+#pragma mark
+#pragma mark == TextView delegate
+-(void)textViewDidChange:(UITextView *)textView
+{
+    int len = (int)_commentTextView.text.length;
+    _textCountLabel.text=[NSString stringWithFormat:@"%i",140-len];
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if([text length] == 0)
+    {
+        if([textView.text length] != 0)
+        {
+            return YES;
+        }
+    }
+    else if([[textView text] length] > 139)
+    {
+        return NO;
+    }
+    return YES;
+}
+
+
+#pragma mark
+#pragma mark == User Actions
+-(void)tapAction
+{
+    //Hide the softkey board
+    [_commentTextView endEditing:YES];
 }
 @end

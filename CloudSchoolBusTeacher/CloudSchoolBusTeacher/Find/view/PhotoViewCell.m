@@ -20,8 +20,8 @@
         _photoImageView.layer.borderWidth=1;
         _photoImageView.layer.borderColor = [UIColor whiteColor].CGColor;
         [self.contentView addSubview:_photoImageView];
-        _selectIamgeView = [[UIImageView alloc]init];
-        _selectIamgeView.backgroundColor = [UIColor redColor];
+        
+        _selectIamgeView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"checked"]];
         [self.contentView addSubview:_selectIamgeView];
         [_photoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.contentView.mas_left).offset(0);
@@ -36,9 +36,8 @@
             make.centerY.equalTo(self.contentView.mas_centerY);
             make.width.width.height.mas_offset(@(20));
         }];
-
-        _selectIamgeView.hidden = YES;
         
+        _selectIamgeView.hidden = YES;
     }
     return self;
 }

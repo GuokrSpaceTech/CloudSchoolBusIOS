@@ -122,7 +122,6 @@
 //    } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
 //    }];
     
-    
     [_imageView sd_setImageWithURL:[NSURL URLWithString:imageUrlThumb]
                   placeholderImage:nil completed:^(UIImage *image, NSError *error,SDImageCacheType cacheType, NSURL *imageURL){
                   }];

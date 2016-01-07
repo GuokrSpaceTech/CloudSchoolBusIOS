@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *pictureCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *tagCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *studentCollectionView;
+@property (weak, nonatomic) IBOutlet UILabel *textCountLabel;
 
 
 @property (strong, nonatomic) NSMutableArray *pictureArray;

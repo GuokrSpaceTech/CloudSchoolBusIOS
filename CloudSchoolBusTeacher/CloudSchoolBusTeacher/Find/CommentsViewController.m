@@ -40,7 +40,7 @@
     self.navigationItem.title = @"添加信息";
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
     //    [nextButton setBackgroundImage:[UIImage imageNamed:@"ic_navigate_next_white"] forState:UIControlStateNormal];
-    [nextButton setTitle:@"下一步" forState:UIControlStateNormal];
+    [nextButton setTitle:@"发布" forState:UIControlStateNormal];
     nextButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
     nextButton.frame = CGRectMake(0, 0, 50, 40);
     [nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -120,7 +120,21 @@
         TagCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"celltag" forIndexPath:indexPath];
         Tag *tag = _tagArray[indexPath.row];
         cell.tagLabel.text= tag.tagname;
-        cell.tagLabel.backgroundColor = [UIColor colorWithHexString:@"#C1C1C1" alpha:1.0f];
+        
+        if([tagsSelection containsObject:tag]){
+            cell.tagLabel.textColor = [UIColor whiteColor];
+            cell.tagLabel.backgroundColor = [UIColor colorWithHexString:@"#F3A139" alpha:1.0f];
+            cell.tagLabel.layer.borderWidth = 2;
+            cell.tagLabel.layer.borderColor = [UIColor colorWithHexString:@"F3A139" alpha:1.0f].CGColor;
+        }
+        else
+        {
+            cell.tagLabel.textColor = [UIColor colorWithHexString:@"F3A139" alpha:1.0f];
+            cell.tagLabel.backgroundColor = [UIColor whiteColor];
+            cell.tagLabel.layer.borderWidth = 2;
+            cell.tagLabel.layer.borderColor = [UIColor colorWithHexString:@"F3A139" alpha:1.0f].CGColor;
+        }
+
         return cell;
     }
     else if(collectionView == _studentCollectionView)
@@ -139,7 +153,6 @@
                 cell.selectionIndicateView.hidden = NO;
             }
         }
-
         return cell;
     }
     else
@@ -196,23 +209,20 @@
             [studentsSelection addObject:student];
         }
         [self.studentCollectionView reloadData];
-    } else if (collectionView == _tagCollectionView)
+    }
+    else if (collectionView == _tagCollectionView)
     {
-        TagCollectionViewCell *tagView = (TagCollectionViewCell *)[self.tagCollectionView cellForItemAtIndexPath:indexPath];
-
         Tag *tag = [_tagArray objectAtIndex:indexPath.row];
         
         if([tagsSelection containsObject:tag]){
             [tagsSelection removeObject:tag];
-            tagView.tagLabel.backgroundColor = [UIColor colorWithHexString:@"#C1C1C1" alpha:1.0f];
         }
         else
         {
             [tagsSelection addObject:tag];
-            tagView.tagLabel.backgroundColor = [UIColor lightGrayColor];
         }
+        [self.tagCollectionView reloadData];
     }
-    
 }
 
 #pragma mark
@@ -229,6 +239,14 @@
             studentids = [studentids stringByAppendingString:@","];
         }
         i++;
+    }
+    
+    if([studentids isEqualToString:@""])
+    {
+        UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"云中校车" message:@"请选择图片" delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        return;
     }
     
     i = 0;

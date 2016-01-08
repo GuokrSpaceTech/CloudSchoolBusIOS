@@ -52,13 +52,12 @@ static UploadWrapper * instance = nil;
              UIImage *image =[[UIImage alloc] initWithCGImage:imageReference];
              if (image != nil){
                  NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
-                 NSDictionary *paramDict = @{@"pickey":record.pickey, @"pictype":record.pictype,
-                                             @"classid":record.classid, @"fbody":imageData,
-                                             @"teacherid":record.teacherid,@"fname":record.fname,
-                                             @"ftime":record.ftime,@"status":record.status,
-                                             @"content":record.content, @"studentids":record.studentids,
-                                             @"tagids":record.tagids};
-                 
+
+                 NSDictionary *paramDict = @{@"pickey":record.pickey,
+                                             @"pictype":record.pictype,
+                                             @"fbody":imageData,
+                                             @"fname":record.fname,
+                                             @"ftime":record.ftime};
                  currentUploadingRecord = record;
                  [[EKRequest Instance] EKHTTPRequest:UPLOAD parameters:paramDict requestMethod:POST forDelegate:self];
                  NSLog(@"==UPLOADING== Pickey:%@ Filename:%@",record.pickey,record.fname);
@@ -76,8 +75,6 @@ static UploadWrapper * instance = nil;
     {
         NSString *pickey = [param objectForKey:@"pickey"];
         NSString *fname  = [param objectForKey:@"fname"];
-        NSString *ftime  = [param objectForKey:@"ftime"];
-        NSString *pictype= [param objectForKey:@"pictype"];
         if(code == 1)
         {
             //Mark upload Success for the upload record
@@ -86,7 +83,13 @@ static UploadWrapper * instance = nil;
             [[CBDateBase sharedDatabase] countUnsentRecordsWithPickkey:pickey completion:^(int count) {
                 if(count == 0)
                 {
-                    NSDictionary *paramDict = @{@"pickey":pickey, @"fname":fname, @"ftime":ftime, @"pictype":pictype};
+                    NSDictionary *paramDict = @{@"pickey":currentUploadingRecord.pickey,
+                                                @"pictype":currentUploadingRecord.pictype,
+                                                @"classid":currentUploadingRecord.classid,
+                                                @"teacherid":currentUploadingRecord.teacherid,
+                                                @"content":currentUploadingRecord.content,
+                                                @"studentids":currentUploadingRecord.studentids,
+                                                @"tagids":currentUploadingRecord.tagids};
                     //Send OVER Message
                     [[EKRequest Instance] EKHTTPRequest:UPLOADOVER parameters:paramDict requestMethod:POST forDelegate:self];
                     NSLog(@"==UPLOADING COMPLETED, SENT OVER MESSAGE == Pickey:%@",pickey);
@@ -121,7 +124,13 @@ static UploadWrapper * instance = nil;
         else
         {
             //Retry sending Over message
-            NSDictionary *paramDict = @{@"pickey":currentUploadingRecord.pickey, @"fname":currentUploadingRecord.fname, @"ftime":currentUploadingRecord.ftime, @"pictype":currentUploadingRecord.pictype};
+            NSDictionary *paramDict = @{@"pickey":currentUploadingRecord.pickey,
+                                        @"pictype":currentUploadingRecord.pictype,
+                                        @"classid":currentUploadingRecord.classid,
+                                        @"teacherid":currentUploadingRecord.teacherid,
+                                        @"content":currentUploadingRecord.content,
+                                        @"studentids":currentUploadingRecord.studentids,
+                                        @"tagids":currentUploadingRecord.tagids};
             
             //Send OVER Message
             [[EKRequest Instance] EKHTTPRequest:UPLOADOVER parameters:paramDict requestMethod:POST forDelegate:self];

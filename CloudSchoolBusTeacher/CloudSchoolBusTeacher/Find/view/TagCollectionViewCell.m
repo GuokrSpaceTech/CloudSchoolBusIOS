@@ -13,10 +13,7 @@
 - (void)awakeFromNib {
     // Initialization code
     _tagLabel.clipsToBounds = YES;
-    _tagLabel.layer.cornerRadius = 4;
-    _tagLabel.layer.borderColor=[UIColor whiteColor].CGColor;
-    _tagLabel.layer.borderWidth = 1;
-    _tagLabel.textColor = [UIColor whiteColor];
+    _tagLabel.layer.cornerRadius = 12;
 }
 
 @end

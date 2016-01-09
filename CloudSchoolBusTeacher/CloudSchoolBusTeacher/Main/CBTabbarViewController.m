@@ -16,10 +16,13 @@
 #import "UIColor+RCColor.h"
 #import "BaseNavigationController.h"
 #import "CBDateBase.h"
+#import "UITabBar+CustomBadge.h"
 
 @interface CBTabbarViewController ()
 {
     CBFindTableViewController * findVC;
+    UINavigationController *mineNav;
+    CBMineViewController * mineVC;
 }
 
 @end
@@ -57,7 +60,7 @@
     operationVC.tabBarItem.selectedImage = selectedImage;
     operationVC.tabBarItem.title = @"班务";
     
-    CBMineViewController * mineVC = [[CBMineViewController alloc]initWithNibName:@"CBMineViewController" bundle:nil];
+     mineVC = [[CBMineViewController alloc]initWithNibName:@"CBMineViewController" bundle:nil];
     image = [[UIImage imageNamed:@"me_unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     selectedImage = [[UIImage imageNamed:@"me"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     mineVC.tabBarItem.image = image;
@@ -66,11 +69,11 @@
     
     self.tabBar.translucent = NO;
 
-    UINavigationController *mainNav = [[UINavigationController alloc] initWithRootViewController:mineVC];
+    mineNav = [[UINavigationController alloc] initWithRootViewController:mineVC];
     UINavigationController *operationNav = [[UINavigationController alloc] initWithRootViewController:operationVC];
     UINavigationController *teacherNav = [[UINavigationController alloc] initWithRootViewController:contactGroupVC];
     UINavigationController *findNav = [[UINavigationController alloc] initWithRootViewController:findVC];
-    NSArray *arr = @[findNav,operationNav,teacherNav,mainNav];
+    NSArray *arr = @[findNav,operationNav,teacherNav,mineNav];
     
     //Change the background color and tile color
     for(int i=0; i<[arr count]; i++)
@@ -91,6 +94,9 @@
     
     //init the tab
     self.viewControllers = arr;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addRedDot:) name:@"uploading" object:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -98,6 +104,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    NSLog(@"Selected INDEX OF TAB-BAR ==> %lu", (unsigned long)tabBarController.selectedIndex);
+    
+    if (tabBarController.selectedIndex == 3) {
+        [self.tabBar setBadgeStyle:(kCustomBadgeStyleNone) value:1 atIndex:3];
+    }
+}
 /*
 #pragma mark - Navigation
 
@@ -107,5 +121,14 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(void)addRedDot:(NSNotification *)notifcation
+{
+    [self.tabBar setTabIconWidth:29];
+    [self.tabBar setBadgeTop:9];
+    [self.tabBar setBadgeStyle:(kCustomBadgeStyleRedDot) value:1 atIndex:3];
+    
+    mineVC.isUploadingNotifying = true;
+}
 
 @end

@@ -47,6 +47,7 @@
     [super viewDidAppear:animated];
     [self.tableView reloadData];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -171,6 +172,10 @@
         cell.iconImageView.image = [UIImage imageNamed:@"ic_filter"];
         cell.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
         cell.detailLabel.text = @"";
+        if(_isUploadingNotifying)
+            cell.redDotButton.hidden = NO;
+        else
+            cell.redDotButton.hidden = YES;
     }
     else
     {
@@ -220,6 +225,7 @@
     {
         UploadingTableViewController *uploadVC = [[UploadingTableViewController alloc]initWithNibName:@"UploadingTableViewController" bundle:nil];
         [self.navigationController pushViewController:uploadVC animated:YES];
+        _isUploadingNotifying = FALSE;
     }
     else if(indexPath.row == 4)
     {
@@ -542,5 +548,4 @@
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
-
 @end

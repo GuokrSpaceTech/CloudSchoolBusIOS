@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,33 +14,52 @@
                 <rect key="frame" x="0.0" y="0.0" width="141" height="148"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UPy-my-wek">
-                        <rect key="frame" x="0.0" y="0.0" width="141" height="146"/>
+                        <rect key="frame" x="0.0" y="0.0" width="141" height="148"/>
                     </imageView>
-                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="583-iT-Hfv">
-                        <rect key="frame" x="0.0" y="146" width="141" height="2"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qdf-kt-6q8">
+                        <rect key="frame" x="0.0" y="0.0" width="141" height="148"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="0.5" colorSpace="calibratedWhite"/>
+                    </view>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="e4q-ty-qIx">
+                        <rect key="frame" x="52" y="55" width="37" height="37"/>
+                        <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </activityIndicatorView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZL-jF-Rbi">
+                        <rect key="frame" x="56" y="59" width="30" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="2" id="O4J-3P-rr1"/>
+                            <constraint firstAttribute="height" constant="30" id="bTq-vi-Ly2"/>
+                            <constraint firstAttribute="width" constant="30" id="xLj-A4-MV7"/>
                         </constraints>
-                    </progressView>
+                        <state key="normal" backgroundImage="retry"/>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="583-iT-Hfv" secondAttribute="bottom" id="Crg-8R-pNp"/>
-                <constraint firstAttribute="trailing" secondItem="583-iT-Hfv" secondAttribute="trailing" id="D8e-BQ-QOM"/>
-                <constraint firstItem="583-iT-Hfv" firstAttribute="top" secondItem="UPy-my-wek" secondAttribute="bottom" id="Y5e-Pt-2nw"/>
+                <constraint firstItem="e4q-ty-qIx" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="5LW-Kq-E83"/>
+                <constraint firstItem="e4q-ty-qIx" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Man-PS-Ma9"/>
                 <constraint firstItem="UPy-my-wek" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="bhX-mZ-oew"/>
+                <constraint firstItem="qdf-kt-6q8" firstAttribute="width" secondItem="UPy-my-wek" secondAttribute="width" id="f2y-DA-0BJ"/>
                 <constraint firstAttribute="trailing" secondItem="UPy-my-wek" secondAttribute="trailing" id="flE-5U-Bt3"/>
+                <constraint firstItem="qdf-kt-6q8" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="jzm-NR-zwd"/>
                 <constraint firstItem="UPy-my-wek" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="mwp-wV-42m"/>
-                <constraint firstItem="583-iT-Hfv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ufw-CZ-mzd"/>
-                <constraint firstItem="583-iT-Hfv" firstAttribute="top" secondItem="UPy-my-wek" secondAttribute="bottom" id="uod-e1-0NP"/>
+                <constraint firstAttribute="bottom" secondItem="UPy-my-wek" secondAttribute="bottom" id="oIS-xS-CLh"/>
+                <constraint firstItem="aZL-jF-Rbi" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="pbx-3C-JiK"/>
+                <constraint firstItem="qdf-kt-6q8" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="q5e-Gv-9dm"/>
+                <constraint firstItem="aZL-jF-Rbi" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="sn7-Xj-2oB"/>
+                <constraint firstItem="qdf-kt-6q8" firstAttribute="height" secondItem="UPy-my-wek" secondAttribute="height" id="uSJ-mX-bbZ"/>
             </constraints>
             <size key="customSize" width="141" height="148"/>
             <connections>
+                <outlet property="activityIndicatorView" destination="e4q-ty-qIx" id="dG5-Ub-KM7"/>
+                <outlet property="coverView" destination="qdf-kt-6q8" id="vTu-Jf-cyO"/>
                 <outlet property="imageView" destination="UPy-my-wek" id="BUO-Op-o1o"/>
-                <outlet property="progressView" destination="583-iT-Hfv" id="Mti-S5-afA"/>
+                <outlet property="retryButton" destination="aZL-jF-Rbi" id="FOk-mm-ZWc"/>
             </connections>
             <point key="canvasLocation" x="79.5" y="310"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="retry" width="24" height="24"/>
+    </resources>
 </document>

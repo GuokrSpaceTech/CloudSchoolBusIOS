@@ -33,9 +33,6 @@ static NSString * cellidenty = @"listcell";
     int lastestMessageIdInLocalDB;
     BOOL isNetworkAvailable;
 }
-
-
--(void)studentSwitchHandle:(NSDictionary *)userInfo;
 @end
 
 @implementation CBFindTableViewController
@@ -120,14 +117,10 @@ static NSString * cellidenty = @"listcell";
             [[EKRequest Instance] EKHTTPRequest:login parameters:paramDict requestMethod:POST forDelegate:[CBLoginInfo shareInstance]];
         }
     }];
-    
-    NSString *notificationName = @"studentswitch";
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(studentSwitchHandle:)
-     name:notificationName
-     object:nil];
+
+    //目前无法让这个功能工作，ＴＯＤＯ
+//    NSString *notificationName = @"downloading";
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(downloadStarted:) name:notificationName object:nil];
     
     /*
      Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the method reachabilityChanged will be called.
@@ -209,13 +202,52 @@ static NSString * cellidenty = @"listcell";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark Private
--(void)studentSwitchHandle:(NSNotification *)notification
+#pragma mark
+#pragma mark == User Notification Handles
+-(void)downloadStarted:(NSNotification *)notification
 {
     NSDictionary *userInfo = [notification userInfo];
-    studentid = [userInfo objectForKey:@"current"];
-    [self initQueues];
-    [self.tableView reloadData];
+    NSString *pickey = [userInfo objectForKey:@"pickey"];
+    
+    [[CBDateBase sharedDatabase]selectUploadRecordsWithKey:pickey completion:^(NSMutableArray *records) {
+        if(records.count == 0) return ;
+        
+        UploadRecord *record = [records objectAtIndex:0];
+        Sender *sender = [[Sender alloc]init];
+        sender.senderid = record.teacherid;
+        sender.classname = [[CBLoginInfo shareInstance].myClass className];
+        sender.name = [[[CBLoginInfo shareInstance] findMe] nickname];
+        sender.role = [[[CBLoginInfo shareInstance] findMe] duty];
+        sender.avatar = [[[CBLoginInfo shareInstance] findMe] avatar];
+        
+        Message *message = [[Message alloc]init];
+        message.desc = record.content;
+        message.apptype = @"Article";
+        
+        NSMutableArray *bodyArr = [[NSMutableArray alloc]init];
+        for(UploadRecord *rec in records)
+        {
+            [bodyArr addObject:rec.fbody];
+        }
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:bodyArr options:NSJSONWritingPrettyPrinted error:&error];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        NSLog(@"jsonData as string:\n%@", jsonString);
+        
+        message.body = [NSString stringWithFormat:@"{\"PList\":%@}", jsonString];
+        message.sender = sender;
+        message.sendtime = record.ftime;
+        message.tag = record.tagids;
+        
+        [_dataList_all insertObject:message atIndex:0];
+        [_dataList_article insertObject:message atIndex:0];
+        
+        [self.tableView
+         performSelectorOnMainThread:@selector(reloadData)
+         withObject:nil
+         waitUntilDone:NO];
+    }];
+    
 }
 
 #pragma mark HTTP Deledates

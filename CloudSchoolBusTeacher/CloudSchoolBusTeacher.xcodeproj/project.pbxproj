@@ -33,6 +33,7 @@
 		2AEB21201C3E4C0F009C3B47 /* ClassTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AEB211E1C3E4C0F009C3B47 /* ClassTableViewCell.xib */; };
 		2AEB21241C3E503B009C3B47 /* ClassSwitchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEB21221C3E503B009C3B47 /* ClassSwitchTableViewController.m */; };
 		2AEB21251C3E503B009C3B47 /* ClassSwitchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AEB21231C3E503B009C3B47 /* ClassSwitchTableViewController.xib */; };
+		2AEB21281C40E0B7009C3B47 /* UITabBar+CustomBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEB21271C40E0B7009C3B47 /* UITabBar+CustomBadge.m */; };
 		43A7B6B7133E7159766C99EF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7299EA4EE1E968A90534B5D /* libPods.a */; };
 		7BF960911C3D308900D46B2E /* CustomCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF960901C3D308900D46B2E /* CustomCollectionViewFlowLayout.m */; };
 		81065BE91BEB019A009CE107 /* CBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81065BE71BEB019A009CE107 /* CBLoginViewController.m */; };
@@ -176,6 +177,8 @@
 		2AEB21211C3E503B009C3B47 /* ClassSwitchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassSwitchTableViewController.h; sourceTree = "<group>"; };
 		2AEB21221C3E503B009C3B47 /* ClassSwitchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassSwitchTableViewController.m; sourceTree = "<group>"; };
 		2AEB21231C3E503B009C3B47 /* ClassSwitchTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassSwitchTableViewController.xib; sourceTree = "<group>"; };
+		2AEB21261C40E0B7009C3B47 /* UITabBar+CustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+CustomBadge.h"; sourceTree = "<group>"; };
+		2AEB21271C40E0B7009C3B47 /* UITabBar+CustomBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+CustomBadge.m"; sourceTree = "<group>"; };
 		7BF9608F1C3D308900D46B2E /* CustomCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		7BF960901C3D308900D46B2E /* CustomCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		81065BE61BEB019A009CE107 /* CBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBLoginViewController.h; path = CloudSchoolBusTeacher/Login/CBLoginViewController.h; sourceTree = SOURCE_ROOT; };
@@ -380,7 +383,7 @@
 		F950254E1BF0E952009C970A /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		F950254F1BF0E952009C970A /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		FA08CBCD1C2AF1C700EDE049 /* BigImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigImageView.h; sourceTree = "<group>"; };
-		FA08CBCE1C2AF1C700EDE049 /* BigImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BigImageView.m; path = view/BigImageView.m; sourceTree = "<group>"; };
+		FA08CBCE1C2AF1C700EDE049 /* BigImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigImageView.m; sourceTree = "<group>"; };
 		FA3A67CF1C2020CD005DA0E8 /* UploadWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadWrapper.h; sourceTree = "<group>"; };
 		FA3A67D01C2020CD005DA0E8 /* UploadWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadWrapper.m; sourceTree = "<group>"; };
 		FA3A67D21C20F0CB005DA0E8 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -464,6 +467,8 @@
 				2A9745241BFBFA8A008C8A7B /* UIColor+RCColor.m */,
 				7BF9608F1C3D308900D46B2E /* CustomCollectionViewFlowLayout.h */,
 				7BF960901C3D308900D46B2E /* CustomCollectionViewFlowLayout.m */,
+				2AEB21261C40E0B7009C3B47 /* UITabBar+CustomBadge.h */,
+				2AEB21271C40E0B7009C3B47 /* UITabBar+CustomBadge.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -575,7 +580,6 @@
 				2A25CA3B1C01BD9900C81EE9 /* CBPagedImageViewController.h */,
 				2A25CA3C1C01BD9900C81EE9 /* CBPagedImageViewController.m */,
 				2A25CA3D1C01BD9900C81EE9 /* CBPagedImageViewController.xib */,
-				FA08CBCE1C2AF1C700EDE049 /* BigImageView.m */,
 				81E8D4C01C1E851C00E09EF2 /* AlbumViewController.h */,
 				81E8D4C11C1E851C00E09EF2 /* AlbumViewController.m */,
 				81E8D4C81C1E8F7500E09EF2 /* PhotoViewController.h */,
@@ -621,6 +625,7 @@
 				2A9826B31C1EDCFF004AA080 /* StudentCollectionViewCell.m */,
 				2A9826B41C1EDCFF004AA080 /* StudentCollectionViewCell.xib */,
 				FA08CBCD1C2AF1C700EDE049 /* BigImageView.h */,
+				FA08CBCE1C2AF1C700EDE049 /* BigImageView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1252,6 +1257,7 @@
 				2A9826B01C1EDCEB004AA080 /* TagCollectionViewCell.m in Sources */,
 				F95025501BF0E952009C970A /* Tag.m in Sources */,
 				FAC9FA9D1C2A439C003BB1DE /* ContactGroupTableViewController.m in Sources */,
+				2AEB21281C40E0B7009C3B47 /* UITabBar+CustomBadge.m in Sources */,
 				812A8BE91BF2D395009CE43E /* Message.m in Sources */,
 				81BECE4C1BFC4908006DAA8D /* BaseNavigationController.m in Sources */,
 				81065BE91BEB019A009CE107 /* CBLoginViewController.m in Sources */,

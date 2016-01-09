@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,14 +15,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2015-8-17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6m-u9-9D5">
-                        <rect key="frame" x="8" y="8" width="135" height="33"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-8-17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6m-u9-9D5">
+                        <rect key="frame" x="8" y="8" width="304" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="KOI-Ie-Tm8">
-                        <rect key="frame" x="8" y="49" width="304" height="143"/>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="KOI-Ie-Tm8">
+                        <rect key="frame" x="8" y="40" width="304" height="152"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mR7-JG-wyO">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -30,8 +31,18 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="KOI-Ie-Tm8" secondAttribute="trailing" id="M5C-6v-toH"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="KOI-Ie-Tm8" secondAttribute="leading" id="SXP-B9-W2z"/>
+                    <constraint firstAttribute="topMargin" secondItem="o6m-u9-9D5" secondAttribute="top" id="XO7-K9-NzD"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="KOI-Ie-Tm8" secondAttribute="bottom" id="k9n-k4-0xJ"/>
+                    <constraint firstItem="KOI-Ie-Tm8" firstAttribute="top" secondItem="o6m-u9-9D5" secondAttribute="bottom" constant="8" id="m0p-Jn-fhj"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="o6m-u9-9D5" secondAttribute="trailing" id="nP6-LW-ht1"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="o6m-u9-9D5" secondAttribute="leading" id="onc-f4-qY7"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="flowLayout" destination="mR7-JG-wyO" id="N2b-rj-EXN"/>
                 <outlet property="imagesCollectionView" destination="KOI-Ie-Tm8" id="lnc-23-H3O"/>
                 <outlet property="timestampLabel" destination="o6m-u9-9D5" id="7vS-GN-6Lg"/>
             </connections>

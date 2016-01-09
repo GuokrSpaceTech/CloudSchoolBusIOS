@@ -11,11 +11,15 @@
 #import "UIColor+RCColor.h"
 #import "Masonry.h"
 #import "CBLoginInfo.h"
+#import <AssetsLibrary/ALAsset.h>
+#import <AssetsLibrary/ALAssetsLibrary.h>
+#import <AssetsLibrary/ALAssetsGroup.h>
+#import <AssetsLibrary/ALAssetRepresentation.h>
 #import "School.h"
 #import "Tag.h"
 
 #define PICWIDTH 60
-#define PADDING 10
+#define PADDING 8
 #define COL_TAG 4
 #define COL_PIC 3
 
@@ -55,30 +59,62 @@
     _imageViews = [[NSMutableArray alloc] init];
     int i = 0;
     for(NSString *picPath in picArray){
-        if([picPath containsString:@"://"])
+        if([picPath containsString:@"http://"] || [picPath containsString:@"https://"])
         {
             UIImageView * imageView = [[UIImageView alloc]init];
             NSMutableString *thumbUrlStr =  [[NSMutableString alloc] initWithString:picArray[i]];
             [thumbUrlStr appendString:@".tiny.jpg"];
-            imageView.contentMode = UIViewContentModeScaleAspectFit;
-            imageView.clipsToBounds = YES;
             
             [imageView sd_setImageWithURL:[NSURL URLWithString:thumbUrlStr]
                        placeholderImage:nil completed:^(UIImage *image, NSError *error,
                        SDImageCacheType cacheType, NSURL *imageURL){
             }];
             
-            UITapGestureRecognizer *newTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pictureClick:)];
+            imageView.contentMode = UIViewContentModeScaleAspectFit;
+            imageView.clipsToBounds = YES;
             
+            UITapGestureRecognizer *newTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pictureClick:)];
             [imageView setUserInteractionEnabled:YES];
             [imageView addGestureRecognizer:newTap];
+            
             [imageView setTag:i];
         
-            
             [self addSubview:imageView];
             
             [_imageViews addObject:imageView];
         }
+        else if([picPath containsString:@"assets-library://"])
+        {
+            UIImageView * imageView = [[UIImageView alloc]init];
+            
+            imageView.image = [UIImage imageNamed:@"ic_filter"];
+            
+            imageView.contentMode = UIViewContentModeScaleAspectFit;
+            imageView.clipsToBounds = YES;
+            
+            UITapGestureRecognizer *newTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pictureClick:)];
+            [imageView setUserInteractionEnabled:YES];
+            [imageView addGestureRecognizer:newTap];
+            
+            [imageView setTag:i];
+            
+            [self addSubview:imageView];
+            
+            [_imageViews addObject:imageView];
+            
+            __block UIImage *image;
+            ALAssetsLibrary *lib = [[ALAssetsLibrary alloc] init];
+            [lib assetForURL:[NSURL URLWithString:picPath] resultBlock:^(ALAsset *asset) {
+                
+                ALAssetRepresentation *assetRepresentation =[asset defaultRepresentation];
+                CGImageRef imageReference = [assetRepresentation fullScreenImage];
+                image =[[UIImage alloc] initWithCGImage:imageReference];
+                
+            } failureBlock:^(NSError *error) {
+                //TODO
+            }];
+        }
+
         i++;
     }
     

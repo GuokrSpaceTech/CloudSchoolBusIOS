@@ -34,6 +34,12 @@
         nextIcon.alpha = 0.7f;
         [self.contentView addSubview:nextIcon];
         
+        _redDotButton = [[UIButton alloc]init];
+        _redDotButton.layer.cornerRadius = 3;
+        _redDotButton.backgroundColor = [UIColor redColor];
+        [self.contentView addSubview:_redDotButton];
+        _redDotButton.hidden = YES;
+        
         [_iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.contentView.mas_left).offset(20);
             make.top.equalTo(self.contentView.mas_top).offset(5);
@@ -56,14 +62,19 @@
             make.centerY.equalTo(_iconImageView.mas_centerY);
         }];
         
+        [_redDotButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(@6);
+            make.width.mas_equalTo(@6);
+            make.top.mas_equalTo(_iconImageView.mas_top);
+            make.right.mas_equalTo(_iconImageView.mas_right).offset(3);
+        }];
+        
         [line mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo(self.contentView.mas_bottom).offset(-1);
             make.height.mas_equalTo(@(1));
             make.left.equalTo(self.contentView.mas_left).offset(50);
             make.right.equalTo(self.contentView.mas_right).offset(50);
         }];
-        
-
     }
     return self;
 }

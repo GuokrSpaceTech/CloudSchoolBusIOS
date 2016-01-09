@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CBMineViewController : UITableViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
-
+@property BOOL isUploadingNotifying;
 @end

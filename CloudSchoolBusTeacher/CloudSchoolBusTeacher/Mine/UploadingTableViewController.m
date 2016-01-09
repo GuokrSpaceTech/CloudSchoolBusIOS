@@ -8,6 +8,7 @@
 
 #import "UploadingTableViewController.h"
 #import "UploadingTableViewCell.h"
+#import "UITableView+FDTemplateLayoutCell.h"
 #import "UploadRecord.h"
 #import "CBDateBase.h"
 
@@ -25,28 +26,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    uploadArticles = [[NSMutableArray alloc]init];
+    //Title
+    self.navigationItem.title = @"正在上传";
 
-    [self updateUploadQ];
     
     //Read the uploading Queue as the Datasource
+    uploadArticles = [[NSMutableArray alloc]init];
+    [self updateUploadQ];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"UploadingTableViewCell" bundle:nil] forCellReuseIdentifier:@"uploadcell"];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView.fd_debugLogEnabled = YES;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -55,19 +53,31 @@
     return [uploadArticles count];
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UploadingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"uploadcell" forIndexPath:indexPath];
     
+    // Configure the cell with content for the given indexPath
     [cell setUploadingRecords:uploadArticles[indexPath.row]];
     
     return cell;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 200;
+    NSMutableArray *recordArr = [uploadArticles objectAtIndex:indexPath.row];
+    if(recordArr==0)
+        return 0;
+    UploadRecord *uploadRecord = recordArr[0];
+    NSString *cacheKey = uploadRecord.pickey;
+    
+    return [tableView fd_heightForCellWithIdentifier:@"uploadcell" cacheByKey:cacheKey configuration:^(UploadingTableViewCell * cell)
+            {
+                //Ｃｅｌｌ中包含ＣｏｌｌｅｃｔｉｏｎＶｉｅｗ，自动布局计算ＣｏｌｌｅｃｔｉｏｎＶｉｅｗ失效
+                cell.fd_enforceFrameLayout = YES;
+                [cell setUploadingRecords:recordArr];
+            }];
 }
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -102,21 +112,20 @@
 }
 */
 
-/*
+
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+//    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
     
     // Pass the selected object to the new view controller.
     
     // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-}
-*/
+//    [self.navigationController pushViewController:detailViewController animated:YES];
+ }
 
 /*
 #pragma mark - Navigation
@@ -142,6 +151,7 @@
         //初始化key和Object
         NSString *pickey= ((UploadRecord *)recordList[0]).pickey;
         NSMutableArray *picArrOfArticle = [[NSMutableArray alloc]init];
+    
 
         //开始遍历数组
         for(int i=0; i<recordList.count; i++)

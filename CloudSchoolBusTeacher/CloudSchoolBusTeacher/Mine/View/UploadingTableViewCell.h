@@ -11,6 +11,7 @@
 @interface UploadingTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *imagesCollectionView;
+@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
 
 -(void)setUploadingRecords:(NSMutableArray *)records;
 @end

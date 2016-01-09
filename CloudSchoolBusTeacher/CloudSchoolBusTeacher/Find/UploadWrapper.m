@@ -61,11 +61,12 @@ static UploadWrapper * instance = nil;
                  currentUploadingRecord = record;
                  [[EKRequest Instance] EKHTTPRequest:UPLOAD parameters:paramDict requestMethod:POST forDelegate:self];
                  NSLog(@"==UPLOADING== Pickey:%@ Filename:%@",record.pickey,record.fname);
+                 
              } else {
                  NSLog(@"Failed to create the image.");
              }
          }
-            failureBlock:^(NSError *error)
+             failureBlock:^(NSError *error)
          {}];
     }];
 }

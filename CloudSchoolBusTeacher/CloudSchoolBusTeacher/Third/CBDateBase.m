@@ -203,11 +203,11 @@
 {
     [queue inDatabase:^(FMDatabase *db) {
         NSString *query = [NSString stringWithFormat:@"SELECT * FROM uploadRecordTbl ORDER BY pickey"];
-        __block UploadRecord *record = [[UploadRecord alloc]init];
         __block NSMutableArray *recordList = [[NSMutableArray alloc]init];
         FMResultSet *result = [db executeQuery:query];
         while([result next])
         {
+            UploadRecord *record = [[UploadRecord alloc]init];
             record.pickey = [result stringForColumn:@"pickey"];
             record.pictype = [result stringForColumn:@"pictype"];
             record.classid = [result stringForColumn:@"classid"];
@@ -233,6 +233,34 @@
         NSString *query = [NSString stringWithFormat:@"SELECT count(*) FROM uploadRecordTbl WHERE status <> '%@' AND pickey = '%@'", @"1", pickey];
         int result = [db intForQuery:query];
         handles(result);
+    }];
+}
+
+-(void)selectUploadRecordsWithKey:(NSString *)pickey completion:(void (^)(NSMutableArray *records))handles
+{
+    [queue inDatabase:^(FMDatabase *db) {
+        NSString *query = [NSString stringWithFormat:@"SELECT * FROM uploadRecordTbl WHERE pickey = '%@'",pickey];
+        __block UploadRecord *record = [[UploadRecord alloc]init];
+        __block NSMutableArray *recordList = [[NSMutableArray alloc]init];
+        FMResultSet *result = [db executeQuery:query];
+        while([result next])
+        {
+            record.pickey = [result stringForColumn:@"pickey"];
+            record.pictype = [result stringForColumn:@"pictype"];
+            record.classid = [result stringForColumn:@"classid"];
+            record.fbody = [result stringForColumn:@"fbody"];
+            record.teacherid = [result stringForColumn:@"teacherid"];
+            record.fname = [result stringForColumn:@"fname"];
+            record.ftime = [result stringForColumn:@"ftime"];
+            record.status = [result stringForColumn:@"status"];
+            record.content = [result stringForColumn:@"content"];
+            record.studentids = [result stringForColumn:@"studentids"];
+            record.tagids = [result stringForColumn:@"tagids"];
+            
+            [recordList addObject:record];
+        }
+        
+        handles(recordList);
     }];
 }
 

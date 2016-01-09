@@ -261,6 +261,7 @@
         i++;
     }
     
+    UploadRecord *uploadRecord;
     for(Photo *photo in _pictureArray)
     {
         NSString *pickey = [NSString stringWithFormat:@"%@%@", [self timeStamp], [[CBLoginInfo shareInstance] userid] ];
@@ -273,13 +274,13 @@
         ALAssetRepresentation *rep = [photo.asset defaultRepresentation];
         NSString *fname = [rep filename];
         
-        NSDate* date = [photo.asset valueForProperty:ALAssetPropertyDate];
-        NSString *ftime = [NSString stringWithFormat:@"%d", (int)[date timeIntervalSince1970]];
+//        NSDate* date = [photo.asset valueForProperty:ALAssetPropertyDate];
+        NSString *ftime = [NSString stringWithFormat:@"%@", [self timeStamp]];
         NSString *status = @"2"; //0,fail, 1,success, 2,waiting 3,uploading
         NSString *content = _commentTextView.text;
         
         //Write to DB
-        UploadRecord *uploadRecord = [[UploadRecord alloc] init];
+        uploadRecord = [[UploadRecord alloc] init];
         uploadRecord.pickey = pickey;
         uploadRecord.pictype = pictype;
         uploadRecord.classid = classid;
@@ -299,6 +300,9 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [[UploadWrapper shareInstance] uploadFile];
     });
+
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"uploading" object:self userInfo:@{@"pickey":uploadRecord.pickey}];
     
     [self.navigationController popToRootViewControllerAnimated:YES];
 }

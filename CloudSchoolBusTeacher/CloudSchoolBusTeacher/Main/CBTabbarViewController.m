@@ -17,6 +17,7 @@
 #import "BaseNavigationController.h"
 #import "CBDateBase.h"
 #import "UITabBar+CustomBadge.h"
+#import "RYMessage.h"
 
 @interface CBTabbarViewController ()
 {
@@ -95,7 +96,9 @@
     //init the tab
     self.viewControllers = arr;
     
+    //Register Uploading Receiver
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addRedDot:) name:@"uploading" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addRedDot:) name:@"MESSAGETEACHER" object:nil];
     
 }
 
@@ -104,11 +107,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark
+#pragma mark == TabBarController delegate
 -(void) tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
-    NSLog(@"Selected INDEX OF TAB-BAR ==> %lu", (unsigned long)tabBarController.selectedIndex);
-    
-    if (tabBarController.selectedIndex == 3) {
+    //取消红点
+    if (tabBarController.selectedIndex == 3 || tabBarController.selectedIndex == 2) {
         [self.tabBar setBadgeStyle:(kCustomBadgeStyleNone) value:1 atIndex:3];
     }
 }
@@ -126,9 +135,18 @@
 {
     [self.tabBar setTabIconWidth:29];
     [self.tabBar setBadgeTop:9];
-    [self.tabBar setBadgeStyle:(kCustomBadgeStyleRedDot) value:1 atIndex:3];
     
-    mineVC.isUploadingNotifying = true;
+    //融云消息
+    if([notifcation.object isKindOfClass:[RYMessage class]])
+    {
+        [self.tabBar setBadgeStyle:(kCustomBadgeStyleRedDot) value:1 atIndex:2];
+    }
+    //照片上传通知
+    else
+    {
+        [self.tabBar setBadgeStyle:(kCustomBadgeStyleRedDot) value:1 atIndex:3];
+        mineVC.isUploadingNotifying = true;
+    }
 }
 
 @end

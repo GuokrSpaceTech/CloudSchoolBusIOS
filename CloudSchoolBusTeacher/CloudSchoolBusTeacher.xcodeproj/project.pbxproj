@@ -81,7 +81,6 @@
 		81D405111BF049E500B5A176 /* ClassObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D405101BF049E500B5A176 /* ClassObj.m */; };
 		81D405141BF04A8200B5A176 /* Teacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D405131BF04A8200B5A176 /* Teacher.m */; };
 		81D405171BF04AD300B5A176 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D405161BF04AD300B5A176 /* Student.m */; };
-		81D4051D1BF069BB00B5A176 /* CBHobbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D4051C1BF069BB00B5A176 /* CBHobbyViewController.m */; };
 		81D431D71BFB05870089239A /* MineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D431D61BFB05870089239A /* MineCell.m */; };
 		81D431D91BFB072D0089239A /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D431D81BFB072D0089239A /* libiconv.dylib */; };
 		81D48C631BF5BB1100146AA6 /* CBMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D48C611BF5BB1100146AA6 /* CBMineViewController.m */; };
@@ -349,8 +348,6 @@
 		81D405131BF04A8200B5A176 /* Teacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Teacher.m; sourceTree = "<group>"; };
 		81D405151BF04AD300B5A176 /* Student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
 		81D405161BF04AD300B5A176 /* Student.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
-		81D4051B1BF069BB00B5A176 /* CBHobbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHobbyViewController.h; sourceTree = "<group>"; };
-		81D4051C1BF069BB00B5A176 /* CBHobbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHobbyViewController.m; sourceTree = "<group>"; };
 		81D431D51BFB05870089239A /* MineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineCell.h; sourceTree = "<group>"; };
 		81D431D61BFB05870089239A /* MineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineCell.m; sourceTree = "<group>"; };
 		81D431D81BFB072D0089239A /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
@@ -524,8 +521,6 @@
 			children = (
 				81065BFF1BEB129B009CE107 /* CBTabbarViewController.h */,
 				81065C001BEB129B009CE107 /* CBTabbarViewController.m */,
-				81D4051B1BF069BB00B5A176 /* CBHobbyViewController.h */,
-				81D4051C1BF069BB00B5A176 /* CBHobbyViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1193,7 +1188,6 @@
 			files = (
 				81C8A4D21C02E9C200F37C08 /* CBWebViewController.m in Sources */,
 				2A950C661C04063E009D6211 /* NoticeView.m in Sources */,
-				81D4051D1BF069BB00B5A176 /* CBHobbyViewController.m in Sources */,
 				FA3A67E11C21507E005DA0E8 /* UploadingPictureCollectionViewCell.m in Sources */,
 				FAAC59EA1C2974A200434598 /* OperationCollectionViewCell.m in Sources */,
 				FA3A67D71C214F9E005DA0E8 /* UploadingTableViewController.m in Sources */,

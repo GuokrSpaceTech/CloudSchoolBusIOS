@@ -138,6 +138,7 @@
     [_avatarImageView sd_setImageWithURL:[NSURL URLWithString:avatarStr] placeholderImage:nil];
     _nameLabel.text = contactName;
     _timeLabel.text = timestampStr;
+    _timeLabel.font = [UIFont systemFontOfSize:12.0f];
     if(lastIMContent==nil || [lastIMContent isEqualToString:@""])
     {
         lastIMContent = @"没有信息";

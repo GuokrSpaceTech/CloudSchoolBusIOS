@@ -34,14 +34,26 @@
     uploadArticles = [[NSMutableArray alloc]init];
     [self updateUploadQ];
     
+    if(uploadArticles.count == 0)
+        _uploadingStatus.text = [NSString stringWithFormat:@"所有文件都已上传"];
+    else
+        _uploadingStatus.text = [NSString stringWithFormat:@"有%lu个帖子正在上传",(unsigned long)uploadArticles.count];
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"UploadingTableViewCell" bundle:nil] forCellReuseIdentifier:@"uploadcell"];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     self.tableView.fd_debugLogEnabled = YES;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadSuccess:) name:@"uploadSuccess" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Table view data source
@@ -172,5 +184,17 @@
             }
         }
     }];
+}
+
+-(void)uploadSuccess:(NSNotification *)notification
+{
+    [self updateUploadQ];
+    
+    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
+    
+    if(uploadArticles.count == 0)
+        _uploadingStatus.text = [NSString stringWithFormat:@"所有文件都已上传"];
+    else
+        _uploadingStatus.text = [NSString stringWithFormat:@"有%lu个文件正在上传",(unsigned long)uploadArticles.count];
 }
 @end

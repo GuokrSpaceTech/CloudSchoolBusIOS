@@ -21,9 +21,12 @@
 #import "Parents.h"
 #import "Teacher.h"
 #import "ContactGroup.h"
+#import "UITabBar+CustomBadge.h"
+
 @interface AppDelegate ()<RCIMReceiveMessageDelegate>
 {
     CBTabbarViewController *main;
+    int messagecnt;
 }
 @end
 
@@ -87,6 +90,7 @@
                         parents.latestTime = sendertime;
                         parents.noReadCount++;
                         contactGroup.messagecnt++;
+                        messagecnt = contactGroup.messagecnt;
                     }
                 }
                 else
@@ -98,6 +102,7 @@
                         teacher.latestTime = sendertime;
                         teacher.noReadCount++;
                         contactGroup.messagecnt++;
+                        messagecnt = contactGroup.messagecnt;
                     }
                 }
             }
@@ -124,6 +129,7 @@
     UINavigationController * logginNav = [[UINavigationController alloc]initWithRootViewController:loginVC];
     self.window.rootViewController = logginNav;
 }
+
 -(void)setRegisterForRemoteNotification:(UIApplication *)application
 {
     if(iOS8)
@@ -171,24 +177,6 @@
     // [self makeLoginViewController];
     [self.window makeKeyAndVisible];
     return YES;
-}
-
--(void) tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
-{
-//    NSLog(@"Selected INDEX OF TAB-BAR ==> %i", tabBarController.selectedIndex);
-    
-    //First Tab
-    if (tabBarController.selectedIndex == 0) {
-        UINavigationController *nav = (UINavigationController *)viewController;
-        CBFindTableViewController *findVC = [[nav viewControllers] objectAtIndex:0];
-        if(findVC)
-        {
-            if([findVC respondsToSelector:@selector(selectAllMessages)])
-            {
-                [findVC selectAllMessages];
-            }
-        }
-    }
 }
 
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {

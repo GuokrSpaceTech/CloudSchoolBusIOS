@@ -80,7 +80,7 @@ static UploadWrapper * instance = nil;
         {
             //Mark upload Success for the upload record
             [[CBDateBase sharedDatabase] updateUploadRecordPickey:pickey fileName:fname status:@"1"]; //0,fail, 1,success, 2,waiting 3,uploading
-            
+                        
             [[CBDateBase sharedDatabase] countUnsentRecordsWithPickkey:pickey completion:^(int count) {
                 if(count == 0)
                 {
@@ -137,6 +137,9 @@ static UploadWrapper * instance = nil;
             [[EKRequest Instance] EKHTTPRequest:UPLOADOVER parameters:paramDict requestMethod:POST forDelegate:self];
         }
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"uploadSuccess" object:nil];
+
 }
 
 -(void) getErrorInfo:(NSError *) error forMethod:(RequestFunction) method

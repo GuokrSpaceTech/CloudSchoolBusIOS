@@ -17,10 +17,9 @@
 #import "CB.h"
 #import "CBChatViewController.h"
 #import "RYMessage.h"
-static NSString * cellinentify = @"teachercell";
-
-
 #import "UITableView+FDTemplateLayoutCell.h"
+
+static NSString * cellinentify = @"teachercell";
 
 @interface TeacherViewController ()
 {
@@ -37,7 +36,7 @@ static NSString * cellinentify = @"teachercell";
     self.navigationItem.title = _viewTitle;
     [self.tableView registerClass:[CBTeacherTableViewCell class] forCellReuseIdentifier:cellinentify];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.rowHeight = 80;
+    self.tableView.rowHeight = 60;
     
     self.view.backgroundColor = [UIColor whiteColor];
 //    self.refreshControl = [[UIRefreshControl alloc] init];
@@ -63,7 +62,6 @@ static NSString * cellinentify = @"teachercell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CBTeacherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellinentify forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    //cell.fd_enforceFrameLayout = NO;
     cell.contact = [_contactArray objectAtIndex:indexPath.row];
 
     return cell;

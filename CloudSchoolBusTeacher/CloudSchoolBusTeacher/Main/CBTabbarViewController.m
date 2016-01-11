@@ -19,7 +19,7 @@
 #import "UITabBar+CustomBadge.h"
 #import "RYMessage.h"
 
-@interface CBTabbarViewController ()
+@interface CBTabbarViewController ()<UITabBarControllerDelegate>
 {
     CBFindTableViewController * findVC;
     UINavigationController *mineNav;
@@ -33,14 +33,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.delegate = appDelegate;
+    self.delegate = self;
     
     self.tabBar.tintColor = [UIColor colorWithHexString:@"F3A139" alpha:1.0f];
+    self.tabBar.translucent = NO;
     
     findVC = [[CBFindTableViewController alloc]init];
-
     UIImage *image = [UIImage imageNamed:@"explore_unselected"];
     UIImage *selectedImage = [UIImage imageNamed:@"explore"];
     image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -61,14 +59,12 @@
     operationVC.tabBarItem.selectedImage = selectedImage;
     operationVC.tabBarItem.title = @"班务";
     
-     mineVC = [[CBMineViewController alloc]initWithNibName:@"CBMineViewController" bundle:nil];
+    mineVC = [[CBMineViewController alloc]initWithNibName:@"CBMineViewController" bundle:nil];
     image = [[UIImage imageNamed:@"me_unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     selectedImage = [[UIImage imageNamed:@"me"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     mineVC.tabBarItem.image = image;
     mineVC.tabBarItem.selectedImage = selectedImage;
     mineVC.tabBarItem.title = @"我";
-    
-    self.tabBar.translucent = NO;
 
     mineNav = [[UINavigationController alloc] initWithRootViewController:mineVC];
     UINavigationController *operationNav = [[UINavigationController alloc] initWithRootViewController:operationVC];
@@ -116,8 +112,23 @@
 #pragma mark == TabBarController delegate
 -(void) tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
+    //点击Tab取消筛选
+    if(tabBarController.selectedIndex == 0 )
+    {
+        if(findVC)
+        {
+            if([findVC respondsToSelector:@selector(selectAllMessages)])
+            {
+                [findVC selectAllMessages];
+            }
+        }
+    }
     //取消红点
-    if (tabBarController.selectedIndex == 3 || tabBarController.selectedIndex == 2) {
+    else if (tabBarController.selectedIndex == 2) {
+        [self.tabBar setBadgeStyle:(kCustomBadgeStyleNone) value:1 atIndex:2];
+    }
+    else if (tabBarController.selectedIndex == 3)
+    {
         [self.tabBar setBadgeStyle:(kCustomBadgeStyleNone) value:1 atIndex:3];
     }
 }
@@ -139,7 +150,9 @@
     //融云消息
     if([notifcation.object isKindOfClass:[RYMessage class]])
     {
-        [self.tabBar setBadgeStyle:(kCustomBadgeStyleRedDot) value:1 atIndex:2];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tabBar setBadgeStyle:(kCustomBadgeStyleRedDot) value:1 atIndex:2];
+        });
     }
     //照片上传通知
     else

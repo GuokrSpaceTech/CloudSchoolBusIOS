@@ -23,6 +23,9 @@
 #import "URLLinkView.h"
 #import "CMPopTipView.h"
 #import "Reachability.h"
+#import "RYMessage.h"
+#import "UITabBar+CustomBadge.h"
+
 
 static NSString * cellidenty = @"listcell";
 @interface CBFindTableViewController ()<EKProtocol, ArticleViewDelegate, URLLinkViewDelegate, NoticeViewDelegate>
@@ -120,7 +123,7 @@ static NSString * cellidenty = @"listcell";
 
     //目前无法让这个功能工作，ＴＯＤＯ
 //    NSString *notificationName = @"downloading";
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(downloadStarted:) name:notificationName object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addRedDot:) name:@"MESSAGETEACHER" object:nil];
     
     /*
      Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the method reachabilityChanged will be called.

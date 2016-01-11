@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UploadingTableViewController : UITableViewController
-
+@property (weak, nonatomic) IBOutlet UILabel *uploadingStatus;
 @end

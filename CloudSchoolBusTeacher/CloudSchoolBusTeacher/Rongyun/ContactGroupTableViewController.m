@@ -15,6 +15,7 @@
 #import "JSBadgeView.h"
 #import "MessageState.h"
 #import "ContactGroup.h"
+#import "UITabBar+CustomBadge.h"
 
 @interface ContactGroupTableViewController ()
 {
@@ -23,6 +24,13 @@
 @end
 
 @implementation ContactGroupTableViewController
+
+-(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(receiveMessage:) name:@"MESSAGETEACHER" object:nil];
+
+    return [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -32,7 +40,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(receiveMessage:) name:@"MESSAGETEACHER" object:nil];
+
     
     //Register the Cell Class
     [self.tableView registerClass:[ContactGroupTableViewCell class] forCellReuseIdentifier:@"contactgroupcell"];
@@ -106,6 +114,7 @@
     teacherVC.viewTitle = contactGroup.classname;
     
     // Push the view controller.
+    teacherVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:teacherVC animated:YES];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -175,6 +184,8 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
     });
+    
+    [self.tabBarController.tabBar setBadgeStyle:(kCustomBadgeStyleRedDot) value:1 atIndex:2];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
-
 @end
